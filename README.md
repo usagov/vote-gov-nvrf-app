@@ -2,5 +2,5 @@
 
 ## Installation
 1. clone repo
-2. run ```npm i``` at root
-3. run ```npm run dev``` at root
+2. run command ```npm i```
+3. run command ```npm run dev```

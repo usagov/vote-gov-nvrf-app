@@ -1,0 +1,89 @@
+[
+    {
+        "name": "Georgia",
+        "abreviation": "ga",
+        "eligibility_requirements": ["citizen", "age"],
+        "fields_required": 
+        {
+            "name": true, 
+            "address": true, 
+            "mailing_address": true, 
+            "DOB": true, 
+            "telephone": "optional", 
+            "ID_num": true, 
+            "party": "optional", 
+            "race": true, 
+            "acknowledgement": true
+        },
+        "help_text_override":
+        {
+            "name": "", 
+            "address": "", 
+            "mailing_address": "", 
+            "DOB": "", 
+            "telephone": "", 
+            "ID_num": "", 
+            "party": "", 
+            "race": "", 
+            "acknowledgement": ""
+        }
+    },
+    {
+        "name": "Indiana",
+        "abreviation": "in",
+        "eligibility_requirements": ["citizen", "age"],
+        "fields_required": 
+        {
+            "name": true, 
+            "address": true, 
+            "mailing_address": true, 
+            "DOB": true, 
+            "telephone": "optional", 
+            "ID_num": true, 
+            "party": false, 
+            "race": false, 
+            "acknowledgement": true
+        },
+        "help_text_override":
+        {
+            "name": "", 
+            "address": "", 
+            "mailing_address": "", 
+            "DOB": "", 
+            "telephone": "", 
+            "ID_num": "", 
+            "party": "", 
+            "race": "", 
+            "acknowledgement": ""
+        }
+    },
+    {
+        "name": "Louisiana",
+        "abreviation": "la",
+        "eligibility_requirements": ["citizen", "age"],
+        "fields_required": 
+        {
+            "name": true, 
+            "address": true, 
+            "mailing_address": true, 
+            "DOB": true, 
+            "telephone": "optional", 
+            "ID_num": true, 
+            "party": true, 
+            "race": "optional", 
+            "acknowledgement": true
+        },
+        "help_text_override":
+        {
+            "name": "", 
+            "address": "", 
+            "mailing_address": "", 
+            "DOB": "", 
+            "telephone": "", 
+            "ID_num": "", 
+            "party": "", 
+            "race": "", 
+            "acknowledgement": ""
+        }
+    }
+]

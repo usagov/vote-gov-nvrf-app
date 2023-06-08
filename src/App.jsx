@@ -1,47 +1,47 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import states from "./data/states.json";
+import { StepIndicator, StepIndicatorStep, Button } from '@trussworks/react-uswds';
+import StepOne from './components/StepOne';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [step, setStep] = useState("one");
+
+  const statesList = []
+  for (let i = 0; i < states.length; i++) {
+    let stateName = states[i].name;
+    statesList.push(stateName);
+  };
+
+  const handleNext = () => {
+    step === "one" ? setStep("two") : null;
+    step === "two" ? setStep("three") : null;
+    step === "three" ? setStep("four") : null;
+  }
+
+  const handlePrev = () => {
+    step === "four" ? setStep("three") : null;
+    step === "three" ? setStep("two") : null;
+    step === "two" ? setStep("one") : null;
+  }
 
   return (
     <>
-      <div
-        class="usa-step-indicator usa-step-indicator--counters-sm"
-        aria-label="progress"
-      >
-        <ol class="usa-step-indicator__segments">
-          <li
-            class="usa-step-indicator__segment usa-step-indicator__segment--complete"
-          >
-            <span class="usa-step-indicator__segment-label"
-              >Check eligibility <span class="usa-sr-only">completed</span></span
-            >
-          </li>
-          <li
-            class="usa-step-indicator__segment usa-step-indicator__segment--complete"
-          >
-            <span class="usa-step-indicator__segment-label"
-              >Fill out NVRF <span class="usa-sr-only">completed</span></span
-            >
-          </li>
-          <li
-            class="usa-step-indicator__segment usa-step-indicator__segment--current"
-            aria-current="true"
-          >
-            <span class="usa-step-indicator__segment-label"
-              >Confirm info </span
-            >
-          </li>
-          <li class="usa-step-indicator__segment">
-            <span class="usa-step-indicator__segment-label"
-              >Print, sign, and e-mail <span class="usa-sr-only">not completed</span></span
-            >
-          </li>
-        </ol>
-        </div>
+        <StepIndicator counters="small" headingLevel="h4">
+            <StepIndicatorStep label="Check eligibility" status={step === "one" ? "current" : null } />
+            <StepIndicatorStep label="Fill out NVRF" status={step === "two" ? "current" : null } />
+            <StepIndicatorStep label="Confirm info" status={step === "three" ? "current" : null } />
+            <StepIndicatorStep label="Print, sign, and e-mail" status={step === "four" ? "current" : null } />
+        </StepIndicator>
+
+        {step === "one" ? <StepOne statesList={statesList}/> : null }  
+
+        <Button type="button" onClick={handlePrev}>
+            Previous
+        </Button>
+        <Button type="button" onClick={handleNext}>
+            Next
+        </Button>
     </>
   )
 }
