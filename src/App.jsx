@@ -14,11 +14,11 @@ function App() {
   };
 
   const handleNext = () => {
-    step != 4 ? setStep(step + 1) : null;
+    step != 4 && setStep(step + 1);
   }
 
   const handlePrev = () => {
-    step != 1 ? setStep(step - 1) : null;
+    step != 1 && setStep(step - 1);
   }
 
   const stepProgress = (count) => {
@@ -40,7 +40,7 @@ function App() {
             <StepIndicatorStep label="Print, sign, and e-mail" status={stepProgress(4)} />
         </StepIndicator>
 
-        {step === "one" ? <StepOne statesList={statesList}/> : null }  
+        {step === 1 && <StepOne statesList={statesList}/>}  
 
         <Button type="button" onClick={handlePrev}>
             Previous
