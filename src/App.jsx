@@ -8,26 +8,40 @@ function App() {
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <div
+        class="usa-step-indicator usa-step-indicator--counters-sm"
+        aria-label="progress"
+      >
+        <ol class="usa-step-indicator__segments">
+          <li
+            class="usa-step-indicator__segment usa-step-indicator__segment--complete"
+          >
+            <span class="usa-step-indicator__segment-label"
+              >Check eligibility <span class="usa-sr-only">completed</span></span
+            >
+          </li>
+          <li
+            class="usa-step-indicator__segment usa-step-indicator__segment--complete"
+          >
+            <span class="usa-step-indicator__segment-label"
+              >Fill out NVRF <span class="usa-sr-only">completed</span></span
+            >
+          </li>
+          <li
+            class="usa-step-indicator__segment usa-step-indicator__segment--current"
+            aria-current="true"
+          >
+            <span class="usa-step-indicator__segment-label"
+              >Confirm info </span
+            >
+          </li>
+          <li class="usa-step-indicator__segment">
+            <span class="usa-step-indicator__segment-label"
+              >Print, sign, and e-mail <span class="usa-sr-only">not completed</span></span
+            >
+          </li>
+        </ol>
+        </div>
     </>
   )
 }
