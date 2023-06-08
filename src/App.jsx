@@ -5,7 +5,7 @@ import { StepIndicator, StepIndicatorStep, Button } from '@trussworks/react-uswd
 import StepOne from './components/StepOne';
 
 function App() {
-  const [step, setStep] = useState("one");
+  const [step, setStep] = useState(1);
 
   const statesList = []
   for (let i = 0; i < states.length; i++) {
@@ -14,24 +14,30 @@ function App() {
   };
 
   const handleNext = () => {
-    step === "one" ? setStep("two") : null;
-    step === "two" ? setStep("three") : null;
-    step === "three" ? setStep("four") : null;
+    step != 4 ? setStep(step + 1) : null;
   }
 
   const handlePrev = () => {
-    step === "four" ? setStep("three") : null;
-    step === "three" ? setStep("two") : null;
-    step === "two" ? setStep("one") : null;
+    step != 1 ? setStep(step - 1) : null;
+  }
+
+  const stepProgress = (count) => {
+    if (step === count) {
+      return "current"
+    }
+    else if (step > count) {
+      return "complete"
+    }
+    else null
   }
 
   return (
     <>
         <StepIndicator counters="small" headingLevel="h4">
-            <StepIndicatorStep label="Check eligibility" status={step === "one" ? "current" : null } />
-            <StepIndicatorStep label="Fill out NVRF" status={step === "two" ? "current" : null } />
-            <StepIndicatorStep label="Confirm info" status={step === "three" ? "current" : null } />
-            <StepIndicatorStep label="Print, sign, and e-mail" status={step === "four" ? "current" : null } />
+            <StepIndicatorStep label="Check eligibility" status={stepProgress(1)} />
+            <StepIndicatorStep label="Fill out NVRF" status={stepProgress(2)} />
+            <StepIndicatorStep label="Confirm info" status={stepProgress(3)} />
+            <StepIndicatorStep label="Print, sign, and e-mail" status={stepProgress(4)} />
         </StepIndicator>
 
         {step === "one" ? <StepOne statesList={statesList}/> : null }  
