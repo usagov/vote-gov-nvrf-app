@@ -1,6 +1,16 @@
-import StateSelector from './StateSelector';
+import { useState } from 'react'
+import { Label, Dropdown, Button } from '@trussworks/react-uswds';
+import states from "../data/states.json";
 
 function StepOne(props) {
+    const statesList = []
+    for (let i = 0; i < states.length; i++) {
+        let stateName = states[i].name;
+        statesList.push(stateName);
+    };
+
+    const [selectedState, setSelectedState] = useState(statesList[0])
+
     return (
         <>
         <h2>Register to vote</h2>
@@ -32,7 +42,29 @@ function StepOne(props) {
         <h3>Select your state to view eligibility and begin your registration</h3>
         <p>Select your home state or territory to view your state’s eligibility requirements. As you continue through the form, you will see state-specific instructions for filling out your information.</p>
         
-        <StateSelector statesList={props.statesList}/>
+        <Label htmlFor="options">Home state or territory</Label>
+        <Dropdown 
+            id="input-dropdown" 
+            name="input-dropdown"
+            value={selectedState}
+            onChange={e => {props.getSelectedState(e.target.value); setSelectedState(e.target.value)}}
+            >
+            {statesList.map(
+            state => <option key={state} value={state}>{state}</option>
+        )}
+        </Dropdown>
+
+        <div className="button-container" style={{ margin:'20px' }}>
+            <Button type="button" onClick={props.handleNext}>
+            Continue to check registration eligibility
+            </Button>
+        </div>
+       
+        <h2>Not sure if you are already registered?</h2>
+        <p>Save time by checking your current registration status on your state’s election website. Be sure to select your state in the dropdown menu above.</p>
+        <Button>
+            Visit your state election website
+        </Button>
         </>
     );
 }

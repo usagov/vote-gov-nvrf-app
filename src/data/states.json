@@ -1,7 +1,8 @@
 [
     {
-        "name": "Georgia",
-        "abreviation": "ga",
+        "name": "Alaska",
+        "abreviation": "ak",
+        "reg_type": "online",
         "eligibility_requirements": ["citizen", "age"],
         "fields_required": 
         {
@@ -12,35 +13,6 @@
             "telephone": "optional", 
             "ID_num": true, 
             "party": "optional", 
-            "race": true, 
-            "acknowledgement": true
-        },
-        "help_text_override":
-        {
-            "name": "", 
-            "address": "", 
-            "mailing_address": "", 
-            "DOB": "", 
-            "telephone": "", 
-            "ID_num": "", 
-            "party": "", 
-            "race": "", 
-            "acknowledgement": ""
-        }
-    },
-    {
-        "name": "Indiana",
-        "abreviation": "in",
-        "eligibility_requirements": ["citizen", "age"],
-        "fields_required": 
-        {
-            "name": true, 
-            "address": true, 
-            "mailing_address": true, 
-            "DOB": true, 
-            "telephone": "optional", 
-            "ID_num": true, 
-            "party": false, 
             "race": false, 
             "acknowledgement": true
         },
@@ -58,8 +30,9 @@
         }
     },
     {
-        "name": "Louisiana",
-        "abreviation": "la",
+        "name": "Maine",
+        "abreviation": "me",
+        "reg_type": "in-person",
         "eligibility_requirements": ["citizen", "age"],
         "fields_required": 
         {
@@ -70,8 +43,38 @@
             "telephone": "optional", 
             "ID_num": true, 
             "party": true, 
-            "race": "optional", 
+            "race": false, 
             "acknowledgement": true
+        },
+        "help_text_override":
+        {
+            "name": "", 
+            "address": "", 
+            "mailing_address": "", 
+            "DOB": "", 
+            "telephone": "", 
+            "ID_num": "", 
+            "party": "", 
+            "race": "", 
+            "acknowledgement": ""
+        }
+    },
+    {
+        "name": "North Dakota",
+        "abreviation": "nd",
+        "reg_type": "not-needed",
+        "eligibility_requirements": ["citizen", "age"],
+        "fields_required": 
+        {
+            "name": false, 
+            "address": false, 
+            "mailing_address": false, 
+            "DOB": false, 
+            "telephone": false, 
+            "ID_num": false, 
+            "party": false, 
+            "race": false, 
+            "acknowledgement": false
         },
         "help_text_override":
         {
