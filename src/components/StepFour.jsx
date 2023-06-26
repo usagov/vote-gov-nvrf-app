@@ -2,13 +2,48 @@
 import { Form, FormGroup, Label, TextInput, Button, Dropdown,Checkbox, DatePicker } from '@trussworks/react-uswds';
 import StateSelector from './StateSelector';
 import states from "../data/states.json";
+import React, { useState } from "react";
 
 function StepFour(props) {
-        {/* functions/variables code goes here */}
+    {/* functions/variables code goes here */}
     const handleSubmit = (e) => {
         e.preventDefault(e);
         console.log('Submitted!')
     }
+
+    //Checkbox controls
+    //Previous name fields controls
+    const [hasPreviousName, setHasPreviousName] = useState(false);
+    const onChangePreviousNameCheckbox = (e) => {
+        setHasPreviousName(e.target.checked);
+    }
+
+    const [previousName, setPreviousName] = useState("");
+    const onChangePreviousName = (e) => {
+        setPreviousName(e.target.value);
+    }
+
+    //Previous address fields controls
+    const [hasPreviousAddress, setHasPreviousAddress] = useState(false);
+    const onChangePreviousAddressCheckbox = (e) => {
+        setHasPreviousAddress(e.target.checked);
+    }
+
+    const [previousAddress, setPreviousAddress] = useState("");
+    const onChangePreviousAddress = (e) => {
+        setPreviousAddress(e.target.value);
+    };
+
+    //Mail address fields controls
+    const [hasMailAddress, setHasMailAddress] = useState(false);
+    const onChangeMailAddressCheckbox = (e) => {
+        setHasMailAddress(e.target.checked);
+    };
+
+    const [mailAddress, setMailAddress] = useState("");
+    const onChangeMailAddress = (e) => {
+        setMailAddress(e.target.value);
+    };
     //Harcoded variables
     const nameChangeVisible = true;
     const secondAddressVisible = true;
@@ -23,8 +58,6 @@ function StepFour(props) {
     const partyReq = stateFieldRequirements.party
     const raceReq = stateFieldRequirements.race;
     const acknowledgementReq = stateFieldRequirements.acknowledgement;
-
-    console.log(stateFieldRequirements);
 
     return (
         <>
@@ -67,8 +100,41 @@ function StepFour(props) {
 
                 {
                     nameChangeVisible &&
-                    <Checkbox id="legal-name-change" name="legal-name-change" label="I have legally changed my name since the last time I registered to vote." />
+                    <Checkbox id="legal-name-change" name="legal-name-change" checked={hasPreviousName} onChange={onChangePreviousNameCheckbox} label="I have legally changed my name since the last time I registered to vote." />
                 }
+
+                {hasPreviousName && (
+                    <div value={previousName} onChange={onChangePreviousName}>
+                        <h4>Previous Name</h4>
+                        <Label htmlFor="title-select-2">Title</Label>
+                        <Dropdown id="title-select-2" name="title-select-2">
+                            <option>- Select -{' '}</option>
+                            <option value="Mr.">Mr.</option>
+                            <option value="Miss">Miss</option>
+                            <option value="Ms.">Ms.</option>
+                            <option value="Mrs.">Mrs.</option>
+                        </Dropdown>
+
+                        <Label htmlFor="first-name-2">First Name</Label>
+                        <TextInput id="first-name-2" name="first-name-2" type="text" required/>
+
+                        <Label htmlFor="middle-name-2">Middle Name</Label>
+                        <TextInput id="middle-name-2" name="middle-name-2" type="text"/>
+
+                        <Label htmlFor="last-name-2">Last Name</Label>
+                        <TextInput id="last-name-2" name="last-name-2" type="text"/>
+
+                        <Label htmlFor="suffix-select-2">Suffix</Label>
+                        <Dropdown id="suffix-select-2" name="suffix-select-2">
+                            <option>- Select -{' '}</option>
+                            <option value="Jr.">Jr.</option>
+                            <option value="Sr.">Sr.</option>
+                            <option value="II">II</option>
+                            <option value="III">III</option>
+                            <option value="IV">IV</option>
+                        </Dropdown>
+                    </div>
+                )}
 
                 { dobReq && (
                     <div>
@@ -124,14 +190,54 @@ function StepFour(props) {
                         <TextInput id="city" name="city" type="text"/>
 
                         <Label>State</Label>
-                        <StateSelector statesList={props.statesList}/>
+                        <StateSelector id="state" statesList={props.statesList}/>
 
                         <Label htmlFor="zipcode">Zipcode (123456)</Label>
                         <TextInput id="zipcode" name="zip-code" type="text"/>
 
-                        <Checkbox id="prev-res-addr" name="prev-res-addr" label="I have a previous residential address." />
+                        <Checkbox id="prev-res-addr" name="prev-res-addr" checked={hasPreviousAddress} onChange={onChangePreviousAddressCheckbox} label="I have a previous residential address." />
 
-                        <Checkbox id="alt-mail-addr" name="alt-mail-addr" label="I get my mail at a different address from the one above." />
+                        <Checkbox id="alt-mail-addr" name="alt-mail-addr" checked={hasMailAddress} onChange={onChangeMailAddressCheckbox} label="I get my mail at a different address from the one above." />
+                    </div>
+                )}
+
+                {(hasPreviousAddress) && (
+                    <div value={previousAddress} onChange={onChangePreviousAddress}>
+                        <h4>Previous Address</h4>
+                        <Label htmlFor="street-address-3">Street Address</Label>
+                        <TextInput id="street-address-3" name="street-address-3" type="text"/>
+
+                        <Label htmlFor="apt-num-3">Apartment of Lot #</Label>
+                        <TextInput id="apt-num-3" name="apt-num-3" type="text"/>
+
+                        <Label htmlFor="city-3">City</Label>
+                        <TextInput id="city-3" name="city-3" type="text"/>
+
+                        <Label>State</Label>
+                        <StateSelector id="state-3" statesList={props.statesList}/>
+
+                        <Label htmlFor="zipcode-3">Zipcode (123456)</Label>
+                        <TextInput id="zipcode-3" name="zip-code-3" type="text"/>
+                    </div>
+                )}
+
+                {(hasMailAddress) && (
+                    <div value={mailAddress} onChange={onChangeMailAddress}>
+                        <h4>Mailing Address</h4>
+                        <Label htmlFor="street-address-2">Street Address</Label>
+                        <TextInput id="street-address-2" name="street-address-2" type="text"/>
+
+                        <Label htmlFor="apt-num-2">Apartment of Lot #</Label>
+                        <TextInput id="apt-num-2" name="apt-num-2" type="text"/>
+
+                        <Label htmlFor="city-2">City</Label>
+                        <TextInput id="city-2" name="city-2" type="text"/>
+
+                        <Label>State</Label>
+                        <StateSelector id="state-2" statesList={props.statesList}/>
+
+                        <Label htmlFor="zipcode-2">Zipcode (123456)</Label>
+                        <TextInput id="zipcode-2" name="zip-code-2" type="text"/>
                     </div>
                 )}
             </FormGroup>
