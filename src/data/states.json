@@ -5,28 +5,40 @@
         "reg_type": "online",
         "eligibility_requirements": ["citizen", "age"],
         "election_website_url": "https://www.elections.alaska.gov/",
-        "fields_required": 
+        "fields_required":
         {
-            "name": true, 
-            "address": true, 
-            "mailing_address": true, 
-            "DOB": true, 
-            "telephone": "optional", 
-            "ID_num": true, 
-            "party": "optional", 
-            "race": false, 
+            "name": true,
+            "address": true,
+            "mailing_address": true,
+            "DOB": true,
+            "telephone": false,
+            "ID_num": true,
+            "party": false,
+            "race": false,
+            "acknowledgement": true
+        },
+        "fields_visible":
+        {
+            "name": true,
+            "address": true,
+            "mailing_address": true,
+            "DOB": true,
+            "telephone": true,
+            "ID_num": true,
+            "party": true,
+            "race": false,
             "acknowledgement": true
         },
         "help_text_override":
         {
-            "name": "", 
-            "address": "", 
-            "mailing_address": "", 
-            "DOB": "", 
-            "telephone": "", 
-            "ID_num": "", 
-            "party": "", 
-            "race": "", 
+            "name": "",
+            "address": "",
+            "mailing_address": "",
+            "DOB": "",
+            "telephone": "",
+            "ID_num": "",
+            "party": "",
+            "race": "",
             "acknowledgement": ""
         }
     },
@@ -36,28 +48,40 @@
         "reg_type": "in-person",
         "eligibility_requirements": ["citizen", "age"],
         "election_website_url": "https://www.maine.gov/sos/cec/elec/",
-        "fields_required": 
+        "fields_required":
         {
-            "name": true, 
-            "address": true, 
-            "mailing_address": true, 
-            "DOB": true, 
-            "telephone": "optional", 
-            "ID_num": true, 
-            "party": true, 
-            "race": false, 
+            "name": true,
+            "address": true,
+            "mailing_address": true,
+            "DOB": true,
+            "telephone": false,
+            "ID_num": true,
+            "party": true,
+            "race": false,
+            "acknowledgement": true
+        },
+        "fields_visible":
+        {
+            "name": true,
+            "address": true,
+            "mailing_address": true,
+            "DOB": true,
+            "telephone": true,
+            "ID_num": true,
+            "party": true,
+            "race": false,
             "acknowledgement": true
         },
         "help_text_override":
         {
-            "name": "", 
-            "address": "", 
-            "mailing_address": "", 
-            "DOB": "", 
-            "telephone": "", 
-            "ID_num": "", 
-            "party": "", 
-            "race": "", 
+            "name": "",
+            "address": "",
+            "mailing_address": "",
+            "DOB": "",
+            "telephone": "",
+            "ID_num": "",
+            "party": "",
+            "race": "",
             "acknowledgement": ""
         }
     },
@@ -67,28 +91,40 @@
         "reg_type": "not-needed",
         "eligibility_requirements": ["citizen", "age"],
         "election_website_url": "https://vip.sos.nd.gov/PortalList.aspx",
-        "fields_required": 
+        "fields_required":
         {
-            "name": false, 
-            "address": false, 
-            "mailing_address": false, 
-            "DOB": false, 
-            "telephone": false, 
-            "ID_num": false, 
-            "party": false, 
-            "race": false, 
+            "name": false,
+            "address": false,
+            "mailing_address": false,
+            "DOB": false,
+            "telephone": false,
+            "ID_num": false,
+            "party": false,
+            "race": false,
+            "acknowledgement": false
+        },
+        "fields_visible":
+        {
+            "name": false,
+            "address": false,
+            "mailing_address": false,
+            "DOB": false,
+            "telephone": false,
+            "ID_num": false,
+            "party": false,
+            "race": false,
             "acknowledgement": false
         },
         "help_text_override":
         {
-            "name": "", 
-            "address": "", 
-            "mailing_address": "", 
-            "DOB": "", 
-            "telephone": "", 
-            "ID_num": "", 
-            "party": "", 
-            "race": "", 
+            "name": "",
+            "address": "",
+            "mailing_address": "",
+            "DOB": "",
+            "telephone": "",
+            "ID_num": "",
+            "party": "",
+            "race": "",
             "acknowledgement": ""
         }
     }

@@ -13,6 +13,12 @@ function App() {
   const [step, setStep] = useState(1);
   const [selectedState, setSelectedState] = useState('');
 
+  const statesList = []
+  for (let i = 0; i < states.length; i++) {
+    let stateName = states[i].name;
+    statesList.push(stateName);
+  };
+
   const handleNext = () => {
     step != 5 && setStep(step + 1);
   }
@@ -49,7 +55,7 @@ function App() {
         {step === 1 && <StepOne handleNext={handleNext} getSelectedState={getSelectedState}/>}  
         {step === 2 && <StepTwo handleNext={handleNext} handlePrev={handlePrev} state={selectedState}/>}  
         {step === 3 && <StepThree handleNext={handleNext} handlePrev={handlePrev}/>}  
-        {step === 4 && <StepFour handleNext={handleNext}/>}  
+        {step === 4 && <StepFour handleNext={handleNext} statesList={statesList}/>}  
         {step === 5 && <StepFive handleNext={handleNext}/>}  
 
     </>
