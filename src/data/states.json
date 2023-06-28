@@ -4,6 +4,7 @@
         "abreviation": "ak",
         "reg_type": "online",
         "eligibility_requirements": ["citizen", "age"],
+        "election_website_url": "https://www.elections.alaska.gov/",
         "fields_required":
         {
             "name": true,
@@ -46,6 +47,7 @@
         "abreviation": "me",
         "reg_type": "in-person",
         "eligibility_requirements": ["citizen", "age"],
+        "election_website_url": "https://www.maine.gov/sos/cec/elec/",
         "fields_required":
         {
             "name": true,
@@ -88,6 +90,7 @@
         "abreviation": "nd",
         "reg_type": "not-needed",
         "eligibility_requirements": ["citizen", "age"],
+        "election_website_url": "https://vip.sos.nd.gov/PortalList.aspx",
         "fields_required":
         {
             "name": false,
