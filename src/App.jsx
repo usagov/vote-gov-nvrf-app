@@ -9,10 +9,9 @@ import StepFour from './components/StepFour';
 import StepFive from './components/StepFive';
 
 function App() {
-  const defaultState = states[0].name;
 
   const [step, setStep] = useState(1);
-  const [selectedState, setSelectedState] = useState(defaultState);
+  const [selectedState, setSelectedState] = useState('');
 
   const handleNext = () => {
     step != 5 && setStep(step + 1);
@@ -39,10 +38,6 @@ function App() {
 
   return (
     <>
-        <Button type="button" onClick={handlePrev}>
-            Back to Vote.gov
-        </Button>
-
         <StepIndicator counters="small" headingLevel="h4">
             <StepIndicatorStep label="State selection" status={stepProgress(1)} />
             <StepIndicatorStep label="Check eligibility" status={stepProgress(2)} />
@@ -52,8 +47,8 @@ function App() {
         </StepIndicator>
 
         {step === 1 && <StepOne handleNext={handleNext} getSelectedState={getSelectedState}/>}  
-        {step === 2 && <StepTwo handleNext={handleNext} state={selectedState}/>}  
-        {step === 3 && <StepThree handleNext={handleNext}/>}  
+        {step === 2 && <StepTwo handleNext={handleNext} handlePrev={handlePrev} state={selectedState}/>}  
+        {step === 3 && <StepThree handleNext={handleNext} handlePrev={handlePrev}/>}  
         {step === 4 && <StepFour handleNext={handleNext}/>}  
         {step === 5 && <StepFive handleNext={handleNext}/>}  
 
