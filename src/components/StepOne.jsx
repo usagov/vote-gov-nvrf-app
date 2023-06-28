@@ -9,7 +9,19 @@ function StepOne(props) {
         statesList.push(stateName);
     };
 
-    const [selectedState, setSelectedState] = useState('default');
+    const [stateLink, setStateLink] = useState('');
+    const [buttonStatus, setButtonStatus] = useState(true)
+
+    const getStateLink = (state) => {
+        for (var i = 0; i < states.length; i++){
+            if (states[i].name == state){
+            setStateLink(states[i].election_website_url);
+        }        
+    }}
+
+    const handleButtonStatus = (value) => {
+        value != 'default'&& setButtonStatus(false);
+    }
 
     return (
         <>
@@ -70,8 +82,12 @@ function StepOne(props) {
         <Dropdown 
             id="input-dropdown" 
             name="input-dropdown"
-            value={selectedState}
-            onChange={e => {props.getSelectedState(e.target.value); setSelectedState(e.target.value)}}
+            value={props.selectedState}
+            onChange={e => {
+                props.getSelectedState(e.target.value); 
+                getStateLink(e.target.value);
+                handleButtonStatus(e.target.value);
+            }}
             >
             <option value="default">Select your state or territory</option>
             {statesList.map(
@@ -80,14 +96,14 @@ function StepOne(props) {
         </Dropdown>
 
         <div className="button-container" style={{ margin:'20px' }}>
-            <Button type="button" onClick={props.handleNext} disabled={selectedState === "default" && "true"}>
+            <Button type="button" onClick={props.handleNext} disabled={buttonStatus}>
             Continue to check registration eligibility
             </Button>
         </div>
        
         <h2>Not sure if you are already registered?</h2>
         <p>Save time by checking your current registration status on your state’s election website. Be sure to select your state in the dropdown menu above.</p>
-        <a href=""><Button disabled={selectedState === "default" && "true"}>
+        <a href={stateLink}><Button disabled={buttonStatus}>
             Visit your state election website
         </Button>
         </a>

@@ -11,7 +11,7 @@ import StepFive from './components/StepFive';
 function App() {
 
   const [step, setStep] = useState(1);
-  const [selectedState, setSelectedState] = useState('');
+  const [selectedState, setSelectedState] = useState('default');
 
   const statesList = []
   for (let i = 0; i < states.length; i++) {
@@ -52,7 +52,7 @@ function App() {
             <StepIndicatorStep label="Print, sign, and e-mail" status={stepProgress(5)} />
         </StepIndicator>
 
-        {step === 1 && <StepOne handleNext={handleNext} getSelectedState={getSelectedState}/>}  
+        {step === 1 && <StepOne handleNext={handleNext} getSelectedState={getSelectedState} selectedState={selectedState}/>}  
         {step === 2 && <StepTwo handleNext={handleNext} handlePrev={handlePrev} state={selectedState}/>}  
         {step === 3 && <StepThree handleNext={handleNext} handlePrev={handlePrev}/>}  
         {step === 4 && <StepFour handleNext={handleNext} statesList={statesList}/>}  
