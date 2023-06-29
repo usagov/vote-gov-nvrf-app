@@ -5,6 +5,10 @@ import states from "../data/states.json";
 import React, { useState } from "react";
 
 function StepFour(props) {
+    console.log('registration path: ', props.registrationPath)
+    console.log('state name: ', props.state)
+    console.log('state data: ', props.stateData)
+
     //Multiple step NVRF controls
     const [step, setStep] = useState(1);
     const handleNext = () => {

@@ -13,6 +13,7 @@ function App() {
   const [step, setStep] = useState(1);
   const [selectedState, setSelectedState] = useState('default');
   const [stateData, setStateData] = useState('');
+  const [registrationPath, setRegistrationPath] = useState('');
 
   const statesList = []
   for (let i = 0; i < states.length; i++) {
@@ -29,17 +30,6 @@ function App() {
     step != 1 && setStep(step - 1);
   }
 
-  const stepProgress = (count) => {
-    if (step === count) {
-      return "current"
-    }
-    else if (step > count) {
-      return "complete"
-    }
-    else null
-  }
-
-  //callbacks to get state selection and data from child component StepOne.jsx
   const getSelectedState = (selectedState) => {
     setSelectedState(selectedState);
     for (var i = 0; i < states.length; i++){
@@ -48,29 +38,45 @@ function App() {
     }  
   }}
 
+  const getRegPath = (pathSelection) => {
+    console.log('get reg path', pathSelection)
+    setRegistrationPath(pathSelection) 
+  };
+
   return (
     <>
-        <StepIndicator counters="small" headingLevel="h4">
-            <StepIndicatorStep label="State selection" status={stepProgress(1)} />
-            <StepIndicatorStep label="Check eligibility" status={stepProgress(2)} />
-            <StepIndicatorStep label="Fill out NVRF" status={stepProgress(3)} />
-            <StepIndicatorStep label="Confirm info" status={stepProgress(4)} />
-            <StepIndicatorStep label="Print, sign, and e-mail" status={stepProgress(5)} />
-        </StepIndicator>
-
-        {step === 1 && <StepOne 
+        {step === 1 && 
+          <StepOne 
           handleNext={handleNext} 
           getSelectedState={getSelectedState} 
           selectedState={selectedState}
           />}  
-        {step === 2 && <StepTwo 
+        {step === 2 && 
+          <StepTwo 
           handleNext={handleNext} 
           handlePrev={handlePrev} 
           state={selectedState}
-          stateData={stateData}/>}  
-        {step === 3 && <StepThree handleNext={handleNext} handlePrev={handlePrev}/>}  
-        {step === 4 && <StepFour handleNext={handleNext} statesList={statesList}/>}  
-        {step === 5 && <StepFive handleNext={handleNext}/>}  
+          stateData={stateData}
+          />}  
+        {step === 3 && 
+          <StepThree 
+          handleNext={handleNext} 
+          handlePrev={handlePrev} 
+          stateData={stateData}
+          registrationPath={registrationPath}
+          getRegPath={getRegPath}
+          />}  
+        {step === 4 && 
+          <StepFour 
+          handleNext={handleNext} 
+          statesList={statesList}
+          state={selectedState}
+          stateData={stateData}
+          registrationPath={registrationPath}
+          />}  
+        {step === 5 && 
+          <StepFive handleNext={handleNext}
+          />}  
 
     </>
   )
