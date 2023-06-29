@@ -12,6 +12,7 @@ function App() {
 
   const [step, setStep] = useState(1);
   const [selectedState, setSelectedState] = useState('default');
+  const [stateData, setStateData] = useState('');
 
   const statesList = []
   for (let i = 0; i < states.length; i++) {
@@ -21,6 +22,7 @@ function App() {
 
   const handleNext = () => {
     step != 5 && setStep(step + 1);
+    console.log('click!')
   }
 
   const handlePrev = () => {
@@ -37,10 +39,14 @@ function App() {
     else null
   }
 
-  //callback to get state selection from child component StepOne.jsx
+  //callbacks to get state selection and data from child component StepOne.jsx
   const getSelectedState = (selectedState) => {
     setSelectedState(selectedState);
-  }
+    for (var i = 0; i < states.length; i++){
+      if (states[i].name == selectedState){
+      setStateData(states[i]);
+    }  
+  }}
 
   return (
     <>
@@ -52,8 +58,16 @@ function App() {
             <StepIndicatorStep label="Print, sign, and e-mail" status={stepProgress(5)} />
         </StepIndicator>
 
-        {step === 1 && <StepOne handleNext={handleNext} getSelectedState={getSelectedState} selectedState={selectedState}/>}  
-        {step === 2 && <StepTwo handleNext={handleNext} handlePrev={handlePrev} state={selectedState}/>}  
+        {step === 1 && <StepOne 
+          handleNext={handleNext} 
+          getSelectedState={getSelectedState} 
+          selectedState={selectedState}
+          />}  
+        {step === 2 && <StepTwo 
+          handleNext={handleNext} 
+          handlePrev={handlePrev} 
+          state={selectedState}
+          stateData={stateData}/>}  
         {step === 3 && <StepThree handleNext={handleNext} handlePrev={handlePrev}/>}  
         {step === 4 && <StepFour handleNext={handleNext} statesList={statesList}/>}  
         {step === 5 && <StepFive handleNext={handleNext}/>}  
@@ -62,4 +76,4 @@ function App() {
   )
 }
 
-export default App
+export default App;

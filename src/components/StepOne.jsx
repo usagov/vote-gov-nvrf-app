@@ -84,7 +84,7 @@ function StepOne(props) {
             name="input-dropdown"
             value={props.selectedState}
             onChange={e => {
-                props.getSelectedState(e.target.value); 
+                props.getSelectedState(e.target.value)
                 getStateLink(e.target.value);
                 handleButtonStatus(e.target.value);
             }}
