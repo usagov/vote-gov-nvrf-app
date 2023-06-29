@@ -1,13 +1,9 @@
 // get component code here https://trussworks.github.io/react-uswds/?path=/story/components-form-elements-formgroup--text-input-form-group
-import { Form, FormGroup, Label, TextInput, Button, Dropdown,Checkbox, DatePicker } from '@trussworks/react-uswds';
+import { Form, Label, TextInput, Button, Dropdown,Checkbox, DatePicker } from '@trussworks/react-uswds';
 import StateSelector from './StateSelector';
-import states from "../data/states.json";
 import React, { useState } from "react";
 
 function StepFour(props) {
-    console.log('registration path: ', props.registrationPath)
-    console.log('state name: ', props.state)
-    console.log('state data: ', props.stateData)
 
     //Multiple step NVRF controls
     const [step, setStep] = useState(1);
@@ -17,16 +13,6 @@ function StepFour(props) {
 
       const handlePrev = () => {
         step != 1 && setStep(step - 1);
-      }
-
-      const stepProgress = (count) => {
-        if (step === count) {
-          return "current"
-        }
-        else if (step > count) {
-          return "complete"
-        }
-        else null
       }
 
     {/* functions/variables code goes here */}
@@ -69,9 +55,9 @@ function StepFour(props) {
         setMailAddress(e.target.value);
     };
     //Harcoded variables
-    const changeRegistrationVisible = true;
-    const stateFieldRequirements = states[0].fields_required;//Alaska - need to pass correct index from step 1
-    const stateFieldVisible = states[0].fields_visible;
+    const changeRegistrationVisible = (props.registrationPath === 'update') ? true : false;
+    const stateFieldRequirements = props.stateData.fields_required;
+    const stateFieldVisible = props.stateData.fields_visible;
     //Field requirement states
     const nameReq = stateFieldRequirements.name;
     const addressReq = stateFieldRequirements.address;
@@ -92,8 +78,6 @@ function StepFour(props) {
     const partyVisible = stateFieldVisible.party;
     const raceVisible = stateFieldVisible.race;
     const acknowldgementVisible = stateFieldVisible.acknowledgement;
-
-    console.log(changeRegistrationVisible);
 
     //Form section variables
     const personalInfoSection =
