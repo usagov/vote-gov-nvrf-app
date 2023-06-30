@@ -26,7 +26,7 @@ function StepThree(props) {
         </Button>
         <p>{content.help_text_two}</p>
         <Button id="new" onClick={e => {{props.getRegPath(e.target.id)}; handleClick(e.target.id);}} outline={buttonSelected === 'new' ? false : true}>
-        {content.button_update_reg}
+        {content.button_new_reg}
         </Button>
         <div className="button-container" style={{ margin:'20px' }}>
             <Button type="button" onClick={props.handleNext} disabled={buttonSelected === 'no selection' ? true : false}>
