@@ -10,13 +10,6 @@ function StepOne(props) {
         statesList.push(stateName);
     };
 
-    const [buttonStatus, setButtonStatus] = useState(true)
-
-
-    const handleButtonStatus = (value) => {
-        value != 'default'&& setButtonStatus(false);
-    }
-
     return (
         <>
         <a href="https://vote.gov">
@@ -81,7 +74,7 @@ function StepOne(props) {
             value={props.state}
             onChange={e => {
                 props.getSelectedState(e.target.value)
-                handleButtonStatus(e.target.value);
+                props.handleButtonStatus(e.target.value, "one");
             }}
             >
             <option value="default">Select your state or territory</option>
@@ -91,7 +84,7 @@ function StepOne(props) {
         </Dropdown>
 
         <div className="button-container" style={{ margin:'20px' }}>
-            <Button type="button" onClick={props.handleNext} disabled={buttonStatus}>
+            <Button type="button" onClick={props.handleNext} disabled={props.buttonStatus}>
             Continue to check registration eligibility
             </Button>
         </div>
@@ -100,7 +93,7 @@ function StepOne(props) {
         <p>Save time by checking your current registration status on your state’s election website. Be sure to select your state in the dropdown menu above.</p>
         
         <a href={stateLink} target="_blank">
-        <Button disabled={buttonStatus}>
+        <Button disabled={props.buttonStatus}>
             Visit your state election website  
             <Icon.Launch />
         </Button>

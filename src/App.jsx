@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import states from "./data/states.json";
 import { StepIndicator, StepIndicatorStep, Button } from '@trussworks/react-uswds';
@@ -14,6 +14,17 @@ function App() {
   const [selectedState, setSelectedState] = useState('default');
   const [stateData, setStateData] = useState('');
   const [registrationPath, setRegistrationPath] = useState('');
+  const [buttonStatusOne, setButtonStatusOne] = useState(true)
+  const [buttonDisabled, setButtonDisabled] = useState(false);
+  const [radioValid, setRadioValid] = useState({
+    citizen: "no selection",
+    age: "no selection"
+  })
+
+  useEffect(() => {
+    let validateBoth = (radioValid.citizen === true) && (radioValid.age === true) ? true : false;
+    setButtonDisabled(validateBoth)
+  }, [radioValid]);
 
   const statesList = []
   for (let i = 0; i < states.length; i++) {
@@ -34,28 +45,56 @@ function App() {
     for (var i = 0; i < states.length; i++){
       if (states[i].name == selectedState){
       setStateData(states[i]);
-    }  
+    };
+    // reset eligibilty requirement selections for when user has gone back after completing it and changed state selection
+    setRadioValid({
+      citizen: "no selection",
+      age: "no selection"
+    });
   }}
 
   const getRegPath = (pathSelection) => {
     setRegistrationPath(pathSelection) 
   };
 
+  const handleButtonStatus = (value, step) => {
+    if (step === 'one') {
+      value != 'default' ? setButtonStatusOne(false) : setButtonStatusOne(true);
+    }
+  }
+
+  const handleRadio = (id) => {
+      if (id === 'yes-citizen') {
+      setRadioValid({citizen: true, age: radioValid.age})
+    } else if (id === 'no-citizen') {
+      setRadioValid({citizen: false, age: radioValid.age})
+    } else if (id === 'yes-age') {
+      setRadioValid({citizen: radioValid.citizen, age: true,})
+    } else if (id === 'no-age') {
+      setRadioValid({citizen: radioValid.citizen, age: false,})
+    }
+}
+
   return (
     <>
         {step === 1 && 
           <StepOne 
           handleNext={handleNext} 
+          handleButtonStatus={handleButtonStatus}
           getSelectedState={getSelectedState} 
           state={selectedState}
           stateData={stateData}
+          buttonStatus={buttonStatusOne}
           />}  
         {step === 2 && 
           <StepTwo 
           handleNext={handleNext} 
-          handlePrev={handlePrev} 
+          handlePrev={handlePrev}
+          handleRadio={handleRadio}
           state={selectedState}
           stateData={stateData}
+          buttonDisabled={buttonDisabled}
+          radioValid={radioValid}
           />}  
         {step === 3 && 
           <StepThree 
