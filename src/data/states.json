@@ -30,20 +30,12 @@
             "race": false,
             "acknowledgement": true
         },
-        "elibility_list": [
-            "be a citizen of the United States",
-            "be at least 18 years old within 90 days of completing this registration",
-            "be a resident of Alaska",
-            "not be a convicted felon (unless unconditionally discharged)",
-            "not be registered to vote in another State"
-        ],
-        "registration_deadlines_list": [
-            "Online registration deadline: 30 days before Election Day",
-            "Register by mail deadline: Must be postmarked 30 days before Election Day",
-            "In person registration deadline: 30 days before Election Day"
-        ],
+        "info": {
+            "online": "Alaska residents that meet the eligibility requirements listed above may be able to register online. You must have a valid Alaska driver's license or state ID card and the information you enter when registering must match the information on your Division of Motor Vehicles (DMV) record. If you do not have a valid {props.state} driver's license or state ID (identification), or your information cannot be validated, you may select to register using a paper registration form."
+        },
+        "eligibility_list": ["be a citizen of the United States", "be at least 18 years old within 90 days of completing this registration", "be a resident of Alaska", "not be a convicted felon (unless unconditionally discharged)", "not be registered to vote in another State"],
+        "deadlines_list": ["Online registration deadline: 30 days before Election Day", "Register by mail deadline: Must be postmarked 30 days before Election Day", "In person registration deadline: 30 days before Election Day"],
         "online_info": "Alaska residents that meet the eligibility requirements listed above may be able to register online. You must have a valid Alaska driver's license or state ID card and the information you enter when registering must match the information on your Division of Motor Vehicles (DMV) record. If you do not have a valid Alaska driver's license or state ID (identification), or your information cannot be validated, you may select to register using a paper registration form."
-
     },
     {
         "name": "Maine",
@@ -76,14 +68,8 @@
             "race": false,
             "acknowledgement": true
         },
-        "eligibility_list": [
-            "be a citizen of the United States",
-            "be a resident of Maine and the municipality in which you want to vote",
-            "be at least 17 years old (you must be 18 years old to vote)"
-        ],
-        "registration_deadlines_list": [
-            "Register by mail deadline: Must be received 21 days before Election Day",
-            "In person registration deadline: Available up to and including on Election Day"
+        "eligibility_list": ["be a citizen of the United States", "be a resident of Maine and the municipality in which you want to vote", "be at least 17 years old (you must be 18 years old to vote)"],
+        "deadlines_list": ["Register by mail deadline: Must be received 21 days before Election Day", "In person registration deadline: Available up to and including on Election Day"
         ]
     },
     {
