@@ -23,7 +23,6 @@ function App() {
 
   const handleNext = () => {
     step != 5 && setStep(step + 1);
-    console.log('click!')
   }
 
   const handlePrev = () => {
@@ -39,7 +38,6 @@ function App() {
   }}
 
   const getRegPath = (pathSelection) => {
-    console.log('get reg path', pathSelection)
     setRegistrationPath(pathSelection) 
   };
 
