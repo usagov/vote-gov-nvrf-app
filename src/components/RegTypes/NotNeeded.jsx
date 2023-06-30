@@ -1,4 +1,5 @@
-import { Button } from '@trussworks/react-uswds';
+import {Button, Icon} from '@trussworks/react-uswds';
+import reactStringReplace from 'react-string-replace';
 import data from "../../data/step-two.json";
 
 function NotNeeded(props) {
@@ -10,14 +11,20 @@ function NotNeeded(props) {
         <>
         <h1>{content.main_heading.replace("%state_name%", props.stateData.name)}</h1>
         <h2>{notNeededContent.heading_register.replace("%state_name%", props.stateData.name)}</h2>
-        <p>{notNeededContent.more_info.replace("%state_name%", props.stateData.name)}</p>
+        <p>{reactStringReplace(
+            notNeededContent.more_info.replace("%state_name%", props.stateData.name),
+            "%link%",
+            () => <a href={stateLink} target="_blank">{notNeededContent.more_info_link}<Icon.Launch /></a>
+        )}</p>
+
 
         <h2>{notNeededContent.heading_vote}</h2>
-        <p>{notNeededContent.text_vote}</p> 
+        <p>{notNeededContent.text_vote}</p>
 
         <div className="button-container" style={{ margin:'20px' }}>
             <a href={stateLink}><Button type="button">
             {notNeededContent.more_button}
+                <Icon.Launch />
             </Button>
             </a>
         </div>
