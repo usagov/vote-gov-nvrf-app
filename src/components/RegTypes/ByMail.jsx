@@ -24,19 +24,45 @@ function ByMail(props) {
         
         <p>I am a U.S citizen </p>
         <form>
-        <Radio id="yes-citizen" name="input-radio" label="Yes" onClick={e => props.handleRadio(e.target.id)}/>
-        <Radio id="no-citizen" name="input-radio" label="No" onClick={e => props.handleRadio(e.target.id)} />            
+        <Radio 
+            id="yes-citizen" 
+            name="input-radio" 
+            label="Yes" 
+            onClick={e => props.handleRadio(e.target.id)} 
+            checked={props.radioValid.citizen === true ? true : false}
+        />
+        <Radio 
+            id="no-citizen" 
+            name="input-radio" 
+            label="No" 
+            onClick={e => props.handleRadio(e.target.id)}
+        />            
         </form>
 
-        I will be at least 18 years old by any election 
+        <p>I will be at least 18 years old by any election </p>
         <form>
-        <Radio id="yes-age" name="input-radio" label="Yes" onClick={e => props.handleRadio(e.target.id)} />
-        <Radio id="no-age" name="input-radio" label="No" onClick={e => props.handleRadio(e.target.id)} />            
+        <Radio 
+            id="yes-age" 
+            name="input-radio" 
+            label="Yes" 
+            onClick={e => props.handleRadio(e.target.id)} 
+            checked={props.radioValid.age === true ? true : false}
+        />
+        <Radio 
+            id="no-age" 
+            name="input-radio" 
+            label="No" 
+            onClick={e => props.handleRadio(e.target.id)} 
+        />            
         </form>
 
         <div className="button-container" style={{ margin:'20px' }}>
-            <Button type="button" onClick={props.handleNext} disabled={props.buttonDisabled ? false : true}>
-            Start your mail-in registration on Vote.gov
+            <Button 
+                type="button" 
+                onClick={props.handleNext} 
+                disabled={props.buttonDisabled ? false : true}
+            >
+                Start your mail-in registration on Vote.gov
             </Button>
         </div>
         </>

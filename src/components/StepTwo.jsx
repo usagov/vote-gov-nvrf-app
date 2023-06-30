@@ -7,27 +7,6 @@ import NotNeeded from "./RegTypes/NotNeeded";
 function StepTwo(props) {
     const regType = props.stateData.reg_type;
 
-    const [citizenValid, setCitizenValid] = useState('no selection');
-    const [ageValid, setAgeValid] = useState('no selection');
-    const [buttonDisabled, setButtonDisabled] = useState(false)
-
-    useEffect(() => {
-        let validateBoth = (citizenValid === true) && (ageValid === true) ? true : false;
-        setButtonDisabled(validateBoth)
-      }, [citizenValid, ageValid]);
-
-    const handleRadio = (id) => {
-        if (id === 'yes-citizen') {
-            setCitizenValid(true)
-        } else if (id === 'no-citizen') {
-            setCitizenValid(false)
-        } else if (id === 'yes-age') {
-            setAgeValid(true)
-        } else if (id === 'no-age') {
-            setAgeValid(false)
-        } 
-    }
-
     return (
         <>
         <Button type="button" onClick={props.handlePrev}>
@@ -38,18 +17,16 @@ function StepTwo(props) {
             state={props.state} 
             stateData={props.stateData} 
             handleNext={props.handleNext}
-            handleRadio={handleRadio}
-            citizenValid={citizenValid}
-            ageValid={ageValid}
-            buttonDisabled={buttonDisabled}
+            handleRadio={props.handleRadio}
+            buttonDisabled={props.buttonDisabled}
+            radioValid={props.radioValid}
             />}
         {regType === 'in-person' && 
             <ByMail state={props.state} 
             handleNext={props.handleNext}
-            handleRadio={handleRadio}
-            citizenValid={citizenValid}
-            ageValid={ageValid}
-            buttonDisabled={buttonDisabled}
+            handleRadio={props.handleRadio}
+            buttonDisabled={props.buttonDisabled}
+            radioValid={props.radioValid}
         />}
         {regType === 'not-needed' && 
             <NotNeeded 

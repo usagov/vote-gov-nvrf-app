@@ -47,14 +47,36 @@ function Online(props) {
 
         <p>I am a U.S citizen </p>
         <form>
-        <Radio id="yes-citizen" name="input-radio" label="Yes" onClick={e => props.handleRadio(e.target.id)}/>
-        <Radio id="no-citizen" name="input-radio" label="No" onClick={e => props.handleRadio(e.target.id)} />            
+        <Radio 
+            id="yes-citizen" 
+            name="input-radio" 
+            label="Yes" 
+            onClick={e => props.handleRadio(e.target.id)} 
+            checked={props.radioValid.citizen === true ? true : false}
+        />
+        <Radio 
+            id="no-citizen" 
+            name="input-radio" 
+            label="No" 
+            onClick={e => props.handleRadio(e.target.id)}
+        />            
         </form>
 
         <p>I will be at least 18 years old by any election </p>
         <form>
-        <Radio id="yes-age" name="input-radio" label="Yes" onClick={e => props.handleRadio(e.target.id)} />
-        <Radio id="no-age" name="input-radio" label="No" onClick={e => props.handleRadio(e.target.id)} />            
+        <Radio 
+            id="yes-age" 
+            name="input-radio" 
+            label="Yes" 
+            onClick={e => props.handleRadio(e.target.id)} 
+            checked={props.radioValid.age === true ? true : false}
+        />
+        <Radio 
+            id="no-age" 
+            name="input-radio" 
+            label="No" 
+            onClick={e => props.handleRadio(e.target.id)} 
+        />            
         </form>
 
         <p>If you checked "No" in response to either of these questions, do not continue with registration on Vote.gov.</p>

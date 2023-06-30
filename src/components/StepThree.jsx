@@ -13,10 +13,11 @@ function StepThree(props) {
         }
     }
 
-    const test = content.heading_one.replace("%state_name%", props.stateData.name);
-
     return (
         <>
+        <Button type="button" onClick={props.handlePrev}>
+            Back to Eligibility Information
+        </Button>
         <h1>{content.heading_one.replace("%state_name%", props.stateData.name)}</h1>
         <p>{content.subheading_one}</p>
         <h2>{content.heading_two}</h2>
