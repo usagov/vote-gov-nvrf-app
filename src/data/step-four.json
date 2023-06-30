@@ -2,5 +2,18 @@
     "main_heading": "National Voter Registration Form",
     "intro_text": "Reminder: If you close this window, your information will be lost and you will have to restart the process. You will have the opportunity to double check your answers and then choose to email or print the completed form.",
     "personal_info_heading": "Personal Information",
-    "personal_info_text": "If your name has changed since the last time you registered, return to previous step and select \"Update my registration.\""
+    "personal_info_text": "If your name has changed since the last time you registered, return to previous step and select \"Update my registration.\"",
+    "address_heading": "Address & Location Information",
+    "home_address_heading": "Home Address",
+    "home_address_text_1": "Enter your home address (legal address.) Do not put your mailing address here if it is different from your home address. Do not use a post office box or rural route without a box number.",
+    "home_address_text_2": "If you live in a rural area but do not have a street address, or if you have no address, please draw or show where you live using the space in Box C at the bottom of the final printed form.",
+    "home_address_text_3": "If you were registered before but this is the first time you are registering from this address, return to previous step and select \"Update your registration information.\"",
+    "previous_address_heading": "Previous Address",
+    "mail_address_heading": "Mailing Address",
+    "mailing_address_text": "If you get your mail at an address that is different from the address above, enter your mailing address here. If you have no address entered above, you must enter here an address where you can be reached by mail.",
+    "identification_heading": "Identification",
+    "id_number_text": "Federal law requires that states collect from each registrant an identification number. If you have neither a drivers license nor a social security number, a number will be assigned to you by your state.",
+    "name_text": "Do not use nicknames or initials.",
+    "party_text": "",
+    "race_text": "A few States ask for your race or ethnic group, in order to administer the Federal Voting Rights Act."
 }
