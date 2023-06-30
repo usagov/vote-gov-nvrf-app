@@ -19,19 +19,12 @@ function StepTwo(props) {
     const handleRadio = (id) => {
         if (id === 'yes-citizen') {
             setCitizenValid(true)
-            console.log(((citizenValid) && (ageValid)))
         } else if (id === 'no-citizen') {
             setCitizenValid(false)
-            console.log(((citizenValid) && (ageValid)))
-
         } else if (id === 'yes-age') {
             setAgeValid(true)
-            console.log(((citizenValid) && (ageValid)))
-
         } else if (id === 'no-age') {
             setAgeValid(false)
-            console.log(((citizenValid) && (ageValid)))
-
         } 
     }
 
