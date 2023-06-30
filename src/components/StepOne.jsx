@@ -3,21 +3,15 @@ import { Label, Dropdown, Button, ProcessList, ProcessListItem, ProcessListHeadi
 import states from "../data/states.json";
 
 function StepOne(props) {
+    const stateLink = props.stateData.election_website_url;
     const statesList = []
     for (let i = 0; i < states.length; i++) {
         let stateName = states[i].name;
         statesList.push(stateName);
     };
 
-    const [stateLink, setStateLink] = useState('');
     const [buttonStatus, setButtonStatus] = useState(true)
 
-    const getStateLink = (state) => {
-        for (var i = 0; i < states.length; i++){
-            if (states[i].name == state){
-            setStateLink(states[i].election_website_url);
-        }        
-    }}
 
     const handleButtonStatus = (value) => {
         value != 'default'&& setButtonStatus(false);
@@ -82,10 +76,9 @@ function StepOne(props) {
         <Dropdown 
             id="input-dropdown" 
             name="input-dropdown"
-            value={props.selectedState}
+            value={props.state}
             onChange={e => {
                 props.getSelectedState(e.target.value)
-                getStateLink(e.target.value);
                 handleButtonStatus(e.target.value);
             }}
             >

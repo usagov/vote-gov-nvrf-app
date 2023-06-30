@@ -1,6 +1,8 @@
 import { Button } from '@trussworks/react-uswds';
 
 function NotNeeded(props) {
+    const stateLink = props.stateData.election_website_url;
+    
     return (
         <>
         <h1>Here’s what you need to know about voting in {props.state}</h1>
@@ -11,9 +13,10 @@ function NotNeeded(props) {
         <p>Prepare to cast your vote. Explore Vote.gov to learn more about how U.S. elections are run and your voting options. </p> 
 
         <div className="button-container" style={{ margin:'20px' }}>
-            <Button type="button">
+            <a href={stateLink}><Button type="button">
             Learn more about your voting options
             </Button>
+            </a>
         </div>
         <div className="button-container" style={{ margin:'20px' }}>
             <a href="https://vote.gov"><Button type="button">

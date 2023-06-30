@@ -58,7 +58,11 @@ function StepTwo(props) {
             ageValid={ageValid}
             buttonDisabled={buttonDisabled}
         />}
-        {regType === 'not-needed' && <NotNeeded state={props.state} handleNext={props.handleNext}/>}
+        {regType === 'not-needed' && 
+            <NotNeeded 
+            state={props.state} 
+            stateData={props.stateData}
+            handleNext={props.handleNext}/>}
         </>
     );
 }

@@ -4,6 +4,7 @@ import data from "../../data/step-two.json";
 
 function Online(props) {
     const content = data.online;
+    const stateLink = props.stateData.election_website_url;
 
     return (
         <>
@@ -50,7 +51,7 @@ function Online(props) {
         <p>If you checked "No" in response to either of these questions, do not continue with registration on Vote.gov.</p>
 
         <div className="button-container" style={{ margin:'20px' }}>
-            <a href="">
+            <a href={stateLink}>
                 <Button type="button" outline>
                 Go to state online registration
                 </Button>

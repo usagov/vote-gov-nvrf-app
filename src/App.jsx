@@ -49,7 +49,8 @@ function App() {
           <StepOne 
           handleNext={handleNext} 
           getSelectedState={getSelectedState} 
-          selectedState={selectedState}
+          state={selectedState}
+          stateData={stateData}
           />}  
         {step === 2 && 
           <StepTwo 
