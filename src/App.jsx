@@ -20,6 +20,7 @@ function App() {
     citizen: "no selection",
     age: "no selection"
   })
+  const [formStep, setFormStep] = useState(1);
 
   useEffect(() => {
     let validateBoth = (radioValid.citizen === true) && (radioValid.age === true) ? true : false;
@@ -75,8 +76,44 @@ function App() {
     }
 }
 
+  const getFormStep = (step) => {
+    formStep === 3 ? null : setFormStep(step + 1);
+  };
+
+  const formProgress = (count) => {
+    if (formStep < 4) {
+    if (formStep === count) {
+      return "current"
+    }
+    else if (formStep > count) {
+      return "complete"
+    } else null
+    }
+  }
+
+  const stepProgress = (count) => {
+    console.log(count)
+    if (formStep > 4) {
+      if (step === count) {
+        return "current"
+      }
+      else if (step > count) {
+        return "complete"
+      } else null
+    }
+  }
+
   return (
     <>
+  {step > 3 &&
+      <StepIndicator counters="small" headingLevel="h4">
+        <StepIndicatorStep status={formProgress(1)} />
+        <StepIndicatorStep status={formProgress(2)}/>
+        <StepIndicatorStep status={formProgress(3)} />
+        <StepIndicatorStep status={stepProgress(4)} />
+        <StepIndicatorStep status={stepProgress(5)} />
+      </StepIndicator>}
+
         {step === 1 && 
           <StepOne 
           handleNext={handleNext} 
@@ -103,6 +140,7 @@ function App() {
           stateData={stateData}
           registrationPath={registrationPath}
           getRegPath={getRegPath}
+          getFormStep={getFormStep}
           />}  
         {step === 4 && 
           <StepFour 
@@ -111,6 +149,7 @@ function App() {
           state={selectedState}
           stateData={stateData}
           registrationPath={registrationPath}
+          getFormStep={getFormStep}
           />}  
         {step === 5 && 
           <StepFive handleNext={handleNext}

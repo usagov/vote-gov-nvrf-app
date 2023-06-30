@@ -301,17 +301,22 @@ function StepFour(props) {
 
             <div className="button-container" style={{ margin:'20px' }}>
                 {(step > 1 ) && (
-                    <Button type="button" onClick={handlePrev}>
+                    <Button 
+                        type="button" 
+                        onClick={handlePrev}>
                         Previous
                     </Button>
                 )}
                 {(step < 3) && (
-                    <Button type="button" onClick={handleNext}>
+                    <Button 
+                        type="button" 
+                        onClick={(e) => {{handleNext()}; props.getFormStep(step)
+                    }}>
                         Next
                     </Button>
                 )}
                 {(step === 3) && (
-                    <Button outline type="submit">
+                    <Button outline type="submit" onClick={(e) => props.getFormStep(step)}>
                         Confirm your information
                     </Button>
                 )}
