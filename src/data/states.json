@@ -5,6 +5,7 @@
         "reg_type": "online",
         "eligibility_requirements": ["citizen", "age"],
         "election_website_url": "https://www.elections.alaska.gov/",
+        "registration_url": "https://voterregistration.alaska.gov/?ref=voteusa_en",
         "fields_required":
         {
             "name": true,
@@ -51,6 +52,7 @@
         "reg_type": "in-person",
         "eligibility_requirements": ["citizen", "age"],
         "election_website_url": "https://www.maine.gov/sos/cec/elec/",
+        "registration_url": "https://www.maine.gov/sos/cec/elec/voter-info/voterguide.html?ref=voteusa_en",
         "fields_required":
         {
             "name": true,
