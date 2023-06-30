@@ -1,26 +1,29 @@
 import { Button } from '@trussworks/react-uswds';
+import data from "../../data/step-two.json";
 
 function NotNeeded(props) {
+    const content = data;
+    const notNeededContent = data.not_needed;
     const stateLink = props.stateData.election_website_url;
-    
+
     return (
         <>
-        <h1>Here’s what you need to know about voting in {props.state}</h1>
-        <h2>{props.state} does not have voter registration.</h2>
-        <p>Learn more about voting on {props.state}'s election website.</p>
+        <h1>{content.main_heading.replace("%state_name%", props.stateData.name)}</h1>
+        <h2>{notNeededContent.heading_register.replace("%state_name%", props.stateData.name)}</h2>
+        <p>{notNeededContent.more_info.replace("%state_name%", props.stateData.name)}</p>
 
-        <h2>Don’t forget to vote!</h2>
-        <p>Prepare to cast your vote. Explore Vote.gov to learn more about how U.S. elections are run and your voting options. </p> 
+        <h2>{notNeededContent.heading_vote}</h2>
+        <p>{notNeededContent.text_vote}</p> 
 
         <div className="button-container" style={{ margin:'20px' }}>
             <a href={stateLink}><Button type="button">
-            Learn more about your voting options
+            {notNeededContent.more_button}
             </Button>
             </a>
         </div>
         <div className="button-container" style={{ margin:'20px' }}>
             <a href="https://vote.gov"><Button type="button">
-            Back to Vote.gov
+            {notNeededContent.back_button}
             </Button>
             </a>
         </div>

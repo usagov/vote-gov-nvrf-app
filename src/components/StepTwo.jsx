@@ -22,7 +22,9 @@ function StepTwo(props) {
             radioValid={props.radioValid}
             />}
         {regType === 'in-person' && 
-            <ByMail state={props.state} 
+            <ByMail 
+            state={props.state} 
+            stateData={props.stateData} 
             handleNext={props.handleNext}
             handleRadio={props.handleRadio}
             buttonDisabled={props.buttonDisabled}
