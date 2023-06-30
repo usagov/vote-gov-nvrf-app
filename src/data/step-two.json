@@ -1,0 +1,12 @@
+{
+    "online": {
+        "main_heading": "Here's what you need to know about voting in %state_name%",
+        "heading_one": "Eligibility requirements",
+        "heading_two": "To register in %state_name% you must:",
+        "heading_three": "Voter registration deadlines",
+        "heading_four": "Online voter registration",
+        "heading_five": "Mail-in registration form",
+        "paragraph_five": "If you do not have one of these forms of identification, you may fill out the National Voter Registration Form here on Vote.gov, then print and mail in your application.",
+        "heading_six": "Confirm eligibility"        
+    }
+}

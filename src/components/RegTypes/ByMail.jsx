@@ -21,15 +21,20 @@ function ByMail(props) {
         <h2>Mail-in registration form</h2>
         <p>Online registration is currently not available. {props.state} residents may fill out the National Voter Registration Form here on Vote.gov, then print and mail in your application.</p> 
         
-        I am a U.S citizen 
-        <Radio id="input-radio" name="input-radio" label="My Radio Button" disabled />
-        <Radio id="input-radio" name="input-radio" label="My Radio Button" disabled />
+        <p>I am a U.S citizen </p>
+        <form>
+        <Radio id="yes-citizen" name="input-radio" label="Yes" onClick={e => props.handleRadio(e.target.id)}/>
+        <Radio id="no-citizen" name="input-radio" label="No" onClick={e => props.handleRadio(e.target.id)} />            
+        </form>
+
         I will be at least 18 years old by any election 
-        <Radio id="input-radio" name="input-radio" label="My Radio Button" disabled />
-        <Radio id="input-radio" name="input-radio" label="My Radio Button" disabled />
+        <form>
+        <Radio id="yes-age" name="input-radio" label="Yes" onClick={e => props.handleRadio(e.target.id)} />
+        <Radio id="no-age" name="input-radio" label="No" onClick={e => props.handleRadio(e.target.id)} />            
+        </form>
 
         <div className="button-container" style={{ margin:'20px' }}>
-            <Button type="button" onClick={props.handleNext}>
+            <Button type="button" onClick={props.handleNext} disabled={props.buttonDisabled ? false : true}>
             Start your registration on Vote.gov
             </Button>
         </div>
