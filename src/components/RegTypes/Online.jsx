@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Button, Radio } from '@trussworks/react-uswds';
+import { Button, Radio, Icon } from '@trussworks/react-uswds';
 import data from "../../data/step-two.json";
 
 function Online(props) {
@@ -34,6 +34,15 @@ function Online(props) {
         <h2>{content.heading_five}</h2>
         <p>{content.paragraph_five}</p>
 
+        <div className="button-container" style={{ margin:'20px' }}>
+            <a href={stateLink} target="_blank">
+                <Button type="button">
+                Go to state online registration
+                <Icon.Launch/>
+                </Button>
+            </a>
+        </div>
+
         <h3>{content.heading_six}</h3>
 
         <p>I am a U.S citizen </p>
@@ -42,7 +51,7 @@ function Online(props) {
         <Radio id="no-citizen" name="input-radio" label="No" onClick={e => props.handleRadio(e.target.id)} />            
         </form>
 
-        I will be at least 18 years old by any election 
+        <p>I will be at least 18 years old by any election </p>
         <form>
         <Radio id="yes-age" name="input-radio" label="Yes" onClick={e => props.handleRadio(e.target.id)} />
         <Radio id="no-age" name="input-radio" label="No" onClick={e => props.handleRadio(e.target.id)} />            
@@ -51,16 +60,8 @@ function Online(props) {
         <p>If you checked "No" in response to either of these questions, do not continue with registration on Vote.gov.</p>
 
         <div className="button-container" style={{ margin:'20px' }}>
-            <a href={stateLink}>
-                <Button type="button" outline>
-                Go to state online registration
-                </Button>
-            </a>
-        </div>
-
-        <div className="button-container" style={{ margin:'20px' }}>
             <Button type="button" onClick={props.handleNext} disabled={props.buttonDisabled ? false : true}>
-            Start your registration on Vote.gov
+            Start your online registration on Vote.gov
             </Button>
         </div>
         </>

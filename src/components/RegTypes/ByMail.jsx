@@ -1,7 +1,7 @@
 import { Button, Radio } from '@trussworks/react-uswds';
 
 function ByMail(props) {
-    
+
     return (
         <>
         <h1>Here’s what you need to know about voting in {props.state}</h1>
@@ -36,7 +36,7 @@ function ByMail(props) {
 
         <div className="button-container" style={{ margin:'20px' }}>
             <Button type="button" onClick={props.handleNext} disabled={props.buttonDisabled ? false : true}>
-            Start your registration on Vote.gov
+            Start your mail-in registration on Vote.gov
             </Button>
         </div>
         </>
