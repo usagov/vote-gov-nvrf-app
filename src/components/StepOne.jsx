@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Label, Dropdown, Button, ProcessList, ProcessListItem, ProcessListHeading } from '@trussworks/react-uswds';
+import { Label, Dropdown, Button, ProcessList, ProcessListItem, ProcessListHeading, Icon } from '@trussworks/react-uswds';
 import states from "../data/states.json";
 
 function StepOne(props) {
@@ -19,9 +19,11 @@ function StepOne(props) {
 
     return (
         <>
-        <a href="https://vote.gov"><Button type="button" onClick={props.handlePrev}>
-            Back to Vote.gov
-        </Button></a>
+        <a href="https://vote.gov">
+            <Button type="button" onClick={props.handlePrev}>
+                Back to Vote.gov
+            </Button>
+        </a>
 
         <h2>Register to vote</h2>
         <p>Here’s a simple way to fill out the National Mail Voter Registration Form to print and mail. U.S. citizens may use it to register for the first time or to update your registration related to a change of name, change of address or to register with a political party.</p> 
@@ -96,8 +98,11 @@ function StepOne(props) {
        
         <h2>Not sure if you are already registered?</h2>
         <p>Save time by checking your current registration status on your state’s election website. Be sure to select your state in the dropdown menu above.</p>
-        <a href={stateLink}><Button disabled={buttonStatus}>
-            Visit your state election website
+        
+        <a href={stateLink} target="_blank">
+        <Button disabled={buttonStatus}>
+            Visit your state election website  
+            <Icon.Launch />
         </Button>
         </a>
         </>
