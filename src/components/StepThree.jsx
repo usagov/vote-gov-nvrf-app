@@ -21,14 +21,17 @@ function StepThree(props) {
         <h1>{content.heading_one.replace("%state_name%", props.stateData.name)}</h1>
         <p>{content.subheading_one}</p>
         <h2>{content.heading_two}</h2>
-        <p>{content.help_text_one}</p>
+
         <Button id="update" onClick={e => {{props.getRegPath(e.target.id)}; handleClick(e.target.id);}} outline={buttonSelected === 'update' ? false : true}>
             {content.button_update_reg}
         </Button>
-        <p>{content.help_text_two}</p>
+        <p>{content.help_text_one}</p>
+
         <Button id="new" onClick={e => {{props.getRegPath(e.target.id)}; handleClick(e.target.id);}} outline={buttonSelected === 'new' ? false : true}>
         {content.button_new_reg}
         </Button>
+        <p>{content.help_text_two}</p>
+
         <div className="button-container" style={{ margin:'20px' }}>
             <Button type="button" onClick={props.handleNext} disabled={buttonSelected === 'no selection' ? true : false}>
             {content.button_continue}
