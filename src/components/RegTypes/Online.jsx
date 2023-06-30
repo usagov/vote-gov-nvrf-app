@@ -27,17 +27,17 @@ function Online(props) {
         <h2>{onlineContent.heading_online}</h2>
         <p>{stateContent.info.online}</p>
 
-        <h2>{content.heading_mail}</h2>
-        <p>{onlineContent.mail_more_info}</p>
-
         <div className="button-container" style={{ margin:'20px' }}>
             <a href={stateLink} target="_blank">
                 <Button type="button">
-                Go to state online registration
-                <Icon.Launch/>
+                    Go to state online registration
+                    <Icon.Launch/>
                 </Button>
             </a>
         </div>
+
+        <h2>{content.heading_mail}</h2>
+        <p>{onlineContent.mail_more_info}</p>
 
         <h3>{content.heading_confirm}</h3>
 
