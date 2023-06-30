@@ -28,18 +28,6 @@
             "party": true,
             "race": false,
             "acknowledgement": true
-        },
-        "help_text_override":
-        {
-            "name": "",
-            "address": "",
-            "mailing_address": "",
-            "DOB": "",
-            "telephone": "",
-            "ID_num": "",
-            "party": "",
-            "race": "",
-            "acknowledgement": ""
         }
     },
     {
@@ -71,18 +59,6 @@
             "party": true,
             "race": false,
             "acknowledgement": true
-        },
-        "help_text_override":
-        {
-            "name": "",
-            "address": "",
-            "mailing_address": "",
-            "DOB": "",
-            "telephone": "",
-            "ID_num": "",
-            "party": "",
-            "race": "",
-            "acknowledgement": ""
         }
     },
     {
@@ -114,18 +90,6 @@
             "party": false,
             "race": false,
             "acknowledgement": false
-        },
-        "help_text_override":
-        {
-            "name": "",
-            "address": "",
-            "mailing_address": "",
-            "DOB": "",
-            "telephone": "",
-            "ID_num": "",
-            "party": "",
-            "race": "",
-            "acknowledgement": ""
         }
     }
 ]
