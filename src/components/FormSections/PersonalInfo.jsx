@@ -5,6 +5,7 @@ import content from "../../data/step-four.json";
 function PersonalInfo(props){
     const stateFieldRequirements = props.stateData.fields_required;
     const stateFieldVisible = props.stateData.fields_visible;
+    const stateInstructions = props.stateData.state_field_instructions;
     const changeRegistrationVisible = (props.registrationPath === 'update') ? true : false;
 
     const nameVisible = stateFieldVisible.name;
@@ -38,6 +39,13 @@ function PersonalInfo(props){
         </Button>
         <h2>{content.personal_info_heading}</h2>
         <p>{content.personal_info_text}</p>
+        <div class="usa-alert usa-alert--info">
+            <div class="usa-alert__body">
+                <p>{content.personal_info_alert_text}</p>
+                <p>{stateInstructions.party_text}</p>
+                <p>{stateInstructions.race_text}</p>
+            </div>
+        </div>
 
         {nameVisible && (
             <div>
