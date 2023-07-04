@@ -5,6 +5,8 @@ import PersonalInfo from "./FormSections/PersonalInfo";
 import Addresses from "./FormSections/Addresses"
 import content from "../data/step-four.json";
 import Identification from './FormSections/Identification';
+import Confirmation from './FormSections/Confirmation';
+import DeliveryOptions from "./FormSections/DeliveryOptions";
 
 function StepFour(props) {
      {/* functions/variables code goes here */}
@@ -12,7 +14,7 @@ function StepFour(props) {
     //Multiple step NVRF controls
     const [step, setStep] = useState(1);
     const handleNext = () => {
-        step != 3 && setStep(step + 1);
+        step != 5 && setStep(step + 1);
       }
 
     const handlePrev = () => {
@@ -26,10 +28,12 @@ function StepFour(props) {
 
     //Form section variables
     const personalInfoSection =
-         <PersonalInfo
+        <PersonalInfo
             state={props.state}
             stateData={props.stateData}
             registrationPath={props.registrationPath}
+            handlePrev={props.handlePrev}
+            handleNext={handleNext}
         />
 
     const addressSection =
@@ -37,6 +41,8 @@ function StepFour(props) {
             state={props.state}
             stateData={props.stateData}
             registrationPath={props.registrationPath}
+            handlePrev={handlePrev}
+            handleNext={handleNext}
         />
 
     const identificationSection =
@@ -44,6 +50,25 @@ function StepFour(props) {
             state={props.state}
             stateData={props.stateData}
             registrationPath={props.registrationPath}
+            handlePrev={handlePrev}
+            handleNext={handleNext}
+        />
+
+    const confirmationSection =
+        <Confirmation
+            state={props.state}
+            stateData={props.stateData}
+            registrationPath={props.registrationPath}
+            handlePrev={handlePrev}
+            handleNext={handleNext}
+        />
+    const deliverySection =
+        <DeliveryOptions
+            state={props.state}
+            stateData={props.stateData}
+            registrationPath={props.registrationPath}
+            handlePrev={handlePrev}
+            handleNext={props.handleNext}
         />
     return (
         <>
@@ -55,29 +80,8 @@ function StepFour(props) {
             {step === 1 && personalInfoSection}
             {step === 2 && addressSection}
             {step === 3 && identificationSection}
-
-            <div className="button-container" style={{ margin:'20px' }}>
-                {(step > 1 ) && (
-                    <Button
-                        type="button"
-                        onClick={handlePrev}>
-                        Previous
-                    </Button>
-                )}
-                {(step < 3) && (
-                    <Button
-                        type="button"
-                        onClick={(e) => {{handleNext()}; props.getFormStep(step)
-                    }}>
-                        Next
-                    </Button>
-                )}
-                {(step === 3) && (
-                    <Button outline type="submit" onClick={(e) => props.getFormStep(step)}>
-                        Confirm your information
-                    </Button>
-                )}
-            </div>
+            {step === 4 && confirmationSection}
+            {step === 5 && deliverySection}
         </Form>
         </>
     );

@@ -31,13 +31,18 @@ function PersonalInfo(props){
 
     return (
         <>
-        <h4>{content.personal_info_heading}</h4>
+        <Button
+            type="button"
+            onClick={props.handlePrev}>
+            Back to registration options
+        </Button>
+        <h2>{content.personal_info_heading}</h2>
         <p>{content.personal_info_text}</p>
 
         {nameVisible && (
             <div>
                 <Label htmlFor="title-select">Title</Label>
-                <Dropdown id="title-select" name="title-select" autocomplete="off">
+                <Dropdown id="title-select" name="title-select" autoComplete="off">
                     <option>- Select -{' '}</option>
                     <option value="Mr.">Mr.</option>
                     <option value="Miss">Miss</option>
@@ -46,16 +51,16 @@ function PersonalInfo(props){
                 </Dropdown>
 
                 <Label htmlFor="first-name">First Name</Label>
-                <TextInput id="first-name" name="first-name" type="text" autocomplete="off" required={nameReq}/>
+                <TextInput id="first-name" name="first-name" type="text" autoComplete="off" required={nameReq}/>
 
-                <Label htmlFor="middle-name">Middle Name</Label>
-                <TextInput id="middle-name" name="middle-name" type="text" autocomplete="off"/>
+                <Label htmlFor="middle-name">Middle Name(s)</Label>
+                <TextInput id="middle-name" name="middle-name" type="text" autoComplete="off"/>
 
                 <Label htmlFor="last-name">Last Name</Label>
-                <TextInput id="last-name" name="last-name" type="text" autocomplete="off" required={nameReq}/>
+                <TextInput id="last-name" name="last-name" type="text" autoComplete="off" required={nameReq}/>
 
                 <Label htmlFor="suffix-select">Suffix</Label>
-                <Dropdown id="suffix-select" name="suffix-select" autocomplete="off" required={nameReq}>
+                <Dropdown id="suffix-select" name="suffix-select" autoComplete="off" required={nameReq}>
                     <option>- Select -{' '}</option>
                     <option value="Jr.">Jr.</option>
                     <option value="Sr.">Sr.</option>
@@ -72,9 +77,9 @@ function PersonalInfo(props){
 
         {hasPreviousName && (
             <div value={previousName} onChange={onChangePreviousName}>
-                <h4>Previous Name</h4>
+                <h3>Previous Name</h3>
                 <Label htmlFor="title-select-2">Title</Label>
-                <Dropdown id="title-select-2" name="title-select-2" autocomplete="off">
+                <Dropdown id="title-select-2" name="title-select-2" autoComplete="off">
                     <option>- Select -{' '}</option>
                     <option value="Mr.">Mr.</option>
                     <option value="Miss">Miss</option>
@@ -83,16 +88,16 @@ function PersonalInfo(props){
                 </Dropdown>
 
                 <Label htmlFor="first-name-2">First Name</Label>
-                <TextInput id="first-name-2" name="first-name-2" type="text" autocomplete="off" required={nameReq}/>
+                <TextInput id="first-name-2" name="first-name-2" type="text" autoComplete="off" required={nameReq}/>
 
                 <Label htmlFor="middle-name-2">Middle Name</Label>
-                <TextInput id="middle-name-2" name="middle-name-2" type="text" autocomplete="off" required={nameReq}/>
+                <TextInput id="middle-name-2" name="middle-name-2" type="text" autoComplete="off" required={nameReq}/>
 
                 <Label htmlFor="last-name-2">Last Name</Label>
-                <TextInput id="last-name-2" name="last-name-2" type="text" autocomplete="off" required={nameReq}/>
+                <TextInput id="last-name-2" name="last-name-2" type="text" autoComplete="off" required={nameReq}/>
 
                 <Label htmlFor="suffix-select-2">Suffix</Label>
-                <Dropdown id="suffix-select-2" name="suffix-select-2" autocomplete="off" required={nameReq}>
+                <Dropdown id="suffix-select-2" name="suffix-select-2" autoComplete="off" required={nameReq}>
                     <option>- Select -{' '}</option>
                     <option value="Jr.">Jr.</option>
                     <option value="Sr.">Sr.</option>
@@ -109,28 +114,28 @@ function PersonalInfo(props){
                 <div className="usa-hint" id="date-of-birth-hint">
                     mm/dd/yyyy
                 </div>
-                <DatePicker aria-describedby="date-of-birth-hint" aria-labelledby="date-of-birth-label" id="date-of-birth" name="date-of-birth" autocomplete="off" required={dobReq}/>
+                <DatePicker aria-describedby="date-of-birth-hint" aria-labelledby="date-of-birth-label" id="date-of-birth" name="date-of-birth" autoComplete="off" required={dobReq}/>
             </div>
         )}
 
         {telephoneVisible && (
             <div>
                 <Label htmlFor="phone-number">Phone Number (123-456-7890)</Label>
-                <TextInput id="phone-number" name="phone-number" type="text" autocomplete="off" required={telephoneReq}/>
+                <TextInput id="phone-number" name="phone-number" type="text" autoComplete="off" required={telephoneReq}/>
             </div>
         )}
 
         {partyVisible && (
             <div>
                 <Label htmlFor="political-party">Choice of Party</Label>
-                <TextInput id="political-party" name="political party" type="text" autocomplete="off" required={partyReq}/>
+                <TextInput id="political-party" name="political party" type="text" autoComplete="off" required={partyReq}/>
             </div>
         )}
 
         {raceVisible && (
             <div>
                 <Label htmlFor="race-ethic-group-select">Race</Label>
-                <Dropdown id="race-ethic-group-select" name="race-ethic-group-select" autocomplete="off" required={raceReq}>
+                <Dropdown id="race-ethic-group-select" name="race-ethic-group-select" autoComplete="off" required={raceReq}>
                     <option>- Select -{' '}</option>
                     <option value="American Indian or Alaska Native">American Indian or Alaska Native</option>
                     <option value="Asian or Pacific Islander">Asian or Pacific Islander</option>
@@ -142,6 +147,11 @@ function PersonalInfo(props){
                 </Dropdown>
             </div>
         )}
+            <Button
+                type="button"
+                onClick={props.handleNext}>
+                Continue to address & location
+            </Button>
         </>
     );
 }
