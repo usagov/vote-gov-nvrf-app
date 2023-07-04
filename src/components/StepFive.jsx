@@ -4,9 +4,12 @@ function StepFive(props) {
     return (
         <>
         {/* code goes here */}
-        <Button outline type="submit" onClick={props.handleNext}>
-            Send Form to My Email Address
-        </Button>
+        <h1>Success!</h1>
+            <a href="https://vote.gov">
+                <Button type="button" onClick={props.handlePrev}>
+                    Back to Vote.gov
+                </Button>
+            </a>
         </>
     );
 }

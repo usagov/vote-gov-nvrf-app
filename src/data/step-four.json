@@ -15,5 +15,6 @@
     "id_number_text": "Federal law requires that states collect from each registrant an identification number. If you have neither a drivers license nor a social security number, a number will be assigned to you by your state.",
     "name_text": "Do not use nicknames or initials.",
     "party_text": "",
-    "race_text": "A few States ask for your race or ethnic group, in order to administer the Federal Voting Rights Act."
+    "race_text": "A few States ask for your race or ethnic group, in order to administer the Federal Voting Rights Act.",
+    "confirmation_heading": "Confirmation"
 }

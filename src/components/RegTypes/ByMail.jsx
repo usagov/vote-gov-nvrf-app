@@ -13,13 +13,13 @@ function ByMail(props) {
         <p>{content.heading_register.replace("%state_name%", props.stateData.name)}</p>
         <ul style={{ listStyleType:'disc' }}>
         {stateContent.eligibility_list.map(
-            listItem => <li value={listItem}>{listItem}</li>)}  
+            listItem => <li key={listItem} value={listItem}>{listItem}</li>)}
         </ul>
 
         <h2>{content.heading_deadlines}</h2>
         <ul style={{ listStyleType:'disc' }}>
         {stateContent.deadlines_list.map(
-            listItem => <li value={listItem}>{listItem}</li>)}
+            listItem => <li key={listItem} value={listItem}>{listItem}</li>)}
         </ul>
 
         <h2>{content.heading_mail}</h2>
@@ -35,12 +35,14 @@ function ByMail(props) {
             label="Yes" 
             onClick={e => props.handleRadio(e.target.id)} 
             checked={props.radioValid.citizen === true ? true : false}
+            readOnly
         />
         <Radio 
             id="no-citizen" 
             name="input-radio" 
             label="No" 
             onClick={e => props.handleRadio(e.target.id)}
+            readOnly
         />            
         </form>
 
@@ -52,12 +54,14 @@ function ByMail(props) {
             label="Yes" 
             onClick={e => props.handleRadio(e.target.id)} 
             checked={props.radioValid.age === true ? true : false}
+            readOnly
         />
         <Radio 
             id="no-age" 
             name="input-radio" 
             label="No" 
-            onClick={e => props.handleRadio(e.target.id)} 
+            onClick={e => props.handleRadio(e.target.id)}
+            readOnly
         />            
         </form>
 

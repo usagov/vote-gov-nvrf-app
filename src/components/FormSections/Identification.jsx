@@ -10,11 +10,16 @@ function Identification(props){
 
     return (
         <>
-        <h4>{content.identification_heading}</h4>
+        <Button
+            type="button"
+            onClick={props.handlePrev}>
+            Back to address & location
+        </Button>
+        <h2>{content.identification_heading}</h2>
         {idNumVisible && (
             <div>
                 <Label htmlFor="state-id-num">State Driver's License Number</Label>
-                <TextInput id="state-id-num" name="state-id-num" type="text" autocomplete="off" required={idNumReq}/>
+                <TextInput id="state-id-num" name="state-id-num" type="text" autoComplete="off" required={idNumReq}/>
 
                 <Label htmlFor="issue-date" id="issue-date-label">Issue Date</Label>
                 <div className="usa-hint" id="issue-date-hint">
@@ -29,6 +34,9 @@ function Identification(props){
                 <DatePicker aria-describedby="expire-date-hint" aria-labelledby="expire-date-label" id="expire-date" name="expire-date" required={idNumReq}/>
             </div>
         )}
+            <Button type="button" onClick={props.handleNext}>
+                Confirm your information
+            </Button>
         </>
     );
 }

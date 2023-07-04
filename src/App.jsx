@@ -92,7 +92,7 @@ function App() {
   }
 
   const stepProgress = (count) => {
-    console.log(count)
+    // console.log(count)
     if (formStep > 4) {
       if (step === count) {
         return "current"
@@ -145,14 +145,17 @@ function App() {
         {step === 4 && 
           <StepFour 
           handleNext={handleNext} 
+          handlePrev={handlePrev}
           statesList={statesList}
           state={selectedState}
           stateData={stateData}
           registrationPath={registrationPath}
           getFormStep={getFormStep}
-          />}  
+          />}
         {step === 5 && 
-          <StepFive handleNext={handleNext}
+          <StepFive
+              handleNext={handleNext}
+              handlePrev={handlePrev}
           />}  
 
     </>
