@@ -12,27 +12,27 @@ function StepTwo(props) {
         <Button type="button" onClick={props.handlePrev}>
             Back to Choose your State
         </Button>
-        {regType === 'online' && 
-            <Online 
-            state={props.state} 
-            stateData={props.stateData} 
+        {regType === 'online' &&
+            <Online
+            state={props.state}
+            stateData={props.stateData}
             handleNext={props.handleNext}
             handleRadio={props.handleRadio}
             buttonDisabled={props.buttonDisabled}
             radioValid={props.radioValid}
             />}
-        {regType === 'in-person' && 
-            <ByMail 
-            state={props.state} 
-            stateData={props.stateData} 
+        {regType === 'in-person' &&
+            <ByMail
+            state={props.state}
+            stateData={props.stateData}
             handleNext={props.handleNext}
             handleRadio={props.handleRadio}
             buttonDisabled={props.buttonDisabled}
             radioValid={props.radioValid}
         />}
-        {regType === 'not-needed' && 
-            <NotNeeded 
-            state={props.state} 
+        {regType === 'not-needed' &&
+            <NotNeeded
+            state={props.state}
             stateData={props.stateData}
             handleNext={props.handleNext}/>}
         </>
