@@ -5,6 +5,7 @@ import content from "../../data/step-four.json";
 function Identification(props){
     const stateFieldRequirements = props.stateData.fields_required;
     const stateFieldVisible = props.stateData.fields_visible;
+    const stateInstructions = props.stateData.state_field_instructions;
     const idNumReq = stateFieldRequirements.ID_num;
     const idNumVisible = stateFieldVisible.ID_num;
 
@@ -16,6 +17,13 @@ function Identification(props){
             Back to address & location
         </Button>
         <h2>{content.identification_heading}</h2>
+        <h4>{content.identification_heading}</h4>
+        <div class="usa-alert usa-alert--info">
+            <div class="usa-alert__body">
+                <p>{content.id_number_text}</p>
+                <p>{stateInstructions.ID_num_text}</p>
+            </div>
+        </div>
         {idNumVisible && (
             <div>
                 <Label htmlFor="state-id-num">State Driver's License Number</Label>

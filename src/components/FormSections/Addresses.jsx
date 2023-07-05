@@ -51,6 +51,14 @@ function Addresses(props){
             Back to personal information
         </Button>
         <h2>{content.address_heading}</h2>
+        <div class="usa-alert usa-alert--info">
+            <div class="usa-alert__body">
+                <p>{content.home_address_text_1}</p>
+                <p>{content.home_address_text_2}</p>
+                <p>{content.home_address_text_3}</p>
+            </div>
+        </div>
+
         {addressVisible && (
             <div>
                 <h4>{content.home_address_heading}</h4>
