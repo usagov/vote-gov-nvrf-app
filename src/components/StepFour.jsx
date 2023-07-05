@@ -7,6 +7,7 @@ import content from "../data/step-four.json";
 import Identification from './FormSections/Identification';
 import Confirmation from './FormSections/Confirmation';
 import DeliveryOptions from "./FormSections/DeliveryOptions";
+import PoliticalParty from './FormSections/PoliticalParty';
 
 function StepFour(props) {
      {/* functions/variables code goes here */}
@@ -14,7 +15,7 @@ function StepFour(props) {
     //Multiple step NVRF controls
     const [step, setStep] = useState(1);
     const handleNext = () => {
-        step != 5 && setStep(step + 1);
+        step != 6 && setStep(step + 1);
       }
 
     const handlePrev = () => {
@@ -54,6 +55,15 @@ function StepFour(props) {
             handleNext={handleNext}
         />
 
+    const politicalPartySection =
+        <PoliticalParty
+            state={props.state}
+            stateData={props.stateData}
+            registrationPath={props.registrationPath}
+            handlePrev={handlePrev}
+            handleNext={handleNext}
+        />
+
     const confirmationSection =
         <Confirmation
             state={props.state}
@@ -80,8 +90,9 @@ function StepFour(props) {
             {step === 1 && personalInfoSection}
             {step === 2 && addressSection}
             {step === 3 && identificationSection}
-            {step === 4 && confirmationSection}
-            {step === 5 && deliverySection}
+            {step === 4 && politicalPartySection}
+            {step === 5 && confirmationSection}
+            {step === 6 && deliverySection}
         </Form>
         </>
     );
