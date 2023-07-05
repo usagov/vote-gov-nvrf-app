@@ -14,8 +14,6 @@ function PersonalInfo(props){
     const dobReq = stateFieldRequirements.DOB;
     const telephoneVisible = stateFieldVisible.telephone;
     const telephoneReq = stateFieldRequirements.telephone;
-    const partyVisible = stateFieldVisible.party;
-    const partyReq = stateFieldRequirements.party
     const raceVisible = stateFieldVisible.race;
     const raceReq = stateFieldRequirements.race;
 
@@ -128,14 +126,6 @@ function PersonalInfo(props){
             <div>
                 <Label htmlFor="phone-number">Phone Number (123-456-7890)</Label>
                 <TextInput id="phone-number" name="phone-number" type="text" autoComplete="off" required={telephoneReq}/>
-            </div>
-        )}
-
-        {partyVisible && (
-            <div>
-                <p>{content.party_text} {stateInstructions.party_text}</p>
-                <Label htmlFor="political-party">Choice of Party</Label>
-                <TextInput id="political-party" name="political party" type="text" autoComplete="off" required={partyReq}/>
             </div>
         )}
 

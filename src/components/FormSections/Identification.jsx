@@ -43,7 +43,7 @@ function Identification(props){
             </div>
         )}
             <Button type="button" onClick={props.handleNext}>
-                Confirm your information
+                Continue to political party
             </Button>
         </>
     );
