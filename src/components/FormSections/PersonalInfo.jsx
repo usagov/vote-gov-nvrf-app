@@ -42,8 +42,6 @@ function PersonalInfo(props){
         <div class="usa-alert usa-alert--info">
             <div class="usa-alert__body">
                 <p>{content.personal_info_alert_text}</p>
-                <p>{stateInstructions.party_text}</p>
-                <p>{stateInstructions.race_text}</p>
             </div>
         </div>
 
@@ -135,6 +133,7 @@ function PersonalInfo(props){
 
         {partyVisible && (
             <div>
+                <p>{content.party_text} {stateInstructions.party_text}</p>
                 <Label htmlFor="political-party">Choice of Party</Label>
                 <TextInput id="political-party" name="political party" type="text" autoComplete="off" required={partyReq}/>
             </div>
@@ -142,6 +141,7 @@ function PersonalInfo(props){
 
         {raceVisible && (
             <div>
+                <p>{content.race_text} {stateInstructions.race_text}</p>
                 <Label htmlFor="race-ethic-group-select">Race</Label>
                 <Dropdown id="race-ethic-group-select" name="race-ethic-group-select" autoComplete="off" required={raceReq}>
                     <option>- Select -{' '}</option>
