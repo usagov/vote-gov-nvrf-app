@@ -53,15 +53,17 @@ function Addresses(props){
         <h2>{content.address_heading}</h2>
         <div class="usa-alert usa-alert--info">
             <div class="usa-alert__body">
-                <p>{content.home_address_text_1}</p>
-                <p>{content.home_address_text_2}</p>
-                <p>{content.home_address_text_3}</p>
+                <p>{content.home_address_section_text_1}</p>
+                {!changeRegistrationVisible &&
+                    <p>{content.home_address_section_text_2}</p>
+                }
             </div>
         </div>
 
         {addressVisible && (
             <div>
-                <h4>{content.home_address_heading}</h4>
+                <h3>{content.home_address_heading}</h3>
+                <p>{content.home_address_field_text_1}</p>
                 <Label htmlFor="street-address">Street Address</Label>
                 <TextInput id="street-address" name="street-address" type="text" autoComplete="off" required={addressReq}/>
 
@@ -86,7 +88,7 @@ function Addresses(props){
                                 <Label htmlFor="street-address-3">Street Address</Label>
                                 <TextInput id="street-address-3" name="street-address-3" type="text" autoComplete="off" required={addressReq}/>
 
-                                <Label htmlFor="apt-num-3">Apartment of Lot #</Label>
+                                <Label htmlFor="apt-num-3">Apartment or Lot #</Label>
                                 <TextInput id="apt-num-3" name="apt-num-3" type="text" autoComplete="off"/>
 
                                 <Label htmlFor="city-3">City</Label>
@@ -103,10 +105,11 @@ function Addresses(props){
                         {hasMailAddress && (
                             <div value={mailAddress} onChange={onChangeMailAddress}>
                                 <h3>{content.mail_address_heading}</h3>
-                                <Label htmlFor="street-address-2">Street Address</Label>
+                                <p>{content.mailing_address_text}</p>
+                                <Label htmlFor="street-address-2">Street Address (or route and box number)</Label>
                                 <TextInput id="street-address-2" name="street-address-2" type="text" autoComplete="off" required={addressReq}/>
 
-                                <Label htmlFor="apt-num-2">Apartment of Lot #</Label>
+                                <Label htmlFor="apt-num-2">Apartment or Lot #</Label>
                                 <TextInput id="apt-num-2" name="apt-num-2" type="text" autoComplete="off"/>
 
                                 <Label htmlFor="city-2">City</Label>

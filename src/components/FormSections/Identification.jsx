@@ -21,11 +21,11 @@ function Identification(props){
         <div class="usa-alert usa-alert--info">
             <div class="usa-alert__body">
                 <p>{content.id_number_text}</p>
-                <p>{stateInstructions.ID_num_text}</p>
             </div>
         </div>
         {idNumVisible && (
             <div>
+                <p>{stateInstructions.ID_num_text}</p>
                 <Label htmlFor="state-id-num">State Driver's License Number</Label>
                 <TextInput id="state-id-num" name="state-id-num" type="text" autoComplete="off" required={idNumReq}/>
 
