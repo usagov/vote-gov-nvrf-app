@@ -18,8 +18,8 @@ function Identification(props){
         </Button>
         <h2>{content.identification_heading}</h2>
         <h4>{content.identification_heading}</h4>
-        <div class="usa-alert usa-alert--info">
-            <div class="usa-alert__body">
+        <div className="usa-alert usa-alert--info">
+            <div className="usa-alert__body">
                 <p>{content.id_number_text}</p>
             </div>
         </div>

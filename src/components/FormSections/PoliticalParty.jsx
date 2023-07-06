@@ -18,8 +18,8 @@ function PoliticalParty(props){
             Back to identification
         </Button>
         <h2>{content.political_party_heading}</h2>
-        <div class="usa-alert usa-alert--info">
-            <div class="usa-alert__body">
+        <div className="usa-alert usa-alert--info">
+            <div className="usa-alert__body">
                 <p>{content.party_text}</p>
                 <p>{stateInstructions.party_text}</p>
             </div>
