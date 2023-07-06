@@ -1,6 +1,7 @@
 // get component code here https://trussworks.github.io/react-uswds/?path=/story/components-form-elements-formgroup--text-input-form-group
 import { Form, Label, TextInput, Button, Dropdown,Checkbox, DatePicker, Address } from '@trussworks/react-uswds';
 import React, { useState } from "react";
+import ProgressBar from './ProgressBar';
 import PersonalInfo from "./FormSections/PersonalInfo";
 import Addresses from "./FormSections/Addresses"
 import content from "../data/step-four.json";
@@ -83,6 +84,7 @@ function StepFour(props) {
     return (
         <>
         {/* uswds components, html, jsx output goes here*/}
+        <ProgressBar step={step}/>
         <h1>{content.main_heading}</h1>
         <p>{content.intro_text}</p>
 

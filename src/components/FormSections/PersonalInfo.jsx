@@ -37,8 +37,8 @@ function PersonalInfo(props){
         </Button>
         <h2>{content.personal_info_heading}</h2>
         <p>{content.personal_info_text}</p>
-        <div class="usa-alert usa-alert--info">
-            <div class="usa-alert__body">
+        <div className="usa-alert usa-alert--info">
+            <div className="usa-alert__body">
                 <p>{content.personal_info_alert_text}</p>
             </div>
         </div>

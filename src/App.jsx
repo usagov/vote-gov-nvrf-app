@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import states from "./data/states.json";
-import { StepIndicator, StepIndicatorStep, Button } from '@trussworks/react-uswds';
 import StepOne from './components/StepOne';
 import StepTwo from './components/StepTwo';
 import StepThree from './components/StepThree';
@@ -80,40 +79,8 @@ function App() {
     formStep === 3 ? null : setFormStep(step + 1);
   };
 
-  const formProgress = (count) => {
-    if (formStep < 4) {
-    if (formStep === count) {
-      return "current"
-    }
-    else if (formStep > count) {
-      return "complete"
-    } else null
-    }
-  }
-
-  const stepProgress = (count) => {
-    // console.log(count)
-    if (formStep > 4) {
-      if (step === count) {
-        return "current"
-      }
-      else if (step > count) {
-        return "complete"
-      } else null
-    }
-  }
-
   return (
     <>
-  {step > 3 &&
-      <StepIndicator counters="small" headingLevel="h4">
-        <StepIndicatorStep status={formProgress(1)} />
-        <StepIndicatorStep status={formProgress(2)}/>
-        <StepIndicatorStep status={formProgress(3)} />
-        <StepIndicatorStep status={stepProgress(4)} />
-        <StepIndicatorStep status={stepProgress(5)} />
-      </StepIndicator>}
-
         {step === 1 && 
           <StepOne 
           handleNext={handleNext} 
