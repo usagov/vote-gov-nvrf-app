@@ -76,7 +76,7 @@ function Addresses(props){
                 <Label>State</Label>
                 <StateSelector id="state" statesList={statesList} autoComplete="off" required={addressReq}/>
 
-                <Label htmlFor="zipcode">Zip Code (123456)</Label>
+                <Label htmlFor="zipcode">Zip Code (12345)</Label>
                 <TextInput id="zipcode" name="zip-code" type="text" autoComplete="off" required={addressReq}/>
 
                 { changeRegistrationVisible && (
@@ -97,7 +97,7 @@ function Addresses(props){
                                 <Label>State</Label>
                                 <StateSelector id="state-3" statesList={statesList} autoComplete="off" required={addressReq}/>
 
-                                <Label htmlFor="zipcode-3">Zipcode (123456)</Label>
+                                <Label htmlFor="zipcode-3">Zipcode (12345)</Label>
                                 <TextInput id="zipcode-3" name="zip-code-3" type="text" autoComplete="off" required={addressReq}/>
                             </div>
                         )}
@@ -118,7 +118,7 @@ function Addresses(props){
                                 <Label>State</Label>
                                 <StateSelector id="state-2" statesList={statesList} autoComplete="off" required={addressReq}/>
 
-                                <Label htmlFor="zipcode-2">Zipcode (123456)</Label>
+                                <Label htmlFor="zipcode-2">Zipcode (12345)</Label>
                                 <TextInput id="zipcode-2" name="zip-code-2" type="text" autoComplete="off" required={addressReq}/>
                             </div>
                         )}
