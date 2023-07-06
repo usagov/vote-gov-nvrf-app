@@ -27,7 +27,7 @@ function Identification(props){
                 <h3>Identification</h3>
                 <p>{stateInstructions.ID_num_text}</p>
                 <Label htmlFor="state-id-num">State Driver's License Number</Label>
-                <TextInput id="state-id-num" name="state-id-num" type="text" autoComplete="off" required={idNumReq}/>
+                <TextInput id="state-id-num" name="state-id-num" value={props.fieldData.id_number} onChange={props.saveFieldData('id_number')} type="text" autoComplete="off" required={idNumReq}/>
 
                 <Label htmlFor="issue-date" id="issue-date-label">Issue Date</Label>
                 <div className="usa-hint" id="issue-date-hint">

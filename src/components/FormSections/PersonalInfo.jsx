@@ -135,7 +135,7 @@ function PersonalInfo(props){
             <div>
                 <p>{content.race_text} {stateInstructions.race_text}</p>
                 <Label htmlFor="race-ethic-group-select">Race</Label>
-                <Dropdown id="race-ethic-group-select" name="race-ethic-group-select" autoComplete="off" required={raceReq}>
+                <Dropdown id="race-ethic-group-select" name="race-ethic-group-select" value={props.fieldData.race} onChange={props.saveFieldData('race')} autoComplete="off" required={raceReq}>
                     <option>- Select -{' '}</option>
                     <option value="American Indian or Alaska Native">American Indian or Alaska Native</option>
                     <option value="Asian or Pacific Islander">Asian or Pacific Islander</option>

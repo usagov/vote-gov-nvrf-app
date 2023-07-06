@@ -114,7 +114,7 @@ function StepFour(props) {
         <>
         {/* uswds components, html, jsx output goes here*/}
         <ProgressBar step={step}/>
-        <h1>{content.main_heading}</h1>
+        <h1>{content.main_heading}: {props.stateData.name}</h1>
         <p>{content.intro_text}</p>
 
         <Form onSubmit={(e) => {handleSubmit(e)}}>
