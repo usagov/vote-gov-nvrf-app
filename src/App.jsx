@@ -34,10 +34,12 @@ function App() {
 
   const handleNext = () => {
     step != 5 && setStep(step + 1);
+    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
   }
 
   const handlePrev = () => {
     step != 1 && setStep(step - 1);
+    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
   }
 
   const getSelectedState = (selectedState) => {
@@ -81,6 +83,7 @@ function App() {
 
   return (
     <>
+    <div id="top"></div>
         {step === 1 && 
           <StepOne 
           handleNext={handleNext} 
