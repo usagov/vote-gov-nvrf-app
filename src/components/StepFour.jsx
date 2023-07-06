@@ -12,6 +12,21 @@ import PoliticalParty from './FormSections/PoliticalParty';
 
 function StepFour(props) {
      {/* functions/variables code goes here */}
+    //Field data controls
+    const [fieldData, setFieldData] = useState({
+        title:'', first_name: '', middle_name: '', last_name: '', suffix:'',
+        prev_name_check: false, prev_title:'', prev_first_name: '', prev_middle_name: '', prev_last_name: '', prev_suffix:'',
+        date_of_birth:'', phone_number:'',race:'',
+        street_address:'', apt_num:'', city:'', state:'', zip_code:'',
+        prev_address_check: false, prev_street_address:'', prev_apt_num:'', prev_city:'', prev_state:'', prev_zip_code:'',
+        mail_address_check: false, mail_street_address:'', mail_apt_num:'', mail_city:'', mail_state:'', mail_zip_code:'',
+        id_number:'', id_issue_date:'', id_expire_date:'', party_choice:''});
+
+    const saveFieldData = (name) => {
+        return (event) => {
+        setFieldData({ ...fieldData, [name]: event.target.value });
+        };
+    };
 
     //Multiple step NVRF controls
     const [step, setStep] = useState(1);
@@ -33,6 +48,8 @@ function StepFour(props) {
         <PersonalInfo
             state={props.state}
             stateData={props.stateData}
+            fieldData={fieldData}
+            saveFieldData = {saveFieldData}
             registrationPath={props.registrationPath}
             handlePrev={props.handlePrev}
             handleNext={handleNext}
@@ -42,6 +59,8 @@ function StepFour(props) {
         <Addresses
             state={props.state}
             stateData={props.stateData}
+            fieldData={fieldData}
+            saveFieldData = {saveFieldData}
             registrationPath={props.registrationPath}
             handlePrev={handlePrev}
             handleNext={handleNext}
@@ -51,6 +70,8 @@ function StepFour(props) {
         <Identification
             state={props.state}
             stateData={props.stateData}
+            fieldData={fieldData}
+            saveFieldData = {saveFieldData}
             registrationPath={props.registrationPath}
             handlePrev={handlePrev}
             handleNext={handleNext}
@@ -60,6 +81,8 @@ function StepFour(props) {
         <PoliticalParty
             state={props.state}
             stateData={props.stateData}
+            fieldData={fieldData}
+            saveFieldData = {saveFieldData}
             registrationPath={props.registrationPath}
             handlePrev={handlePrev}
             handleNext={handleNext}
@@ -69,6 +92,8 @@ function StepFour(props) {
         <Confirmation
             state={props.state}
             stateData={props.stateData}
+            fieldData={fieldData}
+            saveFieldData = {saveFieldData}
             registrationPath={props.registrationPath}
             handlePrev={handlePrev}
             handleNext={handleNext}
@@ -77,6 +102,8 @@ function StepFour(props) {
         <DeliveryOptions
             state={props.state}
             stateData={props.stateData}
+            fieldData={fieldData}
+            saveFieldData = {saveFieldData}
             registrationPath={props.registrationPath}
             handlePrev={handlePrev}
             handleNext={props.handleNext}

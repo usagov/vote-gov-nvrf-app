@@ -48,7 +48,7 @@ function PersonalInfo(props){
         {nameVisible && (
             <div>
                 <Label htmlFor="title-select">Title</Label>
-                <Dropdown id="title-select" name="title-select" autoComplete="off">
+                <Dropdown id="title-select" name="title-select" value={props.fieldData.title} onChange={props.saveFieldData('title')} autoComplete="off">
                     <option>- Select -{' '}</option>
                     <option value="Mr.">Mr.</option>
                     <option value="Miss">Miss</option>
@@ -57,16 +57,16 @@ function PersonalInfo(props){
                 </Dropdown>
 
                 <Label htmlFor="first-name">First Name</Label>
-                <TextInput id="first-name" name="first-name" type="text" autoComplete="off" required={nameReq}/>
+                <TextInput id="first-name" name="first-name" value={props.fieldData.first_name} onChange={props.saveFieldData('first_name')} type="text" autoComplete="off" required={nameReq}/>
 
                 <Label htmlFor="middle-name">Middle Name(s)</Label>
-                <TextInput id="middle-name" name="middle-name" type="text" autoComplete="off"/>
+                <TextInput id="middle-name" name="middle-name" value={props.fieldData.middle_name} onChange={props.saveFieldData('middle_name')} type="text" autoComplete="off"/>
 
                 <Label htmlFor="last-name">Last Name</Label>
-                <TextInput id="last-name" name="last-name" type="text" autoComplete="off" required={nameReq}/>
+                <TextInput id="last-name" name="last-name" value={props.fieldData.last_name} onChange={props.saveFieldData('last_name')} type="text" autoComplete="off" required={nameReq}/>
 
                 <Label htmlFor="suffix-select">Suffix</Label>
-                <Dropdown id="suffix-select" name="suffix-select" autoComplete="off" required={nameReq}>
+                <Dropdown id="suffix-select" name="suffix-select" value={props.fieldData.suffix} onChange={props.saveFieldData('suffix')} autoComplete="off" required={nameReq}>
                     <option>- Select -{' '}</option>
                     <option value="Jr.">Jr.</option>
                     <option value="Sr.">Sr.</option>
@@ -85,7 +85,7 @@ function PersonalInfo(props){
             <div value={previousName} onChange={onChangePreviousName}>
                 <h3>Previous Name</h3>
                 <Label htmlFor="title-select-2">Title</Label>
-                <Dropdown id="title-select-2" name="title-select-2" autoComplete="off">
+                <Dropdown id="title-select-2" name="title-select-2" value={props.fieldData.prev_title} onChange={props.saveFieldData('prev_title')} autoComplete="off">
                     <option>- Select -{' '}</option>
                     <option value="Mr.">Mr.</option>
                     <option value="Miss">Miss</option>
@@ -94,16 +94,16 @@ function PersonalInfo(props){
                 </Dropdown>
 
                 <Label htmlFor="first-name-2">First Name</Label>
-                <TextInput id="first-name-2" name="first-name-2" type="text" autoComplete="off" required={nameReq}/>
+                <TextInput id="first-name-2" name="first-name-2" value={props.fieldData.prev_first_name} onChange={props.saveFieldData('prev_first_name')} type="text" autoComplete="off" required={nameReq}/>
 
                 <Label htmlFor="middle-name-2">Middle Name</Label>
-                <TextInput id="middle-name-2" name="middle-name-2" type="text" autoComplete="off" required={nameReq}/>
+                <TextInput id="middle-name-2" name="middle-name-2" value={props.fieldData.prev_middle_name} onChange={props.saveFieldData('prev_middle_name')} type="text" autoComplete="off" required={nameReq}/>
 
                 <Label htmlFor="last-name-2">Last Name</Label>
-                <TextInput id="last-name-2" name="last-name-2" type="text" autoComplete="off" required={nameReq}/>
+                <TextInput id="last-name-2" name="last-name-2" value={props.fieldData.prev_last_name} onChange={props.saveFieldData('prev_last_name')} type="text" autoComplete="off" required={nameReq}/>
 
                 <Label htmlFor="suffix-select-2">Suffix</Label>
-                <Dropdown id="suffix-select-2" name="suffix-select-2" autoComplete="off" required={nameReq}>
+                <Dropdown id="suffix-select-2" name="suffix-select-2" value={props.fieldData.prev_suffix} onChange={props.saveFieldData('prev_suffix')} autoComplete="off" required={nameReq}>
                     <option>- Select -{' '}</option>
                     <option value="Jr.">Jr.</option>
                     <option value="Sr.">Sr.</option>
@@ -120,14 +120,14 @@ function PersonalInfo(props){
                 <div className="usa-hint" id="date-of-birth-hint">
                     mm/dd/yyyy
                 </div>
-                <DatePicker aria-describedby="date-of-birth-hint" aria-labelledby="date-of-birth-label" id="date-of-birth" name="date-of-birth" autoComplete="off" required={dobReq}/>
+                <DatePicker aria-describedby="date-of-birth-hint" aria-labelledby="date-of-birth-label" id="date-of-birth" name="date-of-birth" value={props.fieldData.date_of_birth} onChange={props.saveFieldData('date_of_birth')} autoComplete="off" required={dobReq}/>
             </div>
         )}
 
         {telephoneVisible && (
             <div>
                 <Label htmlFor="phone-number">Phone Number (123-456-7890)</Label>
-                <TextInput id="phone-number" name="phone-number" type="text" autoComplete="off" required={telephoneReq}/>
+                <TextInput id="phone-number" name="phone-number" value={props.fieldData.phone_number} onChange={props.saveFieldData('phone_number')} type="text" autoComplete="off" required={telephoneReq}/>
             </div>
         )}
 
