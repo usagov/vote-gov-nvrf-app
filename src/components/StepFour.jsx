@@ -32,10 +32,12 @@ function StepFour(props) {
     const [step, setStep] = useState(1);
     const handleNext = () => {
         step != 6 && setStep(step + 1);
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
       }
 
     const handlePrev = () => {
-    step != 1 && setStep(step - 1);
+        step != 1 && setStep(step - 1);
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
     }
 
     const handleSubmit = (e) => {
