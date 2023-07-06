@@ -17,7 +17,6 @@ function Identification(props){
             Back to address & location
         </Button>
         <h2>{content.identification_heading}</h2>
-        <h4>{content.identification_heading}</h4>
         <div className="usa-alert usa-alert--info">
             <div className="usa-alert__body">
                 <p>{content.id_number_text}</p>
@@ -25,6 +24,7 @@ function Identification(props){
         </div>
         {idNumVisible && (
             <div>
+                <h3>Identification</h3>
                 <p>{stateInstructions.ID_num_text}</p>
                 <Label htmlFor="state-id-num">State Driver's License Number</Label>
                 <TextInput id="state-id-num" name="state-id-num" type="text" autoComplete="off" required={idNumReq}/>
