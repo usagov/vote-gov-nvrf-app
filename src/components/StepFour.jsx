@@ -117,7 +117,7 @@ function StepFour(props) {
         <h1>{content.main_heading}: {props.stateData.name}</h1>
         <p>{content.intro_text}</p>
 
-        <Form onSubmit={(e) => {handleSubmit(e)}}>
+        <Form style={{ maxWidth:'none' }} onSubmit={(e) => {handleSubmit(e)}}>
             {step === 1 && personalInfoSection}
             {step === 2 && addressSection}
             {step === 3 && identificationSection}

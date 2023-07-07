@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import './App.css'
 import states from "./data/states.json";
 import StepOne from './components/StepOne';
 import StepTwo from './components/StepTwo';

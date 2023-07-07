@@ -25,9 +25,9 @@ function StepThree(props) {
         <p>{content.subheading_one}</p>
 
         <h2>{content.heading_two}</h2>
-        <GridContainer>
+        <GridContainer style={{ padding:'0'}}>
             <Grid row gap>
-                <Grid col={5}>
+                <Grid col={6}>
                     <div onClick={() => {props.getRegPath("update"), handleClick("update")}}>
                     <CardSelect 
                         iconPath={"/public/images/Update.svg"} 
@@ -35,11 +35,11 @@ function StepThree(props) {
                         cardStyle={buttonSelected === 'update' ? 'card-selected' : 'card'}/>
                     </div >
                 </Grid>
-                <Grid col={5}><p>{content.help_text_one}</p></Grid>
+                <Grid col={6}><p>{content.help_text_one}</p></Grid>
             </Grid>
             <div className={styles['gap']}></div>
             <Grid row gap>
-                <Grid col={5}>
+                <Grid col={6}>
                     <div onClick={() => {props.getRegPath("new"), handleClick("new")}}>
                     <CardSelect 
                         iconPath={"/public/images/Register.svg"} 
@@ -47,17 +47,17 @@ function StepThree(props) {
                         cardStyle={buttonSelected === 'new' ? 'card-selected' : 'card'}/>
                     </div>
                 </Grid>
-                <Grid col={5}>
+                <Grid col={6}>
                     <p>{content.help_text_two}</p>
                 </Grid>
             </Grid>
         </GridContainer>
 
-        <div className="button-container" style={{ margin:'20px' }}>
+        <p style={{ marginTop:'30px'}}>
             <Button type="button" onClick={props.handleNext} disabled={buttonSelected === 'no selection' ? true : false}>
-            {content.button_continue} <Icon.ArrowForward />
+                {content.button_continue} <Icon.ArrowForward />
             </Button>
-        </div>
+        </p>
         </>
     );
 }

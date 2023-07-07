@@ -25,19 +25,19 @@ function NotNeeded(props) {
         <h2>{notNeededContent.heading_vote}</h2>
         <p>{notNeededContent.text_vote}</p>
 
-        <div className="button-container" style={{ margin:'20px' }}>
+        <p>
             <a href={stateLink}><Button type="button">
-            {notNeededContent.more_button}
+                {notNeededContent.more_button}
                 <Icon.Launch />
             </Button>
             </a >
-        </div>
-        <div className="button-container" style={{ margin:'20px' }}>
+        </p>
+        <p>
             <a href="https://vote.gov"><Button type="button">
-            {notNeededContent.back_button}
+                {notNeededContent.back_button}
             </Button>
             </a>
-        </div>
+        </p>
         </>
     );
 }

@@ -97,14 +97,13 @@ function StepOne(props) {
             </Dropdown>            
         </div>
         
-            <Grid row>
-                <Grid col={4}>
+            <Grid row gap className={styles['justify-height']}>
+                <Grid col={6}>
                 <CardInfo header={"Click to view eligibility and begin your registration"} paragraph={"Select your home state or territory to view your state’s eligibility requirements. As you continue through the form, you will see state-specific instructions for filling out your information."} button={buttonContinue}></CardInfo>
                 </Grid>
-                <Grid col={4}>
+                <Grid col={6}>
                 <CardInfo header={"Not sure if you are already registered?"} paragraph={"Save time by checking your current registration status on your state’s election website. Be sure to select your state in the dropdown menu above."} button={buttonRedirect}></CardInfo>
                 </Grid>
-                <Grid col={3}/>
             </Grid>
         </>
     );

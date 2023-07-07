@@ -1,3 +1,7 @@
 .state-dropdown {
-    padding-bottom: 20px;
+    padding-bottom: 30px;
+}
+
+.justify-height > div > div {
+    height: 100%;
 }
