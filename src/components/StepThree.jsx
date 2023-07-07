@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button, Icon, GridContainer, Grid } from '@trussworks/react-uswds';
 import content from "../data/step-three.json";
-import Card from "./CardSelect";
+import CardSelect from "./CardSelect";
 import styles from "../styles/StepThree.module.css";
 
 function StepThree(props) {
@@ -29,7 +29,7 @@ function StepThree(props) {
             <Grid row gap>
                 <Grid col={5}>
                     <div onClick={() => {props.getRegPath("update"), handleClick("update")}}>
-                    <Card 
+                    <CardSelect 
                         iconPath={"/public/images/Update.svg"} 
                         text={content.button_update_reg} 
                         cardStyle={buttonSelected === 'update' ? 'card-selected' : 'card'}/>
@@ -41,7 +41,7 @@ function StepThree(props) {
             <Grid row gap>
                 <Grid col={5}>
                     <div onClick={() => {props.getRegPath("new"), handleClick("new")}}>
-                    <Card 
+                    <CardSelect 
                         iconPath={"/public/images/Register.svg"} 
                         text={content.button_new_reg} 
                         cardStyle={buttonSelected === 'new' ? 'card-selected' : 'card'}/>

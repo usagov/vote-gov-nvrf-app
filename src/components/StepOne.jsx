@@ -1,6 +1,8 @@
 import { useState } from 'react'
-import { Label, Dropdown, Button, ProcessList, ProcessListItem, ProcessListHeading, Icon } from '@trussworks/react-uswds';
+import { Label, Dropdown, Button, ProcessList, ProcessListItem, ProcessListHeading, Icon, GridContainer, Grid } from '@trussworks/react-uswds';
 import states from "../data/states.json";
+import styles from "../styles/StepOne.module.css";
+import CardInfo from "./CardInfo";
 
 function StepOne(props) {
     const stateLink = props.stateData.election_website_url;
@@ -9,6 +11,17 @@ function StepOne(props) {
         let stateName = states[i].name;
         statesList.push(stateName);
     };
+
+    const buttonContinue = <div className="button-container">
+    <Button type="button" onClick={props.handleNext} disabled={props.buttonStatus}>
+    Continue to check registration eligibility <Icon.ArrowForward />
+    </Button></div>;
+
+    const buttonRedirect = <a href={stateLink} target="_blank">
+    <Button disabled={props.buttonStatus}>
+        Visit your state election website
+        <Icon.Launch />
+    </Button></a>;
 
     return (
         <>
@@ -64,40 +77,35 @@ function StepOne(props) {
         
         <hr />
         <h2>Ready to get started?</h2>
-        <h3>Select your state to view eligibility and begin your registration</h3>
-        <p>Select your home state or territory to view your state’s eligibility requirements. As you continue through the form, you will see state-specific instructions for filling out your information.</p>
+        <h3>Select your state then choose your path</h3>
         
         <Label htmlFor="options">Home state or territory</Label>
-        <Dropdown 
-            id="input-dropdown" 
-            name="input-dropdown"
-            value={props.state}
-            onChange={e => {
-                props.getSelectedState(e.target.value)
-                props.handleButtonStatus(e.target.value, "one");
-            }}
-            >
-            <option value="default">Select your state or territory</option>
-            {statesList.map(
-            state => <option key={state} value={state}>{state}</option>
-        )}
-        </Dropdown>
-
-        <div className="button-container" style={{ margin:'20px' }}>
-            <Button type="button" onClick={props.handleNext} disabled={props.buttonStatus}>
-            Continue to check registration eligibility
-            </Button>
+        <div className={styles['state-dropdown']}>
+            <Dropdown 
+                id="input-dropdown" 
+                name="input-dropdown"
+                value={props.state}
+                onChange={e => {
+                    props.getSelectedState(e.target.value)
+                    props.handleButtonStatus(e.target.value, "one");
+                }}
+                >
+                <option value="default">Select your state or territory</option>
+                {statesList.map(
+                state => <option key={state} value={state}>{state}</option>
+            )}
+            </Dropdown>            
         </div>
-       
-        <h2>Not sure if you are already registered?</h2>
-        <p>Save time by checking your current registration status on your state’s election website. Be sure to select your state in the dropdown menu above.</p>
         
-        <a href={stateLink} target="_blank">
-        <Button disabled={props.buttonStatus}>
-            Visit your state election website  
-            <Icon.Launch />
-        </Button>
-        </a>
+            <Grid row>
+                <Grid col={4}>
+                <CardInfo header={"Click to view eligibility and begin your registration"} paragraph={"Select your home state or territory to view your state’s eligibility requirements. As you continue through the form, you will see state-specific instructions for filling out your information."} button={buttonContinue}></CardInfo>
+                </Grid>
+                <Grid col={4}>
+                <CardInfo header={"Not sure if you are already registered?"} paragraph={"Save time by checking your current registration status on your state’s election website. Be sure to select your state in the dropdown menu above."} button={buttonRedirect}></CardInfo>
+                </Grid>
+                <Grid col={3}/>
+            </Grid>
         </>
     );
 }
