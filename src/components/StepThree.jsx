@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import { Button } from '@trussworks/react-uswds';
+import { Button, Icon, GridContainer, Grid } from '@trussworks/react-uswds';
 import content from "../data/step-three.json";
+import Card from "./CardSelect";
+import styles from "../styles/StepThree.module.css";
 
 function StepThree(props) {
     const [buttonSelected, setButtonSelected] = useState('no selection')
@@ -18,23 +20,42 @@ function StepThree(props) {
         <Button type="button" onClick={props.handlePrev}>
             Back to Eligibility Information
         </Button>
+
         <h1>{content.heading_one.replace("%state_name%", props.stateData.name)}</h1>
         <p>{content.subheading_one}</p>
+
         <h2>{content.heading_two}</h2>
-
-        <Button id="update" onClick={e => {{props.getRegPath(e.target.id)}; handleClick(e.target.id);}} outline={buttonSelected === 'update' ? false : true}>
-            {content.button_update_reg}
-        </Button>
-        <p>{content.help_text_one}</p>
-
-        <Button id="new" onClick={e => {{props.getRegPath(e.target.id)}; handleClick(e.target.id);}} outline={buttonSelected === 'new' ? false : true}>
-        {content.button_new_reg}
-        </Button>
-        <p>{content.help_text_two}</p>
+        <GridContainer>
+            <Grid row gap>
+                <Grid col={5}>
+                    <div onClick={() => {props.getRegPath("update"), handleClick("update")}}>
+                    <Card 
+                        iconPath={"/public/images/Update.svg"} 
+                        text={content.button_update_reg} 
+                        cardStyle={buttonSelected === 'update' ? 'card-selected' : 'card'}/>
+                    </div >
+                </Grid>
+                <Grid col={5}><p>{content.help_text_one}</p></Grid>
+            </Grid>
+            <div className={styles['gap']}></div>
+            <Grid row gap>
+                <Grid col={5}>
+                    <div onClick={() => {props.getRegPath("new"), handleClick("new")}}>
+                    <Card 
+                        iconPath={"/public/images/Register.svg"} 
+                        text={content.button_new_reg} 
+                        cardStyle={buttonSelected === 'new' ? 'card-selected' : 'card'}/>
+                    </div>
+                </Grid>
+                <Grid col={5}>
+                    <p>{content.help_text_two}</p>
+                </Grid>
+            </Grid>
+        </GridContainer>
 
         <div className="button-container" style={{ margin:'20px' }}>
             <Button type="button" onClick={props.handleNext} disabled={buttonSelected === 'no selection' ? true : false}>
-            {content.button_continue}
+            {content.button_continue} <Icon.ArrowForward />
             </Button>
         </div>
         </>
