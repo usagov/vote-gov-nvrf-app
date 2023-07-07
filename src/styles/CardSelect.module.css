@@ -1,0 +1,25 @@
+.card {
+    width: 310px;
+    height: 190px;
+    border: 2px solid #162E51;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.card-contents {
+    padding: 25px;
+}
+
+.card-selected {
+    width: 310px;
+    height: 190px;
+    border: 2px solid #162E51;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #E9F0F7;
+}
+
+.text {
+    color: #162E51;
+    font-size: 25px;
+}
