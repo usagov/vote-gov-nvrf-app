@@ -29,7 +29,7 @@ function Identification(props){
                 <Label htmlFor="state-id-num">State Driver's License Number</Label>
                 <TextInput id="state-id-num" name="state-id-num" value={props.fieldData.id_number} onChange={props.saveFieldData('id_number')} type="text" autoComplete="off" required={idNumReq}/>
 
-                <Fieldset legend="Issue Date">
+                <Fieldset legend="Issue Date" style={{ marginTop:'30px'}}>
                     <span className="usa-hint" id="id-issue-date-hint">
                     For example: 05 10 2017
                     </span>
@@ -64,7 +64,7 @@ function Identification(props){
                     </DateInputGroup>
                 </Fieldset>
 
-                <Fieldset legend="Expire Date">
+                <Fieldset legend="Expire Date" style={{ marginTop:'30px'}}>
                     <span className="usa-hint" id="id-expire-date-hint">
                     For example: 05 10 2025
                     </span>
