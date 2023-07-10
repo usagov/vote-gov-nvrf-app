@@ -9,6 +9,7 @@ function Confirmation(props){
     //field data overrides for confirm page printing only
     const fieldDataOverride_race = (fieldData.race === '') ? "Not required for your state" : fieldData.race;
     const fieldDataOverride_party = (fieldData.party_choice === '') ? "No party entered": fieldData.party_choice;
+    const fieldDataOverride_state = props.stateData.name;
 
     //Acknowledment field controls
     const [hasAcknowledged, setHasAcknowledged] = useState(false);
@@ -62,7 +63,7 @@ function Confirmation(props){
             <li>Street Address: {fieldData.street_address}</li>
             <li>Apt. or Lot #: {fieldData.apt_num}</li>
             <li>City: {fieldData.city}</li>
-            <li>State: {fieldData.state}</li>
+            <li>State: {fieldDataOverride_state}</li>
             <li>Zip code: {fieldData.zip_code}</li>
         </ul>
 
