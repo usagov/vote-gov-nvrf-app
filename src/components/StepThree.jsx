@@ -30,7 +30,7 @@ function StepThree(props) {
                 <Grid col={6}>
                     <div onClick={() => {props.getRegPath("update"), handleClick("update")}}>
                     <CardSelect 
-                        iconPath={"/public/images/Update.svg"} 
+                        iconPath={"/images/Update.svg"}
                         text={content.button_update_reg} 
                         cardStyle={buttonSelected === 'update' ? 'card-selected' : 'card'}/>
                     </div >
@@ -42,7 +42,7 @@ function StepThree(props) {
                 <Grid col={6}>
                     <div onClick={() => {props.getRegPath("new"), handleClick("new")}}>
                     <CardSelect 
-                        iconPath={"/public/images/Register.svg"} 
+                        iconPath={"/images/Register.svg"}
                         text={content.button_new_reg} 
                         cardStyle={buttonSelected === 'new' ? 'card-selected' : 'card'}/>
                     </div>
