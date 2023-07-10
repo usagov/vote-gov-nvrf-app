@@ -16,11 +16,12 @@ function StepFour(props) {
     const [fieldData, setFieldData] = useState({
         title:'', first_name: '', middle_name: '', last_name: '', suffix:'',
         prev_name_check: false, prev_title:'', prev_first_name: '', prev_middle_name: '', prev_last_name: '', prev_suffix:'',
-        date_of_birth:'', phone_number:'',race:'',
+        date_of_birth_month:'', date_of_birth_day:'', date_of_birth_year:'', phone_number:'',race:'',
         street_address:'', apt_num:'', city:'', state:'', zip_code:'',
         prev_address_check: false, prev_street_address:'', prev_apt_num:'', prev_city:'', prev_state:'', prev_zip_code:'',
         mail_address_check: false, mail_street_address:'', mail_apt_num:'', mail_city:'', mail_state:'', mail_zip_code:'',
-        id_number:'', id_issue_date:'', id_expire_date:'', party_choice:''});
+        id_number:'', id_issue_date_month:'', id_issue_date_day:'', id_issue_date_year:'', id_expire_date_month:'', id_expire_date_day:'', id_expire_date_year:'',
+        party_choice:''});
 
     const saveFieldData = (name) => {
         return (event) => {

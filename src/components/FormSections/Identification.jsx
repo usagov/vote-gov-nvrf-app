@@ -1,4 +1,4 @@
-import { Form, Label, TextInput, Button, Dropdown,Checkbox, DatePicker } from '@trussworks/react-uswds';
+import { Form, Label, TextInput, Button, DateInputGroup, DateInput, Fieldset } from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import content from "../../data/step-four.json";
 
@@ -29,17 +29,75 @@ function Identification(props){
                 <Label htmlFor="state-id-num">State Driver's License Number</Label>
                 <TextInput id="state-id-num" name="state-id-num" value={props.fieldData.id_number} onChange={props.saveFieldData('id_number')} type="text" autoComplete="off" required={idNumReq}/>
 
-                <Label htmlFor="issue-date" id="issue-date-label">Issue Date</Label>
-                <div className="usa-hint" id="issue-date-hint">
-                    mm/dd/yyyy
-                </div>
-                <DatePicker aria-describedby="issue-date-hint" aria-labelledby="issue-date-label" id="issue-date" name="issue-date" required={idNumReq}/>
+                <Fieldset legend="Issue Date">
+                    <span className="usa-hint" id="id-issue-date-hint">
+                    For example: 05 10 2017
+                    </span>
+                    <DateInputGroup id="id-issue-date" name="id-issue-date" autoComplete="off" required={idNumReq}>
+                        <DateInput
+                            id="id-issue-date_month"
+                            name="id-issue-date_month"
+                            label="Month"
+                            unit="month"
+                            value={props.fieldData.id_issue_date_month} onChange={props.saveFieldData('id_issue_date_month')}
+                            maxLength={2}
+                            minLength={2}
+                        />
+                        <DateInput
+                            id="id_issue_date_day"
+                            name="id_issue_date_day"
+                            label="Day"
+                            unit="day"
+                            value={props.fieldData.id_issue_date_day} onChange={props.saveFieldData('id_issue_date_day')}
+                            maxLength={2}
+                            minLength={2}
+                        />
+                        <DateInput
+                            id="id_issue_date_year"
+                            name="id_issue_date_year"
+                            label="Year"
+                            unit="year"
+                            value={props.fieldData.id_issue_date_year} onChange={props.saveFieldData('id_issue_date_year')}
+                            maxLength={4}
+                            minLength={4}
+                        />
+                    </DateInputGroup>
+                </Fieldset>
 
-                <Label htmlFor="expire-date" id="expire-date-label">Expire Date</Label>
-                <div className="usa-hint" id="expire-date-hint">
-                    mm/dd/yyyy
-                </div>
-                <DatePicker aria-describedby="expire-date-hint" aria-labelledby="expire-date-label" id="expire-date" name="expire-date" required={idNumReq}/>
+                <Fieldset legend="Expire Date">
+                    <span className="usa-hint" id="id-expire-date-hint">
+                    For example: 05 10 2025
+                    </span>
+                    <DateInputGroup id="id-expire-date" name="id-expire-date" autoComplete="off" required={idNumReq}>
+                        <DateInput
+                            id="id-expire-date_month"
+                            name="id-expire-date_month"
+                            label="Month"
+                            unit="month"
+                            value={props.fieldData.id_expire_date_month} onChange={props.saveFieldData('id_expire_date_month')}
+                            maxLength={2}
+                            minLength={2}
+                        />
+                        <DateInput
+                            id="id_expire_date_day"
+                            name="id_expire_date_day"
+                            label="Day"
+                            unit="day"
+                            value={props.fieldData.id_expire_date_day} onChange={props.saveFieldData('id_expire_date_day')}
+                            maxLength={2}
+                            minLength={2}
+                        />
+                        <DateInput
+                            id="id_expire_date_year"
+                            name="id_expire_date_year"
+                            label="Year"
+                            unit="year"
+                            value={props.fieldData.id_expire_date_year} onChange={props.saveFieldData('id_expire_date_year')}
+                            maxLength={4}
+                            minLength={4}
+                        />
+                    </DateInputGroup>
+                </Fieldset>
             </div>
         )}
             <Button type="button" onClick={props.handleNext}>
