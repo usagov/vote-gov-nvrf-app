@@ -4,7 +4,7 @@ function CardSelect(props) {
     return (
         <>
         <div className={styles[props.cardStyle]}>
-            <div className={styles['card-contents']}>
+            <div className={styles['card-content']}>
             <div>
                 <img src={props.iconPath}></img>
             </div>
