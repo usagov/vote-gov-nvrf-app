@@ -62,7 +62,7 @@ function Confirmation(props){
             <li>Street Address: {fieldData.street_address}</li>
             <li>Apt. or Lot #: {fieldData.apt_num}</li>
             <li>City: {fieldData.city}</li>
-            <li>State: NEED TO FIX {fieldData.state}</li>
+            <li>State: {fieldData.state}</li>
             <li>Zip code: {fieldData.zip_code}</li>
         </ul>
 
@@ -72,7 +72,7 @@ function Confirmation(props){
             <li>Street Address: {fieldData.prev_street_address}</li>
             <li>Apt. or Lot #: {fieldData.prev_apt_num}</li>
             <li>City: {fieldData.prev_city}</li>
-            <li>State: NEED TO FIX {fieldData.prev_state}</li>
+            <li>State: {fieldData.prev_state}</li>
             <li>Zip code: {fieldData.prev_zip_code}</li>
         </ul>
 
@@ -82,7 +82,7 @@ function Confirmation(props){
             <li>Street Address: {fieldData.mail_street_address}</li>
             <li>Apt. or Lot #: {fieldData.mail_apt_num}</li>
             <li>City: {fieldData.mail_city}</li>
-            <li>State: NEED TO FIX {fieldData.mail_state}</li>
+            <li>State: {fieldData.mail_state}</li>
             <li>Zip code: {fieldData.mail_zip_code}</li>
         </ul>
         <hr />
