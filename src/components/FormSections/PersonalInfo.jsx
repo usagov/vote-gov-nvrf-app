@@ -116,7 +116,7 @@ function PersonalInfo(props){
 
         {dobVisible && (
             <div>
-                <Fieldset legend="Date of Birth">
+                <Fieldset legend="Date of Birth" style={{ marginTop:'30px'}}>
                     <span className="usa-hint" id="date-of-birth-hint">
                     For example: 04 28 1986
                     </span>
