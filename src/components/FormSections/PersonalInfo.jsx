@@ -1,4 +1,4 @@
-import { Form, Label, TextInput, Button, Dropdown,Checkbox, DatePicker } from '@trussworks/react-uswds';
+import { Form, Label, TextInput, Button, Dropdown,Checkbox, DateInputGroup, DateInput, Fieldset} from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import content from "../../data/step-four.json";
 
@@ -116,11 +116,40 @@ function PersonalInfo(props){
 
         {dobVisible && (
             <div>
-                <Label htmlFor="date-of-birth" id="date-of-birth-label">Date of Birth</Label>
-                <div className="usa-hint" id="date-of-birth-hint">
-                    mm/dd/yyyy
-                </div>
-                <DatePicker aria-describedby="date-of-birth-hint" aria-labelledby="date-of-birth-label" id="date-of-birth" name="date-of-birth" value={props.fieldData.date_of_birth} onChange={props.saveFieldData('date_of_birth')} autoComplete="off" required={dobReq}/>
+                <Fieldset legend="Date of Birth">
+                    <span className="usa-hint" id="date-of-birth-hint">
+                    For example: 04 28 1986
+                    </span>
+                    <DateInputGroup id="date-of-birth" name="date-of-birth" autoComplete="off" required={dobReq}>
+                        <DateInput
+                            id="date_of_birth_month"
+                            name="date_of_birth_month"
+                            label="Month"
+                            unit="month"
+                            value={props.fieldData.date_of_birth_month} onChange={props.saveFieldData('date_of_birth_month')}
+                            maxLength={2}
+                            minLength={2}
+                        />
+                        <DateInput
+                            id="date_of_birth_day"
+                            name="date_of_birth_day"
+                            label="Day"
+                            unit="day"
+                            value={props.fieldData.date_of_birth_day} onChange={props.saveFieldData('date_of_birth_day')}
+                            maxLength={2}
+                            minLength={2}
+                        />
+                        <DateInput
+                            id="date_of_birth_year"
+                            name="date_of_birth_year"
+                            label="Year"
+                            unit="year"
+                            value={props.fieldData.date_of_birth_year} onChange={props.saveFieldData('date_of_birth_year')}
+                            maxLength={4}
+                            minLength={4}
+                        />
+                    </DateInputGroup>
+                </Fieldset>
             </div>
         )}
 

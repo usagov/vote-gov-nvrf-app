@@ -50,7 +50,7 @@ function Confirmation(props){
 
         <p>Other Information</p>
         <ul>
-            <li>Date of birth: NEED TO FIX {fieldData.date_of_birth}</li>
+            <li>Date of birth: {fieldData.date_of_birth_month}/{fieldData.date_of_birth_day}/{fieldData.date_of_birth_year}</li>
             <li>Phone Number: {fieldData.phone_number}</li>
             <li>Race/Ethnicity: {fieldDataOverride_race}</li>
         </ul>
@@ -90,8 +90,8 @@ function Confirmation(props){
         <h3>Identification</h3>
         <ul>
             <li>ID number: {fieldData.id_number}</li>
-            <li>ID issue date: {fieldData.id_issue_date}</li>
-            <li>ID expire date: NEED TO FIX {fieldData.id_expire_date}</li>
+            <li>ID issue date: {fieldData.id_issue_date_month}/{fieldData.id_issue_date_day}/{fieldData.id_issue_date_year}</li>
+            <li>ID expire date: {fieldData.id_expire_date_month}/{fieldData.id_expire_date_day}/{fieldData.id_expire_date_year}</li>
         </ul>
         <hr />
         <h3>Choice of Political Party</h3>
