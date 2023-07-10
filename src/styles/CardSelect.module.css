@@ -6,7 +6,11 @@
     border-radius: 10px;
 }
 
-.card-contents {
+.card:hover {
+    cursor: pointer;
+}
+
+.card-content {
     padding: 25px;
 }
 
