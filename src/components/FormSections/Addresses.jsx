@@ -74,7 +74,7 @@ function Addresses(props){
                 <TextInput id="city" name="city" value={props.fieldData.city} onChange={props.saveFieldData('city')} type="text" autoComplete="off" required={addressReq}/>
 
                 <Label>State</Label>
-                <StateSelector id="state" statesList={statesList} value={props.fieldData.state} onChange={props.saveFieldData('state')} autoComplete="off" required={addressReq}/>
+                <StateSelector id="state" statesList={statesList} state={props.fieldData.state} saveState={props.saveFieldData('state')} autoComplete="off" required={addressReq}/>
 
                 <Label htmlFor="zipcode">Zip Code (12345)</Label>
                 <TextInput id="zipcode" name="zip-code" value={props.fieldData.zip_code} onChange={props.saveFieldData('zip_code')} type="text" autoComplete="off" required={addressReq}/>
@@ -95,7 +95,7 @@ function Addresses(props){
                                 <TextInput id="city-3" name="city-3" value={props.fieldData.prev_city} onChange={props.saveFieldData('prev_city')} type="text" autoComplete="off" required={addressReq}/>
 
                                 <Label>State</Label>
-                                <StateSelector id="state-3" statesList={statesList} value={props.fieldData.prev_state} onChange={props.saveFieldData('prev_state')} autoComplete="off" required={addressReq}/>
+                                <StateSelector id="state-3" statesList={statesList} state={props.fieldData.prev_state} saveState={props.saveFieldData('prev_state')} autoComplete="off" required={addressReq}/>
 
                                 <Label htmlFor="zipcode-3">Zipcode (12345)</Label>
                                 <TextInput id="zipcode-3" name="zip-code-3" value={props.fieldData.prev_zip_code} onChange={props.saveFieldData('prev_zip_code')} type="text" autoComplete="off" required={addressReq}/>
@@ -116,7 +116,7 @@ function Addresses(props){
                                 <TextInput id="city-2" name="city-2" value={props.fieldData.mail_city} onChange={props.saveFieldData('mail_city')} type="text" autoComplete="off" required={addressReq}/>
 
                                 <Label>State</Label>
-                                <StateSelector id="state-2" statesList={statesList} value={props.fieldData.mail_state} onChange={props.saveFieldData('mail_state')} autoComplete="off" required={addressReq}/>
+                                <StateSelector id="state-2" statesList={statesList} state={props.fieldData.mail_state} saveState={props.saveFieldData('mail_state')} autoComplete="off" required={addressReq}/>
 
                                 <Label htmlFor="zipcode-2">Zipcode (12345)</Label>
                                 <TextInput id="zipcode-2" name="zip-code-2" value={props.fieldData.mail_zip_code} onChange={props.saveFieldData('mail_zip_code')} type="text" autoComplete="off" required={addressReq}/>
