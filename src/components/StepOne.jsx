@@ -14,13 +14,13 @@ function StepOne(props) {
 
     const buttonContinue = <div className="button-container">
     <Button type="button" onClick={props.handleNext} disabled={props.buttonStatus}>
-    Continue to check registration eligibility <Icon.ArrowForward />
+    Continue to check registration eligibility <Icon.ArrowForward aria-label="forward arrow icon"/>
     </Button></div>;
 
     const buttonRedirect = <a href={stateLink} target="_blank">
     <Button disabled={props.buttonStatus}>
         Visit your state election website
-        <Icon.Launch />
+        <Icon.Launch title="External link opens new window"/>
     </Button></a>;
 
     return (
@@ -79,10 +79,10 @@ function StepOne(props) {
         <h2>Ready to get started?</h2>
         <h3>Select your state then choose your path</h3>
         
-        <Label htmlFor="options">Home state or territory</Label>
+        <Label htmlFor="state or territory">Home state or territory</Label>
         <div className={styles['state-dropdown']}>
             <Dropdown 
-                id="input-dropdown" 
+                id="state or territory"
                 name="input-dropdown"
                 value={props.state}
                 onChange={e => {
@@ -90,7 +90,7 @@ function StepOne(props) {
                     props.handleButtonStatus(e.target.value, "one");
                 }}
                 >
-                <option value="default">Select your state or territory</option>
+                <option value={props.state}>Select your state or territory</option>
                 {statesList.map(
                 state => <option key={state} value={state}>{state}</option>
             )}
