@@ -28,7 +28,7 @@ function NotNeeded(props) {
         <p>
             <a href={stateLink}><Button type="button">
                 {notNeededContent.more_button}
-                <Icon.Launch />
+                <Icon.Launch title="External link opens new window"/>
             </Button>
             </a >
         </p>

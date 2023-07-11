@@ -73,8 +73,8 @@ function Addresses(props){
                 <Label htmlFor="city">City</Label>
                 <TextInput id="city" name="city" value={props.fieldData.city} onChange={props.saveFieldData('city')} type="text" autoComplete="off" required={addressReq}/>
 
-                <Label>State</Label>
-                <StateSelector id="state" statesList={statesList} state={props.stateData.name} saveState={props.saveFieldData('state')} autoComplete="off" disabled={true} required={addressReq}/>
+                <Label htmlFor="state">State</Label>
+                <StateSelector statesList={statesList} state={props.stateData.name} saveState={props.saveFieldData('state')} autoComplete="off" disabled={true} required={addressReq}/>
 
                 <Label htmlFor="zipcode">Zip Code (12345)</Label>
                 <TextInput id="zipcode" name="zip-code" value={props.fieldData.zip_code} onChange={props.saveFieldData('zip_code')} type="text" autoComplete="off" required={addressReq}/>

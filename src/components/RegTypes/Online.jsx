@@ -31,7 +31,7 @@ function Online(props) {
             <a href={stateLink} target="_blank">
                 <Button type="button">
                     Go to state online registration
-                    <Icon.Launch/>
+                    <Icon.Launch title="External link opens new window"/>
                 </Button>
             </a>
         </div>
