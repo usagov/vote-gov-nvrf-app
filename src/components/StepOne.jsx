@@ -90,7 +90,7 @@ function StepOne(props) {
                     props.handleButtonStatus(e.target.value, "one");
                 }}
                 >
-                <option value={props.state}>Select your state or territory</option>
+                <option value="default">Select your state or territory</option>
                 {statesList.map(
                 state => <option key={state} value={state}>{state}</option>
             )}
