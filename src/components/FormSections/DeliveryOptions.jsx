@@ -1,4 +1,4 @@
-import { Form, Label, TextInput, Button, Dropdown,Checkbox, DatePicker } from '@trussworks/react-uswds';
+import { Button } from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import Email from "../DeliveryOptions/Email";
 import Print from "../DeliveryOptions/Print";
@@ -32,6 +32,8 @@ function DeliveryOptions(props){
             <Email
                 state={props.state}
                 stateData={props.stateData}
+                fieldData={props.fieldData}
+                saveFieldData = {props.saveFieldData}
                 handleNext={props.handleNext}
                 buttonDisabled={props.buttonDisabled}
             />
@@ -41,6 +43,8 @@ function DeliveryOptions(props){
             <Print
                 state={props.state}
                 stateData={props.stateData}
+                fieldData={props.fieldData}
+                saveFieldData = {props.saveFieldData}
                 handleNext={props.handleNext}
                 buttonDisabled={props.buttonDisabled}
             />
