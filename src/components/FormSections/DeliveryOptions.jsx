@@ -34,6 +34,7 @@ function DeliveryOptions(props){
                 stateData={props.stateData}
                 fieldData={props.fieldData}
                 saveFieldData = {props.saveFieldData}
+                deliveryOption = {buttonSelected}
                 handleNext={props.handleNext}
                 buttonDisabled={props.buttonDisabled}
             />
@@ -45,6 +46,7 @@ function DeliveryOptions(props){
                 stateData={props.stateData}
                 fieldData={props.fieldData}
                 saveFieldData = {props.saveFieldData}
+                deliveryOption = {buttonSelected}
                 handleNext={props.handleNext}
                 buttonDisabled={props.buttonDisabled}
             />
