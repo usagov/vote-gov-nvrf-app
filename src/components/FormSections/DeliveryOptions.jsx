@@ -2,10 +2,10 @@ import { Button } from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import Email from "../DeliveryOptions/Email";
 import Print from "../DeliveryOptions/Print";
-import content from "../../data/step-four.json";
+import content from "../../data/registration-form.json";
 
 function DeliveryOptions(props){
-    const [buttonSelected, setButtonSelected] = useState('no selection')
+    const [buttonSelected, setButtonSelected] = useState('email')
 
     const handleClick = (deliveryType) => {
         if (deliveryType === 'email') {
@@ -51,6 +51,9 @@ function DeliveryOptions(props){
                 buttonDisabled={props.buttonDisabled}
             />
         }
+        <Button type="submit" onClick={props.handleNext}>
+            {buttonSelected === 'email' ? 'Send Form to My Email Address' : 'Print'}
+        </Button>
         </>
     );
 }

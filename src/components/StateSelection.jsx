@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { Label, Dropdown, Button, ProcessList, ProcessListItem, ProcessListHeading, Icon, GridContainer, Grid } from '@trussworks/react-uswds';
 import states from "../data/states.json";
-import styles from "../styles/StepOne.module.css";
+import styles from "../styles/StateSelection.module.css";
 import CardInfo from "./CardInfo";
 
-function StepOne(props) {
+function StateSelection(props) {
     const stateLink = props.stateData.election_website_url;
     const statesList = []
     for (let i = 0; i < states.length; i++) {
@@ -109,4 +109,4 @@ function StepOne(props) {
     );
 }
 
-export default StepOne;
+export default StateSelection;

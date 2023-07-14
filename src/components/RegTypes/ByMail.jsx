@@ -1,5 +1,5 @@
 import { Button, Radio } from '@trussworks/react-uswds';
-import data from "../../data/step-two.json";
+import data from "../../data/state-selection.json";
 
 function ByMail(props) {
     const content = data;

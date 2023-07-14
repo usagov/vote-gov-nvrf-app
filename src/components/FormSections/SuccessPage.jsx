@@ -1,7 +1,7 @@
-import ProgressBar from './ProgressBar';
+import ProgressBar from '../ProgressBar';
 import { Button } from '@trussworks/react-uswds';
 
-function StepFive(props) {
+function SuccessPage(props) {
     return (
         <>
         <ProgressBar step={"success"}/>
@@ -38,4 +38,4 @@ function StepFive(props) {
     );
 }
 
-export default StepFive;
+export default SuccessPage;

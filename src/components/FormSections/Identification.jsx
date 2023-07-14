@@ -1,6 +1,6 @@
 import { Form, Label, TextInput, Button, DateInputGroup, DateInput, Fieldset } from '@trussworks/react-uswds';
 import React, { useState } from "react";
-import content from "../../data/step-four.json";
+import content from "../../data/registration-form.json";
 
 function Identification(props){
     const stateFieldRequirements = props.stateData.fields_required;

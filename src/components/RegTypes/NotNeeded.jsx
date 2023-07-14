@@ -1,6 +1,6 @@
 import {Button, Link, Icon} from '@trussworks/react-uswds';
 import reactStringReplace from 'react-string-replace';
-import data from "../../data/step-two.json";
+import data from "../../data/state-selection.json";
 
 function NotNeeded(props) {
     const content = data;

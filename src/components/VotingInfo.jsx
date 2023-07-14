@@ -4,7 +4,7 @@ import ByMail from "./RegTypes/ByMail";
 import Online from "./RegTypes/Online";
 import NotNeeded from "./RegTypes/NotNeeded";
 
-function StepTwo(props) {
+function VotingInfo(props) {
     const regType = props.stateData.reg_type;
 
     return (
@@ -39,4 +39,4 @@ function StepTwo(props) {
     );
 }
 
-export default StepTwo;
+export default VotingInfo;
