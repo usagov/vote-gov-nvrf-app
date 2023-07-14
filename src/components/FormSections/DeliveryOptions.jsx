@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Email from "../DeliveryOptions/Email";
 import Print from "../DeliveryOptions/Print";
 import content from "../../data/registration-form.json";
+import CardSelect from '../CardSelect';
 
 function DeliveryOptions(props){
     const [buttonSelected, setButtonSelected] = useState('email')
@@ -21,12 +22,20 @@ function DeliveryOptions(props){
         <p>You can generate a printable document (.pdf) of your completed form and print now, or have a printable document sent to your email address to print later.</p>
 
         <h3>Select one of the options below to continue.</h3>
-            <Button type="button" onClick={() => handleClick('email')}>
-                Email, print, and mail
-            </Button>
-            <Button type="button" onClick={() => handleClick('print')}>
-                Print and mail
-            </Button>
+        <div onClick={() => {handleClick('email')}}>
+        <CardSelect 
+            iconPath={"/images/email-print-mail.svg"}
+            text={"Email, print, and mail"} 
+            cardStyle={buttonSelected === 'email' ? 'card-selected' : 'card'}
+        />
+        </div >
+        <div onClick={() => {handleClick('print')}}>
+        <CardSelect 
+            iconPath={"/images/email-print-mail.svg"}
+            text={"Print"} 
+            cardStyle={buttonSelected === 'print' ? 'card-selected' : 'card'}
+        />
+        </div >
 
         {buttonSelected === 'email' &&
             <Email
