@@ -52,8 +52,13 @@ function MultiStepForm(props) {
         <>
         {/* uswds components, html, jsx output goes here*/}
         <ProgressBar step={step}/>
-        <h1>{content.main_heading}: {props.stateData.name}</h1>
-        <p>{content.StateSelection_text}</p>
+        {step != 7 && 
+        <div>
+            <h1>{content.main_heading} : {props.stateData.name}</h1>
+            <p>{content.StateSelection_text}</p>
+        </div>
+        }
+
 
         <Form style={{ maxWidth:'none' }} onSubmit={(e) => {handleSubmit(e)}}>
             {step === 1 && 
