@@ -1,6 +1,6 @@
 import { Alert, Form, Label, TextInput, Button, Dropdown,Checkbox, DatePicker } from '@trussworks/react-uswds';
 import React, { useState } from "react";
-import content from "../../data/step-five.json";
+import content from "../../data/confirmation.json";
 
 function Confirmation(props){
     const fieldData = props.fieldData;
