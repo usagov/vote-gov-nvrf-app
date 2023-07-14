@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Button, Icon, GridContainer, Grid } from '@trussworks/react-uswds';
-import content from "../data/step-three.json";
+import content from "../data/path-selection.json";
 import CardSelect from "./CardSelect";
-import styles from "../styles/StepThree.module.css";
+import styles from "../styles/PathSelection.module.css";
 
-function StepThree(props) {
+function PathSelection(props) {
     const [buttonSelected, setButtonSelected] = useState('no selection')
 
     const handleClick = (id) => {
@@ -62,4 +62,4 @@ function StepThree(props) {
     );
 }
 
-export default StepThree;
+export default PathSelection;

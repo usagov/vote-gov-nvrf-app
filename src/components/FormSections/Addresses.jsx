@@ -2,7 +2,7 @@ import { Form, Label, TextInput, Button, Dropdown,Checkbox, DatePicker } from '@
 import StateSelector from '../StateSelector';
 import React, { useState } from "react";
 import states from "../../data/states.json";
-import content from "../../data/step-four.json";
+import content from "../../data/registration-form.json";
 
 function Addresses(props){
     const changeRegistrationVisible = (props.registrationPath === 'update') ? true : false;

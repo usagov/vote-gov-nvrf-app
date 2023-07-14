@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react'
 import states from "./data/states.json";
-import StepOne from './components/StepOne';
-import StepTwo from './components/StepTwo';
-import StepThree from './components/StepThree';
-import StepFour from './components/StepFour';
-import StepFive from './components/StepFive';
+import StateSelection from './components/StateSelection';
+import VotingInfo from './components/VotingInfo';
+import PathSelection from './components/PathSelection';
+import MultiStepForm from './components/MultiStepForm';
 
 function App() {
 
@@ -32,7 +31,7 @@ function App() {
   };
 
   const handleNext = () => {
-    step != 5 && setStep(step + 1);
+    step != 4 && setStep(step + 1);
     window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
   }
 
@@ -84,7 +83,7 @@ function App() {
     <>
     <div id="top"></div>
         {step === 1 && 
-          <StepOne 
+          <StateSelection 
           handleNext={handleNext} 
           handleButtonStatus={handleButtonStatus}
           getSelectedState={getSelectedState} 
@@ -93,7 +92,7 @@ function App() {
           buttonStatus={buttonStatusOne}
           />}  
         {step === 2 && 
-          <StepTwo 
+          <VotingInfo 
           handleNext={handleNext} 
           handlePrev={handlePrev}
           handleRadio={handleRadio}
@@ -103,7 +102,7 @@ function App() {
           radioValid={radioValid}
           />}  
         {step === 3 && 
-          <StepThree 
+          <PathSelection 
           handleNext={handleNext} 
           handlePrev={handlePrev} 
           stateData={stateData}
@@ -112,7 +111,7 @@ function App() {
           getFormStep={getFormStep}
           />}  
         {step === 4 && 
-          <StepFour 
+          <MultiStepForm 
           handleNext={handleNext} 
           handlePrev={handlePrev}
           statesList={statesList}
@@ -121,12 +120,6 @@ function App() {
           registrationPath={registrationPath}
           getFormStep={getFormStep}
           />}
-        {step === 5 && 
-          <StepFive
-              handleNext={handleNext}
-              handlePrev={handlePrev}
-          />}  
-
     </>
   )
 }

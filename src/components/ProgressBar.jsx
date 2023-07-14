@@ -32,7 +32,8 @@ function ProgressBar(props) {
             <StepIndicatorStep status={stepProgress(3)}/>
             <StepIndicatorStep status={stepProgress(4)}/>
             <StepIndicatorStep status={stepProgress(5)}/>   
-            <StepIndicatorStep status={stepProgress(6)}/>                         
+            <StepIndicatorStep status={stepProgress(6)}/>   
+            <StepIndicatorStep status={stepProgress(7)}/>                                               
         </StepIndicator>        
         </>
         }

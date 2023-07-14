@@ -1,5 +1,5 @@
 import { Button, Radio, Icon } from '@trussworks/react-uswds';
-import data from "../../data/step-two.json";
+import data from "../../data/state-selection.json";
 
 function Online(props) {
     const content = data;
