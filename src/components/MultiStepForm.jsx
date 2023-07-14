@@ -48,11 +48,22 @@ function MultiStepForm(props) {
         console.log('Submitted!')
     }
 
+    //Email and Print controls
+    const [deliveryButtonSelected, setDeliveryButtonSelected] = useState('email')
+
+    const handleClickDeliveryButton = (deliveryType) => {
+        if (deliveryType === 'email') {
+            setDeliveryButtonSelected('email')
+        } else if (deliveryType === 'print') {
+            setDeliveryButtonSelected('print')
+        }
+    }
+
     return (
         <>
         {/* uswds components, html, jsx output goes here*/}
         <ProgressBar step={step}/>
-        {step != 7 && 
+        {step != 7 &&
         <div>
             <h1>{content.main_heading} : {props.stateData.name}</h1>
             <p>{content.StateSelection_text}</p>
@@ -61,7 +72,7 @@ function MultiStepForm(props) {
 
 
         <Form style={{ maxWidth:'none' }} onSubmit={(e) => {handleSubmit(e)}}>
-            {step === 1 && 
+            {step === 1 &&
                 <PersonalInfo
                 state={props.state}
                 stateData={props.stateData}
@@ -71,7 +82,7 @@ function MultiStepForm(props) {
                 handlePrev={props.handlePrev}
                 handleNext={handleNext}/>
             }
-            {step === 2 &&         
+            {step === 2 &&
                 <Addresses
                 state={props.state}
                 stateData={props.stateData}
@@ -81,7 +92,7 @@ function MultiStepForm(props) {
                 handlePrev={handlePrev}
                 handleNext={handleNext}/>
             }
-            {step === 3 &&         
+            {step === 3 &&
                 <Identification
                 state={props.state}
                 stateData={props.stateData}
@@ -91,7 +102,7 @@ function MultiStepForm(props) {
                 handlePrev={handlePrev}
                 handleNext={handleNext}/>
             }
-            {step === 4 &&         
+            {step === 4 &&
                 <PoliticalParty
                 state={props.state}
                 stateData={props.stateData}
@@ -102,7 +113,7 @@ function MultiStepForm(props) {
                 handleNext={handleNext}
                 />
             }
-            {step === 5 && 
+            {step === 5 &&
                 <Confirmation
                 state={props.state}
                 stateData={props.stateData}
@@ -113,7 +124,7 @@ function MultiStepForm(props) {
                 handleNext={handleNext}
                 />
             }
-            {step === 6 && 
+            {step === 6 &&
                 <DeliveryOptions
                 state={props.state}
                 stateData={props.stateData}
@@ -122,11 +133,15 @@ function MultiStepForm(props) {
                 registrationPath={props.registrationPath}
                 handlePrev={handlePrev}
                 handleNext={handleNext}
+                deliveryButtonSelected = {deliveryButtonSelected}
+                handleClickDeliveryButton = {handleClickDeliveryButton}
                 />
             }
         </Form>
-        {step === 7 && 
-            <SuccessPage/>
+        {step === 7 &&
+            <SuccessPage
+            deliveryButtonSelected = {deliveryButtonSelected}
+            />
         }
         </>
     );
