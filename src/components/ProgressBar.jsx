@@ -13,19 +13,6 @@ function ProgressBar(props) {
       
     return (
         <>
-        {props.step === "success" ? 
-        <>
-        <StepIndicator counters="small" headingLevel="h4">
-            <StepIndicatorStep status="complete"/>
-            <StepIndicatorStep status="complete"/>
-            <StepIndicatorStep status="complete"/>
-            <StepIndicatorStep status="complete"/>
-            <StepIndicatorStep status="complete"/>       
-            <StepIndicatorStep status="complete"/>               
-        </StepIndicator>
-        </>
-            :
-        <>
         <StepIndicator counters="small" headingLevel="h4">
             <StepIndicatorStep status={stepProgress(1)}/>
             <StepIndicatorStep status={stepProgress(2)}/>
@@ -35,8 +22,6 @@ function ProgressBar(props) {
             <StepIndicatorStep status={stepProgress(6)}/>   
             <StepIndicatorStep status={stepProgress(7)}/>                                               
         </StepIndicator>        
-        </>
-        }
         </>
     );
 }
