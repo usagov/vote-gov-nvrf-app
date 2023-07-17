@@ -1,8 +1,10 @@
+import content from "../../data/success-page.json";
+
 function PrintSuccess(props) {
     return (
         <>
-            <h1>Success! Your form is ready to print!.</h1>
-            <p>Be sure to print out the completed form, put it in an envelope, add the correct postage, and mail it to your state election office.</p>
+             <h1>{content.print_heading_main}</h1>
+            <p>{content.print_text}</p>
         </>
     );
 }

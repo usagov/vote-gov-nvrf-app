@@ -1,0 +1,17 @@
+{
+    "reminder_heading": "Create a reminder to mail your form",
+    "reminder_text": "Take a minute and set a reminder for yourself to make sure you don’t forget to mail in your form — add it to your calendar or jot it down on a notepad and put it on your fridge to help you remember.",
+    "mail_heading": "Mail to the following address:",
+    "mail_text": "You may also deliver the application in person to your local voter registration office.",
+    "first_time_voter_heading": "First time voter requirements",
+    "first_time_voter_text": "If you are registering to vote for the first time in your jurisdiction and are mailing this registration application, Federal law requires you to show proof of identification the first time you vote. Proof of identification includes:",
+    "first_time_voter_req1": "A current and valid photo identification or",
+    "first_time_voter_req2": "A current utility bill, bank statement, government check, paycheck or government document that shows your name and address. ",
+    "first_time_voter_text2": "Voters may be exempt from this requirement if they submit a COPY of this identification with their mail in voter registration form. If you wish to submit a COPY, please keep the following in mind:• Your state may have additional identification requirements which may mandate you showidentification at the polling place even if you meet the Federal proof of identification.• Do not submit original documents with this application, only COPIES",
+    "vote_forget_heading": "Don’t forget to vote!",
+    "vote_forget_text": "Prepare to cast your vote. Explore Vote.gov to learn more about how our elections are run and your voting options.",
+    "email_heading_main": "Success! Your form has been sent to your email.",
+    "email_text": "Check your email to make sure you have received a PDF of your form. Be sure to print out the completed form, put it in an envelope, add the correct postage, and mail it to your state election office.",
+    "print_heading_main": "Success! Your form is ready to print!",
+    "print_text": "Be sure to print out the completed form, put it in an envelope, add the correct postage, and mail it to your state election office."
+}
