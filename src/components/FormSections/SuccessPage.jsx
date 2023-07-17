@@ -7,7 +7,6 @@ import content from "../../data/success-page.json";
 function SuccessPage(props) {
     const deliveryOption = props.deliveryButtonSelected;
     const stateAddress = props.stateData.state_address;
-    console.log(stateAddress);
     return (
         <>
             {(deliveryOption === 'email') &&
@@ -22,10 +21,9 @@ function SuccessPage(props) {
             <p>{content.reminder_text}</p>
 
             <p><strong>{content.mail_heading}</strong></p>
-            <p>{stateAddress.business_name}</p>
-            <p>{stateAddress.line_1}</p>
-            <p>{stateAddress.line_2}</p>
-            <p>{stateAddress.line_3}</p>
+            <span style={{ whiteSpace:'pre' }}>
+                {stateAddress}
+            </span>
 
             <p>{content.mail_text}</p>
 
@@ -37,6 +35,10 @@ function SuccessPage(props) {
             </ul>
 
             <p>{content.first_time_voter_text2}</p>
+            <ul>
+                <li>{content.exempt_listitem1}</li>
+                <li>{content.exempt_listitem2}</li>
+            </ul>
 
             <h3>{content.vote_forget_heading}</h3>
             <p>{content.vote_forget_text}</p> 
