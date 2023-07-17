@@ -141,6 +141,8 @@ function MultiStepForm(props) {
         {step === 7 &&
             <SuccessPage
             deliveryButtonSelected = {deliveryButtonSelected}
+            state={props.state}
+            stateData={props.stateData}
             />
         }
         </>
