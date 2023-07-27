@@ -1,4 +1,4 @@
-import { Button } from '@trussworks/react-uswds';
+import { Button, Grid } from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import Email from "../DeliveryOptions/Email";
 import Print from "../DeliveryOptions/Print";
@@ -13,20 +13,26 @@ function DeliveryOptions(props){
         <p>You can generate a printable document (.pdf) of your completed form and print now, or have a printable document sent to your email address to print later.</p>
 
         <h3>Select one of the options below to continue.</h3>
-        <div onClick={() => {props.handleClickDeliveryButton('email')}}>
-        <CardSelect
-            iconPath={"/images/email-print-mail.svg"}
-            text={"Email, print, and mail"}
-            cardStyle={props.deliveryButtonSelected === 'email' ? 'card-selected' : 'card'}
-        />
-        </div >
-        <div onClick={() => {props.handleClickDeliveryButton('print')}}>
-        <CardSelect
-            iconPath={"/images/email-print-mail.svg"}
-            text={"Print"}
-            cardStyle={props.deliveryButtonSelected === 'print' ? 'card-selected' : 'card'}
-        />
-        </div >
+        <Grid row>
+            <Grid col={6}>
+                <div onClick={() => {props.handleClickDeliveryButton('email')}}>
+                    <CardSelect
+                        iconPath={"/images/email-print-mail.svg"}
+                        text={"Email, print, and mail"}
+                        cardStyle={props.deliveryButtonSelected === 'email' ? 'card-selected' : 'card'}
+                    />
+                    </div >
+            </Grid>
+            <Grid col={6}>
+                <div onClick={() => {props.handleClickDeliveryButton('print')}}>
+                    <CardSelect
+                        iconPath={"/images/email-print-mail.svg"}
+                        text={"Print"}
+                        cardStyle={props.deliveryButtonSelected === 'print' ? 'card-selected' : 'card'}
+                    />
+                </div >
+            </Grid>
+        </Grid>
 
         {props.deliveryButtonSelected === 'email' &&
             <Email

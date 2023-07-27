@@ -65,7 +65,7 @@ function MultiStepForm(props) {
         <ProgressBar step={step}/>
         {step != 7 &&
         <div>
-            <h1>{content.main_heading} : {props.stateData.name}</h1>
+            <h1>{content.main_heading}: {props.stateData.name}</h1>
             <p>{content.StateSelection_text}</p>
         </div>
         }
