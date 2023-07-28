@@ -1,6 +1,7 @@
 import { Form, Label, TextInput, Button, Dropdown,Checkbox, DateInputGroup, DateInput, Fieldset} from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import content from "../../data/registration-form.json";
+import { dayValidate, monthValidate, yearValidate, handleFormat } from './ValidateField';
 
 function PersonalInfo(props){
     const stateFieldRequirements = props.stateData.fields_required;
@@ -126,7 +127,9 @@ function PersonalInfo(props){
                             name="date_of_birth_month"
                             label="Month"
                             unit="month"
-                            value={props.fieldData.date_of_birth_month} onChange={props.saveFieldData('date_of_birth_month')}
+                            value={props.fieldData.date_of_birth_month} 
+                            onChange={props.saveFieldData('date_of_birth_month')}
+                            onKeyUp={(e) => dayValidate(e.target.value)}
                             maxLength={2}
                             minLength={2}
                         />
@@ -135,7 +138,9 @@ function PersonalInfo(props){
                             name="date_of_birth_day"
                             label="Day"
                             unit="day"
-                            value={props.fieldData.date_of_birth_day} onChange={props.saveFieldData('date_of_birth_day')}
+                            value={props.fieldData.date_of_birth_day} 
+                            onChange={props.saveFieldData('date_of_birth_day')}
+                            onKeyUp={(e) => monthValidate(e.target.value)}
                             maxLength={2}
                             minLength={2}
                         />
@@ -144,7 +149,9 @@ function PersonalInfo(props){
                             name="date_of_birth_year"
                             label="Year"
                             unit="year"
-                            value={props.fieldData.date_of_birth_year} onChange={props.saveFieldData('date_of_birth_year')}
+                            value={props.fieldData.date_of_birth_year} 
+                            onChange={props.saveFieldData('date_of_birth_year')}
+                            onKeyUp={(e) => yearValidate(e.target.value)}
                             maxLength={4}
                             minLength={4}
                         />
@@ -156,7 +163,16 @@ function PersonalInfo(props){
         {telephoneVisible && (
             <div>
                 <Label htmlFor="phone-number">Phone Number (123-456-7890)</Label>
-                <TextInput id="phone-number" name="phone-number" value={props.fieldData.phone_number} onChange={props.saveFieldData('phone_number')} type="text" autoComplete="off" required={telephoneReq}/>
+                <TextInput 
+                    id="phone-number" 
+                    name="phone-number" 
+                    value={props.fieldData.phone_number} 
+                    onChange={props.saveFieldData('phone_number')} 
+                    type="text" autoComplete="off" 
+                    required={telephoneReq}
+                    maxLength={13}
+                    minLength={13}
+                />
             </div>
         )}
 
@@ -180,7 +196,7 @@ function PersonalInfo(props){
                 type="button"
                 onClick={props.handleNext}>
                 Continue to address & location
-            </Button>
+            </Button> 
         </>
     );
 }
