@@ -1,7 +1,7 @@
 import { Form, Label, TextInput, Button, Dropdown,Checkbox, DateInputGroup, DateInput, Fieldset} from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import content from "../../data/registration-form.json";
-import { dayValidate, monthValidate, yearValidate, handleFormat } from './ValidateField';
+import { dayValidate, monthValidate, yearValidate, focusNext } from './ValidateField';
 
 function PersonalInfo(props){
     const stateFieldRequirements = props.stateData.fields_required;
@@ -17,6 +17,9 @@ function PersonalInfo(props){
     const telephoneReq = stateFieldRequirements.telephone;
     const raceVisible = stateFieldVisible.race;
     const raceReq = stateFieldRequirements.race;
+
+    const [dateValid, setDateValid] = useState({ day: false, month: false, year: false });
+    const [phoneValid, setPhoneValid] = useState(false)
 
      //Previous name fields controls
      const [hasPreviousName, setHasPreviousName] = useState(false);
@@ -127,20 +130,28 @@ function PersonalInfo(props){
                             name="date_of_birth_month"
                             label="Month"
                             unit="month"
+                            type="text" inputMode="numeric" pattern="[0-9]*"
                             value={props.fieldData.date_of_birth_month} 
                             onChange={props.saveFieldData('date_of_birth_month')}
-                            onKeyUp={(e) => dayValidate(e.target.value)}
+                            onKeyUp={(e) => 
+                                setDateValid({...dateValid, month: dayValidate(e.target.value)},
+                                focusNext(e.target.id, e.target.value, e.target.maxLength, "date_of_birth_day")
+                            )}
                             maxLength={2}
                             minLength={2}
                         />
-                        <DateInput
+                        <DateInput 
                             id="date_of_birth_day"
                             name="date_of_birth_day"
                             label="Day"
                             unit="day"
+                            type="text" inputMode="numeric" pattern="[0-9]*"
                             value={props.fieldData.date_of_birth_day} 
                             onChange={props.saveFieldData('date_of_birth_day')}
-                            onKeyUp={(e) => monthValidate(e.target.value)}
+                            onKeyUp={(e) => 
+                                setDateValid({...dateValid, day: monthValidate(e.target.value)},
+                                focusNext(e.target.id, e.target.value, e.target.maxLength, "date_of_birth_year")
+                            )}
                             maxLength={2}
                             minLength={2}
                         />
@@ -149,13 +160,17 @@ function PersonalInfo(props){
                             name="date_of_birth_year"
                             label="Year"
                             unit="year"
+                            type="text" inputMode="numeric" pattern="[0-9]*"
                             value={props.fieldData.date_of_birth_year} 
                             onChange={props.saveFieldData('date_of_birth_year')}
-                            onKeyUp={(e) => yearValidate(e.target.value)}
+                            onKeyUp={(e) => setDateValid({...dateValid, year: yearValidate(e.target.value)})}
                             maxLength={4}
                             minLength={4}
                         />
                     </DateInputGroup>
+                    <p>{!dateValid.day && "*day value is invlaid"}</p>
+                    <p>{!dateValid.month && "*month value is invlaid"}</p>
+                    <p>{!dateValid.year && "*year value is invlaid"}</p>
                 </Fieldset>
             </div>
         )}
@@ -168,11 +183,13 @@ function PersonalInfo(props){
                     name="phone-number" 
                     value={props.fieldData.phone_number} 
                     onChange={props.saveFieldData('phone_number')} 
+                    onKeyUp={(e) => setPhoneValid(e.target.value.length == 12)}
                     type="text" autoComplete="off" 
                     required={telephoneReq}
                     maxLength={13}
                     minLength={13}
                 />
+                <p>{!phoneValid && "*phone number requires 10 digits"}</p>
             </div>
         )}
 

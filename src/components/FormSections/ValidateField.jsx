@@ -1,15 +1,29 @@
 export const dayValidate=(value)=>{
-    console.log('day: ', value)
-    //if value is 1 digit, add a 0 in front
-    //when value is 2 digits, focus next element
+    if (value > 0 && value < 13 ) {
+        return true
+    } else {
+        return false;
+    }
 }
 export const monthValidate=(value)=>{
-    console.log('month: ', value)
-    //if value is 1 digit, add a 0 in front
-    //when value is 2 digits, focus next element
+    if (value > 0 && value < 32 ) {
+        return true
+    } else {
+        return false;
+    }
 }
 export const yearValidate=(value)=>{
-    console.log('year: ', value)
+    if (value.length === 4) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+export const focusNext=(currentId, value, maxLength, nextId)=>{
+    if (value.length == maxLength) {
+        document.getElementById(nextId).focus();
+    }
 }
 
 export const handleFormat=(input)=>{
