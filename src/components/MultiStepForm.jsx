@@ -9,7 +9,7 @@ import Confirmation from './FormSections/Confirmation';
 import DeliveryOptions from "./FormSections/DeliveryOptions";
 import PoliticalParty from './FormSections/PoliticalParty';
 import SuccessPage from './FormSections/SuccessPage';
-import { handleFormat } from './FormSections/ValidateField';
+import { phoneFormat } from './FormSections/ValidateField';
 
 function MultiStepForm(props) {
      {/* functions/variables code goes here */}
@@ -28,7 +28,7 @@ function MultiStepForm(props) {
     const saveFieldData = (name) => {
         return (event) => {
         if (name === 'phone_number') {
-            setFieldData({ ...fieldData, [name]: handleFormat(event.target.value) });
+            setFieldData({ ...fieldData, [name]: phoneFormat(event.target.value) });
         } else {
             setFieldData({ ...fieldData, [name]: event.target.value });
         }
@@ -70,7 +70,7 @@ function MultiStepForm(props) {
         {step != 7 &&
         <div>
             <h1>{content.main_heading}: {props.stateData.name}</h1>
-            <p>{content.StateSelection_text}</p>
+            <p>{content.intro_text}</p>
         </div>
         }
 
