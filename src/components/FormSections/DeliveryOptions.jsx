@@ -1,9 +1,10 @@
-import { Button, Grid } from '@trussworks/react-uswds';
+import { Button, Grid, GridContainer } from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import Email from "../DeliveryOptions/Email";
 import Print from "../DeliveryOptions/Print";
 import content from "../../data/registration-form.json";
 import CardSelect from '../CardSelect';
+import styles from "../../styles/DeliveryOptions.module.css";
 
 function DeliveryOptions(props){
 
@@ -13,26 +14,34 @@ function DeliveryOptions(props){
         <p>You can generate a printable document (.pdf) of your completed form and print now, or have a printable document sent to your email address to print later.</p>
 
         <h3>Select one of the options below to continue.</h3>
-        <Grid row>
-            <Grid col={6}>
-                <div onClick={() => {props.handleClickDeliveryButton('email')}}>
-                    <CardSelect
-                        iconPath={"/images/email-print-mail.svg"}
-                        text={"Email, print, and mail"}
-                        cardStyle={props.deliveryButtonSelected === 'email' ? 'card-selected' : 'card'}
-                    />
-                    </div >
+        <GridContainer>
+            <Grid row gap>
+                <div className={styles['card-padding']}>
+                <Grid row>
+                    <Grid tablet={{ col: true }}>
+                        <div onClick={() => {props.handleClickDeliveryButton('email')}}>
+                        <CardSelect
+                            iconPath={"/images/email-print-mail.svg"}
+                            text={"Email, print, and mail"}
+                            cardStyle={props.deliveryButtonSelected === 'email' ? 'card-selected' : 'card'}/>
+                        </div>
+                    </Grid>
+                </Grid>                    
+                </div>
+                <div className={styles['card-padding']}>
+                <Grid row>
+                    <Grid tablet={{ col: true }}>
+                        <div onClick={() => {props.handleClickDeliveryButton('print')}}>
+                            <CardSelect
+                                iconPath={"/images/email-print-mail.svg"}
+                                text={"Print"}
+                                cardStyle={props.deliveryButtonSelected === 'print' ? 'card-selected' : 'card'}/>
+                        </div>
+                    </Grid>
+                </Grid>                    
+                </div>
             </Grid>
-            <Grid col={6}>
-                <div onClick={() => {props.handleClickDeliveryButton('print')}}>
-                    <CardSelect
-                        iconPath={"/images/email-print-mail.svg"}
-                        text={"Print"}
-                        cardStyle={props.deliveryButtonSelected === 'print' ? 'card-selected' : 'card'}
-                    />
-                </div >
-            </Grid>
-        </Grid>
+        </GridContainer>
 
         {props.deliveryButtonSelected === 'email' &&
             <Email
