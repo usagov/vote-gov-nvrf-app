@@ -8,15 +8,15 @@
         "registration_url": "https://voterregistration.alaska.gov/?ref=voteusa_en",
         "fields_required":
         {
-            "name": false,
-            "address": false,
-            "mailing_address": false,
-            "DOB": false,
+            "name": true,
+            "address": true,
+            "mailing_address": true,
+            "DOB": true,
             "telephone": false,
-            "ID_num": false,
+            "ID_num": true,
             "party": false,
             "race": false,
-            "acknowledgement": false
+            "acknowledgement": true
         },
         "fields_visible":
         {
@@ -53,15 +53,15 @@
         "registration_url": "https://www.maine.gov/sos/cec/elec/voter-info/voterguide.html?ref=voteusa_en",
         "fields_required":
         {
-            "name": false,
-            "address": false,
-            "mailing_address": false,
-            "DOB": false,
+            "name": true,
+            "address": true,
+            "mailing_address": true,
+            "DOB": true,
             "telephone": false,
-            "ID_num": false,
-            "party": false,
+            "ID_num": true,
+            "party": true,
             "race": false,
-            "acknowledgement": false
+            "acknowledgement": true
         },
         "fields_visible":
         {

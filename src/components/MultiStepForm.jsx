@@ -1,4 +1,3 @@
-// get component code here https://trussworks.github.io/react-uswds/?path=/story/components-form-elements-formgroup--text-input-form-group
 import { Form, Label, TextInput, Button, Dropdown,Checkbox, DatePicker, Address } from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import ProgressBar from './ProgressBar';
@@ -10,6 +9,7 @@ import Confirmation from './FormSections/Confirmation';
 import DeliveryOptions from "./FormSections/DeliveryOptions";
 import PoliticalParty from './FormSections/PoliticalParty';
 import SuccessPage from './FormSections/SuccessPage';
+import { phoneFormat } from './FormSections/ValidateField';
 
 function MultiStepForm(props) {
      {/* functions/variables code goes here */}
@@ -27,7 +27,11 @@ function MultiStepForm(props) {
 
     const saveFieldData = (name) => {
         return (event) => {
-        setFieldData({ ...fieldData, [name]: event.target.value });
+        if (name === 'phone_number') {
+            setFieldData({ ...fieldData, [name]: phoneFormat(event.target.value) });
+        } else {
+            setFieldData({ ...fieldData, [name]: event.target.value });
+        }
         };
     };
 
@@ -65,8 +69,8 @@ function MultiStepForm(props) {
         <ProgressBar step={step}/>
         {step != 7 &&
         <div>
-            <h1>{content.main_heading} : {props.stateData.name}</h1>
-            <p>{content.StateSelection_text}</p>
+            <h1>{content.main_heading}: {props.stateData.name}</h1>
+            <p>{content.intro_text}</p>
         </div>
         }
 
