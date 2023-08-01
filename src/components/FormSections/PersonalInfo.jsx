@@ -124,27 +124,19 @@ function PersonalInfo(props){
                     <span className="usa-hint" id="date-of-birth-hint">
                     For example: 04 28 1986
                     </span>
-                    <div id="date-of-birth"className="usa-memorable-date" name="date-of-birth" autoComplete="off" required={dobReq} data-testid="dateInputGroup">
+                    <div id="date-of-birth" className="usa-memorable-date" name="date-of-birth" autoComplete="off" required={dobReq} data-testid="dateInputGroup">
                         <div data-testid="formGroup" className="usa-form-group usa-form-group--month">
                             <label data-testid="label" className="usa-label" htmlFor="testDateInput">
                                 Month
                             </label>
-                            <input 
-                                id="date_of_birth_month"
-                                className="usa-input"
-                                name="date_of_birth_month"
-                                label="Month"
-                                unit="month"
-                                required={true}
-                                type="text" inputMode="numeric" pattern="[0-9]{2}"
-                                value={props.fieldData.date_of_birth_month} 
+                            <input id="date_of_birth_month" className="usa-input" name="date_of_birth_month" label="Month" unit="month"
+                                required={true} type="text" inputMode="numeric" pattern="[0-9]{2}" value={props.fieldData.date_of_birth_month} 
                                 onChange={props.saveFieldData('date_of_birth_month')}
                                 onKeyUp={(e) => 
                                     setDateValid({...dateValid, month: dayValidate(e.target.value)},
                                     focusNext(e.target.id, e.target.value, e.target.maxLength, "date_of_birth_day")
                                 )}
-                                minLength={2}
-                                maxLength={2}
+                                minLength={2} maxLength={2}
                             />
                         </div>
                         <div data-testid="formGroup" className="usa-form-group usa-form-group--day">
@@ -152,12 +144,8 @@ function PersonalInfo(props){
                                 Day
                             </label>
                             <input 
-                                id="date_of_birth_day"
-                                className="usa-input"
-                                name="date_of_birth_day"
-                                label="Day"
-                                unit="day"
-                                required={true}
+                                id="date_of_birth_day" className="usa-input" name="date_of_birth_day"
+                                label="Day" unit="day" required={true}
                                 type="text" inputMode="numeric" pattern="[0-9]{2}"
                                 value={props.fieldData.date_of_birth_day} 
                                 onChange={props.saveFieldData('date_of_birth_day')}
@@ -165,33 +153,26 @@ function PersonalInfo(props){
                                     setDateValid({...dateValid, day: monthValidate(e.target.value)},
                                     focusNext(e.target.id, e.target.value, e.target.maxLength, "date_of_birth_year")
                                 )}
-                                minLength={2}
-                                maxLength={2}
+                                minLength={2} maxLength={2}
                             />
                         </div>
                         <div data-testid="formGroup" className="usa-form-group usa-form-group--year">
                             <label data-testid="label" className="usa-label" htmlFor="testDateInput">
                                 Year
                             </label>
-                            <input 
-                                id="date_of_birth_year"
-                                className="usa-input"
-                                name="date_of_birth_year"
-                                label="Year"
-                                unit="year"
-                                required={true}
+                            <input id="date_of_birth_year" className="usa-input" name="date_of_birth_year"
+                                label="Year" unit="year" required={true}
                                 type="text" inputMode="numeric" pattern="[1-9][0-9]{3}"
                                 value={props.fieldData.date_of_birth_year} 
                                 onChange={props.saveFieldData('date_of_birth_year')}
                                 onKeyUp={(e) => setDateValid({...dateValid, year: yearValidate(e.target.value)})}
-                                minLength={4}
-                                maxLength={4}
+                                minLength={4} maxLength={4}
                             />
                         </div>
                     </div>
-                    <p>{!dateValid.day && "*day value is invlaid"}</p>
+                    {/* <p>{!dateValid.day && "*day value is invlaid"}</p>
                     <p>{!dateValid.month && "*month value is invlaid"}</p>
-                    <p>{!dateValid.year && "*year value is invlaid"}</p>
+                    <p>{!dateValid.year && "*year value is invlaid"}</p> */}
                 </Fieldset>
             </div>
         )}
@@ -210,7 +191,7 @@ function PersonalInfo(props){
                     maxLength={14}
                     minLength={14}
                 />
-                <p>{!phoneValid && "*phone number requires 10 digits"}</p>
+                {/* <p>{!phoneValid && "*phone number requires 10 digits"}</p> */}
             </div>
         )}
 
