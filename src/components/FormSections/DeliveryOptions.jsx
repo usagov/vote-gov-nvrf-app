@@ -33,7 +33,7 @@ function DeliveryOptions(props){
                     <Grid tablet={{ col: true }}>
                         <div onClick={() => {props.handleClickDeliveryButton('print')}}>
                             <CardSelect
-                                iconPath={"/images/email-print-mail.svg"}
+                                iconPath={"/images/print-mail.svg"}
                                 text={"Print"}
                                 cardStyle={props.deliveryButtonSelected === 'print' ? 'card-selected' : 'card'}/>
                         </div>
