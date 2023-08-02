@@ -126,9 +126,7 @@ function Addresses(props){
                 )}
             </div>
         )}
-            <Button
-                type="button"
-                onClick={props.handleNext}>
+            <Button type="submit">
                 Continue to identification
             </Button>
         </>

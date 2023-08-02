@@ -66,7 +66,7 @@ function DeliveryOptions(props){
                 buttonDisabled={props.buttonDisabled}
             />
         }
-        <Button type="submit" onClick={props.handleNext}>
+        <Button type="submit">
             {props.deliveryButtonSelected === 'email' ? 'Send Form to My Email Address' : 'Print'}
         </Button>
         </>

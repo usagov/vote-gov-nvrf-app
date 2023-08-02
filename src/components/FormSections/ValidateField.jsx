@@ -1,24 +1,3 @@
-export const dayValidate=(value)=>{
-    if (value > 0 && value < 13 ) {
-        return true
-    } else {
-        return false;
-    }
-}
-export const monthValidate=(value)=>{
-    if (value > 0 && value < 32 ) {
-        return true
-    } else {
-        return false;
-    }
-}
-export const yearValidate=(value)=>{
-    if (value.length === 4) {
-        return true;
-    } else {
-        return false;
-    }
-}
 
 export const focusNext=(value, maxLength, nextId)=>{
     if (value.length == maxLength) {
@@ -26,13 +5,14 @@ export const focusNext=(value, maxLength, nextId)=>{
     }
 }
 
-export const restrictLength = (e) => {
-    const { value, maxLength } = e.target;
-    if (e.key != 'Backspace' && String(value).length >= maxLength) {
+export const restrictType = (e) => {
+    if (e.key === 'Backspace') {
+      return;
+    } else if (isNaN(e.key)) {
       e.preventDefault();
       return;
     }
-  };
+}
 
 export const phoneFormat=(input)=>{//returns (###) ###-####
     input = input.replace(/\D/g,'');

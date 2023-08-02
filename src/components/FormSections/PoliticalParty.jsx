@@ -32,9 +32,7 @@ function PoliticalParty(props){
             </div>
         )}
 
-        <Button
-            type="button"
-            onClick={props.handleNext}>
+        <Button type="submit">
             Confirm your information
         </Button>
         </>

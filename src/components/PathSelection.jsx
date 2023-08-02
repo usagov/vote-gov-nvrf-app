@@ -33,7 +33,7 @@ function PathSelection(props) {
                         iconPath={"/images/update.svg"}
                         text={content.button_update_reg} 
                         cardStyle={buttonSelected === 'update' ? 'card-selected' : 'card'}/>
-                    </div >
+                    </div>
                 </Grid>
                 <Grid col={6}><p>{content.help_text_one}</p></Grid>
             </Grid>
