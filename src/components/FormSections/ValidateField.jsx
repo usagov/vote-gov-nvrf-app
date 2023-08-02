@@ -1,32 +1,16 @@
-export const dayValidate=(value)=>{
-    if (value > 0 && value < 13 ) {
-        return true
-    } else {
-        return false;
-    }
-}
-export const monthValidate=(value)=>{
-    if (value > 0 && value < 32 ) {
-        return true
-    } else {
-        return false;
-    }
-}
-export const yearValidate=(value)=>{
-    if (value.length === 4) {
-        return true;
-    } else {
-        return false;
-    }
-}
 
-export const expirationValidate=()=> {
-
-}
-
-export const focusNext=(currentId, value, maxLength, nextId)=>{
+export const focusNext=(value, maxLength, nextId)=>{
     if (value.length == maxLength) {
         document.getElementById(nextId).focus();
+    }
+}
+
+export const restrictType = (e) => {
+    if (e.key === 'Backspace') {
+      return;
+    } else if (isNaN(e.key)) {
+      e.preventDefault();
+      return;
     }
 }
 

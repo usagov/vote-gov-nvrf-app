@@ -65,7 +65,6 @@ function MultiStepForm(props) {
 
     return (
         <>
-        {/* uswds components, html, jsx output goes here*/}
         <ProgressBar step={step}/>
         {step != 7 &&
         <div>
@@ -74,8 +73,7 @@ function MultiStepForm(props) {
         </div>
         }
 
-
-        <Form style={{ maxWidth:'none' }} onSubmit={(e) => {handleSubmit(e)}}>
+        <Form style={{ maxWidth:'none' }} onSubmit={(e) => {handleSubmit(e), handleNext()}}>
             {step === 1 &&
                 <PersonalInfo
                 state={props.state}
@@ -84,7 +82,7 @@ function MultiStepForm(props) {
                 saveFieldData = {saveFieldData}
                 registrationPath={props.registrationPath}
                 handlePrev={props.handlePrev}
-                handleNext={handleNext}/>
+                />
             }
             {step === 2 &&
                 <Addresses
@@ -94,7 +92,7 @@ function MultiStepForm(props) {
                 saveFieldData = {saveFieldData}
                 registrationPath={props.registrationPath}
                 handlePrev={handlePrev}
-                handleNext={handleNext}/>
+                />
             }
             {step === 3 &&
                 <Identification
@@ -103,8 +101,7 @@ function MultiStepForm(props) {
                 fieldData={fieldData}
                 saveFieldData = {saveFieldData}
                 registrationPath={props.registrationPath}
-                handlePrev={handlePrev}
-                handleNext={handleNext}/>
+                handlePrev={handlePrev}/>
             }
             {step === 4 &&
                 <PoliticalParty
@@ -113,9 +110,7 @@ function MultiStepForm(props) {
                 fieldData={fieldData}
                 saveFieldData = {saveFieldData}
                 registrationPath={props.registrationPath}
-                handlePrev={handlePrev}
-                handleNext={handleNext}
-                />
+                handlePrev={handlePrev}/>
             }
             {step === 5 &&
                 <Confirmation
@@ -124,9 +119,7 @@ function MultiStepForm(props) {
                 fieldData={fieldData}
                 saveFieldData = {saveFieldData}
                 registrationPath={props.registrationPath}
-                handlePrev={handlePrev}
-                handleNext={handleNext}
-                />
+                handlePrev={handlePrev}/>
             }
             {step === 6 &&
                 <DeliveryOptions
@@ -136,7 +129,6 @@ function MultiStepForm(props) {
                 saveFieldData = {saveFieldData}
                 registrationPath={props.registrationPath}
                 handlePrev={handlePrev}
-                handleNext={handleNext}
                 deliveryButtonSelected = {deliveryButtonSelected}
                 handleClickDeliveryButton = {handleClickDeliveryButton}
                 />

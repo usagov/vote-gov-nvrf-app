@@ -44,7 +44,7 @@ function SuccessPage(props) {
             <p>{content.vote_forget_text}</p> 
 
             <a href="https://vote.gov">
-                <Button type="button" onClick={props.handlePrev}>
+                <Button type="submit">
                     Back to Vote.gov
                 </Button>
             </a>

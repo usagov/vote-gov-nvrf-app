@@ -120,7 +120,7 @@ function Confirmation(props){
 
         <Checkbox id="acknowledge-check" name="acknowledge-check" checked={hasAcknowledged} onChange={onChangeAcknowledgeCheckbox} label="I can confirm my information is correct to the best of my knowledge." />
 
-        <Button type="submit" disabled={!hasAcknowledged} onClick={props.handleNext}>
+        <Button type="submit" disabled={!hasAcknowledged}>
             Confirm information
         </Button>
         </>

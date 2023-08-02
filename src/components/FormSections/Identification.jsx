@@ -100,7 +100,7 @@ function Identification(props){
                 </Fieldset>
             </div>
         )}
-            <Button type="button" onClick={props.handleNext}>
+            <Button type="submit">
                 Continue to political party
             </Button>
         </>
