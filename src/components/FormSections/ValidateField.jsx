@@ -20,15 +20,19 @@ export const yearValidate=(value)=>{
     }
 }
 
-export const expirationValidate=()=> {
-
-}
-
-export const focusNext=(currentId, value, maxLength, nextId)=>{
+export const focusNext=(value, maxLength, nextId)=>{
     if (value.length == maxLength) {
         document.getElementById(nextId).focus();
     }
 }
+
+export const restrictLength = (e) => {
+    const { value, maxLength } = e.target;
+    if (e.key != 'Backspace' && String(value).length >= maxLength) {
+      e.preventDefault();
+      return;
+    }
+  };
 
 export const phoneFormat=(input)=>{//returns (###) ###-####
     input = input.replace(/\D/g,'');

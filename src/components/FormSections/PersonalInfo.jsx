@@ -1,7 +1,7 @@
 import { Form, Label, TextInput, Button, Dropdown,Checkbox, DateInputGroup, DateInput, Fieldset} from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import content from "../../data/registration-form.json";
-import { dayValidate, monthValidate, yearValidate, focusNext } from './ValidateField';
+import { dayValidate, monthValidate, yearValidate, focusNext, restrictLength } from './ValidateField';
 
 function PersonalInfo(props){
     const stateFieldRequirements = props.stateData.fields_required;
@@ -130,12 +130,13 @@ function PersonalInfo(props){
                                 Month
                             </label>
                             <input id="date_of_birth_month" className="usa-input" name="date_of_birth_month" label="Month" unit="month"
-                                required={true} type="text" inputMode="numeric" pattern="[0-9]{2}" value={props.fieldData.date_of_birth_month} 
+                                required={true} type="number" inputMode="numeric" pattern="[0-9]{2}" value={props.fieldData.date_of_birth_month} 
                                 onChange={props.saveFieldData('date_of_birth_month')}
                                 onKeyUp={(e) => 
                                     setDateValid({...dateValid, month: dayValidate(e.target.value)},
-                                    focusNext(e.target.id, e.target.value, e.target.maxLength, "date_of_birth_day")
+                                    focusNext(e.target.value, e.target.maxLength, "date_of_birth_day")
                                 )}
+                                onKeyDown={restrictLength}
                                 minLength={2} maxLength={2}
                             />
                         </div>
@@ -146,13 +147,14 @@ function PersonalInfo(props){
                             <input 
                                 id="date_of_birth_day" className="usa-input" name="date_of_birth_day"
                                 label="Day" unit="day" required={true}
-                                type="text" inputMode="numeric" pattern="[0-9]{2}"
+                                type="number" inputMode="numeric" pattern="[0-9]{2}"
                                 value={props.fieldData.date_of_birth_day} 
                                 onChange={props.saveFieldData('date_of_birth_day')}
                                 onKeyUp={(e) => 
                                     setDateValid({...dateValid, day: monthValidate(e.target.value)},
-                                    focusNext(e.target.id, e.target.value, e.target.maxLength, "date_of_birth_year")
+                                    focusNext(e.target.value, e.target.maxLength, "date_of_birth_year")
                                 )}
+                                onKeyDown={restrictLength}
                                 minLength={2} maxLength={2}
                             />
                         </div>
@@ -162,10 +164,11 @@ function PersonalInfo(props){
                             </label>
                             <input id="date_of_birth_year" className="usa-input" name="date_of_birth_year"
                                 label="Year" unit="year" required={true}
-                                type="text" inputMode="numeric" pattern="[1-9][0-9]{3}"
+                                type="number" inputMode="numeric" pattern="[1-9][0-9]{3}"
                                 value={props.fieldData.date_of_birth_year} 
                                 onChange={props.saveFieldData('date_of_birth_year')}
                                 onKeyUp={(e) => setDateValid({...dateValid, year: yearValidate(e.target.value)})}
+                                onKeyDown={restrictLength}
                                 minLength={4} maxLength={4}
                             />
                         </div>
