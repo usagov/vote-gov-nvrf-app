@@ -47,7 +47,7 @@ function Identification(props){
                                 required={true} type="text" inputMode="numeric" value={props.fieldData.id_issue_date_month} 
                                 onChange={props.saveFieldData('id_issue_date_month')}
                                 onKeyUp={(e) => focusNext(e.target.value, e.target.maxLength, "id_issue_date_day")}
-                                onKeyDown={(e) => restrictType(e)}
+                                onKeyDown={(e) => restrictType(e, 'number')}
                                 minLength={2} maxLength={2}
                             />
                             </div>
@@ -59,7 +59,7 @@ function Identification(props){
                                 required={true} type="text" inputMode="numeric" value={props.fieldData.id_issue_date_day} 
                                 onChange={props.saveFieldData('id_issue_date_day')}
                                 onKeyUp={(e) => focusNext(e.target.value, e.target.maxLength, "id_issue_date_year")}
-                                onKeyDown={(e) => restrictType(e)}
+                                onKeyDown={(e) => restrictType(e, 'number')}
                                 minLength={2} maxLength={2}
                             />
                             </div>
@@ -70,7 +70,7 @@ function Identification(props){
                             <input id="id_issue_date_year" className="usa-input" name="id_issue_date_year" label="Year" unit="year"
                                 required={true} type="text" inputMode="numeric" value={props.fieldData.id_issue_date_year} 
                                 onChange={props.saveFieldData('id_issue_date_year')}
-                                onKeyDown={(e) => restrictType(e)}
+                                onKeyDown={(e) => restrictType(e, 'number')}
                                 minLength={4} maxLength={4}
                             />
                             </div>
@@ -90,7 +90,7 @@ function Identification(props){
                                 required={true} type="text" inputMode="numeric" value={props.fieldData.id_expire_date_month} 
                                 onChange={props.saveFieldData('id_expire_date_month')}
                                 onKeyUp={(e) => focusNext(e.target.value, e.target.maxLength, "id_expire_date_day")}
-                                onKeyDown={(e) => restrictType(e)}
+                                onKeyDown={(e) => restrictType(e, 'number')}
                                 minLength={2} maxLength={2}
                             />
                             </div>
@@ -102,7 +102,7 @@ function Identification(props){
                                 required={true} type="text" inputMode="numeric" value={props.fieldData.id_expire_date_day} 
                                 onChange={props.saveFieldData('id_expire_date_day')}
                                 onKeyUp={(e) => focusNext(e.target.value, e.target.maxLength, "id_expire_date_year")}
-                                onKeyDown={(e) => restrictType(e)}
+                                onKeyDown={(e) => restrictType(e, 'number')}
                                 minLength={2} maxLength={2}
                             />
                             </div>
@@ -113,7 +113,7 @@ function Identification(props){
                             <input id="id_expire_date_year" className="usa-input" name="id_expire_date_year" label="Year" unit="year"
                                 required={true} type="text" inputMode="numeric" value={props.fieldData.id_expire_date_year} 
                                 onChange={props.saveFieldData('id_expire_date_year')}
-                                onKeyDown={(e) => restrictType(e)}
+                                onKeyDown={(e) => restrictType(e, 'number')}
                                 minLength={4} maxLength={4}
                             />
                             </div>
@@ -122,10 +122,10 @@ function Identification(props){
             </div>
         )}
             {/* <Button onClick={setExpireValid(expirationValidate(expirationDate))}> */}
-            <Button>
+            {/* <Button>
                 Check expiration date
-            </Button>
-            <p>{!expireValid && "Expiration date is not valid!"}</p>
+            </Button> */}
+            {/* <p>{!expireValid && "Expiration date is not valid!"}</p> */}
             <Button type="submit">
                 Continue to political party
             </Button>

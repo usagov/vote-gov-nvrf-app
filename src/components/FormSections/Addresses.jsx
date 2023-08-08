@@ -78,7 +78,7 @@ function Addresses(props){
                 <StateSelector statesList={statesList} state={props.stateData.name} saveState={props.saveFieldData('state')} autoComplete="off" disabled={true} required={addressReq}/>
 
                 <Label htmlFor="zipcode">Zip Code (12345)</Label>
-                <TextInput id="zipcode" name="zip-code" value={props.fieldData.zip_code} onChange={props.saveFieldData('zip_code')} onKeyDown={(e) => restrictType(e)} type="text" inputMode="numeric" autoComplete="off" required={addressReq} minLength={5} maxLength={5}/>
+                <TextInput id="zipcode" name="zip-code" value={props.fieldData.zip_code} onChange={props.saveFieldData('zip_code')} onKeyDown={(e) => restrictType(e, 'number')} type="text" inputMode="numeric" autoComplete="off" required={addressReq} minLength={5} maxLength={5}/>
 
                 { changeRegistrationVisible && (
                     <div>
@@ -99,7 +99,7 @@ function Addresses(props){
                                 <StateSelector id="state-3" statesList={statesList} state={props.fieldData.prev_state} saveState={props.saveFieldData('prev_state')} autoComplete="off" required={addressReq}/>
 
                                 <Label htmlFor="zipcode-3">Zipcode (12345)</Label>
-                                <TextInput id="zipcode-3" name="zip-code-3" value={props.fieldData.prev_zip_code} onChange={props.saveFieldData('prev_zip_code')} onKeyDown={(e) => restrictType(e)} type="text" inputMode="numeric" autoComplete="off" required={addressReq} minLength={5} maxLength={5}/>
+                                <TextInput id="zipcode-3" name="zip-code-3" value={props.fieldData.prev_zip_code} onChange={props.saveFieldData('prev_zip_code')} onKeyDown={(e) => restrictType(e, 'number')} type="text" inputMode="numeric" autoComplete="off" required={addressReq} minLength={5} maxLength={5}/>
                             </div>
                         )}
                         <Checkbox id="alt-mail-addr" name="alt-mail-addr" checked={hasMailAddress} onChange={onChangeMailAddressCheckbox} label="I get my mail at a different address from the one above." />
@@ -120,7 +120,7 @@ function Addresses(props){
                                 <StateSelector id="state-2" statesList={statesList} state={props.fieldData.mail_state} saveState={props.saveFieldData('mail_state')} autoComplete="off" required={addressReq}/>
 
                                 <Label htmlFor="zipcode-2">Zipcode (12345)</Label>
-                                <TextInput id="zipcode-2" name="zip-code-2" value={props.fieldData.mail_zip_code} onChange={props.saveFieldData('mail_zip_code')} onKeyDown={(e) => restrictType(e)} type="text" inputMode="numeric" autoComplete="off" required={addressReq} minLength={5} maxLength={5}/>
+                                <TextInput id="zipcode-2" name="zip-code-2" value={props.fieldData.mail_zip_code} onChange={props.saveFieldData('mail_zip_code')} onKeyDown={(e) => restrictType(e, 'number')} type="text" inputMode="numeric" autoComplete="off" required={addressReq} minLength={5} maxLength={5}/>
                             </div>
                         )}
                     </div>

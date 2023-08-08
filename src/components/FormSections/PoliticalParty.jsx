@@ -1,6 +1,6 @@
-import { Form, Label, TextInput, Button, Dropdown,Checkbox, DatePicker } from '@trussworks/react-uswds';
-import React, { useState } from "react";
+import { Label, TextInput, Button } from '@trussworks/react-uswds';
 import content from "../../data/registration-form.json";
+import { restrictType } from './ValidateField';
 
 function PoliticalParty(props){
     const stateFieldRequirements = props.stateData.fields_required;
@@ -28,7 +28,15 @@ function PoliticalParty(props){
         {partyVisible && (
             <div>
                 <Label htmlFor="political-party">Choice of party</Label>
-                <TextInput id="political-party" name="political party" value={props.fieldData.party_choice} onChange={props.saveFieldData('party_choice')} type="text" autoComplete="off" required={partyReq}/>
+                <TextInput 
+                    id="political-party" 
+                    name="political party" 
+                    value={props.fieldData.party_choice} 
+                    onChange={props.saveFieldData('party_choice')} 
+                    onKeyDown={(e) => restrictType(e, 'letters')}
+                    type="text" 
+                    autoComplete="off" 
+                    required={partyReq}/>
             </div>
         )}
 

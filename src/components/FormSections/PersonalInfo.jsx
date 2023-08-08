@@ -130,7 +130,7 @@ function PersonalInfo(props){
                                 required={true} type="text" inputMode="numeric" value={props.fieldData.date_of_birth_month} 
                                 onChange={props.saveFieldData('date_of_birth_month')}
                                 onKeyUp={(e) => focusNext(e.target.value, e.target.maxLength, "date_of_birth_day")}
-                                onKeyDown={(e) => restrictType(e)}
+                                onKeyDown={(e) => restrictType(e, 'number')}
                                 minLength={2} maxLength={2}
                             />
                         </div>
@@ -145,7 +145,7 @@ function PersonalInfo(props){
                                 value={props.fieldData.date_of_birth_day} 
                                 onChange={props.saveFieldData('date_of_birth_day')}
                                 onKeyUp={(e) => focusNext(e.target.value, e.target.maxLength, "date_of_birth_year")}
-                                onKeyDown={(e) => restrictType(e)}
+                                onKeyDown={(e) => restrictType(e, 'number')}
                                 minLength={2} maxLength={2}
                             />
                         </div>
@@ -158,7 +158,7 @@ function PersonalInfo(props){
                                 type="text" inputMode="numeric"
                                 value={props.fieldData.date_of_birth_year} 
                                 onChange={props.saveFieldData('date_of_birth_year')}
-                                onKeyDown={(e) => restrictType(e)}
+                                onKeyDown={(e) => restrictType(e, 'number')}
                                 minLength={4} maxLength={4}
                             />
                         </div>

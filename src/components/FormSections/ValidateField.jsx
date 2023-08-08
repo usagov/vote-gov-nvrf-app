@@ -5,10 +5,15 @@ export const focusNext=(value, maxLength, nextId)=>{
     }
 }
 
-export const restrictType = (e) => {
+export const restrictType = (e, requiredType) => {
+    let letters = /^[A-Za-z]+$/;
+
     if (e.key === 'Backspace') {
       return;
-    } else if (isNaN(e.key)) {
+    } else if (requiredType === 'letters' && !e.key.match(letters) ) {
+      e.preventDefault();
+      return;
+    } else if (requiredType === 'number' && isNaN(e.key)) {
       e.preventDefault();
       return;
     }
