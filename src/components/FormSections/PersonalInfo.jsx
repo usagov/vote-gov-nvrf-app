@@ -155,10 +155,10 @@ function PersonalInfo(props){
                             </label>
                             <input id="date_of_birth_year" className="usa-input" name="date_of_birth_year"
                                 label="Year" unit="year" required={true}
-                                type="number" inputMode="numeric"
+                                type="text" inputMode="numeric"
                                 value={props.fieldData.date_of_birth_year} 
                                 onChange={props.saveFieldData('date_of_birth_year')}
-                                onKeyDown={(e) => restrictLength(e, e.target.value, e.target.maxLength)}
+                                onKeyDown={(e) => restrictType(e, 'number')}
                                 minLength={4} maxLength={4}
                             />
                         </div>

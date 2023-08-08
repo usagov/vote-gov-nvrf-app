@@ -1,7 +1,7 @@
 import { Form, Label, TextInput, Button, DateInputGroup, DateInput, Fieldset } from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import content from "../../data/registration-form.json";
-import { focusNext, restrictLength, expirationValidate } from './ValidateField';
+import { focusNext, restrictLength, restrictType, expirationValidate } from './ValidateField';
 
 function Identification(props){
     const[expireValid, setExpireValid] = useState();
@@ -68,9 +68,9 @@ function Identification(props){
                                 Year
                             </label>
                             <input id="id_issue_date_year" className="usa-input" name="id_issue_date_year" label="Year" unit="year"
-                                required={true} type="number" inputMode="numeric" value={props.fieldData.id_issue_date_year} 
+                                required={true} type="text" inputMode="numeric" value={props.fieldData.id_issue_date_year} 
                                 onChange={props.saveFieldData('id_issue_date_year')}
-                                onKeyDown={(e) => restrictLength(e, e.target.value, e.target.maxLength)}
+                                onKeyDown={(e) => restrictType(e, 'number')}
                                 minLength={4} maxLength={4}
                             />
                             </div>
@@ -111,9 +111,9 @@ function Identification(props){
                                 Year
                             </label>
                             <input id="id_expire_date_year" className="usa-input" name="id_expire_date_year" label="Year" unit="year"
-                                required={true} type="number" inputMode="numeric" value={props.fieldData.id_expire_date_year} 
+                                required={true} type="text" inputMode="numeric" value={props.fieldData.id_expire_date_year} 
                                 onChange={props.saveFieldData('id_expire_date_year')}
-                                onKeyDown={(e) => restrictLength(e, e.target.value, e.target.maxLength)}
+                                onKeyDown={(e) => restrictType(e, 'number')}
                                 minLength={4} maxLength={4}
                             />
                             </div>
