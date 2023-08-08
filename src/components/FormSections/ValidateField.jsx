@@ -19,6 +19,15 @@ export const restrictType = (e, requiredType) => {
     }
 }
 
+export const restrictLength = (e, value, maxLength) => {
+  if (e.key === 'Backspace') {
+    return;
+  } else if (value.length === maxLength) {
+    e.preventDefault();
+    return;
+  }
+}
+
 export const phoneFormat=(input)=>{//returns (###) ###-####
     input = input.replace(/\D/g,'');
     var size = input.length;

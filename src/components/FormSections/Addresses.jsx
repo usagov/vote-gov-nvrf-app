@@ -3,7 +3,7 @@ import StateSelector from '../StateSelector';
 import React, { useState } from "react";
 import states from "../../data/states.json";
 import content from "../../data/registration-form.json";
-import { restrictType } from './ValidateField';
+import { restrictLength } from './ValidateField';
 
 function Addresses(props){
     const changeRegistrationVisible = (props.registrationPath === 'update') ? true : false;
@@ -79,7 +79,7 @@ function Addresses(props){
 
                 <Label htmlFor="zipcode">Zip Code (12345)</Label>
                 <TextInput id="zipcode" name="zip-code" value={props.fieldData.zip_code} onChange={props.saveFieldData('zip_code')} 
-                onKeyDown={(e) => restrictType(e, 'number')} type="text" inputMode="numeric" autoComplete="off" required={addressReq} minLength={5} maxLength={5}/>
+                onKeyDown={(e) => restrictLength(e, e.target.value, e.target.maxLength)} type="number" inputMode="numeric" autoComplete="off" required={addressReq} minLength={5} maxLength={5}/>
 
                 { changeRegistrationVisible && (
                     <div>

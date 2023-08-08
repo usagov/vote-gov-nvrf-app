@@ -1,7 +1,7 @@
 import { Form, Label, TextInput, Button, DateInputGroup, DateInput, Fieldset } from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import content from "../../data/registration-form.json";
-import { focusNext, restrictType, expirationValidate } from './ValidateField';
+import { focusNext, restrictLength, expirationValidate } from './ValidateField';
 
 function Identification(props){
     const[expireValid, setExpireValid] = useState();
@@ -44,11 +44,11 @@ function Identification(props){
                                 Month
                             </label>
                             <input id="id_issue_date_month" className="usa-input" name="id_issue_date_month" label="Month" unit="month"
-                                required={true} type="text" inputMode="numeric" value={props.fieldData.id_issue_date_month} 
+                                required={true} type="number" inputMode="numeric" value={props.fieldData.id_issue_date_month} 
                                 onChange={props.saveFieldData('id_issue_date_month')}
                                 onKeyUp={(e) => focusNext(e.target.value, e.target.maxLength, "id_issue_date_day")}
-                                onKeyDown={(e) => restrictType(e, 'number')}
-                                minLength={2} maxLength={2}
+                                onKeyDown={(e) => restrictLength(e, e.target.value, e.target.maxLength)}
+                                min={1} max={12} minLength={2} maxLength={2}
                             />
                             </div>
                             <div data-testid="formGroup" className="usa-form-group usa-form-group--month">
@@ -56,11 +56,11 @@ function Identification(props){
                                 Day
                             </label>
                             <input id="id_issue_date_day" className="usa-input" name="id_issue_date_day" label="Day" unit="day"
-                                required={true} type="text" inputMode="numeric" value={props.fieldData.id_issue_date_day} 
+                                required={true} type="number" inputMode="numeric" value={props.fieldData.id_issue_date_day} 
                                 onChange={props.saveFieldData('id_issue_date_day')}
                                 onKeyUp={(e) => focusNext(e.target.value, e.target.maxLength, "id_issue_date_year")}
-                                onKeyDown={(e) => restrictType(e, 'number')}
-                                minLength={2} maxLength={2}
+                                onKeyDown={(e) => restrictLength(e, e.target.value, e.target.maxLength)}
+                                min={1} max={31} minLength={2} maxLength={2}
                             />
                             </div>
                             <div data-testid="formGroup" className="usa-form-group usa-form-group--month">
@@ -68,9 +68,9 @@ function Identification(props){
                                 Year
                             </label>
                             <input id="id_issue_date_year" className="usa-input" name="id_issue_date_year" label="Year" unit="year"
-                                required={true} type="text" inputMode="numeric" value={props.fieldData.id_issue_date_year} 
+                                required={true} type="number" inputMode="numeric" value={props.fieldData.id_issue_date_year} 
                                 onChange={props.saveFieldData('id_issue_date_year')}
-                                onKeyDown={(e) => restrictType(e, 'number')}
+                                onKeyDown={(e) => restrictLength(e, e.target.value, e.target.maxLength)}
                                 minLength={4} maxLength={4}
                             />
                             </div>
@@ -87,11 +87,11 @@ function Identification(props){
                                 Month
                             </label>
                             <input id="id_expire_date_month" className="usa-input" name="id_expire_date_month" label="Month" unit="month"
-                                required={true} type="text" inputMode="numeric" value={props.fieldData.id_expire_date_month} 
+                                required={true} type="number" inputMode="numeric" value={props.fieldData.id_expire_date_month} 
                                 onChange={props.saveFieldData('id_expire_date_month')}
                                 onKeyUp={(e) => focusNext(e.target.value, e.target.maxLength, "id_expire_date_day")}
-                                onKeyDown={(e) => restrictType(e, 'number')}
-                                minLength={2} maxLength={2}
+                                onKeyDown={(e) => restrictLength(e, e.target.value, e.target.maxLength)}
+                                min={1} max={12} minLength={2} maxLength={2}
                             />
                             </div>
                             <div data-testid="formGroup" className="usa-form-group usa-form-group--month">
@@ -99,11 +99,11 @@ function Identification(props){
                                 Day
                             </label>
                             <input id="id_expire_date_day" className="usa-input" name="id_expire_date_day" label="Day" unit="day"
-                                required={true} type="text" inputMode="numeric" value={props.fieldData.id_expire_date_day} 
+                                required={true} type="number" inputMode="numeric" value={props.fieldData.id_expire_date_day} 
                                 onChange={props.saveFieldData('id_expire_date_day')}
                                 onKeyUp={(e) => focusNext(e.target.value, e.target.maxLength, "id_expire_date_year")}
-                                onKeyDown={(e) => restrictType(e, 'number')}
-                                minLength={2} maxLength={2}
+                                onKeyDown={(e) => restrictLength(e, e.target.value, e.target.maxLength)}
+                                min={1} max={31} minLength={2} maxLength={2}
                             />
                             </div>
                             <div data-testid="formGroup" className="usa-form-group usa-form-group--month">
@@ -111,9 +111,9 @@ function Identification(props){
                                 Year
                             </label>
                             <input id="id_expire_date_year" className="usa-input" name="id_expire_date_year" label="Year" unit="year"
-                                required={true} type="text" inputMode="numeric" value={props.fieldData.id_expire_date_year} 
+                                required={true} type="number" inputMode="numeric" value={props.fieldData.id_expire_date_year} 
                                 onChange={props.saveFieldData('id_expire_date_year')}
-                                onKeyDown={(e) => restrictType(e, 'number')}
+                                onKeyDown={(e) => restrictLength(e, e.target.value, e.target.maxLength)}
                                 minLength={4} maxLength={4}
                             />
                             </div>
