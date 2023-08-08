@@ -22,3 +22,16 @@ export const phoneFormat=(input)=>{//returns (###) ###-####
     if (size>6) {input=input.slice(0,9)+"-" +input.slice(9)}
     return input;
 }
+
+export const expirationValidate=()=> {
+  // format is YYYY-MM-DD
+  let expireDate = Date.parse("2023-08-03");
+  let todayDate = Date.parse(Date());
+
+  let diff = todayDate - expireDate;
+  if (diff > 0) {
+      return false
+      } else {
+        return true
+      }
+}

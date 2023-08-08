@@ -4,6 +4,8 @@ import states from "../data/states.json";
 import styles from "../styles/StateSelection.module.css";
 import CardInfo from "./CardInfo";
 
+import { focusNext, restrictType, expirationValidate } from './FormSections/ValidateField';
+
 function StateSelection(props) {
     const stateLink = props.stateData.election_website_url;
     const statesList = []
@@ -25,6 +27,10 @@ function StateSelection(props) {
 
     return (
         <>
+        <Button onClick={expirationValidate()}>
+            Continue to political party
+        </Button>
+
         <a href="https://vote.gov">
             <Button type="button" onClick={props.handlePrev}>
                 Back to Vote.gov
