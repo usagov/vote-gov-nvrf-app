@@ -78,7 +78,8 @@ function Addresses(props){
                 <StateSelector statesList={statesList} state={props.stateData.name} saveState={props.saveFieldData('state')} autoComplete="off" disabled={true} required={addressReq}/>
 
                 <Label htmlFor="zipcode">Zip Code (12345)</Label>
-                <TextInput id="zipcode" name="zip-code" value={props.fieldData.zip_code} onChange={props.saveFieldData('zip_code')} onKeyDown={(e) => restrictType(e, 'number')} type="text" inputMode="numeric" autoComplete="off" required={addressReq} minLength={5} maxLength={5}/>
+                <TextInput id="zipcode" name="zip-code" value={props.fieldData.zip_code} onChange={props.saveFieldData('zip_code')} 
+                onKeyDown={(e) => restrictType(e, 'number')} type="text" inputMode="numeric" autoComplete="off" required={addressReq} minLength={5} maxLength={5}/>
 
                 { changeRegistrationVisible && (
                     <div>
