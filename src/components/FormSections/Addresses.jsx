@@ -162,7 +162,7 @@ function Addresses(props){
                             id="zip" 
                             aria-describedby="zip-error"
                             name="zip" 
-                            type="number" 
+                            type="text" 
                             inputMode="numeric" 
                             autoComplete="off" 
                             required={addressReq} 
@@ -170,7 +170,7 @@ function Addresses(props){
                             maxLength={5}
                             value={props.fieldData.zip_code} 
                             onChange={props.saveFieldData('zip_code')} 
-                            onKeyDown={(e) => restrictLength(e, e.target.value, e.target.maxLength)}
+                            onKeyDown={(e) => restrictType(e, 'number')} 
                             onBlur={(e) => setHandleErrors({ ...handleErrors, zip: checkForErrors(e, 'check value exists') })}
                         />
                         {(addressReq && handleErrors.zip) && 
