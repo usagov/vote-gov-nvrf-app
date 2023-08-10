@@ -34,7 +34,7 @@ function PoliticalParty(props){
         {partyVisible && (
             <div className={validationStyles[(partyReq && handleErrors.party_choice) && 'error-container']}>
                 <Label htmlFor="political-party">
-                Choice of party
+                Choice of party{partyReq && <span className={validationStyles['required-text']}>*</span>}
                 <TextInput 
                     id="political-party"
                     aria-describedby="party-chioce-error" 
@@ -56,7 +56,7 @@ function PoliticalParty(props){
             </div>
         )}
 
-        <Button type="submit">
+        <Button type="submit" onClick={true}>
             Confirm your information
         </Button>
         </>
