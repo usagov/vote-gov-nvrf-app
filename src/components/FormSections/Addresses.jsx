@@ -133,6 +133,7 @@ function Addresses(props){
                             autoComplete="off" 
                             required={addressReq}
                             onChange={props.saveFieldData('city')} 
+                            onKeyDown={(e) => restrictType(e, 'letters')}
                             onBlur={(e) => setHandleErrors({ ...handleErrors, city: checkForErrors(e, 'check value exists') })}
                             />
                         {(addressReq && handleErrors.city) && 
@@ -233,6 +234,7 @@ function Addresses(props){
                                             required={addressReq}
                                             value={props.fieldData.prev_city} 
                                             onChange={props.saveFieldData('prev_city')} 
+                                            onKeyDown={(e) => restrictType(e, 'letters')}
                                             onBlur={(e) => setHandleErrors({ ...handleErrors, prev_city: checkForErrors(e, 'check value exists') })}
                                         />
                                         {(addressReq && handleErrors.prev_city) && 
@@ -334,6 +336,7 @@ function Addresses(props){
                                             required={addressReq}
                                             value={props.fieldData.mail_city} 
                                             onChange={props.saveFieldData('mail_city')} 
+                                            onKeyDown={(e) => restrictType(e, 'letters')}
                                             onBlur={(e) => setHandleErrors({ ...handleErrors, mail_city: checkForErrors(e, 'check value exists') })}
                                         />
                                         {(addressReq && handleErrors.mail_city) && 

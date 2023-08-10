@@ -1,4 +1,4 @@
-import { Form, Label, TextInput, Button, Dropdown,Checkbox, DateInputGroup, DateInput, Fieldset} from '@trussworks/react-uswds';
+import { Label, TextInput, Button, Dropdown,Checkbox, Fieldset} from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import content from "../../data/registration-form.json";
 import { focusNext, restrictType, restrictLength, checkForErrors } from './ValidateField';
@@ -252,7 +252,7 @@ function PersonalInfo(props){
                                 maxLength={2}
                                 value={props.fieldData.date_of_birth_month} 
                                 onChange={props.saveFieldData('date_of_birth_month')}
-                                onKeyUp={(e) => focusNext(e.target.value, e.target.maxLength, "date_of_birth_day")}
+                                onKeyUp={(e) => focusNext(e, "date_of_birth_day")}
                                 onKeyDown={(e) => restrictLength(e, e.target.value, e.target.maxLength)}
                             />
                         </div>
@@ -275,7 +275,7 @@ function PersonalInfo(props){
                                 maxLength={2}
                                 value={props.fieldData.date_of_birth_day} 
                                 onChange={props.saveFieldData('date_of_birth_day')}
-                                onKeyUp={(e) => focusNext(e.target.value, e.target.maxLength, "date_of_birth_year")}
+                                onKeyUp={(e) => focusNext(e, "date_of_birth_year")}
                                 onKeyDown={(e) => restrictLength(e, e.target.value, e.target.maxLength)}
                             />
                         </div>

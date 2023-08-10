@@ -1,4 +1,4 @@
-import { Form, Label, TextInput, Button, DateInputGroup, DateInput, Fieldset } from '@trussworks/react-uswds';
+import { Label, TextInput, Button, Fieldset } from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import content from "../../data/registration-form.json";
 import { focusNext, restrictLength, restrictType, expirationValidate } from './ValidateField';
@@ -46,7 +46,7 @@ function Identification(props){
                             <input id="id_issue_date_month" className="usa-input" name="id_issue_date_month" label="Month" unit="month"
                                 required={true} type="number" inputMode="numeric" value={props.fieldData.id_issue_date_month} 
                                 onChange={props.saveFieldData('id_issue_date_month')}
-                                onKeyUp={(e) => focusNext(e.target.value, e.target.maxLength, "id_issue_date_day")}
+                                onKeyUp={(e) => focusNext(e, "id_issue_date_day")}
                                 onKeyDown={(e) => restrictLength(e, e.target.value, e.target.maxLength)}
                                 min={1} max={12} minLength={2} maxLength={2}
                             />
@@ -58,7 +58,7 @@ function Identification(props){
                             <input id="id_issue_date_day" className="usa-input" name="id_issue_date_day" label="Day" unit="day"
                                 required={true} type="number" inputMode="numeric" value={props.fieldData.id_issue_date_day} 
                                 onChange={props.saveFieldData('id_issue_date_day')}
-                                onKeyUp={(e) => focusNext(e.target.value, e.target.maxLength, "id_issue_date_year")}
+                                onKeyUp={(e) => focusNext(e, "id_issue_date_year")}
                                 onKeyDown={(e) => restrictLength(e, e.target.value, e.target.maxLength)}
                                 min={1} max={31} minLength={2} maxLength={2}
                             />
@@ -89,7 +89,7 @@ function Identification(props){
                             <input id="id_expire_date_month" className="usa-input" name="id_expire_date_month" label="Month" unit="month"
                                 required={true} type="number" inputMode="numeric" value={props.fieldData.id_expire_date_month} 
                                 onChange={props.saveFieldData('id_expire_date_month')}
-                                onKeyUp={(e) => focusNext(e.target.value, e.target.maxLength, "id_expire_date_day")}
+                                onKeyUp={(e) => focusNext(e, "id_expire_date_day")}
                                 onKeyDown={(e) => restrictLength(e, e.target.value, e.target.maxLength)}
                                 min={1} max={12} minLength={2} maxLength={2}
                             />
@@ -101,7 +101,7 @@ function Identification(props){
                             <input id="id_expire_date_day" className="usa-input" name="id_expire_date_day" label="Day" unit="day"
                                 required={true} type="number" inputMode="numeric" value={props.fieldData.id_expire_date_day} 
                                 onChange={props.saveFieldData('id_expire_date_day')}
-                                onKeyUp={(e) => focusNext(e.target.value, e.target.maxLength, "id_expire_date_year")}
+                                onKeyUp={(e) => focusNext(e, "id_expire_date_year")}
                                 onKeyDown={(e) => restrictLength(e, e.target.value, e.target.maxLength)}
                                 min={1} max={31} minLength={2} maxLength={2}
                             />

@@ -1,22 +1,22 @@
-
-export const focusNext=(value, maxLength, nextId)=>{
-    if (value.length == maxLength) {
-        document.getElementById(nextId).focus();
-    }
+export const focusNext=(e, nextId)=>{
+  if (e.target.value.length == e.target.maxLength)  {
+    document.getElementById(nextId).focus();
+}
 }
 
 export const restrictType = (e, requiredType) => {
-    let letters = /^[A-Za-z]+$/;
+  let allowKeys = ['Backspace', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'Tab']
+  let letters = /^[A-Za-z-]+$/;
 
-    if (e.key === 'Backspace') {
-      return;
-    } else if (requiredType === 'letters' && !e.key.match(letters) ) {
-      e.preventDefault();
-      return;
-    } else if (requiredType === 'number' && isNaN(e.key)) {
-      e.preventDefault();
-      return;
-    }
+  if (allowKeys.includes(e.key)) {
+    return;
+  } else if (requiredType === 'letters' && !e.key.match(letters) ) {
+    e.preventDefault();
+    return;
+  } else if (requiredType === 'number' && isNaN(e.key)) {
+    e.preventDefault();
+    return;
+  }
 }
 
 export const restrictLength = (e, value, maxLength) => {
@@ -53,10 +53,10 @@ export const expirationValidate=()=> {
 export const checkForErrors=(e, requirement)=> {
   if (requirement === 'check value exists') {
     if (e.target.value) {
-      console.log('ERROR: value is empty')
+      console.log('value exists')
       return false
     } else {
-      console.log('value exists')
+      console.log('value does not exist')
       return true
     }    
   }
