@@ -11,7 +11,6 @@ async function fillForm(formData) {
     // Fetch the PDF with form fields
     const formUrl = 'https://www.eac.gov/sites/default/files/eac_assets/1/6/Federal_Voter_Registration_ENG.pdf'
     const formPdfBytes = await fetch(formUrl).then(res => res.arrayBuffer())
-
     // Load a PDF with form fields
     const pdfDoc = await PDFDocument.load(formPdfBytes)
 
@@ -26,7 +25,7 @@ async function fillForm(formData) {
     console.log(`${type}: ${name}`)
     })
 
-    // Get all fields in the PDF by their names
+    //-------- Get PDF Fields by machine name ------------------
     const title =  form.getRadioGroup('salutation');
     const title2 = form.getRadioGroup('salutation_2')
     const firstName = form.getTextField('First Name');
@@ -53,12 +52,30 @@ async function fillForm(formData) {
     const phoneNumber = form.getTextField('Telephone Number optional');
     const race = form.getTextField('Race or Ethnic Group see item 8 in the instructions for your State');
 
-    // -----------Fill in the pdf fields---------
+    const homeAddress = form.getTextField('Home Address');
+    const aptNumber = form.getTextField('Apt or Lot');
+    const city = form.getTextField('CityTown');
+    const state = form.getTextField('State');//check
+    const zipcode = form.getTextField('Zip Code');
+
+    const mailAddress = form.getTextField('Address Where You Get Your Mail If Different From Above');
+    //const aptNumberMail = form.getTextField(''); SAME FIELD AS ABOVE
+    const mailCity = form.getTextField('CityTown_2');
+    const mailState = form.getTextField('State_2');
+    const mailZipcode = form.getTextField('Zip Code_2');
+
+    const prevAddress = form.getTextField('Street or route and box number');
+    const prevAptNumber = form.getTextField('Apt or Lot_2');
+    const prevCity = form.getTextField('CityTownCounty');
+    const prevState = form.getTextField('State_3');
+    const prevZipcode = form.getTextField('Zip Code_3');
+
+    // -----------Fill in the pdf fields--------------------------
     // (1) Personal Information
     // Logic for title select has to be seperated into two radio groups
     if (formData.title == 'Mr' || formData.title == "Mrs"){
         title.select(formData.title);
-    } else {
+    } else if (formData.title == 'Miss' || formData.title == 'Ms') {
         title2.select(formData.title);
     }
 
@@ -115,6 +132,24 @@ async function fillForm(formData) {
     race.setText(formData.race);
 
     //(2) Addresses
+    //Home
+    homeAddress.setText(formData.street_address);
+    aptNumber.setText(formData.apt_num);
+    city.setText(formData.city);
+    state.setText(formData.state);
+    zipcode.setText(formData.zip_code);
+    //Mail
+    mailAddress.setText(`${formData.mail_street_address} ${formData.mail_apt_num}`);
+    mailCity.setText(formData.mail_city);
+    mailState.setText(formData.mail_state);
+    mailZipcode.setText(formData.mail_zip_code);
+    //Previous
+    prevAddress.setText(formData.prev_street_address);
+    prevAptNumber.setText(formData.prev_apt_num);
+    prevCity.setText(formData.prev_city);
+    prevState.setText(formData.prev_state);
+    prevZipcode.setText(formData.prev_zip_code);
+
     //(3) Identification
     //(4) Political Party
 
