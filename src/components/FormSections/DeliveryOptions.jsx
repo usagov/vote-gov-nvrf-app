@@ -30,13 +30,31 @@ async function fillForm(formData) {
     const title =  form.getRadioGroup('salutation');
     const title2 = form.getRadioGroup('salutation_2')
     const firstName = form.getTextField('First Name');
+    const middleNames = form.getTextField('Middle Names');
+    const lastName = form.getTextField('Last Name');
+    const jrsrSuffix = form.getRadioGroup('suffix');//check
     const secondSuffix = form.getCheckBox('II');
+    const thirdSuffix = form.getCheckBox('III');
+    const fourthSuffix = form.getCheckBox('IV');
 
-    //Get all field values in the web form by their names - this is already in props!
-    console.log(formData);
+    const title3 =  form.getRadioGroup('salutation_3');
+    const title4 = form.getRadioGroup('salutation_4')
+    const firstName2 = form.getTextField('First Name_2');
+    const middleNames2 = form.getTextField('Middle Names_2');
+    const lastName2 = form.getTextField('Last Name_2');
+    const jrsrSuffix2 = form.getRadioGroup('suffix_2');
+    const secondSuffix2 = form.getCheckBox('II_2');
+    const thirdSuffix2 = form.getCheckBox('III_2');
+    const fourthSuffix2 = form.getCheckBox('IV_2');
 
-    // Fill in the pdf fields
-    firstName.setText(formData.first_name);
+    const dobMonth = form.getTextField('Month');
+    const dobDay = form.getTextField('Day');
+    const dobYear = form.getTextField('Year');
+    const phoneNumber = form.getTextField('Telephone Number optional');
+    const race = form.getTextField('Race or Ethnic Group see item 8 in the instructions for your State');
+
+    // -----------Fill in the pdf fields---------
+    // (1) Personal Information
     // Logic for title select has to be seperated into two radio groups
     if (formData.title == 'Mr' || formData.title == "Mrs"){
         title.select(formData.title);
@@ -44,10 +62,63 @@ async function fillForm(formData) {
         title2.select(formData.title);
     }
 
-    //Dropdown to checkbox logic for suffix
+    firstName.setText(formData.first_name);
+    middleNames.setText(formData.middle_name);
+    lastName.setText(formData.last_name);
+
+    //Dropdown to checkbox/radio logic for suffix
     if (formData.suffix === 'II') {
         secondSuffix.check();
+    } else if (formData.suffix === 'III') {
+        thirdSuffix.check();
+    } else if (formData.suffix === 'IV') {
+        fourthSuffix.check();
+    } else if (formData.suffix === 'Jr.') {
+        jrsrSuffix.select('Jr');
+    } else if (formData.suffix === 'Sr.') {
+        jrsrSuffix.select('Sr');
     }
+
+    //Previous Name
+    if (formData.prev_title === 'Mr') {
+        title3.select("Mr_2");
+    } else if (formData.prev_title === "Mrs") {
+        title3.select("Mrs_2");
+    } else if (formData.prev_title === "Miss"){
+        title4.select("Miss_2");
+    } else if (formData.prev_title === "Ms"){
+        title4.select("Ms_2");
+    }
+
+    firstName2.setText(formData.prev_first_name);
+    middleNames2.setText(formData.prev_middle_name);
+    lastName2.setText(formData.prev_last_name);
+
+    //Dropdown to checkbox/radio logic for suffix
+    if (formData.prev_suffix === 'II') {
+        secondSuffix2.check();
+    } else if (formData.prev_suffix === 'III') {
+        thirdSuffix2.check();
+    } else if (formData.prev_suffix === 'IV') {
+        fourthSuffix2.check();
+    } else if (formData.prev_suffix === 'Jr.') {
+        jrsrSuffix2.select('Jr_2');
+    } else if (formData.prev_suffix === 'Sr.') {
+        jrsrSuffix2.select('Sr_2');
+    }
+
+    //Date of Birth, Phone, Race
+    dobMonth.setText(formData.date_of_birth_month);
+    dobDay.setText(formData.date_of_birth_day);
+    dobYear.setText(formData.date_of_birth_year);
+    phoneNumber.setText(formData.phone_number);
+    race.setText(formData.race);
+
+    //(2) Addresses
+    //(3) Identification
+    //(4) Political Party
+
+    //-------------End PDF Fill---------------
 
     // Serialize the PDFDocument to bytes (a Uint8Array)
     const pdfBytes = await pdfDoc.save()
