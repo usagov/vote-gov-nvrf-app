@@ -56,7 +56,7 @@ function PoliticalParty(props){
             </div>
         )}
 
-        <Button type="submit" onClick={true}>
+        <Button type="submit">
             Confirm your information
         </Button>
         </>
