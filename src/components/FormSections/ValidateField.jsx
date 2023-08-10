@@ -49,3 +49,25 @@ export const expirationValidate=()=> {
         return true
       }
 }
+
+export const checkForErrors=(e, requirement)=> {
+  if (requirement === 'check value exists') {
+    if (e.target.value) {
+      console.log('ERROR: value is empty')
+      return false
+    } else {
+      console.log('value exists')
+      return true
+    }    
+  }
+
+  if (requirement === 'check value length') {
+    if (e.target.value.length != e.target.maxLength) {
+      console.log('ERROR: value not long enough')
+      return true
+    } else {
+      console.log('value is correct length')
+      return false
+    }    
+  }
+}

@@ -36,7 +36,7 @@ function Identification(props){
 
                 <Fieldset legend="Issue Date" style={{ marginTop:'30px'}}>
                     <span className="usa-hint" id="id-issue-date-hint">
-                    For example: 05 10 2017
+                    For example: mm/dd/yyyy
                     </span>
                     <div id="id-issue-date" className="usa-memorable-date" name="date-of-birth" autoComplete="off" required={idNumReq} data-testid="dateInputGroup">
                         <div data-testid="formGroup" className="usa-form-group usa-form-group--month">
@@ -79,7 +79,7 @@ function Identification(props){
 
                 <Fieldset legend="Expire Date" style={{ marginTop:'30px'}}>
                     <span className="usa-hint" id="id-issue-date-hint">
-                    For example: 05 10 2025
+                    For example: mm/dd/yyyy
                     </span>
                     <div id="id-expire-date" className="usa-memorable-date" name="date-of-birth" autoComplete="off" required={idNumReq} data-testid="dateInputGroup">
                         <div data-testid="formGroup" className="usa-form-group usa-form-group--month">

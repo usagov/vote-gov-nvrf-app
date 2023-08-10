@@ -1,0 +1,8 @@
+.error-container {
+    border-left: 2px solid red;
+    padding-left: 15px;
+}
+
+.error-text {
+    color: red;
+}
