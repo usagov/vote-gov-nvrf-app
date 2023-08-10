@@ -3,6 +3,6 @@
     padding-left: 15px;
 }
 
-.error-text {
+.error-text, .required-text {
     color: red;
 }

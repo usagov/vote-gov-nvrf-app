@@ -75,10 +75,10 @@ function PersonalInfo(props){
 
                 <div className={validationStyles[(nameReq && handleErrors.first_name) && 'error-container']}>
                     <Label htmlFor="first-name">
-                        First Name{nameReq && <span>*</span>}
+                        First Name{nameReq && <span className={validationStyles['required-text']}>*</span>}
                     <TextInput 
                         id="first-name" 
-                        aria-describedby="d1" 
+                        aria-describedby="first-name-error" 
                         name="first-name" 
                         type="text" 
                         autoComplete="off" 
@@ -88,7 +88,7 @@ function PersonalInfo(props){
                         onBlur={(e) => setHandleErrors({ ...handleErrors, first_name: checkForErrors(e, 'check value exists') })}
                         />
                     {(nameReq && handleErrors.first_name) && 
-                        <span id="d1" role="alert" className={validationStyles['error-text']}>
+                        <span id="first-name-error" role="alert" className={validationStyles['error-text']}>
                             First name must be filled out.
                         </span>
                     }
@@ -107,9 +107,10 @@ function PersonalInfo(props){
 
                 <div className={validationStyles[(nameReq && handleErrors.last_name) && 'error-container']}>
                     <Label htmlFor="last-name">
-                        Last Name{nameReq && <span>*</span>}
+                        Last Name{nameReq && <span className={validationStyles['required-text']}>*</span>}
                     <TextInput 
                         id="last-name" 
+                        aria-describedby="last-name-error" 
                         name="last-name" 
                         type="text" 
                         autoComplete="off" 
@@ -119,7 +120,7 @@ function PersonalInfo(props){
                         onBlur={(e) => setHandleErrors({ ...handleErrors, last_name: checkForErrors(e, 'check value exists') })}
                         />
                     {(nameReq && handleErrors.last_name) && 
-                        <span id="d1" role="alert" className={validationStyles['error-text']}>
+                        <span id="last-name-error" role="alert" className={validationStyles['error-text']}>
                             Last name must be filled out.
                         </span>
                     }
@@ -160,9 +161,10 @@ function PersonalInfo(props){
 
                 <div className={validationStyles[(nameReq && handleErrors.prev_first_name) && 'error-container']}>
                     <Label htmlFor="first-name-2">
-                        First Name{nameReq && <span>*</span>}
+                        First Name{nameReq && <span className={validationStyles['required-text']}>*</span>}
                     <TextInput 
                         id="first-name-2" 
+                        aria-describedby="prev-first-name-error" 
                         name="first-name-2" 
                         type="text" 
                         autoComplete="off" 
@@ -172,7 +174,7 @@ function PersonalInfo(props){
                         onBlur={(e) => setHandleErrors({ ...handleErrors, prev_first_name: checkForErrors(e, 'check value exists') })}
                     />
                     {(nameReq && handleErrors.prev_first_name) && 
-                        <span id="d1" role="alert" className={validationStyles['error-text']}>
+                        <span id="prev-first-name-error" role="alert" className={validationStyles['error-text']}>
                             First name must be filled out.
                         </span>
                     }       
@@ -191,9 +193,10 @@ function PersonalInfo(props){
 
                 <div className={validationStyles[(nameReq && handleErrors.prev_last_name) && 'error-container']}>
                     <Label htmlFor="last-name-2">
-                        Last Name{nameReq && <span>*</span>}
+                        Last Name{nameReq && <span className={validationStyles['required-text']}>*</span>}
                     <TextInput 
                         id="last-name-2" 
+                        aria-describedby="prev-last-name-error" 
                         name="last-name-2" 
                         type="text" 
                         autoComplete="off" 
@@ -203,7 +206,7 @@ function PersonalInfo(props){
                         onBlur={(e) => setHandleErrors({ ...handleErrors, prev_last_name: checkForErrors(e, 'check value exists') })}
                         />
                     {(nameReq && handleErrors.prev_last_name) && 
-                        <span id="d1" role="alert" className={validationStyles['error-text']}>
+                        <span id="prev-last-name-error" role="alert" className={validationStyles['error-text']}>
                             Last name must be filled out.
                         </span>
                     }
@@ -304,9 +307,10 @@ function PersonalInfo(props){
 
         {telephoneVisible && (
             <div className={validationStyles[(nameReq && handleErrors.phone_number) && 'error-container']}>
-                <Label htmlFor="phone-number">Phone Number (123) 456-7890{nameReq && <span>*</span>}
+                <Label htmlFor="phone-number">Phone Number (123) 456-7890{nameReq && <span className={validationStyles['required-text']}>*</span>}
                 <TextInput 
                     id="phone-number" 
+                    aria-describedby="phone-number-error"
                     name="phone-number" 
                     type="text" 
                     autoComplete="off" 
@@ -317,7 +321,11 @@ function PersonalInfo(props){
                     onChange={props.saveFieldData('phone_number')} 
                     onBlur={(e) => setHandleErrors({ ...handleErrors, phone_number: checkForErrors(e, 'check value length') })}
                 />
-                {(telephoneReq && handleErrors.phone_number) && <span rol="alert" className={validationStyles['error-text']}>Phone number must be 10 digits.</span>}
+                {(telephoneReq && handleErrors.phone_number) && 
+                    <span id="phone-number-error" rol="alert" className={validationStyles['error-text']}>
+                        Phone number must be 10 digits.
+                    </span>
+                }
                 </Label>
             </div>
         )}
