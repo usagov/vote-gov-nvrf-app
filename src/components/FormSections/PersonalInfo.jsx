@@ -249,7 +249,7 @@ function PersonalInfo(props){
                         autoComplete="off" 
                         required={dobReq} 
                         data-testid="dateInputGroup"
-                        onBlur={(e) => checkDateValues()}
+                        onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) checkDateValues(); }}
                     >
                         <div class="usa-form-group usa-form-group--month usa-form-group--select">
                         <label class="usa-label" for="date_of_birth_month">
