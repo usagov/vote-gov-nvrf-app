@@ -221,7 +221,7 @@ function Addresses(props){
                                         />
                                         {(addressReq && handleErrors.prev_street) && 
                                             <span id="prev-street-error" role="alert" className={validationStyles['error-text']}>
-                                                Street address must be filled out.
+                                                Previous Street address must be filled out.
                                             </span>
                                         }
                                         </Label>
@@ -256,7 +256,7 @@ function Addresses(props){
                                         />
                                         {(addressReq && handleErrors.prev_city) && 
                                             <span id="prev-city-error" role="alert" className={validationStyles['error-text']}>
-                                                City name must be filled out.
+                                                Previous City name must be filled out.
                                             </span>
                                         }
                                         </Label>
@@ -264,7 +264,7 @@ function Addresses(props){
 
                                     <div className={validationStyles[(addressReq && handleErrors.prev_state) && 'error-container']}>
                                         <Label htmlFor="prev-state">
-                                            State!{addressReq && <span className={validationStyles['required-text']}>*</span>}
+                                            State{addressReq && <span className={validationStyles['required-text']}>*</span>}
                                         <StateSelector 
                                             id="prev-state" 
                                             ariaDescribedby="prev-state-error"
@@ -277,7 +277,7 @@ function Addresses(props){
                                         />
                                         {(addressReq && handleErrors.prev_state) && 
                                             <span id="prev-state-error" role="alert" className={validationStyles['error-text']}>
-                                                State selection must be made.
+                                                Previous State selection must be made.
                                             </span>
                                         }
                                         </Label>
@@ -299,12 +299,12 @@ function Addresses(props){
                                             maxLength={5}
                                             onChange={props.saveFieldData('prev_zip_code')} 
                                             onKeyDown={(e) => restrictType(e, 'number')} 
-                                            onBlur={(e) => setHandleErrors({ ...handleErrors, prev_zip: checkForErrors(e, 'check value exists') })}
+                                            onBlur={(e) => setHandleErrors({ ...handleErrors, prev_zip: checkForErrors(e, 'check value length') })}
                                         />
                                         {(addressReq && handleErrors.prev_zip) && 
-                                                <span id="prev-zip-error" role="alert" className={validationStyles['error-text']}>
-                                                    Zip Code must be filled out.
-                                                </span>
+                                            <span id="prev-zip-error" role="alert" className={validationStyles['error-text']}>
+                                                Previous Zip Code must be filled out.
+                                            </span>
                                         }
                                         </Label>
                                     </div>
@@ -332,7 +332,7 @@ function Addresses(props){
                                         />
                                         {(addressReq && handleErrors.mail_street) && 
                                             <span id="mail-street-error" role="alert" className={validationStyles['error-text']}>
-                                                Street Address must be filled out.
+                                                Mailing Street Address must be filled out.
                                             </span>
                                         }
                                     </Label>
@@ -367,13 +367,13 @@ function Addresses(props){
                                         />
                                         {(addressReq && handleErrors.mail_city) && 
                                             <span id="mail-city-error" role="alert" className={validationStyles['error-text']}>
-                                                City name must be filled out.
+                                                Mailing City name must be filled out.
                                             </span>
                                         }
                                         </Label>
                                     </div>
 
-                                    <div className={validationStyles[(addressReq && handleErrors.mail_city) && 'error-container']}>
+                                    <div className={validationStyles[(addressReq && handleErrors.mail_state) && 'error-container']}>
                                     <Label htmlFor="mail-state">
                                         State{addressReq && <span className={validationStyles['required-text']}>*</span>}
                                     <StateSelector 
@@ -386,9 +386,9 @@ function Addresses(props){
                                         saveState={props.saveFieldData('mail_state')} 
                                         onBlur={(e) => checkStateValue('mail_state')}
                                     />
-                                    {(addressReq && handleErrors.mail_city) && 
+                                    {(addressReq && handleErrors.mail_state) && 
                                         <span id="mail-state-error" role="alert" className={validationStyles['error-text']}>
-                                            City name must be filled out.
+                                            Mailing State selection must be made.
                                         </span>
                                     }
                                     </Label>
@@ -410,11 +410,11 @@ function Addresses(props){
                                             maxLength={5}
                                             onChange={props.saveFieldData('mail_zip_code')} 
                                             onKeyDown={(e) => restrictType(e, 'number')} 
-                                            onBlur={(e) => setHandleErrors({ ...handleErrors, mail_zip: checkForErrors(e, 'check value exists') })}
+                                            onBlur={(e) => setHandleErrors({ ...handleErrors, mail_zip: checkForErrors(e, 'check value length') })}
                                         />
                                         {(addressReq && handleErrors.mail_zip) && 
                                             <span id="mail-zip-error" role="alert" className={validationStyles['error-text']}>
-                                                Zip Code must be filled out.
+                                               Mailing Zip Code must be filled out.
                                             </span>
                                         }
                                         </Label>
