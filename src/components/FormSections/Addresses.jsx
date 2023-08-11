@@ -303,7 +303,7 @@ function Addresses(props){
                                         />
                                         {(addressReq && handleErrors.prev_zip) && 
                                             <span id="prev-zip-error" role="alert" className={validationStyles['error-text']}>
-                                                Previous Zip Code must be filled out.
+                                                Previous Zip Code must be 5 digits.
                                             </span>
                                         }
                                         </Label>
@@ -414,7 +414,7 @@ function Addresses(props){
                                         />
                                         {(addressReq && handleErrors.mail_zip) && 
                                             <span id="mail-zip-error" role="alert" className={validationStyles['error-text']}>
-                                               Mailing Zip Code must be filled out.
+                                               Mailing Zip Code must be 5 digits.
                                             </span>
                                         }
                                         </Label>
