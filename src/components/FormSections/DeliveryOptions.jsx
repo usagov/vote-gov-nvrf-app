@@ -70,6 +70,9 @@ async function fillForm(formData) {
     const prevState = form.getTextField('State_3');
     const prevZipcode = form.getTextField('Zip Code_3');
 
+    const idNumber = form.getTextField('undefined_3');
+    const politicalParty = form.getTextField('Choice of Party see item 7 in the instructions for your State');
+
     // -----------Fill in the pdf fields--------------------------
     // (1) Personal Information
     // Logic for title select has to be seperated into two radio groups
@@ -151,7 +154,10 @@ async function fillForm(formData) {
     prevZipcode.setText(formData.prev_zip_code);
 
     //(3) Identification
+    idNumber.setText(formData.id_number);
+
     //(4) Political Party
+    politicalParty.setText(formData.party_choice);
 
     //-------------End PDF Fill---------------
 
