@@ -252,7 +252,7 @@ function PersonalInfo(props){
                         onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) checkDateValues(); }}
                     >
                         <div class="usa-form-group usa-form-group--month usa-form-group--select">
-                        <label class="usa-label" for="date_of_birth_month">
+                        <label class="usa-label" htmlFor="date_of_birth_month">
                             Month
                         <select
                             class="usa-select"
@@ -335,8 +335,8 @@ function PersonalInfo(props){
         )}
 
         {telephoneVisible && (
-            <div className={validationStyles[(nameReq && handleErrors.phone_number) && 'error-container']}>
-                <Label htmlFor="phone-number">Phone Number (123) 456-7890{nameReq && <span className={validationStyles['required-text']}>*</span>}
+            <div className={validationStyles[(telephoneReq && handleErrors.phone_number) && 'error-container']}>
+                <Label htmlFor="phone-number">Phone Number (123) 456-7890{telephoneReq && <span className={validationStyles['required-text']}>*</span>}
                 <TextInput 
                     id="phone-number" 
                     aria-describedby="phone-number-error"

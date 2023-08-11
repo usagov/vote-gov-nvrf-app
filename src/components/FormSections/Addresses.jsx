@@ -50,11 +50,28 @@ function Addresses(props){
         zip: false,
         prev_street: false, 
         prev_city: false,
+        prev_state: false,
         prev_zip: false,
         mail_street: false, 
         mail_city: false,
+        mail_state: false,
         mail_zip: false,
     })
+
+    const checkStateValue=(name)=> {
+        if (name === 'prev_state') {
+            console.log(props.fieldData.prev_state)
+            props.fieldData.prev_state ?  
+            setHandleErrors({ ...handleErrors, prev_state: (false) }) 
+            :
+            setHandleErrors({ ...handleErrors, prev_state: (true) })
+        } else if (name === 'mail_state') {
+            props.fieldData.mail_state ?  
+            setHandleErrors({ ...handleErrors, mail_state: (false) }) 
+            :
+            setHandleErrors({ ...handleErrors, mail_state: (true) })
+     }
+    }
 
     //states list
     const statesList = []
@@ -172,11 +189,11 @@ function Addresses(props){
                             value={props.fieldData.zip_code} 
                             onChange={props.saveFieldData('zip_code')} 
                             onKeyDown={(e) => restrictType(e, 'number')} 
-                            onBlur={(e) => setHandleErrors({ ...handleErrors, zip: checkForErrors(e, 'check value exists') })}
+                            onBlur={(e) => setHandleErrors({ ...handleErrors, zip: checkForErrors(e, 'check value length') })}
                         />
                         {(addressReq && handleErrors.zip) && 
                                 <span id="zip-error" role="alert" className={validationStyles['error-text']}>
-                                    Zip Code must be filled out.
+                                    Zip Code must be 5 digits.
                                 </span>
                         }
                         </Label>
@@ -245,17 +262,26 @@ function Addresses(props){
                                         </Label>
                                     </div>
 
-                                    <Label htmlFor="prev-state">
-                                        State
-                                    <StateSelector 
-                                        id="prev-state" 
-                                        autoComplete="off" 
-                                        required={addressReq}
-                                        statesList={statesList} 
-                                        state={props.fieldData.prev_state} 
-                                        saveState={props.saveFieldData('prev_state')} 
-                                    />
-                                    </Label>
+                                    <div className={validationStyles[(addressReq && handleErrors.prev_state) && 'error-container']}>
+                                        <Label htmlFor="prev-state">
+                                            State!{addressReq && <span className={validationStyles['required-text']}>*</span>}
+                                        <StateSelector 
+                                            id="prev-state" 
+                                            ariaDescribedby="prev-state-error"
+                                            autoComplete="off" 
+                                            required={addressReq}
+                                            statesList={statesList} 
+                                            state={props.fieldData.prev_state} 
+                                            saveState={props.saveFieldData('prev_state')} 
+                                            onBlur={(e) => checkStateValue('prev_state')}
+                                        />
+                                        {(addressReq && handleErrors.prev_state) && 
+                                            <span id="prev-state-error" role="alert" className={validationStyles['error-text']}>
+                                                State selection must be made.
+                                            </span>
+                                        }
+                                        </Label>
+                                    </div>
 
                                     <div className={validationStyles[(addressReq && handleErrors.prev_zip) && 'error-container']}>
                                         <Label htmlFor="prev-zip">
@@ -347,17 +373,26 @@ function Addresses(props){
                                         </Label>
                                     </div>
 
-                                    <Label>
-                                        State
+                                    <div className={validationStyles[(addressReq && handleErrors.mail_city) && 'error-container']}>
+                                    <Label htmlFor="mail-state">
+                                        State{addressReq && <span className={validationStyles['required-text']}>*</span>}
                                     <StateSelector 
                                         id="mail-state" 
                                         autoComplete="off" 
+                                        ariaDescribedBy="mail-state-error"
                                         required={addressReq}
                                         statesList={statesList} 
                                         state={props.fieldData.mail_state} 
                                         saveState={props.saveFieldData('mail_state')} 
+                                        onBlur={(e) => checkStateValue('mail_state')}
                                     />
+                                    {(addressReq && handleErrors.mail_city) && 
+                                        <span id="mail-state-error" role="alert" className={validationStyles['error-text']}>
+                                            City name must be filled out.
+                                        </span>
+                                    }
                                     </Label>
+                                    </div>
 
                                     <div className={validationStyles[(addressReq && handleErrors.mail_zip) && 'error-container']}>
                                         <Label htmlFor="mail-zip">
