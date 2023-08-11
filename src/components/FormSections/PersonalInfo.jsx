@@ -35,13 +35,22 @@ function PersonalInfo(props){
         last_name: false,
         prev_first_name: false,
         prev_last_name: false,
-        dob: {
-            day: false,
-            month: false,
-            year: false
-        },
+        dob: false,
         phone_number: false
     })
+
+    const checkDateValues=()=> {
+        let dobValues = [
+            props.fieldData.date_of_birth_month.length === 2,
+            props.fieldData.date_of_birth_day.length === 2,
+            props.fieldData.date_of_birth_year.length === 4
+        ]
+        if (dobValues.includes(false)) {
+            setHandleErrors({ ...handleErrors, dob: (true) })
+        } else {
+            setHandleErrors({ ...handleErrors, dob: (false) })
+        }
+     }
 
     return (
         <>
@@ -228,41 +237,55 @@ function PersonalInfo(props){
         )}
 
         {dobVisible && (
-            // <div className={validationStyles['error-container']}>
-                <Fieldset legend={nameReq ? "Date of Birth*" : "Date of Birth"} style={{ marginTop:'30px'}}>
+            <div className={validationStyles[(dobReq && handleErrors.dob) && 'error-container']}>
+                <Fieldset legend={dobReq ? ["Date of Birth", <span className={validationStyles['required-text']}>*</span>] : "Date of Birth"} style={{ marginTop:'30px'}}>
                     <span className="usa-hint" id="date-of-birth-hint">
-                    For example: mm/dd/yyyy
+                    For example: January 19 2000
                     </span>
-                    <div id="date-of-birth" className="usa-memorable-date" name="date-of-birth" autoComplete="off" required={dobReq} data-testid="dateInputGroup">
-                        <div data-testid="formGroup" className="usa-form-group usa-form-group--month">
-                            <label data-testid="label" className="usa-label" htmlFor="testDateInput">
-                                Month
-                            </label>
-                            <input 
-                                id="date_of_birth_month" 
-                                className="usa-input" 
-                                name="date_of_birth_month" 
-                                label="Month" unit="month"
-                                required={true} 
-                                type="number" 
-                                inputMode="numeric" 
-                                min={1} 
-                                max={12} 
-                                minLength={2} 
-                                maxLength={2}
-                                value={props.fieldData.date_of_birth_month} 
-                                onChange={props.saveFieldData('date_of_birth_month')}
-                                onKeyUp={(e) => focusNext(e, "date_of_birth_day")}
-                                onKeyDown={(e) => restrictLength(e, e.target.value, e.target.maxLength)}
-                            />
+                    <div 
+                        id="date-of-birth" 
+                        className="usa-memorable-date" 
+                        name="date-of-birth" 
+                        autoComplete="off" 
+                        required={dobReq} 
+                        data-testid="dateInputGroup"
+                        onBlur={(e) => checkDateValues()}
+                    >
+                        <div class="usa-form-group usa-form-group--month usa-form-group--select">
+                        <label class="usa-label" for="date_of_birth_month">
+                            Month
+                        <select
+                            class="usa-select"
+                            id="date_of_birth_month"
+                            name="date_of_birth_month"
+                            aria-describedby="dob-error"
+                            required={true} 
+                            value={props.fieldData.date_of_birth_month} 
+                            onChange={props.saveFieldData('date_of_birth_month')}
+                        >
+                            <option value>- Select -</option>
+                            <option value="01">01 - January</option>
+                            <option value="02">02 - February</option>
+                            <option value="03">03 - March</option>
+                            <option value="04">04 - April</option>
+                            <option value="05">05 - May</option>
+                            <option value="06">06 - June</option>
+                            <option value="07">07 - July</option>
+                            <option value="08">08 - August</option>
+                            <option value="09">09 - September</option>
+                            <option value="10">10 - October</option>
+                            <option value="11">11 - November</option>
+                            <option value="12">12 - December</option>
+                        </select>
+                        </label>
                         </div>
                         <div data-testid="formGroup" className="usa-form-group usa-form-group--day">
                             <label data-testid="label" className="usa-label" htmlFor="testDateInput">
                                 Day
-                            </label>
                             <input 
                                 id="date_of_birth_day" 
                                 className="usa-input" 
+                                aria-describedby="dob-error"
                                 name="date_of_birth_day"
                                 label="Day" 
                                 unit="day" 
@@ -278,14 +301,15 @@ function PersonalInfo(props){
                                 onKeyUp={(e) => focusNext(e, "date_of_birth_year")}
                                 onKeyDown={(e) => restrictLength(e, e.target.value, e.target.maxLength)}
                             />
+                            </label>
                         </div>
                         <div data-testid="formGroup" className="usa-form-group usa-form-group--year">
                             <label data-testid="label" className="usa-label" htmlFor="testDateInput">
                                 Year
-                            </label>
                             <input 
                                 id="date_of_birth_year" 
                                 className="usa-input" 
+                                aria-describedby="dob-error"
                                 name="date_of_birth_year"
                                 label="Year" 
                                 unit="year" 
@@ -298,11 +322,16 @@ function PersonalInfo(props){
                                 onChange={props.saveFieldData('date_of_birth_year')}
                                 onKeyDown={(e) => restrictType(e, 'number')}
                             />
+                            </label>
                         </div>
                     </div>
                 </Fieldset>
-            // {dobReq && <span rol="alert" className={validationStyles['error-text']}>Date of Birth must follow the format of mm/dd/yyyy.</span>}
-            // </div>
+            {(dobReq && handleErrors.dob) && 
+                <span id="dob-error" rol="alert" className={validationStyles['error-text']}>
+                    Date of Birth must follow the format of January 19 2000.
+                </span>
+            }
+            </div>
         )}
 
         {telephoneVisible && (
