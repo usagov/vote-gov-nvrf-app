@@ -73,7 +73,7 @@ function MultiStepForm(props) {
         </div>
         }
 
-        <Form style={{ maxWidth:'none' }} onSubmit={(e) => {handleSubmit(e), handleNext()}}>
+        <Form autoComplete="off" style={{ maxWidth:'none' }} onSubmit={(e) => {handleSubmit(e), handleNext()}}>
             {step === 1 &&
                 <PersonalInfo
                 state={props.state}
