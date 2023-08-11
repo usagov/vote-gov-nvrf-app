@@ -10,6 +10,7 @@ function Confirmation(props){
     const fieldDataOverride_race = (fieldData.race === '') ? "Not required for your state" : fieldData.race;
     const fieldDataOverride_party = (fieldData.party_choice === '') ? "No party entered": fieldData.party_choice;
     const fieldDataOverride_state = props.stateData.name;
+    fieldData.state = fieldDataOverride_state;
 
     //Acknowledment field controls
     const [hasAcknowledged, setHasAcknowledged] = useState(false);

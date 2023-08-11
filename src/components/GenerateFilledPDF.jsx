@@ -2,6 +2,7 @@ import { PDFDocument} from 'pdf-lib';
 import download from "downloadjs";
 
 const GenerateFilledPDF = async function (formData) {
+    console.log(formData);
     // Fetch the PDF with form fields
     const formUrl = 'https://www.eac.gov/sites/default/files/eac_assets/1/6/Federal_Voter_Registration_ENG.pdf'
     const formPdfBytes = await fetch(formUrl).then(res => res.arrayBuffer())
@@ -158,7 +159,7 @@ const GenerateFilledPDF = async function (formData) {
     const pdfBytes = await pdfDoc.save()
 
     // Trigger the browser to download the PDF document
-    download(pdfBytes, "pdf-lib_form_creation_example.pdf", "application/pdf");
+    download(pdfBytes, `national_voter_registration_form_${formData.state}.pdf`, "application/pdf");
 }
 
 export default GenerateFilledPDF;
