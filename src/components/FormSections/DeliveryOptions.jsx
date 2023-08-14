@@ -2,12 +2,11 @@ import { Button, Grid, GridContainer } from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import Email from "../DeliveryOptions/Email";
 import Print from "../DeliveryOptions/Print";
-import content from "../../data/registration-form.json";
 import CardSelect from '../CardSelect';
+import GenerateFilledPDF from '../GenerateFilledPDF';
 import styles from "../../styles/DeliveryOptions.module.css";
 
 function DeliveryOptions(props){
-
     return (
         <>
         <h2>You're Almost Done!</h2>
@@ -26,7 +25,7 @@ function DeliveryOptions(props){
                             cardStyle={props.deliveryButtonSelected === 'email' ? 'card-selected' : 'card'}/>
                         </div>
                     </Grid>
-                </Grid>                    
+                </Grid>
                 </div>
                 <div className={styles['card-padding']}>
                 <Grid row>
@@ -38,7 +37,7 @@ function DeliveryOptions(props){
                                 cardStyle={props.deliveryButtonSelected === 'print' ? 'card-selected' : 'card'}/>
                         </div>
                     </Grid>
-                </Grid>                    
+                </Grid>
                 </div>
             </Grid>
         </GridContainer>
@@ -66,7 +65,9 @@ function DeliveryOptions(props){
                 buttonDisabled={props.buttonDisabled}
             />
         }
-        <Button type="submit">
+        {/* On submit, generate a PDF, download or email based on delivery option */}
+
+        <Button onClick={ async () => {await GenerateFilledPDF(props.fieldData);} } type="submit">
             {props.deliveryButtonSelected === 'email' ? 'Send Form to My Email Address' : 'Print'}
         </Button>
         </>
