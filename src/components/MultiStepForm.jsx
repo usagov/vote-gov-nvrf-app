@@ -1,4 +1,4 @@
-import { Form, Label, TextInput, Button, Dropdown,Checkbox, DatePicker, Address } from '@trussworks/react-uswds';
+import { Form } from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import ProgressBar from './ProgressBar';
 import PersonalInfo from "./FormSections/PersonalInfo";
@@ -12,7 +12,6 @@ import SuccessPage from './FormSections/SuccessPage';
 import { phoneFormat } from './FormSections/ValidateField';
 
 function MultiStepForm(props) {
-     {/* functions/variables code goes here */}
     //Field data controls
     const [fieldData, setFieldData] = useState({
         title:'', first_name: '', middle_name: '', last_name: '', suffix:'',
@@ -63,6 +62,13 @@ function MultiStepForm(props) {
         }
     }
 
+    //Form Sections controls
+    const [idType, setIdType] = useState('')
+    const saveIdType = (e) => {
+        setIdType(e.target.value)
+        e.target.value === 'none' ? setFieldData({ ...fieldData, id_number: 'none' }) : setFieldData({ ...fieldData, id_number: '' });
+    }
+
     return (
         <>
         <ProgressBar step={step}/>
@@ -101,7 +107,9 @@ function MultiStepForm(props) {
                 fieldData={fieldData}
                 saveFieldData = {saveFieldData}
                 registrationPath={props.registrationPath}
-                handlePrev={handlePrev}/>
+                handlePrev={handlePrev}
+                saveIdType={saveIdType}
+                idType={idType}/>
             }
             {step === 4 &&
                 <PoliticalParty

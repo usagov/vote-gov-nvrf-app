@@ -251,11 +251,11 @@ function PersonalInfo(props){
                         data-testid="dateInputGroup"
                         onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) checkDateValues(); }}
                     >
-                        <div class="usa-form-group usa-form-group--month usa-form-group--select">
-                        <label class="usa-label" htmlFor="date_of_birth_month">
+                        <div className="usa-form-group usa-form-group--month usa-form-group--select">
+                        <label className="usa-label" htmlFor="date_of_birth_month">
                             Month
                         <select
-                            class="usa-select"
+                            className="usa-select"
                             id="date_of_birth_month"
                             name="date_of_birth_month"
                             aria-describedby="dob-error"

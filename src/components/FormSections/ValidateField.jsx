@@ -37,9 +37,9 @@ export const phoneFormat=(input)=>{//returns (###) ###-####
     return input;
 }
 
-export const expirationValidate=()=> {
+export const checkExpiration=(date)=> {
   // format is YYYY-MM-DD
-  let expireDate = Date.parse("2023-08-03");
+  let expireDate = Date.parse(date);
   let todayDate = Date.parse(Date());
 
   let diff = todayDate - expireDate;
