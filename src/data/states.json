@@ -116,50 +116,5 @@
             "race": false,
             "acknowledgement": false
         }
-    },
-    {
-        "name": "Test State",
-        "abreviation": "ts",
-        "reg_type": "online",
-        "eligibility_requirements": ["citizen", "age"],
-        "election_website_url": "https://www.elections.alaska.gov/",
-        "registration_url": "https://voterregistration.alaska.gov/?ref=voteusa_en",
-        "fields_required":
-        {
-            "name": true,
-            "address": true,
-            "mailing_address": true,
-            "DOB": true,
-            "telephone": true,
-            "ID_num": true,
-            "party": true,
-            "race": true,
-            "acknowledgement": true
-        },
-        "fields_visible":
-        {
-            "name": true,
-            "address": true,
-            "mailing_address": true,
-            "DOB": true,
-            "telephone": true,
-            "ID_num": true,
-            "party": true,
-            "race": true,
-            "acknowledgement": true
-        },
-        "info": {
-            "online": "Test State residents that meet the eligibility requirements listed above may be able to register online. You must have a valid Test State driver's license or state ID card and the information you enter when registering must match the information on your Division of Motor Vehicles (DMV) record. If you do not have a valid Test State driver's license or state ID (identification), or your information cannot be validated, you may select to register using a paper registration form."
-        },
-        "eligibility_list": ["be a citizen of the United States", "be at least 18 years old within 90 days of completing this registration", "be a resident of Test State", "not be a convicted felon (unless unconditionally discharged)", "not be registered to vote in another State"],
-        "deadlines_list": ["Online registration deadline: 30 days before Election Day", "Register by mail deadline: Must be postmarked 30 days before Election Day", "In person registration deadline: 30 days before Election Day"],
-        "online_info": "Test State residents that meet the eligibility requirements listed above may be able to register online. You must have a valid Test State driver's license or state ID card and the information you enter when registering must match the information on your Division of Motor Vehicles (DMV) record. If you do not have a valid Test State driver's license or state ID (identification), or your information cannot be validated, you may select to register using a paper registration form.",
-        "state_field_instructions":
-        {
-            "ID_num_text": "You must provide one of the following identification numbers; Test State Driver's License or Test State State Identification Card Number. If you do not have an Test State Driver's License or Test State State Identification Card, enter the last four digits of your Social Security Number. \n\nIf you do not have any of these identification numbers, indicate that below. A unique identifying number will be assigned to you for voter registration purposes. This information is kept confidential. Having this information assists in maintaining your voter record and may assist in verifying your identity (Title 15 of the Test State Statutes).",
-            "party_text": "You do not have to declare a party affiliation when registering to vote. If you do not choose a party, you will be registered as Undeclared. Test State has a closed primary election system. Each recognized political party has a separate ballot listing only candidates from that political party. Voters registered as a member of a political party may only vote that party's ballot. Voters registered as undeclared or non-partisan may choose one ballot from the ballots available.",
-            "race_text": ""
-        },
-        "state_address": "Division of Elections State of Test State\nPO Box 110017\nJuneau, AK 99811-0017"
     }
 ]
