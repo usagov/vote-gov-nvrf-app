@@ -16,34 +16,6 @@ function Addresses(props){
     const addressVisible = stateFieldVisible.address;
     const mailAddressVisible = stateFieldVisible.mailing_address;
 
-    //No address fields controls
-    const [hasNoAddress, setHasNoAddress] = useState(false);
-    const hasNoAddressCheckbox = (e) => {
-        setHasNoAddress(e.target.checked);
-    }
-
-    //Previous address fields controls
-    const [hasPreviousAddress, setHasPreviousAddress] = useState(false);
-    const onChangePreviousAddressCheckbox = (e) => {
-        setHasPreviousAddress(e.target.checked);
-    }
-
-    const [previousAddress, setPreviousAddress] = useState("");
-    const onChangePreviousAddress = (e) => {
-        setPreviousAddress(e.target.value);
-    }
-
-    //Mail address fields controls
-    const [hasMailAddress, setHasMailAddress] = useState(false);
-    const onChangeMailAddressCheckbox = (e) => {
-        setHasMailAddress(e.target.checked);
-    }
-
-    const [mailAddress, setMailAddress] = useState("");
-    const onChangeMailAddress = (e) => {
-        setMailAddress(e.target.value);
-    }
-
     const [handleErrors, setHandleErrors] = useState({ 
         street: false, 
         city: false,
@@ -99,8 +71,8 @@ function Addresses(props){
 
         {addressVisible && (
             <div>
-                <Checkbox id="no-addr" name="no-addr" checked={hasNoAddress} onChange={hasNoAddressCheckbox} label="I live in a rural area and do not have a street address, or do not have an address." />
-                { !hasNoAddress && (<div>
+                <Checkbox id="no-addr" name="no-addr" checked={props.hasNoAddress} onChange={props.hasNoAddressCheckbox} label="I live in a rural area and do not have a street address, or do not have an address." />
+                { !props.hasNoAddress && (<div>
                     <h3>{content.home_address_heading}</h3>
                     <p>{content.home_address_field_text_1}</p>
 
@@ -201,9 +173,9 @@ function Addresses(props){
 
                     { changeRegistrationVisible && (
                         <div>
-                            <Checkbox id="prev-res-addr" name="prev-res-addr" checked={hasPreviousAddress} onChange={onChangePreviousAddressCheckbox} label="I have a previous residential address." />
-                            {hasPreviousAddress && (
-                                <div value={previousAddress} onChange={onChangePreviousAddress}>
+                            <Checkbox id="prev-res-addr" name="prev-res-addr" checked={props.hasPreviousAddress} onChange={props.onChangePreviousAddressCheckbox} label="I have a previous residential address." />
+                            {props.hasPreviousAddress && (
+                                <div value={props.previousAddress} onChange={props.onChangePreviousAddress}>
                                     <h3>{content.previous_address_heading}</h3>
                                     <div className={validationStyles[(addressReq && handleErrors.prev_street) && 'error-container']}>
                                         <Label htmlFor="prev-street">
@@ -310,9 +282,9 @@ function Addresses(props){
                                     </div>
                                 </div>
                             )}
-                            <Checkbox id="alt-mail-addr" name="alt-mail-addr" checked={hasMailAddress} onChange={onChangeMailAddressCheckbox} label="I get my mail at a different address from the one above." />
-                            {hasMailAddress && (
-                                <div value={mailAddress} onChange={onChangeMailAddress}>
+                            <Checkbox id="alt-mail-addr" name="alt-mail-addr" checked={props.hasMailAddress} onChange={props.onChangeMailAddressCheckbox} label="I get my mail at a different address from the one above." />
+                            {props.hasMailAddress && (
+                                <div value={props.mailAddress} onChange={props.onChangeMailAddress}>
                                     <h3>{content.mail_address_heading}</h3>
                                     <p>{content.mailing_address_text}</p>
                                 
@@ -399,7 +371,7 @@ function Addresses(props){
                                             Zip Code (12345){addressReq && <span className={validationStyles['required-text']}>*</span>}
                                         <TextInput 
                                             id="mail-zip"
-                                            aria-aria-describedby="mail-zip-error" 
+                                            aria-describedby="mail-zip-error" 
                                             name="mail-zip" 
                                             value={props.fieldData.mail_zip_code} 
                                             type="text" 

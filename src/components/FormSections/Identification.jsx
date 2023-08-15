@@ -5,8 +5,6 @@ import { focusNext, restrictLength, restrictType, checkExpiration, checkForError
 import validationStyles from "../../styles/ValidationStyles.module.css";
 
 function Identification(props){
-    const[expireValid, setExpireValid] = useState();
-
     const stateFieldRequirements = props.stateData.fields_required;
     const stateFieldVisible = props.stateData.fields_visible;
     const stateInstructions = props.stateData.state_field_instructions;
