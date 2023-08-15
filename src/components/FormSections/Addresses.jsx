@@ -3,6 +3,8 @@ import StateSelector from '../StateSelector';
 import React, { useState } from "react";
 import states from "../../data/states.json";
 import content from "../../data/registration-form.json";
+import { restrictLength, restrictType, checkForErrors } from './ValidateField';
+import validationStyles from "../../styles/ValidationStyles.module.css";
 
 function Addresses(props){
     const changeRegistrationVisible = (props.registrationPath === 'update') ? true : false;
@@ -14,26 +16,33 @@ function Addresses(props){
     const addressVisible = stateFieldVisible.address;
     const mailAddressVisible = stateFieldVisible.mailing_address;
 
-    //Previous address fields controls
-    const [hasPreviousAddress, setHasPreviousAddress] = useState(false);
-    const onChangePreviousAddressCheckbox = (e) => {
-        setHasPreviousAddress(e.target.checked);
-    }
+    const [handleErrors, setHandleErrors] = useState({ 
+        street: false, 
+        city: false,
+        zip: false,
+        prev_street: false, 
+        prev_city: false,
+        prev_state: false,
+        prev_zip: false,
+        mail_street: false, 
+        mail_city: false,
+        mail_state: false,
+        mail_zip: false,
+    })
 
-    const [previousAddress, setPreviousAddress] = useState("");
-    const onChangePreviousAddress = (e) => {
-        setPreviousAddress(e.target.value);
-    }
-
-    //Mail address fields controls
-    const [hasMailAddress, setHasMailAddress] = useState(false);
-    const onChangeMailAddressCheckbox = (e) => {
-        setHasMailAddress(e.target.checked);
-    }
-
-    const [mailAddress, setMailAddress] = useState("");
-    const onChangeMailAddress = (e) => {
-        setMailAddress(e.target.value);
+    const checkStateValue=(name)=> {
+        if (name === 'prev_state') {
+            console.log(props.fieldData.prev_state)
+            props.fieldData.prev_state ?  
+            setHandleErrors({ ...handleErrors, prev_state: (false) }) 
+            :
+            setHandleErrors({ ...handleErrors, prev_state: (true) })
+        } else if (name === 'mail_state') {
+            props.fieldData.mail_state ?  
+            setHandleErrors({ ...handleErrors, mail_state: (false) }) 
+            :
+            setHandleErrors({ ...handleErrors, mail_state: (true) })
+     }
     }
 
     //states list
@@ -62,68 +71,331 @@ function Addresses(props){
 
         {addressVisible && (
             <div>
-                <h3>{content.home_address_heading}</h3>
-                <p>{content.home_address_field_text_1}</p>
-                <Label htmlFor="street-address">Street Address</Label>
-                <TextInput id="street-address" name="street-address" value={props.fieldData.street_address} onChange={props.saveFieldData('street_address')} type="text" autoComplete="off" required={addressReq}/>
+                <Checkbox id="no-addr" name="no-addr" checked={props.hasNoAddress} onChange={props.hasNoAddressCheckbox} label="I live in a rural area and do not have a street address, or do not have an address." />
+                { !props.hasNoAddress && (<div>
+                    <h3>{content.home_address_heading}</h3>
+                    <p>{content.home_address_field_text_1}</p>
 
-                <Label htmlFor="apt-num">Apartment or Lot #</Label>
-                <TextInput id="apt-num" name="apt-num" value={props.fieldData.apt_num} onChange={props.saveFieldData('apt_num')} type="text" autoComplete="off"/>
-
-                <Label htmlFor="city">City</Label>
-                <TextInput id="city" name="city" value={props.fieldData.city} onChange={props.saveFieldData('city')} type="text" autoComplete="off" required={addressReq}/>
-
-                <Label htmlFor="state">State</Label>
-                <StateSelector statesList={statesList} state={props.stateData.name} saveState={props.saveFieldData('state')} autoComplete="off" disabled={true} required={addressReq}/>
-
-                <Label htmlFor="zipcode">Zip Code (12345)</Label>
-                <TextInput id="zipcode" name="zip-code" value={props.fieldData.zip_code} onChange={props.saveFieldData('zip_code')} type="text" autoComplete="off" required={addressReq}/>
-
-                { changeRegistrationVisible && (
-                    <div>
-                        <Checkbox id="prev-res-addr" name="prev-res-addr" checked={hasPreviousAddress} onChange={onChangePreviousAddressCheckbox} label="I have a previous residential address." />
-                        {hasPreviousAddress && (
-                            <div value={previousAddress} onChange={onChangePreviousAddress}>
-                                <h3>{content.previous_address_heading}</h3>
-                                <Label htmlFor="street-address-3">Street Address</Label>
-                                <TextInput id="street-address-3" name="street-address-3" value={props.fieldData.prev_street_address} onChange={props.saveFieldData('prev_street_address')} type="text" autoComplete="off" required={addressReq}/>
-
-                                <Label htmlFor="apt-num-3">Apartment or Lot #</Label>
-                                <TextInput id="apt-num-3" name="apt-num-3" value={props.fieldData.prev_apt_num} onChange={props.saveFieldData('prev_apt_num')} type="text" autoComplete="off"/>
-
-                                <Label htmlFor="city-3">City</Label>
-                                <TextInput id="city-3" name="city-3" value={props.fieldData.prev_city} onChange={props.saveFieldData('prev_city')} type="text" autoComplete="off" required={addressReq}/>
-
-                                <Label>State</Label>
-                                <StateSelector id="state-3" statesList={statesList} state={props.fieldData.prev_state} saveState={props.saveFieldData('prev_state')} autoComplete="off" required={addressReq}/>
-
-                                <Label htmlFor="zipcode-3">Zipcode (12345)</Label>
-                                <TextInput id="zipcode-3" name="zip-code-3" value={props.fieldData.prev_zip_code} onChange={props.saveFieldData('prev_zip_code')} type="text" autoComplete="off" required={addressReq}/>
-                            </div>
-                        )}
-                        <Checkbox id="alt-mail-addr" name="alt-mail-addr" checked={hasMailAddress} onChange={onChangeMailAddressCheckbox} label="I get my mail at a different address from the one above." />
-                        {hasMailAddress && (
-                            <div value={mailAddress} onChange={onChangeMailAddress}>
-                                <h3>{content.mail_address_heading}</h3>
-                                <p>{content.mailing_address_text}</p>
-                                <Label htmlFor="street-address-2">Street Address (or route and box number)</Label>
-                                <TextInput id="street-address-2" name="street-address-2" value={props.fieldData.mail_street_address} onChange={props.saveFieldData('mail_street_address')} type="text" autoComplete="off" required={addressReq}/>
-
-                                <Label htmlFor="apt-num-2">Apartment or Lot #</Label>
-                                <TextInput id="apt-num-2" name="apt-num-2" value={props.fieldData.mail_apt_num} onChange={props.saveFieldData('mail_apt_num')} type="text" autoComplete="off"/>
-
-                                <Label htmlFor="city-2">City</Label>
-                                <TextInput id="city-2" name="city-2" value={props.fieldData.mail_city} onChange={props.saveFieldData('mail_city')} type="text" autoComplete="off" required={addressReq}/>
-
-                                <Label>State</Label>
-                                <StateSelector id="state-2" statesList={statesList} state={props.fieldData.mail_state} saveState={props.saveFieldData('mail_state')} autoComplete="off" required={addressReq}/>
-
-                                <Label htmlFor="zipcode-2">Zipcode (12345)</Label>
-                                <TextInput id="zipcode-2" name="zip-code-2" value={props.fieldData.mail_zip_code} onChange={props.saveFieldData('mail_zip_code')} type="text" autoComplete="off" required={addressReq}/>
-                            </div>
-                        )}
+                    <div className={validationStyles[(addressReq && handleErrors.street) && 'error-container']}>
+                        <Label htmlFor="street-address">
+                            Street Address{addressReq && <span className={validationStyles['required-text']}>*</span>}
+                        <TextInput 
+                            id="street-address" 
+                            aria-describedby="street-address-error"
+                            name="street-address" 
+                            type="text" 
+                            autoComplete="off" 
+                            required={addressReq}
+                            value={props.fieldData.street_address} 
+                            onChange={props.saveFieldData('street_address')} 
+                            onBlur={(e) => setHandleErrors({ ...handleErrors, street: checkForErrors(e, 'check value exists') })}
+                            />
+                        {(addressReq && handleErrors.street) && 
+                            <span id="street-address-error" role="alert" className={validationStyles['error-text']}>
+                                Street Address must be filled out.
+                            </span>
+                        }
+                        </Label>
                     </div>
-                )}
+
+                    <Label htmlFor="apt-num">
+                        Apartment or Lot #
+                    <TextInput 
+                        id="apt-num" 
+                        name="apt-num" 
+                        type="text" 
+                        autoComplete="off"
+                        value={props.fieldData.apt_num} 
+                        onChange={props.saveFieldData('apt_num')} 
+                    />
+                    </Label>
+
+                    <div className={validationStyles[(addressReq && handleErrors.city) && 'error-container']}>
+                        <Label htmlFor="city">
+                            City{addressReq && <span className={validationStyles['required-text']}>*</span>}
+                        <TextInput 
+                            id="city" 
+                            aria-describedby="city-error"
+                            name="city" 
+                            value={props.fieldData.city} 
+                            type="text" 
+                            autoComplete="off" 
+                            required={addressReq}
+                            onChange={props.saveFieldData('city')} 
+                            onKeyDown={(e) => restrictType(e, 'letters')}
+                            onBlur={(e) => setHandleErrors({ ...handleErrors, city: checkForErrors(e, 'check value exists') })}
+                            />
+                        {(addressReq && handleErrors.city) && 
+                            <span id="city-error" role="alert" className={validationStyles['error-text']}>
+                                City name must be filled out.
+                            </span>
+                        }
+                        </Label>
+                    </div>
+
+                    <Label htmlFor="state">
+                        State
+                    <StateSelector 
+                        statesList={statesList} 
+                        state={props.stateData.name} 
+                        saveState={props.saveFieldData('state')} 
+                        autoComplete="off" 
+                        disabled={true} 
+                        required={addressReq}
+                    />
+                    </Label>
+
+                    <div className={validationStyles[(addressReq && handleErrors.zip) && 'error-container']}>
+                        <Label htmlFor="zip">
+                            Zip Code (12345){addressReq && <span className={validationStyles['required-text']}>*</span>}
+                        <TextInput 
+                            id="zip" 
+                            aria-describedby="zip-error"
+                            name="zip" 
+                            type="text" 
+                            inputMode="numeric" 
+                            autoComplete="off" 
+                            required={addressReq} 
+                            minLength={5} 
+                            maxLength={5}
+                            value={props.fieldData.zip_code} 
+                            onChange={props.saveFieldData('zip_code')} 
+                            onKeyDown={(e) => restrictType(e, 'number')} 
+                            onBlur={(e) => setHandleErrors({ ...handleErrors, zip: checkForErrors(e, 'check value length') })}
+                        />
+                        {(addressReq && handleErrors.zip) && 
+                                <span id="zip-error" role="alert" className={validationStyles['error-text']}>
+                                    Zip Code must be 5 digits.
+                                </span>
+                        }
+                        </Label>
+                    </div>
+
+                    { changeRegistrationVisible && (
+                        <div>
+                            <Checkbox id="prev-res-addr" name="prev-res-addr" checked={props.hasPreviousAddress} onChange={props.onChangePreviousAddressCheckbox} label="I have a previous residential address." />
+                            {props.hasPreviousAddress && (
+                                <div value={props.previousAddress} onChange={props.onChangePreviousAddress}>
+                                    <h3>{content.previous_address_heading}</h3>
+                                    <div className={validationStyles[(addressReq && handleErrors.prev_street) && 'error-container']}>
+                                        <Label htmlFor="prev-street">
+                                            Street Address{addressReq && <span className={validationStyles['required-text']}>*</span>}
+                                        <TextInput 
+                                            id="prev-street" 
+                                            aria-describedby="prev-street-error"
+                                            name="prev-street" 
+                                            type="text" 
+                                            autoComplete="off" 
+                                            required={addressReq}
+                                            value={props.fieldData.prev_street_address} 
+                                            onChange={props.saveFieldData('prev_street_address')} 
+                                            onBlur={(e) => setHandleErrors({ ...handleErrors, prev_street: checkForErrors(e, 'check value exists') })}
+                                        />
+                                        {(addressReq && handleErrors.prev_street) && 
+                                            <span id="prev-street-error" role="alert" className={validationStyles['error-text']}>
+                                                Previous Street address must be filled out.
+                                            </span>
+                                        }
+                                        </Label>
+                                    </div>
+
+                                    <Label htmlFor="prev-apt">
+                                        Apartment or Lot #
+                                    <TextInput 
+                                        id="prev-apt" 
+                                        name="prev-apt" 
+                                        type="text" 
+                                        autoComplete="off"
+                                        value={props.fieldData.prev_apt_num} 
+                                        onChange={props.saveFieldData('prev_apt_num')} 
+                                        />
+                                    </Label>
+
+                                    <div className={validationStyles[(addressReq && handleErrors.prev_city) && 'error-container']}>
+                                        <Label htmlFor="prev-city">
+                                            City{addressReq && <span className={validationStyles['required-text']}>*</span>}
+                                        <TextInput 
+                                            id="prev-city" 
+                                            aria-describedby="prev-city-error"
+                                            name="prev-city" 
+                                            type="text" 
+                                            autoComplete="off" 
+                                            required={addressReq}
+                                            value={props.fieldData.prev_city} 
+                                            onChange={props.saveFieldData('prev_city')} 
+                                            onKeyDown={(e) => restrictType(e, 'letters')}
+                                            onBlur={(e) => setHandleErrors({ ...handleErrors, prev_city: checkForErrors(e, 'check value exists') })}
+                                        />
+                                        {(addressReq && handleErrors.prev_city) && 
+                                            <span id="prev-city-error" role="alert" className={validationStyles['error-text']}>
+                                                Previous City name must be filled out.
+                                            </span>
+                                        }
+                                        </Label>
+                                    </div>
+
+                                    <div className={validationStyles[(addressReq && handleErrors.prev_state) && 'error-container']}>
+                                        <Label htmlFor="prev-state">
+                                            State{addressReq && <span className={validationStyles['required-text']}>*</span>}
+                                        <StateSelector 
+                                            id="prev-state" 
+                                            ariaDescribedby="prev-state-error"
+                                            autoComplete="off" 
+                                            required={addressReq}
+                                            statesList={statesList} 
+                                            state={props.fieldData.prev_state} 
+                                            saveState={props.saveFieldData('prev_state')} 
+                                            onBlur={(e) => checkStateValue('prev_state')}
+                                        />
+                                        {(addressReq && handleErrors.prev_state) && 
+                                            <span id="prev-state-error" role="alert" className={validationStyles['error-text']}>
+                                                Previous State selection must be made.
+                                            </span>
+                                        }
+                                        </Label>
+                                    </div>
+
+                                    <div className={validationStyles[(addressReq && handleErrors.prev_zip) && 'error-container']}>
+                                        <Label htmlFor="prev-zip">
+                                            Zip Code (12345){addressReq && <span className={validationStyles['required-text']}>*</span>}
+                                        <TextInput 
+                                            id="prev-zip" 
+                                            aria-describedby="prev-zip-error"
+                                            name="prev-zip" 
+                                            value={props.fieldData.prev_zip_code} 
+                                            type="text" 
+                                            inputMode="numeric" 
+                                            autoComplete="off" 
+                                            required={addressReq} 
+                                            minLength={5} 
+                                            maxLength={5}
+                                            onChange={props.saveFieldData('prev_zip_code')} 
+                                            onKeyDown={(e) => restrictType(e, 'number')} 
+                                            onBlur={(e) => setHandleErrors({ ...handleErrors, prev_zip: checkForErrors(e, 'check value length') })}
+                                        />
+                                        {(addressReq && handleErrors.prev_zip) && 
+                                            <span id="prev-zip-error" role="alert" className={validationStyles['error-text']}>
+                                                Previous Zip Code must be 5 digits.
+                                            </span>
+                                        }
+                                        </Label>
+                                    </div>
+                                </div>
+                            )}
+                            <Checkbox id="alt-mail-addr" name="alt-mail-addr" checked={props.hasMailAddress} onChange={props.onChangeMailAddressCheckbox} label="I get my mail at a different address from the one above." />
+                            {props.hasMailAddress && (
+                                <div value={props.mailAddress} onChange={props.onChangeMailAddress}>
+                                    <h3>{content.mail_address_heading}</h3>
+                                    <p>{content.mailing_address_text}</p>
+                                
+                                    <div className={validationStyles[(addressReq && handleErrors.mail_street) && 'error-container']}>
+                                    <Label htmlFor="mail-street">
+                                        Street Address (or route and box number){addressReq && <span className={validationStyles['required-text']}>*</span>}
+                                        <TextInput 
+                                            id="mail-street" 
+                                            aria-describedby="mail-street-error"
+                                            name="mail-street" 
+                                            type="text" 
+                                            autoComplete="off" 
+                                            required={addressReq}
+                                            value={props.fieldData.mail_street_address} 
+                                            onChange={props.saveFieldData('mail_street_address')} 
+                                            onBlur={(e) => setHandleErrors({ ...handleErrors, mail_street: checkForErrors(e, 'check value exists') })}
+                                        />
+                                        {(addressReq && handleErrors.mail_street) && 
+                                            <span id="mail-street-error" role="alert" className={validationStyles['error-text']}>
+                                                Mailing Street Address must be filled out.
+                                            </span>
+                                        }
+                                    </Label>
+                                    </div>
+
+                                    <Label htmlFor="mail-apt">
+                                        Apartment or Lot #
+                                    <TextInput 
+                                        id="mail-apt" 
+                                        name="mail-apt" 
+                                        type="text" 
+                                        autoComplete="off"
+                                        value={props.fieldData.mail_apt_num} 
+                                        onChange={props.saveFieldData('mail_apt_num')} 
+                                    />
+                                    </Label>
+
+                                    <div className={validationStyles[(addressReq && handleErrors.mail_city) && 'error-container']}>
+                                        <Label htmlFor="mail-city">
+                                            City{addressReq && <span className={validationStyles['required-text']}>*</span>}
+                                        <TextInput 
+                                            id="mail-city" 
+                                            aria-describedby="mail-city-error"
+                                            name="mail-city" 
+                                            type="text" 
+                                            autoComplete="off" 
+                                            required={addressReq}
+                                            value={props.fieldData.mail_city} 
+                                            onChange={props.saveFieldData('mail_city')} 
+                                            onKeyDown={(e) => restrictType(e, 'letters')}
+                                            onBlur={(e) => setHandleErrors({ ...handleErrors, mail_city: checkForErrors(e, 'check value exists') })}
+                                        />
+                                        {(addressReq && handleErrors.mail_city) && 
+                                            <span id="mail-city-error" role="alert" className={validationStyles['error-text']}>
+                                                Mailing City name must be filled out.
+                                            </span>
+                                        }
+                                        </Label>
+                                    </div>
+
+                                    <div className={validationStyles[(addressReq && handleErrors.mail_state) && 'error-container']}>
+                                    <Label htmlFor="mail-state">
+                                        State{addressReq && <span className={validationStyles['required-text']}>*</span>}
+                                    <StateSelector 
+                                        id="mail-state" 
+                                        autoComplete="off" 
+                                        ariaDescribedBy="mail-state-error"
+                                        required={addressReq}
+                                        statesList={statesList} 
+                                        state={props.fieldData.mail_state} 
+                                        saveState={props.saveFieldData('mail_state')} 
+                                        onBlur={(e) => checkStateValue('mail_state')}
+                                    />
+                                    {(addressReq && handleErrors.mail_state) && 
+                                        <span id="mail-state-error" role="alert" className={validationStyles['error-text']}>
+                                            Mailing State selection must be made.
+                                        </span>
+                                    }
+                                    </Label>
+                                    </div>
+
+                                    <div className={validationStyles[(addressReq && handleErrors.mail_zip) && 'error-container']}>
+                                        <Label htmlFor="mail-zip">
+                                            Zip Code (12345){addressReq && <span className={validationStyles['required-text']}>*</span>}
+                                        <TextInput 
+                                            id="mail-zip"
+                                            aria-describedby="mail-zip-error" 
+                                            name="mail-zip" 
+                                            value={props.fieldData.mail_zip_code} 
+                                            type="text" 
+                                            inputMode="numeric" 
+                                            autoComplete="off" 
+                                            required={addressReq} 
+                                            minLength={5} 
+                                            maxLength={5}
+                                            onChange={props.saveFieldData('mail_zip_code')} 
+                                            onKeyDown={(e) => restrictType(e, 'number')} 
+                                            onBlur={(e) => setHandleErrors({ ...handleErrors, mail_zip: checkForErrors(e, 'check value length') })}
+                                        />
+                                        {(addressReq && handleErrors.mail_zip) && 
+                                            <span id="mail-zip-error" role="alert" className={validationStyles['error-text']}>
+                                               Mailing Zip Code must be 5 digits.
+                                            </span>
+                                        }
+                                        </Label>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    )}
+                </div>)}
             </div>
         )}
             <Button type="submit">

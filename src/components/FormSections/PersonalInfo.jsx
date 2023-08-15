@@ -1,7 +1,8 @@
-import { Form, Label, TextInput, Button, Dropdown,Checkbox, DateInputGroup, DateInput, Fieldset} from '@trussworks/react-uswds';
+import { Label, TextInput, Button, Dropdown,Checkbox, Fieldset} from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import content from "../../data/registration-form.json";
-import { focusNext, restrictType } from './ValidateField';
+import { focusNext, restrictType, restrictLength, checkForErrors } from './ValidateField';
+import validationStyles from "../../styles/ValidationStyles.module.css";
 
 function PersonalInfo(props){
     const stateFieldRequirements = props.stateData.fields_required;
@@ -29,6 +30,28 @@ function PersonalInfo(props){
          setPreviousName(e.target.value);
      }
 
+     const [handleErrors, setHandleErrors] = useState({ 
+        first_name: false, 
+        last_name: false,
+        prev_first_name: false,
+        prev_last_name: false,
+        dob: false,
+        phone_number: false
+    })
+
+    const checkDateValues=()=> {
+        let dobValues = [
+            props.fieldData.date_of_birth_month.length === 2,
+            props.fieldData.date_of_birth_day.length === 2,
+            props.fieldData.date_of_birth_year.length === 4
+        ]
+        if (dobValues.includes(false)) {
+            setHandleErrors({ ...handleErrors, dob: (true) })
+        } else {
+            setHandleErrors({ ...handleErrors, dob: (false) })
+        }
+     }
+
     return (
         <>
         <Button
@@ -48,7 +71,8 @@ function PersonalInfo(props){
 
         {nameVisible && (
             <div>
-                <Label htmlFor="title-select">Title</Label>
+                <Label htmlFor="title-select">
+                    Title
                 <Dropdown id="title-select" name="title-select" value={props.fieldData.title} onChange={props.saveFieldData('title')} autoComplete="off">
                     <option>- Select -{' '}</option>
                     <option value="Mr.">Mr.</option>
@@ -56,17 +80,64 @@ function PersonalInfo(props){
                     <option value="Ms.">Ms.</option>
                     <option value="Mrs.">Mrs.</option>
                 </Dropdown>
+                </Label>
 
-                <Label htmlFor="first-name">First Name</Label>
-                <TextInput id="first-name" name="first-name" value={props.fieldData.first_name} onChange={props.saveFieldData('first_name')} type="text" autoComplete="off" required={nameReq}/>
+                <div className={validationStyles[(nameReq && handleErrors.first_name) && 'error-container']}>
+                    <Label htmlFor="first-name">
+                        First Name{nameReq && <span className={validationStyles['required-text']}>*</span>}
+                    <TextInput 
+                        id="first-name" 
+                        aria-describedby="first-name-error" 
+                        name="first-name" 
+                        type="text" 
+                        autoComplete="off" 
+                        required={nameReq}
+                        value={props.fieldData.first_name} 
+                        onChange={props.saveFieldData('first_name')} 
+                        onBlur={(e) => setHandleErrors({ ...handleErrors, first_name: checkForErrors(e, 'check value exists') })}
+                        />
+                    {(nameReq && handleErrors.first_name) && 
+                        <span id="first-name-error" role="alert" className={validationStyles['error-text']}>
+                            First name must be filled out.
+                        </span>
+                    }
+                    </Label>
+                </div>
+                
+                    <Label htmlFor="middle-name">
+                        Middle Name(s)
+                    <TextInput 
+                        id="middle-name" 
+                        name="middle-name" 
+                        value={props.fieldData.middle_name} 
+                        onChange={props.saveFieldData('middle_name')} 
+                        type="text" autoComplete="off"/>
+                    </Label>
 
-                <Label htmlFor="middle-name">Middle Name(s)</Label>
-                <TextInput id="middle-name" name="middle-name" value={props.fieldData.middle_name} onChange={props.saveFieldData('middle_name')} type="text" autoComplete="off"/>
+                <div className={validationStyles[(nameReq && handleErrors.last_name) && 'error-container']}>
+                    <Label htmlFor="last-name">
+                        Last Name{nameReq && <span className={validationStyles['required-text']}>*</span>}
+                    <TextInput 
+                        id="last-name" 
+                        aria-describedby="last-name-error" 
+                        name="last-name" 
+                        type="text" 
+                        autoComplete="off" 
+                        required={nameReq}
+                        value={props.fieldData.last_name} 
+                        onChange={props.saveFieldData('last_name')} 
+                        onBlur={(e) => setHandleErrors({ ...handleErrors, last_name: checkForErrors(e, 'check value exists') })}
+                        />
+                    {(nameReq && handleErrors.last_name) && 
+                        <span id="last-name-error" role="alert" className={validationStyles['error-text']}>
+                            Last name must be filled out.
+                        </span>
+                    }
+                    </Label>
+                </div>
 
-                <Label htmlFor="last-name">Last Name</Label>
-                <TextInput id="last-name" name="last-name" value={props.fieldData.last_name} onChange={props.saveFieldData('last_name')} type="text" autoComplete="off" required={nameReq}/>
-
-                <Label htmlFor="suffix-select">Suffix</Label>
+                <Label htmlFor="suffix-select">
+                    Suffix
                 <Dropdown id="suffix-select" name="suffix-select" value={props.fieldData.suffix} onChange={props.saveFieldData('suffix')} autoComplete="off" required={nameReq}>
                     <option>- Select -{' '}</option>
                     <option value="Jr.">Jr.</option>
@@ -75,6 +146,7 @@ function PersonalInfo(props){
                     <option value="III">III</option>
                     <option value="IV">IV</option>
                 </Dropdown>
+                </Label>
             </div>
         )}
 
@@ -85,7 +157,8 @@ function PersonalInfo(props){
         {hasPreviousName && (
             <div value={previousName} onChange={onChangePreviousName}>
                 <h3>Previous Name</h3>
-                <Label htmlFor="title-select-2">Title</Label>
+                <Label htmlFor="title-select-2">
+                    Title
                 <Dropdown id="title-select-2" name="title-select-2" value={props.fieldData.prev_title} onChange={props.saveFieldData('prev_title')} autoComplete="off">
                     <option>- Select -{' '}</option>
                     <option value="Mr.">Mr.</option>
@@ -93,17 +166,64 @@ function PersonalInfo(props){
                     <option value="Ms.">Ms.</option>
                     <option value="Mrs.">Mrs.</option>
                 </Dropdown>
+                </Label>
 
-                <Label htmlFor="first-name-2">First Name</Label>
-                <TextInput id="first-name-2" name="first-name-2" value={props.fieldData.prev_first_name} onChange={props.saveFieldData('prev_first_name')} type="text" autoComplete="off" required={nameReq}/>
+                <div className={validationStyles[(nameReq && handleErrors.prev_first_name) && 'error-container']}>
+                    <Label htmlFor="first-name-2">
+                        First Name{nameReq && <span className={validationStyles['required-text']}>*</span>}
+                    <TextInput 
+                        id="first-name-2" 
+                        aria-describedby="prev-first-name-error" 
+                        name="first-name-2" 
+                        type="text" 
+                        autoComplete="off" 
+                        required={nameReq}
+                        value={props.fieldData.prev_first_name} 
+                        onChange={props.saveFieldData('prev_first_name')} 
+                        onBlur={(e) => setHandleErrors({ ...handleErrors, prev_first_name: checkForErrors(e, 'check value exists') })}
+                    />
+                    {(nameReq && handleErrors.prev_first_name) && 
+                        <span id="prev-first-name-error" role="alert" className={validationStyles['error-text']}>
+                            First name must be filled out.
+                        </span>
+                    }       
+                    </Label>
+                </div>
 
-                <Label htmlFor="middle-name-2">Middle Name</Label>
-                <TextInput id="middle-name-2" name="middle-name-2" value={props.fieldData.prev_middle_name} onChange={props.saveFieldData('prev_middle_name')} type="text" autoComplete="off" required={nameReq}/>
+                    <Label htmlFor="middle-name-2">
+                        Middle Name
+                    <TextInput 
+                        id="middle-name-2"
+                        name="middle-name-2" 
+                        value={props.fieldData.prev_middle_name} 
+                        onChange={props.saveFieldData('prev_middle_name')} 
+                        type="text" autoComplete="off"/>
+                    </Label>
 
-                <Label htmlFor="last-name-2">Last Name</Label>
-                <TextInput id="last-name-2" name="last-name-2" value={props.fieldData.prev_last_name} onChange={props.saveFieldData('prev_last_name')} type="text" autoComplete="off" required={nameReq}/>
+                <div className={validationStyles[(nameReq && handleErrors.prev_last_name) && 'error-container']}>
+                    <Label htmlFor="last-name-2">
+                        Last Name{nameReq && <span className={validationStyles['required-text']}>*</span>}
+                    <TextInput 
+                        id="last-name-2" 
+                        aria-describedby="prev-last-name-error" 
+                        name="last-name-2" 
+                        type="text" 
+                        autoComplete="off" 
+                        required={nameReq}
+                        value={props.fieldData.prev_last_name} 
+                        onChange={props.saveFieldData('prev_last_name')} 
+                        onBlur={(e) => setHandleErrors({ ...handleErrors, prev_last_name: checkForErrors(e, 'check value exists') })}
+                        />
+                    {(nameReq && handleErrors.prev_last_name) && 
+                        <span id="prev-last-name-error" role="alert" className={validationStyles['error-text']}>
+                            Last name must be filled out.
+                        </span>
+                    }
+                    </Label>
+                </div>
 
-                <Label htmlFor="suffix-select-2">Suffix</Label>
+                <Label htmlFor="suffix-select-2">
+                    Suffix
                 <Dropdown id="suffix-select-2" name="suffix-select-2" value={props.fieldData.prev_suffix} onChange={props.saveFieldData('prev_suffix')} autoComplete="off" required={nameReq}>
                     <option>- Select -{' '}</option>
                     <option value="Jr.">Jr.</option>
@@ -112,74 +232,130 @@ function PersonalInfo(props){
                     <option value="III">III</option>
                     <option value="IV">IV</option>
                 </Dropdown>
+                </Label>
             </div>
         )}
 
         {dobVisible && (
-            <div>
-                <Fieldset legend="Date of Birth" style={{ marginTop:'30px'}}>
+            <div className={validationStyles[(dobReq && handleErrors.dob) && 'error-container']}>
+                <Fieldset legend={dobReq ? ["Date of Birth", <span className={validationStyles['required-text']}>*</span>] : "Date of Birth"} style={{ marginTop:'30px'}}>
                     <span className="usa-hint" id="date-of-birth-hint">
-                    For example: 04 28 1986
+                    For example: January 19 2000
                     </span>
-                    <div id="date-of-birth" className="usa-memorable-date" name="date-of-birth" autoComplete="off" required={dobReq} data-testid="dateInputGroup">
-                        <div data-testid="formGroup" className="usa-form-group usa-form-group--month">
-                            <label data-testid="label" className="usa-label" htmlFor="testDateInput">
-                                Month
-                            </label>
-                            <input id="date_of_birth_month" className="usa-input" name="date_of_birth_month" label="Month" unit="month"
-                                required={true} type="text" inputMode="numeric" value={props.fieldData.date_of_birth_month} 
-                                onChange={props.saveFieldData('date_of_birth_month')}
-                                onKeyUp={(e) => focusNext(e.target.value, e.target.maxLength, "date_of_birth_day")}
-                                onKeyDown={(e) => restrictType(e)}
-                                minLength={2} maxLength={2}
-                            />
+                    <div 
+                        id="date-of-birth" 
+                        className="usa-memorable-date" 
+                        name="date-of-birth" 
+                        autoComplete="off" 
+                        required={dobReq} 
+                        data-testid="dateInputGroup"
+                        onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) checkDateValues(); }}
+                    >
+                        <div className="usa-form-group usa-form-group--month usa-form-group--select">
+                        <label className="usa-label" htmlFor="date_of_birth_month">
+                            Month
+                        <select
+                            className="usa-select"
+                            id="date_of_birth_month"
+                            name="date_of_birth_month"
+                            aria-describedby="dob-error"
+                            required={true} 
+                            value={props.fieldData.date_of_birth_month} 
+                            onChange={props.saveFieldData('date_of_birth_month')}
+                        >
+                            <option value>- Select -</option>
+                            <option value="01">01 - January</option>
+                            <option value="02">02 - February</option>
+                            <option value="03">03 - March</option>
+                            <option value="04">04 - April</option>
+                            <option value="05">05 - May</option>
+                            <option value="06">06 - June</option>
+                            <option value="07">07 - July</option>
+                            <option value="08">08 - August</option>
+                            <option value="09">09 - September</option>
+                            <option value="10">10 - October</option>
+                            <option value="11">11 - November</option>
+                            <option value="12">12 - December</option>
+                        </select>
+                        </label>
                         </div>
                         <div data-testid="formGroup" className="usa-form-group usa-form-group--day">
                             <label data-testid="label" className="usa-label" htmlFor="testDateInput">
                                 Day
-                            </label>
                             <input 
-                                id="date_of_birth_day" className="usa-input" name="date_of_birth_day"
-                                label="Day" unit="day" required={true}
-                                type="text" inputMode="numeric"
+                                id="date_of_birth_day" 
+                                className="usa-input" 
+                                aria-describedby="dob-error"
+                                name="date_of_birth_day"
+                                label="Day" 
+                                unit="day" 
+                                required={true}
+                                type="number" 
+                                inputMode="numeric"
+                                min={1} 
+                                max={31} 
+                                minLength={2} 
+                                maxLength={2}
                                 value={props.fieldData.date_of_birth_day} 
                                 onChange={props.saveFieldData('date_of_birth_day')}
-                                onKeyUp={(e) => focusNext(e.target.value, e.target.maxLength, "date_of_birth_year")}
-                                onKeyDown={(e) => restrictType(e)}
-                                minLength={2} maxLength={2}
+                                onKeyUp={(e) => focusNext(e, "date_of_birth_year")}
+                                onKeyDown={(e) => restrictLength(e, e.target.value, e.target.maxLength)}
                             />
+                            </label>
                         </div>
                         <div data-testid="formGroup" className="usa-form-group usa-form-group--year">
                             <label data-testid="label" className="usa-label" htmlFor="testDateInput">
                                 Year
-                            </label>
-                            <input id="date_of_birth_year" className="usa-input" name="date_of_birth_year"
-                                label="Year" unit="year" required={true}
-                                type="text" inputMode="numeric"
+                            <input 
+                                id="date_of_birth_year" 
+                                className="usa-input" 
+                                aria-describedby="dob-error"
+                                name="date_of_birth_year"
+                                label="Year" 
+                                unit="year" 
+                                required={true}
+                                type="text" 
+                                inputMode="numeric"
+                                minLength={4} 
+                                maxLength={4}
                                 value={props.fieldData.date_of_birth_year} 
                                 onChange={props.saveFieldData('date_of_birth_year')}
-                                onKeyDown={(e) => restrictType(e)}
-                                minLength={4} maxLength={4}
+                                onKeyDown={(e) => restrictType(e, 'number')}
                             />
+                            </label>
                         </div>
                     </div>
                 </Fieldset>
+            {(dobReq && handleErrors.dob) && 
+                <span id="dob-error" rol="alert" className={validationStyles['error-text']}>
+                    Date of Birth must follow the format of January 19 2000.
+                </span>
+            }
             </div>
         )}
 
         {telephoneVisible && (
-            <div>
-                <Label htmlFor="phone-number">Phone Number (123)456-7890</Label>
+            <div className={validationStyles[(telephoneReq && handleErrors.phone_number) && 'error-container']}>
+                <Label htmlFor="phone-number">Phone Number (123) 456-7890{telephoneReq && <span className={validationStyles['required-text']}>*</span>}
                 <TextInput 
                     id="phone-number" 
+                    aria-describedby="phone-number-error"
                     name="phone-number" 
-                    value={props.fieldData.phone_number} 
-                    onChange={props.saveFieldData('phone_number')} 
-                    type="text" autoComplete="off" 
+                    type="text" 
+                    autoComplete="off" 
                     required={telephoneReq}
                     maxLength={14}
                     minLength={14}
+                    value={props.fieldData.phone_number} 
+                    onChange={props.saveFieldData('phone_number')} 
+                    onBlur={(e) => setHandleErrors({ ...handleErrors, phone_number: checkForErrors(e, 'check value length') })}
                 />
+                {(telephoneReq && handleErrors.phone_number) && 
+                    <span id="phone-number-error" rol="alert" className={validationStyles['error-text']}>
+                        Phone number must be 10 digits.
+                    </span>
+                }
+                </Label>
             </div>
         )}
 
