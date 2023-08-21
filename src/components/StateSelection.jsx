@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Label, Dropdown, Button, ProcessList, ProcessListItem, ProcessListHeading, Icon, GridContainer, Grid } from '@trussworks/react-uswds';
 import states from "../data/states.json";
 import styles from "../styles/StateSelection.module.css";
+import cardInfoStyles from "../styles/CardInfo.module.css";
 import CardInfo from "./CardInfo";
 
 function StateSelection(props) {
@@ -12,10 +13,9 @@ function StateSelection(props) {
         statesList.push(stateName);
     };
 
-    const buttonContinue = <div className="button-container">
-    <Button type="button" onClick={props.handleNext} disabled={props.buttonStatus}>
+    const buttonContinue = <Button type="button" onClick={props.handleNext} disabled={props.buttonStatus}>
     Continue to check registration eligibility <Icon.ArrowForward aria-label="forward arrow icon"/>
-    </Button></div>;
+    </Button>;
 
     const buttonRedirect = <a href={stateLink} target="_blank">
     <Button disabled={props.buttonStatus}>
@@ -97,7 +97,7 @@ function StateSelection(props) {
             </Dropdown>            
         </div>
         
-            <Grid row gap className={styles['justify-height']}>
+            <Grid row gap className={cardInfoStyles['justify-height']}>
                 <Grid col={6}>
                 <CardInfo header={"Click to view eligibility and begin your registration"} paragraph={"Select your home state or territory to view your state’s eligibility requirements. As you continue through the form, you will see state-specific instructions for filling out your information."} button={buttonContinue}></CardInfo>
                 </Grid>
