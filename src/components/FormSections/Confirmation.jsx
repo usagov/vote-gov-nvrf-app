@@ -36,7 +36,7 @@ function Confirmation(props){
             <li>First Name: {fieldData.first_name}</li>
             <li>Middle Name: {fieldData.middle_name}</li>
             <li>Last Name: {fieldData.last_name}</li>
-            <li>Suffix: {fieldData.prev_suffix}</li>
+            <li>Suffix: {fieldData.suffix}</li>
         </ul>
 
         <p><strong>Previous Name</strong></p>
