@@ -126,9 +126,10 @@ function Identification(props){
                                     aria-describedby="issue-date-error"
                                     required={true} 
                                     value={props.fieldData.id_issue_date_month} 
-                                    onChange={props.saveFieldData('id_issue_date_month')}
+                                    onInput={props.saveFieldData('id_issue_date_month')}
+                                    onChange={(e) => {focusNext(e, "id_issue_date_day", "month")}}
                                 >
-                                    <option value>- Select -</option>
+                                    <option value="">- Select -</option>
                                     <option value="01">01 - January</option>
                                     <option value="02">02 - February</option>
                                     <option value="03">03 - March</option>
@@ -162,10 +163,9 @@ function Identification(props){
                                     minLength={2} 
                                     maxLength={2}
                                     value={props.fieldData.id_issue_date_day} 
-                                    onChange={props.saveFieldData('id_issue_date_day')}
-                                    onKeyUp={(e) => focusNext(e, "id_issue_date_year")}
-                                    onKeyDown={(e) => restrictLength(e, e.target.value, e.target.maxLength)}
-                                />
+                                    onInput={props.saveFieldData('id_issue_date_day')}
+                                    onChange={(e) => {focusNext(e, "id_issue_date_year"), restrictLength(e, e.target.value, e.target.maxLength) }}
+                              />
                                 </label>
                             </div>
                             <div data-testid="formGroup" className="usa-form-group usa-form-group--month">
@@ -184,7 +184,7 @@ function Identification(props){
                                     minLength={4} 
                                     maxLength={4}
                                     value={props.fieldData.id_issue_date_year} 
-                                    onChange={props.saveFieldData('id_issue_date_year')}
+                                    onInput={props.saveFieldData('id_issue_date_year')}
                                     onKeyDown={(e) => restrictType(e, 'number')}
                                 />
                                 </label>
@@ -222,9 +222,10 @@ function Identification(props){
                                     aria-describedby="expire-date-error"
                                     required={true} 
                                     value={props.fieldData.id_expire_date_month} 
-                                    onChange={props.saveFieldData('id_expire_date_month')}
+                                    onInput={props.saveFieldData('id_expire_date_month')}
+                                    onChange={(e) => {focusNext(e, "id_expire_date_day", "month")}}
                                 >
-                                    <option value>- Select -</option>
+                                    <option value="">- Select -</option>
                                     <option value="01">01 - January</option>
                                     <option value="02">02 - February</option>
                                     <option value="03">03 - March</option>
@@ -259,9 +260,8 @@ function Identification(props){
                                     minLength={2} 
                                     maxLength={2}
                                     value={props.fieldData.id_expire_date_day} 
-                                    onChange={props.saveFieldData('id_expire_date_day')}
-                                    onKeyUp={(e) => focusNext(e, "id_expire_date_year")}
-                                    onKeyDown={(e) => restrictLength(e, e.target.value, e.target.maxLength)}
+                                    onInput={props.saveFieldData('id_expire_date_day')}
+                                    onChange={(e) => {focusNext(e, "id_expire_date_year"), restrictLength(e, e.target.value, e.target.maxLength) }}
                                 />
                                 </label>
                             </div>
@@ -281,7 +281,7 @@ function Identification(props){
                                     minLength={4} 
                                     maxLength={4}
                                     value={props.fieldData.id_expire_date_year} 
-                                    onChange={props.saveFieldData('id_expire_date_year')}
+                                    onInput={props.saveFieldData('id_expire_date_year')}
                                     onKeyDown={(e) => restrictType(e, 'number')}
                                 />
                                 </label>

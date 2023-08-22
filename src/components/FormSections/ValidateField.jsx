@@ -1,4 +1,10 @@
-export const focusNext=(e, nextId)=>{
+export const focusNext=(e, nextId, type)=>{
+  if (type === "month") {
+    if (e.target.value != true) {
+        document.getElementById(nextId).focus();
+    }
+  }
+
   if (e.target.value.length == e.target.maxLength)  {
     document.getElementById(nextId).focus();
 }
@@ -20,9 +26,7 @@ export const restrictType = (e, requiredType) => {
 }
 
 export const restrictLength = (e, value, maxLength) => {
-  if (e.key === 'Backspace') {
-    return;
-  } else if (value.length === maxLength) {
+ if (value.length === maxLength) {
     e.preventDefault();
     return;
   }
