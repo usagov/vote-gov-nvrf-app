@@ -259,11 +259,12 @@ function PersonalInfo(props){
                             id="date_of_birth_month"
                             name="date_of_birth_month"
                             aria-describedby="dob-error"
-                            required={true} 
+                            required={true}
                             value={props.fieldData.date_of_birth_month} 
-                            onChange={props.saveFieldData('date_of_birth_month')}
+                            onInput={props.saveFieldData('date_of_birth_month')}
+                            onChange={(e) => {focusNext(e, "date_of_birth_day", "month")}}
                         >
-                            <option value>- Select -</option>
+                            <option value="">- Select -</option>
                             <option value="01">01 - January</option>
                             <option value="02">02 - February</option>
                             <option value="03">03 - March</option>
@@ -297,9 +298,8 @@ function PersonalInfo(props){
                                 minLength={2} 
                                 maxLength={2}
                                 value={props.fieldData.date_of_birth_day} 
-                                onChange={props.saveFieldData('date_of_birth_day')}
-                                onKeyUp={(e) => focusNext(e, "date_of_birth_year")}
-                                onKeyDown={(e) => restrictLength(e, e.target.value, e.target.maxLength)}
+                                onInput={props.saveFieldData('date_of_birth_day')}
+                                onChange={(e) => {focusNext(e, "date_of_birth_year"), restrictLength(e, e.target.value, e.target.maxLength) }}
                             />
                             </label>
                         </div>
@@ -319,7 +319,7 @@ function PersonalInfo(props){
                                 minLength={4} 
                                 maxLength={4}
                                 value={props.fieldData.date_of_birth_year} 
-                                onChange={props.saveFieldData('date_of_birth_year')}
+                                onInput={props.saveFieldData('date_of_birth_year')}
                                 onKeyDown={(e) => restrictType(e, 'number')}
                             />
                             </label>
