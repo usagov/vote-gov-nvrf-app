@@ -20,7 +20,7 @@ function DeliveryOptions(props){
                     <Grid tablet={{ col: true }}>
                         <div onClick={() => {props.handleClickDeliveryButton('email')}}>
                         <CardSelect
-                            iconPath={"/images/email-print-mail.svg"}
+                            iconPath={"./images/email-print-mail.svg"}
                             text={"Email, print, and mail"}
                             cardStyle={props.deliveryButtonSelected === 'email' ? 'card-selected' : 'card'}/>
                         </div>
@@ -32,7 +32,7 @@ function DeliveryOptions(props){
                     <Grid tablet={{ col: true }}>
                         <div onClick={() => {props.handleClickDeliveryButton('print')}}>
                             <CardSelect
-                                iconPath={"/images/print-mail.svg"}
+                                iconPath={"./images/print-mail.svg"}
                                 text={"Print"}
                                 cardStyle={props.deliveryButtonSelected === 'print' ? 'card-selected' : 'card'}/>
                         </div>
