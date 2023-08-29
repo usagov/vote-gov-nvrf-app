@@ -7,15 +7,6 @@ import styles from "../styles/PathSelection.module.css";
 
 function PathSelection(props) {
 
-    const buttonContinue = <Button type="button" onClick={() => {props.getRegPath("update"), props.handleNext()}}>
-    Update my registration <Icon.ArrowForward aria-label="forward arrow icon"/>
-    </Button>;
-
-    const buttonRedirect = <Button onClick={() => {props.getRegPath("new"),  props.handleNext()}}>
-        Begin new registration
-        <Icon.ArrowForward aria-label="forward arrow icon"/>
-    </Button>;
-
     return (
         <>
         <Button type="button" onClick={props.handlePrev}>
@@ -28,12 +19,18 @@ function PathSelection(props) {
         <h2>{content.heading_two}</h2>
 
         <Grid row gap className={cardInfoStyles['justify-height']}>
-            <Grid col={6}>
-            <CardInfo header={content.button_update_reg} paragraph={content.help_text_one} button={buttonContinue}></CardInfo>
-            </Grid>
-            <Grid col={6}>
-            <CardInfo header={content.button_new_reg} paragraph={content.help_text_two} button={buttonRedirect}></CardInfo>
-            </Grid>
+            <CardInfo 
+                header={content.update_btn_header} 
+                paragraph={content.update_btn_paragraph} 
+                button={content.update_btn_txt}
+                onClick={() => {props.getRegPath("update"), props.handleNext()}}>
+            </CardInfo>
+            <CardInfo 
+                header={content.new_btn_header} 
+                paragraph={content.new_btn_paragraph} 
+                button={content.new_btn_txt}
+                onClick={() => {props.getRegPath("new"),  props.handleNext()}}>
+            </CardInfo>
         </Grid>
         </>
     );

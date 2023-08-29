@@ -13,16 +13,6 @@ function StateSelection(props) {
         statesList.push(stateName);
     };
 
-    const buttonContinue = <Button type="button" onClick={props.handleNext} disabled={props.buttonStatus}>
-    Continue to check registration eligibility <Icon.ArrowForward aria-label="forward arrow icon"/>
-    </Button>;
-
-    const buttonRedirect = <a href={stateLink} target="_blank">
-    <Button disabled={props.buttonStatus}>
-        Visit your state election website
-        <Icon.Launch title="External link opens new window"/>
-    </Button></a>;
-
     return (
         <>
         <a href="https://vote.gov">
@@ -98,12 +88,20 @@ function StateSelection(props) {
         </div>
         
             <Grid row gap className={cardInfoStyles['justify-height']}>
-                <Grid col={6}>
-                <CardInfo header={"Click to view eligibility and begin your registration"} paragraph={"Select your home state or territory to view your state’s eligibility requirements. As you continue through the form, you will see state-specific instructions for filling out your information."} button={buttonContinue}></CardInfo>
-                </Grid>
-                <Grid col={6}>
-                <CardInfo header={"Not sure if you are already registered?"} paragraph={"Save time by checking your current registration status on your state’s election website. Be sure to select your state in the dropdown menu above."} button={buttonRedirect}></CardInfo>
-                </Grid>
+                <CardInfo 
+                    header={"Click to view eligibility and begin your registration"} 
+                    paragraph={"Select your home state or territory to view your state’s eligibility requirements. As you continue through the form, you will see state-specific instructions for filling out your information."} 
+                    button={"Continue to check registration eligibility"} 
+                    onClick={props.handleNext}>
+                </CardInfo>
+                <CardInfo 
+                    header={"Not sure if you are already registered?"} 
+                    paragraph={"Save time by checking your current registration status on your state’s election website. Be sure to select your state in the dropdown menu above."} 
+                    button={"Visit your state election website"}
+                    action={stateLink}
+                    role={"link"}
+                    >
+                </CardInfo>
             </Grid>
         </>
     );

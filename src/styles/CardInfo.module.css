@@ -23,3 +23,7 @@
 .justify-height > div > div {
     height: 100%;
 }
+
+.justify-height {
+    list-style: none;
+}
