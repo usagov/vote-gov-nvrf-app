@@ -1,6 +1,8 @@
-import { Form, Label, TextInput, Button, Dropdown,Checkbox, DatePicker } from '@trussworks/react-uswds';
 import React, { useState } from "react";
+import { Label, TextInput, Button } from '@trussworks/react-uswds';
 import content from "../../data/registration-form.json";
+import { restrictType, checkForErrors } from './ValidateField';
+import validationStyles from "../../styles/ValidationStyles.module.css";
 
 function PoliticalParty(props){
     const stateFieldRequirements = props.stateData.fields_required;
@@ -9,6 +11,10 @@ function PoliticalParty(props){
 
     const partyVisible = stateFieldVisible.party;
     const partyReq = stateFieldRequirements.party
+
+    const [handleErrors, setHandleErrors] = useState({ 
+        party_choice: false
+    })
 
     return (
         <>
@@ -26,15 +32,31 @@ function PoliticalParty(props){
         </div>
 
         {partyVisible && (
-            <div>
-                <Label htmlFor="political-party">Choice of party</Label>
-                <TextInput id="political-party" name="political party" value={props.fieldData.party_choice} onChange={props.saveFieldData('party_choice')} type="text" autoComplete="off" required={partyReq}/>
+            <div className={validationStyles[(partyReq && handleErrors.party_choice) && 'error-container']}>
+                <Label htmlFor="political-party">
+                Choice of party{partyReq && <span className={validationStyles['required-text']}>*</span>}
+                <TextInput 
+                    id="political-party"
+                    aria-describedby="party-chioce-error" 
+                    name="political party" 
+                    value={props.fieldData.party_choice} 
+                    type="text" 
+                    autoComplete="off" 
+                    required={partyReq}
+                    onChange={props.saveFieldData('party_choice')} 
+                    onKeyDown={(e) => restrictType(e, 'letters')}
+                    onBlur={(e) => setHandleErrors({ ...handleErrors, party_choice: checkForErrors(e, 'check value exists') })}
+                />
+                {(partyReq && handleErrors.party_choice) && 
+                    <span id="party-chioce-error" role="alert" className={validationStyles['error-text']}>
+                        Choice of party must be filled out.
+                    </span>
+                }
+                </Label>
             </div>
         )}
 
-        <Button
-            type="button"
-            onClick={props.handleNext}>
+        <Button type="submit">
             Confirm your information
         </Button>
         </>
