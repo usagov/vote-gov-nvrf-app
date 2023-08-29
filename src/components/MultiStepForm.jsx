@@ -1,4 +1,4 @@
-import { Form, Label, TextInput, Button, Dropdown,Checkbox, DatePicker, Address } from '@trussworks/react-uswds';
+import { Form } from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import ProgressBar from './ProgressBar';
 import PersonalInfo from "./FormSections/PersonalInfo";
@@ -12,7 +12,6 @@ import SuccessPage from './FormSections/SuccessPage';
 import { phoneFormat } from './FormSections/ValidateField';
 
 function MultiStepForm(props) {
-     {/* functions/variables code goes here */}
     //Field data controls
     const [fieldData, setFieldData] = useState({
         title:'', first_name: '', middle_name: '', last_name: '', suffix:'',
@@ -63,6 +62,47 @@ function MultiStepForm(props) {
         }
     }
 
+    //Form Sections controls//
+        //Addresses
+    const [hasNoAddress, setHasNoAddress] = useState(false);
+    const hasNoAddressCheckbox = (e) => {
+        setHasNoAddress(e.target.checked);
+        //clear any address form data when check is true
+        e.target.checked && setFieldData({ 
+            ...fieldData, 
+            street_address:'', apt_num:'', city:'', state:'', zip_code:'',
+            prev_address_check: false, prev_street_address:'', prev_apt_num:'', prev_city:'', prev_state:'', prev_zip_code:'',
+            mail_address_check: false, mail_street_address:'', mail_apt_num:'', mail_city:'', mail_state:'', mail_zip_code:''
+        })
+    }
+
+    const [hasPreviousAddress, setHasPreviousAddress] = useState(false);
+    const onChangePreviousAddressCheckbox = (e) => {
+        setHasPreviousAddress(e.target.checked);
+    }
+
+    const [previousAddress, setPreviousAddress] = useState("");
+    const onChangePreviousAddress = (e) => {
+        setPreviousAddress(e.target.value);
+    }
+
+    const [hasMailAddress, setHasMailAddress] = useState(false);
+    const onChangeMailAddressCheckbox = (e) => {
+        setHasMailAddress(e.target.checked);
+    }
+
+    const [mailAddress, setMailAddress] = useState("");
+    const onChangeMailAddress = (e) => {
+        setMailAddress(e.target.value);
+    }
+
+        //Identification
+    const [idType, setIdType] = useState('')
+    const saveIdType = (e) => {
+        setIdType(e.target.value)
+        e.target.value === 'none' ? setFieldData({ ...fieldData, id_number: 'none' }) : setFieldData({ ...fieldData, id_number: '' });
+    }
+
     return (
         <>
         <ProgressBar step={step}/>
@@ -73,7 +113,7 @@ function MultiStepForm(props) {
         </div>
         }
 
-        <Form style={{ maxWidth:'none' }} onSubmit={(e) => {handleSubmit(e), handleNext()}}>
+        <Form autoComplete="off" style={{ maxWidth:'none' }} onSubmit={(e) => {handleSubmit(e), handleNext()}}>
             {step === 1 &&
                 <PersonalInfo
                 state={props.state}
@@ -92,6 +132,16 @@ function MultiStepForm(props) {
                 saveFieldData = {saveFieldData}
                 registrationPath={props.registrationPath}
                 handlePrev={handlePrev}
+                hasNoAddress={hasNoAddress}
+                hasNoAddressCheckbox={hasNoAddressCheckbox}
+                hasPreviousAddress={hasPreviousAddress}
+                onChangePreviousAddressCheckbox={onChangePreviousAddressCheckbox}
+                previousAddress={previousAddress}
+                onChangePreviousAddress={onChangePreviousAddress}
+                hasMailAddress={hasMailAddress}
+                onChangeMailAddressCheckbox={onChangeMailAddressCheckbox}
+                mailAddress={mailAddress}
+                onChangeMailAddress={onChangeMailAddress}
                 />
             }
             {step === 3 &&
@@ -101,7 +151,9 @@ function MultiStepForm(props) {
                 fieldData={fieldData}
                 saveFieldData = {saveFieldData}
                 registrationPath={props.registrationPath}
-                handlePrev={handlePrev}/>
+                handlePrev={handlePrev}
+                saveIdType={saveIdType}
+                idType={idType}/>
             }
             {step === 4 &&
                 <PoliticalParty
