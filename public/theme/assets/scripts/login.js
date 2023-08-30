@@ -7,7 +7,15 @@ let user = id("loginUser"),
     dialog = id("loginDialog"),
     container = id("protoContainer");
 
-if (USER.length && PASS.length) {
+const checkForCreds = (u, p) => {
+  if (u.length && p.length) {
+    initDialog();
+  } else {
+    container.removeAttribute("hidden");
+  }
+}
+
+const initDialog = () => {
   const loginCred = {
     user: USER,
     pass: PASS
@@ -35,6 +43,6 @@ if (USER.length && PASS.length) {
     dialog.close();
     container.removeAttribute("hidden");
   }
-} else {
-  container.removeAttribute("hidden");
 }
+
+checkForCreds(USER, PASS);
