@@ -12,6 +12,8 @@ dist
 dist-ssr
 _site
 *.local
+public/theme/assets/scripts/config.js
+.env
 
 # Editor directories and files
 .vscode/*
