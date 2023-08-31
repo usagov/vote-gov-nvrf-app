@@ -45,16 +45,20 @@ function App() {
 
   const getSelectedState = (selectedState) => {
     setSelectedState(selectedState);
-    for (var i = 0; i < states.length; i++){
-      if (states[i].name == selectedState){
-      setStateData(states[i]);
-    };
+    if (selectedState != "") {
+      for (var i = 0; i < states.length; i++){
+        if (states[i].name == selectedState){
+        setStateData(states[i]);
+      }}
+    } else {
+      setStateData('')
+    }
     // reset eligibilty requirement selections for when user has gone back after completing it and changed state selection
     setRadioValid({
       citizen: "no selection",
       age: "no selection"
     });
-  }}
+  }
 
   const getRegPath = (pathSelection) => {
     setRegistrationPath(pathSelection) 
