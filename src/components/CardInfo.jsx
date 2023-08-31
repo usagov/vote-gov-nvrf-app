@@ -7,7 +7,7 @@ function CardInfo(props) {
             {props.button}
     </Link>
         :
-    <Button type="submit" role={props.role} target={props.target}>
+    <Button type="submit" role={props.role} target={props.target} onClick={props.onClick}>
         {props.button} 
     <Icon.ArrowForward aria-label="forward arrow icon"/>
     </Button>

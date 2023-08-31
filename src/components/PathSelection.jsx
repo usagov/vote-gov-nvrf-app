@@ -23,12 +23,14 @@ function PathSelection(props) {
                 header={content.update_btn_header} 
                 paragraph={content.update_btn_paragraph} 
                 button={content.update_btn_txt}
+                role={"button"}
                 onClick={() => {props.getRegPath("update"), props.handleNext()}}>
             </CardInfo>
             <CardInfo 
                 header={content.new_btn_header} 
                 paragraph={content.new_btn_paragraph} 
                 button={content.new_btn_txt}
+                role={"button"}
                 onClick={() => {props.getRegPath("new"),  props.handleNext()}}>
             </CardInfo>
         </Grid>
