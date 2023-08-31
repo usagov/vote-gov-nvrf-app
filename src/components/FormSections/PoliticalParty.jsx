@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Label, TextInput, Button } from '@trussworks/react-uswds';
 import content from "../../data/registration-form.json";
-import { restrictType, checkForErrors } from './ValidateField';
+import { restrictType, checkForErrors } from '../HelperFunctions/ValidateField';
 import validationStyles from "../../styles/ValidationStyles.module.css";
 
 function PoliticalParty(props){

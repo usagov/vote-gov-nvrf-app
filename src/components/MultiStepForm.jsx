@@ -9,7 +9,7 @@ import Confirmation from './FormSections/Confirmation';
 import DeliveryOptions from "./FormSections/DeliveryOptions";
 import PoliticalParty from './FormSections/PoliticalParty';
 import SuccessPage from './FormSections/SuccessPage';
-import { phoneFormat } from './FormSections/ValidateField';
+import { phoneFormat } from './HelperFunctions/ValidateField';
 
 function MultiStepForm(props) {
     //Field data controls
