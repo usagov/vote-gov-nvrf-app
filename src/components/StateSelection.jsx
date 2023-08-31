@@ -69,40 +69,43 @@ function StateSelection(props) {
         <h2>Ready to get started?</h2>
         <h3>Select your state then choose your path</h3>
         
+        <form onSubmit={(e) => {props.handleSubmit(e), props.handleNext()}}>
         <Label htmlFor="state or territory">Home state or territory</Label>
         <div className={styles['state-dropdown']}>
             <Dropdown 
                 id="state or territory"
                 name="input-dropdown"
                 value={props.state}
+                required={true}
                 onChange={e => {
                     props.getSelectedState(e.target.value)
-                    props.handleButtonStatus(e.target.value, "one");
                 }}
                 >
-                <option value="default">Select your state or territory</option>
+                <option value="">Select your state or territory</option>
                 {statesList.map(
                 state => <option key={state} value={state}>{state}</option>
             )}
             </Dropdown>            
         </div>
-        
+
             <Grid row gap className={cardInfoStyles['justify-height']}>
                 <CardInfo 
                     header={"Click to view eligibility and begin your registration"} 
                     paragraph={"Select your home state or territory to view your state’s eligibility requirements. As you continue through the form, you will see state-specific instructions for filling out your information."} 
                     button={"Continue to check registration eligibility"} 
-                    onClick={props.handleNext}>
+                    role={"button"}
+                    handleNext={props.handleNext}>
                 </CardInfo>
                 <CardInfo 
                     header={"Not sure if you are already registered?"} 
                     paragraph={"Save time by checking your current registration status on your state’s election website. Be sure to select your state in the dropdown menu above."} 
                     button={"Visit your state election website"}
-                    action={stateLink}
+                    stateLink={stateLink}
                     role={"link"}
                     >
                 </CardInfo>
             </Grid>
+            </form>
         </>
     );
 }

@@ -8,10 +8,9 @@ import MultiStepForm from './components/MultiStepForm';
 function App() {
 
   const [step, setStep] = useState(1);
-  const [selectedState, setSelectedState] = useState('default');
+  const [selectedState, setSelectedState] = useState('');
   const [stateData, setStateData] = useState('');
   const [registrationPath, setRegistrationPath] = useState('');
-  const [buttonStatusOne, setButtonStatusOne] = useState(true)
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [radioValid, setRadioValid] = useState({
     citizen: "no selection",
@@ -40,6 +39,10 @@ function App() {
     document.getElementById('scroll-to-top').scrollIntoView();
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault(e);
+}
+
   const getSelectedState = (selectedState) => {
     setSelectedState(selectedState);
     for (var i = 0; i < states.length; i++){
@@ -56,12 +59,6 @@ function App() {
   const getRegPath = (pathSelection) => {
     setRegistrationPath(pathSelection) 
   };
-
-  const handleButtonStatus = (value, step) => {
-    if (step === 'one') {
-      value != 'default' ? setButtonStatusOne(false) : setButtonStatusOne(true);
-    }
-  }
 
   const handleRadio = (id) => {
       if (id === 'yes-citizen') {
@@ -85,11 +82,10 @@ function App() {
         {step === 1 && 
           <StateSelection 
           handleNext={handleNext} 
-          handleButtonStatus={handleButtonStatus}
+          handleSubmit={handleSubmit}
           getSelectedState={getSelectedState} 
           state={selectedState}
           stateData={stateData}
-          buttonStatus={buttonStatusOne}
           />}  
         {step === 2 && 
           <VotingInfo 

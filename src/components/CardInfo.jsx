@@ -1,7 +1,16 @@
-import { Card, CardBody, CardHeader, CardFooter, Button, Icon, Form } from '@trussworks/react-uswds';
+import { Card, CardBody, CardHeader, CardFooter, Button, Icon, Link } from '@trussworks/react-uswds';
 import styles from "../styles/CardInfo.module.css";
 
 function CardInfo(props) {
+    const buttonRole = props.role === "link" ? 
+    <Link href={props.stateLink} className="usa-button" target="_blank">
+            {props.button}
+    </Link>
+        :
+    <Button type="submit" role={props.role} target={props.target}>
+        {props.button} 
+    <Icon.ArrowForward aria-label="forward arrow icon"/>
+    </Button>
 
     return (
         <>
@@ -17,11 +26,7 @@ function CardInfo(props) {
             </p>
         </CardBody>
         <CardFooter>
-            <Form action={props.action} onClick={props.onClick}>
-            <Button type="submit" role={props.role} target={props.target}>
-                {props.button} 
-            <Icon.ArrowForward aria-label="forward arrow icon"/></Button>
-            </Form>
+            {buttonRole}
         </CardFooter>
         </Card>
         </>
