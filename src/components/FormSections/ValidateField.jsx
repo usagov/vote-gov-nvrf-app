@@ -12,7 +12,7 @@ export const focusNext=(e, nextId, type)=>{
 
 export const restrictType = (e, requiredType) => {
   let allowKeys = ['Backspace', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'Tab']
-  let letters = /^[A-Za-z-]+$/;
+  let letters = /^[A-Za-z\s]*$/;
 
   if (allowKeys.includes(e.key)) {
     return;
