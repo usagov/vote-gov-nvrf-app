@@ -9,28 +9,22 @@ function Online(props) {
     const stateContent = props.stateData;
     const stateLink = props.stateData.election_website_url;
 
-    const [handleErrors, setHandleErrors] = useState({ 
-        citizen: null,
-        age: null,
-        allBoxesChecked: null
-    })
-
-    const [boxValues, setBoxValues] = useState(null)
-
-    useEffect(() => {
-        setBoxValues([handleErrors.citizen, handleErrors.age])
-      }, [handleErrors]);
+    const [handleErrors, setHandleErrors] = useState(null)
 
 
-    const handleCheckbox = (checked, name) => { 
-        setHandleErrors({ ...handleErrors, [name]: (checked) })
-}
+    const [boxValues, setBoxValues] = useState([false, false])
+
+    const handleCheckbox = (checked, index) => { 
+        let copyValues = [...boxValues];
+        copyValues[index] = checked;
+        setBoxValues(copyValues)
+    }
 
     const checkBoxValues = () => {
-        if (boxValues.includes(false || null)) {
-            setHandleErrors({ ...handleErrors, allBoxesChecked: (false) })
+        if (boxValues.includes(false)) {
+            setHandleErrors(true)
         } else {
-            setHandleErrors({ ...handleErrors, allBoxesChecked: (true) })
+            setHandleErrors(false)
         }
      }
 
@@ -66,9 +60,9 @@ function Online(props) {
         <h2>{content.heading_mail}</h2>
         <p>{onlineContent.mail_more_info}</p>
 
-        <form onSubmit={() => {checkBoxValues(), props.handleNext()}}>
+        <form onSubmit={() => {props.handleNext()}}>
         <Fieldset legend="Historical figures 1" legendStyle="srOnly">
-            <div tabIndex={0} className={validationStyles[handleErrors.allBoxesChecked === false && 'error-container']}>            
+            <div tabIndex={0} className={validationStyles[handleErrors && 'error-container']}>            
             <Label htmlFor="eligibility-error" id="eligibility-error">
                 {content.heading_confirm}
             </Label>
@@ -81,7 +75,7 @@ function Online(props) {
                         aria-required="true"
                         required={true}
                         tabIndex={0}
-                        onClick={(e) => handleCheckbox(e.target.checked, 'citizen')}
+                        onClick={(e) => handleCheckbox(e.target.checked, 0)}
                     />              
                     <Checkbox
                         id="age"
@@ -91,10 +85,10 @@ function Online(props) {
                         aria-required="true"
                         required={true}
                         tabIndex={0}
-                        onClick={(e) => handleCheckbox(e.target.checked, 'age')}
+                        onClick={(e) => handleCheckbox(e.target.checked, 1)}
                     />
                 </div>
-            {handleErrors.allBoxesChecked === false && 
+            {handleErrors && 
                 <span id="phone-number-error" rol="alert" className={validationStyles['error-text']}>
                     Both boxes must be checked to continue.
                 </span>
@@ -105,7 +99,7 @@ function Online(props) {
         <p>If you checked "No" in response to either of these questions, do not continue with registration on Vote.gov.</p>
 
         <div className="button-container" style={{ margin:'20px' }}>
-            <Button type="submit">
+            <Button onClick={() => checkBoxValues()} type="submit">
             {onlineContent.start_button}
             </Button>
         </div>
