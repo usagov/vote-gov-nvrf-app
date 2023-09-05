@@ -17,6 +17,8 @@
     "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react": "^4.0.0",
     "downloadjs": "^1.4.7",
+    "fs": "^0.0.1-security",
+    "fs.promises": "^0.1.2",
     "pdf-lib": "^1.17.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -27,6 +29,7 @@
     "eslint": "^8.38.0",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.3.4"
+    "eslint-plugin-react-refresh": "^0.3.4",
+    "vite-plugin-node-polyfills": "^0.12.0"
   }
 }

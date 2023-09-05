@@ -1,14 +1,13 @@
 import { PDFDocument} from 'pdf-lib';
 import download from "downloadjs";
+import fs from "fs/promises";
 
 const GenerateFilledPDF = async function (formData) {
     console.log(formData);
-    // Fetch the PDF with form fields
-    const formUrl = 'https://www.eac.gov/sites/default/files/eac_assets/1/6/Federal_Voter_Registration_ENG.pdf'
-    const formPdfBytes = await fetch(formUrl).then(res => res.arrayBuffer())
-    // Load a PDF with form fields
-    const pdfDoc = await PDFDocument.load(formPdfBytes)
 
+    //const fs = require('fs/promises'); //note fs/promises, not fs here
+    const pdfData = await fs.readFile('national_voter_registration_form_.pdf');
+    const pdfDoc = await PDFDocument.load(pdfData);
     // Get the form containing all the fields
     const form = pdfDoc.getForm()
 
