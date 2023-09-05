@@ -1,4 +1,4 @@
-import { Button, Radio } from '@trussworks/react-uswds';
+import EligibilityCheckboxes from "./EligibilityCheckboxes";
 import data from "../../data/state-selection.json";
 
 function ByMail(props) {
@@ -28,52 +28,14 @@ function ByMail(props) {
         <h3>{content.heading_confirm}</h3>
         
         <p>{content.citizen_required}</p>
-        <form>
-        <Radio 
-            id="yes-citizen" 
-            name="input-radio" 
-            label="Yes" 
-            onClick={e => props.handleRadio(e.target.id)} 
-            checked={props.radioValid.citizen === true ? true : false}
-            readOnly
-        />
-        <Radio 
-            id="no-citizen" 
-            name="input-radio" 
-            label="No" 
-            onClick={e => props.handleRadio(e.target.id)}
-            readOnly
-        />            
-        </form>
 
-        <p>{content.age_required}</p>
-        <form>
-        <Radio 
-            id="yes-age" 
-            name="input-radio" 
-            label="Yes" 
-            onClick={e => props.handleRadio(e.target.id)} 
-            checked={props.radioValid.age === true ? true : false}
-            readOnly
+        <EligibilityCheckboxes
+            handleNext={props.handleNext}
+            checkBoxValues={props.checkBoxValues}
+            checkboxesValid={props.checkboxesValid}
+            handleCheckbox={props.handleCheckbox}
+            checkboxes={props.checkboxes}
         />
-        <Radio 
-            id="no-age" 
-            name="input-radio" 
-            label="No" 
-            onClick={e => props.handleRadio(e.target.id)}
-            readOnly
-        />            
-        </form>
-
-        <div className="button-container" style={{ margin:'20px' }}>
-            <Button 
-                type="button" 
-                onClick={props.handleNext} 
-                disabled={props.buttonDisabled ? false : true}
-            >
-                {mailContent.start_button}
-            </Button>
-        </div>
         </>
     );
 }
