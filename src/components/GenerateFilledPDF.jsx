@@ -4,7 +4,7 @@ import download from "downloadjs";
 const GenerateFilledPDF = async function (formData) {
     console.log(formData);
     // Fetch the PDF with form fields
-    const formUrl = './Federal_Voter_Registration_ENG.pdf'
+    const formUrl = './files/Federal_Voter_Registration_ENG.pdf'
     const formPdfBytes = await fetch(formUrl).then(res => res.arrayBuffer())
     // Load a PDF with form fields
     const pdfDoc = await PDFDocument.load(formPdfBytes)
