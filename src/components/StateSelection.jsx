@@ -111,7 +111,7 @@ function StateSelection(props) {
                     paragraph={"Select your home state or territory to view your state’s eligibility requirements. As you continue through the form, you will see state-specific instructions for filling out your information."} 
                     button={"Continue to check registration eligibility"} 
                     role={"button"}
-                    handleNext={props.handleNext}>
+                    onClick={props.handleNext}>
                 </CardInfo>
                 <CardInfo 
                     header={"Not sure if you are already registered?"} 
