@@ -26,10 +26,8 @@ function App() {
   const checkBoxValues = () => {
     console.log('checkboxvalues')
       if (boxValues.includes(false)) {
-        console.log('setCheckboxes: ', true)
         setCheckboxes({ ...checkboxes, checkboxesValid: true })
       } else {
-        console.log('setCheckboxes: ', false)
         setCheckboxes({ ...checkboxes, checkboxesValid: false })
       }
    }

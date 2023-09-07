@@ -1,6 +1,7 @@
 import { Alert, Form, Label, TextInput, Button, Dropdown,Checkbox, DatePicker } from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import content from "../../data/confirmation.json";
+import validationStyles from "../../styles/ValidationStyles.module.css";
 
 function Confirmation(props){
     const fieldData = props.fieldData;
@@ -13,9 +14,17 @@ function Confirmation(props){
     fieldData.state = fieldDataOverride_state;
 
     //Acknowledment field controls
-    const [hasAcknowledged, setHasAcknowledged] = useState(false);
-    const onChangeAcknowledgeCheckbox = (e) => {
-        setHasAcknowledged(e.target.checked);
+    const [hasAcknowledged, setHasAcknowledged] = useState(null);
+    const [error, setError] = useState(null)
+    const acknowledgeCheckbox = (checkStatus) => {
+        setHasAcknowledged(checkStatus);
+        setError(!checkStatus);
+    }
+
+    const checkboxValid = () => {
+        if (hasAcknowledged === null) {
+            setError(true);
+        }
     }
 
     return (
@@ -119,11 +128,30 @@ function Confirmation(props){
             </div>
         </div>
 
-        <Checkbox id="acknowledge-check" name="acknowledge-check" checked={hasAcknowledged} onChange={onChangeAcknowledgeCheckbox} label="I can confirm my information is correct to the best of my knowledge." />
+        {/* <form action=""> */}
+        <div className={validationStyles[error && 'error-container']}>
+        {/* <Label htmlFor="first-name"> Checkbox must be checked to continue.{true && <span className={validationStyles['required-text']}>*</span>} */}
+            <Checkbox 
+                id="acknowledge-check"
+                name="acknowledge-check"
+                required 
+                checked={hasAcknowledged}
+                label="I can confirm my information is correct to the best of my knowledge." 
+                // onBlur={(e) => handleError(!e.target.checked)}
+                onChange={(e) => acknowledgeCheckbox(e.target.checked)}
+                />
+            {error && 
+                <span id="first-name-error" role="alert" className={validationStyles['error-text']}>
+                    Checkbox must be checked to continue.
+                </span>
+            }
+        {/* </Label> */}
+        </div>
 
-        <Button type="submit" disabled={!hasAcknowledged}>
-            Confirm information
-        </Button>
+            <Button onClick={(e) => checkboxValid()} type="submit">
+                Confirm information
+            </Button>
+        {/* </form> */}
         </>
     );
 }
