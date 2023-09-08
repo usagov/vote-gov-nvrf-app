@@ -238,7 +238,7 @@ function PersonalInfo(props){
 
         {dobVisible && (
             <div className={validationStyles[(dobReq && handleErrors.dob) && 'error-container']}>
-                <Fieldset legend={dobReq ? ["Date of Birth", <span className={validationStyles['required-text']}>*</span>] : "Date of Birth"} style={{ marginTop:'30px'}}>
+                <Fieldset legend={dobReq ? ["Date of Birth", <span key={1} className={validationStyles['required-text']}>*</span>] : "Date of Birth"} style={{ marginTop:'30px'}}>
                     <span className="usa-hint" id="date-of-birth-hint">
                     For example: January 19 2000
                     </span>

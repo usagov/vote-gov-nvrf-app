@@ -48,7 +48,6 @@ function MultiStepForm(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault(e);
-        console.log('Submitted!')
     }
 
     //Email and Print controls
