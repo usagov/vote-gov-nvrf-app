@@ -51,6 +51,13 @@ function MultiStepForm(props) {
         console.log('Submitted!')
     }
 
+    const handleGoBackSteps = (numSteps) => {
+        return () => {
+            step != 1 && setStep(step - numSteps);
+            document.getElementById('scroll-to-top').scrollIntoView();
+        }
+    }
+
     //Email and Print controls
     const [deliveryButtonSelected, setDeliveryButtonSelected] = useState('email')
 
@@ -68,8 +75,8 @@ function MultiStepForm(props) {
     const hasNoAddressCheckbox = (e) => {
         setHasNoAddress(e.target.checked);
         //clear any address form data when check is true
-        e.target.checked && setFieldData({ 
-            ...fieldData, 
+        e.target.checked && setFieldData({
+            ...fieldData,
             street_address:'', apt_num:'', city:'', state:'', zip_code:'',
             prev_address_check: false, prev_street_address:'', prev_apt_num:'', prev_city:'', prev_state:'', prev_zip_code:'',
             mail_address_check: false, mail_street_address:'', mail_apt_num:'', mail_city:'', mail_state:'', mail_zip_code:''
@@ -171,7 +178,8 @@ function MultiStepForm(props) {
                 fieldData={fieldData}
                 saveFieldData = {saveFieldData}
                 registrationPath={props.registrationPath}
-                handlePrev={handlePrev}/>
+                handlePrev={handlePrev}
+                handleGoBackSteps={handleGoBackSteps}/>
             }
             {step === 6 &&
                 <DeliveryOptions

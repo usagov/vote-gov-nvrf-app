@@ -30,6 +30,14 @@ function Confirmation(props){
         <p>{content.confirmation_text}</p>
 
         <h3>Personal Information</h3>
+        <Button
+            type="button"
+            onClick={props.handleGoBackSteps(4)}
+            unstyled>
+            Edit
+        </Button>
+
+        {/*Jump to Personal Info Section (Step 1) */}
         <p><strong>Current Name</strong></p>
         <ul>
             <li>Title: {fieldData.title}</li>
@@ -63,6 +71,12 @@ function Confirmation(props){
         <hr />
 
         <h3>Address</h3>
+        <Button
+            type="button"
+            onClick={props.handleGoBackSteps(3)}
+            unstyled>
+            Edit
+        </Button>
         <p><strong>Current Address</strong></p>
         <ul>
             <li>Street Address: {fieldData.street_address}</li>
@@ -102,6 +116,12 @@ function Confirmation(props){
         <hr />
 
         <h3>Identification</h3>
+        <Button
+            type="button"
+            onClick={props.handleGoBackSteps(2)}
+            unstyled>
+            Edit
+        </Button>
         <ul>
             <li>ID number: {fieldData.id_number}</li>
             <li>ID issue date: {fieldData.id_issue_date_month}/{fieldData.id_issue_date_day}/{fieldData.id_issue_date_year}</li>
@@ -109,6 +129,12 @@ function Confirmation(props){
         </ul>
         <hr />
         <h3>Choice of Political Party</h3>
+        <Button
+            type="button"
+            onClick={props.handleGoBackSteps(1)}
+            unstyled>
+            Edit
+        </Button>
         <ul>
             <li>Political party: {fieldDataOverride_party}</li>
         </ul>
