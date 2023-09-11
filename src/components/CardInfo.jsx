@@ -1,10 +1,10 @@
 import { Card, CardBody, CardHeader, CardFooter, Button, Icon, Link } from '@trussworks/react-uswds';
-import styles from "../styles/CardInfo.module.css";
+import "../styles/components/CardInfo.css";
 
 function CardInfo(props) {
     const buttonRole = props.role === "link" ? 
     <Link href={props.stateLink} className="usa-button" target="_blank">
-            {props.button}
+            {props.button} <Icon.Launch title="External link opens new window"/>
     </Link>
         :
     <Button type="submit" role={props.role} target={props.target} onClick={props.onClick}>

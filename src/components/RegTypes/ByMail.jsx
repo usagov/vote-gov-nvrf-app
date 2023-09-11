@@ -25,10 +25,6 @@ function ByMail(props) {
         <h2>{content.heading_mail}</h2>
         <p>{mailContent.mail_more_info.replace("%state_name%", props.stateData.name)}</p>
 
-        <h3>{content.heading_confirm}</h3>
-        
-        <p>{content.citizen_required}</p>
-
         <EligibilityCheckboxes
             handleNext={props.handleNext}
             checkBoxValues={props.checkBoxValues}

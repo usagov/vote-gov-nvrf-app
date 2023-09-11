@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Label, Dropdown, Button, ProcessList, ProcessListItem, ProcessListHeading, Icon, GridContainer, Grid } from '@trussworks/react-uswds';
+import { Label, Dropdown, Button, ProcessList, ProcessListItem, ProcessListHeading, Grid } from '@trussworks/react-uswds';
 import states from "../data/states.json";
 import styles from "../styles/StateSelection.module.css";
 import validationStyles from "../styles/ValidationStyles.module.css";
@@ -111,7 +111,7 @@ function StateSelection(props) {
                     paragraph={"Select your home state or territory to view your state’s eligibility requirements. As you continue through the form, you will see state-specific instructions for filling out your information."} 
                     button={"Continue to check registration eligibility"} 
                     role={"button"}
-                    onClick={props.handleNext}>
+                    >
                 </CardInfo>
                 <CardInfo 
                     header={"Not sure if you are already registered?"} 
