@@ -1,9 +1,6 @@
-import { useState } from 'react';
-import { Button, Icon, Grid } from '@trussworks/react-uswds';
+import { Button, Grid } from '@trussworks/react-uswds';
 import content from "../data/path-selection.json";
 import CardInfo from "./CardInfo";
-import cardInfoStyles from "../styles/CardInfo.module.css";
-import styles from "../styles/PathSelection.module.css";
 
 function PathSelection(props) {
 
@@ -18,7 +15,7 @@ function PathSelection(props) {
 
         <h2>{content.heading_two}</h2>
 
-        <Grid row gap className={cardInfoStyles['justify-height']}>
+        <Grid row gap>
             <CardInfo 
                 header={content.update_btn_header} 
                 paragraph={content.update_btn_paragraph} 

@@ -4,7 +4,7 @@ import Email from "../DeliveryOptions/Email";
 import Print from "../DeliveryOptions/Print";
 import CardSelect from '../CardSelect';
 import GenerateFilledPDF from '../GenerateFilledPDF';
-import styles from "../../styles/DeliveryOptions.module.css";
+import "../../styles/pages/DeliveryOptions.css";
 
 function DeliveryOptions(props){
     return (
@@ -14,8 +14,7 @@ function DeliveryOptions(props){
 
         <h3>Select one of the options below to continue.</h3>
         <GridContainer>
-            <Grid row gap>
-                <div className={styles['card-padding']}>
+            <Grid row gap className='card-container'>
                 <Grid row>
                     <Grid tablet={{ col: true }}>
                         <div onClick={() => {props.handleClickDeliveryButton('email')}}>
@@ -26,8 +25,6 @@ function DeliveryOptions(props){
                         </div>
                     </Grid>
                 </Grid>
-                </div>
-                <div className={styles['card-padding']}>
                 <Grid row>
                     <Grid tablet={{ col: true }}>
                         <div onClick={() => {props.handleClickDeliveryButton('print')}}>
@@ -38,7 +35,6 @@ function DeliveryOptions(props){
                         </div>
                     </Grid>
                 </Grid>
-                </div>
             </Grid>
         </GridContainer>
 

@@ -1,0 +1,18 @@
+body {
+    .usa-button {
+        background-color: #11385B;
+    }
+
+    .usa-card__container {
+        border-radius: 0;
+    }    
+
+    .error-container {
+        border-left: 2px solid red;
+        padding-left: 15px;
+    }
+    
+    .error-text, .required-text {
+        color: red;
+    }
+}
