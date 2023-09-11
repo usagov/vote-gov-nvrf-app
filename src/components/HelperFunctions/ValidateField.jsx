@@ -55,7 +55,6 @@ export const checkExpiration=(date)=> {
 }
 
 export const checkForErrors=(e, requirement)=> {
-  console.log('CLICKING')
   switch (requirement) {
     case 'check value exists':
       if (e.target.value) {
@@ -72,7 +71,6 @@ export const checkForErrors=(e, requirement)=> {
       } 
 
     case 'check state selection':
-      console.log('checking')
       if (e.target.value === '') {
         return true
       } else {

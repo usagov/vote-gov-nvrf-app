@@ -32,7 +32,6 @@ function Addresses(props){
 
     const checkStateValue=(name)=> {
         if (name === 'prev_state') {
-            console.log(props.fieldData.prev_state)
             props.fieldData.prev_state ?  
             setHandleErrors({ ...handleErrors, prev_state: (false) }) 
             :

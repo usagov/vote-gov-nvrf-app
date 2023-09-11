@@ -16,7 +16,6 @@ function App() {
   const [boxValues, setBoxValues] = useState([false, false])
 
   const handleCheckbox = (checked, box, index) => { 
-    console.log(checked)
       let copyValues = [...boxValues];
       copyValues[index] = checked;
       setBoxValues(copyValues)
@@ -24,7 +23,6 @@ function App() {
   }
 
   const checkBoxValues = () => {
-    console.log('checkboxvalues')
       if (boxValues.includes(false)) {
         setCheckboxes({ ...checkboxes, checkboxesValid: true })
       } else {
