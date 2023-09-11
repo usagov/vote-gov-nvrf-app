@@ -30,7 +30,7 @@ function Confirmation(props){
         <p>{content.confirmation_text}</p>
 
         <h3>Personal Information
-            <span>
+            <span style={{ marginLeft:'0.5rem' }}>
             <Button
                 type="button"
                 onClick={props.handleGoBackSteps(4)}
@@ -74,7 +74,7 @@ function Confirmation(props){
         <hr />
 
         <h3>Address
-        <span>
+        <span style={{ marginLeft:'0.5rem' }}>
             <Button
                 type="button"
                 onClick={props.handleGoBackSteps(3)}
@@ -122,7 +122,7 @@ function Confirmation(props){
         <hr />
 
         <h3>Identification
-            <span>
+            <span style={{ marginLeft:'0.5rem' }}>
                 <Button
                     type="button"
                     onClick={props.handleGoBackSteps(2)}
@@ -138,7 +138,7 @@ function Confirmation(props){
         </ul>
         <hr />
         <h3>Choice of Political Party
-            <span>
+            <span style={{ marginLeft:'0.5rem' }}>
                 <Button
                     type="button"
                     onClick={props.handleGoBackSteps(1)}
