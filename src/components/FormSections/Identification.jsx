@@ -303,14 +303,13 @@ function Identification(props){
                     name="ssn-input" 
                     autoComplete="off" 
                     required={idNumReq}
-                    type="number" 
+                    type="text" 
                     inputMode="numeric"
-                    min={0}
                     minLength={4} 
                     maxLength={4} 
                     value={props.fieldData.id_number} 
                     onChange={props.saveFieldData('id_number')}
-                    onKeyDown={(e) => restrictLength(e, e.target.value, e.target.maxLength)}
+                    onKeyDown={(e) => restrictType(e, 'number')} 
                     onBlur={(e) => setHandleErrors({ ...handleErrors, id_ssn: checkForErrors(e, 'check value length') })}
                     />
                     {(idNumReq && handleErrors.id_ssn) && 

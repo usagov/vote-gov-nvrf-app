@@ -15,4 +15,8 @@ body {
     .error-text, .required-text {
         color: red;
     }
+
+    .usa-form-group--month {
+        width: 10rem;
+    }
 }

@@ -145,8 +145,8 @@ function Addresses(props){
                     </Label>
 
                     <div className={(addressReq && handleErrors.zip) && 'error-container'}>
-                        <Label htmlFor="zip">
-                            Zip Code (12345){addressReq && <span className='required-text'>*</span>}
+                        <legend htmlFor="zip" className="usa-legend">Zip Code {addressReq && <span className={'required-text'}>*</span>}</legend>
+                        <span className="usa-hint" id="zip-hint">For example: 12345</span>
                         <TextInput 
                             id="zip" 
                             aria-describedby="zip-error"
@@ -167,7 +167,6 @@ function Addresses(props){
                                     Zip Code must be 5 digits.
                                 </span>
                         }
-                        </Label>
                     </div>
 
                     { changeRegistrationVisible && (
@@ -255,8 +254,8 @@ function Addresses(props){
                                     </div>
 
                                     <div className={(addressReq && handleErrors.prev_zip) && 'error-container'}>
-                                        <Label htmlFor="prev-zip">
-                                            Zip Code (12345){addressReq && <span className='required-text'>*</span>}
+                                        <legend htmlFor="prev-zip" className="usa-legend">Zip Code {addressReq && <span className={'required-text'}>*</span>}</legend>
+                                        <span className="usa-hint" id="prev-zip-hint">For example: 12345</span>
                                         <TextInput 
                                             id="prev-zip" 
                                             aria-describedby="prev-zip-error"
@@ -277,7 +276,6 @@ function Addresses(props){
                                                 Previous Zip Code must be 5 digits.
                                             </span>
                                         }
-                                        </Label>
                                     </div>
                                 </div>
                             )}
@@ -366,8 +364,8 @@ function Addresses(props){
                                     </div>
 
                                     <div className={(addressReq && handleErrors.mail_zip) && 'error-container'}>
-                                        <Label htmlFor="mail-zip">
-                                            Zip Code (12345){addressReq && <span className='required-text'>*</span>}
+                                         <legend htmlFor="mail-zip" className="usa-legend">Zip Code {addressReq && <span className={'required-text'}>*</span>}</legend>
+                                         <span className="usa-hint" id="mail-zip-hint">For example: 12345</span>
                                         <TextInput 
                                             id="mail-zip"
                                             aria-describedby="mail-zip-error" 
@@ -388,7 +386,6 @@ function Addresses(props){
                                                Mailing Zip Code must be 5 digits.
                                             </span>
                                         }
-                                        </Label>
                                     </div>
                                 </div>
                             )}

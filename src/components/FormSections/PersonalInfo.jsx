@@ -335,7 +335,8 @@ function PersonalInfo(props){
 
         {telephoneVisible && (
             <div className={(telephoneReq && handleErrors.phone_number) && 'error-container'}>
-                <Label htmlFor="phone-number">Phone Number (123) 456-7890{telephoneReq && <span className='required-text'>*</span>}
+                <legend htmlFor="phone-number" className="usa-legend">Phone Number{telephoneReq && <span className='required-text'>*</span>}</legend>
+                <span className="usa-hint" id="date-of-birth-hint">For example: (123) 456-7890</span>
                 <TextInput 
                     id="phone-number" 
                     aria-describedby="phone-number-error"
@@ -354,7 +355,6 @@ function PersonalInfo(props){
                         Phone number must be 10 digits.
                     </span>
                 }
-                </Label>
             </div>
         )}
 
