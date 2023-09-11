@@ -106,7 +106,19 @@ function MultiStepForm(props) {
     const [idType, setIdType] = useState('')
     const saveIdType = (e) => {
         setIdType(e.target.value)
-        e.target.value === 'none' ? setFieldData({ ...fieldData, id_number: 'none' }) : setFieldData({ ...fieldData, id_number: '' });
+        e.target.value === 'none' ? 
+            setFieldData({ 
+                ...fieldData, 
+                id_number: 'none', 
+                id_issue_date_month:'', 
+                id_issue_date_day:'', 
+                id_issue_date_year:'', 
+                id_expire_date_month:'', 
+                id_expire_date_day:'', 
+                id_expire_date_year:'' 
+            }) 
+            : 
+            setFieldData({ ...fieldData, id_number: '' });
     }
 
     return (
