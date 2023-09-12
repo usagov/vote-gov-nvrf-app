@@ -17,18 +17,18 @@ function VotingInfo(props) {
             state={props.state}
             stateData={props.stateData}
             handleNext={props.handleNext}
-            handleRadio={props.handleRadio}
-            buttonDisabled={props.buttonDisabled}
-            radioValid={props.radioValid}
+            handleCheckbox={props.handleCheckbox}
+            checkBoxValues={props.checkBoxValues}
+            checkboxes={props.checkboxes}
             />}
         {regType === 'in-person' &&
             <ByMail
             state={props.state}
             stateData={props.stateData}
             handleNext={props.handleNext}
-            handleRadio={props.handleRadio}
-            buttonDisabled={props.buttonDisabled}
-            radioValid={props.radioValid}
+            handleCheckbox={props.handleCheckbox}
+            checkBoxValues={props.checkBoxValues}
+            checkboxes={props.checkboxes}
         />}
         {regType === 'not-needed' &&
             <NotNeeded

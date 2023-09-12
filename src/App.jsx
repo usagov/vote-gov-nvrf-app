@@ -8,21 +8,27 @@ import MultiStepForm from './components/MultiStepForm';
 function App() {
 
   const [step, setStep] = useState(1);
-  const [selectedState, setSelectedState] = useState('default');
+  const [selectedState, setSelectedState] = useState('');
   const [stateData, setStateData] = useState('');
   const [registrationPath, setRegistrationPath] = useState('');
-  const [buttonStatusOne, setButtonStatusOne] = useState(true)
-  const [buttonDisabled, setButtonDisabled] = useState(false);
-  const [radioValid, setRadioValid] = useState({
-    citizen: "no selection",
-    age: "no selection"
-  })
   const [formStep, setFormStep] = useState(1);
+  const [checkboxes, setCheckboxes] = useState({ citizen: false, age: false, checkboxesValid: null })
+  const [boxValues, setBoxValues] = useState([false, false])
 
-  useEffect(() => {
-    let validateBoth = (radioValid.citizen === true) && (radioValid.age === true) ? true : false;
-    setButtonDisabled(validateBoth)
-  }, [radioValid]);
+  const handleCheckbox = (checked, box, index) => { 
+      let copyValues = [...boxValues];
+      copyValues[index] = checked;
+      setBoxValues(copyValues)
+      setCheckboxes({ ...checkboxes, [box]: checked })
+  }
+
+  const checkBoxValues = () => {
+      if (boxValues.includes(false)) {
+        setCheckboxes({ ...checkboxes, checkboxesValid: true })
+      } else {
+        setCheckboxes({ ...checkboxes, checkboxesValid: false })
+      }
+   }
 
   const statesList = []
   for (let i = 0; i < states.length; i++) {
@@ -40,40 +46,27 @@ function App() {
     document.getElementById('scroll-to-top').scrollIntoView();
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault(e);
+}
+
   const getSelectedState = (selectedState) => {
     setSelectedState(selectedState);
-    for (var i = 0; i < states.length; i++){
-      if (states[i].name == selectedState){
-      setStateData(states[i]);
-    };
+    if (selectedState != "") {
+      for (var i = 0; i < states.length; i++){
+        if (states[i].name == selectedState){
+        setStateData(states[i]);
+      }}
+    } else {
+      setStateData('')
+    }
     // reset eligibilty requirement selections for when user has gone back after completing it and changed state selection
-    setRadioValid({
-      citizen: "no selection",
-      age: "no selection"
-    });
-  }}
+    setCheckboxes({ citizen: false, age: false, checkboxesValid: null })
+  }
 
   const getRegPath = (pathSelection) => {
     setRegistrationPath(pathSelection) 
   };
-
-  const handleButtonStatus = (value, step) => {
-    if (step === 'one') {
-      value != 'default' ? setButtonStatusOne(false) : setButtonStatusOne(true);
-    }
-  }
-
-  const handleRadio = (id) => {
-      if (id === 'yes-citizen') {
-      setRadioValid({citizen: true, age: radioValid.age})
-    } else if (id === 'no-citizen') {
-      setRadioValid({citizen: false, age: radioValid.age})
-    } else if (id === 'yes-age') {
-      setRadioValid({citizen: radioValid.citizen, age: true,})
-    } else if (id === 'no-age') {
-      setRadioValid({citizen: radioValid.citizen, age: false,})
-    }
-}
 
   const getFormStep = (step) => {
     formStep === 3 ? null : setFormStep(step + 1);
@@ -85,21 +78,20 @@ function App() {
         {step === 1 && 
           <StateSelection 
           handleNext={handleNext} 
-          handleButtonStatus={handleButtonStatus}
+          handleSubmit={handleSubmit}
           getSelectedState={getSelectedState} 
           state={selectedState}
           stateData={stateData}
-          buttonStatus={buttonStatusOne}
           />}  
         {step === 2 && 
           <VotingInfo 
           handleNext={handleNext} 
           handlePrev={handlePrev}
-          handleRadio={handleRadio}
           state={selectedState}
           stateData={stateData}
-          buttonDisabled={buttonDisabled}
-          radioValid={radioValid}
+          handleCheckbox={handleCheckbox}
+          checkBoxValues={checkBoxValues}
+          checkboxes={checkboxes}
           />}  
         {step === 3 && 
           <PathSelection 

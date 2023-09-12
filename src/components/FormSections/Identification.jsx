@@ -1,7 +1,7 @@
 import { Label, TextInput, Button, Fieldset, Dropdown } from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import content from "../../data/registration-form.json";
-import { focusNext, restrictLength, restrictType, checkExpiration, checkForErrors } from './ValidateField';
+import { focusNext, restrictLength, restrictType, checkExpiration, checkForErrors } from '../HelperFunctions/ValidateField';
 
 function Identification(props){
     const stateFieldRequirements = props.stateData.fields_required;

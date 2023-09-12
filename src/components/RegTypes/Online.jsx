@@ -1,5 +1,6 @@
-import { Button, Radio, Icon } from '@trussworks/react-uswds';
+import { Button, Icon } from '@trussworks/react-uswds';
 import data from "../../data/state-selection.json";
+import EligibilityCheckboxes from "./EligibilityCheckboxes";
 
 function Online(props) {
     const content = data;
@@ -39,53 +40,12 @@ function Online(props) {
         <h2>{content.heading_mail}</h2>
         <p>{onlineContent.mail_more_info}</p>
 
-        <h3>{content.heading_confirm}</h3>
-
-        <p>{content.citizen_required}</p>
-        <form>
-        <Radio 
-            id="yes-citizen" 
-            name="input-radio" 
-            label="Yes" 
-            onClick={e => props.handleRadio(e.target.id)} 
-            checked={props.radioValid.citizen === true ? true : false}
-            readOnly
+        <EligibilityCheckboxes
+            handleNext={props.handleNext}
+            checkBoxValues={props.checkBoxValues}
+            handleCheckbox={props.handleCheckbox}
+            checkboxes={props.checkboxes}
         />
-        <Radio 
-            id="no-citizen" 
-            name="input-radio" 
-            label="No" 
-            onClick={e => props.handleRadio(e.target.id)}
-            readOnly
-        />            
-        </form>
-
-        <p>{content.age_required}</p>
-        <form>
-        <Radio 
-            id="yes-age" 
-            name="input-radio" 
-            label="Yes" 
-            onClick={e => props.handleRadio(e.target.id)} 
-            checked={props.radioValid.age === true ? true : false}
-            readOnly
-        />
-        <Radio 
-            id="no-age" 
-            name="input-radio" 
-            label="No" 
-            onClick={e => props.handleRadio(e.target.id)}
-            readOnly
-        />            
-        </form>
-
-        <p>If you checked "No" in response to either of these questions, do not continue with registration on Vote.gov.</p>
-
-        <div className="button-container" style={{ margin:'20px' }}>
-            <Button type="button" onClick={props.handleNext} disabled={props.buttonDisabled ? false : true}>
-            {onlineContent.start_button}
-            </Button>
-        </div>
         </>
     );
 }
