@@ -1,7 +1,6 @@
 import { Alert, Form, Label, TextInput, Button, Dropdown,Checkbox, DatePicker } from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import content from "../../data/confirmation.json";
-import validationStyles from "../../styles/ValidationStyles.module.css";
 
 function Confirmation(props){
     const fieldData = props.fieldData;
@@ -167,7 +166,7 @@ function Confirmation(props){
         </div>
 
         {/* <form action=""> */}
-        <div className={validationStyles[error && 'error-container']}>
+        <div className={error && 'error-container'}>
         {/* <Label htmlFor="first-name"> Checkbox must be checked to continue.{true && <span className={validationStyles['required-text']}>*</span>} */}
             <Checkbox 
                 id="acknowledge-check"
@@ -179,7 +178,7 @@ function Confirmation(props){
                 onChange={(e) => acknowledgeCheckbox(e.target.checked)}
                 />
             {error && 
-                <span id="first-name-error" role="alert" className={validationStyles['error-text']}>
+                <span id="first-name-error" role="alert" className='error-text'>
                     Checkbox must be checked to continue.
                 </span>
             }

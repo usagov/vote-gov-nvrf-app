@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Label, Dropdown, Button, ProcessList, ProcessListItem, ProcessListHeading, Grid } from '@trussworks/react-uswds';
 import states from "../data/states.json";
 import CardInfo from "./CardInfo";
@@ -73,8 +74,8 @@ function StateSelection(props) {
         
         <form onSubmit={(e) => {props.handleSubmit(e), props.handleNext()}}>
         <div className='state-dropdown'>
-        <div className={validationStyles[handleErrors.state_selected && 'error-container']}>
-            <Label htmlFor="state-dropdown-error">Home state or territory{handleErrors.state_selected && <span className={validationStyles['required-text']}>*</span>}
+        <div className={handleErrors.state_selected && 'error-container'}>
+            <Label htmlFor="state-dropdown-error">Home state or territory{handleErrors.state_selected && <span className='required-text'>*</span>}
             <div>
                 <Dropdown 
                     id="state-dropdown"
@@ -93,7 +94,7 @@ function StateSelection(props) {
                 </Dropdown>            
             </div>
             {handleErrors.state_selected && 
-                <span id="state-dropdown-error" role="alert" className={validationStyles['error-text']}>
+                <span id="state-dropdown-error" role="alert" className='error-text'>
                     State or territory selection must be made.
                 </span>
             }
