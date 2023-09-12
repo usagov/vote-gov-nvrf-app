@@ -238,7 +238,7 @@ function PersonalInfo(props){
 
         {dobVisible && (
             <div className={validationStyles[(dobReq && handleErrors.dob) && 'error-container']}>
-                <Fieldset legend={dobReq ? ["Date of Birth", <span className={validationStyles['required-text']}>*</span>] : "Date of Birth"} style={{ marginTop:'30px'}}>
+                <Fieldset legend={dobReq ? ["Date of Birth", <span key={1} className={validationStyles['required-text']}>*</span>] : "Date of Birth"} style={{ marginTop:'30px'}}>
                     <span className="usa-hint" id="date-of-birth-hint">
                     For example: January 19 2000
                     </span>
@@ -327,7 +327,7 @@ function PersonalInfo(props){
                     </div>
                 </Fieldset>
             {(dobReq && handleErrors.dob) && 
-                <span id="dob-error" rol="alert" className={validationStyles['error-text']}>
+                <span id="dob-error" role="alert" className={validationStyles['error-text']}>
                     Date of Birth must follow the format of January 19 2000.
                 </span>
             }
@@ -336,7 +336,8 @@ function PersonalInfo(props){
 
         {telephoneVisible && (
             <div className={validationStyles[(telephoneReq && handleErrors.phone_number) && 'error-container']}>
-                <Label htmlFor="phone-number">Phone Number (123) 456-7890{telephoneReq && <span className={validationStyles['required-text']}>*</span>}
+                <legend htmlFor="phone-number" class="usa-legend">Phone Number{telephoneReq && <span className={validationStyles['required-text']}>*</span>}</legend>
+                <span class="usa-hint" id="date-of-birth-hint">For example: (123) 456-7890</span>
                 <TextInput 
                     id="phone-number" 
                     aria-describedby="phone-number-error"
@@ -351,11 +352,10 @@ function PersonalInfo(props){
                     onBlur={(e) => setHandleErrors({ ...handleErrors, phone_number: checkForErrors(e, 'check value length') })}
                 />
                 {(telephoneReq && handleErrors.phone_number) && 
-                    <span id="phone-number-error" rol="alert" className={validationStyles['error-text']}>
+                    <span id="phone-number-error" role="alert" className={validationStyles['error-text']}>
                         Phone number must be 10 digits.
                     </span>
                 }
-                </Label>
             </div>
         )}
 

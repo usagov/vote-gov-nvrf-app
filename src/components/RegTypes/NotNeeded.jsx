@@ -14,7 +14,7 @@ function NotNeeded(props) {
         <p>{reactStringReplace(
             notNeededContent.more_info.replace("%state_name%", props.stateData.name),
             "%link%",
-            () => <Link variant="external" href={stateLink} target="_blank">
+            (match, i) => <Link key={i} variant="external" href={stateLink} target="_blank">
                 {notNeededContent.more_info_link}
             </Link>
         )}</p>

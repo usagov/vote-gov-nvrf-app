@@ -1,7 +1,8 @@
 .content-container {
     padding: 30px;
     border: 1px solid #162E51;
-    height: 100%;
+    height: 350px;
+    position: relative;
 }
 
 .content-container h3 {
@@ -9,5 +10,20 @@
 }
 
 .button-container {
-    margin-bottom: auto;
+    margin-bottom: auto
+}
+
+.button-container button {
+    bottom: 30px;
+    left: 30px;
+    right: 30px;
+    position: absolute;
+}
+
+.justify-height > div > div {
+    height: 100%;
+}
+
+.justify-height {
+    list-style: none;
 }
