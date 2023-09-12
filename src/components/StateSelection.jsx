@@ -1,9 +1,11 @@
 import { useState } from 'react'
-import { Label, Dropdown, Button, ProcessList, ProcessListItem, ProcessListHeading, Icon, GridContainer, Grid } from '@trussworks/react-uswds';
+import { Label, Dropdown, Button, ProcessList, ProcessListItem, ProcessListHeading, Grid } from '@trussworks/react-uswds';
 import states from "../data/states.json";
 import styles from "../styles/StateSelection.module.css";
+import validationStyles from "../styles/ValidationStyles.module.css";
 import cardInfoStyles from "../styles/CardInfo.module.css";
 import CardInfo from "./CardInfo";
+import { checkForErrors } from './HelperFunctions/ValidateField';
 
 function StateSelection(props) {
     const stateLink = props.stateData.election_website_url;
@@ -12,6 +14,10 @@ function StateSelection(props) {
         let stateName = states[i].name;
         statesList.push(stateName);
     };
+
+    const [handleErrors, setHandleErrors] = useState({ 
+        state_selected: false
+    })
 
     return (
         <>
@@ -69,40 +75,54 @@ function StateSelection(props) {
         <h2>Ready to get started?</h2>
         <h3>Select your state then choose your path</h3>
         
-        <Label htmlFor="state or territory">Home state or territory</Label>
+        <form onSubmit={(e) => {props.handleSubmit(e), props.handleNext()}}>
         <div className={styles['state-dropdown']}>
-            <Dropdown 
-                id="state or territory"
-                name="input-dropdown"
-                value={props.state}
-                onChange={e => {
-                    props.getSelectedState(e.target.value)
-                    props.handleButtonStatus(e.target.value, "one");
-                }}
-                >
-                <option value="default">Select your state or territory</option>
-                {statesList.map(
-                state => <option key={state} value={state}>{state}</option>
-            )}
-            </Dropdown>            
+        <div className={validationStyles[handleErrors.state_selected && 'error-container']}>
+            <Label htmlFor="state-dropdown-error">Home state or territory{handleErrors.state_selected && <span className={validationStyles['required-text']}>*</span>}
+            <div>
+                <Dropdown 
+                    id="state-dropdown"
+                    name="input-dropdown"
+                    value={props.state}
+                    required={true}
+                    onChange={e => {
+                        props.getSelectedState(e.target.value)
+                    }}
+                    onBlur={(e) => setHandleErrors({ state_selected: checkForErrors(e, 'check state selection') })}
+                    >
+                    <option value="">Select your state or territory</option>
+                    {statesList.map(
+                    state => <option key={state} value={state}>{state}</option>
+                )}
+                </Dropdown>            
+            </div>
+            {handleErrors.state_selected && 
+                <span id="state-dropdown-error" role="alert" className={validationStyles['error-text']}>
+                    State or territory selection must be made.
+                </span>
+            }
+            </Label>
         </div>
-        
+        </div>
+
             <Grid row gap className={cardInfoStyles['justify-height']}>
                 <CardInfo 
                     header={"Click to view eligibility and begin your registration"} 
                     paragraph={"Select your home state or territory to view your state’s eligibility requirements. As you continue through the form, you will see state-specific instructions for filling out your information."} 
                     button={"Continue to check registration eligibility"} 
-                    onClick={props.handleNext}>
+                    role={"button"}
+                    >
                 </CardInfo>
                 <CardInfo 
                     header={"Not sure if you are already registered?"} 
                     paragraph={"Save time by checking your current registration status on your state’s election website. Be sure to select your state in the dropdown menu above."} 
                     button={"Visit your state election website"}
-                    action={stateLink}
+                    stateLink={stateLink}
                     role={"link"}
                     >
                 </CardInfo>
             </Grid>
+            </form>
         </>
     );
 }

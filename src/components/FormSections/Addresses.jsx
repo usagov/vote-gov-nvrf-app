@@ -3,7 +3,7 @@ import StateSelector from '../StateSelector';
 import React, { useState } from "react";
 import states from "../../data/states.json";
 import content from "../../data/registration-form.json";
-import { restrictLength, restrictType, checkForErrors } from './ValidateField';
+import { restrictLength, restrictType, checkForErrors } from '../HelperFunctions/ValidateField';
 import validationStyles from "../../styles/ValidationStyles.module.css";
 
 function Addresses(props){
@@ -32,7 +32,6 @@ function Addresses(props){
 
     const checkStateValue=(name)=> {
         if (name === 'prev_state') {
-            console.log(props.fieldData.prev_state)
             props.fieldData.prev_state ?  
             setHandleErrors({ ...handleErrors, prev_state: (false) }) 
             :
