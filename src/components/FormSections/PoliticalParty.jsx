@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Label, TextInput, Button } from '@trussworks/react-uswds';
 import content from "../../data/registration-form.json";
 import { restrictType, checkForErrors } from '../HelperFunctions/ValidateField';
-import validationStyles from "../../styles/ValidationStyles.module.css";
 
 function PoliticalParty(props){
     const stateFieldRequirements = props.stateData.fields_required;
@@ -32,9 +31,9 @@ function PoliticalParty(props){
         </div>
 
         {partyVisible && (
-            <div className={validationStyles[(partyReq && handleErrors.party_choice) && 'error-container']}>
+            <div className={(partyReq && handleErrors.party_choice) && 'error-container'}>
                 <Label htmlFor="political-party">
-                Choice of party{partyReq && <span className={validationStyles['required-text']}>*</span>}
+                Choice of party{partyReq && <span className='required-text'>*</span>}
                 <TextInput 
                     id="political-party"
                     aria-describedby="party-chioce-error" 
@@ -48,7 +47,7 @@ function PoliticalParty(props){
                     onBlur={(e) => setHandleErrors({ ...handleErrors, party_choice: checkForErrors(e, 'check value exists') })}
                 />
                 {(partyReq && handleErrors.party_choice) && 
-                    <span id="party-chioce-error" role="alert" className={validationStyles['error-text']}>
+                    <span id="party-chioce-error" role="alert" className='error-text'>
                         Choice of party must be filled out.
                     </span>
                 }

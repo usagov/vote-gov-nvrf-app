@@ -1,6 +1,5 @@
 import { Button, Fieldset, Checkbox, Label } from '@trussworks/react-uswds';
 import data from "../../data/state-selection.json";
-import validationStyles from "../../styles/ValidationStyles.module.css";
 
 function EligibilityCheckboxes(props) {
     const content = data;
@@ -10,7 +9,7 @@ function EligibilityCheckboxes(props) {
         <>
         <form onSubmit={() => {props.handleNext()}}>
         <Fieldset legend="Eligibilty" legendStyle="srOnly">
-            <div tabIndex={0} className={validationStyles[props.checkboxes.checkboxesValid && 'error-container']}>            
+            <div tabIndex={0} className={props.checkboxes.checkboxesValid && 'error-container'}>            
             <Label htmlFor="eligibility-error" id="eligibility-error">
                 {content.heading_confirm}
             </Label>
@@ -39,7 +38,7 @@ function EligibilityCheckboxes(props) {
                     />
                 </div>
             {props.checkboxes.checkboxesValid && 
-                <span id="eligibility-error" rol="alert" className={validationStyles['error-text']}>
+                <span id="eligibility-error" rol="alert" className='error-text'>
                     Both boxes must be checked to continue.
                 </span>
             }  

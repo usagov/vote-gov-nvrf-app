@@ -2,7 +2,6 @@ import { Label, TextInput, Button, Dropdown,Checkbox, Fieldset} from '@trusswork
 import React, { useState } from "react";
 import content from "../../data/registration-form.json";
 import { focusNext, restrictType, restrictLength, checkForErrors } from '../HelperFunctions/ValidateField';
-import validationStyles from "../../styles/ValidationStyles.module.css";
 
 function PersonalInfo(props){
     const stateFieldRequirements = props.stateData.fields_required;
@@ -82,9 +81,9 @@ function PersonalInfo(props){
                 </Dropdown>
                 </Label>
 
-                <div className={validationStyles[(nameReq && handleErrors.first_name) && 'error-container']}>
+                <div className={(nameReq && handleErrors.first_name) && 'error-container'}>
                     <Label htmlFor="first-name">
-                        First Name{nameReq && <span className={validationStyles['required-text']}>*</span>}
+                        First Name{nameReq && <span className='required-text'>*</span>}
                     <TextInput 
                         id="first-name" 
                         aria-describedby="first-name-error" 
@@ -97,7 +96,7 @@ function PersonalInfo(props){
                         onBlur={(e) => setHandleErrors({ ...handleErrors, first_name: checkForErrors(e, 'check value exists') })}
                         />
                     {(nameReq && handleErrors.first_name) && 
-                        <span id="first-name-error" role="alert" className={validationStyles['error-text']}>
+                        <span id="first-name-error" role="alert" className='error-text'>
                             First name must be filled out.
                         </span>
                     }
@@ -114,9 +113,9 @@ function PersonalInfo(props){
                         type="text" autoComplete="off"/>
                     </Label>
 
-                <div className={validationStyles[(nameReq && handleErrors.last_name) && 'error-container']}>
+                <div className={(nameReq && handleErrors.last_name) && 'error-container'}>
                     <Label htmlFor="last-name">
-                        Last Name{nameReq && <span className={validationStyles['required-text']}>*</span>}
+                        Last Name{nameReq && <span className='required-text'>*</span>}
                     <TextInput 
                         id="last-name" 
                         aria-describedby="last-name-error" 
@@ -129,7 +128,7 @@ function PersonalInfo(props){
                         onBlur={(e) => setHandleErrors({ ...handleErrors, last_name: checkForErrors(e, 'check value exists') })}
                         />
                     {(nameReq && handleErrors.last_name) && 
-                        <span id="last-name-error" role="alert" className={validationStyles['error-text']}>
+                        <span id="last-name-error" role="alert" className='error-text'>
                             Last name must be filled out.
                         </span>
                     }
@@ -168,9 +167,9 @@ function PersonalInfo(props){
                 </Dropdown>
                 </Label>
 
-                <div className={validationStyles[(nameReq && handleErrors.prev_first_name) && 'error-container']}>
+                <div className={(nameReq && handleErrors.prev_first_name) && 'error-container'}>
                     <Label htmlFor="first-name-2">
-                        First Name{nameReq && <span className={validationStyles['required-text']}>*</span>}
+                        First Name{nameReq && <span className='required-text'>*</span>}
                     <TextInput 
                         id="first-name-2" 
                         aria-describedby="prev-first-name-error" 
@@ -183,7 +182,7 @@ function PersonalInfo(props){
                         onBlur={(e) => setHandleErrors({ ...handleErrors, prev_first_name: checkForErrors(e, 'check value exists') })}
                     />
                     {(nameReq && handleErrors.prev_first_name) && 
-                        <span id="prev-first-name-error" role="alert" className={validationStyles['error-text']}>
+                        <span id="prev-first-name-error" role="alert" className='error-text'>
                             First name must be filled out.
                         </span>
                     }       
@@ -200,9 +199,9 @@ function PersonalInfo(props){
                         type="text" autoComplete="off"/>
                     </Label>
 
-                <div className={validationStyles[(nameReq && handleErrors.prev_last_name) && 'error-container']}>
+                <div className={(nameReq && handleErrors.prev_last_name) && 'error-container'}>
                     <Label htmlFor="last-name-2">
-                        Last Name{nameReq && <span className={validationStyles['required-text']}>*</span>}
+                        Last Name{nameReq && <span className='required-text'>*</span>}
                     <TextInput 
                         id="last-name-2" 
                         aria-describedby="prev-last-name-error" 
@@ -215,7 +214,7 @@ function PersonalInfo(props){
                         onBlur={(e) => setHandleErrors({ ...handleErrors, prev_last_name: checkForErrors(e, 'check value exists') })}
                         />
                     {(nameReq && handleErrors.prev_last_name) && 
-                        <span id="prev-last-name-error" role="alert" className={validationStyles['error-text']}>
+                        <span id="prev-last-name-error" role="alert" className='error-text'>
                             Last name must be filled out.
                         </span>
                     }
@@ -237,8 +236,8 @@ function PersonalInfo(props){
         )}
 
         {dobVisible && (
-            <div className={validationStyles[(dobReq && handleErrors.dob) && 'error-container']}>
-                <Fieldset legend={dobReq ? ["Date of Birth", <span key={1} className={validationStyles['required-text']}>*</span>] : "Date of Birth"} style={{ marginTop:'30px'}}>
+            <div className={(dobReq && handleErrors.dob) && 'error-container'}>
+                <Fieldset legend={dobReq ? ["Date of Birth", <span key={1} className='required-text'>*</span>] : "Date of Birth"} style={{ marginTop:'30px'}}>
                     <span className="usa-hint" id="date-of-birth-hint">
                     For example: January 19 2000
                     </span>
@@ -327,7 +326,7 @@ function PersonalInfo(props){
                     </div>
                 </Fieldset>
             {(dobReq && handleErrors.dob) && 
-                <span id="dob-error" role="alert" className={validationStyles['error-text']}>
+                <span id="dob-error" rol="alert" className='error-text'>
                     Date of Birth must follow the format of January 19 2000.
                 </span>
             }
@@ -335,9 +334,9 @@ function PersonalInfo(props){
         )}
 
         {telephoneVisible && (
-            <div className={validationStyles[(telephoneReq && handleErrors.phone_number) && 'error-container']}>
-                <legend htmlFor="phone-number" class="usa-legend">Phone Number{telephoneReq && <span className={validationStyles['required-text']}>*</span>}</legend>
-                <span class="usa-hint" id="date-of-birth-hint">For example: (123) 456-7890</span>
+            <div className={(telephoneReq && handleErrors.phone_number) && 'error-container'}>
+                <legend htmlFor="phone-number" className="usa-legend">Phone Number{telephoneReq && <span className='required-text'>*</span>}</legend>
+                <span className="usa-hint" id="date-of-birth-hint">For example: (123) 456-7890</span>
                 <TextInput 
                     id="phone-number" 
                     aria-describedby="phone-number-error"
@@ -352,7 +351,7 @@ function PersonalInfo(props){
                     onBlur={(e) => setHandleErrors({ ...handleErrors, phone_number: checkForErrors(e, 'check value length') })}
                 />
                 {(telephoneReq && handleErrors.phone_number) && 
-                    <span id="phone-number-error" role="alert" className={validationStyles['error-text']}>
+                    <span id="phone-number-error" rol="alert" className='error-text'>
                         Phone number must be 10 digits.
                     </span>
                 }

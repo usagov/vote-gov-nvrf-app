@@ -14,7 +14,7 @@ function CardInfo(props) {
 
     return (
         <>
-        <Card gridLayout={{ tablet: { col: 6 } }}>
+        <Card className="card-info" gridLayout={{ tablet: { col: 6 } }}>
         <CardHeader>
             <h3 className="usa-card__heading">
             {props.header}

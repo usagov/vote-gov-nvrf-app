@@ -1,9 +1,6 @@
 import { useState } from 'react'
 import { Label, Dropdown, Button, ProcessList, ProcessListItem, ProcessListHeading, Grid } from '@trussworks/react-uswds';
 import states from "../data/states.json";
-import styles from "../styles/StateSelection.module.css";
-import validationStyles from "../styles/ValidationStyles.module.css";
-import cardInfoStyles from "../styles/CardInfo.module.css";
 import CardInfo from "./CardInfo";
 import { checkForErrors } from './HelperFunctions/ValidateField';
 
@@ -76,9 +73,9 @@ function StateSelection(props) {
         <h3>Select your state then choose your path</h3>
         
         <form onSubmit={(e) => {props.handleSubmit(e), props.handleNext()}}>
-        <div className={styles['state-dropdown']}>
-        <div className={validationStyles[handleErrors.state_selected && 'error-container']}>
-            <Label htmlFor="state-dropdown-error">Home state or territory{handleErrors.state_selected && <span className={validationStyles['required-text']}>*</span>}
+        <div className='state-dropdown'>
+        <div className={handleErrors.state_selected && 'error-container'}>
+            <Label htmlFor="state-dropdown-error">Home state or territory{handleErrors.state_selected && <span className='required-text'>*</span>}
             <div>
                 <Dropdown 
                     id="state-dropdown"
@@ -97,7 +94,7 @@ function StateSelection(props) {
                 </Dropdown>            
             </div>
             {handleErrors.state_selected && 
-                <span id="state-dropdown-error" role="alert" className={validationStyles['error-text']}>
+                <span id="state-dropdown-error" role="alert" className='error-text'>
                     State or territory selection must be made.
                 </span>
             }
@@ -105,7 +102,7 @@ function StateSelection(props) {
         </div>
         </div>
 
-            <Grid row gap className={cardInfoStyles['justify-height']}>
+            <Grid row gap className='cards-container'>
                 <CardInfo 
                     header={"Click to view eligibility and begin your registration"} 
                     paragraph={"Select your home state or territory to view your state’s eligibility requirements. As you continue through the form, you will see state-specific instructions for filling out your information."} 
