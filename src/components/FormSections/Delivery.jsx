@@ -1,45 +1,48 @@
 import { Link, Icon } from '@trussworks/react-uswds';
-import "../../styles/pages/DeliveryOptions.css";
+import "../../styles/pages/Delivery.css";
+import content from "../../data/delivery.json";
 import GenerateFilledPDF from '../GenerateFilledPDF';
 
 
 function Delivery(props) {
     return (
         <>
-            <h1>Your form is ready to print.</h1>
-            <h2>Print out the completed form, sign and date it, put it in an envelope with the correct postage, and mail it to your state election office.</h2>
-            <h3>Create a reminder to mail your form</h3>
-            <p>Take a minute and set a reminder for yourself to make sure you don't forget to mail in your form — add it to your calendar or jot it down on a notepad and put it on your fridge to help you remember.</p>
+            <h1>{content.main_heading}</h1>
+            <p>{content.main_help_text}</p>
+            <h3>{content.reminder_header1}</h3>
+            <p>{content.reminder_text1}</p>
 
-            <p>Mail to the following address:
-            Division of Elections State of Alaska 
-            PO Box 110017 
-            Juneau, AK 99811-0017</p>
+            <p>
+                {content.mail_text}
+                <br />Division of Elections State of Alaska
+                <br />PO Box 110017
+                <br />Juneau, AK 99811-0017
+            </p>
 
-            You may also deliver the application in person to your local voter registration office.
-            <h3>First time voter requirements</h3>
+            <p>{content.rminder_text2}</p>
+            <h3>{content.voter_req_header}</h3>
 
-            <p>If you are registering to vote for the first time in your jurisdiction and are mailing this registration application, Federal law requires you to show proof of identification the first time you vote. Proof of identification includes:</p>
+            <p>{content.voter_req_parag1}</p>
             <ul>
-                <li>A current and valid photo identification or</li>
-                <li>A current utility bill, bank statement, government check, paycheck or government document that shows your name and address.</li>
+                <li>{content.voter_req_parag1_li1}</li>
+                <li>{content.voter_req_parag1_li2}</li>
             </ul>
 
-            <p>Voters may be exempt from this requirement if they submit a COPY of this identification with their mail in voter registration form. If you wish to submit a COPY, please keep the following in mind:</p>
+            <p>{content.voter_req_parag2}</p>
                 <ul>
-                    <li>Your state may have additional identification requirements which may mandate you showidentification at the polling place even if you meet the Federal proof of identification.</li>
-                    <li>Do not submit original documents with this application, only COPIES</li>
+                    <li>{content.voter_req_parag2_li1}</li>
+                    <li>{content.voter_req_parag2_li2}</li>
                 </ul>
 
-            <h3>Don't forget to vote!</h3>
-            <p>Prepare to cast your vote. Explore Vote.gov to learn more about how our elections are run and your voting options.</p>
+            <h3>{content.dont_forget_header}</h3>
+            <p>{content.dont_forget_parag1}</p>
 
             <Link className="usa-button link-button-outline" variant="unstyled" href={'https://vote.gov/'}>
-            <Icon.ArrowBack aria-label="back arrow icon"/> Back to Vote.gov
+            <Icon.ArrowBack aria-label="back arrow icon"/> {content.back_btn}
             </Link>
 
             <Link className="usa-button link-button-filled" variant="unstyled" href={props.stateData.election_website_url}>
-            Learn about your voting options  <Icon.ArrowForward aria-label="forward arrow icon"/>
+            {content.voting_options_btn}  <Icon.ArrowForward aria-label="forward arrow icon"/>
             </Link>
         </>
     )
