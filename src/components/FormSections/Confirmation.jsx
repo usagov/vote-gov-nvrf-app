@@ -1,6 +1,7 @@
 import { Alert, Form, Label, TextInput, Button, Dropdown,Checkbox, DatePicker } from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import content from "../../data/confirmation.json";
+import GenerateFilledPDF from '../GenerateFilledPDF';
 
 function Confirmation(props){
     const fieldData = props.fieldData;
@@ -21,9 +22,7 @@ function Confirmation(props){
     }
 
     const checkboxValid = () => {
-        if (hasAcknowledged === null) {
-            setError(true);
-        }
+        (hasAcknowledged === null) && setError(true);
     }
 
     return (
@@ -181,8 +180,7 @@ function Confirmation(props){
             }
         </div>
 
-            <Button onClick={(e) => checkboxValid()} type="submit"
-                >
+            <Button onClick={() => {checkboxValid(), hasAcknowledged && GenerateFilledPDF(props.fieldData)}} type="submit">
                 Confirm and Download Form
             </Button>
         </>
