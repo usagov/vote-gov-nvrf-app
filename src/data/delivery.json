@@ -1,0 +1,19 @@
+{
+    "main_heading": "Your form is ready to print.",
+    "main_help_text": "Print out the completed form, sign and date it, put it in an envelope with the correct postage, and mail it to your state election office.",
+    "reminder_header1": "Create a reminder to mail your form",
+    "reminder_text1": "Take a minute and set a reminder for yourself to make sure you don't forget to mail in your form — add it to your calendar or jot it down on a notepad and put it on your fridge to help you remember.",
+    "mail_text": "Mail to the following address:",
+    "reminder_text2": "You may also deliver the application in person to your local voter registration office.",
+    "voter_req_header": "First time voter requirements",
+    "voter_req_parag1": "If you are registering to vote for the first time in your jurisdiction and are mailing this registration application, Federal law requires you to show proof of identification the first time you vote. Proof of identification includes: ",
+    "voter_req_parag1_li1": "A current and valid photo identification or",
+    "voter_req_parag1_li2": "A current utility bill, bank statement, government check, paycheck or government document that shows your name and address.",
+    "voter_req_parag2": "Voters may be exempt from this requirement if they submit a COPY of this identification with their mail in voter registration form. If you wish to submit a COPY, please keep the following in mind:",
+    "voter_req_parag2_li1": "Your state may have additional identification requirements which may mandate you showidentification at the polling place even if you meet the Federal proof of identification.",
+    "voter_req_parag2_li2": "Do not submit original documents with this application, only COPIES",
+    "dont_forget_header": "Don't forget to vote!",
+    "dont_forget_parag1": "Prepare to cast your vote. Explore Vote.gov to learn more about how our elections are run and your voting options.",
+    "back_btn": "Back to Vote.gov",
+    "voting_options_btn": "Learn about your voting options "
+}

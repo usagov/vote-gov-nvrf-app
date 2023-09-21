@@ -52,7 +52,7 @@ function StateSelection(props) {
                 Confirm all information is correct
             </ProcessListHeading>
             <p>
-                Double check that all your information is correct. You’ll have the choice to email a copy to yourself or print it directly from the page.
+                Double check that all your information is correct. You'll have the chance to make any necessary edits before printing your form.
             </p>
             </ProcessListItem>
             <ProcessListItem>

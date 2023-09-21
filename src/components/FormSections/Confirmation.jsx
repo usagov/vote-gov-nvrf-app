@@ -1,6 +1,7 @@
 import { Alert, Form, Label, TextInput, Button, Dropdown,Checkbox, DatePicker } from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import content from "../../data/confirmation.json";
+import GenerateFilledPDF from '../GenerateFilledPDF';
 
 function Confirmation(props){
     const fieldData = props.fieldData;
@@ -21,9 +22,7 @@ function Confirmation(props){
     }
 
     const checkboxValid = () => {
-        if (hasAcknowledged === null) {
-            setError(true);
-        }
+        (hasAcknowledged === null) && setError(true);
     }
 
     return (
@@ -165,16 +164,13 @@ function Confirmation(props){
             </div>
         </div>
 
-        {/* <form action=""> */}
         <div className={error && 'error-container'}>
-        {/* <Label htmlFor="first-name"> Checkbox must be checked to continue.{true && <span className={validationStyles['required-text']}>*</span>} */}
             <Checkbox 
                 id="acknowledge-check"
                 name="acknowledge-check"
                 required 
                 checked={hasAcknowledged}
                 label="I can confirm my information is correct to the best of my knowledge." 
-                // onBlur={(e) => handleError(!e.target.checked)}
                 onChange={(e) => acknowledgeCheckbox(e.target.checked)}
                 />
             {error && 
@@ -182,13 +178,11 @@ function Confirmation(props){
                     Checkbox must be checked to continue.
                 </span>
             }
-        {/* </Label> */}
         </div>
 
-            <Button onClick={(e) => checkboxValid()} type="submit">
-                Confirm information
+            <Button onClick={() => {checkboxValid(), hasAcknowledged && GenerateFilledPDF(props.fieldData)}} type="submit">
+                Confirm and Download Form
             </Button>
-        {/* </form> */}
         </>
     );
 }
