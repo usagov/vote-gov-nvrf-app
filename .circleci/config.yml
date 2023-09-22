@@ -5,22 +5,33 @@ version: 2.1
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/configuration-reference/#jobs
 jobs:
-  say-hello:
+  fetch-nvrf:
     # Specify the execution environment. You can specify an image from Docker Hub or use one of our convenience images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/configuration-reference/#executor-job
     docker:
       - image: cimg/base:stable
     # Add steps to the job
     # See: https://circleci.com/docs/configuration-reference/#steps
+    environment:
+      URL: https://www.eac.gov/sites/default/files/eac_assets/1/6/Federal_Voter_Registration_ENG.pdf
     steps:
-      - checkout
-      - run:
-          name: "Say hello"
-          command: "echo Hello, World!"
+      #download pdf from
+      - run: |
+         curl -o Federal_Voter_Registration_ENG.pdf $URL
+      #save pdf as an artifact
+      - store_artifacts:
+        path: Federal_Voter_Registration_ENG.pdf
+        destination: /pdf-files
+  push-nvrf:
+    steps:
+    #push the artifact to github
+    #create a PR on a new branch (replace the old PDF with the artifact)
+    #IDEA: if the new pdf is the same as the old PDF, automatically merge PR
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
 workflows:
-  say-hello-workflow:
+  update-nvrf-workflow:
     jobs:
-      - say-hello
+      - fetch-nvrf
+      #- push-nvrf
