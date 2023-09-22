@@ -22,8 +22,8 @@ jobs:
       - store_artifacts:
         path: Federal_Voter_Registration_ENG.pdf
         destination: /pdf-files
-  push-nvrf:
-    steps:
+  #push-nvrf:
+    #steps:
     #push the artifact to github
     #create a PR on a new branch (replace the old PDF with the artifact)
     #IDEA: if the new pdf is the same as the old PDF, automatically merge PR
