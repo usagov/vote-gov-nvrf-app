@@ -74,7 +74,7 @@ function StateSelection(props) {
         
         <form onSubmit={(e) => {props.handleSubmit(e), props.handleNext()}}>
         <div className='state-dropdown'>
-        <div className={handleErrors.state_selected && 'error-container'}>
+        <div className={handleErrors.state_selected ? 'error-container' : ''}>
             <Label htmlFor="state-dropdown-error">Home state or territory{handleErrors.state_selected && <span className='required-text'>*</span>}
             <div>
                 <Dropdown 
