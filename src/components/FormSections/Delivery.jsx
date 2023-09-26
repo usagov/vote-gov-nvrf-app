@@ -4,6 +4,7 @@ import content from "../../data/delivery.json";
 
 
 function Delivery(props) {
+    const stateAddress = props.stateData.state_address;
     return (
         <>
             <h1>{content.main_heading}</h1>
@@ -13,12 +14,12 @@ function Delivery(props) {
 
             <p>
                 {content.mail_text}
-                <br />Division of Elections State of Alaska
-                <br />PO Box 110017
-                <br />Juneau, AK 99811-0017
+                <br />{stateAddress.office_name}
+                <br />{stateAddress.street_address}
+                <br />{stateAddress.city_state}
             </p>
 
-            <p>{content.rminder_text2}</p>
+            <p>{content.reminder_text2}</p>
             <h3>{content.voter_req_header}</h3>
 
             <p>{content.voter_req_parag1}</p>
