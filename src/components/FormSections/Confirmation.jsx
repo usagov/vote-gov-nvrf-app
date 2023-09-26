@@ -13,7 +13,7 @@ function Confirmation(props){
     const fieldDataOverride_state = props.stateData.name;
     fieldData.state = fieldDataOverride_state;
 
-    //Acknowledment field controls
+    //Acknowledgment field controls
     const [hasAcknowledged, setHasAcknowledged] = useState(null);
     const [error, setError] = useState(null)
     const acknowledgeCheckbox = (checkStatus) => {

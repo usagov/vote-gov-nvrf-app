@@ -68,7 +68,7 @@ const GenerateFilledPDF = async function (formData) {
 
     // -----------Fill in the pdf fields--------------------------
     // (1) Personal Information
-    // Logic for title select has to be seperated into two radio groups
+    // Logic for title select has to be separated into two radio groups
     if (formData.title == 'Mr' || formData.title == "Mrs"){
         title.select(formData.title);
     } else if (formData.title == 'Miss' || formData.title == 'Ms') {
