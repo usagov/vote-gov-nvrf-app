@@ -20,8 +20,8 @@ jobs:
          curl -o Federal_Voter_Registration_ENG.pdf $URL
       #save pdf as an artifact
       - store_artifacts:
-        path: Federal_Voter_Registration_ENG.pdf
-        destination: /pdf-files
+          path: Federal_Voter_Registration_ENG.pdf
+          destination: /pdf-files
   #push-nvrf:
     #steps:
     #push the artifact to github
