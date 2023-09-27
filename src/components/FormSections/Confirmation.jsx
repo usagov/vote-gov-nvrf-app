@@ -1,6 +1,7 @@
 import { Alert, Form, Label, TextInput, Button, Dropdown,Checkbox, DatePicker } from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import content from "../../data/confirmation.json";
+import GenerateFilledPDF from '../GenerateFilledPDF';
 
 function Confirmation(props){
     const fieldData = props.fieldData;
@@ -13,9 +14,15 @@ function Confirmation(props){
     fieldData.state = fieldDataOverride_state;
 
     //Acknowledment field controls
-    const [hasAcknowledged, setHasAcknowledged] = useState(false);
-    const onChangeAcknowledgeCheckbox = (e) => {
-        setHasAcknowledged(e.target.checked);
+    const [hasAcknowledged, setHasAcknowledged] = useState(null);
+    const [error, setError] = useState(null)
+    const acknowledgeCheckbox = (checkStatus) => {
+        setHasAcknowledged(checkStatus);
+        setError(!checkStatus);
+    }
+
+    const checkboxValid = () => {
+        (hasAcknowledged === null) && setError(true);
     }
 
     return (
@@ -157,11 +164,25 @@ function Confirmation(props){
             </div>
         </div>
 
-        <Checkbox id="acknowledge-check" name="acknowledge-check" checked={hasAcknowledged} onChange={onChangeAcknowledgeCheckbox} label="I can confirm my information is correct to the best of my knowledge." />
+        <div className={error && 'error-container'}>
+            <Checkbox 
+                id="acknowledge-check"
+                name="acknowledge-check"
+                required 
+                checked={hasAcknowledged}
+                label="I can confirm my information is correct to the best of my knowledge." 
+                onChange={(e) => acknowledgeCheckbox(e.target.checked)}
+                />
+            {error && 
+                <span id="first-name-error" role="alert" className='error-text'>
+                    Checkbox must be checked to continue.
+                </span>
+            }
+        </div>
 
-        <Button type="submit" disabled={!hasAcknowledged}>
-            Confirm information
-        </Button>
+            <Button onClick={() => {checkboxValid(), hasAcknowledged && GenerateFilledPDF(props.fieldData)}} type="submit">
+                Confirm and Download Form
+            </Button>
         </>
     );
 }

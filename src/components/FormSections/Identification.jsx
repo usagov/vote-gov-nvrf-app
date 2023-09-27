@@ -1,8 +1,7 @@
 import { Label, TextInput, Button, Fieldset, Dropdown } from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import content from "../../data/registration-form.json";
-import { focusNext, restrictLength, restrictType, checkExpiration, checkForErrors } from './ValidateField';
-import validationStyles from "../../styles/ValidationStyles.module.css";
+import { focusNext, restrictLength, restrictType, checkExpiration, checkForErrors } from '../HelperFunctions/ValidateField';
 
 function Identification(props){
     const stateFieldRequirements = props.stateData.fields_required;
@@ -59,7 +58,7 @@ function Identification(props){
                 <h3>Identification</h3>
                 <p>{stateInstructions.ID_num_text}</p>
 
-                <div className={validationStyles[(idNumReq && handleErrors.id_selection) && 'error-container']}>
+                <div className={(idNumReq && handleErrors.id_selection) && 'error-container'}>
                 <Dropdown 
                 id="id-num-dropdown"
                 name="input-dropdown"
@@ -74,7 +73,7 @@ function Identification(props){
                     <option key="id-none" value="none">I do not have a valid ID number</option>
                 </Dropdown> 
                 {(idNumReq && handleErrors.id_selection) && 
-                    <span id="id-num-dropdown-error" role="alert" className={validationStyles['error-text']}>
+                    <span id="id-num-dropdown-error" role="alert" className='error-text'>
                         Identification selection must be made from the dropdown.
                     </span>
                 }
@@ -82,8 +81,8 @@ function Identification(props){
 
                 {props.idType === 'state-id-num' && 
                 <div>
-                <div className={validationStyles[(idNumReq && handleErrors.id_number) && 'error-container']}>
-                    <Label htmlFor="state-id-num-error">State ID Number{idNumReq && <span className={validationStyles['required-text']}>*</span>}
+                <div className={(idNumReq && handleErrors.id_number) && 'error-container'}>
+                    <Label htmlFor="state-id-num-error">State ID Number{idNumReq && <span className='required-text'>*</span>}
                     <TextInput 
                         id="state-id-num" 
                         name="state-id-num" 
@@ -95,15 +94,15 @@ function Identification(props){
                         onBlur={(e) => setHandleErrors({ ...handleErrors, id_number: checkForErrors(e, 'check value exists') })}
                     />
                     {(idNumReq && handleErrors.id_number) && 
-                        <span id="state-id-num-error" role="alert" className={validationStyles['error-text']}>
+                        <span id="state-id-num-error" role="alert" className='error-text'>
                             ID number must be filled out.
                         </span>
                     }
                     </Label>
                 </div>
 
-                <div className={validationStyles[(idNumReq && handleErrors.issue_date) && 'error-container']}>
-                <Fieldset legend={idNumReq ? ["Issue Date", <span className={validationStyles['required-text']}>*</span>] : "Issue Date"} style={{ marginTop:'30px'}}>
+                <div className={(idNumReq && handleErrors.issue_date) && 'error-container'}>
+                <Fieldset legend={idNumReq ? ["Issue Date", <span className='required-text'>*</span>] : "Issue Date"} style={{ marginTop:'30px'}}>
                     <span className="usa-hint" id="id-issue-date-hint">
                     For example: January 19 2000
                     </span>
@@ -192,14 +191,14 @@ function Identification(props){
                     </div>
                 </Fieldset>
                 {(idNumReq && handleErrors.issue_date) && 
-                    <span id="issue-date-error" role="alert" className={validationStyles['error-text']}>
+                    <span id="issue-date-error" role="alert" className='error-text'>
                     Issue Date must follow the format of January 19 2000.
                     </span>
                 }
                 </div>
 
-                <div className={validationStyles[(idNumReq && handleErrors.expire_date) && 'error-container']}>
-                <Fieldset legend={idNumReq ? ["Expire Date", <span className={validationStyles['required-text']}>*</span>] : "Expire Date"} style={{ marginTop:'30px'}}>
+                <div className={(idNumReq && handleErrors.expire_date) && 'error-container'}>
+                <Fieldset legend={idNumReq ? ["Expire Date", <span className='required-text'>*</span>] : "Expire Date"} style={{ marginTop:'30px'}}>
                     <span className="usa-hint" id="id-issue-date-hint">
                     For example: January 19 2000
                     </span>
@@ -289,7 +288,7 @@ function Identification(props){
                     </div>
                 </Fieldset>
                 {(idNumReq && handleErrors.expire_date) && 
-                    <span id="expire-date-error" role="alert" className={validationStyles['error-text']}>
+                    <span id="expire-date-error" role="alert" className='error-text'>
                     Expire Date must follow the format of January 19 2000 and be in the future.
                     </span>
                 }</div>
@@ -297,8 +296,8 @@ function Identification(props){
                 }
 
                 {props.idType === 'ssn' && 
-                <div className={validationStyles[(idNumReq && handleErrors.id_ssn) && 'error-container']}>
-                <Label htmlFor="ssn-input-error">Social Security Number (last 4 digits){idNumReq && <span className={validationStyles['required-text']}>*</span>}
+                <div className={(idNumReq && handleErrors.id_ssn) && 'error-container'}>
+                <Label htmlFor="ssn-input-error">Social Security Number (last 4 digits){idNumReq && <span className='required-text'>*</span>}
                 <TextInput 
                     id="ssn-input" 
                     name="ssn-input" 
@@ -314,7 +313,7 @@ function Identification(props){
                     onBlur={(e) => setHandleErrors({ ...handleErrors, id_ssn: checkForErrors(e, 'check value length') })}
                     />
                     {(idNumReq && handleErrors.id_ssn) && 
-                    <span id="ssn-input-error" role="alert" className={validationStyles['error-text']}>
+                    <span id="ssn-input-error" role="alert" className='error-text'>
                         Social Security Number must be 4 digits.
                     </span>
                     }

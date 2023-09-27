@@ -3,8 +3,7 @@ import StateSelector from '../StateSelector';
 import React, { useState } from "react";
 import states from "../../data/states.json";
 import content from "../../data/registration-form.json";
-import { restrictLength, restrictType, checkForErrors } from './ValidateField';
-import validationStyles from "../../styles/ValidationStyles.module.css";
+import { restrictType, checkForErrors } from '../HelperFunctions/ValidateField';
 
 function Addresses(props){
     const changeRegistrationVisible = (props.registrationPath === 'update') ? true : false;
@@ -32,7 +31,6 @@ function Addresses(props){
 
     const checkStateValue=(name)=> {
         if (name === 'prev_state') {
-            console.log(props.fieldData.prev_state)
             props.fieldData.prev_state ?  
             setHandleErrors({ ...handleErrors, prev_state: (false) }) 
             :
@@ -76,9 +74,9 @@ function Addresses(props){
                     <h3>{content.home_address_heading}</h3>
                     <p>{content.home_address_field_text_1}</p>
 
-                    <div className={validationStyles[(addressReq && handleErrors.street) && 'error-container']}>
+                    <div className={(addressReq && handleErrors.street) && 'error-container'}>
                         <Label htmlFor="street-address">
-                            Street Address{addressReq && <span className={validationStyles['required-text']}>*</span>}
+                            Street Address{addressReq && <span className='required-text'>*</span>}
                         <TextInput 
                             id="street-address" 
                             aria-describedby="street-address-error"
@@ -91,7 +89,7 @@ function Addresses(props){
                             onBlur={(e) => setHandleErrors({ ...handleErrors, street: checkForErrors(e, 'check value exists') })}
                             />
                         {(addressReq && handleErrors.street) && 
-                            <span id="street-address-error" role="alert" className={validationStyles['error-text']}>
+                            <span id="street-address-error" role="alert" className='error-text'>
                                 Street Address must be filled out.
                             </span>
                         }
@@ -110,9 +108,9 @@ function Addresses(props){
                     />
                     </Label>
 
-                    <div className={validationStyles[(addressReq && handleErrors.city) && 'error-container']}>
+                    <div className={(addressReq && handleErrors.city) && 'error-container'}>
                         <Label htmlFor="city">
-                            City{addressReq && <span className={validationStyles['required-text']}>*</span>}
+                            City{addressReq && <span className='required-text'>*</span>}
                         <TextInput 
                             id="city" 
                             aria-describedby="city-error"
@@ -126,7 +124,7 @@ function Addresses(props){
                             onBlur={(e) => setHandleErrors({ ...handleErrors, city: checkForErrors(e, 'check value exists') })}
                             />
                         {(addressReq && handleErrors.city) && 
-                            <span id="city-error" role="alert" className={validationStyles['error-text']}>
+                            <span id="city-error" role="alert" className='error-text'>
                                 City name must be filled out.
                             </span>
                         }
@@ -145,9 +143,9 @@ function Addresses(props){
                     />
                     </Label>
 
-                    <div className={validationStyles[(addressReq && handleErrors.zip) && 'error-container']}>
-                        <legend htmlFor="zip" class="usa-legend">Zip Code {addressReq && <span className={validationStyles['required-text']}>*</span>}</legend>
-                        <span class="usa-hint" id="date-of-birth-hint">For example: 12345</span>
+                    <div className={(addressReq && handleErrors.zip) && 'error-container'}>
+                        <legend htmlFor="zip" className="usa-legend">Zip Code {addressReq && <span className={'required-text'}>*</span>}</legend>
+                        <span className="usa-hint" id="zip-hint">For example: 12345</span>
                         <TextInput 
                             id="zip" 
                             aria-describedby="zip-error"
@@ -164,7 +162,7 @@ function Addresses(props){
                             onBlur={(e) => setHandleErrors({ ...handleErrors, zip: checkForErrors(e, 'check value length') })}
                         />
                         {(addressReq && handleErrors.zip) && 
-                                <span id="zip-error" role="alert" className={validationStyles['error-text']}>
+                                <span id="zip-error" role="alert" className='error-text'>
                                     Zip Code must be 5 digits.
                                 </span>
                         }
@@ -176,9 +174,9 @@ function Addresses(props){
                             {props.hasPreviousAddress && (
                                 <div value={props.previousAddress} onChange={props.onChangePreviousAddress}>
                                     <h3>{content.previous_address_heading}</h3>
-                                    <div className={validationStyles[(addressReq && handleErrors.prev_street) && 'error-container']}>
+                                    <div className={(addressReq && handleErrors.prev_street) && 'error-container'}>
                                         <Label htmlFor="prev-street">
-                                            Street Address{addressReq && <span className={validationStyles['required-text']}>*</span>}
+                                            Street Address{addressReq && <span className='required-text'>*</span>}
                                         <TextInput 
                                             id="prev-street" 
                                             aria-describedby="prev-street-error"
@@ -191,7 +189,7 @@ function Addresses(props){
                                             onBlur={(e) => setHandleErrors({ ...handleErrors, prev_street: checkForErrors(e, 'check value exists') })}
                                         />
                                         {(addressReq && handleErrors.prev_street) && 
-                                            <span id="prev-street-error" role="alert" className={validationStyles['error-text']}>
+                                            <span id="prev-street-error" role="alert" className='error-text'>
                                                 Previous Street address must be filled out.
                                             </span>
                                         }
@@ -210,9 +208,9 @@ function Addresses(props){
                                         />
                                     </Label>
 
-                                    <div className={validationStyles[(addressReq && handleErrors.prev_city) && 'error-container']}>
+                                    <div className={(addressReq && handleErrors.prev_city) && 'error-container'}>
                                         <Label htmlFor="prev-city">
-                                            City{addressReq && <span className={validationStyles['required-text']}>*</span>}
+                                            City{addressReq && <span className='required-text'>*</span>}
                                         <TextInput 
                                             id="prev-city" 
                                             aria-describedby="prev-city-error"
@@ -226,16 +224,16 @@ function Addresses(props){
                                             onBlur={(e) => setHandleErrors({ ...handleErrors, prev_city: checkForErrors(e, 'check value exists') })}
                                         />
                                         {(addressReq && handleErrors.prev_city) && 
-                                            <span id="prev-city-error" role="alert" className={validationStyles['error-text']}>
+                                            <span id="prev-city-error" role="alert" className='error-text'>
                                                 Previous City name must be filled out.
                                             </span>
                                         }
                                         </Label>
                                     </div>
 
-                                    <div className={validationStyles[(addressReq && handleErrors.prev_state) && 'error-container']}>
+                                    <div className={(addressReq && handleErrors.prev_state) && 'error-container'}>
                                         <Label htmlFor="prev-state">
-                                            State{addressReq && <span className={validationStyles['required-text']}>*</span>}
+                                            State{addressReq && <span className='required-text'>*</span>}
                                         <StateSelector 
                                             id="prev-state" 
                                             ariaDescribedby="prev-state-error"
@@ -247,16 +245,16 @@ function Addresses(props){
                                             onBlur={(e) => checkStateValue('prev_state')}
                                         />
                                         {(addressReq && handleErrors.prev_state) && 
-                                            <span id="prev-state-error" role="alert" className={validationStyles['error-text']}>
+                                            <span id="prev-state-error" role="alert" className='error-text'>
                                                 Previous State selection must be made.
                                             </span>
                                         }
                                         </Label>
                                     </div>
 
-                                    <div className={validationStyles[(addressReq && handleErrors.prev_zip) && 'error-container']}>
-                                        <legend htmlFor="prev-zip" class="usa-legend">Zip Code {addressReq && <span className={validationStyles['required-text']}>*</span>}</legend>
-                                        <span class="usa-hint" id="date-of-birth-hint">For example: 12345</span>
+                                    <div className={(addressReq && handleErrors.prev_zip) && 'error-container'}>
+                                        <legend htmlFor="prev-zip" className="usa-legend">Zip Code {addressReq && <span className={'required-text'}>*</span>}</legend>
+                                        <span className="usa-hint" id="prev-zip-hint">For example: 12345</span>
                                         <TextInput 
                                             id="prev-zip" 
                                             aria-describedby="prev-zip-error"
@@ -273,7 +271,7 @@ function Addresses(props){
                                             onBlur={(e) => setHandleErrors({ ...handleErrors, prev_zip: checkForErrors(e, 'check value length') })}
                                         />
                                         {(addressReq && handleErrors.prev_zip) && 
-                                            <span id="prev-zip-error" role="alert" className={validationStyles['error-text']}>
+                                            <span id="prev-zip-error" role="alert" className='error-text'>
                                                 Previous Zip Code must be 5 digits.
                                             </span>
                                         }
@@ -286,9 +284,9 @@ function Addresses(props){
                                     <h3>{content.mail_address_heading}</h3>
                                     <p>{content.mailing_address_text}</p>
                                 
-                                    <div className={validationStyles[(addressReq && handleErrors.mail_street) && 'error-container']}>
+                                    <div className={(addressReq && handleErrors.mail_street) && 'error-container'}>
                                     <Label htmlFor="mail-street">
-                                        Street Address (or route and box number){addressReq && <span className={validationStyles['required-text']}>*</span>}
+                                        Street Address (or route and box number){addressReq && <span className='required-text'>*</span>}
                                         <TextInput 
                                             id="mail-street" 
                                             aria-describedby="mail-street-error"
@@ -301,7 +299,7 @@ function Addresses(props){
                                             onBlur={(e) => setHandleErrors({ ...handleErrors, mail_street: checkForErrors(e, 'check value exists') })}
                                         />
                                         {(addressReq && handleErrors.mail_street) && 
-                                            <span id="mail-street-error" role="alert" className={validationStyles['error-text']}>
+                                            <span id="mail-street-error" role="alert" className='error-text'>
                                                 Mailing Street Address must be filled out.
                                             </span>
                                         }
@@ -320,9 +318,9 @@ function Addresses(props){
                                     />
                                     </Label>
 
-                                    <div className={validationStyles[(addressReq && handleErrors.mail_city) && 'error-container']}>
+                                    <div className={(addressReq && handleErrors.mail_city) && 'error-container'}>
                                         <Label htmlFor="mail-city">
-                                            City{addressReq && <span className={validationStyles['required-text']}>*</span>}
+                                            City{addressReq && <span className='required-text'>*</span>}
                                         <TextInput 
                                             id="mail-city" 
                                             aria-describedby="mail-city-error"
@@ -336,16 +334,16 @@ function Addresses(props){
                                             onBlur={(e) => setHandleErrors({ ...handleErrors, mail_city: checkForErrors(e, 'check value exists') })}
                                         />
                                         {(addressReq && handleErrors.mail_city) && 
-                                            <span id="mail-city-error" role="alert" className={validationStyles['error-text']}>
+                                            <span id="mail-city-error" role="alert" className='error-text'>
                                                 Mailing City name must be filled out.
                                             </span>
                                         }
                                         </Label>
                                     </div>
 
-                                    <div className={validationStyles[(addressReq && handleErrors.mail_state) && 'error-container']}>
+                                    <div className={(addressReq && handleErrors.mail_state) && 'error-container'}>
                                     <Label htmlFor="mail-state">
-                                        State{addressReq && <span className={validationStyles['required-text']}>*</span>}
+                                        State{addressReq && <span className='required-text'>*</span>}
                                     <StateSelector 
                                         id="mail-state" 
                                         autoComplete="off" 
@@ -357,16 +355,16 @@ function Addresses(props){
                                         onBlur={(e) => checkStateValue('mail_state')}
                                     />
                                     {(addressReq && handleErrors.mail_state) && 
-                                        <span id="mail-state-error" role="alert" className={validationStyles['error-text']}>
+                                        <span id="mail-state-error" role="alert" className='error-text'>
                                             Mailing State selection must be made.
                                         </span>
                                     }
                                     </Label>
                                     </div>
 
-                                    <div className={validationStyles[(addressReq && handleErrors.mail_zip) && 'error-container']}>
-                                        <legend htmlFor="mail-zip" class="usa-legend">Zip Code {addressReq && <span className={validationStyles['required-text']}>*</span>}</legend>
-                                        <span class="usa-hint" id="date-of-birth-hint">For example: 12345</span>
+                                    <div className={(addressReq && handleErrors.mail_zip) && 'error-container'}>
+                                         <legend htmlFor="mail-zip" className="usa-legend">Zip Code {addressReq && <span className={'required-text'}>*</span>}</legend>
+                                         <span className="usa-hint" id="mail-zip-hint">For example: 12345</span>
                                         <TextInput 
                                             id="mail-zip"
                                             aria-describedby="mail-zip-error" 
@@ -383,7 +381,7 @@ function Addresses(props){
                                             onBlur={(e) => setHandleErrors({ ...handleErrors, mail_zip: checkForErrors(e, 'check value length') })}
                                         />
                                         {(addressReq && handleErrors.mail_zip) && 
-                                            <span id="mail-zip-error" role="alert" className={validationStyles['error-text']}>
+                                            <span id="mail-zip-error" role="alert" className='error-text'>
                                                Mailing Zip Code must be 5 digits.
                                             </span>
                                         }

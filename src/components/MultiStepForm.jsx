@@ -6,10 +6,9 @@ import Addresses from "./FormSections/Addresses"
 import content from "../data/registration-form.json";
 import Identification from './FormSections/Identification';
 import Confirmation from './FormSections/Confirmation';
-import DeliveryOptions from "./FormSections/DeliveryOptions";
+import Delivery from "./FormSections/Delivery";
 import PoliticalParty from './FormSections/PoliticalParty';
-import SuccessPage from './FormSections/SuccessPage';
-import { phoneFormat } from './FormSections/ValidateField';
+import { phoneFormat } from './HelperFunctions/ValidateField';
 
 function MultiStepForm(props) {
     //Field data controls
@@ -124,7 +123,7 @@ function MultiStepForm(props) {
     return (
         <>
         <ProgressBar step={step}/>
-        {step != 7 &&
+        {step != 6 &&
         <div>
             <h1>{content.main_heading}: {props.stateData.name}</h1>
             <p>{content.intro_text}</p>
@@ -193,7 +192,7 @@ function MultiStepForm(props) {
                 handleGoBackSteps={handleGoBackSteps}/>
             }
             {step === 6 &&
-                <DeliveryOptions
+                <Delivery
                 state={props.state}
                 stateData={props.stateData}
                 fieldData={fieldData}
@@ -205,13 +204,6 @@ function MultiStepForm(props) {
                 />
             }
         </Form>
-        {step === 7 &&
-            <SuccessPage
-            deliveryButtonSelected = {deliveryButtonSelected}
-            state={props.state}
-            stateData={props.stateData}
-            />
-        }
         </>
     );
 }

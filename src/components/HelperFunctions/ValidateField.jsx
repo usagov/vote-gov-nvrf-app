@@ -70,6 +70,13 @@ export const checkForErrors=(e, requirement)=> {
         return true
       } 
 
+    case 'check state selection':
+      if (e.target.value === '') {
+        return true
+      } else {
+        return false
+      }
+
     default:
       return
   }
