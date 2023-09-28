@@ -74,7 +74,7 @@ function Addresses(props){
                     <h3>{content.home_address_heading}</h3>
                     <p>{content.home_address_field_text_1}</p>
 
-                    <div className={(addressReq && handleErrors.street) && 'error-container'}>
+                    <div className={(addressReq && handleErrors.street) ? 'error-container' : ''}>
                         <Label htmlFor="street-address">
                             Street Address{addressReq && <span className='required-text'>*</span>}
                         <TextInput 
@@ -108,7 +108,7 @@ function Addresses(props){
                     />
                     </Label>
 
-                    <div className={(addressReq && handleErrors.city) && 'error-container'}>
+                    <div className={(addressReq && handleErrors.city) ? 'error-container' : ''}>
                         <Label htmlFor="city">
                             City{addressReq && <span className='required-text'>*</span>}
                         <TextInput 
@@ -143,7 +143,7 @@ function Addresses(props){
                     />
                     </Label>
 
-                    <div className={(addressReq && handleErrors.zip) && 'error-container'}>
+                    <div className={(addressReq && handleErrors.zip) ? 'error-container' : ''}>
                         <legend htmlFor="zip" className="usa-legend">Zip Code {addressReq && <span className={'required-text'}>*</span>}</legend>
                         <span className="usa-hint" id="zip-hint">For example: 12345</span>
                         <TextInput 
@@ -174,7 +174,7 @@ function Addresses(props){
                             {props.hasPreviousAddress && (
                                 <div value={props.previousAddress} onChange={props.onChangePreviousAddress}>
                                     <h3>{content.previous_address_heading}</h3>
-                                    <div className={(addressReq && handleErrors.prev_street) && 'error-container'}>
+                                    <div className={(addressReq && handleErrors.prev_street) ? 'error-container' : ''}>
                                         <Label htmlFor="prev-street">
                                             Street Address{addressReq && <span className='required-text'>*</span>}
                                         <TextInput 
@@ -208,7 +208,7 @@ function Addresses(props){
                                         />
                                     </Label>
 
-                                    <div className={(addressReq && handleErrors.prev_city) && 'error-container'}>
+                                    <div className={(addressReq && handleErrors.prev_city) ? 'error-container' : ''}>
                                         <Label htmlFor="prev-city">
                                             City{addressReq && <span className='required-text'>*</span>}
                                         <TextInput 
@@ -231,7 +231,7 @@ function Addresses(props){
                                         </Label>
                                     </div>
 
-                                    <div className={(addressReq && handleErrors.prev_state) && 'error-container'}>
+                                    <div className={(addressReq && handleErrors.prev_state) ? 'error-container' : ''}>
                                         <Label htmlFor="prev-state">
                                             State{addressReq && <span className='required-text'>*</span>}
                                         <StateSelector 
@@ -252,7 +252,7 @@ function Addresses(props){
                                         </Label>
                                     </div>
 
-                                    <div className={(addressReq && handleErrors.prev_zip) && 'error-container'}>
+                                    <div className={(addressReq && handleErrors.prev_zip) ? 'error-container' : ''}>
                                         <legend htmlFor="prev-zip" className="usa-legend">Zip Code {addressReq && <span className={'required-text'}>*</span>}</legend>
                                         <span className="usa-hint" id="prev-zip-hint">For example: 12345</span>
                                         <TextInput 
@@ -284,7 +284,7 @@ function Addresses(props){
                                     <h3>{content.mail_address_heading}</h3>
                                     <p>{content.mailing_address_text}</p>
                                 
-                                    <div className={(addressReq && handleErrors.mail_street) && 'error-container'}>
+                                    <div className={(addressReq && handleErrors.mail_street) ? 'error-container' : ''}>
                                     <Label htmlFor="mail-street">
                                         Street Address (or route and box number){addressReq && <span className='required-text'>*</span>}
                                         <TextInput 
@@ -318,7 +318,7 @@ function Addresses(props){
                                     />
                                     </Label>
 
-                                    <div className={(addressReq && handleErrors.mail_city) && 'error-container'}>
+                                    <div className={(addressReq && handleErrors.mail_city) ? 'error-container' : ''}>
                                         <Label htmlFor="mail-city">
                                             City{addressReq && <span className='required-text'>*</span>}
                                         <TextInput 
@@ -341,7 +341,7 @@ function Addresses(props){
                                         </Label>
                                     </div>
 
-                                    <div className={(addressReq && handleErrors.mail_state) && 'error-container'}>
+                                    <div className={(addressReq && handleErrors.mail_state) ? 'error-container' : ''}>
                                     <Label htmlFor="mail-state">
                                         State{addressReq && <span className='required-text'>*</span>}
                                     <StateSelector 
@@ -362,7 +362,7 @@ function Addresses(props){
                                     </Label>
                                     </div>
 
-                                    <div className={(addressReq && handleErrors.mail_zip) && 'error-container'}>
+                                    <div className={(addressReq && handleErrors.mail_zip) ? 'error-container' : ''}>
                                          <legend htmlFor="mail-zip" className="usa-legend">Zip Code {addressReq && <span className={'required-text'}>*</span>}</legend>
                                          <span className="usa-hint" id="mail-zip-hint">For example: 12345</span>
                                         <TextInput 

@@ -31,7 +31,7 @@ function PoliticalParty(props){
         </div>
 
         {partyVisible && (
-            <div className={(partyReq && handleErrors.party_choice) && 'error-container'}>
+            <div className={(partyReq && handleErrors.party_choice) ? 'error-container' : ''}>
                 <Label htmlFor="political-party">
                 Choice of party{partyReq && <span className='required-text'>*</span>}
                 <TextInput 

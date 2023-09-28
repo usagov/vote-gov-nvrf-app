@@ -80,7 +80,7 @@ function PersonalInfo(props){
                 </Dropdown>
                 </Label>
 
-                <div className={(nameReq && handleErrors.first_name) && 'error-container'}>
+                <div className={(nameReq && handleErrors.first_name) ? 'error-container' : ''}>
                     <Label htmlFor="first-name">
                         First Name{nameReq && <span className='required-text'>*</span>}
                     <TextInput 
@@ -112,7 +112,7 @@ function PersonalInfo(props){
                         type="text" autoComplete="off"/>
                     </Label>
 
-                <div className={(nameReq && handleErrors.last_name) && 'error-container'}>
+                <div className={(nameReq && handleErrors.last_name) ? 'error-container' : ''}>
                     <Label htmlFor="last-name">
                         Last Name{nameReq && <span className='required-text'>*</span>}
                     <TextInput 
@@ -166,7 +166,7 @@ function PersonalInfo(props){
                 </Dropdown>
                 </Label>
 
-                <div className={(nameReq && handleErrors.prev_first_name) && 'error-container'}>
+                <div className={(nameReq && handleErrors.prev_first_name) ? 'error-container' : ''}>
                     <Label htmlFor="first-name-2">
                         First Name{nameReq && <span className='required-text'>*</span>}
                     <TextInput 
@@ -198,7 +198,7 @@ function PersonalInfo(props){
                         type="text" autoComplete="off"/>
                     </Label>
 
-                <div className={(nameReq && handleErrors.prev_last_name) && 'error-container'}>
+                <div className={(nameReq && handleErrors.prev_last_name) ? 'error-container' : ''}>
                     <Label htmlFor="last-name-2">
                         Last Name{nameReq && <span className='required-text'>*</span>}
                     <TextInput 
@@ -235,7 +235,7 @@ function PersonalInfo(props){
         )}
 
         {dobVisible && (
-            <div className={(dobReq && handleErrors.dob) && 'error-container'}>
+            <div className={(dobReq && handleErrors.dob) ? 'error-container' : ''}>
                 <Fieldset legend={dobReq ? ["Date of Birth", <span key={1} className='required-text'>*</span>] : "Date of Birth"} style={{ marginTop:'30px'}}>
                     <span className="usa-hint" id="date-of-birth-hint">
                     For example: January 19 2000
@@ -333,7 +333,7 @@ function PersonalInfo(props){
         )}
 
         {telephoneVisible && (
-            <div className={(telephoneReq && handleErrors.phone_number) && 'error-container'}>
+            <div className={(telephoneReq && handleErrors.phone_number) ? 'error-container' : ''}>
                 <legend htmlFor="phone-number" className="usa-legend">Phone Number{telephoneReq && <span className='required-text'>*</span>}</legend>
                 <span className="usa-hint" id="date-of-birth-hint">For example: (123) 456-7890</span>
                 <TextInput 
