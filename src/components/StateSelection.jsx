@@ -52,7 +52,7 @@ function StateSelection(props) {
                 Confirm all information is correct
             </ProcessListHeading>
             <p>
-                Double check that all your information is correct. You’ll have the choice to email a copy to yourself or print it directly from the page.
+                Double check that all your information is correct. You'll have the chance to make any necessary edits before printing your form.
             </p>
             </ProcessListItem>
             <ProcessListItem>
@@ -74,7 +74,7 @@ function StateSelection(props) {
         
         <form onSubmit={(e) => {props.handleSubmit(e), props.handleNext()}}>
         <div className='state-dropdown'>
-        <div className={handleErrors.state_selected && 'error-container'}>
+        <div className={handleErrors.state_selected ? 'error-container' : ''}>
             <Label htmlFor="state-dropdown-error">Home state or territory{handleErrors.state_selected && <span className='required-text'>*</span>}
             <div>
                 <Dropdown 

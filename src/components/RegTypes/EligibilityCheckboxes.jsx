@@ -13,7 +13,7 @@ function EligibilityCheckboxes(props) {
     return (
         <>
         <form onSubmit={() => {props.handleNext()}}>
-        <Fieldset legend="Eligibilty" legendStyle="srOnly">
+        <Fieldset legend="Eligibility" legendStyle="srOnly">
             <div className={props.checkboxes.checkboxesValid && 'error-container'}>            
             <Label htmlFor="eligibility-error" id="eligibility-error">
                 {content.heading_confirm}
