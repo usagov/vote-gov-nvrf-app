@@ -36,7 +36,7 @@ function PoliticalParty(props){
                 Choice of party{partyReq && <span className='required-text'>*</span>}
                 <TextInput 
                     id="political-party"
-                    aria-describedby="party-chioce-error" 
+                    aria-describedby="party-choice-error" 
                     name="political party" 
                     value={props.fieldData.party_choice} 
                     type="text" 
@@ -47,7 +47,7 @@ function PoliticalParty(props){
                     onBlur={(e) => setHandleErrors({ ...handleErrors, party_choice: checkForErrors(e, 'check value exists') })}
                 />
                 {(partyReq && handleErrors.party_choice) && 
-                    <span id="party-chioce-error" role="alert" className='error-text'>
+                    <span id="party-choice-error" role="alert" className='error-text'>
                         Choice of party must be filled out.
                     </span>
                 }
