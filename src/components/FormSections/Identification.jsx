@@ -58,7 +58,7 @@ function Identification(props){
                 <h3>Identification</h3>
                 <p>{stateInstructions.ID_num_text}</p>
 
-                <div className={(idNumReq && handleErrors.id_selection) && 'error-container'}>
+                <div className={(idNumReq && handleErrors.id_selection) ? 'error-container' : ''}>
                 <Dropdown 
                 id="id-num-dropdown"
                 name="input-dropdown"
@@ -81,7 +81,7 @@ function Identification(props){
 
                 {props.idType === 'state-id-num' && 
                 <div>
-                <div className={(idNumReq && handleErrors.id_number) && 'error-container'}>
+                <div className={(idNumReq && handleErrors.id_number) ? 'error-container' : ''}>
                     <Label htmlFor="state-id-num-error">State ID Number{idNumReq && <span className='required-text'>*</span>}
                     <TextInput 
                         id="state-id-num" 
@@ -101,7 +101,7 @@ function Identification(props){
                     </Label>
                 </div>
 
-                <div className={(idNumReq && handleErrors.issue_date) && 'error-container'}>
+                <div className={(idNumReq && handleErrors.issue_date) ? 'error-container' : ''}>
                 <Fieldset legend={idNumReq ? ["Issue Date", <span className='required-text'>*</span>] : "Issue Date"} style={{ marginTop:'30px'}}>
                     <span className="usa-hint" id="id-issue-date-hint">
                     For example: January 19 2000
@@ -197,7 +197,7 @@ function Identification(props){
                 }
                 </div>
 
-                <div className={(idNumReq && handleErrors.expire_date) && 'error-container'}>
+                <div className={(idNumReq && handleErrors.expire_date) ? 'error-container' : ''}>
                 <Fieldset legend={idNumReq ? ["Expire Date", <span className='required-text'>*</span>] : "Expire Date"} style={{ marginTop:'30px'}}>
                     <span className="usa-hint" id="id-issue-date-hint">
                     For example: January 19 2000
@@ -296,7 +296,7 @@ function Identification(props){
                 }
 
                 {props.idType === 'ssn' && 
-                <div className={(idNumReq && handleErrors.id_ssn) && 'error-container'}>
+                <div className={(idNumReq && handleErrors.id_ssn) ? 'error-container' : ''}>
                 <Label htmlFor="ssn-input-error">Social Security Number (last 4 digits){idNumReq && <span className='required-text'>*</span>}
                 <TextInput 
                     id="ssn-input" 

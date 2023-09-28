@@ -1,6 +1,7 @@
 import { Alert, Form, Label, TextInput, Button, Dropdown,Checkbox, DatePicker } from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import content from "../../data/confirmation.json";
+import "../../styles/pages/Confirmation.css";
 import GenerateFilledPDF from '../GenerateFilledPDF';
 
 function Confirmation(props){
@@ -33,6 +34,7 @@ function Confirmation(props){
             Edit registration information
         </Button>
 
+        <div className="confirm-info">
         <h2>{content.confirmation_heading}</h2>
         <p>{content.confirmation_text}</p>
 
@@ -157,6 +159,7 @@ function Confirmation(props){
         <ul>
             <li>Political party: {fieldDataOverride_party}</li>
         </ul>
+        </div>
 
         <div className="usa-alert usa-alert--info">
             <div className="usa-alert__body">
@@ -164,16 +167,16 @@ function Confirmation(props){
             </div>
         </div>
 
-        <div className={error && 'error-container'}>
-            <Checkbox 
+        <div className={error ? 'error-container' : ''}>
+            <Checkbox
                 id="acknowledge-check"
                 name="acknowledge-check"
-                required 
-                checked={hasAcknowledged}
-                label="I can confirm my information is correct to the best of my knowledge." 
+                required
+                defaultChecked={hasAcknowledged}
+                label="I can confirm my information is correct to the best of my knowledge."
                 onChange={(e) => acknowledgeCheckbox(e.target.checked)}
                 />
-            {error && 
+            {error &&
                 <span id="first-name-error" role="alert" className='error-text'>
                     Checkbox must be checked to continue.
                 </span>

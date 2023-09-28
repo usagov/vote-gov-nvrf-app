@@ -6,6 +6,7 @@
         "eligibility_requirements": ["citizen", "age"],
         "election_website_url": "https://www.elections.alaska.gov/",
         "registration_url": "https://voterregistration.alaska.gov/?ref=voteusa_en",
+        "download_form": "https://www.elections.alaska.gov/doc/forms/C03.pdf",
         "fields_required":
         {
             "name": true,
@@ -56,6 +57,7 @@
         "eligibility_requirements": ["citizen", "age"],
         "election_website_url": "https://www.maine.gov/sos/cec/elec/",
         "registration_url": "https://www.maine.gov/sos/cec/elec/voter-info/voterguide.html?ref=voteusa_en",
+        "download_form": "https://www.maine.gov/sos/cec/elec/upcoming/pdf/voterregcard20.pdf",
         "fields_required":
         {
             "name": true,

@@ -45,6 +45,8 @@ function Online(props) {
             checkBoxValues={props.checkBoxValues}
             handleCheckbox={props.handleCheckbox}
             checkboxes={props.checkboxes}
+            downloadForm={props.stateData.download_form}
+            stateName={props.stateData.name}
         />
         </>
     );
