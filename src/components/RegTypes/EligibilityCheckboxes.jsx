@@ -14,11 +14,11 @@ function EligibilityCheckboxes(props) {
         <>
         <form onSubmit={() => {props.handleNext()}}>
         <Fieldset legend="Eligibilty" legendStyle="srOnly">
-            <div tabIndex={0} className={props.checkboxes.checkboxesValid && 'error-container'}>            
+            <div className={props.checkboxes.checkboxesValid && 'error-container'}>            
             <Label htmlFor="eligibility-error" id="eligibility-error">
                 {content.heading_confirm}
             </Label>
-                <div tabIndex={0} onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget)) props.checkBoxValues(); }}>
+                <div onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget)) props.checkBoxValues(); }}>
                     <Checkbox
                         id="citizen-checkbox"
                         name="eligibility-checkbox"
@@ -26,7 +26,6 @@ function EligibilityCheckboxes(props) {
                         label={content.citizen_required}
                         aria-required="true"
                         required={true}
-                        tabIndex={0}
                         checked={props.checkboxes.citizen}
                         onChange={(e) => props.handleCheckbox(e.target.checked, 'citizen', 0)}
                     />              
@@ -37,7 +36,6 @@ function EligibilityCheckboxes(props) {
                         label={content.age_required}
                         aria-required="true"
                         required={true}
-                        tabIndex={0}
                         checked={props.checkboxes.age}
                         onChange={(e) => props.handleCheckbox(e.target.checked, 'age', 1)}
                     />
