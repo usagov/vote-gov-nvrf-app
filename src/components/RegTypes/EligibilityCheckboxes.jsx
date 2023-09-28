@@ -1,11 +1,15 @@
 import { Button, Fieldset, Checkbox, Label } from '@trussworks/react-uswds';
 import data from "../../data/state-selection.json";
+import reactStringReplace from 'react-string-replace';
 
 function EligibilityCheckboxes(props) {
     const content = data;
     const onlineContent = data.online;
-    const download_form_link = <a href={props.downloadForm}>content.download_form_link.replace("%state_name%", props.stateName)</a>
 
+    const downloadForm = reactStringReplace(content.download_form, '%link%', (match, i) => (
+        <a href={props.downloadForm}>{content.download_form_link.replace("%state_name%", props.stateName)}</a>
+      ));
+      
     return (
         <>
         <form onSubmit={() => {props.handleNext()}}>
@@ -55,7 +59,7 @@ function EligibilityCheckboxes(props) {
         </div>
         </form>
 
-        <p>{content.download_form.replace("%link%", download_form_link)}</p>
+        <p>{downloadForm}</p>
         </>
     );
 }
