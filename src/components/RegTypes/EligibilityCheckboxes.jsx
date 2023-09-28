@@ -50,7 +50,7 @@ function EligibilityCheckboxes(props) {
             </div>
         </Fieldset>
 
-        <p>If you checked "No" in response to either of these questions, do not continue with registration on Vote.gov.</p>
+        <p>If you did not check all boxes above, do not continue with registration on Vote.gov.</p>
 
         <div className="button-container" style={{ margin:'20px' }}>
             <Button onClick={() => props.checkBoxValues()} type="submit">
