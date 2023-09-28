@@ -31,6 +31,8 @@ function ByMail(props) {
             checkboxesValid={props.checkboxesValid}
             handleCheckbox={props.handleCheckbox}
             checkboxes={props.checkboxes}
+            downloadForm={props.stateData.download_form}
+            stateName={props.stateData.name}
         />
         </>
     );

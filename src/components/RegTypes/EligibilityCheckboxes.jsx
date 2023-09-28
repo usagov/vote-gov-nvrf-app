@@ -4,6 +4,7 @@ import data from "../../data/state-selection.json";
 function EligibilityCheckboxes(props) {
     const content = data;
     const onlineContent = data.online;
+    const download_form_link = <a href={props.downloadForm}>content.download_form_link.replace("%state_name%", props.stateName)</a>
 
     return (
         <>
@@ -53,6 +54,8 @@ function EligibilityCheckboxes(props) {
             </Button>
         </div>
         </form>
+
+        <p>{content.download_form.replace("%link%", download_form_link)}</p>
         </>
     );
 }
