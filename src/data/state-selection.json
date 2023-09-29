@@ -7,6 +7,8 @@
     "heading_confirm": "Confirm eligibility",
     "citizen_required": "I am a U.S. citizen",
     "age_required": "I will be at least 18 years old by any election",
+    "download_form": "You may also choose to %link% to complete and mail.",
+    "download_form_link": "download %state_name%'s registration form",
     "online": {
         "heading_online": "Online voter registration",
         "mail_more_info": "If you do not have one of these forms of identification, you may fill out the National Voter Registration Form here on Vote.gov, then print and mail in your application.",

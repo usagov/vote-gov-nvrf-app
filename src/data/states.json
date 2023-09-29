@@ -1,11 +1,12 @@
 [
     {
         "name": "Alaska",
-        "abreviation": "ak",
+        "abbreviation": "ak",
         "reg_type": "online",
         "eligibility_requirements": ["citizen", "age"],
         "election_website_url": "https://www.elections.alaska.gov/",
         "registration_url": "https://voterregistration.alaska.gov/?ref=voteusa_en",
+        "download_form": "https://www.elections.alaska.gov/doc/forms/C03.pdf",
         "fields_required":
         {
             "name": true,
@@ -42,15 +43,21 @@
             "party_text": "You do not have to declare a party affiliation when registering to vote. If you do not choose a party, you will be registered as Undeclared. Alaska has a closed primary election system. Each recognized political party has a separate ballot listing only candidates from that political party. Voters registered as a member of a political party may only vote that party's ballot. Voters registered as undeclared or non-partisan may choose one ballot from the ballots available.",
             "race_text": ""
         },
-        "state_address": "Division of Elections State of Alaska\nPO Box 110017\nJuneau, AK 99811-0017"
+        "state_address": 
+        {
+            "office_name": "Division of Elections State of Alaska",
+            "street_address": "PO Box 110017",
+            "city_state": "Juneau, AK 99811-0017"
+        }
     },
     {
         "name": "Maine",
-        "abreviation": "me",
+        "abbreviation": "me",
         "reg_type": "in-person",
         "eligibility_requirements": ["citizen", "age"],
         "election_website_url": "https://www.maine.gov/sos/cec/elec/",
         "registration_url": "https://www.maine.gov/sos/cec/elec/voter-info/voterguide.html?ref=voteusa_en",
+        "download_form": "https://www.maine.gov/sos/cec/elec/upcoming/pdf/voterregcard20.pdf",
         "fields_required":
         {
             "name": true,
@@ -84,11 +91,16 @@
             "party_text": "You must register with a party if you want to take part in that party’s primary election, caucus, or convention (unless otherwise permitted by a political party).",
             "race_text": ""
         },
-        "state_address": "Elections Devision\nBureau of Corporations, Elections and Commissions\n101 State House Station\nAugusta, ME 04333-0101"
+        "state_address": 
+        {
+            "office_name": "Elections Division Bureau of Corporations,\nElections and Commissions",
+            "street_address": "101 State House Station",
+            "city_state": "Augusta, ME 04333-0101"
+        }
     },
     {
         "name": "North Dakota",
-        "abreviation": "nd",
+        "abbreviation": "nd",
         "reg_type": "not-needed",
         "eligibility_requirements": ["citizen", "age"],
         "election_website_url": "https://vip.sos.nd.gov/PortalList.aspx",
