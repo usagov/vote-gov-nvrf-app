@@ -22,7 +22,7 @@ function EligibilityCheckboxes(props) {
             <Label htmlFor="eligibility-error" id="eligibility-error">
                 {content.heading_confirm}
             </Label>
-                <div onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget)) props.checkBoxValues(); }}>
+                <div>
                     <Checkbox
                         id="citizen-checkbox"
                         name="eligibility-checkbox"
