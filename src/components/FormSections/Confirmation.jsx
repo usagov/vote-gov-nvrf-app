@@ -14,6 +14,10 @@ function Confirmation(props){
     const fieldDataOverride_state = props.stateData.name;
     fieldData.state = fieldDataOverride_state;
 
+    //field data overrides for id dates
+    const fieldDataOverride_id_issue_date = (fieldData.id_issue_date_month === '') ? "" : `${fieldData.id_issue_date_month}/${fieldData.id_issue_date_day}/${fieldData.id_issue_date_year}`;
+    const fieldDataOverride_id_expire_date = (fieldData.id_expire_date_month === '') ? "" : `${fieldData.id_expire_date_month}/${fieldData.id_expire_date_day}/${fieldData.id_expire_date_year}`;
+
     //Acknowledgment field controls
     const [hasAcknowledged, setHasAcknowledged] = useState(null);
     const [error, setError] = useState(null)
@@ -142,8 +146,8 @@ function Confirmation(props){
         </h3>
         <ul>
             <li>ID number: {fieldData.id_number}</li>
-            <li>ID issue date: {fieldData.id_issue_date_month}/{fieldData.id_issue_date_day}/{fieldData.id_issue_date_year}</li>
-            <li>ID expire date: {fieldData.id_expire_date_month}/{fieldData.id_expire_date_day}/{fieldData.id_expire_date_year}</li>
+            <li>ID issue date: {fieldDataOverride_id_issue_date} </li>
+            <li>ID expire date: {fieldDataOverride_id_expire_date}</li>
         </ul>
         <hr />
         <h3>Choice of Political Party
