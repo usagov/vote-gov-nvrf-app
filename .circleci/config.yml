@@ -22,10 +22,14 @@ jobs:
       - store_artifacts:
           path: Federal_Voter_Registration_ENG.pdf
           destination: /pdf-files
-  #push-nvrf:
-    #steps:
-    #push the artifact to github
-    #create a PR on a new branch (replace the old PDF with the artifact)
+  create-pr:
+    environment:
+      GITHUB_TOKEN: user key
+      GITHUB_REPO: https://github.com/usagov/vote-gov-nvrf-app
+    steps:
+      - run: |
+         circleci config upload -- repo ${GITHUB_REPO} -- branch feature/VOTE-289/download-nvrf-circleci -- file /pdf-files/Federal_Voter_Registration_ENG.pdf
+         circleci create-pull-request -- repo ${GITHUB_REPO} -- branch feature/VOTE-289/download-nvrf-circleci -- title "New NVRF PDF" -- description "Replace the current NVRF PDF file with this file pulled from eac.gov"
     #IDEA: if the new pdf is the same as the old PDF, automatically merge PR
 
 # Orchestrate jobs using workflows
@@ -34,4 +38,4 @@ workflows:
   update-nvrf-workflow:
     jobs:
       - fetch-nvrf
-      #- push-nvrf
+      - create-pr
