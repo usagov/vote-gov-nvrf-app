@@ -29,11 +29,16 @@ jobs:
       GITHUB_TOKEN: user key
       GITHUB_REPO: https://github.com/usagov/vote-gov-nvrf-app
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "a8:7a:8d:0b:ad:09:09:58:94:9d:cd:0e:ee:45:79:10"
       - run: |
           sudo apt update && sudo apt install gh
-          gh auth login --token YOUR_TOKEN
-          gh branch create feature/updated-nvrf --from=stage
-          gh repo update --pull --base=stage --head=feature/updated-nvrf ${GITHUB_REPO}
+
+        # gh auth login --token YOUR_TOKEN
+
+        # gh branch create feature/updated-nvrf --from=stage
+        # gh repo update --pull --base=stage --head=feature/updated-nvrf ${GITHUB_REPO}
 
 
         #  curl -fLSs https://raw.githubusercontent.com/CircleCI-Public/circleci-cli/master/install.sh | DESTDIR=/usr/bin sudo bash
