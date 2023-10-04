@@ -41,4 +41,3 @@ workflows:
     jobs:
       - fetch-nvrf
       - create-pr
-
