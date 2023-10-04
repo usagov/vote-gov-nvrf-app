@@ -30,7 +30,7 @@ jobs:
       GITHUB_REPO: https://github.com/usagov/vote-gov-nvrf-app
     steps:
       - run: |
-         sudo curl -fLSs https://circle.ci/cli | bash 
+         sudo curl -fLSs https://raw.githubusercontent.com/CircleCI-Public/circleci-cli/master/install.sh | bash
          circleci config upload -- repo ${GITHUB_REPO} -- branch feature/VOTE-289/download-nvrf-circleci -- file /pdf-files/Federal_Voter_Registration_ENG.pdf
          circleci create-pull-request -- repo ${GITHUB_REPO} -- branch feature/VOTE-289/download-nvrf-circleci -- title "New NVRF PDF" -- description "Replace the current NVRF PDF file with this file pulled from eac.gov"
     #IDEA: if the new pdf is the same as the old PDF, automatically merge PR
