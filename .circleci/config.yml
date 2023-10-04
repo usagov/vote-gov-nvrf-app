@@ -41,7 +41,9 @@ workflows:
   update-nvrf-workflow:
     jobs:
       - fetch-nvrf
-      - create-pr
+      - create-pr:
+          requires:
+            - fetch-nvrf
 
 
 
