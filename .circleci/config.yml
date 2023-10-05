@@ -26,6 +26,8 @@ jobs:
   create-pr:
     docker:
       - image: cimg/base:stable
+    env:
+      - nvrf: "${NVRF_PDF_WRITE}"
     steps:
       - gh/install
       - run:
@@ -35,6 +37,7 @@ jobs:
             # gh pr create --title "test pr"
             # gh auth login --with-token ${NVRF_PDF_WRITE}
             echo ${NVRF_PDF_WRITE}
+            echo nvrf
 
 
         # gh branch create feature/updated-nvrf --from=stage
