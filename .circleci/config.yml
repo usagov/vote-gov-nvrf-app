@@ -30,9 +30,10 @@ jobs:
           fingerprints:
             - "a8:7a:8d:0b:ad:09:09:58:94:9d:cd:0e:ee:45:79:10"
       - run:
-          name: Create Pull Request
+          name: Update PDF Pull Request
           command: |
             git checkout stage
+            git switch -c feature/updated-nvrf
 
         # gh branch create feature/updated-nvrf --from=stage
         # gh repo update --pull --base=stage --head=feature/updated-nvrf ${GITHUB_REPO}
