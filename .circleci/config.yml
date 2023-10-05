@@ -27,7 +27,7 @@ jobs:
     docker:
       - image: cimg/base:stable
     env:
-      - nvrf: "${NVRF_PDF_WRITE}"
+      - nvrf: ${NVRF_PDF_WRITE}
     steps:
       - gh/install
       - run:
