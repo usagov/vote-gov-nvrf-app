@@ -34,7 +34,7 @@ jobs:
             # gh auth login --with-token ${NVRF_PDF_WRITE}
             # gh pr create --title "test pr"
             echo ${NVRF_PDF_WRITE}
-            gh auth login --with-token 
+            gh auth login --with-token < ${NVRF_PDF_WRITE}
 
 
         # gh branch create feature/updated-nvrf --from=stage
