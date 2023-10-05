@@ -36,7 +36,8 @@ jobs:
             # echo ${NVRF_PDF_WRITE}
             # gh auth login -s ${NVRF_PDF_WRITE}
             # gh help environment
-            gh auth login --hostname github.com https
+            # gh auth login --hostname github.com 
+            gh auth status
 
         # gh branch create feature/updated-nvrf --from=stage
         # gh repo update --pull --base=stage --head=feature/updated-nvrf ${GITHUB_REPO}
