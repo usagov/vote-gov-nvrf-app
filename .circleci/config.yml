@@ -26,14 +26,14 @@ jobs:
   create-pr:
     docker:
       - image: cimg/base:stable
+    environment:
+      GITHUB_TOKEN: ${{ secrets.$NVRF_PDF_WRITE }}
     steps:
       - gh/install
       - run:
           name: Create Pull Request
           command: |
-            gh auth login --with-token <<<"$NVRF_PDF_WRITE"
-
-        # gh branch create feature/updated-nvrf --from=stage
+            gh branch create feature/updated-nvrf --from=stage
         # gh repo update --pull --base=stage --head=feature/updated-nvrf ${GITHUB_REPO}
 
 
