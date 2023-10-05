@@ -33,7 +33,7 @@ jobs:
           command: |
             # gh auth login --with-token ${NVRF_PDF_WRITE}
             # gh pr create --title "test pr"
-            gh auth login --with-token NVRF_PDF_WRITE
+            gh auth login --with-token ${{ NVRF_PDF_WRITE }}
 
         # gh branch create feature/updated-nvrf --from=stage
         # gh repo update --pull --base=stage --head=feature/updated-nvrf ${GITHUB_REPO}
