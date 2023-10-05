@@ -33,7 +33,8 @@ jobs:
       - run:
           name: Create Pull Request
           command: |
-            gh branch create feature/updated-nvrf --from=stage
+            gh pr checkout branch-name stage
+        # gh branch create feature/updated-nvrf --from=stage
         # gh repo update --pull --base=stage --head=feature/updated-nvrf ${GITHUB_REPO}
 
 
