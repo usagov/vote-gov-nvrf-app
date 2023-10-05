@@ -158,7 +158,10 @@ const GenerateFilledPDF = async function (formData) {
     const pdfBytes = await pdfDoc.save()
 
     // Trigger the browser to download the PDF document
-    download(pdfBytes, `national_voter_registration_form_${formData.state}.pdf`, "application/pdf");
+    //download(pdfBytes, `national_voter_registration_form_${formData.state}.pdf`, "application/pdf");
+    //open(URL.createObjectURL(new Blob(pdfBytes, {type: "application/pdf"})));
+    var blobURL = URL.createObjectURL(new Blob([pdfBytes], {type: 'application/pdf'}));
+    window.open(blobURL);
 }
 
 export default GenerateFilledPDF;
