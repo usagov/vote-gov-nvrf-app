@@ -27,9 +27,11 @@ jobs:
     docker:
       - image: cimg/base:stable
     steps:
-      - run: |
-          sudo apt update && sudo apt install gh
-          gh auth login --token $NVRF_PDF_WRITE
+      - gh/setup
+      - run:
+          name: Create Pull Request
+          command: |
+            gh auth login --token $NVRF_PDF_WRITE
 
         # gh branch create feature/updated-nvrf --from=stage
         # gh repo update --pull --base=stage --head=feature/updated-nvrf ${GITHUB_REPO}
