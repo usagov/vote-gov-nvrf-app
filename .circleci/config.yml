@@ -28,12 +28,15 @@ jobs:
       - image: cimg/base:stable
     environment:
       GITHUB_TOKEN: ${{ secrets.$NVRF_PDF_WRITE }}
+      GITHUB_REPO: https://github.com/usagov/vote-gov-nvrf-app
     steps:
       - gh/install
       - run:
           name: Create Pull Request
           command: |
-            gh pr checkout branch-name stage
+            gh repo clone GITHUB_REPO
+
+        # gh pr checkout branch-name stage
         # gh branch create feature/updated-nvrf --from=stage
         # gh repo update --pull --base=stage --head=feature/updated-nvrf ${GITHUB_REPO}
 
