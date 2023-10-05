@@ -34,6 +34,7 @@ jobs:
       - run:
           name: Create Pull Request
           command: |
+            gh auth login
             gh repo clone GITHUB_REPO
 
         # gh pr checkout branch-name stage
