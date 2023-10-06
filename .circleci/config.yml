@@ -23,7 +23,7 @@ jobs:
       - store_artifacts:
           path: Federal_Voter_Registration_ENG.pdf
           destination: /pdf-files
-create-pr:
+  create-pr:
     docker:
       - image: cimg/base:stable
     environment:
