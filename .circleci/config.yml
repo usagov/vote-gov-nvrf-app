@@ -23,22 +23,23 @@ jobs:
       - store_artifacts:
           path: Federal_Voter_Registration_ENG.pdf
           destination: /pdf-files
-  create-pr:
+create-pr:
     docker:
       - image: cimg/base:stable
+    environment:
+      GITHUB_TOKEN: ${{ $NVRF_PDF_WRITE }}
+      GITHUB_REPO: https://github.com/usagov/vote-gov-nvrf-app
     steps:
+      - checkout
       - gh/install
       - run:
           name: Create Pull Request
           command: |
-            # gh auth login --with-token
-            # gh pr create --title "test pr"
-            # echo ${NVRF_PDF_WRITE}
-            # gh auth login -s ${NVRF_PDF_WRITE}
-            # gh help environment
-            # gh auth login --hostname 'vote-gov-nvrf-app' 
-            # gh auth status
-            gh auth login --with-token <<< '${NVRF_PDF_WRITE}'
+            # gh repo clone GITHUB_REPO
+            gh pr create --title "test pr" --body "checking to see if this works"
+
+
+
         # gh branch create feature/updated-nvrf --from=stage
         # gh repo update --pull --base=stage --head=feature/updated-nvrf ${GITHUB_REPO}
 
