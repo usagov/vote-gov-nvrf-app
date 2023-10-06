@@ -38,8 +38,7 @@ jobs:
             # gh help environment
             # gh auth login --hostname 'vote-gov-nvrf-app' 
             # gh auth status
-            gh auth login --with-token <<< ${NVRF_PDF_WRITE}
-
+            gh auth login --with-token <<< '${NVRF_PDF_WRITE}'
         # gh branch create feature/updated-nvrf --from=stage
         # gh repo update --pull --base=stage --head=feature/updated-nvrf ${GITHUB_REPO}
 
