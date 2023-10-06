@@ -38,7 +38,7 @@ jobs:
           command: |
             # gh repo clone GITHUB_REPO
             # gh pr create --title "test pr" --body "checking to see if this works"
-            gh auth login --hostname github.com --with-token <<<"$GITHUB_TOKEN"
+            gh auth login --hostname github.com --with-token < "$GITHUB_TOKEN"
 
 
 
