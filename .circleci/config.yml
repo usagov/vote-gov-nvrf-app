@@ -38,9 +38,8 @@ jobs:
           command: |
             # gh repo clone GITHUB_REPO
             # gh pr create --title "test pr" --body "checking to see if this works"
-            echo $NVRF_PDF_WRITE | tee /tmp/key.txt
-            # gh auth login --with-token < "$NVRF_PDF_WRITE"
-             gh auth login --with-token < /tmp/key.txt
+            echo $test_key | tee /tmp/key.txt
+            gh auth login --with-token < /tmp/key.txt
 
 
 
