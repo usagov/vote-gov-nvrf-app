@@ -26,24 +26,16 @@ jobs:
   create-pr:
     docker:
       - image: cimg/base:stable
-    environment:
-      GITHUB_TOKEN: ${{ $NVRF_PDF_WRITE }}
-      GITHUB_REPO: https://github.com/usagov/vote-gov-nvrf-app
     steps:
+      - checkout
       - gh/install
       - run:
           name: Create Pull Request
           command: |
-            gh repo clone GITHUB_REPO
+            echo $NVRF_PDF_WRITE | tee /tmp/key.txt
+            gh auth login --with-token < /tmp/key.txt
+            gh pr create --title "test pr" --body "checking to see if this works"
 
-        # gh pr checkout branch-name stage
-        # gh branch create feature/updated-nvrf --from=stage
-        # gh repo update --pull --base=stage --head=feature/updated-nvrf ${GITHUB_REPO}
-
-
-        #  curl -fLSs https://raw.githubusercontent.com/CircleCI-Public/circleci-cli/master/install.sh | DESTDIR=/usr/bin sudo bash
-        #  circleci config upload -- repo ${GITHUB_REPO} -- branch feature/VOTE-289/download-nvrf-circleci -- file /pdf-files/Federal_Voter_Registration_ENG.pdf
-        #  circleci create-pull-request -- repo ${GITHUB_REPO} -- branch feature/VOTE-289/download-nvrf-circleci -- title "New NVRF PDF" -- description "Replace the current NVRF PDF file with this file pulled from eac.gov"
     # IDEA: if the new pdf is the same as the old PDF, automatically merge PR
 
 # Orchestrate jobs using workflows
