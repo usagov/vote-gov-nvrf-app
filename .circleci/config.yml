@@ -37,9 +37,9 @@ jobs:
           name: Create Pull Request
           command: |
             # gh repo clone GITHUB_REPO
-            # gh pr create --title "test pr" --body "checking to see if this works"
             echo $test_key | tee /tmp/key.txt
             gh auth login --with-token < /tmp/key.txt
+            gh pr create --title "test pr" --body "checking to see if this works"
 
 
 
