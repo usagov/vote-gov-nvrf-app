@@ -27,7 +27,7 @@ jobs:
     docker:
       - image: cimg/base:stable
     environment:
-      GITHUB_TOKEN: ${{ $NVRF_PDF_WRITE }}
+      GITHUB_TOKEN: ${{ NVRF_PDF_WRITE }}
       # GH_ENTERPRISE_TOKEN: ${{ $NVRF_PDF_WRITE }}
       GITHUB_REPO: https://github.com/usagov/vote-gov-nvrf-app
     steps:
