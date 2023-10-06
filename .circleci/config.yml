@@ -26,10 +26,10 @@ jobs:
   create-pr:
     docker:
       - image: cimg/base:stable
-    environment:
-      GITHUB_TOKEN: $NVRF_PDF_WRITE
-      # GH_ENTERPRISE_TOKEN: ${{ $NVRF_PDF_WRITE }}
-      GITHUB_REPO: https://github.com/usagov/vote-gov-nvrf-app
+    # environment:
+    #   GITHUB_TOKEN: $NVRF_PDF_WRITE
+    #   # GH_ENTERPRISE_TOKEN: ${{ $NVRF_PDF_WRITE }}
+    #   GITHUB_REPO: https://github.com/usagov/vote-gov-nvrf-app
     steps:
       - checkout
       - gh/install
@@ -38,7 +38,7 @@ jobs:
           command: |
             # gh repo clone GITHUB_REPO
             # gh pr create --title "test pr" --body "checking to see if this works"
-            gh auth login --hostname github.com --with-token < "$GITHUB_TOKEN"
+            gh auth login --hostname github.com --with-token < "$NVRF_PDF_WRITE"
 
 
 
