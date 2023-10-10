@@ -20,14 +20,18 @@ jobs:
       - checkout
       - gh/install
       #download pdf from
-      - run: |
+      - run:
+        name: Fetch NVRF from eac.gov
+        command: |
          curl -o Federal_Voter_Registration_ENG.pdf $URL
       #save pdf as an artifact
       - store_artifacts:
           path: Federal_Voter_Registration_ENG.pdf
           destination: /pdf-files
       # Create a variable to store the PDF artifact
-      - run: |
+      - run:
+          name: Save PDF as variable
+          command: |
             artifacts=$(curl -X GET "https://circleci.com/api/v2/project/github/usagov/vote-gov-nvrf-app/$CIRCLE_BUILD_NUM/artifacts" \
             -H "Accept: application/json" \
             -u "$NVRF_PDF_WRITE:")
