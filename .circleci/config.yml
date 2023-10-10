@@ -6,7 +6,7 @@ orbs:
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/configuration-reference/#jobs
 jobs:
-  fetch-nvrf:
+  update-nvrf:
     # Specify the execution environment. You can specify an image from Docker Hub or use one of our convenience images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/configuration-reference/#executor-job
     docker:
@@ -16,6 +16,9 @@ jobs:
     environment:
       URL: https://www.eac.gov/sites/default/files/eac_assets/1/6/Federal_Voter_Registration_ENG.pdf
     steps:
+      #checkout repo and install gh
+      - checkout
+      - gh/install
       #download pdf from
       - run: |
          curl -o Federal_Voter_Registration_ENG.pdf $URL
@@ -23,6 +26,7 @@ jobs:
       - store_artifacts:
           path: Federal_Voter_Registration_ENG.pdf
           destination: /pdf-files
+      # Create a variable to store the PDF artifact
       - run: |
             artifacts=$(curl -X GET "https://circleci.com/api/v2/project/github/usagov/vote-gov-nvrf-app/$CIRCLE_BUILD_NUM/artifacts" \
             -H "Accept: application/json" \
@@ -31,12 +35,8 @@ jobs:
             echo "read -r -d '' STORED_ARTIFACTS \<< 'EOF_ARTIFACTS'" >> $BASH_ENV
             echo "$artifacts" >> $BASH_ENV
             echo "EOF_ARTIFACTS" >> $BASH_ENV
-  create-pr:
-    docker:
-      - image: cimg/base:stable
-    steps:
-      - checkout
-      - gh/install
+      # create a pull request with new PDF
+      # IDEA: if the new pdf is the same as the old PDF, automatically merge PR
       - run:
           name: Create Pull Request
           command: |
@@ -44,14 +44,9 @@ jobs:
             gh auth login --with-token < /tmp/key.txt
             gh pr create --title "test pr" --body "checking to see if this works"
 
-    # IDEA: if the new pdf is the same as the old PDF, automatically merge PR
-
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
 workflows:
   update-nvrf-workflow:
     jobs:
-      - fetch-nvrf
-      - create-pr:
-          requires:
-            - fetch-nvrf
+      - update-nvrf
