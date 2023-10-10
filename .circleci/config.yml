@@ -23,6 +23,14 @@ jobs:
       - store_artifacts:
           path: Federal_Voter_Registration_ENG.pdf
           destination: /pdf-files
+      - run: |
+            artifacts=$(curl -X GET "https://circleci.com/api/v2/project/github/usagov/vote-gov-nvrf-app/$CIRCLE_BUILD_NUM/artifacts" \
+            -H "Accept: application/json" \
+            -u "$NVRF_PDF_WRITE:")
+            # generate a heredoc in BASH_ENV
+            echo "read -r -d '' STORED_ARTIFACTS \<< 'EOF_ARTIFACTS'" >> $BASH_ENV
+            echo "$artifacts" >> $BASH_ENV
+            echo "EOF_ARTIFACTS" >> $BASH_ENV
   create-pr:
     docker:
       - image: cimg/base:stable
