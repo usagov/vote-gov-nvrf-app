@@ -21,9 +21,9 @@ jobs:
       - gh/install
       #download pdf from
       - run:
-        name: Fetch NVRF from eac.gov
-        command: |
-         curl -o Federal_Voter_Registration_ENG.pdf $URL
+          name: Fetch NVRF from eac.gov
+          command: |
+            curl -o Federal_Voter_Registration_ENG.pdf $URL
       #save pdf as an artifact
       - store_artifacts:
           path: Federal_Voter_Registration_ENG.pdf
