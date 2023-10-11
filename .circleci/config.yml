@@ -27,8 +27,8 @@ jobs:
           command: |
             git config user.email "circleci@df52e93b2563.(none)"
             git config user.name "Pipeline Commit"
-            git push origin --delete $NEW_BRANCH_NAME
-            git checkout -b $NEW_BRANCH_NAME
+      # git push origin --delete $NEW_BRANCH_NAME
+      # git checkout -b $NEW_BRANCH_NAME
       #download pdf from
       - run:
           name: Fetch NVRF from eac.gov
@@ -52,8 +52,8 @@ jobs:
             cd public/files
             rm $NVRF_FILE_NAME
             echo $STORED_ARTIFACTS > $NVRF_FILE_NAME
-            git commit -a -m "Test commit nvrf replace"
-            git push --set-upstream origin upload-nvrf-pdf
+      # git commit -a -m "Test commit nvrf replace"
+      # git push --set-upstream origin upload-nvrf-pdf
       # save var into file (file replace with current pdf)
       # create a pull request with new PDF
       # IDEA: if the new pdf is the same as the old PDF, automatically merge PR
@@ -63,7 +63,7 @@ jobs:
             echo $NVRF_PDF_WRITE | tee /tmp/key.txt
             gh auth login --with-token < /tmp/key.txt
             gh pr close $NEW_BRANCH_NAME
-            gh pr create --title "test pr" --body "checking to see if this works"
+            gh pr create --title "test pr nvrf" --body "checking to see if this works"
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
 workflows:
