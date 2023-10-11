@@ -20,6 +20,13 @@ jobs:
       #checkout repo and install gh
       - checkout
       - gh/install
+      #configure git
+      - run:
+          name: Configure git
+          command: |
+            git config user.email "circleci@df52e93b2563.(none)"
+            git config user.name "Pipeline Commit"
+            git checkout -b upload-nvrf-pdf
       #download pdf from
       - run:
           name: Fetch NVRF from eac.gov
@@ -40,6 +47,10 @@ jobs:
             echo "read -r -d '' STORED_ARTIFACTS \<< 'EOF_ARTIFACTS'" >> $BASH_ENV
             echo "$artifacts" >> $BASH_ENV
             echo "EOF_ARTIFACTS" >> $BASH_ENV
+            cd public/files
+            rm $NVRF_FILE_NAME
+            git commit -m "Test commit nvrf replace"
+            git push
       # save var into file (file replace with current pdf)
       # create a pull request with new PDF
       # IDEA: if the new pdf is the same as the old PDF, automatically merge PR
@@ -50,10 +61,6 @@ jobs:
             gh auth login --with-token < /tmp/key.txt
             gh pr close $CIRCLE_BRANCH
             gh pr create --title "test pr" --body "checking to see if this works"
-            cd public/files
-            rm $NVRF_FILE_NAME
-            git commit -m "Test commit nvrf replace"
-            git push
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
 workflows:
