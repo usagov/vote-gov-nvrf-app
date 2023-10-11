@@ -40,9 +40,6 @@ jobs:
             echo "read -r -d '' STORED_ARTIFACTS \<< 'EOF_ARTIFACTS'" >> $BASH_ENV
             echo "$artifacts" >> $BASH_ENV
             echo "EOF_ARTIFACTS" >> $BASH_ENV
-            cd public/files
-            rm $NVRF_FILE_NAME
-            git commit -m "Test commit nvrf replace"
       # save var into file (file replace with current pdf)
       # create a pull request with new PDF
       # IDEA: if the new pdf is the same as the old PDF, automatically merge PR
@@ -53,6 +50,9 @@ jobs:
             gh auth login --with-token < /tmp/key.txt
             gh pr close $CIRCLE_BRANCH
             gh pr create --title "test pr" --body "checking to see if this works"
+            cd public/files
+            rm $NVRF_FILE_NAME
+            git commit -m "Test commit nvrf replace"
             git push
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
