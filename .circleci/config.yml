@@ -41,7 +41,7 @@ jobs:
             echo "$artifacts" >> $BASH_ENV
             echo "EOF_ARTIFACTS" >> $BASH_ENV
             cd public/files
-            del $NVRF_FILE_NAME
+            rm $NVRF_FILE_NAME
             git commit -m "Test commit nvrf replace"
             git push
       # save var into file (file replace with current pdf)
