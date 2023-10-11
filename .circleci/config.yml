@@ -39,7 +39,7 @@ jobs:
             echo "read -r -d '' STORED_ARTIFACTS \<< 'EOF_ARTIFACTS'" >> $BASH_ENV
             echo "$artifacts" >> $BASH_ENV
             echo "EOF_ARTIFACTS" >> $BASH_ENV
-            cd {$CIRCLE_WORKING_DIRECTORY}/project/files
+            cd $CIRCLE_WORKING_DIRECTORY/public/files
       # save var into file (file replace with current pdf)
       # create a pull request with new PDF
       # IDEA: if the new pdf is the same as the old PDF, automatically merge PR
