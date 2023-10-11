@@ -16,6 +16,7 @@ jobs:
     environment:
       URL: https://www.eac.gov/sites/default/files/eac_assets/1/6/Federal_Voter_Registration_ENG.pdf
       NVRF_FILE_NAME: Federal_Voter_Registration_ENG.pdf
+      NEW_BRANCH_NAME: upload-nvrf-pdf
     steps:
       #checkout repo and install gh
       - checkout
@@ -26,7 +27,7 @@ jobs:
           command: |
             git config user.email "circleci@df52e93b2563.(none)"
             git config user.name "Pipeline Commit"
-            git checkout -b upload-nvrf-pdf
+            git checkout -b $NEW_BRANCH_NAME
       #download pdf from
       - run:
           name: Fetch NVRF from eac.gov
@@ -60,8 +61,7 @@ jobs:
           command: |
             echo $NVRF_PDF_WRITE | tee /tmp/key.txt
             gh auth login --with-token < /tmp/key.txt
-            echo $CIRCLE_BRANCH
-            gh pr close $CIRCLE_BRANCH
+            gh pr close $NEW_BRANCH_NAME
             gh pr create --title "test pr" --body "checking to see if this works"
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
