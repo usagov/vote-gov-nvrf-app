@@ -27,7 +27,6 @@ jobs:
           command: |
             git config user.email "circleci@df52e93b2563.(none)"
             git config user.name "Pipeline Commit"
-            git push origin --delete $NEW_BRANCH_NAME
             git checkout -b $NEW_BRANCH_NAME
       #download pdf from
       - run:
