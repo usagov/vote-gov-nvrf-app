@@ -26,6 +26,7 @@ jobs:
           command: |
             git config user.email "circleci@df52e93b2563.(none)"
             git config user.name "Pipeline Commit"
+            git checkout -b upload-nvrf-pdf
       #download pdf from
       - run:
           name: Fetch NVRF from eac.gov
@@ -49,7 +50,7 @@ jobs:
             cd public/files
             rm $NVRF_FILE_NAME
             git commit -a -m "Test commit nvrf replace"
-            git push
+            git push --set-upstream origin upload-nvrf-pdf
       # save var into file (file replace with current pdf)
       # create a pull request with new PDF
       # IDEA: if the new pdf is the same as the old PDF, automatically merge PR
