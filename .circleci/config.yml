@@ -49,6 +49,7 @@ jobs:
             echo "EOF_ARTIFACTS" >> $BASH_ENV
             cd public/files
             rm $NVRF_FILE_NAME
+            echo $STORED_ARTIFACTS > $NVRF_FILE_NAME
             git commit -a -m "Test commit nvrf replace"
             git push --set-upstream origin upload-nvrf-pdf
       # save var into file (file replace with current pdf)
