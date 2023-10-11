@@ -27,7 +27,6 @@ jobs:
             git config user.email "circleci@df52e93b2563.(none)"
             git config user.name "Pipeline Commit"
             git checkout -b upload-nvrf-pdf
-            git pull
       #download pdf from
       - run:
           name: Fetch NVRF from eac.gov
