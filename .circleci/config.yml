@@ -26,7 +26,6 @@ jobs:
           command: |
             git config user.email "circleci@df52e93b2563.(none)"
             git config user.name "Pipeline Commit"
-            git push origin --delete upload-nvrf-pdf
             git checkout -b upload-nvrf-pdf
       #download pdf from
       - run:
@@ -61,6 +60,7 @@ jobs:
           command: |
             echo $NVRF_PDF_WRITE | tee /tmp/key.txt
             gh auth login --with-token < /tmp/key.txt
+            echo $CIRCLE_BRANCH
             gh pr close $CIRCLE_BRANCH
             gh pr create --title "test pr" --body "checking to see if this works"
 # Orchestrate jobs using workflows
