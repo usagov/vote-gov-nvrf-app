@@ -46,6 +46,7 @@ jobs:
           command: |
             echo $NVRF_PDF_WRITE | tee /tmp/key.txt
             gh auth login --with-token < /tmp/key.txt
+            gh pr close $CIRCLE_BRANCH
             gh pr create --title "test pr" --body "checking to see if this works"
 
 # Orchestrate jobs using workflows
