@@ -52,6 +52,7 @@ jobs:
             cd public/files
             rm $NVRF_FILE_NAME
             echo $STORED_ARTIFACTS > $NVRF_FILE_NAME
+            git add -all
             git commit -a -m "Test commit nvrf replace"
             git push --set-upstream origin $CIRCLE_BRANCH
       # save var into file (file replace with current pdf)
