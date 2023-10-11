@@ -49,7 +49,7 @@ jobs:
             echo "EOF_ARTIFACTS" >> $BASH_ENV
             cd public/files
             rm $NVRF_FILE_NAME
-            git commit -m "Test commit nvrf replace"
+            git commit -a -m "Test commit nvrf replace"
             git push
       # save var into file (file replace with current pdf)
       # create a pull request with new PDF
