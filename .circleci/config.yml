@@ -15,6 +15,7 @@ jobs:
     # See: https://circleci.com/docs/configuration-reference/#steps
     environment:
       URL: https://www.eac.gov/sites/default/files/eac_assets/1/6/Federal_Voter_Registration_ENG.pdf
+      NVRF_FILE_NAME: Federal_Voter_Registration_ENG.pdf
     steps:
       #checkout repo and install gh
       - checkout
@@ -30,7 +31,7 @@ jobs:
           destination: /pdf-files
       # Create a variable to store the PDF artifact
       - run:
-          name: Save PDF as variable
+          name: Replace current NVRF
           command: |
             artifacts=$(curl -X GET "https://circleci.com/api/v2/project/github/usagov/vote-gov-nvrf-app/$CIRCLE_BUILD_NUM/artifacts" \
             -H "Accept: application/json" \
@@ -40,6 +41,9 @@ jobs:
             echo "$artifacts" >> $BASH_ENV
             echo "EOF_ARTIFACTS" >> $BASH_ENV
             cd public/files
+            del $NVRF_FILE_NAME
+            git commit -m "Test commit nvrf replace"
+            git push
       # save var into file (file replace with current pdf)
       # create a pull request with new PDF
       # IDEA: if the new pdf is the same as the old PDF, automatically merge PR
