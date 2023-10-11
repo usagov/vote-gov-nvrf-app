@@ -49,6 +49,8 @@ jobs:
             echo "EOF_ARTIFACTS" >> $BASH_ENV
             cd public/files
             rm $NVRF_FILE_NAME
+            git config user.email "circleci@df52e93b2563.(none)"
+            git config user.name "Pipeline Commit"
             git commit -m "Test commit nvrf replace"
             git push
       # save var into file (file replace with current pdf)
