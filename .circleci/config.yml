@@ -1,18 +1,10 @@
-# Use the latest 2.1 version of CircleCI pipeline process engine.
-# See: https://circleci.com/docs/configuration-reference
 version: 2.1
 orbs:
   gh: circleci/github-cli@2.2.0
-# Define a job to be invoked later in a workflow.
-# See: https://circleci.com/docs/configuration-reference/#jobs
 jobs:
   update-nvrf:
-    # Specify the execution environment. You can specify an image from Docker Hub or use one of our convenience images from CircleCI's Developer Hub.
-    # See: https://circleci.com/docs/configuration-reference/#executor-job
     docker:
       - image: cimg/base:stable
-    # Add steps to the job
-    # See: https://circleci.com/docs/configuration-reference/#steps
     environment:
       URL: https://www.eac.gov/sites/default/files/eac_assets/1/6/Federal_Voter_Registration_ENG.pdf
       NVRF_FILE_NAME: Federal_Voter_Registration_ENG.pdf
@@ -27,9 +19,6 @@ jobs:
           command: |
             git config user.email "circleci@df52e93b2563.(none)"
             git config user.name "Pipeline Commit"
-      # git push origin --delete $NEW_BRANCH_NAME
-      # git checkout -b $NEW_BRANCH_NAME
-      #download pdf from
       - run:
           name: Fetch NVRF from eac.gov
           command: |
@@ -45,23 +34,19 @@ jobs:
             artifacts=$(curl -X GET "https://circleci.com/api/v2/project/github/usagov/vote-gov-nvrf-app/$CIRCLE_BUILD_NUM/artifacts" \
             -H "Accept: application/json" \
             -u "$NVRF_PDF_WRITE:")
-            # generate a heredoc in BASH_ENV
             echo "read -r -d '' STORED_ARTIFACTS \<< 'EOF_ARTIFACTS'" >> $BASH_ENV
             echo "$artifacts" >> $BASH_ENV
             echo "EOF_ARTIFACTS" >> $BASH_ENV
             cd public/files
             rm $NVRF_FILE_NAME
             echo $STORED_ARTIFACTS > $NVRF_FILE_NAME
-      # IDEA: if the new pdf is the same as the old PDF, automatically merge PR
       - run:
           name: Create Pull Request
           command: |
             echo $NVRF_PDF_WRITE | tee /tmp/key.txt
             gh auth login --with-token < /tmp/key.txt
             gh pr close $CIRCLE_BRANCH
-            gh pr create --title "test pr nvrf" --body "checking to see if this works"
-# Orchestrate jobs using workflows
-# See: https://circleci.com/docs/configuration-reference/#workflows
+            gh pr create --title "Update NVRF PDF" --body "Upload the new NVRF PDF from eac.gov. This is an automated job from CircleCI"
 workflows:
   update-nvrf-workflow:
     jobs:
