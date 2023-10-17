@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Label, TextInput, Button } from '@trussworks/react-uswds';
-import content from "../../data/registration-form.json";
+import content from "../../data/en/registration-form.json";
 import { restrictType, checkForErrors } from '../HelperFunctions/ValidateField';
 
 function PoliticalParty(props){
@@ -11,7 +11,7 @@ function PoliticalParty(props){
     const partyVisible = stateFieldVisible.party;
     const partyReq = stateFieldRequirements.party
 
-    const [handleErrors, setHandleErrors] = useState({ 
+    const [handleErrors, setHandleErrors] = useState({
         party_choice: false
     })
 
@@ -34,19 +34,19 @@ function PoliticalParty(props){
             <div className={(partyReq && handleErrors.party_choice) ? 'error-container' : ''}>
                 <Label htmlFor="political-party">
                 Choice of party{partyReq && <span className='required-text'>*</span>}
-                <TextInput 
+                <TextInput
                     id="political-party"
-                    aria-describedby="party-choice-error" 
-                    name="political party" 
-                    value={props.fieldData.party_choice} 
-                    type="text" 
-                    autoComplete="off" 
+                    aria-describedby="party-choice-error"
+                    name="political party"
+                    value={props.fieldData.party_choice}
+                    type="text"
+                    autoComplete="off"
                     required={partyReq}
-                    onChange={props.saveFieldData('party_choice')} 
+                    onChange={props.saveFieldData('party_choice')}
                     onKeyDown={(e) => restrictType(e, 'letters')}
                     onBlur={(e) => setHandleErrors({ ...handleErrors, party_choice: checkForErrors(e, 'check value exists') })}
                 />
-                {(partyReq && handleErrors.party_choice) && 
+                {(partyReq && handleErrors.party_choice) &&
                     <span id="party-choice-error" role="alert" className='error-text'>
                         Choice of party must be filled out.
                     </span>

@@ -1,6 +1,6 @@
 import { Alert, Form, Label, TextInput, Button, Dropdown,Checkbox, DatePicker } from '@trussworks/react-uswds';
 import React, { useState } from "react";
-import content from "../../data/confirmation.json";
+import content from "../../data/en/confirmation.json";
 import "../../styles/pages/Confirmation.css";
 import GenerateFilledPDF from '../GenerateFilledPDF';
 

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import ProgressBar from './ProgressBar';
 import PersonalInfo from "./FormSections/PersonalInfo";
 import Addresses from "./FormSections/Addresses"
-import content from "../data/registration-form.json";
+import content from "../data/en/registration-form.json";
 import Identification from './FormSections/Identification';
 import Confirmation from './FormSections/Confirmation';
 import Delivery from "./FormSections/Delivery";
@@ -105,18 +105,18 @@ function MultiStepForm(props) {
     const [idType, setIdType] = useState('')
     const saveIdType = (e) => {
         setIdType(e.target.value)
-        e.target.value === 'none' ? 
-            setFieldData({ 
-                ...fieldData, 
-                id_number: 'none', 
-                id_issue_date_month:'', 
-                id_issue_date_day:'', 
-                id_issue_date_year:'', 
-                id_expire_date_month:'', 
-                id_expire_date_day:'', 
-                id_expire_date_year:'' 
-            }) 
-            : 
+        e.target.value === 'none' ?
+            setFieldData({
+                ...fieldData,
+                id_number: 'none',
+                id_issue_date_month:'',
+                id_issue_date_day:'',
+                id_issue_date_year:'',
+                id_expire_date_month:'',
+                id_expire_date_day:'',
+                id_expire_date_year:''
+            })
+            :
             setFieldData({ ...fieldData, id_number: '' });
     }
 

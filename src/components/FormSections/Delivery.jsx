@@ -1,6 +1,6 @@
 import { Link, Icon } from '@trussworks/react-uswds';
 import "../../styles/pages/Delivery.css";
-import content from "../../data/delivery.json";
+import content from "../../data/en/delivery.json";
 
 
 function Delivery(props) {

@@ -1,5 +1,5 @@
 import { Button, Icon } from '@trussworks/react-uswds';
-import data from "../../data/state-selection.json";
+import data from "../../data/en/state-selection.json";
 import EligibilityCheckboxes from "./EligibilityCheckboxes";
 
 function Online(props) {
