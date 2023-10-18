@@ -9,7 +9,7 @@ function Delivery(props) {
         <>
             <h1>{content.main_heading}</h1>
             <p>{content.main_help_text}</p>
-            <h3>{content.reminder_header1}</h3>
+            <h2>{content.reminder_header1}</h2>
             <p>{content.reminder_text1}</p>
 
             <p>
@@ -20,7 +20,7 @@ function Delivery(props) {
             </p>
 
             <p>{content.reminder_text2}</p>
-            <h3>{content.voter_req_header}</h3>
+            <h2>{content.voter_req_header}</h2>
 
             <p>{content.voter_req_parag1}</p>
             <ul>
@@ -34,7 +34,7 @@ function Delivery(props) {
                     <li>{content.voter_req_parag2_li2}</li>
                 </ul>
 
-            <h3>{content.dont_forget_header}</h3>
+            <h2>{content.dont_forget_header}</h2>
             <p>{content.dont_forget_parag1}</p>
 
             <Link className="usa-button link-button-outline" variant="unstyled" href={'https://vote.gov/'}>
