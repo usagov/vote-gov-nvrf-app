@@ -265,8 +265,9 @@ function PersonalInfo(props){
         )}
 
             <Grid row gap>
-            <Grid tablet={{ col: true }}>
+            
         {dobVisible && (
+        <Grid tablet={{ col: true }}>
             <div className={(dobReq && handleErrors.dob) ? 'error-container' : ''}>
                 <Fieldset legend={dobReq ? ["Date of Birth", <span key={1} className='required-text'>*</span>] : "Date of Birth"} style={{ marginTop:'30px'}}>
                     <span className="usa-hint" id="date-of-birth-hint">
@@ -362,35 +363,38 @@ function PersonalInfo(props){
                 </span>
             }
             </div>
+        </Grid>
         )}
-            </Grid>
+            
 
-            <Grid tablet={{ col: true }}>
+            
         {telephoneVisible && (
-            <div className={(telephoneReq && handleErrors.phone_number) ? 'error-container phone-container' : 'phone-container'}>
-                <legend htmlFor="phone-number" className="usa-legend">Phone Number{telephoneReq && <span className='required-text'>*</span>}</legend>
-                <span className="usa-hint" id="date-of-birth-hint">For example: (123) 456-7890</span>
-                <TextInput 
-                    id="phone-number" 
-                    aria-describedby="phone-number-error"
-                    name="phone-number" 
-                    type="text" 
-                    autoComplete="off" 
-                    required={telephoneReq}
-                    maxLength={14}
-                    minLength={14}
-                    value={props.fieldData.phone_number} 
-                    onChange={props.saveFieldData('phone_number')} 
-                    onBlur={(e) => setHandleErrors({ ...handleErrors, phone_number: checkForErrors(e, 'check value length') })}
-                />
-                {(telephoneReq && handleErrors.phone_number) && 
-                    <span id="phone-number-error" rol="alert" className='error-text'>
-                        Phone number must be 10 digits.
-                    </span>
-                }
-            </div>
+            <Grid tablet={{ col: true }}>
+                <div className={(telephoneReq && handleErrors.phone_number) ? 'error-container phone-container' : 'phone-container'}>
+                    <legend htmlFor="phone-number" className="usa-legend">Phone Number{telephoneReq && <span className='required-text'>*</span>}</legend>
+                    <span className="usa-hint" id="date-of-birth-hint">For example: (123) 456-7890</span>
+                    <TextInput 
+                        id="phone-number" 
+                        aria-describedby="phone-number-error"
+                        name="phone-number" 
+                        type="text" 
+                        autoComplete="off" 
+                        required={telephoneReq}
+                        maxLength={14}
+                        minLength={14}
+                        value={props.fieldData.phone_number} 
+                        onChange={props.saveFieldData('phone_number')} 
+                        onBlur={(e) => setHandleErrors({ ...handleErrors, phone_number: checkForErrors(e, 'check value length') })}
+                    />
+                    {(telephoneReq && handleErrors.phone_number) && 
+                        <span id="phone-number-error" rol="alert" className='error-text'>
+                            Phone number must be 10 digits.
+                        </span>
+                    }
+                </div>
+            </Grid>            
         )}
-            </Grid>
+
             </Grid>
 
         {raceVisible && (
