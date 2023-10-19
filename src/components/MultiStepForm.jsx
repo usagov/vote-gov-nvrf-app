@@ -8,7 +8,7 @@ import Identification from './FormSections/Identification';
 import Confirmation from './FormSections/Confirmation';
 import Delivery from "./FormSections/Delivery";
 import PoliticalParty from './FormSections/PoliticalParty';
-import { phoneFormat } from './HelperFunctions/ValidateField';
+import { phoneFormat, dayFormat } from './HelperFunctions/ValidateField';
 
 function MultiStepForm(props) {
     //Field data controls
@@ -24,9 +24,13 @@ function MultiStepForm(props) {
         email_address:'', sms_alert_phone_number:''});
 
     const saveFieldData = (name) => {
+        const day_names = ['date_of_birth_day', 'id_issue_date_day', 'id_expire_date_day' ]
+        
         return (event) => {
         if (name === 'phone_number') {
             setFieldData({ ...fieldData, [name]: phoneFormat(event.target.value) });
+        } else if (day_names.includes(name)) {
+            setFieldData({ ...fieldData, [name]: dayFormat(event.target.value) });
         } else {
             setFieldData({ ...fieldData, [name]: event.target.value });
         }
