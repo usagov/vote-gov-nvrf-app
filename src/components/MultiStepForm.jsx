@@ -36,8 +36,8 @@ function MultiStepForm(props) {
     //Multiple step NVRF controls
     const [step, setStep] = useState(1);
     const handleNext = () => {
-        step != 7 && setStep(step + 1);
-        document.getElementById('scroll-to-top').scrollIntoView();
+        step != 6 && setStep(step + 1);
+        step != 6 && document.getElementById('scroll-to-top').scrollIntoView();
       }
 
     const handlePrev = () => {
@@ -123,7 +123,7 @@ function MultiStepForm(props) {
     return (
         <>
         <ProgressBar step={step}/>
-        {step != 6 &&
+        {step < 5 &&
         <div>
             <h1>{content.main_heading}: {props.stateData.name}</h1>
             <p>{content.intro_text}</p>
