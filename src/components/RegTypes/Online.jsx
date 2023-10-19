@@ -1,10 +1,13 @@
 import { Button, Icon } from '@trussworks/react-uswds';
-import data from "../../data/en/state-selection.json";
 import EligibilityCheckboxes from "./EligibilityCheckboxes";
+import useScript from "../../useScript"
 
 function Online(props) {
-    const content = data;
-    const onlineContent = data.online;
+    useScript("../../bundle-data.js");
+    const locale = document.documentElement.lang;
+    const content = require(`../../data/${locale}/state-selection.json`);
+    console.log(content);
+    const onlineContent = content.online;
     const stateContent = props.stateData;
     const stateLink = props.stateData.election_website_url;
 
