@@ -1,7 +1,8 @@
-import { Label, TextInput, Button, Dropdown,Checkbox, Fieldset} from '@trussworks/react-uswds';
+import { Label, TextInput, Button, Dropdown,Checkbox, Fieldset, Grid} from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import content from "../../data/registration-form.json";
 import { focusNext, restrictType, restrictLength, checkForErrors } from '../HelperFunctions/ValidateField';
+import "../../styles/pages/Form.css";
 
 function PersonalInfo(props){
     const stateFieldRequirements = props.stateData.fields_required;
@@ -68,84 +69,98 @@ function PersonalInfo(props){
         </div>
 
         {nameVisible && (
-            <div>
-                <Label htmlFor="title-select">
-                    Title
-                <Dropdown id="title-select" name="title-select" value={props.fieldData.title} onChange={props.saveFieldData('title')} autoComplete="off">
-                    <option>- Select -{' '}</option>
-                    <option value="Mr.">Mr.</option>
-                    <option value="Miss">Miss</option>
-                    <option value="Ms.">Ms.</option>
-                    <option value="Mrs.">Mrs.</option>
-                </Dropdown>
-                </Label>
-
-                <div className={(nameReq && handleErrors.first_name) ? 'error-container' : ''}>
-                    <Label htmlFor="first-name">
-                        First Name{nameReq && <span className='required-text'>*</span>}
-                    <TextInput 
-                        id="first-name" 
-                        aria-describedby="first-name-error" 
-                        name="first-name" 
-                        type="text" 
-                        autoComplete="off" 
-                        required={nameReq}
-                        value={props.fieldData.first_name} 
-                        onChange={props.saveFieldData('first_name')} 
-                        onBlur={(e) => setHandleErrors({ ...handleErrors, first_name: checkForErrors(e, 'check value exists') })}
-                        />
-                    {(nameReq && handleErrors.first_name) && 
-                        <span id="first-name-error" role="alert" className='error-text'>
-                            First name must be filled out.
-                        </span>
-                    }
+            <>
+                <Grid row gap>
+                    <Grid tablet={{ col: true }}>
+                    <Label htmlFor="title-select">
+                        Title
+                    <Dropdown id="title-select" name="title-select" value={props.fieldData.title} onChange={props.saveFieldData('title')} autoComplete="off">
+                        <option>- Select -{' '}</option>
+                        <option value="Mr.">Mr.</option>
+                        <option value="Miss">Miss</option>
+                        <option value="Ms.">Ms.</option>
+                        <option value="Mrs.">Mrs.</option>
+                    </Dropdown>
                     </Label>
-                </div>
-                
-                    <Label htmlFor="middle-name">
-                        Middle Name(s)
-                    <TextInput 
-                        id="middle-name" 
-                        name="middle-name" 
-                        value={props.fieldData.middle_name} 
-                        onChange={props.saveFieldData('middle_name')} 
-                        type="text" autoComplete="off"/>
-                    </Label>
+                    </Grid>
 
-                <div className={(nameReq && handleErrors.last_name) ? 'error-container' : ''}>
-                    <Label htmlFor="last-name">
-                        Last Name{nameReq && <span className='required-text'>*</span>}
-                    <TextInput 
-                        id="last-name" 
-                        aria-describedby="last-name-error" 
-                        name="last-name" 
-                        type="text" 
-                        autoComplete="off" 
-                        required={nameReq}
-                        value={props.fieldData.last_name} 
-                        onChange={props.saveFieldData('last_name')} 
-                        onBlur={(e) => setHandleErrors({ ...handleErrors, last_name: checkForErrors(e, 'check value exists') })}
-                        />
-                    {(nameReq && handleErrors.last_name) && 
-                        <span id="last-name-error" role="alert" className='error-text'>
-                            Last name must be filled out.
-                        </span>
-                    }
-                    </Label>
-                </div>
+                    <Grid tablet={{ col: true }}>
+                    <div className={(nameReq && handleErrors.first_name) ? 'error-container' : ''}>
+                        <Label htmlFor="first-name">
+                            First Name{nameReq && <span className='required-text'>*</span>}
+                        <TextInput 
+                            id="first-name" 
+                            aria-describedby="first-name-error" 
+                            name="first-name" 
+                            type="text" 
+                            autoComplete="off" 
+                            required={nameReq}
+                            value={props.fieldData.first_name} 
+                            onChange={props.saveFieldData('first_name')} 
+                            onBlur={(e) => setHandleErrors({ ...handleErrors, first_name: checkForErrors(e, 'check value exists') })}
+                            />
+                        {(nameReq && handleErrors.first_name) && 
+                            <span id="first-name-error" role="alert" className='error-text'>
+                                First name must be filled out.
+                            </span>
+                        }
+                        </Label>
+                    </div>
+                    </Grid>
+                    
+                    <Grid tablet={{ col: true }}>
+                        <Label htmlFor="middle-name">
+                            Middle Name(s)
+                        <TextInput 
+                            id="middle-name" 
+                            name="middle-name" 
+                            value={props.fieldData.middle_name} 
+                            onChange={props.saveFieldData('middle_name')} 
+                            type="text" autoComplete="off"/>
+                        </Label>
+                    </Grid>
+                </Grid>
+            
+                <Grid row gap>
+                    <Grid tablet={{ col: true }}>
+                    <div className={(nameReq && handleErrors.last_name) ? 'error-container' : ''}>
+                        <Label htmlFor="last-name">
+                            Last Name{nameReq && <span className='required-text'>*</span>}
+                        <TextInput 
+                            id="last-name" 
+                            aria-describedby="last-name-error" 
+                            name="last-name" 
+                            type="text" 
+                            autoComplete="off" 
+                            required={nameReq}
+                            value={props.fieldData.last_name} 
+                            onChange={props.saveFieldData('last_name')} 
+                            onBlur={(e) => setHandleErrors({ ...handleErrors, last_name: checkForErrors(e, 'check value exists') })}
+                            />
+                        {(nameReq && handleErrors.last_name) && 
+                            <span id="last-name-error" role="alert" className='error-text'>
+                                Last name must be filled out.
+                            </span>
+                        }
+                        </Label>
+                    </div>
+                    </Grid>
 
-                <Label htmlFor="suffix-select">
-                    Suffix
-                <Dropdown id="suffix-select" name="suffix-select" value={props.fieldData.suffix} onChange={props.saveFieldData('suffix')} autoComplete="off" required={nameReq}>
-                    <option>- Select -{' '}</option>
-                    <option value="Jr.">Jr.</option>
-                    <option value="Sr.">Sr.</option>
-                    <option value="II">II</option>
-                    <option value="III">III</option>
-                    <option value="IV">IV</option>
-                </Dropdown>
-                </Label>
-            </div>
+                    <Grid tablet={{ col: true }}>
+                    <Label htmlFor="suffix-select">
+                        Suffix
+                    <Dropdown id="suffix-select" name="suffix-select" value={props.fieldData.suffix} onChange={props.saveFieldData('suffix')} autoComplete="off" required={nameReq}>
+                        <option>- Select -{' '}</option>
+                        <option value="Jr.">Jr.</option>
+                        <option value="Sr.">Sr.</option>
+                        <option value="II">II</option>
+                        <option value="III">III</option>
+                        <option value="IV">IV</option>
+                    </Dropdown>
+                    </Label>
+                    </Grid>
+                </Grid>
+            </>
         )}
 
         {changeRegistrationVisible && (
@@ -153,8 +168,11 @@ function PersonalInfo(props){
         )}
 
         {hasPreviousName && (
+
             <div value={previousName} onChange={onChangePreviousName}>
                 <h3>Previous Name</h3>
+            <Grid row gap>
+                <Grid tablet={{ col: true }}>                
                 <Label htmlFor="title-select-2">
                     Title
                 <Dropdown id="title-select-2" name="title-select-2" value={props.fieldData.prev_title} onChange={props.saveFieldData('prev_title')} autoComplete="off">
@@ -165,7 +183,9 @@ function PersonalInfo(props){
                     <option value="Mrs.">Mrs.</option>
                 </Dropdown>
                 </Label>
+                </Grid>
 
+                <Grid tablet={{ col: true }}>
                 <div className={(nameReq && handleErrors.prev_first_name) ? 'error-container' : ''}>
                     <Label htmlFor="first-name-2">
                         First Name{nameReq && <span className='required-text'>*</span>}
@@ -187,7 +207,9 @@ function PersonalInfo(props){
                     }       
                     </Label>
                 </div>
+                </Grid>
 
+                <Grid tablet={{ col: true }}>
                     <Label htmlFor="middle-name-2">
                         Middle Name
                     <TextInput 
@@ -197,7 +219,11 @@ function PersonalInfo(props){
                         onChange={props.saveFieldData('prev_middle_name')} 
                         type="text" autoComplete="off"/>
                     </Label>
+                </Grid>
+            </Grid>
 
+            <Grid row gap>
+                <Grid tablet={{ col: true }}>
                 <div className={(nameReq && handleErrors.prev_last_name) ? 'error-container' : ''}>
                     <Label htmlFor="last-name-2">
                         Last Name{nameReq && <span className='required-text'>*</span>}
@@ -219,7 +245,9 @@ function PersonalInfo(props){
                     }
                     </Label>
                 </div>
+                </Grid>
 
+                <Grid tablet={{ col: true }}>
                 <Label htmlFor="suffix-select-2">
                     Suffix
                 <Dropdown id="suffix-select-2" name="suffix-select-2" value={props.fieldData.prev_suffix} onChange={props.saveFieldData('prev_suffix')} autoComplete="off" required={nameReq}>
@@ -231,9 +259,13 @@ function PersonalInfo(props){
                     <option value="IV">IV</option>
                 </Dropdown>
                 </Label>
+                </Grid>
+            </Grid>
             </div>
         )}
 
+            <Grid row gap>
+            <Grid tablet={{ col: true }}>
         {dobVisible && (
             <div className={(dobReq && handleErrors.dob) ? 'error-container' : ''}>
                 <Fieldset legend={dobReq ? ["Date of Birth", <span key={1} className='required-text'>*</span>] : "Date of Birth"} style={{ marginTop:'30px'}}>
@@ -331,9 +363,11 @@ function PersonalInfo(props){
             }
             </div>
         )}
+            </Grid>
 
+            <Grid tablet={{ col: true }}>
         {telephoneVisible && (
-            <div className={(telephoneReq && handleErrors.phone_number) ? 'error-container' : ''}>
+            <div className={(telephoneReq && handleErrors.phone_number) ? 'error-container phone-container' : 'phone-container'}>
                 <legend htmlFor="phone-number" className="usa-legend">Phone Number{telephoneReq && <span className='required-text'>*</span>}</legend>
                 <span className="usa-hint" id="date-of-birth-hint">For example: (123) 456-7890</span>
                 <TextInput 
@@ -356,6 +390,8 @@ function PersonalInfo(props){
                 }
             </div>
         )}
+            </Grid>
+            </Grid>
 
         {raceVisible && (
             <div>
