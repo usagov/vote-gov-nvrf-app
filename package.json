@@ -20,6 +20,7 @@
     "pdf-lib": "^1.17.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-script-tag-18": "^4.0.0",
     "react-string-replace": "^1.1.1",
     "vite": "^4.3.9"
   },

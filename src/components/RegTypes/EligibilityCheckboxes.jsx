@@ -1,10 +1,10 @@
 import { Button, Link, Fieldset, Checkbox, Label } from '@trussworks/react-uswds';
-import data from "../../data/en/state-selection.json";
 import reactStringReplace from 'react-string-replace';
+import Script from 'react-script-tag-18';
 
 function EligibilityCheckboxes(props) {
-    const content = data;
-    const onlineContent = data.online;
+    const content = require("../../data/en/state-selection.json");
+    const onlineContent = content.online;
 
     const downloadForm = reactStringReplace(
         content.download_form,
@@ -16,6 +16,7 @@ function EligibilityCheckboxes(props) {
 
     return (
         <>
+        <Script type="text/javascript" src="../../bundle-data.js" />);
         <form onSubmit={() => {props.handleNext()}}>
         <Fieldset legend="Eligibility" legendStyle="srOnly">
             <div className={props.checkboxes.checkboxesValid ? 'error-container' : ''}>
