@@ -1,4 +1,4 @@
-import { Label, TextInput, Button, Dropdown,Checkbox, Fieldset, Grid} from '@trussworks/react-uswds';
+import { Label, TextInput, Button, Dropdown,Checkbox, Grid} from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import content from "../../data/registration-form.json";
 import { focusNext, restrictType, restrictLength, checkForErrors } from '../HelperFunctions/ValidateField';
@@ -269,7 +269,7 @@ function PersonalInfo(props){
         {dobVisible && (
         <Grid tablet={{ col: true }}>
             <div className={(dobReq && handleErrors.dob) ? 'error-container' : ''}>
-                <Fieldset legend={dobReq ? ["Date of Birth", <span key={1} className='required-text'>*</span>] : "Date of Birth"} style={{ marginTop:'30px'}}>
+            <legend htmlFor="date-of-birth" className="usa-legend">Date of Birth{dobReq && <span className='required-text'>*</span>}</legend>
                     <span className="usa-hint" id="date-of-birth-hint">
                     For example: January 19 2000
                     </span>
@@ -356,7 +356,6 @@ function PersonalInfo(props){
                             </label>
                         </div>
                     </div>
-                </Fieldset>
             {(dobReq && handleErrors.dob) && 
                 <span id="dob-error" rol="alert" className='error-text'>
                     Date of Birth must follow the format of January 19 2000.
@@ -369,8 +368,8 @@ function PersonalInfo(props){
 
             
         {telephoneVisible && (
-            <Grid tablet={{ col: true }}>
-                <div className={(telephoneReq && handleErrors.phone_number) ? 'error-container phone-container' : 'phone-container'}>
+            <Grid tablet={{ col: true }} className="input-example">
+                <div className={(telephoneReq && handleErrors.phone_number) ? 'error-container bottom' : 'bottom'}>
                     <legend htmlFor="phone-number" className="usa-legend">Phone Number{telephoneReq && <span className='required-text'>*</span>}</legend>
                     <span className="usa-hint" id="date-of-birth-hint">For example: (123) 456-7890</span>
                     <TextInput 

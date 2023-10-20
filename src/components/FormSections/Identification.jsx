@@ -1,4 +1,4 @@
-import { Label, TextInput, Button, Fieldset, Dropdown, Grid } from '@trussworks/react-uswds';
+import { Label, TextInput, Button, Dropdown, Grid } from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import content from "../../data/registration-form.json";
 import { focusNext, restrictLength, restrictType, checkExpiration, checkForErrors } from '../HelperFunctions/ValidateField';
@@ -104,7 +104,7 @@ function Identification(props){
                 <Grid row gap>
                     <Grid tablet={{ col: true }}>   
                     <div className={(idNumReq && handleErrors.issue_date) ? 'error-container' : ''}>
-                    <Fieldset legend={idNumReq ? ["Issue Date", <span className='required-text'>*</span>] : "Issue Date"} style={{ marginTop:'30px'}}>
+                    <legend htmlFor="issue-date" className="usa-legend">Issue Date{idNumReq && <span className='required-text'>*</span>}</legend>
                         <span className="usa-hint" id="id-issue-date-hint">
                         For example: January 19 2000
                         </span>
@@ -191,7 +191,6 @@ function Identification(props){
                                     </label>
                                 </div>
                         </div>
-                    </Fieldset>
                     {(idNumReq && handleErrors.issue_date) && 
                         <span id="issue-date-error" role="alert" className='error-text'>
                         Issue Date must follow the format of January 19 2000.
@@ -202,7 +201,7 @@ function Identification(props){
 
                     <Grid tablet={{ col: true }}>   
                     <div className={(idNumReq && handleErrors.expire_date) ? 'error-container' : ''}>
-                    <Fieldset legend={idNumReq ? ["Expire Date", <span className='required-text'>*</span>] : "Expire Date"} style={{ marginTop:'30px'}}>
+                    <legend htmlFor="expire-date" className="usa-legend">Expire Date{idNumReq && <span className='required-text'>*</span>}</legend>
                         <span className="usa-hint" id="id-issue-date-hint">
                         For example: January 19 2000
                         </span>
@@ -290,7 +289,6 @@ function Identification(props){
                                     </label>
                                 </div>
                         </div>
-                    </Fieldset>
                     {(idNumReq && handleErrors.expire_date) && 
                         <span id="expire-date-error" role="alert" className='error-text'>
                         Expire Date must follow the format of January 19 2000 and be in the future.

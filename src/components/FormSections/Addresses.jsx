@@ -119,7 +119,7 @@ function Addresses(props){
 
                     <Grid row gap>
                         <Grid tablet={{ col: true }}>                
-                        <div className={(addressReq && handleErrors.city) ? 'error-container' : ''}>
+                        <div className={(addressReq && handleErrors.city) ? 'error-container bottom' : 'bottom'}>
                             <Label htmlFor="city">
                                 City{addressReq && <span className='required-text'>*</span>}
                             <TextInput 
@@ -144,7 +144,7 @@ function Addresses(props){
                         </Grid>
 
                         <Grid tablet={{ col: true }}>                
-                        <Label htmlFor="state">
+                        <Label htmlFor="state" className="bottom">
                             State
                         <StateSelector 
                             statesList={statesList} 
@@ -236,7 +236,7 @@ function Addresses(props){
 
                                     <Grid row gap>
                                         <Grid tablet={{ col: true }}>   
-                                        <div className={(addressReq && handleErrors.prev_city) ? 'error-container' : ''}>
+                                        <div className={(addressReq && handleErrors.prev_city) ? 'error-container bottom' : 'bottom'}>
                                             <Label htmlFor="prev-city">
                                                 City{addressReq && <span className='required-text'>*</span>}
                                             <TextInput 
@@ -261,7 +261,7 @@ function Addresses(props){
                                         </Grid>
 
                                     <Grid tablet={{ col: true }}>   
-                                        <div className={(addressReq && handleErrors.prev_state) ? 'error-container' : ''}>
+                                        <div className={(addressReq && handleErrors.prev_state) ? 'error-container bottom' : 'bottom'}>
                                             <Label htmlFor="prev-state">
                                                 State{addressReq && <span className='required-text'>*</span>}
                                             <StateSelector 
@@ -362,7 +362,7 @@ function Addresses(props){
 
                                     <Grid row gap>
                                         <Grid tablet={{ col: true }}>   
-                                        <div className={(addressReq && handleErrors.mail_city) ? 'error-container' : ''}>
+                                        <div className={(addressReq && handleErrors.mail_city) ? 'error-container bottom' : 'bottom'}>
                                             <Label htmlFor="mail-city">
                                                 City{addressReq && <span className='required-text'>*</span>}
                                             <TextInput 
@@ -387,7 +387,7 @@ function Addresses(props){
                                         </Grid>
 
                                         <Grid tablet={{ col: true }}>   
-                                            <div className={(addressReq && handleErrors.mail_state) ? 'error-container' : ''}>
+                                            <div className={(addressReq && handleErrors.mail_state) ? 'error-container bottom' : 'bottom'}>
                                             <Label htmlFor="mail-state">
                                                 State{addressReq && <span className='required-text'>*</span>}
                                             <StateSelector 
