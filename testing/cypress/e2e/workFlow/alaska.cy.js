@@ -55,6 +55,10 @@ describe('Check AK', () => {
     cy.get('[id="date_of_birth_month"]').select('01 - January')
     cy.get('[id="date_of_birth_day"]').type('01')
     cy.get('[id="date_of_birth_year"]').type('1990')
+    // verify text box has correct text
+    cy.get('[id="date_of_birth_month"]').should('have.value', '01')
+    cy.get('[id="date_of_birth_day"]').should('have.value', '01')
+    cy.get('[id="date_of_birth_year"]').should('have.value', '1990')
 
     cy.get('[data-testid="button"]').then(btn => {
       cy.get(btn[1]).click()
@@ -127,9 +131,21 @@ describe('Check AK', () => {
       cy.get('[name="id_expire_date_day"]').type('02')
       cy.get('[name="id_expire_date_year"]').type('3000')
     })
+    // verify that fields have correct values
+    cy.get('[class="usa-select"]').then(dropDown => {
+      cy.get(dropDown[1]).should('have.value', '01')
+      cy.get('[name="id_issue_date_day"]').should('have.value', '01')
+      cy.get('[name="id_issue_date_year"]').should('have.value', '1990')
+      cy.get(dropDown[2]).should('have.value', '01')
+      cy.get('[name="id_expire_date_day"]').should('have.value', '02')
+      cy.get('[name="id_expire_date_year"]').should('have.value', '3000')
+    })
     // * social security number (last 4 digits)
     cy.get('[data-testid="dropdown"]').select('Social Security Number (last 4 digits)')
-    cy.get('[data-testid="textInput"]').type('123456789')
+    cy.get('[data-testid="textInput"]').type('1234')
+    // verify fields have correct values 
+    cy.get('[data-testid="dropdown"]').should('have.value', 'ssn')
+    cy.get('[data-testid="textInput"]').should('have.value', '1234')
 
     // * no id
     cy.get('[data-testid="dropdown"]').select('I do not have a valid ID number')
@@ -151,6 +167,7 @@ describe('Check AK', () => {
     cy.get('[data-testid="button"]').then(btn => {
       cy.get(btn[5]).click()
     })
+
     // * check that download opens in new window
     cy.get('@open').should('have.been.calledOnce')
   })
@@ -202,6 +219,11 @@ describe('Check AK', () => {
     cy.get('[id="date_of_birth_month"]').select('01 - January')
     cy.get('[id="date_of_birth_day"]').type('01')
     cy.get('[id="date_of_birth_year"]').type('1990')
+    // verify text box has correct text
+    cy.get('[id="date_of_birth_month"]').should('have.value', '01')
+    cy.get('[id="date_of_birth_day"]').should('have.value', '01')
+    cy.get('[id="date_of_birth_year"]').should('have.value', '1990')
+ 
 
     cy.get('[data-testid="button"]').then(btn => {
       cy.get(btn[1]).click()
@@ -240,9 +262,21 @@ describe('Check AK', () => {
       cy.get('[name="id_expire_date_day"]').type('02')
       cy.get('[name="id_expire_date_year"]').type('3000')
     })
+    // verify that fields have correct values
+    cy.get('[class="usa-select"]').then(dropDown => {
+      cy.get(dropDown[1]).should('have.value', '01')
+      cy.get('[name="id_issue_date_day"]').should('have.value', '01')
+      cy.get('[name="id_issue_date_year"]').should('have.value', '1990')
+      cy.get(dropDown[2]).should('have.value', '01')
+      cy.get('[name="id_expire_date_day"]').should('have.value', '02')
+      cy.get('[name="id_expire_date_year"]').should('have.value', '3000')
+    })
     // * social security number (last 4 digits)
     cy.get('[data-testid="dropdown"]').select('Social Security Number (last 4 digits)')
     cy.get('[data-testid="textInput"]').type('123456789')
+    // verify fields have correct values 
+    cy.get('[data-testid="dropdown"]').should('have.value', 'ssn')
+    cy.get('[data-testid="textInput"]').should('have.value', '1234')
 
     // * no id
     cy.get('[data-testid="dropdown"]').select('I do not have a valid ID number')
