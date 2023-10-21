@@ -4,13 +4,25 @@ import content from "../../data/delivery.json";
 
 
 function Delivery(props) {
+    // Add A/B Message randomization.
+    const randomProperty = function (obj) {
+        const keys = Object.keys(obj);
+        const key = keys[keys.length * Math.random() << 0];
+        return {
+            "key": key,
+            "value": obj[key]
+        };
+    };
+
     const stateAddress = props.stateData.state_address;
+    const reminderMessage = randomProperty(content.reminder_messages);
+
     return (
         <>
             <h1>{content.main_heading}</h1>
             <p>{content.main_help_text}</p>
             <h3>{content.reminder_header1}</h3>
-            <p>{content.reminder_text1}</p>
+            <p data-message-id={reminderMessage.key}>{reminderMessage.value}</p>
 
             <p>
                 {content.mail_text}
@@ -19,7 +31,7 @@ function Delivery(props) {
                 <br />{stateAddress.city_state}
             </p>
 
-            <p>{content.reminder_text2}</p>
+            <p>{content.deliver_text}</p>
             <h3>{content.voter_req_header}</h3>
 
             <p>{content.voter_req_parag1}</p>
