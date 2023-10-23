@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "cy:open": "cypress open",
     "cy:axe": "cypress run --spec 'cypress/e2e/accessibility/**/*'", 
-    "cy:test": "cypress run --spec 'cypress/e2e/workFlow/**/*'"
+    "cy:test": "cypress run --spec 'cypress/e2e/tests/**/*'"
   },
   "author": "",
   "license": "ISC",
