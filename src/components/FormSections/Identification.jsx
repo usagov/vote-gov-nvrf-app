@@ -105,7 +105,6 @@ function Identification(props){
                     <Grid tablet={{ col: true }}>   
                     <div className={(idNumReq && handleErrors.issue_date) ? 'error-container' : ''}>
                     <Fieldset className="fieldset"  legend={idNumReq ? ["Issue Date", <span className='required-text'>*</span>] : "Issue Date"} style={{ marginTop:'30px'}}>
-                    <legend htmlFor="issue-date" className="usa-legend">Issue Date{idNumReq && <span className='required-text'>*</span>}</legend>
                         <span className="usa-hint" id="id-issue-date-hint">
                         For example: January 19 2000
                         </span>
