@@ -159,7 +159,7 @@ function Addresses(props){
 
                         <Grid tablet={{ col: true }}>                
                         <div className={(addressReq && handleErrors.zip) ? 'error-container' : ''}>
-                            <legend htmlFor="zip" className="usa-legend">Zip Code {addressReq && <span className={'required-text'}>*</span>}</legend>
+                            <Label htmlFor="zip">Zip Code {addressReq && <span className={'required-text'}>*</span>}</Label>
                             <span className="usa-hint" id="zip-hint">For example: 12345</span>
                             <TextInput 
                                 id="zip" 
@@ -285,7 +285,7 @@ function Addresses(props){
 
                                         <Grid tablet={{ col: true }}>   
                                         <div className={(addressReq && handleErrors.prev_zip) ? 'error-container' : ''}>
-                                            <legend htmlFor="prev-zip" className="usa-legend">Zip Code {addressReq && <span className={'required-text'}>*</span>}</legend>
+                                            <Label htmlFor="prev-zip">Zip Code {addressReq && <span className={'required-text'}>*</span>}</Label>
                                             <span className="usa-hint" id="prev-zip-hint">For example: 12345</span>
                                             <TextInput 
                                                 id="prev-zip" 
@@ -411,7 +411,7 @@ function Addresses(props){
 
                                         <Grid tablet={{ col: true }}>   
                                         <div className={(addressReq && handleErrors.mail_zip) ? 'error-container' : ''}>
-                                            <legend htmlFor="mail-zip" className="usa-legend">Zip Code {addressReq && <span className={'required-text'}>*</span>}</legend>
+                                            <Label htmlFor="mail-zip">Zip Code {addressReq && <span className={'required-text'}>*</span>}</Label>
                                             <span className="usa-hint" id="mail-zip-hint">For example: 12345</span>
                                             <TextInput 
                                                 id="mail-zip"

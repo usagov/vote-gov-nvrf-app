@@ -269,7 +269,7 @@ function PersonalInfo(props){
         {dobVisible && (
         <Grid tablet={{ col: true }}>
             <div className={(dobReq && handleErrors.dob) ? 'error-container' : ''}>
-            <Fieldset className="fieldset" legend={dobReq ? ["Date of Birth", <span key={1} className='required-text'>*</span>] : "Date of Birth"} style={{ marginTop:'30px'}}>            <legend htmlFor="date-of-birth" className="usa-legend">Date of Birth{dobReq && <span className='required-text'>*</span>}</legend>
+            <Fieldset className="fieldset" legend={dobReq ? ["Date of Birth", <span key={1} className='required-text'>*</span>] : "Date of Birth"} style={{ marginTop:'30px'}}>
                     <span className="usa-hint" id="date-of-birth-hint">
                     For example: January 19 2000
                     </span>
@@ -371,7 +371,7 @@ function PersonalInfo(props){
         {telephoneVisible && (
             <Grid tablet={{ col: true }} className="input-example">
                 <div className={(telephoneReq && handleErrors.phone_number) ? 'error-container bottom' : 'bottom'}>
-                    <legend htmlFor="phone-number" className="usa-legend">Phone Number{telephoneReq && <span className='required-text'>*</span>}</legend>
+                    <Label htmlFor="phone-number">Phone Number{telephoneReq && <span className='required-text'>*</span>}</Label>
                     <span className="usa-hint" id="date-of-birth-hint">For example: (123) 456-7890</span>
                     <TextInput 
                         id="phone-number" 
