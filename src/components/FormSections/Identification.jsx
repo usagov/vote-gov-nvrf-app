@@ -104,7 +104,7 @@ function Identification(props){
                 <Grid row gap>
                     <Grid tablet={{ col: true }}>   
                     <div className={(idNumReq && handleErrors.issue_date) ? 'error-container' : ''}>
-                    <Fieldset className="fieldset">
+                    <Fieldset className="fieldset"  legend={idNumReq ? ["Issue Date", <span className='required-text'>*</span>] : "Issue Date"} style={{ marginTop:'30px'}}>
                     <legend htmlFor="issue-date" className="usa-legend">Issue Date{idNumReq && <span className='required-text'>*</span>}</legend>
                         <span className="usa-hint" id="id-issue-date-hint">
                         For example: January 19 2000
@@ -203,8 +203,7 @@ function Identification(props){
 
                     <Grid tablet={{ col: true }}>   
                     <div className={(idNumReq && handleErrors.expire_date) ? 'error-container' : ''}>
-                    <Fieldset className="fieldset">
-                    <legend htmlFor="expire-date" className="usa-legend">Expire Date{idNumReq && <span className='required-text'>*</span>}</legend>
+                    <Fieldset className="fieldset" legend={idNumReq ? ["Expire Date", <span className='required-text'>*</span>] : "Expire Date"} style={{ marginTop:'30px'}}>
                         <span className="usa-hint" id="id-issue-date-hint">
                         For example: January 19 2000
                         </span>
