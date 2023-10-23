@@ -23,3 +23,7 @@ _site
 *.njsproj
 *.sln
 *.sw?
+
+# Ignore Cypress Reports
+/testing/cypress/reports
+/testing/cypress/screenshots

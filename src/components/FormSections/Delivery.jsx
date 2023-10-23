@@ -40,7 +40,7 @@ function Delivery(props) {
 
             <h3>{content.reminder_sub_header2}</h3>
 
-            <strong>{content.reminder_parag2}</strong>
+            <p><strong>{content.reminder_parag2}</strong></p>
             <p>{content.reminder_parag3}</p>
 
             <p>{content.reminder_parag4}</p>
@@ -49,7 +49,7 @@ function Delivery(props) {
                     <li>{content.reminder_parag4_li2}</li>
                 </ul>
 
-            <strong>{usagov_resource_link}</strong>
+            <p><strong>{usagov_resource_link}</strong></p>
         </>
     )
 }
