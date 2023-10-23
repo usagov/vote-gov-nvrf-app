@@ -8,3 +8,7 @@
 .input-example {
     min-height: 154px;
 }
+
+.fieldset {
+    display: contents;
+}

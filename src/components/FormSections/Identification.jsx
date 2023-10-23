@@ -1,4 +1,4 @@
-import { Label, TextInput, Button, Dropdown, Grid } from '@trussworks/react-uswds';
+import { Label, TextInput, Button, Dropdown, Grid, Fieldset } from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import content from "../../data/registration-form.json";
 import { focusNext, restrictLength, restrictType, checkExpiration, checkForErrors } from '../HelperFunctions/ValidateField';
@@ -104,6 +104,7 @@ function Identification(props){
                 <Grid row gap>
                     <Grid tablet={{ col: true }}>   
                     <div className={(idNumReq && handleErrors.issue_date) ? 'error-container' : ''}>
+                    <Fieldset className="fieldset">
                     <legend htmlFor="issue-date" className="usa-legend">Issue Date{idNumReq && <span className='required-text'>*</span>}</legend>
                         <span className="usa-hint" id="id-issue-date-hint">
                         For example: January 19 2000
@@ -196,11 +197,13 @@ function Identification(props){
                         Issue Date must follow the format of January 19 2000.
                         </span>
                     }
+                    </Fieldset>
                     </div>
                     </Grid>
 
                     <Grid tablet={{ col: true }}>   
                     <div className={(idNumReq && handleErrors.expire_date) ? 'error-container' : ''}>
+                    <Fieldset className="fieldset">
                     <legend htmlFor="expire-date" className="usa-legend">Expire Date{idNumReq && <span className='required-text'>*</span>}</legend>
                         <span className="usa-hint" id="id-issue-date-hint">
                         For example: January 19 2000
@@ -293,7 +296,9 @@ function Identification(props){
                         <span id="expire-date-error" role="alert" className='error-text'>
                         Expire Date must follow the format of January 19 2000 and be in the future.
                         </span>
-                    }</div>
+                    }
+                    </Fieldset>
+                    </div>
                     </Grid>
                 </Grid>
                 </>

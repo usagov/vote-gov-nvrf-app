@@ -1,4 +1,4 @@
-import { Label, TextInput, Button, Dropdown,Checkbox, Grid} from '@trussworks/react-uswds';
+import { Label, TextInput, Button, Dropdown,Checkbox, Grid, Fieldset } from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import content from "../../data/registration-form.json";
 import { focusNext, restrictType, restrictLength, checkForErrors } from '../HelperFunctions/ValidateField';
@@ -269,6 +269,7 @@ function PersonalInfo(props){
         {dobVisible && (
         <Grid tablet={{ col: true }}>
             <div className={(dobReq && handleErrors.dob) ? 'error-container' : ''}>
+            <Fieldset className="fieldset">
             <legend htmlFor="date-of-birth" className="usa-legend">Date of Birth{dobReq && <span className='required-text'>*</span>}</legend>
                     <span className="usa-hint" id="date-of-birth-hint">
                     For example: January 19 2000
@@ -361,6 +362,7 @@ function PersonalInfo(props){
                     Date of Birth must follow the format of January 19 2000.
                 </span>
             }
+            </Fieldset>
             </div>
         </Grid>
         )}
@@ -370,6 +372,7 @@ function PersonalInfo(props){
         {telephoneVisible && (
             <Grid tablet={{ col: true }} className="input-example">
                 <div className={(telephoneReq && handleErrors.phone_number) ? 'error-container bottom' : 'bottom'}>
+                <Fieldset className="fieldset">
                     <legend htmlFor="phone-number" className="usa-legend">Phone Number{telephoneReq && <span className='required-text'>*</span>}</legend>
                     <span className="usa-hint" id="date-of-birth-hint">For example: (123) 456-7890</span>
                     <TextInput 
@@ -390,6 +393,7 @@ function PersonalInfo(props){
                             Phone number must be 10 digits.
                         </span>
                     }
+                </Fieldset>
                 </div>
             </Grid>            
         )}
