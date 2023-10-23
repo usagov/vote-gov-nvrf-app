@@ -1,0 +1,29 @@
+
+{
+    "inPerson": "Maine",
+    "online": "Alaska",
+    "notNeeded": "North Dakota",
+    "personalInformationTitle": "Mr.",
+    "personalInformationSuffix": "Jr.",
+    "personalInformationName": "John",
+    "personalInformationMiddle": "Middle Name",
+    "personalInformationLast": "Doe",
+    "personalInformationNumber": "55555555555",
+    "personalInformationNumber2": "(555) 555-5555",
+    "personalInformationMonth": "01 - January",
+    "personalInformationDay": "01",
+    "personalInformationYear": "1990",
+    "addressStreet": "123 Easy Street",
+    "addressTown": "Test Town",
+    "addressZip": "12345",
+    "addressAK": "Alaska",
+    "idMonth": "01 - January",
+    "idDay": "01",
+    "idYear": "1990",
+    "idExpireDay": "02",
+    "idExpireYear": "3000",
+    "ssn": "1234",
+    "ssnValue": "ssn",
+    "politicalParty": "Test"
+}
+
