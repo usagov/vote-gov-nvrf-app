@@ -1,21 +1,14 @@
 import { useState } from 'react';
 import { Button, Icon } from '@trussworks/react-uswds';
 import EligibilityCheckboxes from "./EligibilityCheckboxes";
+import {fetchData} from '../HelperFunctions/JsonHelper.jsx';
 
 function Online(props) {
     const [content, setContent] = useState()
-    const locale = document.documentElement.lang;
     const stateContent = props.stateData;
     const stateLink = props.stateData.election_website_url;
 
-
-    async function fetchData() {
-        const response = await import(`../../data/${locale}/state-selection.json`)
-        console.log(response);
-        setContent(response)
-      }
-
-      fetchData()
+    fetchData("state-selection.json");
 
     return (
         <>
