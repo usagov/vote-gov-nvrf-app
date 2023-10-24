@@ -171,6 +171,7 @@ function Confirmation(props){
 
         <div className="usa-alert usa-alert--info">
             <div className="usa-alert__body">
+            <h4>{content.acknowledge_heading}</h4>
                 <p>{content.acknowledge_text}</p>
             </div>
         </div>
@@ -191,8 +192,8 @@ function Confirmation(props){
             }
         </div>
 
-            <Button onClick={() => {checkboxValid(), hasAcknowledged && GenerateFilledPDF(props.fieldData)}} type="submit">
-                Confirm and Download Form
+            <Button type="submit" onClick={() => checkboxValid()}>
+                Confirm and continue
             </Button>
         </div>}
         </>

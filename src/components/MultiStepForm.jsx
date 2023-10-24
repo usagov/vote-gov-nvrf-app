@@ -7,7 +7,7 @@ import Identification from './FormSections/Identification';
 import Confirmation from './FormSections/Confirmation';
 import Delivery from "./FormSections/Delivery";
 import PoliticalParty from './FormSections/PoliticalParty';
-import { phoneFormat } from './HelperFunctions/ValidateField';
+import { phoneFormat, dayFormat } from './HelperFunctions/ValidateField';
 import {fetchData} from './HelperFunctions/JsonHelper.jsx';
 
 function MultiStepForm(props) {
@@ -27,9 +27,13 @@ function MultiStepForm(props) {
         email_address:'', sms_alert_phone_number:''});
 
     const saveFieldData = (name) => {
+        const day_names = ['date_of_birth_day', 'id_issue_date_day', 'id_expire_date_day' ]
+        
         return (event) => {
         if (name === 'phone_number') {
             setFieldData({ ...fieldData, [name]: phoneFormat(event.target.value) });
+        } else if (day_names.includes(name)) {
+            setFieldData({ ...fieldData, [name]: dayFormat(event.target.value) });
         } else {
             setFieldData({ ...fieldData, [name]: event.target.value });
         }
@@ -39,8 +43,8 @@ function MultiStepForm(props) {
     //Multiple step NVRF controls
     const [step, setStep] = useState(1);
     const handleNext = () => {
-        step != 7 && setStep(step + 1);
-        document.getElementById('scroll-to-top').scrollIntoView();
+        step != 6 && setStep(step + 1);
+        step != 6 && document.getElementById('scroll-to-top').scrollIntoView();
       }
 
     const handlePrev = () => {
@@ -127,7 +131,7 @@ function MultiStepForm(props) {
         <>
         {content && <div>
         <ProgressBar step={step}/>
-        {step != 6 &&
+        {step < 5 &&
         <div>
             <h1>{content.main_heading}: {props.stateData.name}</h1>
             <p>{content.intro_text}</p>

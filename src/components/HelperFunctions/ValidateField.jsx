@@ -41,6 +41,12 @@ export const phoneFormat=(input)=>{//returns (###) ###-####
     return input;
 }
 
+export const dayFormat = (input) => {
+  var date = new Date('Jan' + input + ', 2023');
+  var dateDoubleDigit = String(date.getDate()).padStart(2, '0');
+  return dateDoubleDigit;
+}
+
 export const checkExpiration=(date)=> {
   // format is YYYY-MM-DD
   let expireDate = Date.parse(date);
