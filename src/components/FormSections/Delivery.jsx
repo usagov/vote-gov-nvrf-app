@@ -5,7 +5,19 @@ import GenerateFilledPDF from '../GenerateFilledPDF';
 import reactStringReplace from 'react-string-replace';
 
 function Delivery(props) {
+    // Add A/B Message randomization.
+    const randomProperty = function (obj) {
+        const keys = Object.keys(obj);
+        const key = keys[keys.length * Math.random() << 0];
+        return {
+            "key": key,
+            "value": obj[key]
+        };
+    };
+
     const stateAddress = props.stateData.state_address;
+    const reminderMessage = randomProperty(content.reminder_messages);
+
     const usagov_resource_link = reactStringReplace(
         content.usagov_rescources,
         '%link%',
@@ -13,7 +25,7 @@ function Delivery(props) {
         {content.usagov_resources_link}
     </Link>
     );
-    
+
     return (
         <>
             <h1>{content.main_heading.replace("%state_name%", props.stateData.name)}</h1>
@@ -32,10 +44,11 @@ function Delivery(props) {
             <Button onClick={() => GenerateFilledPDF(props.fieldData)} type="submit">
                 {content.open_btn} <Icon.ArrowForward aria-label="forward arrow icon"/>
             </Button>
-            
+
             <h2>{content.reminder_main_header}</h2>
 
             <h3>{content.reminder_sub_header1}</h3>
+            <p data-message-id={reminderMessage.key}>{reminderMessage.value}</p>
             <p>{content.reminder_parag1}</p>
 
             <h3>{content.reminder_sub_header2}</h3>

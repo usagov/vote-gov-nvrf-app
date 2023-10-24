@@ -4,6 +4,12 @@
     "main_help_text2": "Once printed, be sure to sign it, date it, put it in an envelope with the correct postage, and mail it to your state election office.",
     "mail_to_header": "Mail your %state_name% registration form to:",
     "delivery_text": "You may also deliver the application in person to your local voter registration office.",
+    "reminder_messages": {
+        "A": "Set a reminder in your smart phone to mail your registration.",
+        "B": "Make a post-it note on your computer to remind yourself to mail your registration.",
+        "C": "Tell your friend to bug you until you mail in your registration.",
+        "D": "Email the PDF to yourself with a surly message to stop procrastinating and mail your registration."
+    },
     "reminder_main_header": "A few important notes",
     "reminder_sub_header1": "Don’t forget to mail your form",
     "reminder_parag1": "Take a minute to set a reminder for yourself could help make sure you don’t forget to mail in your form — add it to your calendar or jot it down on a notepad and put it on your fridge to help you remember.",
