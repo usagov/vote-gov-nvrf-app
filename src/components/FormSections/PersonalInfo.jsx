@@ -1,9 +1,12 @@
 import { Label, TextInput, Button, Dropdown,Checkbox, Fieldset} from '@trussworks/react-uswds';
 import React, { useState } from "react";
-import content from "../../data/en/registration-form.json";
+import { fetchData } from '../HelperFunctions/JsonHelper.jsx';
 import { focusNext, restrictType, restrictLength, checkForErrors } from '../HelperFunctions/ValidateField';
 
 function PersonalInfo(props){
+    const [content, setContent] = useState()
+    fetchData("registration-form.json", setContent);
+
     const stateFieldRequirements = props.stateData.fields_required;
     const stateFieldVisible = props.stateData.fields_visible;
     const stateInstructions = props.stateData.state_field_instructions;
@@ -53,6 +56,7 @@ function PersonalInfo(props){
 
     return (
         <>
+        {content && <div>
         <Button
             type="button"
             onClick={props.handlePrev}>
@@ -376,6 +380,7 @@ function PersonalInfo(props){
             <Button type="submit">
                 Continue to address & location
             </Button>
+        </div>}
         </>
     );
 }

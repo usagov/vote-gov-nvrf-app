@@ -2,10 +2,13 @@ import { Form, Label, TextInput, Button, Dropdown,Checkbox, DatePicker } from '@
 import StateSelector from '../StateSelector';
 import React, { useState } from "react";
 import states from "../../data/states.json";
-import content from "../../data/en/registration-form.json";
 import { restrictType, checkForErrors } from '../HelperFunctions/ValidateField';
+import {fetchData} from '../HelperFunctions/JsonHelper.jsx';
 
 function Addresses(props){
+    const [content, setContent] = useState()
+    fetchData("registration-form.json", setContent);
+
     const changeRegistrationVisible = (props.registrationPath === 'update') ? true : false;
     const stateFieldRequirements = props.stateData.fields_required;
     const stateFieldVisible = props.stateData.fields_visible;
@@ -52,6 +55,7 @@ function Addresses(props){
 
     return (
         <>
+        {content && <div>
         <Button
             type="button"
             onClick={props.handlePrev}>
@@ -396,6 +400,7 @@ function Addresses(props){
             <Button type="submit">
                 Continue to identification
             </Button>
+        </div>}
         </>
     );
 }

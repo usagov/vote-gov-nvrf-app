@@ -1,12 +1,15 @@
 import { Alert, Form, Label, TextInput, Button, Dropdown,Checkbox, DatePicker } from '@trussworks/react-uswds';
 import React, { useState } from "react";
-import content from "../../data/en/confirmation.json";
 import "../../styles/pages/Confirmation.css";
 import GenerateFilledPDF from '../GenerateFilledPDF';
+import {fetchData} from '../HelperFunctions/JsonHelper.jsx';
 
 function Confirmation(props){
+    const [content, setContent] = useState()
     const fieldData = props.fieldData;
     const changeRegistrationVisible = (props.registrationPath === 'update') ? true : false;
+
+    fetchData("confirmation.json", setContent);
 
     //field data overrides for confirm page printing only
     const fieldDataOverride_race = (fieldData.race === '') ? "Not required for your state" : fieldData.race;
@@ -32,6 +35,7 @@ function Confirmation(props){
 
     return (
         <>
+        {content && <div>
         <Button
             type="button"
             onClick={props.handlePrev}>
@@ -190,6 +194,7 @@ function Confirmation(props){
             <Button onClick={() => {checkboxValid(), hasAcknowledged && GenerateFilledPDF(props.fieldData)}} type="submit">
                 Confirm and Download Form
             </Button>
+        </div>}
         </>
     );
 }

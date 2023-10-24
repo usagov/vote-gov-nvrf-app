@@ -1,11 +1,17 @@
 import { Button, Grid } from '@trussworks/react-uswds';
-import content from "../data/en/path-selection.json";
+//import content from "../data/en/path-selection.json";
 import CardInfo from "./CardInfo";
+import { useState } from 'react';
+import {fetchData} from './HelperFunctions/JsonHelper.jsx';
+
 
 function PathSelection(props) {
+    const [content, setContent] = useState()
+    fetchData("path-selection.json", setContent);
 
     return (
         <>
+        {content && <div>
         <Button type="button" onClick={props.handlePrev}>
             Back to Eligibility Information
         </Button>
@@ -31,6 +37,7 @@ function PathSelection(props) {
                 onClick={() => {props.getRegPath("new"),  props.handleNext()}}>
             </CardInfo>
         </Grid>
+        </div>}
         </>
     );
 }

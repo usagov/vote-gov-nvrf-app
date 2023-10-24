@@ -1,6 +1,6 @@
-import { useState } from 'react';
 import { Button, Icon } from '@trussworks/react-uswds';
 import EligibilityCheckboxes from "./EligibilityCheckboxes";
+import { useState } from 'react';
 import {fetchData} from '../HelperFunctions/JsonHelper.jsx';
 
 function Online(props) {

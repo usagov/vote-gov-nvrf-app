@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { Label, TextInput, Button } from '@trussworks/react-uswds';
-import content from "../../data/en/registration-form.json";
+import { fetchData } from "../HelperFunctions/JsonHelper.jsx";
 import { restrictType, checkForErrors } from '../HelperFunctions/ValidateField';
 
 function PoliticalParty(props){
+    const [content, setContent] = useState()
+    fetchData("registration-form.json", setContent);
+
     const stateFieldRequirements = props.stateData.fields_required;
     const stateFieldVisible = props.stateData.fields_visible;
     const stateInstructions = props.stateData.state_field_instructions;
@@ -17,6 +20,7 @@ function PoliticalParty(props){
 
     return (
         <>
+        {content && <div>
         <Button
             type="button"
             onClick={props.handlePrev}>
@@ -58,6 +62,7 @@ function PoliticalParty(props){
         <Button type="submit">
             Confirm your information
         </Button>
+        </div>}
         </>
     );
 }

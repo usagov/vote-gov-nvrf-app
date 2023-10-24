@@ -1,13 +1,16 @@
 import EligibilityCheckboxes from "./EligibilityCheckboxes";
-import data from "../../data/en/state-selection.json";
+import { useState } from 'react';
+import {fetchData} from '../HelperFunctions/JsonHelper.jsx';
 
 function ByMail(props) {
-    const content = data;
-    const mailContent = data.by_mail;
+    const [content, setContent] = useState()
     const stateContent = props.stateData;
+
+    fetchData("state-selection.json", setContent);
 
     return (
         <>
+        {content && <div>
         <h1>{content.main_heading.replace("%state_name%", props.stateData.name)}</h1>
         <h2>{content.heading_eligibility}</h2>
         <p>{content.heading_register.replace("%state_name%", props.stateData.name)}</p>
@@ -23,7 +26,7 @@ function ByMail(props) {
         </ul>
 
         <h2>{content.heading_mail}</h2>
-        <p>{mailContent.mail_more_info.replace("%state_name%", props.stateData.name)}</p>
+        <p>{content.by_mail.mail_more_info.replace("%state_name%", props.stateData.name)}</p>
 
         <EligibilityCheckboxes
             handleNext={props.handleNext}
@@ -34,6 +37,7 @@ function ByMail(props) {
             downloadForm={props.stateData.download_form}
             stateName={props.stateData.name}
         />
+        </div>}
         </>
     );
 }

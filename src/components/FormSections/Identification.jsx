@@ -1,9 +1,12 @@
 import { Label, TextInput, Button, Fieldset, Dropdown } from '@trussworks/react-uswds';
 import React, { useState } from "react";
-import content from "../../data/en/registration-form.json";
 import { focusNext, restrictLength, restrictType, checkExpiration, checkForErrors } from '../HelperFunctions/ValidateField';
+import { fetchData } from '../HelperFunctions/JsonHelper.jsx';
 
 function Identification(props){
+    const [content, setContent] = useState()
+    fetchData("registration-form.json", setContent);
+
     const stateFieldRequirements = props.stateData.fields_required;
     const stateFieldVisible = props.stateData.fields_visible;
     const stateInstructions = props.stateData.state_field_instructions;
@@ -42,6 +45,7 @@ function Identification(props){
 
     return (
         <>
+        {content && <div>
         <Button
             type="button"
             onClick={props.handlePrev}>
@@ -329,6 +333,7 @@ function Identification(props){
             <Button type="submit">
                 Continue to political party
             </Button>
+        </div>}
         </>
     );
 }

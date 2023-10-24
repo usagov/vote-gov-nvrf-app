@@ -3,14 +3,17 @@ import React, { useState } from "react";
 import ProgressBar from './ProgressBar';
 import PersonalInfo from "./FormSections/PersonalInfo";
 import Addresses from "./FormSections/Addresses"
-import content from "../data/en/registration-form.json";
 import Identification from './FormSections/Identification';
 import Confirmation from './FormSections/Confirmation';
 import Delivery from "./FormSections/Delivery";
 import PoliticalParty from './FormSections/PoliticalParty';
 import { phoneFormat } from './HelperFunctions/ValidateField';
+import {fetchData} from './HelperFunctions/JsonHelper.jsx';
 
 function MultiStepForm(props) {
+    const [content, setContent] = useState()
+    fetchData("registration-form.json", setContent);
+
     //Field data controls
     const [fieldData, setFieldData] = useState({
         title:'', first_name: '', middle_name: '', last_name: '', suffix:'',
@@ -122,6 +125,7 @@ function MultiStepForm(props) {
 
     return (
         <>
+        {content && <div>
         <ProgressBar step={step}/>
         {step != 6 &&
         <div>
@@ -204,6 +208,7 @@ function MultiStepForm(props) {
                 />
             }
         </Form>
+        </div>}
         </>
     );
 }
