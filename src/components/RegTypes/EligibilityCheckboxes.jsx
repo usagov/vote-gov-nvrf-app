@@ -1,21 +1,15 @@
 import { Button, Link, Fieldset, Checkbox, Label } from '@trussworks/react-uswds';
-import data from "../../data/en/state-selection.json";
 import reactStringReplace from 'react-string-replace';
+import { useState } from 'react';
+import {fetchData} from '../HelperFunctions/JsonHelper.jsx';
 
 function EligibilityCheckboxes(props) {
-    const content = data;
-    const onlineContent = data.online;
-
-    const downloadForm = reactStringReplace(
-        content.download_form,
-        '%link%',
-        (match, i) => <Link key={i} href={props.downloadForm} variant="external" rel="noreferrer" target="_blank">
-        {content.download_form_link.replace("%state_name%", props.stateName)}
-    </Link>
-    );
+    const [content, setContent] = useState()
+    fetchData("state-selection.json", setContent);
 
     return (
         <>
+        {content && <div>
         <form onSubmit={() => {props.handleNext()}}>
         <Fieldset legend="Eligibility" legendStyle="srOnly">
             <div className={props.checkboxes.checkboxesValid ? 'error-container' : ''}>
@@ -56,12 +50,20 @@ function EligibilityCheckboxes(props) {
 
         <div className="button-container" style={{ margin:'20px' }}>
             <Button onClick={() => props.checkBoxValues()} type="submit">
-            {onlineContent.start_button}
+            {content.online.start_button}
             </Button>
         </div>
         </form>
 
-        <p>{downloadForm}</p>
+        <p>
+            {reactStringReplace(
+            content.download_form,
+            '%link%',
+            (match, i) => <Link key={i} href={props.downloadForm} variant="external" rel="noreferrer" target="_blank">
+            {content.download_form_link.replace("%state_name%", props.stateName)}
+            </Link>)}
+        </p>
+        </div>}
         </>
     );
 }
