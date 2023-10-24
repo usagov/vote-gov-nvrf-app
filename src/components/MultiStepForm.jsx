@@ -28,7 +28,7 @@ function MultiStepForm(props) {
 
     const saveFieldData = (name) => {
         const day_names = ['date_of_birth_day', 'id_issue_date_day', 'id_expire_date_day' ]
-        
+
         return (event) => {
         if (name === 'phone_number') {
             setFieldData({ ...fieldData, [name]: phoneFormat(event.target.value) });

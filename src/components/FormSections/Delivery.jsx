@@ -20,23 +20,10 @@ function Delivery(props) {
     };
 
     const stateAddress = props.stateData.state_address;
-    const reminderMessage = randomProperty(content.reminder_messages);
-
-    const usagov_resource_link = reactStringReplace(
-        content.usagov_rescources,
-        '%link%',
-        (match, i) => <Link key={i} href={'https://www.usa.gov/how-to-vote'} variant="external" rel="noreferrer" target="_blank">
-        {content.usagov_resources_link}
-    </Link>
-    );
 
     return (
         <>
         {content && <div>
-            <h1>{content.main_heading}</h1>
-            <p>{content.main_help_text}</p>
-            <h3>{content.reminder_header1}</h3>
-            <p>{content.reminder_text1}</p>
             <h1>{content.main_heading.replace("%state_name%", props.stateData.name)}</h1>
             <p>{content.main_help_text_1}</p>
             <p>{content.main_help_text_2}</p>
@@ -57,7 +44,7 @@ function Delivery(props) {
             <h2>{content.reminder_main_header}</h2>
 
             <h3>{content.reminder_sub_header1}</h3>
-            <p data-message-id={reminderMessage.key}>{reminderMessage.value}</p>
+            <p data-message-id={content.reminder_messages.key}>{content.reminder_messages.value}</p>
             <p>{content.reminder_parag1}</p>
 
             <h3>{content.reminder_sub_header2}</h3>
@@ -71,7 +58,13 @@ function Delivery(props) {
                     <li>{content.reminder_parag4_li2}</li>
                 </ul>
 
-            <p><strong>{usagov_resource_link}</strong></p>
+            <p><strong>{reactStringReplace(
+                content.usagov_rescources,
+                '%link%',
+                (match, i) => <Link key={i} href={'https://www.usa.gov/how-to-vote'} variant="external" rel="noreferrer" target="_blank">
+                {content.usagov_resources_link}
+                </Link>)}
+            </strong></p>
            </div>}
         </>
     )

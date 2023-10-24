@@ -92,18 +92,18 @@ function PersonalInfo(props){
                     <div className={(nameReq && handleErrors.first_name) ? 'error-container' : ''}>
                         <Label htmlFor="first-name">
                             First Name{nameReq && <span className='required-text'>*</span>}
-                        <TextInput 
-                            id="first-name" 
-                            aria-describedby="first-name-error" 
-                            name="first-name" 
-                            type="text" 
-                            autoComplete="off" 
+                        <TextInput
+                            id="first-name"
+                            aria-describedby="first-name-error"
+                            name="first-name"
+                            type="text"
+                            autoComplete="off"
                             required={nameReq}
-                            value={props.fieldData.first_name} 
-                            onChange={props.saveFieldData('first_name')} 
+                            value={props.fieldData.first_name}
+                            onChange={props.saveFieldData('first_name')}
                             onBlur={(e) => setHandleErrors({ ...handleErrors, first_name: checkForErrors(e, 'check value exists') })}
                             />
-                        {(nameReq && handleErrors.first_name) && 
+                        {(nameReq && handleErrors.first_name) &&
                             <span id="first-name-error" role="alert" className='error-text'>
                                 First name must be filled out.
                             </span>
@@ -111,37 +111,37 @@ function PersonalInfo(props){
                         </Label>
                     </div>
                     </Grid>
-                    
+
                     <Grid tablet={{ col: true }}>
                         <Label htmlFor="middle-name">
                             Middle Name(s)
-                        <TextInput 
-                            id="middle-name" 
-                            name="middle-name" 
-                            value={props.fieldData.middle_name} 
-                            onChange={props.saveFieldData('middle_name')} 
+                        <TextInput
+                            id="middle-name"
+                            name="middle-name"
+                            value={props.fieldData.middle_name}
+                            onChange={props.saveFieldData('middle_name')}
                             type="text" autoComplete="off"/>
                         </Label>
                     </Grid>
                 </Grid>
-            
+
                 <Grid row gap>
                     <Grid tablet={{ col: true }}>
                     <div className={(nameReq && handleErrors.last_name) ? 'error-container' : ''}>
                         <Label htmlFor="last-name">
                             Last Name{nameReq && <span className='required-text'>*</span>}
-                        <TextInput 
-                            id="last-name" 
-                            aria-describedby="last-name-error" 
-                            name="last-name" 
-                            type="text" 
-                            autoComplete="off" 
+                        <TextInput
+                            id="last-name"
+                            aria-describedby="last-name-error"
+                            name="last-name"
+                            type="text"
+                            autoComplete="off"
                             required={nameReq}
-                            value={props.fieldData.last_name} 
-                            onChange={props.saveFieldData('last_name')} 
+                            value={props.fieldData.last_name}
+                            onChange={props.saveFieldData('last_name')}
                             onBlur={(e) => setHandleErrors({ ...handleErrors, last_name: checkForErrors(e, 'check value exists') })}
                             />
-                        {(nameReq && handleErrors.last_name) && 
+                        {(nameReq && handleErrors.last_name) &&
                             <span id="last-name-error" role="alert" className='error-text'>
                                 Last name must be filled out.
                             </span>
@@ -176,7 +176,7 @@ function PersonalInfo(props){
             <div value={previousName} onChange={onChangePreviousName}>
                 <h3>Previous Name</h3>
             <Grid row gap>
-                <Grid tablet={{ col: true }}>                
+                <Grid tablet={{ col: true }}>
                 <Label htmlFor="title-select-2">
                     Title
                 <Dropdown id="title-select-2" name="title-select-2" value={props.fieldData.prev_title} onChange={props.saveFieldData('prev_title')} autoComplete="off">
@@ -269,7 +269,7 @@ function PersonalInfo(props){
         )}
 
             <Grid row gap>
-            
+
         {dobVisible && (
         <Grid tablet={{ col: true }}>
             <div className={(dobReq && handleErrors.dob) ? 'error-container' : ''}>
@@ -360,7 +360,7 @@ function PersonalInfo(props){
                             </label>
                         </div>
                     </div>
-            {(dobReq && handleErrors.dob) && 
+            {(dobReq && handleErrors.dob) &&
                 <span id="dob-error" rol="alert" className='error-text'>
                     Date of Birth must follow the format of January 19 2000.
                 </span>
@@ -369,34 +369,34 @@ function PersonalInfo(props){
             </div>
         </Grid>
         )}
-            
 
-            
+
+
         {telephoneVisible && (
             <Grid tablet={{ col: true }} className="input-example">
                 <div className={(telephoneReq && handleErrors.phone_number) ? 'error-container bottom' : 'bottom'}>
                     <Label htmlFor="phone-number">Phone Number{telephoneReq && <span className='required-text'>*</span>}</Label>
                     <span className="usa-hint" id="date-of-birth-hint">For example: (123) 456-7890</span>
-                    <TextInput 
-                        id="phone-number" 
+                    <TextInput
+                        id="phone-number"
                         aria-describedby="phone-number-error"
-                        name="phone-number" 
-                        type="text" 
-                        autoComplete="off" 
+                        name="phone-number"
+                        type="text"
+                        autoComplete="off"
                         required={telephoneReq}
                         maxLength={14}
                         minLength={14}
-                        value={props.fieldData.phone_number} 
-                        onChange={props.saveFieldData('phone_number')} 
+                        value={props.fieldData.phone_number}
+                        onChange={props.saveFieldData('phone_number')}
                         onBlur={(e) => setHandleErrors({ ...handleErrors, phone_number: checkForErrors(e, 'check value length') })}
                     />
-                    {(telephoneReq && handleErrors.phone_number) && 
+                    {(telephoneReq && handleErrors.phone_number) &&
                         <span id="phone-number-error" rol="alert" className='error-text'>
                             Phone number must be 10 digits.
                         </span>
                     }
                 </div>
-            </Grid>            
+            </Grid>
         )}
 
             </Grid>
