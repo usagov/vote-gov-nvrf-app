@@ -20,6 +20,8 @@ const GenerateFilledPDF = async function (formData) {
     })*/
 
     //-------- Get PDF Fields by machine name ------------------
+    const citizen = form.getRadioGroup('citizen');
+    const eighteenYearsOld = form.getRadioGroup('eighteen_years');
     const title =  form.getRadioGroup('salutation');
     const firstName = form.getTextField('first_name');
     const middleNames = form.getTextField('middle_names');
@@ -66,6 +68,11 @@ const GenerateFilledPDF = async function (formData) {
 
     // -----------Fill in the pdf fields--------------------------
     // (1) Personal Information
+    //Citizen and age
+    citizen.select('yes');
+    eighteenYearsOld.select('yes');
+
+    //Current Name
     if(formData.title) {
         title.select(formData.title);
     }
