@@ -16,7 +16,7 @@ function EligibilityCheckboxes(props) {
       
     return (
         <>
-        <form onSubmit={() => {props.handleNext()}}>
+        <form onSubmit={(e) => {e.preventDefault(), props.handleNext()}}>
         <Fieldset legend="Eligibility" legendStyle="srOnly">
             <div className={props.checkboxes.checkboxesValid ? 'error-container' : ''}>
             <Label htmlFor="eligibility-error" id="eligibility-error">

@@ -1,0 +1,14 @@
+@media only screen and (min-width: 640px) {
+    .bottom {
+        position: absolute;
+        bottom: 0;
+    }
+}
+
+.input-example {
+    min-height: 154px;
+}
+
+.fieldset {
+    display: contents;
+}

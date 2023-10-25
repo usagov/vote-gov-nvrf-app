@@ -2,8 +2,6 @@ import { Alert, Form, Label, TextInput, Button, Dropdown,Checkbox, DatePicker } 
 import React, { useState } from "react";
 import content from "../../data/confirmation.json";
 import "../../styles/pages/Confirmation.css";
-import GenerateFilledPDF from '../GenerateFilledPDF';
-
 function Confirmation(props){
     const fieldData = props.fieldData;
     const changeRegistrationVisible = (props.registrationPath === 'update') ? true : false;
@@ -167,6 +165,7 @@ function Confirmation(props){
 
         <div className="usa-alert usa-alert--info">
             <div className="usa-alert__body">
+            <h4>{content.acknowledge_heading}</h4>
                 <p>{content.acknowledge_text}</p>
             </div>
         </div>
@@ -187,8 +186,8 @@ function Confirmation(props){
             }
         </div>
 
-            <Button onClick={() => {checkboxValid(), hasAcknowledged && GenerateFilledPDF(props.fieldData)}} type="submit">
-                Confirm and Download Form
+            <Button type="submit" onClick={() => checkboxValid()}>
+                Confirm and continue
             </Button>
         </>
     );
