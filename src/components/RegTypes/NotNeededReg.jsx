@@ -2,7 +2,7 @@ import {Button, Link, Icon} from '@trussworks/react-uswds';
 import reactStringReplace from 'react-string-replace';
 import data from "../../data/eligibility.json";
 
-function NotNeeded(props) {
+function NotNeededReg(props) {
     const content = data;
     const notNeededContent = data.not_needed;
     const stateLink = props.stateData.election_website_url;
@@ -42,4 +42,4 @@ function NotNeeded(props) {
     );
 }
 
-export default NotNeeded;
+export default NotNeededReg;

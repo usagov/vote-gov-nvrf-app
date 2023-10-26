@@ -2,7 +2,7 @@ import { Button, Icon } from '@trussworks/react-uswds';
 import data from "../../data/eligibility.json";
 import EligibilityCheckboxes from "./EligibilityCheckboxes";
 
-function Online(props) {
+function OnlineReg(props) {
     const content = data;
     const onlineContent = data.online;
     const stateContent = props.stateData;
@@ -52,4 +52,4 @@ function Online(props) {
     );
 }
 
-export default Online;
+export default OnlineReg;
