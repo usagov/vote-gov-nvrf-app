@@ -18,7 +18,7 @@
     "mail_in_link": "Go to %state_name%'s mail-in form",
     "next_btn_online": "Start your online registration on vote.gov",
     "next_btn_bymail": "Start your mail-in registration on vote.gov",
-    "back_btn": "Back to Select your State",
+    "back_btn": "Go back to Select your State",
     "not_needed": {
         "main_heading": "%state_name% does not have voter registration.",
         "more_info": "%link% on %state_name%'s election website.",

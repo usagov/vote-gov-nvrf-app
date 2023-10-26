@@ -7,7 +7,7 @@ function PathSelection(props) {
     return (
         <>
         <Button type="button" onClick={props.handlePrev}>
-            Back to Eligibility Information
+            {content.back_btn}
         </Button>
 
         <h1>{content.heading_one.replace("%state_name%", props.stateData.name)}</h1>
@@ -17,14 +17,14 @@ function PathSelection(props) {
 
         <Grid row gap>
             <CardInfo 
-                header={content.update_btn_header} 
+                header={content.update_btn_header.replace("%state_name%", props.stateData.name)} 
                 paragraph={content.update_btn_paragraph} 
                 button={content.update_btn_txt}
                 role={"button"}
                 onClick={() => {props.getRegPath("update"), props.handleNext()}}>
             </CardInfo>
             <CardInfo 
-                header={content.new_btn_header} 
+                header={content.new_btn_header.replace("%state_name%", props.stateData.name)} 
                 paragraph={content.new_btn_paragraph} 
                 button={content.new_btn_txt}
                 role={"button"}
