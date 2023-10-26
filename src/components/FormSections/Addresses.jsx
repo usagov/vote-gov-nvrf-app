@@ -56,7 +56,7 @@ function Addresses(props){
         <Button
             type="button"
             onClick={props.handlePrev}>
-            Back to personal information
+            {content.back_to_personal_info}
         </Button>
         <h3>{content.address_heading}</h3>
 
@@ -64,8 +64,8 @@ function Addresses(props){
             <div>
                 { changeRegistrationVisible && (
                     <div>
-                        <Checkbox id="prev-res-addr" name="prev-res-addr" checked={props.hasPreviousAddress} onChange={props.onChangePreviousAddressCheckbox} label="I have moved since I last registered in this state." />
-                        <Checkbox id="no-addr" name="no-addr" checked={props.hasNoAddress} onChange={props.hasNoAddressCheckbox} label="I don't have a permanent address where I live." />
+                        <Checkbox id="prev-res-addr" name="prev-res-addr" checked={props.hasPreviousAddress} onChange={props.onChangePreviousAddressCheckbox} label={content.previous_address_checkbox_label} />
+                        <Checkbox id="no-addr" name="no-addr" checked={props.hasNoAddress} onChange={props.hasNoAddressCheckbox} label={content.no_address_checkbox_label} />
                     </div>
                 )}
                 {/******** Current Address Block *********/}
@@ -84,7 +84,7 @@ function Addresses(props){
                         <Grid tablet={{ col: true }}>
                         <div className={(addressReq && handleErrors.street) ? 'error-container' : ''}>
                             <Label htmlFor="street-address">
-                                Street Address{addressReq && <span className='required-text'>*</span>}
+                                {content.street_address_label}{addressReq && <span className='required-text'>*</span>}
                             <TextInput
                                 id="street-address"
                                 aria-describedby="street-address-error"
@@ -98,7 +98,7 @@ function Addresses(props){
                                 />
                             {(addressReq && handleErrors.street) &&
                                 <span id="street-address-error" role="alert" className='error-text'>
-                                    Street Address must be filled out.
+                                    {content.street_address_error}
                                 </span>
                             }
                             </Label>
@@ -109,7 +109,7 @@ function Addresses(props){
                     <Grid row gap>
                         <Grid tablet={{ col: true }}>
                         <Label htmlFor="apt-num">
-                            Apartment or Lot #
+                            {content.apt_label}
                         <TextInput
                             id="apt-num"
                             name="apt-num"
@@ -126,7 +126,7 @@ function Addresses(props){
                         <Grid tablet={{ col: true }}>
                         <div className={(addressReq && handleErrors.city) ? 'error-container bottom' : 'bottom'}>
                             <Label htmlFor="city">
-                                City{addressReq && <span className='required-text'>*</span>}
+                                {content.city_label}{addressReq && <span className='required-text'>*</span>}
                             <TextInput
                                 id="city"
                                 aria-describedby="city-error"
@@ -141,7 +141,7 @@ function Addresses(props){
                                 />
                             {(addressReq && handleErrors.city) &&
                                 <span id="city-error" role="alert" className='error-text'>
-                                    City name must be filled out.
+                                    {content.city_error}
                                 </span>
                             }
                             </Label>
@@ -150,7 +150,7 @@ function Addresses(props){
 
                         <Grid tablet={{ col: true }}>
                         <Label htmlFor="state" className="bottom">
-                            State
+                            {content.state_label}
                         <StateSelector
                             statesList={statesList}
                             state={props.stateData.name}
@@ -164,8 +164,8 @@ function Addresses(props){
 
                         <Grid tablet={{ col: true }}>
                         <div className={(addressReq && handleErrors.zip) ? 'error-container' : ''}>
-                            <Label htmlFor="zip">Zip Code {addressReq && <span className={'required-text'}>*</span>}</Label>
-                            <span className="usa-hint" id="zip-hint">For example: 12345</span>
+                            <Label htmlFor="zip">{content.zipcode_label} {addressReq && <span className={'required-text'}>*</span>}</Label>
+                            <span className="usa-hint" id="zip-hint">{content.zipcode_hint}</span>
                             <TextInput
                                 id="zip"
                                 aria-describedby="zip-error"
@@ -183,7 +183,7 @@ function Addresses(props){
                             />
                             {(addressReq && handleErrors.zip) &&
                                     <span id="zip-error" role="alert" className='error-text'>
-                                        Zip Code must be 5 digits.
+                                        {content.zipcode_error}
                                     </span>
                             }
                         </div>
@@ -210,7 +210,7 @@ function Addresses(props){
                             <Grid tablet={{ col: true }}>
                             <div className={(addressReq && handleErrors.mail_street) ? 'error-container' : ''}>
                             <Label htmlFor="mail-street">
-                                Street Address (or route and box number){addressReq && <span className='required-text'>*</span>}
+                                {content.mail_address_label}{addressReq && <span className='required-text'>*</span>}
                                 <TextInput
                                     id="mail-street"
                                     aria-describedby="mail-street-error"
@@ -224,7 +224,7 @@ function Addresses(props){
                                 />
                                 {(addressReq && handleErrors.mail_street) &&
                                     <span id="mail-street-error" role="alert" className='error-text'>
-                                        Mailing Street Address must be filled out.
+                                        {content.mail_address_error}
                                     </span>
                                 }
                             </Label>
@@ -235,7 +235,7 @@ function Addresses(props){
                         <Grid row gap>
                             <Grid tablet={{ col: true }}>
                             <Label htmlFor="mail-apt">
-                                Apartment or Lot #
+                                {content.apt_label}
                             <TextInput
                                 id="mail-apt"
                                 name="mail-apt"
@@ -252,7 +252,7 @@ function Addresses(props){
                             <Grid tablet={{ col: true }}>
                             <div className={(addressReq && handleErrors.mail_city) ? 'error-container bottom' : 'bottom'}>
                                 <Label htmlFor="mail-city">
-                                    City{addressReq && <span className='required-text'>*</span>}
+                                    {content.city_label}{addressReq && <span className='required-text'>*</span>}
                                 <TextInput
                                     id="mail-city"
                                     aria-describedby="mail-city-error"
@@ -267,7 +267,7 @@ function Addresses(props){
                                 />
                                 {(addressReq && handleErrors.mail_city) &&
                                     <span id="mail-city-error" role="alert" className='error-text'>
-                                        Mailing City name must be filled out.
+                                       {content.city_error}
                                     </span>
                                 }
                                 </Label>
@@ -277,7 +277,7 @@ function Addresses(props){
                             <Grid tablet={{ col: true }}>
                                 <div className={(addressReq && handleErrors.mail_state) ? 'error-container bottom' : 'bottom'}>
                                 <Label htmlFor="mail-state">
-                                    State{addressReq && <span className='required-text'>*</span>}
+                                    {content.state_label}{addressReq && <span className='required-text'>*</span>}
                                 <StateSelector
                                     id="mail-state"
                                     autoComplete="off"
@@ -290,7 +290,7 @@ function Addresses(props){
                                 />
                                 {(addressReq && handleErrors.mail_state) &&
                                     <span id="mail-state-error" role="alert" className='error-text'>
-                                        Mailing State selection must be made.
+                                        {content.mail_state_error}
                                     </span>
                                 }
                                 </Label>
@@ -299,7 +299,7 @@ function Addresses(props){
 
                             <Grid tablet={{ col: true }}>
                             <div className={(addressReq && handleErrors.mail_zip) ? 'error-container' : ''}>
-                                <Label htmlFor="mail-zip">Zip Code {addressReq && <span className={'required-text'}>*</span>}</Label>
+                                <Label htmlFor="mail-zip">{content.zipcode_label} {addressReq && <span className={'required-text'}>*</span>}</Label>
                                 <span className="usa-hint" id="mail-zip-hint">For example: 12345</span>
                                 <TextInput
                                     id="mail-zip"
@@ -318,7 +318,7 @@ function Addresses(props){
                                 />
                                 {(addressReq && handleErrors.mail_zip) &&
                                     <span id="mail-zip-error" role="alert" className='error-text'>
-                                    Mailing Zip Code must be 5 digits.
+                                    {content.zipcode_error}
                                     </span>
                                 }
                             </div>
@@ -337,7 +337,7 @@ function Addresses(props){
                             <Grid tablet={{ col: true }}>
                             <div className={(addressReq && handleErrors.prev_street) ? 'error-container' : ''}>
                                 <Label htmlFor="prev-street">
-                                    Street Address{addressReq && <span className='required-text'>*</span>}
+                                    {content.street_address_label}{addressReq && <span className='required-text'>*</span>}
                                 <TextInput
                                     id="prev-street"
                                     aria-describedby="prev-street-error"
@@ -351,7 +351,7 @@ function Addresses(props){
                                 />
                                 {(addressReq && handleErrors.prev_street) &&
                                     <span id="prev-street-error" role="alert" className='error-text'>
-                                        Previous Street address must be filled out.
+                                        {content.prev_street_address_error}
                                     </span>
                                 }
                                 </Label>
@@ -362,7 +362,7 @@ function Addresses(props){
                         <Grid row gap>
                             <Grid tablet={{ col: true }}>
                             <Label htmlFor="prev-apt">
-                                Apartment or Lot #
+                                {content.apt_label}
                             <TextInput
                                 id="prev-apt"
                                 name="prev-apt"
@@ -394,7 +394,7 @@ function Addresses(props){
                                 />
                                 {(addressReq && handleErrors.prev_city) &&
                                     <span id="prev-city-error" role="alert" className='error-text'>
-                                        Previous City name must be filled out.
+                                        {content.city_error}
                                     </span>
                                 }
                                 </Label>
@@ -404,7 +404,7 @@ function Addresses(props){
                         <Grid tablet={{ col: true }}>
                             <div className={(addressReq && handleErrors.prev_state) ? 'error-container bottom' : 'bottom'}>
                                 <Label htmlFor="prev-state">
-                                    State{addressReq && <span className='required-text'>*</span>}
+                                    {content.state_label}{addressReq && <span className='required-text'>*</span>}
                                 <StateSelector
                                     id="prev-state"
                                     ariaDescribedby="prev-state-error"
@@ -417,7 +417,7 @@ function Addresses(props){
                                 />
                                 {(addressReq && handleErrors.prev_state) &&
                                     <span id="prev-state-error" role="alert" className='error-text'>
-                                        Previous State selection must be made.
+                                        {content.prev_state_error}
                                     </span>
                                 }
                                 </Label>
@@ -426,7 +426,7 @@ function Addresses(props){
 
                             <Grid tablet={{ col: true }}>
                             <div className={(addressReq && handleErrors.prev_zip) ? 'error-container' : ''}>
-                                <Label htmlFor="prev-zip">Zip Code {addressReq && <span className={'required-text'}>*</span>}</Label>
+                                <Label htmlFor="prev-zip">{content.zipcode_label} {addressReq && <span className={'required-text'}>*</span>}</Label>
                                 <span className="usa-hint" id="prev-zip-hint">For example: 12345</span>
                                 <TextInput
                                     id="prev-zip"
@@ -445,7 +445,7 @@ function Addresses(props){
                                 />
                                 {(addressReq && handleErrors.prev_zip) &&
                                     <span id="prev-zip-error" role="alert" className='error-text'>
-                                        Previous Zip Code must be 5 digits.
+                                        {content.zipcode_error}
                                     </span>
                                 }
                             </div>
@@ -457,7 +457,7 @@ function Addresses(props){
             </div>
         )}
             <Button type="submit">
-                Continue to identification
+                {content.continue_identification}
             </Button>
         </>
     );
