@@ -58,13 +58,13 @@ function Addresses(props){
             onClick={props.handlePrev}>
             Back to personal information
         </Button>
-        <h2>{content.address_heading}</h2>
+        <h3>{content.address_heading}</h3>
 
         {addressVisible && (
             <div>
                 { changeRegistrationVisible && (
                     <div>
-                        <Checkbox id="prev-res-addr" name="prev-res-addr" checked={props.hasPreviousAddress} onChange={props.onChangePreviousAddressCheckbox} label="I have moved since I last registered in this state" />
+                        <Checkbox id="prev-res-addr" name="prev-res-addr" checked={props.hasPreviousAddress} onChange={props.onChangePreviousAddressCheckbox} label="I have moved since I last registered in this state." />
                         <Checkbox id="no-addr" name="no-addr" checked={props.hasNoAddress} onChange={props.hasNoAddressCheckbox} label="I don't have a permanent address where I live." />
                     </div>
                 )}
@@ -195,130 +195,136 @@ function Addresses(props){
                 {/******* END BLOCK *********/}
 
                 {/******* MAIL ADDRESS BLOCK ********/}
-                {props.hasMailAddress && (
-                        <div value={props.mailAddress} onChange={props.onChangeMailAddress}>
-                            <h3>{content.mail_address_heading}</h3>
-                            <p>{content.mailing_address_text}</p>
+                {(props.hasMailAddress || props.hasNoAddress) && (
+                    <div value={props.mailAddress} onChange={props.onChangeMailAddress}>
+                        {props.hasNoAddress && (
+                        <div className="usa-alert usa-alert--info">
+                            <div className="usa-alert__body">
+                                <p>{content.mailing_address_text_2}</p>
+                            </div>
+                        </div>)}
+                        <h3>{content.mail_address_heading}</h3>
+                        <p>{content.mailing_address_text}</p>
 
-                            <Grid row gap>
-                                <Grid tablet={{ col: true }}>
-                                <div className={(addressReq && handleErrors.mail_street) ? 'error-container' : ''}>
-                                <Label htmlFor="mail-street">
-                                    Street Address (or route and box number){addressReq && <span className='required-text'>*</span>}
-                                    <TextInput
-                                        id="mail-street"
-                                        aria-describedby="mail-street-error"
-                                        name="mail-street"
-                                        type="text"
-                                        autoComplete="off"
-                                        required={addressReq}
-                                        value={props.fieldData.mail_street_address}
-                                        onChange={props.saveFieldData('mail_street_address')}
-                                        onBlur={(e) => setHandleErrors({ ...handleErrors, mail_street: checkForErrors(e, 'check value exists') })}
-                                    />
-                                    {(addressReq && handleErrors.mail_street) &&
-                                        <span id="mail-street-error" role="alert" className='error-text'>
-                                            Mailing Street Address must be filled out.
-                                        </span>
-                                    }
-                                </Label>
-                                </div>
-                                </Grid>
-                            </Grid>
-
-                            <Grid row gap>
-                                <Grid tablet={{ col: true }}>
-                                <Label htmlFor="mail-apt">
-                                    Apartment or Lot #
+                        <Grid row gap>
+                            <Grid tablet={{ col: true }}>
+                            <div className={(addressReq && handleErrors.mail_street) ? 'error-container' : ''}>
+                            <Label htmlFor="mail-street">
+                                Street Address (or route and box number){addressReq && <span className='required-text'>*</span>}
                                 <TextInput
-                                    id="mail-apt"
-                                    name="mail-apt"
+                                    id="mail-street"
+                                    aria-describedby="mail-street-error"
+                                    name="mail-street"
                                     type="text"
                                     autoComplete="off"
-                                    value={props.fieldData.mail_apt_num}
-                                    onChange={props.saveFieldData('mail_apt_num')}
+                                    required={addressReq}
+                                    value={props.fieldData.mail_street_address}
+                                    onChange={props.saveFieldData('mail_street_address')}
+                                    onBlur={(e) => setHandleErrors({ ...handleErrors, mail_street: checkForErrors(e, 'check value exists') })}
                                 />
+                                {(addressReq && handleErrors.mail_street) &&
+                                    <span id="mail-street-error" role="alert" className='error-text'>
+                                        Mailing Street Address must be filled out.
+                                    </span>
+                                }
+                            </Label>
+                            </div>
+                            </Grid>
+                        </Grid>
+
+                        <Grid row gap>
+                            <Grid tablet={{ col: true }}>
+                            <Label htmlFor="mail-apt">
+                                Apartment or Lot #
+                            <TextInput
+                                id="mail-apt"
+                                name="mail-apt"
+                                type="text"
+                                autoComplete="off"
+                                value={props.fieldData.mail_apt_num}
+                                onChange={props.saveFieldData('mail_apt_num')}
+                            />
+                            </Label>
+                            </Grid>
+                        </Grid>
+
+                        <Grid row gap>
+                            <Grid tablet={{ col: true }}>
+                            <div className={(addressReq && handleErrors.mail_city) ? 'error-container bottom' : 'bottom'}>
+                                <Label htmlFor="mail-city">
+                                    City{addressReq && <span className='required-text'>*</span>}
+                                <TextInput
+                                    id="mail-city"
+                                    aria-describedby="mail-city-error"
+                                    name="mail-city"
+                                    type="text"
+                                    autoComplete="off"
+                                    required={addressReq}
+                                    value={props.fieldData.mail_city}
+                                    onChange={props.saveFieldData('mail_city')}
+                                    onKeyDown={(e) => restrictType(e, 'letters')}
+                                    onBlur={(e) => setHandleErrors({ ...handleErrors, mail_city: checkForErrors(e, 'check value exists') })}
+                                />
+                                {(addressReq && handleErrors.mail_city) &&
+                                    <span id="mail-city-error" role="alert" className='error-text'>
+                                        Mailing City name must be filled out.
+                                    </span>
+                                }
                                 </Label>
-                                </Grid>
+                            </div>
                             </Grid>
 
-                            <Grid row gap>
-                                <Grid tablet={{ col: true }}>
-                                <div className={(addressReq && handleErrors.mail_city) ? 'error-container bottom' : 'bottom'}>
-                                    <Label htmlFor="mail-city">
-                                        City{addressReq && <span className='required-text'>*</span>}
-                                    <TextInput
-                                        id="mail-city"
-                                        aria-describedby="mail-city-error"
-                                        name="mail-city"
-                                        type="text"
-                                        autoComplete="off"
-                                        required={addressReq}
-                                        value={props.fieldData.mail_city}
-                                        onChange={props.saveFieldData('mail_city')}
-                                        onKeyDown={(e) => restrictType(e, 'letters')}
-                                        onBlur={(e) => setHandleErrors({ ...handleErrors, mail_city: checkForErrors(e, 'check value exists') })}
-                                    />
-                                    {(addressReq && handleErrors.mail_city) &&
-                                        <span id="mail-city-error" role="alert" className='error-text'>
-                                            Mailing City name must be filled out.
-                                        </span>
-                                    }
-                                    </Label>
+                            <Grid tablet={{ col: true }}>
+                                <div className={(addressReq && handleErrors.mail_state) ? 'error-container bottom' : 'bottom'}>
+                                <Label htmlFor="mail-state">
+                                    State{addressReq && <span className='required-text'>*</span>}
+                                <StateSelector
+                                    id="mail-state"
+                                    autoComplete="off"
+                                    ariaDescribedBy="mail-state-error"
+                                    required={addressReq}
+                                    statesList={statesList}
+                                    state={props.fieldData.mail_state}
+                                    saveState={props.saveFieldData('mail_state')}
+                                    onBlur={(e) => checkStateValue('mail_state')}
+                                />
+                                {(addressReq && handleErrors.mail_state) &&
+                                    <span id="mail-state-error" role="alert" className='error-text'>
+                                        Mailing State selection must be made.
+                                    </span>
+                                }
+                                </Label>
                                 </div>
-                                </Grid>
-
-                                <Grid tablet={{ col: true }}>
-                                    <div className={(addressReq && handleErrors.mail_state) ? 'error-container bottom' : 'bottom'}>
-                                    <Label htmlFor="mail-state">
-                                        State{addressReq && <span className='required-text'>*</span>}
-                                    <StateSelector
-                                        id="mail-state"
-                                        autoComplete="off"
-                                        ariaDescribedBy="mail-state-error"
-                                        required={addressReq}
-                                        statesList={statesList}
-                                        state={props.fieldData.mail_state}
-                                        saveState={props.saveFieldData('mail_state')}
-                                        onBlur={(e) => checkStateValue('mail_state')}
-                                    />
-                                    {(addressReq && handleErrors.mail_state) &&
-                                        <span id="mail-state-error" role="alert" className='error-text'>
-                                            Mailing State selection must be made.
-                                        </span>
-                                    }
-                                    </Label>
-                                    </div>
-                                </Grid>
-
-                                <Grid tablet={{ col: true }}>
-                                <div className={(addressReq && handleErrors.mail_zip) ? 'error-container' : ''}>
-                                    <Label htmlFor="mail-zip">Zip Code {addressReq && <span className={'required-text'}>*</span>}</Label>
-                                    <span className="usa-hint" id="mail-zip-hint">For example: 12345</span>
-                                    <TextInput
-                                        id="mail-zip"
-                                        aria-describedby="mail-zip-error"
-                                        name="mail-zip"
-                                        value={props.fieldData.mail_zip_code}
-                                        type="text"
-                                        inputMode="numeric"
-                                        autoComplete="off"
-                                        required={addressReq}
-                                        minLength={5}
-                                        maxLength={5}
-                                        onChange={props.saveFieldData('mail_zip_code')}
-                                        onKeyDown={(e) => restrictType(e, 'number')}
-                                        onBlur={(e) => setHandleErrors({ ...handleErrors, mail_zip: checkForErrors(e, 'check value length') })}
-                                    />
-                                    {(addressReq && handleErrors.mail_zip) &&
-                                        <span id="mail-zip-error" role="alert" className='error-text'>
-                                        Mailing Zip Code must be 5 digits.
-                                        </span>
-                                    }
-                                </div>
-                                </Grid>
                             </Grid>
-                        </div>
+
+                            <Grid tablet={{ col: true }}>
+                            <div className={(addressReq && handleErrors.mail_zip) ? 'error-container' : ''}>
+                                <Label htmlFor="mail-zip">Zip Code {addressReq && <span className={'required-text'}>*</span>}</Label>
+                                <span className="usa-hint" id="mail-zip-hint">For example: 12345</span>
+                                <TextInput
+                                    id="mail-zip"
+                                    aria-describedby="mail-zip-error"
+                                    name="mail-zip"
+                                    value={props.fieldData.mail_zip_code}
+                                    type="text"
+                                    inputMode="numeric"
+                                    autoComplete="off"
+                                    required={addressReq}
+                                    minLength={5}
+                                    maxLength={5}
+                                    onChange={props.saveFieldData('mail_zip_code')}
+                                    onKeyDown={(e) => restrictType(e, 'number')}
+                                    onBlur={(e) => setHandleErrors({ ...handleErrors, mail_zip: checkForErrors(e, 'check value length') })}
+                                />
+                                {(addressReq && handleErrors.mail_zip) &&
+                                    <span id="mail-zip-error" role="alert" className='error-text'>
+                                    Mailing Zip Code must be 5 digits.
+                                    </span>
+                                }
+                            </div>
+                            </Grid>
+                        </Grid>
+                    </div>
                 )}
                 {/******* END BLOCK *********/}
 
@@ -326,7 +332,7 @@ function Addresses(props){
                 {props.hasPreviousAddress && (
                     <div value={props.previousAddress} onChange={props.onChangePreviousAddress}>
                         <h3>{content.previous_address_heading}</h3>
-
+                        <p>{content.previous_address_text}</p>
                         <Grid row gap>
                             <Grid tablet={{ col: true }}>
                             <div className={(addressReq && handleErrors.prev_street) ? 'error-container' : ''}>
