@@ -1,5 +1,5 @@
 import { Button, Link, Fieldset, Checkbox, Label } from '@trussworks/react-uswds';
-import data from "../../data/state-selection.json";
+import data from "../../data/eligibility.json";
 import reactStringReplace from 'react-string-replace';
 
 function EligibilityCheckboxes(props) {

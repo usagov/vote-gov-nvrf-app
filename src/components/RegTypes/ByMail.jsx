@@ -1,5 +1,5 @@
 import EligibilityCheckboxes from "./EligibilityCheckboxes";
-import data from "../../data/state-selection.json";
+import data from "../../data/eligibility.json";
 
 function ByMail(props) {
     const content = data;
