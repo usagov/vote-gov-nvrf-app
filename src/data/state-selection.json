@@ -1,31 +1,13 @@
 {
-    "main_heading": "Here's what you need to know about voting in %state_name%",
-    "heading_eligibility": "Eligibility requirements",
-    "heading_register": "To register in %state_name% you must:",
-    "heading_deadlines": "Voter registration deadlines",
-    "heading_mail": "Mail-in registration form",
-    "heading_confirm": "Confirm eligibility",
-    "citizen_required": "I am a U.S. citizen",
-    "age_required": "I will be at least 18 years old by any election",
-    "download_form": "You may also choose to %link% to complete and mail.",
-    "download_form_link": "download %state_name%'s registration form",
-    "online": {
-        "heading_online": "Online voter registration",
-        "mail_more_info": "If you do not have one of these forms of identification, you may fill out the National Voter Registration Form here on Vote.gov, then print and mail in your application.",
-        "start_button": "Start your mail-in registration on Vote.gov"
-    },
-    "by_mail": {
-        "mail_more_info": "Online registration is currently not available. %state_name% residents may fill out the National Voter Registration Form here on Vote.gov, then print and mail in your application.",
-        "start_button": "Start your mail-in registration on Vote.gov"
-    },
-    "not_needed": {
-        "heading_register": "%state_name% does not have voter registration.",
-        "more_info": "%link% on %state_name%'s election website.",
-        "more_info_link": "Learn more about voting",
-        "heading_vote": "Don’t forget to vote!",
-        "text_vote": "Prepare to cast your vote. Explore Vote.gov to learn more about how U.S. elections are run and your voting options. ",
-        "more_button": "Learn more about your voting options",
-        "back_button": "Back to Vote.gov"
-
-    }
+   "main_heading": "Register to vote",
+   "main_parag": "All states except North Dakota require that you register before voting in an election. The process can be a little different for each state. Select your state or territory from the dropdown menu below to see your registration options.",
+   "subheading": "Living outside of the United States?",
+   "parag2": "U.S. citizens living outside the U.S., including U.S. service members and their families, can register to vote and request an absentee ballot by completing the Federal Post Card Application (FPCA). For more information, visit the %link%.",
+   "parag2_link": "Federal Voter Assistance Program",
+   "get_started": "Get started by selecting your state",
+   "dropdown_text": "I live in: ",
+   "back_btn": "Back to Vote.gov",
+   "dropdown_label": "Select your state or territory",
+   "next_btn": "Next",
+   "error_state_dropdown": "State or territory selection must be made."
 }
