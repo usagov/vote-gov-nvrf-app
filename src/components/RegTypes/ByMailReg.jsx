@@ -1,7 +1,7 @@
 import EligibilityCheckboxes from "./EligibilityCheckboxes";
 import data from "../../data/eligibility.json";
 
-function ByMail(props) {
+function ByMailReg(props) {
     const content = data;
     const mailContent = data.by_mail;
     const stateContent = props.stateData;
@@ -38,4 +38,4 @@ function ByMail(props) {
     );
 }
 
-export default ByMail;
+export default ByMailReg;

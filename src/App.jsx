@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import states from "./data/states.json";
 import StateSelection from './components/StateSelection';
 import VotingInfo from './components/VotingInfo';
+import RegistrationOptions from './components/RegistrationOptions';
 import PathSelection from './components/PathSelection';
 import MultiStepForm from './components/MultiStepForm';
 
@@ -37,7 +38,7 @@ function App() {
   };
 
   const handleNext = () => {
-    step != 4 && setStep(step + 1);
+    step != 5 && setStep(step + 1);
     document.getElementById('scroll-to-top').scrollIntoView();
   }
 
@@ -69,7 +70,7 @@ function App() {
   };
 
   const getFormStep = (step) => {
-    formStep === 3 ? null : setFormStep(step + 1);
+    formStep === 4 ? null : setFormStep(step + 1);
   };
 
   return (
@@ -84,16 +85,22 @@ function App() {
           stateData={stateData}
           />}  
         {step === 2 && 
-          <VotingInfo 
-          handleNext={handleNext} 
-          handlePrev={handlePrev}
-          state={selectedState}
-          stateData={stateData}
-          handleCheckbox={handleCheckbox}
-          checkBoxValues={checkBoxValues}
-          checkboxes={checkboxes}
+            <RegistrationOptions
+              handleNext={handleNext}
+              handlePrev={handlePrev}
+              stateData={stateData}
           />}  
-        {step === 3 && 
+          {step === 3 && 
+            <VotingInfo 
+            handleNext={handleNext} 
+            handlePrev={handlePrev}
+            state={selectedState}
+            stateData={stateData}
+            handleCheckbox={handleCheckbox}
+            checkBoxValues={checkBoxValues}
+            checkboxes={checkboxes}
+          />}  
+        {step === 4 && 
           <PathSelection 
           handleNext={handleNext} 
           handlePrev={handlePrev} 
@@ -102,7 +109,7 @@ function App() {
           getRegPath={getRegPath}
           getFormStep={getFormStep}
           />}  
-        {step === 4 && 
+        {step === 5 && 
           <MultiStepForm 
           handleNext={handleNext} 
           handlePrev={handlePrev}

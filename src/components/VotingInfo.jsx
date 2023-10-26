@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@trussworks/react-uswds';
-import ByMail from "./RegTypes/ByMail";
-import Online from "./RegTypes/Online";
-import NotNeeded from "./RegTypes/NotNeeded";
+import ByMailReg from "./RegTypes/ByMailReg";
+import OnlineReg from "./RegTypes/OnlineReg";
+import NotNeededReg from "./RegTypes/NotNeededReg";
 
 function VotingInfo(props) {
     const regType = props.stateData.reg_type;
@@ -13,7 +13,7 @@ function VotingInfo(props) {
             Back to Choose your State
         </Button>
         {regType === 'online' &&
-            <Online
+            <OnlineReg
             state={props.state}
             stateData={props.stateData}
             handleNext={props.handleNext}
@@ -22,7 +22,7 @@ function VotingInfo(props) {
             checkboxes={props.checkboxes}
             />}
         {regType === 'in-person' &&
-            <ByMail
+            <ByMailReg
             state={props.state}
             stateData={props.stateData}
             handleNext={props.handleNext}
@@ -31,7 +31,7 @@ function VotingInfo(props) {
             checkboxes={props.checkboxes}
         />}
         {regType === 'not-needed' &&
-            <NotNeeded
+            <NotNeededReg
             state={props.state}
             stateData={props.stateData}
             handleNext={props.handleNext}/>}
