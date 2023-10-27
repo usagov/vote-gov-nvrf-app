@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@trussworks/react-uswds';
-import ByMailReg from "./RegTypes/ByMailReg";
-import OnlineReg from "./RegTypes/OnlineReg";
-import NotNeededReg from "./RegTypes/NotNeededReg";
+import ByMailReg from "./EligibilityTypes/ByMailReg";
+import OnlineReg from "./EligibilityTypes/OnlineReg";
+import NotNeededReg from "./EligibilityTypes/NotNeededReg";
 
 function Eligibility(props) {
     const regType = props.stateData.reg_type;

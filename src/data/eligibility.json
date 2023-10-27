@@ -7,6 +7,8 @@
     "heading_confirm": "Confirm eligibility",
     "eligibility_check": "I am a U.S. citizen and meet the eligibility requirements listed above.",
     "download_form_link": "download %state_name%'s registration form",
+    "error_message": "Confirm eligibility to continue.",
+    "eligibility_agreement": "If you do not agree with the above statement, do not continue with registration on Vote.gov.",
     "online": {
         "start_button": "Continue with mail-in registration on vote.gov"
     },

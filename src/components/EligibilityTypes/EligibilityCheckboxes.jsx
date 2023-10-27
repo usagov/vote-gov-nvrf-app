@@ -13,7 +13,7 @@ function EligibilityCheckboxes(props) {
         {content.download_form_link.replace("%state_name%", props.stateName)}
     </Link>
     );
-    
+
     return (
         <>
         <form onSubmit={(e) => {e.preventDefault(), props.handleNext()}}>
@@ -36,13 +36,13 @@ function EligibilityCheckboxes(props) {
                 </div>
             {props.checkboxes.checkboxesValid && 
                 <span id="eligibility-error" rol="alert" className='error-text'>
-                    Confirm eligibility to continue.
+                    {content.error_message}
                 </span>
             }  
             </div>
         </Fieldset>
 
-        <p>If you do not agree with the above statement, do not continue with registration on Vote.gov.</p>
+        <p>{content.eligibility_agreement}</p>
 
         <div className="button-container" style={{ margin:'20px' }}>
             <Button onClick={() => props.checkBoxValues()} type="submit">
