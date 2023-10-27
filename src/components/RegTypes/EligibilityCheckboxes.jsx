@@ -13,7 +13,7 @@ function EligibilityCheckboxes(props) {
         {content.download_form_link.replace("%state_name%", props.stateName)}
     </Link>
     );
-      
+    
     return (
         <>
         <form onSubmit={(e) => {e.preventDefault(), props.handleNext()}}>
@@ -24,35 +24,25 @@ function EligibilityCheckboxes(props) {
             </Label>
                 <div>
                     <Checkbox
-                        id="citizen-checkbox"
+                        id="eligibility-checkbox"
                         name="eligibility-checkbox"
-                        value="citizen-checkbox"
-                        label={content.citizen_required}
+                        value="eligibility-checkbox"
+                        label={content.eligibility_check}
                         aria-required="true"
                         required={true}
-                        defaultChecked={props.checkboxes.citizen}
-                        onChange={(e) => props.handleCheckbox(e.target.checked, 'citizen', 0)}
+                        defaultChecked={props.checkboxes.eligibility}
+                        onChange={(e) => props.handleCheckbox(e.target.checked, 'eligibility', 0)}
                     />              
-                    <Checkbox
-                        id="age"
-                        name="eligibility-checkbox"
-                        value="age-checkbox"
-                        label={content.age_required}
-                        aria-required="true"
-                        required={true}
-                        defaultChecked={props.checkboxes.age}
-                        onChange={(e) => props.handleCheckbox(e.target.checked, 'age', 1)}
-                    />
                 </div>
             {props.checkboxes.checkboxesValid && 
                 <span id="eligibility-error" rol="alert" className='error-text'>
-                    Both boxes must be checked to continue.
+                    Confirm eligibility to continue.
                 </span>
             }  
             </div>
         </Fieldset>
 
-        <p>If you did not check all boxes above, do not continue with registration on Vote.gov.</p>
+        <p>If you do not agree with the above statement, do not continue with registration on Vote.gov.</p>
 
         <div className="button-container" style={{ margin:'20px' }}>
             <Button onClick={() => props.checkBoxValues()} type="submit">

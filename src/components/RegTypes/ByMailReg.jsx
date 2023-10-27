@@ -17,13 +17,13 @@ function ByMailReg(props) {
         </ul>
 
         <h2>{content.heading_deadlines}</h2>
+        <p>{content.deadlines_note}</p>
         <ul style={{ listStyleType:'disc' }}>
         {stateContent.deadlines_list.map(
             listItem => <li key={listItem} value={listItem}>{listItem}</li>)}
         </ul>
 
         <h2>{content.heading_mail}</h2>
-        <p>{mailContent.mail_more_info.replace("%state_name%", props.stateData.name)}</p>
 
         <EligibilityCheckboxes
             handleNext={props.handleNext}

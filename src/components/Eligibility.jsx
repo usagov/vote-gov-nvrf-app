@@ -4,13 +4,13 @@ import ByMailReg from "./RegTypes/ByMailReg";
 import OnlineReg from "./RegTypes/OnlineReg";
 import NotNeededReg from "./RegTypes/NotNeededReg";
 
-function VotingInfo(props) {
+function Eligibility(props) {
     const regType = props.stateData.reg_type;
 
     return (
         <>
         <Button type="button" onClick={props.handlePrev}>
-            Back to Choose your State
+        Back to State Registration Options
         </Button>
         {regType === 'online' &&
             <OnlineReg
@@ -39,4 +39,4 @@ function VotingInfo(props) {
     );
 }
 
-export default VotingInfo;
+export default Eligibility;

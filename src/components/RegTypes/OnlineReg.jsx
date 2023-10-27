@@ -20,6 +20,7 @@ function OnlineReg(props) {
         </ul>
 
         <h2>{content.heading_deadlines}</h2>
+        <p>{content.deadlines_note}</p>
         <ul style={{ listStyleType:'disc' }}>
         {stateContent.deadlines_list.map(
             listItem => <li key={listItem} value={listItem}>{listItem}</li>)}
@@ -28,17 +29,7 @@ function OnlineReg(props) {
         <h2>{onlineContent.heading_online}</h2>
         <p>{stateContent.info.online}</p>
 
-        <div className="button-container" style={{ margin:'20px' }}>
-            <a href={stateLink} target="_blank">
-                <Button type="button">
-                    Go to state online registration
-                    <Icon.Launch title="External link opens new window"/>
-                </Button>
-            </a>
-        </div>
-
         <h2>{content.heading_mail}</h2>
-        <p>{onlineContent.mail_more_info}</p>
 
         <EligibilityCheckboxes
             handleNext={props.handleNext}

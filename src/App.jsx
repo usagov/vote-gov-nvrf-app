@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import states from "./data/states.json";
 import StateSelection from './components/StateSelection';
-import VotingInfo from './components/VotingInfo';
+import Eligibility from './components/Eligibility';
 import RegistrationOptions from './components/RegistrationOptions';
 import PathSelection from './components/PathSelection';
 import MultiStepForm from './components/MultiStepForm';
@@ -91,7 +91,7 @@ function App() {
               stateData={stateData}
           />}  
           {step === 3 && 
-            <VotingInfo 
+            <Eligibility 
             handleNext={handleNext} 
             handlePrev={handlePrev}
             state={selectedState}
