@@ -1,5 +1,5 @@
 import { Form } from '@trussworks/react-uswds';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ProgressBar from './ProgressBar';
 import PersonalInfo from "./FormSections/PersonalInfo";
 import Addresses from "./FormSections/Addresses"
@@ -12,7 +12,9 @@ import {fetchData} from './HelperFunctions/JsonHelper.jsx';
 
 function MultiStepForm(props) {
     const [content, setContent] = useState()
-    fetchData("registration-form.json", setContent);
+    useEffect(() => {
+        fetchData("registration-form.json", setContent);
+    }, []);
 
     //Field data controls
     const [fieldData, setFieldData] = useState({

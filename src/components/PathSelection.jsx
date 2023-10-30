@@ -1,13 +1,15 @@
 import { Button, Grid } from '@trussworks/react-uswds';
 //import content from "../data/en/path-selection.json";
 import CardInfo from "./CardInfo";
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import {fetchData} from './HelperFunctions/JsonHelper.jsx';
 
 
 function PathSelection(props) {
     const [content, setContent] = useState()
-    fetchData("path-selection.json", setContent);
+    useEffect(() => {
+        fetchData("path-selection.json", setContent);
+    }, []);
 
     return (
         <>

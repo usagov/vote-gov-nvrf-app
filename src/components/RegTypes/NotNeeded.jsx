@@ -1,11 +1,13 @@
 import {Button, Link, Icon} from '@trussworks/react-uswds';
 import reactStringReplace from 'react-string-replace';
 import { fetchData } from '../HelperFunctions/JsonHelper.jsx';
-import { useState } from 'react';
+import { useState ,useEffect} from 'react';
 
 function NotNeeded(props) {
     const [content, setContent] = useState()
-    fetchData("state-selection.json", setContent);
+    useEffect(() => {
+        fetchData("state-selection.json", setContent);
+    }, []);
     const stateLink = props.stateData.election_website_url;
 
     return (

@@ -1,14 +1,20 @@
 import { Label, TextInput, Button, Checkbox, Grid } from '@trussworks/react-uswds';
 import StateSelector from '../StateSelector';
-import React, { useState } from "react";
-import states from "../../data/states.json";
+import React, { useState, useEffect } from "react";
 import { restrictType, checkForErrors } from '../HelperFunctions/ValidateField';
 import "../../styles/pages/Form.css";
 import {fetchData} from '../HelperFunctions/JsonHelper.jsx';
 
 function Addresses(props){
-    const [content, setContent] = useState()
-    fetchData("registration-form.json", setContent);
+    const [states, setState] = useState('');
+    useEffect(() => {
+        fetchData("states.json", setState);
+    }, []);
+
+    const [content, setContent] = useState('');
+    useEffect(() => {
+        fetchData("registration-form.json", setContent);
+    }, []);
 
     const changeRegistrationVisible = (props.registrationPath === 'update') ? true : false;
     const stateFieldRequirements = props.stateData.fields_required;

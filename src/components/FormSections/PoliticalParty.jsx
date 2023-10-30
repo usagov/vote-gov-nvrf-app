@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Label, TextInput, Button } from '@trussworks/react-uswds';
 import { fetchData } from "../HelperFunctions/JsonHelper.jsx";
 import { restrictType, checkForErrors } from '../HelperFunctions/ValidateField';
 
 function PoliticalParty(props){
     const [content, setContent] = useState()
-    fetchData("registration-form.json", setContent);
+    useEffect(() => {
+        fetchData("registration-form.json", setContent);
+    }, []);
 
     const stateFieldRequirements = props.stateData.fields_required;
     const stateFieldVisible = props.stateData.fields_visible;

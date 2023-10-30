@@ -1,11 +1,13 @@
 import { Button, Link, Fieldset, Checkbox, Label } from '@trussworks/react-uswds';
 import reactStringReplace from 'react-string-replace';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import {fetchData} from '../HelperFunctions/JsonHelper.jsx';
 
 function EligibilityCheckboxes(props) {
     const [content, setContent] = useState()
-    fetchData("state-selection.json", setContent);
+    useEffect(() => {
+        fetchData("state-selection.json", setContent);
+    }, []);
 
     return (
         <>

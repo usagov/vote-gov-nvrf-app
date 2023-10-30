@@ -1,6 +1,6 @@
 import { Button, Icon } from '@trussworks/react-uswds';
 import EligibilityCheckboxes from "./EligibilityCheckboxes";
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import {fetchData} from '../HelperFunctions/JsonHelper.jsx';
 
 function Online(props) {
@@ -8,7 +8,9 @@ function Online(props) {
     const stateContent = props.stateData;
     const stateLink = props.stateData.election_website_url;
 
-    fetchData("state-selection.json", setContent);
+    useEffect(() => {
+        fetchData("state-selection.json", setContent);
+    }, []);
 
     return (
         <>

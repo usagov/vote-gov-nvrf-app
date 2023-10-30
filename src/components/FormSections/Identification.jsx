@@ -1,11 +1,13 @@
 import { Label, TextInput, Button, Dropdown, Grid, Fieldset } from '@trussworks/react-uswds';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { focusNext, restrictLength, restrictType, checkExpiration, checkForErrors } from '../HelperFunctions/ValidateField';
 import { fetchData } from '../HelperFunctions/JsonHelper.jsx';
 
 function Identification(props){
     const [content, setContent] = useState()
-    fetchData("registration-form.json", setContent);
+    useEffect(() => {
+        fetchData("registration-form.json", setContent);
+    }, []);
 
     const stateFieldRequirements = props.stateData.fields_required;
     const stateFieldVisible = props.stateData.fields_visible;

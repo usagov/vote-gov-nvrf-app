@@ -1,13 +1,15 @@
 import { Button, Link, Icon } from '@trussworks/react-uswds';
 import "../../styles/pages/Delivery.css";
 import {fetchData} from '../HelperFunctions/JsonHelper.jsx';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import GenerateFilledPDF from '../GenerateFilledPDF';
 import reactStringReplace from 'react-string-replace';
 
 function Delivery(props) {
     const [content, setContent] = useState()
-    fetchData("delivery.json", setContent);
+    useEffect(() => {
+        fetchData("delivery.json", setContent);
+    }, []);
 
     // Add A/B Message randomization.
     const randomProperty = function (obj) {

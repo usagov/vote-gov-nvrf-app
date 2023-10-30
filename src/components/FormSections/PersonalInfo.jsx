@@ -1,12 +1,14 @@
 import { Label, TextInput, Button, Dropdown,Checkbox, Grid, Fieldset } from '@trussworks/react-uswds';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { fetchData } from '../HelperFunctions/JsonHelper.jsx';
 import { focusNext, restrictType, restrictLength, checkForErrors } from '../HelperFunctions/ValidateField';
 import "../../styles/pages/Form.css";
 
 function PersonalInfo(props){
     const [content, setContent] = useState()
-    fetchData("registration-form.json", setContent);
+    useEffect(() => {
+        fetchData("registration-form.json", setContent);
+    }, []);
 
     const stateFieldRequirements = props.stateData.fields_required;
     const stateFieldVisible = props.stateData.fields_visible;

@@ -1,12 +1,14 @@
 import EligibilityCheckboxes from "./EligibilityCheckboxes";
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import {fetchData} from '../HelperFunctions/JsonHelper.jsx';
 
 function ByMail(props) {
     const [content, setContent] = useState()
     const stateContent = props.stateData;
 
-    fetchData("state-selection.json", setContent);
+    useEffect(() => {
+        fetchData("registration-form.json", setContent);
+    }, []);
 
     return (
         <>

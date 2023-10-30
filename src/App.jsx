@@ -1,11 +1,15 @@
 import { useState, useEffect } from 'react'
-import states from "./data/states.json";
 import StateSelection from './components/StateSelection';
 import VotingInfo from './components/VotingInfo';
 import PathSelection from './components/PathSelection';
 import MultiStepForm from './components/MultiStepForm';
+import {fetchData} from './components/HelperFunctions/JsonHelper.jsx';
 
 function App() {
+  const [states, setState] = useState('');
+  useEffect(() => {
+    fetchData("states.json", setState);
+  }, []);
 
   const [step, setStep] = useState(1);
   const [selectedState, setSelectedState] = useState('');
@@ -15,7 +19,7 @@ function App() {
   const [checkboxes, setCheckboxes] = useState({ citizen: false, age: false, checkboxesValid: null })
   const [boxValues, setBoxValues] = useState([false, false])
 
-  const handleCheckbox = (checked, box, index) => { 
+  const handleCheckbox = (checked, box, index) => {
       let copyValues = [...boxValues];
       copyValues[index] = checked;
       setBoxValues(copyValues)
@@ -65,7 +69,7 @@ function App() {
   }
 
   const getRegPath = (pathSelection) => {
-    setRegistrationPath(pathSelection) 
+    setRegistrationPath(pathSelection)
   };
 
   const getFormStep = (step) => {
@@ -75,36 +79,36 @@ function App() {
   return (
     <>
     <div id="scroll-to-top"></div>
-        {step === 1 && 
-          <StateSelection 
-          handleNext={handleNext} 
+        {step === 1 &&
+          <StateSelection
+          handleNext={handleNext}
           handleSubmit={handleSubmit}
-          getSelectedState={getSelectedState} 
+          getSelectedState={getSelectedState}
           state={selectedState}
           stateData={stateData}
-          />}  
-        {step === 2 && 
-          <VotingInfo 
-          handleNext={handleNext} 
+          />}
+        {step === 2 &&
+          <VotingInfo
+          handleNext={handleNext}
           handlePrev={handlePrev}
           state={selectedState}
           stateData={stateData}
           handleCheckbox={handleCheckbox}
           checkBoxValues={checkBoxValues}
           checkboxes={checkboxes}
-          />}  
-        {step === 3 && 
-          <PathSelection 
-          handleNext={handleNext} 
-          handlePrev={handlePrev} 
+          />}
+        {step === 3 &&
+          <PathSelection
+          handleNext={handleNext}
+          handlePrev={handlePrev}
           stateData={stateData}
           registrationPath={registrationPath}
           getRegPath={getRegPath}
           getFormStep={getFormStep}
-          />}  
-        {step === 4 && 
-          <MultiStepForm 
-          handleNext={handleNext} 
+          />}
+        {step === 4 &&
+          <MultiStepForm
+          handleNext={handleNext}
           handlePrev={handlePrev}
           statesList={statesList}
           state={selectedState}
