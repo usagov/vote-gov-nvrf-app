@@ -1,6 +1,6 @@
 {
     "main_heading": "National Voter Registration Form",
-    "intro_text": "Be sure to review your information carefully before continuing. Once you confirm, you'll be able to print and mail your completed form.",
+    "intro_text": "Reminder: If you close this window, your information will be lost and you will have to restart the process. You will have the opportunity to double check your answers before printing the completed form.",
     "personal_info_heading": "Personal Information",
     "personal_info_text": "If your name has changed since the last time you registered, return to previous step and select \"Update my registration.\"",
     "personal_info_alert_text": "Use the name on your driver's license or ID.",
@@ -48,7 +48,7 @@
     "selector_none": "I do not have a valid ID number",
     "selector_error": "Identification selection must be made from the dropdown.",
     "id_error": "ID number must be filled out.",
-    "id_hint": "For example: January 19 2000",
+    "id_hint": "mm/dd/yyyy",
     "id_issue_date_error": "Issue Date must follow the format of January 19 2000.",
     "id_expire_date_error": "Expire Date must follow the format of January 19 2000 and be in the future.",
     "ssn_hint": "XXXX",
