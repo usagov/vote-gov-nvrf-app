@@ -55,8 +55,8 @@ function Identification(props){
         </div>
         {idNumVisible && (
             <div>
-                <h3>Choose your identification type</h3>
-                <p>Select one option from the dropdown</p>
+                <h3>{content.choose_id_heading}</h3>
+                <p>{content.choose_id_text}</p>
 
                 <div className={(idNumReq && handleErrors.id_selection) ? 'error-container' : ''}>
                 <Dropdown
@@ -67,15 +67,15 @@ function Identification(props){
                 onChange={(e) => props.saveIdType(e)}
                 onBlur={(e) => setHandleErrors({ ...handleErrors, id_selection: checkForErrors(e, 'check value exists') })}
                 >
-                    <option key="default" value="">Select Identification</option>
-                    <option key="driver-id-num" value="driver-id-num">Driver's License Number</option>
-                    <option key="state-id-num" value="state-id-num">State Identification Number</option>
-                    <option key="ssn" value="ssn">Social Security Number (last 4 digits)</option>
-                    <option key="id-none" value="none">I do not have a valid ID number</option>
+                    <option key="default" value="">{content.selector_default}</option>
+                    <option key="driver-id-num" value="driver-id-num">{content.selector_driver_id}</option>
+                    <option key="state-id-num" value="state-id-num">{content.selector_state_id}</option>
+                    <option key="ssn" value="ssn">{content.selector_ssn}</option>
+                    <option key="id-none" value="none">{content.selector_none}</option>
                 </Dropdown>
                 {(idNumReq && handleErrors.id_selection) &&
                     <span id="id-num-dropdown-error" role="alert" className='error-text'>
-                        Identification selection must be made from the dropdown.
+                        {content.selector_error}
                     </span>
                 }
                 </div>
@@ -85,7 +85,7 @@ function Identification(props){
                 <div className={(idNumReq && handleErrors.id_number) ? 'error-container' : ''}>
                     {(props.idType === 'driver-id-num') &&
 
-                        <Label htmlFor="state-id-num-error">Driver's License Number{idNumReq && <span className='required-text'>*</span>}
+                        <Label htmlFor="state-id-num-error">{content.selector_driver_id}{idNumReq && <span className='required-text'>*</span>}
                         <TextInput
                         id="driver-id-num"
                         name="driver-id-num"
@@ -98,14 +98,14 @@ function Identification(props){
                         />
                         {(idNumReq && handleErrors.id_number) &&
                             <span id="state-id-num-error" role="alert" className='error-text'>
-                                ID number must be filled out.
+                                {content.id_error}
                             </span>
                         }
                         </Label>
                     }
                     {(props.idType === 'state-id-num') &&
 
-                        <Label htmlFor="state-id-num-error">State Non-Driver Identification Number{idNumReq && <span className='required-text'>*</span>}
+                        <Label htmlFor="state-id-num-error">{content.selector_state_id}{idNumReq && <span className='required-text'>*</span>}
                         <TextInput
                         id="driver-id-num"
                         name="driver-id-num"
@@ -118,7 +118,7 @@ function Identification(props){
                         />
                         {(idNumReq && handleErrors.id_number) &&
                             <span id="state-id-num-error" role="alert" className='error-text'>
-                                ID number must be filled out.
+                                {content.id_error}
                             </span>
                         }
                         </Label>
@@ -130,7 +130,7 @@ function Identification(props){
                     <div className={(idNumReq && handleErrors.issue_date) ? 'error-container' : ''}>
                     <Fieldset className="fieldset"  legend={idNumReq ? ["Issue Date", <span className='required-text'>*</span>] : "Issue Date"} style={{ marginTop:'30px'}}>
                         <span className="usa-hint" id="id-issue-date-hint">
-                        For example: January 19 2000
+                        {content.id_hint}
                         </span>
                         <div
                             id="id-issue-date"
@@ -217,7 +217,7 @@ function Identification(props){
                         </div>
                     {(idNumReq && handleErrors.issue_date) &&
                         <span id="issue-date-error" role="alert" className='error-text'>
-                        Issue Date must follow the format of January 19 2000.
+                        {content.id_issue_date_error}
                         </span>
                     }
                     </Fieldset>
@@ -228,7 +228,7 @@ function Identification(props){
                     <div className={(idNumReq && handleErrors.expire_date) ? 'error-container' : ''}>
                     <Fieldset className="fieldset" legend={idNumReq ? ["Expire Date", <span className='required-text'>*</span>] : "Expire Date"} style={{ marginTop:'30px'}}>
                         <span className="usa-hint" id="id-issue-date-hint">
-                        For example: January 19 2000
+                        {content.id_hint}
                         </span>
                         <div
                             id="id-expire-date"
@@ -316,7 +316,7 @@ function Identification(props){
                         </div>
                     {(idNumReq && handleErrors.expire_date) &&
                         <span id="expire-date-error" role="alert" className='error-text'>
-                        Expire Date must follow the format of January 19 2000 and be in the future.
+                        {content.id_expire_date_error}
                         </span>
                     }
                     </Fieldset>
@@ -330,7 +330,8 @@ function Identification(props){
 
                 {props.idType === 'ssn' &&
                 <div className={(idNumReq && handleErrors.id_ssn) ? 'error-container' : ''}>
-                <Label htmlFor="ssn-input-error">Social Security Number (last 4 digits){idNumReq && <span className='required-text'>*</span>}
+                <Label htmlFor="ssn-input-error">{content.selector_ssn}{idNumReq && <span className='required-text'>*</span>}</Label>
+                <span className="usa-hint" id="ssn-hint">{content.ssn_hint}</span>
                 <TextInput
                     id="ssn-input"
                     name="ssn-input"
@@ -347,13 +348,12 @@ function Identification(props){
                     />
                     {(idNumReq && handleErrors.id_ssn) &&
                     <span id="ssn-input-error" role="alert" className='error-text'>
-                        Social Security Number must be 4 digits.
+                        {content.ssn_error}
                     </span>
                     }
-                    </Label>
                 </div>}
 
-                {props.idType === 'none' && <p>This option will print "none" on the PDF.</p>}
+                {props.idType === 'none' && <p>{content.id_none_text}</p>}
 
             </div>
 
