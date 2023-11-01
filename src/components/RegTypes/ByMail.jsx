@@ -7,7 +7,7 @@ function ByMail(props) {
     const stateContent = props.stateData;
 
     useEffect(() => {
-        fetchData("registration-form.json", setContent);
+        fetchData("state-selection.json", setContent);
     }, []);
 
     return (
