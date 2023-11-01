@@ -3,7 +3,6 @@
         "name": "Alaska",
         "abbreviation": "ak",
         "reg_type": "online",
-        "eligibility_requirements": ["citizen", "age"],
         "election_website_url": "https://www.elections.alaska.gov/",
         "registration_url": "https://voterregistration.alaska.gov/?ref=voteusa_en",
         "download_form": "https://www.elections.alaska.gov/doc/forms/C03.pdf",
@@ -31,12 +30,9 @@
             "race": false,
             "acknowledgement": true
         },
-        "info": {
-            "online": "Alaska residents that meet the eligibility requirements listed above may be able to register online. You must have a valid Alaska driver's license or state ID card and the information you enter when registering must match the information on your Division of Motor Vehicles (DMV) record. If you do not have a valid Alaska driver's license or state ID (identification), or your information cannot be validated, you may select to register using a paper registration form."
-        },
+
         "eligibility_list": ["be a citizen of the United States", "be at least 18 years old within 90 days of completing this registration", "be a resident of Alaska", "not be a convicted felon (unless unconditionally discharged)", "not be registered to vote in another State"],
-        "deadlines_list": ["Online registration deadline: 30 days before Election Day", "Register by mail deadline: Must be postmarked 30 days before Election Day", "In person registration deadline: 30 days before Election Day"],
-        "online_info": "Alaska residents that meet the eligibility requirements listed above may be able to register online. You must have a valid Alaska driver's license or state ID card and the information you enter when registering must match the information on your Division of Motor Vehicles (DMV) record. If you do not have a valid Alaska driver's license or state ID (identification), or your information cannot be validated, you may select to register using a paper registration form.",
+        "deadlines_list": ["Must be postmarked 30 days before Election Day"],
         "state_field_instructions":
         {
             "ID_num_text": "You must provide one of the following identification numbers; Alaska Driver's License or Alaska State Identification Card Number. If you do not have an Alaska Driver's License or Alaska State Identification Card, enter the last four digits of your Social Security Number. \n\nIf you do not have any of these identification numbers, indicate that below. A unique identifying number will be assigned to you for voter registration purposes. This information is kept confidential. Having this information assists in maintaining your voter record and may assist in verifying your identity (Title 15 of the Alaska Statutes).",
@@ -54,7 +50,6 @@
         "name": "Maine",
         "abbreviation": "me",
         "reg_type": "in-person",
-        "eligibility_requirements": ["citizen", "age"],
         "election_website_url": "https://www.maine.gov/sos/cec/elec/",
         "registration_url": "https://www.maine.gov/sos/cec/elec/voter-info/voterguide.html?ref=voteusa_en",
         "download_form": "https://www.maine.gov/sos/cec/elec/upcoming/pdf/voterregcard20.pdf",
@@ -83,8 +78,7 @@
             "acknowledgement": true
         },
         "eligibility_list": ["be a citizen of the United States", "be a resident of Maine and the municipality in which you want to vote", "be at least 17 years old (you must be 18 years old to vote)"],
-        "deadlines_list": ["Register by mail deadline: Must be received 21 days before Election Day", "In person registration deadline: Available up to and including on Election Day"
-        ],
+        "deadlines_list": ["Must be postmarked 21 days before Election Day"],
         "state_field_instructions":
         {
             "ID_num_text": "You must list your valid Maine driver's license number. If you don't have a valid Maine driver's license, then you must provide the last four digits of your Social Security Number. Voters who don't have either of these forms of ID should check this box. ",

@@ -1,31 +1,13 @@
 {
-    "main_heading": "Here's what you need to know about voting in %state_name%",
+    "main_heading": "Here’s what you need to know about registering to vote in %state_name%",
     "heading_eligibility": "Eligibility requirements",
     "heading_register": "To register in %state_name% you must:",
-    "heading_deadlines": "Voter registration deadlines",
-    "heading_mail": "Mail-in registration form",
+    "heading_deadlines": "Mail-in registration deadline",
+    "deadlines_note": "Please note the deadline for mailing in your form.",
     "heading_confirm": "Confirm eligibility",
-    "citizen_required": "I am a U.S. citizen",
-    "age_required": "I will be at least 18 years old by any election",
-    "download_form": "You may also choose to %link% to complete and mail.",
+    "eligibility_check": "I am a U.S. citizen and meet the eligibility requirements listed above.",
     "download_form_link": "download %state_name%'s registration form",
-    "online": {
-        "heading_online": "Online voter registration",
-        "mail_more_info": "If you do not have one of these forms of identification, you may fill out the National Voter Registration Form here on Vote.gov, then print and mail in your application.",
-        "start_button": "Start your mail-in registration on Vote.gov"
-    },
-    "by_mail": {
-        "mail_more_info": "Online registration is currently not available. %state_name% residents may fill out the National Voter Registration Form here on Vote.gov, then print and mail in your application.",
-        "start_button": "Start your mail-in registration on Vote.gov"
-    },
-    "not_needed": {
-        "heading_register": "%state_name% does not have voter registration.",
-        "more_info": "%link% on %state_name%'s election website.",
-        "more_info_link": "Learn more about voting",
-        "heading_vote": "Don’t forget to vote!",
-        "text_vote": "Prepare to cast your vote. Explore Vote.gov to learn more about how U.S. elections are run and your voting options. ",
-        "more_button": "Learn more about your voting options",
-        "back_button": "Back to Vote.gov"
-
-    }
+    "error_message": "Confirm eligibility to continue.",
+    "eligibility_agreement": "If you do not agree with the above statement, do not continue with registration on Vote.gov.",
+    "start_button": "Continue with mail-in registration on vote.gov"
 }
