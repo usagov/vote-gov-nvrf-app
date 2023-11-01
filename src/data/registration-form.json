@@ -1,6 +1,6 @@
 {
     "main_heading": "National Voter Registration Form",
-    "intro_text": "Be sure to review your information carefully before continuing. Once you confirm, you'll be able to print and mail your completed form.",
+    "intro_text": "Reminder: If you close this window, your information will be lost and you will have to restart the process. You will have the opportunity to double check your answers before printing the completed form.",
     "personal_info_heading": "Personal Information",
     "personal_info_text": "If your name has changed since the last time you registered, return to previous step and select \"Update my registration.\"",
     "personal_info_alert_text": "Use the name on your driver's license or ID.",
@@ -17,6 +17,8 @@
     "previous_address_checkbox_label": "I have moved since I last registered in this state.",
     "no_address_checkbox_label": "I don't have a permanent address where I live.",
     "id_number_text": "Federal law requires that states collect from each registrant an identification number. If you have neither a drivers license nor a social security number, a number will be assigned to you by your state.",
+    "driver-id-label": "State Driver's License Number",
+    "non-driver-id-label": "State Driver's License Number",
     "name_text": "Do not use nicknames or initials.",
     "party_text": "",
     "race_text": "A few States ask for your race or ethnic group, in order to administer the Federal Voting Rights Act.",
@@ -36,5 +38,20 @@
     "prev_street_address_error": "Previous Street address must be filled out.",
     "prev_state_error": "Previous State selection must be made.",
     "continue_identification": "Continue to identification",
-    "back_to_personal_info": "Back to personal information"
+    "back_to_personal_info": "Back to personal information",
+    "choose_id_heading": "Choose your identification type",
+    "choose_id_text": "Select one option from the dropdown",
+    "selector_default": "Select Identification",
+    "selector_driver_id": "State Driver's License Number",
+    "selector_state_id": "State Identification Number",
+    "selector_ssn": "Social Security Number",
+    "selector_none": "I do not have a valid ID number",
+    "selector_error": "Identification selection must be made from the dropdown.",
+    "id_error": "ID number must be filled out.",
+    "id_hint": "mm/dd/yyyy",
+    "id_issue_date_error": "Issue Date must follow the format of January 19 2000.",
+    "id_expire_date_error": "Expire Date must follow the format of January 19 2000 and be in the future.",
+    "ssn_hint": "XXXX",
+    "ssn_error": "Social Security Number must be 4 digits.",
+    "id_none_text": "\"None\" will appear on your completed form."
 }
