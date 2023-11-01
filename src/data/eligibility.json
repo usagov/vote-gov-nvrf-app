@@ -9,20 +9,5 @@
     "download_form_link": "download %state_name%'s registration form",
     "error_message": "Confirm eligibility to continue.",
     "eligibility_agreement": "If you do not agree with the above statement, do not continue with registration on Vote.gov.",
-    "online": {
-        "start_button": "Continue with mail-in registration on vote.gov"
-    },
-    "by_mail": {
-        "start_button": "Continue with mail-in registration on vote.gov"
-    },
-    "not_needed": {
-        "heading_register": "%state_name% does not have voter registration.",
-        "more_info": "%link% on %state_name%'s election website.",
-        "more_info_link": "Learn more about voting",
-        "heading_vote": "Don’t forget to vote!",
-        "text_vote": "Prepare to cast your vote. Explore Vote.gov to learn more about how U.S. elections are run and your voting options. ",
-        "more_button": "Learn more about your voting options",
-        "back_button": "Back to Vote.gov"
-
-    }
+    "start_button": "Continue with mail-in registration on vote.gov"
 }
