@@ -65,9 +65,9 @@ function Addresses(props){
                 { changeRegistrationVisible && (
                     <div>
                         <Checkbox id="prev-res-addr" name="prev-res-addr" checked={props.hasPreviousAddress} onChange={props.onChangePreviousAddressCheckbox} label={content.previous_address_checkbox_label} />
-                        <Checkbox id="no-addr" name="no-addr" checked={props.hasNoAddress} onChange={props.hasNoAddressCheckbox} label={content.no_address_checkbox_label} />
                     </div>
                 )}
+                <Checkbox id="no-addr" name="no-addr" checked={props.hasNoAddress} onChange={props.hasNoAddressCheckbox} label={content.no_address_checkbox_label} />
                 {/******** Current Address Block *********/}
                 { !props.hasNoAddress && (<div>
                     <div className="usa-alert usa-alert--info">
