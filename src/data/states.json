@@ -30,9 +30,7 @@
             "race": false,
             "acknowledgement": true
         },
-        "info": {
 
-        },
         "eligibility_list": ["be a citizen of the United States", "be at least 18 years old within 90 days of completing this registration", "be a resident of Alaska", "not be a convicted felon (unless unconditionally discharged)", "not be registered to vote in another State"],
         "deadlines_list": ["Must be postmarked 30 days before Election Day"],
         "state_field_instructions":
