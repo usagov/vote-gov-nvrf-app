@@ -72,6 +72,12 @@ function MultiStepForm(props) {
     }
 
     //Form Sections controls//
+        //Personal Info
+    const [previousName, setPreviousName] = useState("");
+    const onChangePreviousName = (e) => {
+        setPreviousName(e.target.value);
+    }
+
         //Addresses
     const [hasNoAddress, setHasNoAddress] = useState(false);
     const hasNoAddressCheckbox = (e) => {
@@ -130,7 +136,7 @@ function MultiStepForm(props) {
         {step < 5 &&
         <div>
             <h1>{content.main_heading}: {props.stateData.name}</h1>
-            <p>{content.intro_text}</p>
+            <p><strong>{content.reminder}</strong>{content.reminder_text}</p>
         </div>
         }
 
@@ -142,6 +148,8 @@ function MultiStepForm(props) {
                 fieldData={fieldData}
                 saveFieldData = {saveFieldData}
                 registrationPath={props.registrationPath}
+                previousName={setPreviousName}
+                onChangePreviousName={onChangePreviousName}
                 handlePrev={props.handlePrev}
                 />
             }
