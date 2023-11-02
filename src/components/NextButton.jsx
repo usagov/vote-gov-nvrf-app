@@ -1,10 +1,10 @@
-import { Button } from '@trussworks/react-uswds';
+import { Button, Icon } from '@trussworks/react-uswds';
 
 function NextButton(props) {
 
     return (
         <>
-        <Button type={props.type} onClick={props.onClick}>{props.text}</Button>
+        <Button className="next-button" type={props.type} onClick={props.onClick}>{props.text} <Icon.ArrowForward aria-label="forward arrow icon"/></Button>
         </>
     );
 }

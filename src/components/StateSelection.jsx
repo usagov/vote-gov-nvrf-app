@@ -29,7 +29,6 @@ function StateSelection(props) {
         <h3>{content.subheading}</h3>
         <p>{content.parag2.replace("%link%", content.parag2_link)}</p>
         
-        <hr />
         <h2>{content.get_started}</h2>
         
         <form onSubmit={(e) => {props.handleSubmit(e), props.handleNext()}}>

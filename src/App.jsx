@@ -75,6 +75,7 @@ function App() {
 
   return (
     <>
+    <section className="usa-prose">
     <div id="scroll-to-top"></div>
         {step === 1 && 
           <StateSelection 
@@ -119,6 +120,7 @@ function App() {
           registrationPath={registrationPath}
           getFormStep={getFormStep}
           />}
+        </section>
     </>
   )
 }

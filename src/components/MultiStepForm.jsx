@@ -174,7 +174,6 @@ function MultiStepForm(props) {
 
     return (
         <>
-        {/* go back on step one exits form to last step */}
         <BackButton type={'button'} onClick={handlePrev} text={backButtonText(step)}/>
       
         <ProgressBar step={step}/>

@@ -1,4 +1,4 @@
-import { Button } from '@trussworks/react-uswds';
+import { Button, Icon } from '@trussworks/react-uswds';
 
 function BackButton(props) {
 
@@ -7,15 +7,15 @@ function BackButton(props) {
             {props.type === 'link' ? 
             <>
             <a href="https://vote.gov">
-                <Button type="button" onClick={props.onClick}>
-                    {props.text}
+                <Button className="back-button" type="button" onClick={props.onClick} outline>
+                <Icon.ArrowBack aria-label="back arrow icon"/> {props.text}
                 </Button>
             </a>
             </>
                 :
             <>
-            <Button type={props.type} onClick={props.onClick}>
-                    {props.text}
+            <Button className="back-button" type={props.type} onClick={props.onClick} outline>
+                <Icon.ArrowBack aria-label="back arrow icon"/> {props.text}
             </Button>
             </>
             }
