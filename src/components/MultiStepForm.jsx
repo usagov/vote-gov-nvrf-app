@@ -47,19 +47,15 @@ function MultiStepForm(props) {
       }
 
     const handlePrev = () => {
+        console.log('click handleprev', step)
         step != 1 && setStep(step - 1);
         document.getElementById('scroll-to-top').scrollIntoView();
+
+        step === 1 && props.handlePrev();
     }
 
     const handleSubmit = (e) => {
         e.preventDefault(e);
-    }
-
-    const handleGoBackSteps = (numSteps) => {
-        return () => {
-            step != 1 && setStep(step - numSteps);
-            document.getElementById('scroll-to-top').scrollIntoView();
-        }
     }
 
     //Email and Print controls
@@ -178,6 +174,7 @@ function MultiStepForm(props) {
 
     return (
         <>
+        {/* go back on step one exits form to last step */}
         <BackButton type={'button'} onClick={handlePrev} text={backButtonText(step)}/>
       
         <ProgressBar step={step}/>
