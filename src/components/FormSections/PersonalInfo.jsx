@@ -43,12 +43,6 @@ function PersonalInfo(props){
 
     return (
         <>
-        <Button
-            type="button"
-            onClick={props.handlePrev}>
-            Back to registration options
-        </Button>
-
         <h2>{content.personal_info_heading}</h2>
 
         {changeRegistrationVisible && (
@@ -400,10 +394,6 @@ function PersonalInfo(props){
         </Grid>
         </>
         )}
-            
-            <Button type="submit">
-                Continue to address & location
-            </Button> 
         </>
     );
 }

@@ -4,15 +4,15 @@ import Online from "./RegType/Online";
 import NotNeeded from "./RegType/NotNeeded";
 import content from "../data/registration-options.json";
 import ".././styles/pages/RegistrationOptions.css";
+import BackButton from './BackButton';
 
 function RegistrationOptions(props) {
     const regType = props.stateData.reg_type;
 
     return (
         <>
-        <Button type="button" onClick={props.handlePrev}>
-            {content.back_btn}
-        </Button>
+        <BackButton type={'button'} onClick={props.handlePrev} text={'Go back to select your state'} />
+        
         {regType === 'online' && 
         <Online 
             content={content} 

@@ -5,7 +5,6 @@ import Eligibility from './components/Eligibility';
 import RegistrationOptions from './components/RegistrationOptions';
 import PathSelection from './components/PathSelection';
 import MultiStepForm from './components/MultiStepForm';
-import NavButton from './components/NavButton';
 
 function App() {
 
@@ -77,12 +76,6 @@ function App() {
   return (
     <>
     <div id="scroll-to-top"></div>
-    new button:
-    {step != 5 && <NavButton
-      direction={"back"}
-      inForm={false}
-      step={step}
-    />}
         {step === 1 && 
           <StateSelection 
           handleNext={handleNext} 
@@ -126,12 +119,6 @@ function App() {
           registrationPath={registrationPath}
           getFormStep={getFormStep}
           />}
-        app: 
-      {step != 5 && 
-      <NavButton
-      direction={"next"}
-      inForm={false}
-      step={step}/>}
     </>
   )
 }

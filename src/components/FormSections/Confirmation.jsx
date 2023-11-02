@@ -16,26 +16,8 @@ function Confirmation(props){
     const fieldDataOverride_id_issue_date = (fieldData.id_issue_date_month === '') ? "" : `${fieldData.id_issue_date_month}/${fieldData.id_issue_date_day}/${fieldData.id_issue_date_year}`;
     const fieldDataOverride_id_expire_date = (fieldData.id_expire_date_month === '') ? "" : `${fieldData.id_expire_date_month}/${fieldData.id_expire_date_day}/${fieldData.id_expire_date_year}`;
 
-    //Acknowledgment field controls
-    const [hasAcknowledged, setHasAcknowledged] = useState(null);
-    const [error, setError] = useState(null)
-    const acknowledgeCheckbox = (checkStatus) => {
-        setHasAcknowledged(checkStatus);
-        setError(!checkStatus);
-    }
-
-    const checkboxValid = () => {
-        (hasAcknowledged === null) && setError(true);
-    }
-
     return (
         <>
-        <Button
-            type="button"
-            onClick={props.handlePrev}>
-            Edit registration information
-        </Button>
-
         <div className="confirm-info">
         <h2>{content.confirmation_heading}</h2>
         <p>{content.confirmation_text}</p>
@@ -170,25 +152,21 @@ function Confirmation(props){
             </div>
         </div>
 
-        <div className={error ? 'error-container' : ''}>
+        <div className={props.error ? 'error-container' : ''}>
             <Checkbox
                 id="acknowledge-check"
                 name="acknowledge-check"
                 required
-                defaultChecked={hasAcknowledged}
+                defaultChecked={props.hasAcknowledged}
                 label="I can confirm my information is correct to the best of my knowledge."
-                onChange={(e) => acknowledgeCheckbox(e.target.checked)}
+                onChange={(e) => props.acknowledgeCheckbox(e.target.checked)}
                 />
-            {error &&
+            {props.error &&
                 <span id="first-name-error" role="alert" className='error-text'>
                     Checkbox must be checked to continue.
                 </span>
             }
         </div>
-
-            <Button type="submit" onClick={() => checkboxValid()}>
-                Confirm and continue
-            </Button>
         </>
     );
 }

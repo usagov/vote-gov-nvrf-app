@@ -4,6 +4,8 @@ import states from "../data/states.json";
 import { checkForErrors } from './HelperFunctions/ValidateField';
 import "../styles/pages/StateSelection.css";
 import content from "../data/state-selection.json";
+import BackButton from './BackButton';
+import NextButton from './NextButton';
 
 function StateSelection(props) {
     const stateLink = props.stateData.election_website_url;
@@ -19,11 +21,7 @@ function StateSelection(props) {
 
     return (
         <>
-        <a href="https://vote.gov">
-            <Button type="button" onClick={props.handlePrev}>
-                {content.back_btn}
-            </Button>
-        </a>
+        <BackButton type={'link'} text={content.back_btn}/>
 
         <h2>{content.main_heading}</h2>
         <p>{content.main_parag}</p>
@@ -62,12 +60,10 @@ function StateSelection(props) {
                 </div>
             </div>
         </div>
+            
+        <NextButton type={'submit'} text={content.next_btn}/>
 
-            <Button type="submit">
-                {content.next_btn}
-            <Icon.ArrowForward aria-label="forward arrow icon"/>
-            </Button>
-            </form>
+        </form>
         </>
     );
 }

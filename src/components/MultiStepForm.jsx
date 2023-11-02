@@ -9,7 +9,8 @@ import Confirmation from './FormSections/Confirmation';
 import Delivery from "./FormSections/Delivery";
 import PoliticalParty from './FormSections/PoliticalParty';
 import { phoneFormat, dayFormat } from './HelperFunctions/ValidateField';
-import NavButton from './NavButton';
+import BackButton from './BackButton'
+import NextButton from './NextButton';
 
 function MultiStepForm(props) {
     //Field data controls
@@ -131,14 +132,54 @@ function MultiStepForm(props) {
             setFieldData({ ...fieldData, id_number: '' });
     }
 
+        //Acknowledgment field controls
+        const [hasAcknowledged, setHasAcknowledged] = useState(null);
+        const [error, setError] = useState(null)
+        const acknowledgeCheckbox = (checkStatus) => {
+            setHasAcknowledged(checkStatus);
+            setError(!checkStatus);
+        }
+    
+        const checkboxValid = () => {
+            (hasAcknowledged === null) && setError(true);
+        }
+
+    const backButtonText = (step) => {
+        switch (step) {
+        case 1:
+            return content.back_btn.reg_options;
+        case 2:
+            return content.back_btn.personal_info;
+        case 3:
+            return content.back_btn.address_location;
+        case 4:
+            return content.back_btn.identification;
+        case 5:
+            return content.back_btn.edit_info;
+        case 6:
+            return 'back to ???';
+        }
+    }
+
+    const nextButtonText = (step) => {
+        switch (step) {
+            case 1:
+                return content.next_btn.address_location;
+            case 2:
+                return content.next_btn.identification;
+            case 3:
+                return content.next_btn.political_party;
+            case 4:
+                return content.next_btn.confirm_info;
+            case 5:
+                return content.next_btn.confirm_continue;
+        }
+    }
+
     return (
         <>
-      multistep:
-      <NavButton
-        direction={"back"}
-        step={step}
-        inForm={true}
-      />
+        <BackButton type={'button'} onClick={handlePrev} text={backButtonText(step)}/>
+      
         <ProgressBar step={step}/>
         {step < 5 &&
         <div>
@@ -208,7 +249,12 @@ function MultiStepForm(props) {
                 saveFieldData = {saveFieldData}
                 registrationPath={props.registrationPath}
                 handlePrev={handlePrev}
-                handleGoBackSteps={handleGoBackSteps}/>
+                handleGoBackSteps={handleGoBackSteps}
+                hasAcknowledged={hasAcknowledged}
+                error={error}
+                acknowledgeCheckbox={acknowledgeCheckbox}
+                checkboxValid={checkboxValid}
+                />
             }
             {step === 6 &&
                 <Delivery
@@ -222,12 +268,8 @@ function MultiStepForm(props) {
                 handleClickDeliveryButton = {handleClickDeliveryButton}
                 />
             }
-            multistep: <NavButton
-            direction={"next"}
-            step={step}
-            inForm={true}
-            type={"submit"}
-            />
+
+        {step != 6 && <NextButton type={'submit'} onClick={step === 5 ? () => checkboxValid() : undefined} text={nextButtonText(step)}/>}
         </Form>
         </>
     );

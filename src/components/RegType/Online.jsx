@@ -1,4 +1,5 @@
 import { Button, ProcessList, ProcessListItem, ProcessListHeading, Link, Icon } from '@trussworks/react-uswds';
+import NextButton from '../NextButton';
 
 function Online(props) {
     const content = props.content;
@@ -70,10 +71,8 @@ function Online(props) {
                 </ProcessListItem>
             </ProcessList>
 
-            <Button onClick={props.handleNext}>
-                {content.next_btn_online}
-                <Icon.ArrowForward aria-label="forward arrow icon"/>
-            </Button>
+            <NextButton type={'submit'} onClick={props.handleNext} text={content.next_btn_online}/>
+
             </div>
         </>
     );

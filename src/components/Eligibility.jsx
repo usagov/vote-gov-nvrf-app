@@ -1,15 +1,15 @@
 import data from "../data/eligibility.json";
 import { Button, Icon, Fieldset, Checkbox, Label } from '@trussworks/react-uswds';
-
+import BackButton from './BackButton';
+import NextButton from "./NextButton";
 
 function Eligibility(props) {
     const content = data;
     const stateContent = props.stateData;
     return (
         <>
-        <Button type="button" onClick={props.handlePrev}>
-        Back to State Registration Options
-        </Button>
+        <BackButton type={'button'} onClick={props.handlePrev} text={'Back to State Registration Options'}/>
+
         <h1>{content.main_heading.replace("%state_name%", props.stateData.name)}</h1>
         <h2>{content.heading_eligibility}</h2>
         <p>{content.heading_register.replace("%state_name%", props.stateData.name)}</p>
@@ -56,10 +56,7 @@ function Eligibility(props) {
         <p>{content.eligibility_agreement}</p>
 
         <div className="button-container" style={{ margin:'20px' }}>
-            <Button onClick={() => props.checkBoxValues()} type="submit">
-            {content.start_button}
-            <Icon.ArrowForward aria-label="forward arrow icon"/>
-            </Button>
+            <NextButton type={'submit'} onClick={() => props.checkBoxValues()} text={content.start_button}/>
         </div>
         </form>
         </>
