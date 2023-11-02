@@ -306,7 +306,7 @@ function PersonalInfo(props){
         </Grid>
 
         {(props.previousName && changeRegistrationVisible) && (
-        <div value={props.previousName} onChange={props.onChangePreviousName}>
+        <>
             <h3>Previous Name</h3>
         <Grid row gap>
             <Grid tablet={{ col: true }}>                
@@ -398,7 +398,7 @@ function PersonalInfo(props){
             </Label>
             </Grid>
         </Grid>
-        </div>
+        </>
         )}
             
             <Button type="submit">

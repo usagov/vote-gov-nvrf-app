@@ -73,9 +73,9 @@ function MultiStepForm(props) {
 
     //Form Sections controls//
         //Personal Info
-    const [previousName, setPreviousName] = useState("");
+    const [previousName, setPreviousName] = useState(false);
     const onChangePreviousName = (e) => {
-        setPreviousName(e.target.value);
+        setPreviousName(e.target.checked);
     }
 
         //Addresses
@@ -148,7 +148,7 @@ function MultiStepForm(props) {
                 fieldData={fieldData}
                 saveFieldData = {saveFieldData}
                 registrationPath={props.registrationPath}
-                previousName={setPreviousName}
+                previousName={previousName}
                 onChangePreviousName={onChangePreviousName}
                 handlePrev={props.handlePrev}
                 />
