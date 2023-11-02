@@ -9,7 +9,7 @@ function Online(props) {
         
         <h1>{content.main_heading.replace("%state_name%", props.stateData.name)}</h1>
             <div>
-                <p>{content.parag_online}</p>
+                <p>{content.parag_online.replace("%state_name%", props.stateData.name)}</p>
                 <div>
                 <Button>
                     {content.online_form_btn.replace("%state_name%", props.stateData.name)}
