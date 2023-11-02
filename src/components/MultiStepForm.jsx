@@ -9,6 +9,7 @@ import Confirmation from './FormSections/Confirmation';
 import Delivery from "./FormSections/Delivery";
 import PoliticalParty from './FormSections/PoliticalParty';
 import { phoneFormat, dayFormat } from './HelperFunctions/ValidateField';
+import NavButton from './NavButton';
 
 function MultiStepForm(props) {
     //Field data controls
@@ -132,6 +133,12 @@ function MultiStepForm(props) {
 
     return (
         <>
+      multistep:
+      <NavButton
+        direction={"back"}
+        step={step}
+        inForm={true}
+      />
         <ProgressBar step={step}/>
         {step < 5 &&
         <div>
@@ -215,6 +222,12 @@ function MultiStepForm(props) {
                 handleClickDeliveryButton = {handleClickDeliveryButton}
                 />
             }
+            multistep: <NavButton
+            direction={"next"}
+            step={step}
+            inForm={true}
+            type={"submit"}
+            />
         </Form>
         </>
     );

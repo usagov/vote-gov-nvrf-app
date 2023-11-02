@@ -15,7 +15,7 @@
             "telephone": false,
             "ID_num": true,
             "party": false,
-            "race": false,
+            "race": true,
             "acknowledgement": true
         },
         "fields_visible":
@@ -27,7 +27,7 @@
             "telephone": true,
             "ID_num": true,
             "party": true,
-            "race": false,
+            "race": true,
             "acknowledgement": true
         },
 
