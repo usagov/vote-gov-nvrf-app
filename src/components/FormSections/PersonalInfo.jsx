@@ -177,10 +177,10 @@ function PersonalInfo(props){
                     Title
                 <Dropdown id="title-select-2" name="title-select-2" value={props.fieldData.prev_title} onChange={props.saveFieldData('prev_title')} autoComplete="off">
                     <option>- Select -{' '}</option>
-                    <option value="Mr.">Mr.</option>
+                    <option value="Mr">Mr.</option>
                     <option value="Miss">Miss</option>
-                    <option value="Ms.">Ms.</option>
-                    <option value="Mrs.">Mrs.</option>
+                    <option value="Ms">Ms.</option>
+                    <option value="Mrs">Mrs.</option>
                 </Dropdown>
                 </Label>
                 </Grid>
