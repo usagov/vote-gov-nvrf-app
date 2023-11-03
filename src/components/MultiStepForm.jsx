@@ -54,6 +54,13 @@ function MultiStepForm(props) {
         step === 1 && props.handlePrev();
     }
 
+    const handleGoBackSteps = (numSteps) => {
+        return () => {
+            step != 1 && setStep(step - numSteps);
+            document.getElementById('scroll-to-top').scrollIntoView();
+        }
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault(e);
     }
