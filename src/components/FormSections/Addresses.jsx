@@ -53,11 +53,6 @@ function Addresses(props){
 
     return (
         <>
-        <Button
-            type="button"
-            onClick={props.handlePrev}>
-            {content.back_to_personal_info}
-        </Button>
         <h3>{content.address_heading}</h3>
 
         {addressVisible && (
@@ -456,9 +451,6 @@ function Addresses(props){
                 {/******* END BLOCK *********/}
             </div>
         )}
-            <Button type="submit">
-                {content.continue_identification}
-            </Button>
         </>
     );
 }

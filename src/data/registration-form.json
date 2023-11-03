@@ -1,9 +1,14 @@
 {
     "main_heading": "National Voter Registration Form",
+    "reminder": "Reminder: ",
+    "reminder_text": "If you close this window, your information will be lost and you will have to restart the process. You will have the opportunity to double check your answers before printing the completed form.",
     "intro_text": "Reminder: If you close this window, your information will be lost and you will have to restart the process. You will have the opportunity to double check your answers before printing the completed form.",
     "personal_info_heading": "Personal Information",
-    "personal_info_text": "If your name has changed since the last time you registered, return to previous step and select \"Update my registration.\"",
-    "personal_info_alert_text": "Use the name on your driver's license or ID.",
+    "personal_info_checkbox": "I have legally changed my name since I last registered in this state.",
+    "personal_info_help_text": "Enter your full legal name. Be sure to include your First, Middle and Last name. Do not use nicknames or initials.",
+    "personal_info_name_header": "What is your legal name?",
+    "personal_info_name_text": " Using the name on your driver’s license or other nondriver ID is recommended.",
+    "personal_info_prev_header": "What was your name before you changed it?",
     "address_heading": "Address & Location Information",
     "home_address_heading": "What is your current address?",
     "home_address_section_text_1": "Enter your home address (legal address). Do not put your mailing address here if it is different from your home address. Do not use a post office box or rural route without a box number.",
@@ -21,7 +26,6 @@
     "non-driver-id-label": "State Driver's License Number",
     "name_text": "Do not use nicknames or initials.",
     "party_text": "",
-    "race_text": "A few States ask for your race or ethnic group, in order to administer the Federal Voting Rights Act.",
     "political_party_heading": "Choice of Political Party",
     "street_address_label": "Street Address",
     "street_address_error": "Street Address must be filled out.",
@@ -53,5 +57,20 @@
     "id_expire_date_error": "Expire Date must follow the format of January 19 2000 and be in the future.",
     "ssn_hint": "XXXX",
     "ssn_error": "Social Security Number must be 4 digits.",
-    "id_none_text": "\"None\" will appear on your completed form."
+    "id_none_text": "\"None\" will appear on your completed form.",
+
+    "back_btn": {
+        "reg_options": "Back to registration options",
+        "personal_info": "Back to personal information",
+        "address_location": "Back to address and location",
+        "identification": "Back to identification",
+        "edit_info": "Edit registration information"
+    },
+    "next_btn": {
+        "address_location": "Continue to address & location",
+        "identification": "Continue to identification",
+        "political_party": "Continue to political party",
+        "confirm_info": "Confirm your information",
+        "confirm_continue": "Confirm and continue"
+    }
 }

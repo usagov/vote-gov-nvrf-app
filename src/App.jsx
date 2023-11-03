@@ -75,6 +75,7 @@ function App() {
 
   return (
     <>
+    <section className="usa-prose">
     <div id="scroll-to-top"></div>
         {step === 1 && 
           <StateSelection 
@@ -90,16 +91,16 @@ function App() {
               handlePrev={handlePrev}
               stateData={stateData}
           />}  
-          {step === 3 && 
-            <Eligibility 
-            handleNext={handleNext} 
-            handlePrev={handlePrev}
-            state={selectedState}
-            stateData={stateData}
-            handleCheckbox={handleCheckbox}
-            checkBoxValues={checkBoxValues}
-            checkboxes={checkboxes}
-          />}  
+        {step === 3 && 
+          <Eligibility 
+          handleNext={handleNext} 
+          handlePrev={handlePrev}
+          state={selectedState}
+          stateData={stateData}
+          handleCheckbox={handleCheckbox}
+          checkBoxValues={checkBoxValues}
+          checkboxes={checkboxes}
+        />}  
         {step === 4 && 
           <PathSelection 
           handleNext={handleNext} 
@@ -111,7 +112,7 @@ function App() {
           />}  
         {step === 5 && 
           <MultiStepForm 
-          handleNext={handleNext} 
+          // handleNext={handleNext} 
           handlePrev={handlePrev}
           statesList={statesList}
           state={selectedState}
@@ -119,6 +120,7 @@ function App() {
           registrationPath={registrationPath}
           getFormStep={getFormStep}
           />}
+        </section>
     </>
   )
 }

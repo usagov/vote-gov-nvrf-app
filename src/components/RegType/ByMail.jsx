@@ -1,4 +1,5 @@
 import { Button, ProcessList, ProcessListItem, ProcessListHeading, Link, Icon } from '@trussworks/react-uswds';
+import NextButton from '../NextButton';
 
 function ByMail(props) {
     const content = props.content;
@@ -53,10 +54,7 @@ function ByMail(props) {
                 </ProcessListItem>
             </ProcessList>
 
-            <Button onClick={props.handleNext}>
-                {content.next_btn_bymail}
-                <Icon.ArrowForward aria-label="forward arrow icon"/>
-            </Button>
+            <NextButton type={'submit'} onClick={props.handleNext} text={content.next_btn_bymail}/>
         </>
     );
 }

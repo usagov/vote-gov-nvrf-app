@@ -42,11 +42,6 @@ function Identification(props){
 
     return (
         <>
-        <Button
-            type="button"
-            onClick={props.handlePrev}>
-            Back to address & location
-        </Button>
         <h2>{content.identification_heading}</h2>
         <div className="usa-alert usa-alert--info">
             <div className="usa-alert__body">
@@ -359,9 +354,6 @@ function Identification(props){
 
 
         )}
-            <Button type="submit">
-                Continue to political party
-            </Button>
         </>
     );
 }
