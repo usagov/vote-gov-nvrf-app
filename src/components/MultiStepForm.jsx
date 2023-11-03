@@ -27,7 +27,7 @@ function MultiStepForm(props) {
 
     const saveFieldData = (name) => {
         const day_names = ['date_of_birth_day', 'id_issue_date_day', 'id_expire_date_day' ]
-        
+
         return (event) => {
         if (name === 'phone_number') {
             setFieldData({ ...fieldData, [name]: phoneFormat(event.target.value) });
@@ -94,37 +94,27 @@ function MultiStepForm(props) {
         setHasPreviousAddress(e.target.checked);
     }
 
-    const [previousAddress, setPreviousAddress] = useState("");
-    const onChangePreviousAddress = (e) => {
-        setPreviousAddress(e.target.value);
-    }
-
     const [hasMailAddress, setHasMailAddress] = useState(false);
     const onChangeMailAddressCheckbox = (e) => {
         setHasMailAddress(e.target.checked);
-    }
-
-    const [mailAddress, setMailAddress] = useState("");
-    const onChangeMailAddress = (e) => {
-        setMailAddress(e.target.value);
     }
 
         //Identification
     const [idType, setIdType] = useState('')
     const saveIdType = (e) => {
         setIdType(e.target.value)
-        e.target.value === 'none' ? 
-            setFieldData({ 
-                ...fieldData, 
-                id_number: 'none', 
-                id_issue_date_month:'', 
-                id_issue_date_day:'', 
-                id_issue_date_year:'', 
-                id_expire_date_month:'', 
-                id_expire_date_day:'', 
-                id_expire_date_year:'' 
-            }) 
-            : 
+        e.target.value === 'none' ?
+            setFieldData({
+                ...fieldData,
+                id_number: 'none',
+                id_issue_date_month:'',
+                id_issue_date_day:'',
+                id_issue_date_year:'',
+                id_expire_date_month:'',
+                id_expire_date_day:'',
+                id_expire_date_year:''
+            })
+            :
             setFieldData({ ...fieldData, id_number: '' });
     }
 
@@ -135,7 +125,7 @@ function MultiStepForm(props) {
             setHasAcknowledged(checkStatus);
             setError(!checkStatus);
         }
-    
+
         const checkboxValid = () => {
             (hasAcknowledged === null) && setError(true);
         }
@@ -175,7 +165,7 @@ function MultiStepForm(props) {
     return (
         <>
         <BackButton type={'button'} onClick={handlePrev} text={backButtonText(step)}/>
-      
+
         <ProgressBar step={step}/>
         {step < 5 &&
         <div>
@@ -209,12 +199,8 @@ function MultiStepForm(props) {
                 hasNoAddressCheckbox={hasNoAddressCheckbox}
                 hasPreviousAddress={hasPreviousAddress}
                 onChangePreviousAddressCheckbox={onChangePreviousAddressCheckbox}
-                previousAddress={previousAddress}
-                onChangePreviousAddress={onChangePreviousAddress}
                 hasMailAddress={hasMailAddress}
                 onChangeMailAddressCheckbox={onChangeMailAddressCheckbox}
-                mailAddress={mailAddress}
-                onChangeMailAddress={onChangeMailAddress}
                 />
             }
             {step === 3 &&
