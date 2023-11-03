@@ -1,5 +1,5 @@
 import { Form } from '@trussworks/react-uswds';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ProgressBar from './ProgressBar';
 import PersonalInfo from "./FormSections/PersonalInfo";
 import Addresses from "./FormSections/Addresses"
@@ -11,6 +11,7 @@ import PoliticalParty from './FormSections/PoliticalParty';
 import { phoneFormat, dayFormat } from './HelperFunctions/ValidateField';
 import BackButton from './BackButton'
 import NextButton from './NextButton';
+
 
 function MultiStepForm(props) {
     //Field data controls
@@ -24,12 +25,14 @@ function MultiStepForm(props) {
         id_number:'', id_issue_date_month:'', id_issue_date_day:'', id_issue_date_year:'', id_expire_date_month:'', id_expire_date_day:'', id_expire_date_year:'',
         party_choice:'',
         email_address:'', sms_alert_phone_number:''});
+        const [hasData, setHasData] = useState(false)
 
     const saveFieldData = (name) => {
         const day_names = ['date_of_birth_day', 'id_issue_date_day', 'id_expire_date_day' ]
 
         return (event) => {
-        if (name === 'phone_number') {
+            event.target.value.length > 0 && setHasData(true)
+            if (name === 'phone_number') {
             setFieldData({ ...fieldData, [name]: phoneFormat(event.target.value) });
         } else if (day_names.includes(name)) {
             setFieldData({ ...fieldData, [name]: dayFormat(event.target.value) });
@@ -38,6 +41,19 @@ function MultiStepForm(props) {
         }
         };
     };
+    // Sets up prompt that if user hits browser back/refresh button and has imputed any data will alert that data will be lost 
+    useEffect(() => {
+        const handleBeforeUnload = (event) => {
+        event.preventDefault();
+        event.returnValue = '';
+        };
+        if(hasData !== false) {
+            window.addEventListener('beforeunload', handleBeforeUnload);
+        } else {
+            window.removeEventListener('beforeunload', handleBeforeUnload)
+        }
+    }, [hasData]);
+
 
     //Multiple step NVRF controls
     const [step, setStep] = useState(1);
