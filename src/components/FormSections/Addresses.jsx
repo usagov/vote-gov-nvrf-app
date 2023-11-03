@@ -191,7 +191,7 @@ function Addresses(props){
 
                 {/******* MAIL ADDRESS BLOCK ********/}
                 {(props.hasMailAddress || props.hasNoAddress) && (
-                    <div value={props.mailAddress} onChange={props.onChangeMailAddress}>
+                    <>
                         {props.hasNoAddress && (
                         <div className="usa-alert usa-alert--info">
                             <div className="usa-alert__body">
@@ -319,13 +319,13 @@ function Addresses(props){
                             </div>
                             </Grid>
                         </Grid>
-                    </div>
+                    </>
                 )}
                 {/******* END BLOCK *********/}
 
                 {/******* PREVIOUS ADDRESS BLOCK ********/}
                 {props.hasPreviousAddress && (
-                    <div value={props.previousAddress} onChange={props.onChangePreviousAddress}>
+                    <>
                         <h3>{content.previous_address_heading}</h3>
                         <p>{content.previous_address_text}</p>
                         <Grid row gap>
@@ -446,7 +446,7 @@ function Addresses(props){
                             </div>
                             </Grid>
                         </Grid>
-                    </div>
+                    </>
                 )}
                 {/******* END BLOCK *********/}
             </div>
