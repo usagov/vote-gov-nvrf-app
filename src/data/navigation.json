@@ -1,0 +1,22 @@
+{
+    "back": {
+        "vote": "Go back to Vote.gov",
+        "select_state": "Go back to select your state",
+        "state_reg_options": "Go back to state registration options",
+        "eligibility_req": "Back to state eligibility requirements",
+        "reg_options": "Back to registration options",
+        "personal_info": "Back to personal information",
+        "address_location": "Back to address and location",
+        "identification": "Back to identification",
+        "edit_info": "Edit registration information"
+    },
+    "next": {
+        "next": "Next",
+        "start": "Start your online registration on vote.gov",
+        "continue": "Continue with mail-in registration on vote.gov",
+        "address_location": "Continue to address & location",
+        "identification": "Continue to identification",
+        "political_party": "Continue to political party",
+        "confirm_info": "Confirm your information"
+    }
+}

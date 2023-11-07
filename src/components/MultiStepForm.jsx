@@ -9,6 +9,9 @@ import Delivery from "./FormSections/Delivery";
 import PoliticalParty from './FormSections/PoliticalParty';
 import { phoneFormat, dayFormat } from './HelperFunctions/ValidateField';
 import {fetchData} from './HelperFunctions/JsonHelper.jsx';
+import BackButton from './BackButton'
+import NextButton from './NextButton';
+
 
 function MultiStepForm(props) {
     const [content, setContent] = useState()
@@ -27,12 +30,14 @@ function MultiStepForm(props) {
         id_number:'', id_issue_date_month:'', id_issue_date_day:'', id_issue_date_year:'', id_expire_date_month:'', id_expire_date_day:'', id_expire_date_year:'',
         party_choice:'',
         email_address:'', sms_alert_phone_number:''});
+        const [hasData, setHasData] = useState(false)
 
     const saveFieldData = (name) => {
         const day_names = ['date_of_birth_day', 'id_issue_date_day', 'id_expire_date_day' ]
 
         return (event) => {
-        if (name === 'phone_number') {
+            event.target.value.length > 0 && setHasData(true)
+            if (name === 'phone_number') {
             setFieldData({ ...fieldData, [name]: phoneFormat(event.target.value) });
         } else if (day_names.includes(name)) {
             setFieldData({ ...fieldData, [name]: dayFormat(event.target.value) });
@@ -41,6 +46,19 @@ function MultiStepForm(props) {
         }
         };
     };
+    // Sets up prompt that if user hits browser back/refresh button and has imputed any data will alert that data will be lost
+    useEffect(() => {
+        const handleBeforeUnload = (event) => {
+        event.preventDefault();
+        event.returnValue = '';
+        };
+        if(hasData !== false) {
+            window.addEventListener('beforeunload', handleBeforeUnload);
+        } else {
+            window.removeEventListener('beforeunload', handleBeforeUnload)
+        }
+    }, [hasData]);
+
 
     //Multiple step NVRF controls
     const [step, setStep] = useState(1);
@@ -50,12 +68,11 @@ function MultiStepForm(props) {
       }
 
     const handlePrev = () => {
+        console.log('click handleprev', step)
         step != 1 && setStep(step - 1);
         document.getElementById('scroll-to-top').scrollIntoView();
-    }
 
-    const handleSubmit = (e) => {
-        e.preventDefault(e);
+        step === 1 && props.handlePrev();
     }
 
     const handleGoBackSteps = (numSteps) => {
@@ -63,6 +80,10 @@ function MultiStepForm(props) {
             step != 1 && setStep(step - numSteps);
             document.getElementById('scroll-to-top').scrollIntoView();
         }
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault(e);
     }
 
     //Email and Print controls
@@ -77,6 +98,12 @@ function MultiStepForm(props) {
     }
 
     //Form Sections controls//
+        //Personal Info
+    const [previousName, setPreviousName] = useState(false);
+    const onChangePreviousName = (e) => {
+        setPreviousName(e.target.checked);
+    }
+
         //Addresses
     const [hasNoAddress, setHasNoAddress] = useState(false);
     const hasNoAddressCheckbox = (e) => {
@@ -95,19 +122,9 @@ function MultiStepForm(props) {
         setHasPreviousAddress(e.target.checked);
     }
 
-    const [previousAddress, setPreviousAddress] = useState("");
-    const onChangePreviousAddress = (e) => {
-        setPreviousAddress(e.target.value);
-    }
-
     const [hasMailAddress, setHasMailAddress] = useState(false);
     const onChangeMailAddressCheckbox = (e) => {
         setHasMailAddress(e.target.checked);
-    }
-
-    const [mailAddress, setMailAddress] = useState("");
-    const onChangeMailAddress = (e) => {
-        setMailAddress(e.target.value);
     }
 
         //Identification
@@ -129,14 +146,57 @@ function MultiStepForm(props) {
             setFieldData({ ...fieldData, id_number: '' });
     }
 
+        //Acknowledgment field controls
+        const [hasAcknowledged, setHasAcknowledged] = useState(null);
+        const [error, setError] = useState(null)
+        const acknowledgeCheckbox = (checkStatus) => {
+            setHasAcknowledged(checkStatus);
+            setError(!checkStatus);
+        }
+
+        const checkboxValid = () => {
+            (hasAcknowledged === null) && setError(true);
+        }
+
+    const backButtonText = (step) => {
+        switch (step) {
+        case 1:
+            return content.back_btn.reg_options;
+        case 2:
+            return content.back_btn.personal_info;
+        case 3:
+            return content.back_btn.address_location;
+        case 4:
+            return content.back_btn.identification;
+        case 5:
+            return content.back_btn.edit_info;
+        }
+    }
+
+    const nextButtonText = (step) => {
+        switch (step) {
+            case 1:
+                return content.next_btn.address_location;
+            case 2:
+                return content.next_btn.identification;
+            case 3:
+                return content.next_btn.political_party;
+            case 4:
+                return content.next_btn.confirm_info;
+            case 5:
+                return content.next_btn.confirm_continue;
+        }
+    }
+
     return (
         <>
-        {content && <div>
+        <BackButton type={'button'} onClick={handlePrev} text={backButtonText(step)}/>
+
         <ProgressBar step={step}/>
         {step < 5 &&
         <div>
             <h1>{content.main_heading}: {props.stateData.name}</h1>
-            <p>{content.intro_text}</p>
+            <p><strong>{content.reminder}</strong>{content.reminder_text}</p>
         </div>
         }
 
@@ -148,6 +208,8 @@ function MultiStepForm(props) {
                 fieldData={fieldData}
                 saveFieldData = {saveFieldData}
                 registrationPath={props.registrationPath}
+                previousName={previousName}
+                onChangePreviousName={onChangePreviousName}
                 handlePrev={props.handlePrev}
                 />
             }
@@ -163,12 +225,8 @@ function MultiStepForm(props) {
                 hasNoAddressCheckbox={hasNoAddressCheckbox}
                 hasPreviousAddress={hasPreviousAddress}
                 onChangePreviousAddressCheckbox={onChangePreviousAddressCheckbox}
-                previousAddress={previousAddress}
-                onChangePreviousAddress={onChangePreviousAddress}
                 hasMailAddress={hasMailAddress}
                 onChangeMailAddressCheckbox={onChangeMailAddressCheckbox}
-                mailAddress={mailAddress}
-                onChangeMailAddress={onChangeMailAddress}
                 />
             }
             {step === 3 &&
@@ -199,7 +257,12 @@ function MultiStepForm(props) {
                 saveFieldData = {saveFieldData}
                 registrationPath={props.registrationPath}
                 handlePrev={handlePrev}
-                handleGoBackSteps={handleGoBackSteps}/>
+                handleGoBackSteps={handleGoBackSteps}
+                hasAcknowledged={hasAcknowledged}
+                error={error}
+                acknowledgeCheckbox={acknowledgeCheckbox}
+                checkboxValid={checkboxValid}
+                />
             }
             {step === 6 &&
                 <Delivery
@@ -213,8 +276,9 @@ function MultiStepForm(props) {
                 handleClickDeliveryButton = {handleClickDeliveryButton}
                 />
             }
+
+        {step != 6 && <NextButton type={'submit'} onClick={step === 5 ? () => checkboxValid() : undefined} text={nextButtonText(step)}/>}
         </Form>
-        </div>}
         </>
     );
 }
