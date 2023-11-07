@@ -22,13 +22,32 @@ function Confirmation(props){
     const fieldDataOverride_id_issue_date = (fieldData.id_issue_date_month === '') ? "" : `${fieldData.id_issue_date_month}/${fieldData.id_issue_date_day}/${fieldData.id_issue_date_year}`;
     const fieldDataOverride_id_expire_date = (fieldData.id_expire_date_month === '') ? "" : `${fieldData.id_expire_date_month}/${fieldData.id_expire_date_day}/${fieldData.id_expire_date_year}`;
 
+    //Acknowledgment field controls
+    const [hasAcknowledged, setHasAcknowledged] = useState(null);
+    const [error, setError] = useState(null)
+    const acknowledgeCheckbox = (checkStatus) => {
+        setHasAcknowledged(checkStatus);
+        setError(!checkStatus);
+    }
+
+    const checkboxValid = () => {
+        (hasAcknowledged === null) && setError(true);
+    }
+
     return (
         <>
+        {content && <div>
+        <Button
+            type="button"
+            onClick={props.handlePrev}>
+            Edit registration information
+        </Button>
+
         <div className="confirm-info">
-        <h1>{content.confirmation_heading}</h1>
+        <h2>{content.confirmation_heading}</h2>
         <p>{content.confirmation_text}</p>
 
-        <h2>Personal Information
+        <h3>Personal Information
             <span style={{ marginLeft:'0.5rem' }}>
             <Button
                 type="button"
@@ -37,7 +56,7 @@ function Confirmation(props){
                 Edit
             </Button>
             </span>
-        </h2>
+        </h3>
 
         {/*Jump to Personal Info Section (Step 1) */}
         <p><strong>Current Name</strong></p>
@@ -72,7 +91,7 @@ function Confirmation(props){
         </ul>
         <hr />
 
-        <h2>Address
+        <h3>Address
         <span style={{ marginLeft:'0.5rem' }}>
             <Button
                 type="button"
@@ -81,7 +100,7 @@ function Confirmation(props){
                 Edit
             </Button>
             </span>
-        </h2>
+        </h3>
         <p><strong>Current Address</strong></p>
         <ul>
             <li>Street Address: {fieldData.street_address}</li>
@@ -120,7 +139,7 @@ function Confirmation(props){
         </ul>
         <hr />
 
-        <h2>Identification
+        <h3>Identification
             <span style={{ marginLeft:'0.5rem' }}>
                 <Button
                     type="button"
@@ -129,14 +148,14 @@ function Confirmation(props){
                     Edit
                 </Button>
             </span>
-        </h2>
+        </h3>
         <ul>
             <li>ID number: {fieldData.id_number}</li>
             <li>ID issue date: {fieldDataOverride_id_issue_date} </li>
             <li>ID expire date: {fieldDataOverride_id_expire_date}</li>
         </ul>
         <hr />
-        <h2>Choice of Political Party
+        <h3>Choice of Political Party
             <span style={{ marginLeft:'0.5rem' }}>
                 <Button
                     type="button"
@@ -145,7 +164,7 @@ function Confirmation(props){
                     Edit
                 </Button>
             </span>
-        </h2>
+        </h3>
         <ul>
             <li>Political party: {fieldDataOverride_party}</li>
         </ul>
@@ -158,21 +177,26 @@ function Confirmation(props){
             </div>
         </div>
 
-        <div className={props.error ? 'error-container' : ''}>
+        <div className={error ? 'error-container' : ''}>
             <Checkbox
                 id="acknowledge-check"
                 name="acknowledge-check"
                 required
-                defaultChecked={props.hasAcknowledged}
+                defaultChecked={hasAcknowledged}
                 label="I can confirm my information is correct to the best of my knowledge."
-                onChange={(e) => props.acknowledgeCheckbox(e.target.checked)}
+                onChange={(e) => acknowledgeCheckbox(e.target.checked)}
                 />
-            {props.error &&
+            {error &&
                 <span id="first-name-error" role="alert" className='error-text'>
                     Checkbox must be checked to continue.
                 </span>
             }
         </div>
+
+            <Button type="submit" onClick={() => checkboxValid()}>
+                Confirm and continue
+            </Button>
+        </div>}
         </>
     );
 }

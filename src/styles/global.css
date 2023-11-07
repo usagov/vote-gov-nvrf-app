@@ -8,20 +8,12 @@ body {
     }    
 
     .error-container {
-        border-left: 2px solid #b50909;
+        border-left: 2px solid red;
         padding-left: 15px;
     }
     
-    .error-text {
-        color: #b50909;
-    }
-
-    .next-button > svg {
-        margin-bottom: -3px;
-    }
-
-    .back-button {
-        background-color: transparent;
+    .error-text, .required-text {
+        color: red;
     }
 
     .usa-form-group--month {

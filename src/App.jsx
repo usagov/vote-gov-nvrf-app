@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import StateSelection from './components/StateSelection';
-import Eligibility from './components/Eligibility';
-import RegistrationOptions from './components/RegistrationOptions';
+import VotingInfo from './components/VotingInfo';
 import PathSelection from './components/PathSelection';
 import MultiStepForm from './components/MultiStepForm';
 import {fetchData} from './components/HelperFunctions/JsonHelper.jsx';
@@ -42,7 +41,7 @@ function App() {
   };
 
   const handleNext = () => {
-    step != 5 && setStep(step + 1);
+    step != 4 && setStep(step + 1);
     document.getElementById('scroll-to-top').scrollIntoView();
   }
 
@@ -74,12 +73,11 @@ function App() {
   };
 
   const getFormStep = (step) => {
-    formStep === 4 ? null : setFormStep(step + 1);
+    formStep === 3 ? null : setFormStep(step + 1);
   };
 
   return (
     <>
-    <section className="usa-prose">
     <div id="scroll-to-top"></div>
         {step === 1 &&
           <StateSelection
@@ -90,13 +88,7 @@ function App() {
           stateData={stateData}
           />}
         {step === 2 &&
-            <RegistrationOptions
-              handleNext={handleNext}
-              handlePrev={handlePrev}
-              stateData={stateData}
-          />}
-        {step === 3 &&
-          <Eligibility
+          <VotingInfo
           handleNext={handleNext}
           handlePrev={handlePrev}
           state={selectedState}
@@ -104,8 +96,8 @@ function App() {
           handleCheckbox={handleCheckbox}
           checkBoxValues={checkBoxValues}
           checkboxes={checkboxes}
-        />}
-        {step === 4 &&
+          />}
+        {step === 3 &&
           <PathSelection
           handleNext={handleNext}
           handlePrev={handlePrev}
@@ -114,9 +106,9 @@ function App() {
           getRegPath={getRegPath}
           getFormStep={getFormStep}
           />}
-        {step === 5 &&
+        {step === 4 &&
           <MultiStepForm
-          // handleNext={handleNext}
+          handleNext={handleNext}
           handlePrev={handlePrev}
           statesList={statesList}
           state={selectedState}
@@ -124,7 +116,6 @@ function App() {
           registrationPath={registrationPath}
           getFormStep={getFormStep}
           />}
-        </section>
     </>
   )
 }

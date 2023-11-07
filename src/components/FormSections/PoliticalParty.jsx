@@ -22,6 +22,12 @@ function PoliticalParty(props){
 
     return (
         <>
+        {content && <div>
+        <Button
+            type="button"
+            onClick={props.handlePrev}>
+            Back to identification
+        </Button>
         <h2>{content.political_party_heading}</h2>
         <div className="usa-alert usa-alert--info">
             <div className="usa-alert__body">
@@ -54,6 +60,11 @@ function PoliticalParty(props){
                 </Label>
             </div>
         )}
+
+        <Button type="submit">
+            Confirm your information
+        </Button>
+        </div>}
         </>
     );
 }

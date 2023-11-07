@@ -25,9 +25,10 @@ function Delivery(props) {
 
     return (
         <>
+        {content && <div>
             <h1>{content.main_heading.replace("%state_name%", props.stateData.name)}</h1>
-            <p>{content.main_help_text1}</p>
-            <p>{content.main_help_text2}</p>
+            <p>{content.main_help_text_1}</p>
+            <p>{content.main_help_text_2}</p>
             <h2>{content.mail_to_header.replace("%state_name%", props.stateData.name)}</h2>
 
             <p>
@@ -41,8 +42,6 @@ function Delivery(props) {
             <Button onClick={() => GenerateFilledPDF(props.fieldData)} type="submit">
                 {content.open_btn} <Icon.ArrowForward aria-label="forward arrow icon"/>
             </Button>
-
-            <hr/>
 
             <h2>{content.reminder_main_header}</h2>
 
@@ -61,10 +60,14 @@ function Delivery(props) {
                     <li>{content.reminder_parag4_li2}</li>
                 </ul>
 
-            <h3>{content.reminder_subheader3}</h3>
-            <p>{content.reminder_parag5}</p>
-
-            <p><strong>{usagov_resource_link}</strong></p>
+            <p><strong>{reactStringReplace(
+                content.usagov_rescources,
+                '%link%',
+                (match, i) => <Link key={i} href={'https://www.usa.gov/how-to-vote'} variant="external" rel="noreferrer" target="_blank">
+                {content.usagov_resources_link}
+                </Link>)}
+            </strong></p>
+           </div>}
         </>
     )
 }
