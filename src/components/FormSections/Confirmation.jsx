@@ -19,10 +19,10 @@ function Confirmation(props){
     return (
         <>
         <div className="confirm-info">
-        <h2>{content.confirmation_heading}</h2>
+        <h1>{content.confirmation_heading}</h1>
         <p>{content.confirmation_text}</p>
 
-        <h3>Personal Information
+        <h2>Personal Information
             <span style={{ marginLeft:'0.5rem' }}>
             <Button
                 type="button"
@@ -31,7 +31,7 @@ function Confirmation(props){
                 Edit
             </Button>
             </span>
-        </h3>
+        </h2>
 
         {/*Jump to Personal Info Section (Step 1) */}
         <p><strong>Current Name</strong></p>
@@ -66,7 +66,7 @@ function Confirmation(props){
         </ul>
         <hr />
 
-        <h3>Address
+        <h2>Address
         <span style={{ marginLeft:'0.5rem' }}>
             <Button
                 type="button"
@@ -75,7 +75,7 @@ function Confirmation(props){
                 Edit
             </Button>
             </span>
-        </h3>
+        </h2>
         <p><strong>Current Address</strong></p>
         <ul>
             <li>Street Address: {fieldData.street_address}</li>
@@ -114,7 +114,7 @@ function Confirmation(props){
         </ul>
         <hr />
 
-        <h3>Identification
+        <h2>Identification
             <span style={{ marginLeft:'0.5rem' }}>
                 <Button
                     type="button"
@@ -123,14 +123,14 @@ function Confirmation(props){
                     Edit
                 </Button>
             </span>
-        </h3>
+        </h2>
         <ul>
             <li>ID number: {fieldData.id_number}</li>
             <li>ID issue date: {fieldDataOverride_id_issue_date} </li>
             <li>ID expire date: {fieldDataOverride_id_expire_date}</li>
         </ul>
         <hr />
-        <h3>Choice of Political Party
+        <h2>Choice of Political Party
             <span style={{ marginLeft:'0.5rem' }}>
                 <Button
                     type="button"
@@ -139,7 +139,7 @@ function Confirmation(props){
                     Edit
                 </Button>
             </span>
-        </h3>
+        </h2>
         <ul>
             <li>Political party: {fieldDataOverride_party}</li>
         </ul>

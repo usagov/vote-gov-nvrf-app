@@ -165,8 +165,6 @@ function MultiStepForm(props) {
             return content.back_btn.identification;
         case 5:
             return content.back_btn.edit_info;
-        case 6:
-            return 'back to ???';
         }
     }
 

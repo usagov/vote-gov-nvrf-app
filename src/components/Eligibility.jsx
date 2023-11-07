@@ -25,13 +25,11 @@ function Eligibility(props) {
             listItem => <li key={listItem} value={listItem}>{listItem}</li>)}
         </ul>
 
-        <h2>{content.heading_mail}</h2>
-
         <form onSubmit={(e) => {e.preventDefault(), props.handleNext()}}>
         <Fieldset legend="Eligibility" legendStyle="srOnly">
             <div className={props.checkboxes.checkboxesValid ? 'error-container' : ''}>
             <Label htmlFor="eligibility-error" id="eligibility-error">
-                {content.heading_confirm}
+                <strong>{content.heading_confirm}</strong>
             </Label>
                 <div>
                     <Checkbox

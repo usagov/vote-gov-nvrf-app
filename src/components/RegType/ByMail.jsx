@@ -6,18 +6,17 @@ function ByMail(props) {
     const stateContent = props.stateData;
     const regType = props.stateData.reg_type;
 
-    console.log(stateContent.name)
-
     return (
-        <>        
-        <h1>{content.main_heading.replace("%state_name%", stateContent.name)}</h1>
-            <p>{content.parag_bymail.replace("%state_name%", stateContent.name)}</p>
+        <>
+
+            <h1>{content.main_heading.replace("%state_name%", stateContent.name)}</h1>
+            <p className={'usa-intro'}>{content.parag_bymail.replace("%state_name%", stateContent.name)}</p>
             <div>
                 <Button>
                     {content.check_reg_btn}
                     <Icon.Launch title="External link opens new window"/>
-                </Button>                    
-            </div>            
+                </Button>
+            </div>
             <Link>
                 <p>
                     <strong>{content.mail_in_link.replace("%state_name%", stateContent.name)}</strong>
@@ -25,7 +24,11 @@ function ByMail(props) {
                 </p>
             </Link>
 
-        <h2>{content.process_heading}</h2>
+            <div className="divider">
+                <span>{content.divider_text}</span>
+            </div>
+
+            <h2>{content.process_heading}</h2>
             <p>{content.process_parag}</p>
             <ProcessList>
                 <ProcessListItem>
@@ -36,25 +39,26 @@ function ByMail(props) {
                 </ProcessListItem>
                 <ProcessListItem>
                     <ProcessListHeading type="h4">
-                    {content.process_heading2}
+                        {content.process_heading2}
                     </ProcessListHeading>
                     <p>{content.process_text2}</p>
                 </ProcessListItem>
                 <ProcessListItem>
                     <ProcessListHeading type="h4">
-                    {content.process_heading3}
+                        {content.process_heading3}
                     </ProcessListHeading>
                     <p>{content.process_text3}</p>
                 </ProcessListItem>
                 <ProcessListItem>
                     <ProcessListHeading type="h4">
-                    {content.process_heading4}
+                        {content.process_heading4}
                     </ProcessListHeading>
                     <p>{content.process_text4}</p>
                 </ProcessListItem>
             </ProcessList>
 
             <NextButton type={'submit'} onClick={props.handleNext} text={content.next_btn_bymail}/>
+
         </>
     );
 }

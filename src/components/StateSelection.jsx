@@ -23,10 +23,10 @@ function StateSelection(props) {
         <>
         <BackButton type={'link'} text={content.back_btn}/>
 
-        <h2>{content.main_heading}</h2>
-        <p>{content.main_parag}</p>
+        <h1>{content.main_heading}</h1>
+        <p className={'usa-intro'}>{content.main_parag}</p>
 
-        <h3>{content.subheading}</h3>
+        <h2>{content.subheading}</h2>
         <p>{content.parag2.replace("%link%", content.parag2_link)}</p>
         
         <h2>{content.get_started}</h2>
