@@ -1,10 +1,13 @@
-import { Alert, Form, Label, TextInput, Button, Dropdown,Checkbox, DatePicker } from '@trussworks/react-uswds';
+import { Alert, Button, Checkbox } from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import content from "../../data/confirmation.json";
 import "../../styles/pages/Confirmation.css";
 function Confirmation(props){
     const fieldData = props.fieldData;
-    const changeRegistrationVisible = (props.registrationPath === 'update') ? true : false;
+    const prevName = fieldData.prev_title + fieldData.prev_first_name + fieldData.prev_middle_name + fieldData.prev_last_name + fieldData.prev_suffix;
+    const prevAddress = fieldData.prev_street_address + fieldData.prev_apt_num + fieldData.prev_city + fieldData.prev_state + fieldData.prev_zip_code;
+    const prevMailAddress = fieldData.mail_street_address + fieldData.mail_apt_num + fieldData.mail_city + fieldData.mail_state + fieldData.mail_zip_code;
+
 
     //field data overrides for confirm page printing only
     const fieldDataOverride_race = (fieldData.race === '') ? "Not required for your state" : fieldData.race;
@@ -44,8 +47,7 @@ function Confirmation(props){
         </ul>
 
         <p><strong>Previous Name</strong></p>
-        {/* Replace changeRegistrationVisible to the checkbox states corresponding to each set of fields */}
-        {!changeRegistrationVisible && (
+        {!prevName && (
             <Alert type="info" headingLevel="h4" noIcon>
                 You have not changed your name, so these fields are blank.
             </Alert>
@@ -86,7 +88,7 @@ function Confirmation(props){
         </ul>
 
         <p><strong>Previous Address</strong></p>
-        {!changeRegistrationVisible && (
+        {!prevAddress && (
             <Alert type="info" headingLevel="h4" noIcon>
                 You are not registering with a change of address, so these fields are blank.
             </Alert>
@@ -100,7 +102,7 @@ function Confirmation(props){
         </ul>
 
         <p><strong>Mailing Address</strong></p>
-        {!changeRegistrationVisible && (
+        {!prevMailAddress && (
             <Alert type="info" headingLevel="h4" noIcon>
                 You do not have an alternate mailing address, so these fields are blank.
             </Alert>
