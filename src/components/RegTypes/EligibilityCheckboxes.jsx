@@ -1,21 +1,17 @@
 import { Button, Link, Fieldset, Checkbox, Label } from '@trussworks/react-uswds';
-import data from "../../data/state-selection.json";
 import reactStringReplace from 'react-string-replace';
+import { useState,useEffect } from 'react';
+import {fetchData} from '../HelperFunctions/JsonHelper.jsx';
 
 function EligibilityCheckboxes(props) {
-    const content = data;
-    const onlineContent = data.online;
+    const [content, setContent] = useState()
+    useEffect(() => {
+        fetchData("state-selection.json", setContent);
+    }, []);
 
-    const downloadForm = reactStringReplace(
-        content.download_form,
-        '%link%',
-        (match, i) => <Link key={i} href={props.downloadForm} variant="external" rel="noreferrer" target="_blank">
-        {content.download_form_link.replace("%state_name%", props.stateName)}
-    </Link>
-    );
-      
     return (
         <>
+        {content && <div>
         <form onSubmit={(e) => {e.preventDefault(), props.handleNext()}}>
         <Fieldset legend="Eligibility" legendStyle="srOnly">
             <div className={props.checkboxes.checkboxesValid ? 'error-container' : ''}>
@@ -32,7 +28,7 @@ function EligibilityCheckboxes(props) {
                         required={true}
                         defaultChecked={props.checkboxes.citizen}
                         onChange={(e) => props.handleCheckbox(e.target.checked, 'citizen', 0)}
-                    />              
+                    />
                     <Checkbox
                         id="age"
                         name="eligibility-checkbox"
@@ -44,11 +40,11 @@ function EligibilityCheckboxes(props) {
                         onChange={(e) => props.handleCheckbox(e.target.checked, 'age', 1)}
                     />
                 </div>
-            {props.checkboxes.checkboxesValid && 
+            {props.checkboxes.checkboxesValid &&
                 <span id="eligibility-error" rol="alert" className='error-text'>
                     Both boxes must be checked to continue.
                 </span>
-            }  
+            }
             </div>
         </Fieldset>
 
@@ -56,12 +52,20 @@ function EligibilityCheckboxes(props) {
 
         <div className="button-container" style={{ margin:'20px' }}>
             <Button onClick={() => props.checkBoxValues()} type="submit">
-            {onlineContent.start_button}
+            {content.online.start_button}
             </Button>
         </div>
         </form>
 
-        <p>{downloadForm}</p>
+        <p>
+            {reactStringReplace(
+            content.download_form,
+            '%link%',
+            (match, i) => <Link key={i} href={props.downloadForm} variant="external" rel="noreferrer" target="_blank">
+            {content.download_form_link.replace("%state_name%", props.stateName)}
+            </Link>)}
+        </p>
+        </div>}
         </>
     );
 }

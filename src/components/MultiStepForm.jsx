@@ -1,16 +1,21 @@
 import { Form } from '@trussworks/react-uswds';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ProgressBar from './ProgressBar';
 import PersonalInfo from "./FormSections/PersonalInfo";
 import Addresses from "./FormSections/Addresses"
-import content from "../data/registration-form.json";
 import Identification from './FormSections/Identification';
 import Confirmation from './FormSections/Confirmation';
 import Delivery from "./FormSections/Delivery";
 import PoliticalParty from './FormSections/PoliticalParty';
 import { phoneFormat, dayFormat } from './HelperFunctions/ValidateField';
+import {fetchData} from './HelperFunctions/JsonHelper.jsx';
 
 function MultiStepForm(props) {
+    const [content, setContent] = useState()
+    useEffect(() => {
+        fetchData("registration-form.json", setContent);
+    }, []);
+
     //Field data controls
     const [fieldData, setFieldData] = useState({
         title:'', first_name: '', middle_name: '', last_name: '', suffix:'',
@@ -25,7 +30,7 @@ function MultiStepForm(props) {
 
     const saveFieldData = (name) => {
         const day_names = ['date_of_birth_day', 'id_issue_date_day', 'id_expire_date_day' ]
-        
+
         return (event) => {
         if (name === 'phone_number') {
             setFieldData({ ...fieldData, [name]: phoneFormat(event.target.value) });
@@ -109,23 +114,24 @@ function MultiStepForm(props) {
     const [idType, setIdType] = useState('')
     const saveIdType = (e) => {
         setIdType(e.target.value)
-        e.target.value === 'none' ? 
-            setFieldData({ 
-                ...fieldData, 
-                id_number: 'none', 
-                id_issue_date_month:'', 
-                id_issue_date_day:'', 
-                id_issue_date_year:'', 
-                id_expire_date_month:'', 
-                id_expire_date_day:'', 
-                id_expire_date_year:'' 
-            }) 
-            : 
+        e.target.value === 'none' ?
+            setFieldData({
+                ...fieldData,
+                id_number: 'none',
+                id_issue_date_month:'',
+                id_issue_date_day:'',
+                id_issue_date_year:'',
+                id_expire_date_month:'',
+                id_expire_date_day:'',
+                id_expire_date_year:''
+            })
+            :
             setFieldData({ ...fieldData, id_number: '' });
     }
 
     return (
         <>
+        {content && <div>
         <ProgressBar step={step}/>
         {step < 5 &&
         <div>
@@ -208,6 +214,7 @@ function MultiStepForm(props) {
                 />
             }
         </Form>
+        </div>}
         </>
     );
 }

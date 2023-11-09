@@ -1,15 +1,20 @@
 import { Button, Icon } from '@trussworks/react-uswds';
-import data from "../../data/state-selection.json";
 import EligibilityCheckboxes from "./EligibilityCheckboxes";
+import { useState,useEffect } from 'react';
+import {fetchData} from '../HelperFunctions/JsonHelper.jsx';
 
 function Online(props) {
-    const content = data;
-    const onlineContent = data.online;
+    const [content, setContent] = useState()
     const stateContent = props.stateData;
     const stateLink = props.stateData.election_website_url;
 
+    useEffect(() => {
+        fetchData("state-selection.json", setContent);
+    }, []);
+
     return (
         <>
+        {content && <div>
         <h1>{content.main_heading.replace("%state_name%", props.stateData.name)}</h1>
         <h2>{content.heading_eligibility}</h2>
 
@@ -25,7 +30,7 @@ function Online(props) {
             listItem => <li key={listItem} value={listItem}>{listItem}</li>)}
         </ul>
 
-        <h2>{onlineContent.heading_online}</h2>
+        <h2>{content.online.heading_online}</h2>
         <p>{stateContent.info.online}</p>
 
         <div className="button-container" style={{ margin:'20px' }}>
@@ -38,7 +43,7 @@ function Online(props) {
         </div>
 
         <h2>{content.heading_mail}</h2>
-        <p>{onlineContent.mail_more_info}</p>
+        <p>{content.online.mail_more_info}</p>
 
         <EligibilityCheckboxes
             handleNext={props.handleNext}
@@ -48,6 +53,7 @@ function Online(props) {
             downloadForm={props.stateData.download_form}
             stateName={props.stateData.name}
         />
+        </div>}
         </>
     );
 }
