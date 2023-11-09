@@ -1,10 +1,9 @@
 import { useState } from 'react'
-import { Icon, Dropdown, Button } from '@trussworks/react-uswds';
+import { Dropdown } from '@trussworks/react-uswds';
 import states from "../data/states.json";
 import { checkForErrors } from './HelperFunctions/ValidateField';
 import "../styles/pages/StateSelection.css";
 import content from "../data/state-selection.json";
-import BackButton from './BackButton';
 import NextButton from './NextButton';
 
 function StateSelection(props) {
@@ -21,8 +20,6 @@ function StateSelection(props) {
 
     return (
         <>
-        <BackButton type={'link'} text={content.back_btn}/>
-
         <h1>{content.main_heading}</h1>
         <p className={'usa-intro'}>{content.main_parag}</p>
 
