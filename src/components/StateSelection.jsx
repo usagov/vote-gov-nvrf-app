@@ -1,14 +1,22 @@
-import { useState } from 'react'
-import { Icon, Dropdown, Button } from '@trussworks/react-uswds';
-import states from "../data/states.json";
+import { useState, useEffect } from 'react'
+import { Dropdown } from '@trussworks/react-uswds';
 import { checkForErrors } from './HelperFunctions/ValidateField';
+import { fetchData } from './HelperFunctions/JsonHelper';
 import "../styles/pages/StateSelection.css";
-import content from "../data/state-selection.json";
 import BackButton from './BackButton';
 import NextButton from './NextButton';
 
 function StateSelection(props) {
-    const stateLink = props.stateData.election_website_url;
+    const [content, setContent] = useState('');
+    useEffect(() => {
+        fetchData("state-selection.json", setContent);
+    }, []);
+
+    const [states, setState] = useState('');
+    useEffect(() => {
+        fetchData("states.json", setState);
+    }, []);
+
     const statesList = []
     for (let i = 0; i < states.length; i++) {
         let stateName = states[i].name;
@@ -17,7 +25,7 @@ function StateSelection(props) {
 
     const [handleErrors, setHandleErrors] = useState({ 
         state_selected: false
-    })
+    });
 
     return (
         <>
@@ -27,7 +35,7 @@ function StateSelection(props) {
         <p className={'usa-intro'}>{content.main_parag}</p>
 
         <h2>{content.subheading}</h2>
-        <p>{content.parag2.replace("%link%", content.parag2_link)}</p>
+        {content.parag2}
         
         <h2>{content.get_started}</h2>
         

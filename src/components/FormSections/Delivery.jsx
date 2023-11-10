@@ -1,10 +1,16 @@
 import { Button, Link, Icon } from '@trussworks/react-uswds';
 import "../../styles/pages/Delivery.css";
-import content from "../../data/delivery.json";
+import React, { useState, useEffect } from "react";
+import {fetchData} from '../HelperFunctions/JsonHelper.jsx';
 import GenerateFilledPDF from '../GenerateFilledPDF';
 import reactStringReplace from 'react-string-replace';
 
 function Delivery(props) {
+    const [content, setContent] = useState();
+    useEffect(() => {
+        fetchData("delivery.json", setContent);
+    }, []);
+
     // Add A/B Message randomization.
     const randomProperty = function (obj) {
         const keys = Object.keys(obj);
@@ -16,60 +22,63 @@ function Delivery(props) {
     };
 
     const stateAddress = props.stateData.state_address;
-    const reminderMessage = randomProperty(content.reminder_messages);
 
-    const usagov_resource_link = reactStringReplace(
-        content.usagov_rescources,
-        '%link%',
-        (match, i) => <Link key={i} href={'https://www.usa.gov/how-to-vote'} variant="external" rel="noreferrer" target="_blank">
-        {content.usagov_resources_link}
-    </Link>
-    );
+    if (content) {
+        const reminderMessage = randomProperty(content.reminder_messages);
 
-    return (
-        <>
-            <h1>{content.main_heading.replace("%state_name%", props.stateData.name)}</h1>
-            <p>{content.main_help_text1}</p>
-            <p>{content.main_help_text2}</p>
-            <h2>{content.mail_to_header.replace("%state_name%", props.stateData.name)}</h2>
+        const usagov_resource_link = reactStringReplace(
+            content.usagov_rescources,
+            '%link%',
+            (match, i) => <Link key={i} href={'https://www.usa.gov/how-to-vote'} variant="external" rel="noreferrer" target="_blank">
+                {content.usagov_resources_link}
+            </Link>
+        );
 
-            <p>
-                <br />{stateAddress.office_name}
-                <br />{stateAddress.street_address}
-                <br />{stateAddress.city_state}
-            </p>
+        return (
+            <>
+                <h1>{content.main_heading.replace("%state_name%", props.stateData.name)}</h1>
+                <p>{content.main_help_text1}</p>
+                <p>{content.main_help_text2}</p>
+                <h2>{content.mail_to_header.replace("%state_name%", props.stateData.name)}</h2>
 
-            <p>{content.delivery_text}</p>
+                <p>
+                    <br />{stateAddress.office_name}
+                    <br />{stateAddress.street_address}
+                    <br />{stateAddress.city_state}
+                </p>
 
-            <Button onClick={() => GenerateFilledPDF(props.fieldData)} type="submit">
-                {content.open_btn} <Icon.ArrowForward aria-label="forward arrow icon"/>
-            </Button>
+                <p>{content.delivery_text}</p>
 
-            <hr/>
+                <Button onClick={() => GenerateFilledPDF(props.fieldData)} type="submit">
+                    {content.open_btn} <Icon.ArrowForward aria-label="forward arrow icon"/>
+                </Button>
 
-            <h2>{content.reminder_main_header}</h2>
+                <hr/>
 
-            <h3>{content.reminder_sub_header1}</h3>
-            <p data-message-id={reminderMessage.key}>{reminderMessage.value}</p>
-            <p>{content.reminder_parag1}</p>
+                <h2>{content.reminder_main_header}</h2>
 
-            <h3>{content.reminder_sub_header2}</h3>
+                <h3>{content.reminder_sub_header1}</h3>
+                <p data-message-id={reminderMessage.key}>{reminderMessage.value}</p>
+                <p>{content.reminder_parag1}</p>
 
-            <p><strong>{content.reminder_parag2}</strong></p>
-            <p>{content.reminder_parag3}</p>
+                <h3>{content.reminder_sub_header2}</h3>
 
-            <p>{content.reminder_parag4}</p>
+                <p><strong>{content.reminder_parag2}</strong></p>
+                <p>{content.reminder_parag3}</p>
+
+                <p>{content.reminder_parag4}</p>
                 <ul>
                     <li>{content.reminder_parag4_li1}</li>
                     <li>{content.reminder_parag4_li2}</li>
                 </ul>
 
-            <h3>{content.reminder_subheader3}</h3>
-            <p>{content.reminder_parag5}</p>
+                <h3>{content.reminder_subheader3}</h3>
+                <p>{content.reminder_parag5}</p>
 
-            <p><strong>{usagov_resource_link}</strong></p>
-        </>
-    )
+                <p><strong>{usagov_resource_link}</strong></p>
+            </>
+        );
+    }
 }
 
 export default Delivery;
