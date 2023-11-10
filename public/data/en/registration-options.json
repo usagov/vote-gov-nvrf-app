@@ -20,7 +20,7 @@
     "next_btn_bymail": "Start your mail-in registration on vote.gov",
     "back_btn": "Go back to Select your State",
     "not_needed": {
-        "main_heading": "%state_name% does not have voter registration.",
+        "main_heading": "%state_name% does not have voter registration!",
         "more_info": "%link% on %state_name%'s election website.",
         "more_info_link": "Learn more about voting",
         "heading_vote": "Don’t forget to vote!",

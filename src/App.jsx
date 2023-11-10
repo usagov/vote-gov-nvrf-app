@@ -1,12 +1,17 @@
 import { useState, useEffect } from 'react'
-import states from "./data/states.json";
 import StateSelection from './components/StateSelection';
 import Eligibility from './components/Eligibility';
 import RegistrationOptions from './components/RegistrationOptions';
 import PathSelection from './components/PathSelection';
 import MultiStepForm from './components/MultiStepForm';
+import {fetchData} from './components/HelperFunctions/JsonHelper.jsx';
 
 function App() {
+
+  const [states, setState] = useState('');
+  useEffect(() => {
+    fetchData("states.json", setState);
+  }, []);
 
   const [step, setStep] = useState(1);
   const [selectedState, setSelectedState] = useState('');

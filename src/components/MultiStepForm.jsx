@@ -3,17 +3,22 @@ import React, { useState, useEffect } from "react";
 import ProgressBar from './ProgressBar';
 import PersonalInfo from "./FormSections/PersonalInfo";
 import Addresses from "./FormSections/Addresses"
-import content from "../data/registration-form.json";
 import Identification from './FormSections/Identification';
 import Confirmation from './FormSections/Confirmation';
 import Delivery from "./FormSections/Delivery";
 import PoliticalParty from './FormSections/PoliticalParty';
 import { phoneFormat, dayFormat } from './HelperFunctions/ValidateField';
+import { fetchData } from './HelperFunctions/JsonHelper.jsx';
 import BackButton from './BackButton'
 import NextButton from './NextButton';
 
 
 function MultiStepForm(props) {
+    const [content, setContent] = useState()
+    useEffect(() => {
+        fetchData("registration-form.json", setContent);
+    }, []);
+
     //Field data controls
     const [fieldData, setFieldData] = useState({
         title:'', first_name: '', middle_name: '', last_name: '', suffix:'',
@@ -41,7 +46,7 @@ function MultiStepForm(props) {
         }
         };
     };
-    // Sets up prompt that if user hits browser back/refresh button and has imputed any data will alert that data will be lost 
+    // Sets up prompt that if user hits browser back/refresh button and has imputed any data will alert that data will be lost
     useEffect(() => {
         const handleBeforeUnload = (event) => {
         event.preventDefault();
@@ -63,7 +68,6 @@ function MultiStepForm(props) {
       }
 
     const handlePrev = () => {
-        console.log('click handleprev', step)
         step != 1 && setStep(step - 1);
         document.getElementById('scroll-to-top').scrollIntoView();
 
@@ -183,99 +187,108 @@ function MultiStepForm(props) {
         }
     }
 
-    return (
-        <>
-        <BackButton type={'button'} onClick={handlePrev} text={backButtonText(step)}/>
+    if (content) {
+        return (
+            <>
+                <BackButton type={'button'} onClick={handlePrev} text={backButtonText(step)}/>
 
-        <ProgressBar step={step}/>
-        {step < 5 &&
-        <div>
-            <h1>{content.main_heading}: {props.stateData.name}</h1>
-            <p><strong>{content.reminder}</strong>{content.reminder_text}</p>
-        </div>
-        }
+                <ProgressBar step={step}/>
+                {step < 5 &&
+                    <div>
+                        <h1>{content.main_heading}: {props.stateData.name}</h1>
+                        <p><strong>{content.reminder}</strong>{content.reminder_text}</p>
+                    </div>
+                }
 
-        <Form autoComplete="off" style={{ maxWidth:'none' }} onSubmit={(e) => {handleSubmit(e), handleNext()}}>
-            {step === 1 &&
-                <PersonalInfo
-                state={props.state}
-                stateData={props.stateData}
-                fieldData={fieldData}
-                saveFieldData = {saveFieldData}
-                registrationPath={props.registrationPath}
-                previousName={previousName}
-                onChangePreviousName={onChangePreviousName}
-                handlePrev={props.handlePrev}
-                />
-            }
-            {step === 2 &&
-                <Addresses
-                state={props.state}
-                stateData={props.stateData}
-                fieldData={fieldData}
-                saveFieldData = {saveFieldData}
-                registrationPath={props.registrationPath}
-                handlePrev={handlePrev}
-                hasNoAddress={hasNoAddress}
-                hasNoAddressCheckbox={hasNoAddressCheckbox}
-                hasPreviousAddress={hasPreviousAddress}
-                onChangePreviousAddressCheckbox={onChangePreviousAddressCheckbox}
-                hasMailAddress={hasMailAddress}
-                onChangeMailAddressCheckbox={onChangeMailAddressCheckbox}
-                />
-            }
-            {step === 3 &&
-                <Identification
-                state={props.state}
-                stateData={props.stateData}
-                fieldData={fieldData}
-                saveFieldData = {saveFieldData}
-                registrationPath={props.registrationPath}
-                handlePrev={handlePrev}
-                saveIdType={saveIdType}
-                idType={idType}/>
-            }
-            {step === 4 &&
-                <PoliticalParty
-                state={props.state}
-                stateData={props.stateData}
-                fieldData={fieldData}
-                saveFieldData = {saveFieldData}
-                registrationPath={props.registrationPath}
-                handlePrev={handlePrev}/>
-            }
-            {step === 5 &&
-                <Confirmation
-                state={props.state}
-                stateData={props.stateData}
-                fieldData={fieldData}
-                saveFieldData = {saveFieldData}
-                registrationPath={props.registrationPath}
-                handlePrev={handlePrev}
-                handleGoBackSteps={handleGoBackSteps}
-                hasAcknowledged={hasAcknowledged}
-                error={error}
-                acknowledgeCheckbox={acknowledgeCheckbox}
-                checkboxValid={checkboxValid}
-                />
-            }
-            {step === 6 &&
-                <Delivery
-                state={props.state}
-                stateData={props.stateData}
-                fieldData={fieldData}
-                saveFieldData = {saveFieldData}
-                registrationPath={props.registrationPath}
-                handlePrev={handlePrev}
-                deliveryButtonSelected = {deliveryButtonSelected}
-                handleClickDeliveryButton = {handleClickDeliveryButton}
-                />
-            }
+                <Form autoComplete="off" style={{ maxWidth:'none' }} onSubmit={(e) => {handleSubmit(e), handleNext()}}>
+                    {step === 1 &&
+                        <PersonalInfo
+                            state={props.state}
+                            stateData={props.stateData}
+                            fieldData={fieldData}
+                            saveFieldData = {saveFieldData}
+                            registrationPath={props.registrationPath}
+                            previousName={previousName}
+                            onChangePreviousName={onChangePreviousName}
+                            handlePrev={props.handlePrev}
+                            content={content}
+                        />
+                    }
+                    {step === 2 &&
+                        <Addresses
+                            state={props.state}
+                            statesList={props.statesList}
+                            stateData={props.stateData}
+                            fieldData={fieldData}
+                            saveFieldData = {saveFieldData}
+                            registrationPath={props.registrationPath}
+                            handlePrev={handlePrev}
+                            hasNoAddress={hasNoAddress}
+                            hasNoAddressCheckbox={hasNoAddressCheckbox}
+                            hasPreviousAddress={hasPreviousAddress}
+                            onChangePreviousAddressCheckbox={onChangePreviousAddressCheckbox}
+                            hasMailAddress={hasMailAddress}
+                            onChangeMailAddressCheckbox={onChangeMailAddressCheckbox}
+                            content={content}
+                        />
+                    }
+                    {step === 3 &&
+                        <Identification
+                            state={props.state}
+                            stateData={props.stateData}
+                            fieldData={fieldData}
+                            saveFieldData = {saveFieldData}
+                            registrationPath={props.registrationPath}
+                            handlePrev={handlePrev}
+                            saveIdType={saveIdType}
+                            idType={idType}
+                            content={content}
+                        />
+                    }
+                    {step === 4 &&
+                        <PoliticalParty
+                            state={props.state}
+                            stateData={props.stateData}
+                            fieldData={fieldData}
+                            saveFieldData = {saveFieldData}
+                            registrationPath={props.registrationPath}
+                            handlePrev={handlePrev}
+                            content={content}
+                        />
+                    }
+                    {step === 5 &&
+                        <Confirmation
+                            state={props.state}
+                            stateData={props.stateData}
+                            fieldData={fieldData}
+                            saveFieldData = {saveFieldData}
+                            registrationPath={props.registrationPath}
+                            handlePrev={handlePrev}
+                            handleGoBackSteps={handleGoBackSteps}
+                            hasAcknowledged={hasAcknowledged}
+                            error={error}
+                            acknowledgeCheckbox={acknowledgeCheckbox}
+                            checkboxValid={checkboxValid}
+                        />
+                    }
+                    {step === 6 &&
+                        <Delivery
+                            state={props.state}
+                            stateData={props.stateData}
+                            fieldData={fieldData}
+                            saveFieldData = {saveFieldData}
+                            registrationPath={props.registrationPath}
+                            handlePrev={handlePrev}
+                            deliveryButtonSelected = {deliveryButtonSelected}
+                            handleClickDeliveryButton = {handleClickDeliveryButton}
+                        />
+                    }
 
-        {step != 6 && <NextButton type={'submit'} onClick={step === 5 ? () => checkboxValid() : undefined} text={nextButtonText(step)}/>}
-        </Form>
-        </>
-    );
+                    {step != 6 && <NextButton type={'submit'} onClick={step === 5 ? () => checkboxValid() : undefined} text={nextButtonText(step)}/>}
+                </Form>
+            </>
+        );
+    }
 }
 
 export default MultiStepForm;
