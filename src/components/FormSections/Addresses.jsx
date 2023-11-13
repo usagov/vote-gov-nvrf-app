@@ -1,20 +1,17 @@
-import { Label, TextInput, Button, Checkbox, Grid } from '@trussworks/react-uswds';
+import { Label, TextInput, Checkbox, Grid } from '@trussworks/react-uswds';
 import StateSelector from '../StateSelector';
 import React, { useState } from "react";
-import states from "../../data/states.json";
-import content from "../../data/registration-form.json";
 import { restrictType, checkForErrors } from '../HelperFunctions/ValidateField';
 import "../../styles/pages/Form.css";
 
 function Addresses(props){
+    const content = props.content;
     const changeRegistrationVisible = (props.registrationPath === 'update') ? true : false;
     const stateFieldRequirements = props.stateData.fields_required;
     const stateFieldVisible = props.stateData.fields_visible;
 
     const addressReq = stateFieldRequirements.address;
-    const mailAddressReq = stateFieldRequirements.mailing_address;
     const addressVisible = stateFieldVisible.address;
-    const mailAddressVisible = stateFieldVisible.mailing_address;
 
     const [handleErrors, setHandleErrors] = useState({
         street: false,
@@ -44,13 +41,6 @@ function Addresses(props){
      }
     }
 
-    //states list
-    const statesList = []
-    for (let i = 0; i < states.length; i++) {
-        let stateName = states[i].name;
-        statesList.push(stateName);
-    };
-
     return (
         <>
         <h3>{content.address_heading}</h3>
@@ -62,9 +52,9 @@ function Addresses(props){
                         <Checkbox id="prev-res-addr" name="prev-res-addr" checked={props.hasPreviousAddress} onChange={props.onChangePreviousAddressCheckbox} label={content.previous_address_checkbox_label} />
                     </div>
                 )}
-                <p>
+                <div>
                     <Checkbox id="no-addr" name="no-addr" checked={props.hasNoAddress} onChange={props.hasNoAddressCheckbox} label={content.no_address_checkbox_label} />
-                </p>
+                </div>
                 {/******** Current Address Block *********/}
                 { !props.hasNoAddress && (<div>
                     <div className="usa-alert usa-alert--info">
@@ -149,7 +139,7 @@ function Addresses(props){
                         <Label htmlFor="state" className="bottom">
                             {content.state_label}
                         <StateSelector
-                            statesList={statesList}
+                            statesList={props.statesList}
                             state={props.stateData.name}
                             saveState={props.saveFieldData('state')}
                             autoComplete="off"
@@ -280,7 +270,7 @@ function Addresses(props){
                                     autoComplete="off"
                                     ariaDescribedBy="mail-state-error"
                                     required={addressReq}
-                                    statesList={statesList}
+                                    statesList={props.statesList}
                                     state={props.fieldData.mail_state}
                                     saveState={props.saveFieldData('mail_state')}
                                     onBlur={(e) => checkStateValue('mail_state')}
@@ -407,7 +397,7 @@ function Addresses(props){
                                     ariaDescribedby="prev-state-error"
                                     autoComplete="off"
                                     required={addressReq}
-                                    statesList={statesList}
+                                    statesList={props.statesList}
                                     state={props.fieldData.prev_state}
                                     saveState={props.saveFieldData('prev_state')}
                                     onBlur={(e) => checkStateValue('prev_state')}
