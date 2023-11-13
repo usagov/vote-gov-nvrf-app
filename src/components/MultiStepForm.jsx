@@ -190,7 +190,7 @@ function MultiStepForm(props) {
     if (content) {
         return (
             <>
-                <BackButton type={'button'} onClick={handlePrev} text={backButtonText(step)}/>
+                {step != 6 && <BackButton type={'button'} onClick={handlePrev} text={backButtonText(step)}/>}
 
                 <ProgressBar step={step}/>
                 {step < 5 &&
