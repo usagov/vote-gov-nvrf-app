@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Label, TextInput, Button } from '@trussworks/react-uswds';
-import content from "../../data/registration-form.json";
+import { Label, TextInput } from '@trussworks/react-uswds';
 import { restrictType, checkForErrors } from '../HelperFunctions/ValidateField';
 
 function PoliticalParty(props){
+    const content = props.content;
     const stateFieldRequirements = props.stateData.fields_required;
     const stateFieldVisible = props.stateData.fields_visible;
     const stateInstructions = props.stateData.state_field_instructions;
