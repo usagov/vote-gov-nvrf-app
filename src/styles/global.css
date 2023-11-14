@@ -24,10 +24,6 @@ body {
         background-color: transparent;
     }
 
-    .usa-form-group--month {
-        width: 10rem;
-    }
-
     .usa-form a:visited {
         color: unset;
     }

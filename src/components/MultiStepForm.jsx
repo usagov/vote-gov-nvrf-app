@@ -28,14 +28,14 @@ function MultiStepForm(props) {
         const [hasData, setHasData] = useState(false)
 
     const saveFieldData = (name) => {
-        const day_names = ['date_of_birth_day', 'id_issue_date_day', 'id_expire_date_day' ]
+        // const day_names = ['date_of_birth_day', 'id_issue_date_day', 'id_expire_date_day' ]
 
         return (event) => {
             event.target.value.length > 0 && setHasData(true)
             if (name === 'phone_number') {
             setFieldData({ ...fieldData, [name]: phoneFormat(event.target.value) });
-        } else if (day_names.includes(name)) {
-            setFieldData({ ...fieldData, [name]: dayFormat(event.target.value) });
+        // } else if (day_names.includes(name)) {
+        //     setFieldData({ ...fieldData, [name]: dayFormat(event.target.value) });
         } else {
             setFieldData({ ...fieldData, [name]: event.target.value });
         }

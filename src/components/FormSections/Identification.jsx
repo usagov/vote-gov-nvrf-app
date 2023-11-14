@@ -1,7 +1,7 @@
-import { Label, TextInput, Button, Dropdown, Grid, Fieldset } from '@trussworks/react-uswds';
+import { Label, TextInput, Dropdown, Grid, Fieldset, DateInputGroup, DateInput } from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import content from "../../data/registration-form.json";
-import { focusNext, restrictLength, restrictType, checkExpiration, checkForErrors } from '../HelperFunctions/ValidateField';
+import { focusNext, restrictType, checkExpiration, checkForErrors } from '../HelperFunctions/ValidateField';
 
 function Identification(props){
     const stateFieldRequirements = props.stateData.fields_required;
@@ -136,37 +136,30 @@ function Identification(props){
                             onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) checkDateValues('issue'); }}
                             data-testid="dateInputGroup"
                         >
-                                <div className="usa-form-group usa-form-group--month usa-form-group--select">
-                                    <label className="usa-label" htmlFor="id_issue_date_month">
+                                <div data-testid="formGroup" className="usa-form-group usa-form-group--month">
+                                    <label data-testid="label" className="usa-label" htmlFor="id_issue_date_month">
                                         Month
-                                    <select
-                                        className="usa-select"
+                                    <input
                                         id="id_issue_date_month"
-                                        name="id_issue_date_month"
+                                        className="usa-input"
                                         aria-describedby="issue-date-error"
+                                        name="id_issue_date_month"
+                                        label="Month"
+                                        unit="month"
                                         required={true}
-                                        value={props.fieldData.id_issue_date_month}
+                                        type="text"
+                                        pattern="0[1-9]|1[1,2]"
+                                        inputMode="numeric"
+                                        maxLength={2}
+                                        minLength={2}
+                                        value={props.fieldData.id_issue_date_day}
                                         onInput={props.saveFieldData('id_issue_date_month')}
-                                        onChange={(e) => {focusNext(e, "id_issue_date_day", "month")}}
-                                    >
-                                        <option value="">- Select -</option>
-                                        <option value="01">01 - January</option>
-                                        <option value="02">02 - February</option>
-                                        <option value="03">03 - March</option>
-                                        <option value="04">04 - April</option>
-                                        <option value="05">05 - May</option>
-                                        <option value="06">06 - June</option>
-                                        <option value="07">07 - July</option>
-                                        <option value="08">08 - August</option>
-                                        <option value="09">09 - September</option>
-                                        <option value="10">10 - October</option>
-                                        <option value="11">11 - November</option>
-                                        <option value="12">12 - December</option>
-                                    </select>
+                                        onKeyDown={(e) => restrictType(e, 'number')}
+                                    />
                                     </label>
                                 </div>
                                 <div data-testid="formGroup" className="usa-form-group usa-form-group--day">
-                                    <label data-testid="label" className="usa-label" htmlFor="testDateInput">
+                                    <label data-testid="label" className="usa-label" htmlFor="id_issue_date_day">
                                         Day
                                     <input
                                         id="id_issue_date_day"
@@ -176,20 +169,19 @@ function Identification(props){
                                         label="Day"
                                         unit="day"
                                         required={true}
-                                        type="number"
+                                        type="text"
+                                        pattern="0[1-9]|[12][0-9]|3[01]"
                                         inputMode="numeric"
-                                        min={1}
-                                        max={31}
                                         minLength={2}
                                         maxLength={2}
                                         value={props.fieldData.id_issue_date_day}
                                         onInput={props.saveFieldData('id_issue_date_day')}
-                                        onChange={(e) => {focusNext(e, "id_issue_date_year"), restrictLength(e, e.target.value, e.target.maxLength) }}
-                                />
+                                        onKeyDown={(e) => restrictType(e, 'number')}
+                                    />
                                     </label>
                                 </div>
                                 <div data-testid="formGroup" className="usa-form-group usa-form-group--year">
-                                    <label data-testid="label" className="usa-label" htmlFor="testDateInput">
+                                    <label data-testid="label" className="usa-label" htmlFor="id_issue_date_year">
                                         Year
                                     <input
                                         id="id_issue_date_year"
@@ -200,6 +192,7 @@ function Identification(props){
                                         unit="year"
                                         required={true}
                                         type="text"
+                                        pattern="(19|20)\d{2}"
                                         inputMode="numeric"
                                         minLength={4}
                                         maxLength={4}
@@ -234,38 +227,30 @@ function Identification(props){
                             onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) checkDateValues('expire'); }}
                             data-testid="dateInputGroup"
                         >
-                                <div className="usa-form-group usa-form-group--month usa-form-group--select">
-                                    <label className="usa-label" htmlFor="id_expire_date_month">
+                                <div data-testid="formGroup" className="usa-form-group usa-form-group--month">
+                                    <label data-testid="label" className="usa-label" htmlFor="id_expire_date_month">
                                         Month
-                                    <select
-                                        className="usa-select"
+                                    <input
                                         id="id_expire_date_month"
-                                        name="id_expire_date_month"
+                                        className="usa-input"
                                         aria-describedby="expire-date-error"
+                                        name="id_expire_date_month"
+                                        label="Month"
+                                        unit="month"
                                         required={true}
-                                        value={props.fieldData.id_expire_date_month}
+                                        type="text"
+                                        pattern="0[1-9]|1[1,2]"
+                                        inputMode="numeric"
+                                        maxLength={2}
+                                        minLength={2}
+                                        value={props.fieldData.id_expire_date_day}
                                         onInput={props.saveFieldData('id_expire_date_month')}
-                                        onChange={(e) => {focusNext(e, "id_expire_date_day", "month")}}
-                                    >
-                                        <option value="">- Select -</option>
-                                        <option value="01">01 - January</option>
-                                        <option value="02">02 - February</option>
-                                        <option value="03">03 - March</option>
-                                        <option value="04">04 - April</option>
-                                        <option value="05">05 - May</option>
-                                        <option value="06">06 - June</option>
-                                        <option value="07">07 - July</option>
-                                        <option value="08">08 - August</option>
-                                        <option value="09">09 - September</option>
-                                        <option value="10">10 - October</option>
-                                        <option value="11">11 - November</option>
-                                        <option value="12">12 - December</option>
-                                    </select>
+                                        onKeyDown={(e) => restrictType(e, 'number')}
+                                    />
                                     </label>
                                 </div>
-
                                 <div data-testid="formGroup" className="usa-form-group usa-form-group--day">
-                                <label data-testid="label" className="usa-label" htmlFor="testDateInput">
+                                <label data-testid="label" className="usa-label" htmlFor="id_expire_date_day">
                                     Day
                                     <input
                                         id="id_expire_date_day"
@@ -275,30 +260,31 @@ function Identification(props){
                                         label="Day"
                                         unit="day"
                                         required={true}
-                                        type="number"
+                                        type="text"
+                                        pattern="0[1-9]|[12][0-9]|3[01]"
                                         inputMode="numeric"
-                                        min={1}
-                                        max={31}
                                         minLength={2}
                                         maxLength={2}
                                         value={props.fieldData.id_expire_date_day}
                                         onInput={props.saveFieldData('id_expire_date_day')}
-                                        onChange={(e) => {focusNext(e, "id_expire_date_year"), restrictLength(e, e.target.value, e.target.maxLength) }}
+                                        onKeyDown={(e) => restrictType(e, 'number')}
                                     />
                                     </label>
                                 </div>
 
                                 <div data-testid="formGroup" className="usa-form-group usa-form-group--year">
-                                    <label data-testid="label" className="usa-label" htmlFor="testDateInput">
+                                    <label data-testid="label" className="usa-label" htmlFor="id_expire_date_year">
                                         Year
                                     <input
                                         id="id_expire_date_year"
                                         className="usa-input"
                                         name="id_expire_date_year"
                                         aria-describedby="expire-date-error"
-                                        label="Year" unit="year"
+                                        label="Year" 
+                                        unit="year"
                                         required={true}
                                         type="text"
+                                        pattern="(19|20)\d{2}"
                                         inputMode="numeric"
                                         minLength={4}
                                         maxLength={4}
