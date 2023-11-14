@@ -1,7 +1,7 @@
 import { Label, TextInput, Dropdown, Grid, Fieldset, DateInputGroup, DateInput } from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import content from "../../data/registration-form.json";
-import { focusNext, restrictType, checkExpiration, checkForErrors } from '../HelperFunctions/ValidateField';
+import { restrictType, checkExpiration, checkForErrors } from '../HelperFunctions/ValidateField';
 
 function Identification(props){
     const stateFieldRequirements = props.stateData.fields_required;
@@ -154,6 +154,7 @@ function Identification(props){
                                         minLength={2}
                                         value={props.fieldData.id_issue_date_day}
                                         onInput={props.saveFieldData('id_issue_date_month')}
+                                        onKeyUp={(e) => jumpTo(e, 'id_issue_date_day')}
                                         onKeyDown={(e) => restrictType(e, 'number')}
                                     />
                                     </label>
@@ -176,6 +177,7 @@ function Identification(props){
                                         maxLength={2}
                                         value={props.fieldData.id_issue_date_day}
                                         onInput={props.saveFieldData('id_issue_date_day')}
+                                        onKeyUp={(e) => jumpTo(e, 'id_issue_date_year')}
                                         onKeyDown={(e) => restrictType(e, 'number')}
                                     />
                                     </label>
@@ -245,6 +247,7 @@ function Identification(props){
                                         minLength={2}
                                         value={props.fieldData.id_expire_date_day}
                                         onInput={props.saveFieldData('id_expire_date_month')}
+                                        onKeyUp={(e) => jumpTo(e, 'id_expire_date_day')}
                                         onKeyDown={(e) => restrictType(e, 'number')}
                                     />
                                     </label>
@@ -267,6 +270,7 @@ function Identification(props){
                                         maxLength={2}
                                         value={props.fieldData.id_expire_date_day}
                                         onInput={props.saveFieldData('id_expire_date_day')}
+                                        onKeyUp={(e) => jumpTo(e, 'id_expire_date_year')}
                                         onKeyDown={(e) => restrictType(e, 'number')}
                                     />
                                     </label>

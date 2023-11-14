@@ -1,13 +1,7 @@
-export const focusNext=(e, nextId, type)=>{
-  if (type === "month") {
-    if (e.target.value != true) {
-        document.getElementById(nextId).focus();
-    }
-  }
-
-  if (e.target.value.length == e.target.maxLength)  {
+export const jumpTo = (e, nextId) => {
+  if (e.target.value.length == e.target.maxLength) {
     document.getElementById(nextId).focus();
-}
+  }
 }
 
 export const restrictType = (e, requiredType) => {

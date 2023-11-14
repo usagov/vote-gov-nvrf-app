@@ -1,8 +1,11 @@
 import { Label, TextInput, Dropdown, Checkbox, Grid, Fieldset, DateInputGroup, DateInput } from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import content from "../../data/registration-form.json";
-import { focusNext, restrictType, checkForErrors } from '../HelperFunctions/ValidateField';
+import { restrictType, checkForErrors, jumpTo } from '../HelperFunctions/ValidateField';
 import "../../styles/pages/Form.css";
+
+// when user types 1 and tabs to next input or clicks out of current, auto format a 0 in front to be 01
+// when user types 11 auto advance to the next input
 
 function PersonalInfo(props){
     const stateFieldRequirements = props.stateData.fields_required;
@@ -186,6 +189,7 @@ function PersonalInfo(props){
                                     minLength={2}
                                     value={props.fieldData.date_of_birth_month}
                                     onInput={props.saveFieldData('date_of_birth_month')}
+                                    onKeyUp={(e) => jumpTo(e, 'date_of_birth_day')}
                                     onKeyDown={(e) => restrictType(e, 'number')}
                                 />
                             </label>
@@ -208,6 +212,7 @@ function PersonalInfo(props){
                                     maxLength={2}
                                     value={props.fieldData.date_of_birth_day}
                                     onInput={props.saveFieldData('date_of_birth_day')}
+                                    onKeyUp={(e) => jumpTo(e, 'date_of_birth_year')}
                                     onKeyDown={(e) => restrictType(e, 'number')}
                                 />
                                 </label>
