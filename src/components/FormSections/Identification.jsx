@@ -1,9 +1,9 @@
-import { Label, TextInput, Dropdown, Grid, Fieldset, DateInputGroup, DateInput } from '@trussworks/react-uswds';
+import { Label, TextInput, Dropdown, Grid, Fieldset } from '@trussworks/react-uswds';
 import React, { useState } from "react";
-import content from "../../data/registration-form.json";
 import { restrictType, checkExpiration, checkForErrors, jumpTo } from '../HelperFunctions/ValidateField';
 
 function Identification(props){
+    const content = props.content;
     const stateFieldRequirements = props.stateData.fields_required;
     const stateFieldVisible = props.stateData.fields_visible;
     const stateInstructions = props.stateData.state_field_instructions;

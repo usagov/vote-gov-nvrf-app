@@ -4,7 +4,6 @@ import NextButton from '../NextButton';
 function ByMail(props) {
     const content = props.content;
     const stateContent = props.stateData;
-    const regType = props.stateData.reg_type;
 
     return (
         <>
