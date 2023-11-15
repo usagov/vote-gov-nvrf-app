@@ -34,11 +34,11 @@ function StateSelection(props) {
         <h2>{content.subheading}</h2>
         {content.parag2}
         
-        <h2>{content.get_started}</h2>
+        <h2 className="">{content.get_started}</h2>
         
         <form onSubmit={(e) => {props.handleSubmit(e), props.handleNext()}}>
 
-        <div className="grid-row">
+        <div className="grid-row padding-y-2">
             <div className="tablet:grid-col-1">
                 <h4>{content.dropdown_text}</h4>
             </div>
@@ -47,6 +47,7 @@ function StateSelection(props) {
                 <div className={handleErrors.state_selected ? 'error-container' : ''}>
                                 <Dropdown 
                                     id="state-dropdown"
+                                    className="margin-top-2"
                                     name="input-dropdown"
                                     value={props.state}
                                     required={true}
@@ -68,7 +69,7 @@ function StateSelection(props) {
                 </div>
             </div>
         </div>
-            
+
         <NextButton type={'submit'} text={content.next_btn}/>
 
         </form>

@@ -31,6 +31,7 @@ function PoliticalParty(props){
                 Choice of party{partyReq && <span className='required-text'>*</span>}
                 <TextInput 
                     id="political-party"
+                    className="radius-md"
                     aria-describedby="party-choice-error" 
                     name="political party" 
                     value={props.fieldData.party_choice} 

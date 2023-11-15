@@ -12,3 +12,7 @@
 .fieldset {
     display: contents;
 }
+
+.usa-step-indicator__header {
+    display: none !important;
+}

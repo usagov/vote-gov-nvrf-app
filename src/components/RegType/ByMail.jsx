@@ -22,7 +22,7 @@ function ByMail(props) {
                 <Icon.Launch title="External link opens new window"/>
             </Link>
 
-            <div className="divider padding-y-205">
+            <div className="divider padding-y-6">
                 <span>{content.divider_text}</span>
             </div>
 

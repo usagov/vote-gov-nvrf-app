@@ -1,6 +1,9 @@
 body {
     .usa-button {
         background-color: #11385B;
+        /* min-width: 258px;
+        min-height: 50px;
+        text-align: left; */
     }
 
     .usa-card__container {
@@ -22,6 +25,13 @@ body {
 
     .back-button {
         background-color: transparent;
+    }
+
+    .divider-grey {
+        display: inline-block;
+        height: 1px;
+        width:100%;
+        border: 1px solid #DCDEE0;
     }
 
     .usa-form-group--month {

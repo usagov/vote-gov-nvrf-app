@@ -2,7 +2,6 @@ import { Label, TextInput, Checkbox, Grid } from '@trussworks/react-uswds';
 import StateSelector from '../StateSelector';
 import React, { useState } from "react";
 import { restrictType, checkForErrors } from '../HelperFunctions/ValidateField';
-import "../../styles/pages/Form.css";
 
 function Addresses(props){
     const content = props.content;
@@ -74,6 +73,7 @@ function Addresses(props){
                                 {content.street_address_label}{addressReq && <span className='required-text'>*</span>}
                             <TextInput
                                 id="street-address"
+                                className="radius-md"
                                 aria-describedby="street-address-error"
                                 name="street-address"
                                 type="text"
@@ -99,6 +99,7 @@ function Addresses(props){
                             {content.apt_label}
                         <TextInput
                             id="apt-num"
+                            className="radius-md"
                             name="apt-num"
                             type="text"
                             autoComplete="off"
@@ -116,6 +117,7 @@ function Addresses(props){
                                 {content.city_label}{addressReq && <span className='required-text'>*</span>}
                             <TextInput
                                 id="city"
+                                className="radius-md"
                                 aria-describedby="city-error"
                                 name="city"
                                 value={props.fieldData.city}
@@ -139,6 +141,7 @@ function Addresses(props){
                         <Label htmlFor="state" className="bottom">
                             {content.state_label}
                         <StateSelector
+                            classes="radius-md"
                             statesList={props.statesList}
                             state={props.stateData.name}
                             saveState={props.saveFieldData('state')}
@@ -155,6 +158,7 @@ function Addresses(props){
                             <span className="usa-hint" id="zip-hint">{content.zipcode_hint}</span>
                             <TextInput
                                 id="zip"
+                                className="radius-md"
                                 aria-describedby="zip-error"
                                 name="zip"
                                 type="text"
@@ -200,6 +204,7 @@ function Addresses(props){
                                 {content.mail_address_label}{addressReq && <span className='required-text'>*</span>}
                                 <TextInput
                                     id="mail-street"
+                                    className="radius-md"
                                     aria-describedby="mail-street-error"
                                     name="mail-street"
                                     type="text"
@@ -225,6 +230,7 @@ function Addresses(props){
                                 {content.apt_label}
                             <TextInput
                                 id="mail-apt"
+                                className="radius-md"
                                 name="mail-apt"
                                 type="text"
                                 autoComplete="off"
@@ -242,6 +248,7 @@ function Addresses(props){
                                     {content.city_label}{addressReq && <span className='required-text'>*</span>}
                                 <TextInput
                                     id="mail-city"
+                                    className="radius-md"
                                     aria-describedby="mail-city-error"
                                     name="mail-city"
                                     type="text"
@@ -267,6 +274,7 @@ function Addresses(props){
                                     {content.state_label}{addressReq && <span className='required-text'>*</span>}
                                 <StateSelector
                                     id="mail-state"
+                                    classes="radius-md"
                                     autoComplete="off"
                                     ariaDescribedBy="mail-state-error"
                                     required={addressReq}
@@ -290,6 +298,7 @@ function Addresses(props){
                                 <span className="usa-hint" id="mail-zip-hint">For example: 12345</span>
                                 <TextInput
                                     id="mail-zip"
+                                    className="radius-md"
                                     aria-describedby="mail-zip-error"
                                     name="mail-zip"
                                     value={props.fieldData.mail_zip_code}
@@ -327,6 +336,7 @@ function Addresses(props){
                                     {content.street_address_label}{addressReq && <span className='required-text'>*</span>}
                                 <TextInput
                                     id="prev-street"
+                                    className="radius-md"
                                     aria-describedby="prev-street-error"
                                     name="prev-street"
                                     type="text"
@@ -352,6 +362,7 @@ function Addresses(props){
                                 {content.apt_label}
                             <TextInput
                                 id="prev-apt"
+                                className="radius-md"
                                 name="prev-apt"
                                 type="text"
                                 autoComplete="off"
@@ -369,6 +380,7 @@ function Addresses(props){
                                     City{addressReq && <span className='required-text'>*</span>}
                                 <TextInput
                                     id="prev-city"
+                                    className="radius-md"
                                     aria-describedby="prev-city-error"
                                     name="prev-city"
                                     type="text"
@@ -394,6 +406,7 @@ function Addresses(props){
                                     {content.state_label}{addressReq && <span className='required-text'>*</span>}
                                 <StateSelector
                                     id="prev-state"
+                                    classes="radius-md"
                                     ariaDescribedby="prev-state-error"
                                     autoComplete="off"
                                     required={addressReq}
@@ -417,6 +430,7 @@ function Addresses(props){
                                 <span className="usa-hint" id="prev-zip-hint">For example: 12345</span>
                                 <TextInput
                                     id="prev-zip"
+                                    className="radius-md"
                                     aria-describedby="prev-zip-error"
                                     name="prev-zip"
                                     value={props.fieldData.prev_zip_code}

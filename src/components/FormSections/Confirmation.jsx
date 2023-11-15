@@ -73,7 +73,7 @@ function Confirmation(props){
                         <li>Phone Number: {fieldData.phone_number}</li>
                         <li>Race/Ethnicity: {fieldDataOverride_race}</li>
                     </ul>
-                    <hr />
+                    <span className="divider-grey"></span>
 
                     <h2>Address
                         <span style={{ marginLeft:'0.5rem' }}>
@@ -121,7 +121,7 @@ function Confirmation(props){
                         <li>State: {fieldData.mail_state}</li>
                         <li>Zip code: {fieldData.mail_zip_code}</li>
                     </ul>
-                    <hr />
+                    <span className="divider-grey"></span>
 
                     <h2>Identification
                         <span style={{ marginLeft:'0.5rem' }}>
@@ -138,7 +138,7 @@ function Confirmation(props){
                         <li>ID issue date: {fieldDataOverride_id_issue_date} </li>
                         <li>ID expire date: {fieldDataOverride_id_expire_date}</li>
                     </ul>
-                    <hr />
+                    <span className="divider-grey"></span>
                     <h2>Choice of Political Party
                         <span style={{ marginLeft:'0.5rem' }}>
                 <Button

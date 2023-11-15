@@ -53,7 +53,7 @@ function Delivery(props) {
                     {content.open_btn} <Icon.ArrowForward aria-label="forward arrow icon"/>
                 </Button>
 
-                <hr/>
+                <span className="divider-grey"></span>
 
                 <h2>{content.reminder_main_header}</h2>
 

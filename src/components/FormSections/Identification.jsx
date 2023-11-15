@@ -83,6 +83,7 @@ function Identification(props){
                         <Label htmlFor="state-id-num-error">{content.selector_driver_id}{idNumReq && <span className='required-text'>*</span>}
                         <TextInput
                         id="driver-id-num"
+                        className="radius-md"
                         name="driver-id-num"
                         type="text"
                         autoComplete="off"
@@ -103,6 +104,7 @@ function Identification(props){
                         <Label htmlFor="state-id-num-error">{content.selector_state_id}{idNumReq && <span className='required-text'>*</span>}
                         <TextInput
                         id="driver-id-num"
+                        className="radius-md"
                         name="driver-id-num"
                         type="text"
                         autoComplete="off"
@@ -129,7 +131,7 @@ function Identification(props){
                         </span>
                         <div
                             id="id-issue-date"
-                            className="usa-memorable-date"
+                            className="usa-memorable-date radius-md"
                             name="date-of-birth"
                             autoComplete="off"
                             required={idNumReq}
@@ -140,7 +142,7 @@ function Identification(props){
                                     <label className="usa-label" htmlFor="id_issue_date_month">
                                         Month
                                     <select
-                                        className="usa-select"
+                                        className="usa-select radius-md"
                                         id="id_issue_date_month"
                                         name="id_issue_date_month"
                                         aria-describedby="issue-date-error"
@@ -170,7 +172,7 @@ function Identification(props){
                                         Day
                                     <input
                                         id="id_issue_date_day"
-                                        className="usa-input"
+                                        className="usa-input radius-md"
                                         name="id_issue_date_day"
                                         aria-describedby="issue-date-error"
                                         label="Day"
@@ -193,7 +195,7 @@ function Identification(props){
                                         Year
                                     <input
                                         id="id_issue_date_year"
-                                        className="usa-input"
+                                        className="usa-input radius-md"
                                         name="id_issue_date_year"
                                         aria-describedby="issue-date-error"
                                         label="Year"
@@ -238,7 +240,7 @@ function Identification(props){
                                     <label className="usa-label" htmlFor="id_expire_date_month">
                                         Month
                                     <select
-                                        className="usa-select"
+                                        className="usa-select radius-md"
                                         id="id_expire_date_month"
                                         name="id_expire_date_month"
                                         aria-describedby="expire-date-error"
@@ -269,7 +271,7 @@ function Identification(props){
                                     Day
                                     <input
                                         id="id_expire_date_day"
-                                        className="usa-input"
+                                        className="usa-input radius-md"
                                         name="id_expire_date_day"
                                         aria-describedby="expire-date-error"
                                         label="Day"
@@ -293,7 +295,7 @@ function Identification(props){
                                         Year
                                     <input
                                         id="id_expire_date_year"
-                                        className="usa-input"
+                                        className="usa-input radius-md"
                                         name="id_expire_date_year"
                                         aria-describedby="expire-date-error"
                                         label="Year" unit="year"
@@ -329,6 +331,7 @@ function Identification(props){
                 <span className="usa-hint" id="ssn-hint">{content.ssn_hint}</span>
                 <TextInput
                     id="ssn-input"
+                    className="radius-md"
                     name="ssn-input"
                     autoComplete="off"
                     required={idNumReq}
