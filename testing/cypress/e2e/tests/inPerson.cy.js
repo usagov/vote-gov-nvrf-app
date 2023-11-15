@@ -145,7 +145,7 @@ cy.get('[class="usa-button next-button"]').click()
 // identification
 // * state driver's license number
 cy.get('[class="usa-select"]').select("State Driver's License Number")
-cy.get('[data-testid="textInput"]').type('123456789')
+cy.get('[data-testid="textInput"]').type(data.idNumber)
 
 cy.get('[class="usa-select"]').then(dropDown => {
   cy.get(dropDown[1]).select(data.idMonth)
@@ -168,7 +168,7 @@ cy.get('[class="usa-select"]').then(dropDown => {
 cy.get('[class="usa-select"]').then(dropDown => {
   cy.get(dropDown[0]).select("State Identification Number")
 })
-cy.get('[data-testid="textInput"]').type('123456789')
+cy.get('[data-testid="textInput"]').type(data.idNumber)
 
 cy.get('[class="usa-select"]').then(dropDown => {
   cy.get(dropDown[1]).select(data.idMonth)
@@ -343,7 +343,7 @@ cy.get('[class="usa-button next-button"]').click()
 // identification
 // * state driver's license number
 cy.get('[class="usa-select"]').select("State Driver's License Number")
-cy.get('[data-testid="textInput"]').type('123456789')
+cy.get('[data-testid="textInput"]').type(data.idNumber)
 
 cy.get('[class="usa-select"]').then(dropDown => {
   cy.get(dropDown[1]).select(data.idMonth)
@@ -366,7 +366,7 @@ cy.get('[class="usa-select"]').then(dropDown => {
 cy.get('[class="usa-select"]').then(dropDown => {
   cy.get(dropDown[0]).select("State Identification Number")
 })
-cy.get('[data-testid="textInput"]').type('123456789')
+cy.get('[data-testid="textInput"]').type(data.idNumber)
 
 cy.get('[class="usa-select"]').then(dropDown => {
   cy.get(dropDown[1]).select(data.idMonth)

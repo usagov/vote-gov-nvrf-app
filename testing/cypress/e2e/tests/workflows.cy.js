@@ -76,7 +76,7 @@ describe('Verify Flow Within Form', () => {
     })
   })
 
-  it.only('Verify Fields are correct', () => {
+  it('Verify Fields are correct', () => {
     cy.get('[class="usa-button usa-button--outline back-button"]').click()
 
     // verify that fields on confirmation page have the expected information
