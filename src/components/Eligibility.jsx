@@ -34,7 +34,7 @@ function Eligibility(props) {
                 <form onSubmit={(e) => {e.preventDefault(), props.handleNext()}}>
                     <Fieldset legend="Eligibility" legendStyle="srOnly">
                         <div className={props.checkboxes.checkboxesValid ? 'error-container' : ''}>
-                            <Label htmlFor="eligibility-error" id="eligibility-error">
+                            <Label className="padding-y-205" htmlFor="eligibility-error" id="eligibility-error">
                                 <strong>{content.heading_confirm}</strong>
                             </Label>
                             <div>
@@ -57,7 +57,7 @@ function Eligibility(props) {
                         </div>
                     </Fieldset>
 
-                    <p>{content.eligibility_agreement}</p>
+                    <p className="text-base padding-y-205">{content.eligibility_agreement}</p>
 
                     <div className="button-container" style={{ margin:'20px' }}>
                         <NextButton type={'submit'} onClick={() => props.checkBoxValues()} text={content.start_button}/>

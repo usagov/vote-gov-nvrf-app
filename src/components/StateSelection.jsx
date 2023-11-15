@@ -37,30 +37,34 @@ function StateSelection(props) {
         <h2>{content.get_started}</h2>
         
         <form onSubmit={(e) => {props.handleSubmit(e), props.handleNext()}}>
-        <div className='state-dropdown'>
-            <h4>{content.dropdown_text}</h4>
-            <div>
+
+        <div className="grid-row">
+            <div className="tablet:grid-col-1">
+                <h4>{content.dropdown_text}</h4>
+            </div>
+
+            <div className="tablet:grid-col-3">               
                 <div className={handleErrors.state_selected ? 'error-container' : ''}>
-                        <Dropdown 
-                            id="state-dropdown"
-                            name="input-dropdown"
-                            value={props.state}
-                            required={true}
-                            onChange={e => {
-                                props.getSelectedState(e.target.value)
-                            }}
-                            onBlur={(e) => setHandleErrors({ state_selected: checkForErrors(e, 'check state selection') })}
-                            >
-                            <option value="">{content.dropdown_label}</option>
-                            {statesList.map(
-                            state => <option key={state} value={state}>{state}</option>
-                        )}
-                        </Dropdown>            
-                    {handleErrors.state_selected && 
-                        <span id="state-dropdown-error" role="alert" className='error-text'>
-                            {content.error_state_dropdown}
-                        </span>
-                    }
+                                <Dropdown 
+                                    id="state-dropdown"
+                                    name="input-dropdown"
+                                    value={props.state}
+                                    required={true}
+                                    onChange={e => {
+                                        props.getSelectedState(e.target.value)
+                                    }}
+                                    onBlur={(e) => setHandleErrors({ state_selected: checkForErrors(e, 'check state selection') })}
+                                    >
+                                    <option value="">{content.dropdown_label}</option>
+                                    {statesList.map(
+                                    state => <option key={state} value={state}>{state}</option>
+                                )}
+                                </Dropdown>            
+                            {handleErrors.state_selected && 
+                                <span id="state-dropdown-error" role="alert" className='error-text'>
+                                    {content.error_state_dropdown}
+                                </span>
+                            }
                 </div>
             </div>
         </div>
