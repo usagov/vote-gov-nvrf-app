@@ -19,6 +19,17 @@ export const restrictType = (e, requiredType) => {
   }
 }
 
+export const dateFormat = (e, name, setFieldData, fieldData) => {
+  if (e.target.value.length === 1 ) {
+    let newValue = 0 + e.target.value;
+  setFieldData({ ...fieldData, [name]: newValue })
+  } else if (e.target.value.length === 0 ) {
+  setFieldData({ ...fieldData, [name]: '' })
+  } else {
+      return
+  }
+}
+
 export const phoneFormat=(input)=>{//returns (###) ###-####
     input = input.replace(/\D/g,'');
     var size = input.length;

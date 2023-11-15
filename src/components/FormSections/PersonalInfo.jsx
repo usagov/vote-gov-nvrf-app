@@ -4,9 +4,6 @@ import content from "../../data/registration-form.json";
 import { restrictType, checkForErrors, jumpTo } from '../HelperFunctions/ValidateField';
 import "../../styles/pages/Form.css";
 
-// when user types 1 and tabs to next input or clicks out of current, auto format a 0 in front to be 01
-// when user types 11 auto advance to the next input
-
 function PersonalInfo(props){
     const stateFieldRequirements = props.stateData.fields_required;
     const stateFieldVisible = props.stateData.fields_visible;
@@ -191,6 +188,7 @@ function PersonalInfo(props){
                                     onInput={props.saveFieldData('date_of_birth_month')}
                                     onKeyUp={(e) => jumpTo(e, 'date_of_birth_day')}
                                     onKeyDown={(e) => restrictType(e, 'number')}
+                                    onBlur={(e) => props.dateFormat(e, 'date_of_birth_month')}
                                 />
                             </label>
                             </div>
@@ -214,6 +212,7 @@ function PersonalInfo(props){
                                     onInput={props.saveFieldData('date_of_birth_day')}
                                     onKeyUp={(e) => jumpTo(e, 'date_of_birth_year')}
                                     onKeyDown={(e) => restrictType(e, 'number')}
+                                    onBlur={(e) => props.dateFormat(e, 'date_of_birth_day')}
                                 />
                                 </label>
                             </div>
