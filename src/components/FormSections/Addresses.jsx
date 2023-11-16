@@ -52,7 +52,7 @@ function Addresses(props){
                     </div>
                 )}
                 <div>
-                    <Checkbox id="no-addr" name="no-addr" checked={props.hasNoAddress} onChange={props.hasNoAddressCheckbox} label={content.no_address_checkbox_label} />
+                    <Checkbox id="no-addr" className="margin-bottom-4" name="no-addr" checked={props.hasNoAddress} onChange={props.hasNoAddressCheckbox} label={content.no_address_checkbox_label} />
                 </div>
                 {/******** Current Address Block *********/}
                 { !props.hasNoAddress && (<div>
@@ -67,9 +67,9 @@ function Addresses(props){
                     <h3>{content.home_address_heading}</h3>
 
                     <Grid row gap>
-                        <Grid tablet={{ col: true }}>
+                        <Grid col={12}>
                         <div className={(addressReq && handleErrors.street) ? 'error-container' : ''}>
-                            <Label htmlFor="street-address">
+                            <Label className="text-bold" htmlFor="street-address">
                                 {content.street_address_label}{addressReq && <span className='required-text'>*</span>}
                             <TextInput
                                 id="street-address"
@@ -94,8 +94,8 @@ function Addresses(props){
                     </Grid>
 
                     <Grid row gap>
-                        <Grid tablet={{ col: true }}>
-                        <Label htmlFor="apt-num">
+                        <Grid col={5}>
+                        <Label className="text-bold" htmlFor="apt-num">
                             {content.apt_label}
                         <TextInput
                             id="apt-num"
@@ -111,9 +111,10 @@ function Addresses(props){
                     </Grid>
 
                     <Grid row gap>
-                        <Grid tablet={{ col: true }}>
-                        <div className={(addressReq && handleErrors.city) ? 'error-container bottom' : 'bottom'}>
-                            <Label htmlFor="city">
+                        <Grid col={4}>
+                        <div className="bottom">
+                        <div className={(addressReq && handleErrors.city) ? 'error-container' : ''}>
+                            <Label className="text-bold" htmlFor="city">
                                 {content.city_label}{addressReq && <span className='required-text'>*</span>}
                             <TextInput
                                 id="city"
@@ -135,10 +136,11 @@ function Addresses(props){
                             }
                             </Label>
                         </div>
+                        </div>
                         </Grid>
 
-                        <Grid tablet={{ col: true }}>
-                        <Label htmlFor="state" className="bottom">
+                        <Grid col={4}>
+                        <Label htmlFor="state" className="bottom text-bold">
                             {content.state_label}
                         <StateSelector
                             classes="radius-md"
@@ -152,9 +154,9 @@ function Addresses(props){
                         </Label>
                         </Grid>
 
-                        <Grid tablet={{ col: true }}>
+                        <Grid col={3}>
                         <div className={(addressReq && handleErrors.zip) ? 'error-container' : ''}>
-                            <Label htmlFor="zip">{content.zipcode_label} {addressReq && <span className={'required-text'}>*</span>}</Label>
+                            <Label className="text-bold" htmlFor="zip">{content.zipcode_label} {addressReq && <span className={'required-text'}>*</span>}</Label>
                             <span className="usa-hint" id="zip-hint">{content.zipcode_hint}</span>
                             <TextInput
                                 id="zip"
@@ -173,7 +175,7 @@ function Addresses(props){
                                 onBlur={(e) => setHandleErrors({ ...handleErrors, zip: checkForErrors(e, 'check value length') })}
                             />
                             {(addressReq && handleErrors.zip) &&
-                                    <span id="zip-error" role="alert" className='error-text'>
+                                    <span id="zip-error" role="alert" className='error-text text-bold'>
                                         {content.zipcode_error}
                                     </span>
                             }
@@ -194,13 +196,16 @@ function Addresses(props){
                                 <p>{content.mailing_address_text_2}</p>
                             </div>
                         </div>)}
-                        <h3>{content.mail_address_heading}</h3>
-                        <p>{content.mailing_address_text}</p>
+
+                        <div className="margin-top-3">
+                            <h3>{content.mail_address_heading}</h3>
+                            <p>{content.mailing_address_text}</p>                            
+                        </div>
 
                         <Grid row gap>
-                            <Grid tablet={{ col: true }}>
+                            <Grid col={12}>
                             <div className={(addressReq && handleErrors.mail_street) ? 'error-container' : ''}>
-                            <Label htmlFor="mail-street">
+                            <Label className="text-bold" htmlFor="mail-street">
                                 {content.mail_address_label}{addressReq && <span className='required-text'>*</span>}
                                 <TextInput
                                     id="mail-street"
@@ -225,8 +230,8 @@ function Addresses(props){
                         </Grid>
 
                         <Grid row gap>
-                            <Grid tablet={{ col: true }}>
-                            <Label htmlFor="mail-apt">
+                            <Grid col={5}>
+                            <Label className="text-bold" htmlFor="mail-apt">
                                 {content.apt_label}
                             <TextInput
                                 id="mail-apt"
@@ -243,8 +248,9 @@ function Addresses(props){
 
                         <Grid row gap>
                             <Grid tablet={{ col: true }}>
-                            <div className={(addressReq && handleErrors.mail_city) ? 'error-container bottom' : 'bottom'}>
-                                <Label htmlFor="mail-city">
+                            <div className="bottom">
+                            <div className={(addressReq && handleErrors.mail_city) ? 'error-container' : ''}>
+                                <Label className="text-bold" htmlFor="mail-city">
                                     {content.city_label}{addressReq && <span className='required-text'>*</span>}
                                 <TextInput
                                     id="mail-city"
@@ -266,11 +272,13 @@ function Addresses(props){
                                 }
                                 </Label>
                             </div>
+                            </div>
                             </Grid>
 
                             <Grid tablet={{ col: true }}>
-                                <div className={(addressReq && handleErrors.mail_state) ? 'error-container bottom' : 'bottom'}>
-                                <Label htmlFor="mail-state">
+                                <div className='bottom'>
+                                <div className={(addressReq && handleErrors.mail_state) ? 'error-container' : ''}>
+                                <Label className="text-bold" htmlFor="mail-state">
                                     {content.state_label}{addressReq && <span className='required-text'>*</span>}
                                 <StateSelector
                                     id="mail-state"
@@ -281,20 +289,21 @@ function Addresses(props){
                                     statesList={props.statesList}
                                     state={props.fieldData.mail_state}
                                     saveState={props.saveFieldData('mail_state')}
-                                    onBlur={(e) => checkStateValue('mail_state')}
+                                    onBlur={(e) => {checkStateValue('mail_state'), setHandleErrors({ ...handleErrors, mail_state: checkForErrors(e, 'check value exists')})} }
                                 />
                                 {(addressReq && handleErrors.mail_state) &&
                                     <span id="mail-state-error" role="alert" className='error-text'>
-                                        {content.mail_state_error}
+                                     {content.mail_state_error}
                                     </span>
                                 }
                                 </Label>
+                                </div>
                                 </div>
                             </Grid>
 
                             <Grid tablet={{ col: true }}>
                             <div className={(addressReq && handleErrors.mail_zip) ? 'error-container' : ''}>
-                                <Label htmlFor="mail-zip">{content.zipcode_label} {addressReq && <span className={'required-text'}>*</span>}</Label>
+                                <Label className="text-bold" htmlFor="mail-zip">{content.zipcode_label} {addressReq && <span className={'required-text'}>*</span>}</Label>
                                 <span className="usa-hint" id="mail-zip-hint">For example: 12345</span>
                                 <TextInput
                                     id="mail-zip"
@@ -313,7 +322,7 @@ function Addresses(props){
                                     onBlur={(e) => setHandleErrors({ ...handleErrors, mail_zip: checkForErrors(e, 'check value length') })}
                                 />
                                 {(addressReq && handleErrors.mail_zip) &&
-                                    <span id="mail-zip-error" role="alert" className='error-text'>
+                                    <span id="mail-zip-error" role="alert" className='error-text text-bold'>
                                     {content.zipcode_error}
                                     </span>
                                 }
@@ -330,9 +339,9 @@ function Addresses(props){
                         <h3>{content.previous_address_heading}</h3>
                         <p>{content.previous_address_text}</p>
                         <Grid row gap>
-                            <Grid tablet={{ col: true }}>
+                            <Grid col={12}>
                             <div className={(addressReq && handleErrors.prev_street) ? 'error-container' : ''}>
-                                <Label htmlFor="prev-street">
+                                <Label className="text-bold" htmlFor="prev-street">
                                     {content.street_address_label}{addressReq && <span className='required-text'>*</span>}
                                 <TextInput
                                     id="prev-street"
@@ -357,8 +366,8 @@ function Addresses(props){
                         </Grid>
 
                         <Grid row gap>
-                            <Grid tablet={{ col: true }}>
-                            <Label htmlFor="prev-apt">
+                            <Grid col={5}>
+                            <Label className="text-bold" htmlFor="prev-apt">
                                 {content.apt_label}
                             <TextInput
                                 id="prev-apt"
@@ -374,9 +383,10 @@ function Addresses(props){
                         </Grid>
 
                         <Grid row gap>
-                            <Grid tablet={{ col: true }}>
-                            <div className={(addressReq && handleErrors.prev_city) ? 'error-container bottom' : 'bottom'}>
-                                <Label htmlFor="prev-city">
+                            <Grid col={4}>
+                            <div className="bottom">
+                            <div className={(addressReq && handleErrors.prev_city) ? 'error-container' : ''}>
+                                <Label className="text-bold" htmlFor="prev-city">
                                     City{addressReq && <span className='required-text'>*</span>}
                                 <TextInput
                                     id="prev-city"
@@ -398,11 +408,13 @@ function Addresses(props){
                                 }
                                 </Label>
                             </div>
+                            </div>
                             </Grid>
 
-                        <Grid tablet={{ col: true }}>
-                            <div className={(addressReq && handleErrors.prev_state) ? 'error-container bottom' : 'bottom'}>
-                                <Label htmlFor="prev-state">
+                        <Grid col={4}>
+                            <div className="bottom">
+                            <div className={(addressReq && handleErrors.prev_state) ? 'error-container' : ''}>
+                                <Label className="text-bold" htmlFor="prev-state">
                                     {content.state_label}{addressReq && <span className='required-text'>*</span>}
                                 <StateSelector
                                     id="prev-state"
@@ -422,11 +434,12 @@ function Addresses(props){
                                 }
                                 </Label>
                             </div>
+                            </div>
                         </Grid>
 
-                            <Grid tablet={{ col: true }}>
+                            <Grid col={4}>
                             <div className={(addressReq && handleErrors.prev_zip) ? 'error-container' : ''}>
-                                <Label htmlFor="prev-zip">{content.zipcode_label} {addressReq && <span className={'required-text'}>*</span>}</Label>
+                                <Label className="text-bold" htmlFor="prev-zip">{content.zipcode_label} {addressReq && <span className={'required-text'}>*</span>}</Label>
                                 <span className="usa-hint" id="prev-zip-hint">For example: 12345</span>
                                 <TextInput
                                     id="prev-zip"
@@ -445,7 +458,7 @@ function Addresses(props){
                                     onBlur={(e) => setHandleErrors({ ...handleErrors, prev_zip: checkForErrors(e, 'check value length') })}
                                 />
                                 {(addressReq && handleErrors.prev_zip) &&
-                                    <span id="prev-zip-error" role="alert" className='error-text'>
+                                    <span id="prev-zip-error" role="alert" className='error-text text-bold'>
                                         {content.zipcode_error}
                                     </span>
                                 }

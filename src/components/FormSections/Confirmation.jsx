@@ -161,7 +161,7 @@ function Confirmation(props){
                     </div>
                 </div>
 
-                <div className={props.error ? 'error-container' : ''}>
+                <div className={props.error ? 'error-container margin-y-4' : 'margin-y-4'}>
                     <Checkbox
                         id="acknowledge-check"
                         name="acknowledge-check"
@@ -171,7 +171,7 @@ function Confirmation(props){
                         onChange={(e) => props.acknowledgeCheckbox(e.target.checked)}
                     />
                     {props.error &&
-                        <span id="first-name-error" role="alert" className='error-text'>
+                        <span id="first-name-error" role="alert" className='error-text text-bold'>
                     Checkbox must be checked to continue.
                 </span>
                     }

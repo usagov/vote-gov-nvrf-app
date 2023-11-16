@@ -69,7 +69,7 @@ function Identification(props){
                     <option key="id-none" value="none">{content.selector_none}</option>
                 </Dropdown>
                 {(idNumReq && handleErrors.id_selection) &&
-                    <span id="id-num-dropdown-error" role="alert" className='error-text'>
+                    <span id="id-num-dropdown-error" role="alert" className='error-text text-bold'>
                         {content.selector_error}
                     </span>
                 }
@@ -80,7 +80,7 @@ function Identification(props){
                 <div className={(idNumReq && handleErrors.id_number) ? 'error-container' : ''}>
                     {(props.idType === 'driver-id-num') &&
 
-                        <Label htmlFor="state-id-num-error">{content.selector_driver_id}{idNumReq && <span className='required-text'>*</span>}
+                        <Label className="text-bold" htmlFor="state-id-num-error">{content.selector_driver_id}{idNumReq && <span className='required-text'>*</span>}
                         <TextInput
                         id="driver-id-num"
                         className="radius-md"
@@ -101,7 +101,7 @@ function Identification(props){
                     }
                     {(props.idType === 'state-id-num') &&
 
-                        <Label htmlFor="state-id-num-error">{content.selector_state_id}{idNumReq && <span className='required-text'>*</span>}
+                        <Label className="text-bold" htmlFor="state-id-num-error">{content.selector_state_id}{idNumReq && <span className='required-text'>*</span>}
                         <TextInput
                         id="driver-id-num"
                         className="radius-md"
@@ -125,7 +125,7 @@ function Identification(props){
                 <Grid row gap>
                     <Grid tablet={{ col: true }}>
                     <div className={(idNumReq && handleErrors.issue_date) ? 'error-container' : ''}>
-                    <Fieldset className="fieldset"  legend={idNumReq ? ["Issue Date", <span className='required-text'>*</span>] : "Issue Date"} style={{ marginTop:'30px'}}>
+                    <Fieldset className="fieldset"  legend={idNumReq ? [<span className="text-bold">Issue Date</span>, <span className='required-text'>*</span>] : "Issue Date"} style={{ marginTop:'30px'}}>
                         <span className="usa-hint" id="id-issue-date-hint">
                         {content.id_hint}
                         </span>
@@ -139,7 +139,7 @@ function Identification(props){
                             data-testid="dateInputGroup"
                         >
                                 <div className="usa-form-group usa-form-group--month usa-form-group--select">
-                                    <label className="usa-label" htmlFor="id_issue_date_month">
+                                    <label className="usa-label text-bold" htmlFor="id_issue_date_month">
                                         Month
                                     <select
                                         className="usa-select radius-md"
@@ -168,7 +168,7 @@ function Identification(props){
                                     </label>
                                 </div>
                                 <div data-testid="formGroup" className="usa-form-group usa-form-group--day">
-                                    <label data-testid="label" className="usa-label" htmlFor="testDateInput">
+                                    <label data-testid="label" className="usa-label text-bold" htmlFor="testDateInput">
                                         Day
                                     <input
                                         id="id_issue_date_day"
@@ -191,7 +191,7 @@ function Identification(props){
                                     </label>
                                 </div>
                                 <div data-testid="formGroup" className="usa-form-group usa-form-group--year">
-                                    <label data-testid="label" className="usa-label" htmlFor="testDateInput">
+                                    <label data-testid="label" className="usa-label text-bold" htmlFor="testDateInput">
                                         Year
                                     <input
                                         id="id_issue_date_year"
@@ -213,7 +213,7 @@ function Identification(props){
                                 </div>
                         </div>
                     {(idNumReq && handleErrors.issue_date) &&
-                        <span id="issue-date-error" role="alert" className='error-text'>
+                        <span id="issue-date-error" role="alert" className='error-text text-bold'>
                         {content.id_issue_date_error}
                         </span>
                     }
@@ -223,7 +223,7 @@ function Identification(props){
 
                     <Grid tablet={{ col: true }}>
                     <div className={(idNumReq && handleErrors.expire_date) ? 'error-container' : ''}>
-                    <Fieldset className="fieldset" legend={idNumReq ? ["Expire Date", <span className='required-text'>*</span>] : "Expire Date"} style={{ marginTop:'30px'}}>
+                    <Fieldset className="fieldset" legend={idNumReq ? [<span className="text-bold">Expire Date</span>, <span className='required-text'>*</span>] : "Expire Date"} style={{ marginTop:'30px'}}>
                         <span className="usa-hint" id="id-issue-date-hint">
                         {content.id_hint}
                         </span>
@@ -237,7 +237,7 @@ function Identification(props){
                             data-testid="dateInputGroup"
                         >
                                 <div className="usa-form-group usa-form-group--month usa-form-group--select">
-                                    <label className="usa-label" htmlFor="id_expire_date_month">
+                                    <label className="usa-label text-bold" htmlFor="id_expire_date_month">
                                         Month
                                     <select
                                         className="usa-select radius-md"
@@ -267,7 +267,7 @@ function Identification(props){
                                 </div>
 
                                 <div data-testid="formGroup" className="usa-form-group usa-form-group--day">
-                                <label data-testid="label" className="usa-label" htmlFor="testDateInput">
+                                <label data-testid="label" className="usa-label text-bold" htmlFor="testDateInput">
                                     Day
                                     <input
                                         id="id_expire_date_day"
@@ -291,7 +291,7 @@ function Identification(props){
                                 </div>
 
                                 <div data-testid="formGroup" className="usa-form-group usa-form-group--year">
-                                    <label data-testid="label" className="usa-label" htmlFor="testDateInput">
+                                    <label data-testid="label" className="usa-label text-bold" htmlFor="testDateInput">
                                         Year
                                     <input
                                         id="id_expire_date_year"
@@ -312,7 +312,7 @@ function Identification(props){
                                 </div>
                         </div>
                     {(idNumReq && handleErrors.expire_date) &&
-                        <span id="expire-date-error" role="alert" className='error-text'>
+                        <span id="expire-date-error" role="alert" className='error-text text-bold'>
                         {content.id_expire_date_error}
                         </span>
                     }
@@ -327,7 +327,7 @@ function Identification(props){
 
                 {props.idType === 'ssn' &&
                 <div className={(idNumReq && handleErrors.id_ssn) ? 'error-container' : ''}>
-                <Label htmlFor="ssn-input-error">{content.selector_ssn}{idNumReq && <span className='required-text'>*</span>}</Label>
+                <Label className="text-bold" htmlFor="ssn-input-error">{content.selector_ssn}{idNumReq && <span className='required-text'>*</span>}</Label>
                 <span className="usa-hint" id="ssn-hint">{content.ssn_hint}</span>
                 <TextInput
                     id="ssn-input"
@@ -345,7 +345,7 @@ function Identification(props){
                     onBlur={(e) => setHandleErrors({ ...handleErrors, id_ssn: checkForErrors(e, 'check value length') })}
                     />
                     {(idNumReq && handleErrors.id_ssn) &&
-                    <span id="ssn-input-error" role="alert" className='error-text'>
+                    <span id="ssn-input-error" role="alert" className='error-text text-bold'>
                         {content.ssn_error}
                     </span>
                     }

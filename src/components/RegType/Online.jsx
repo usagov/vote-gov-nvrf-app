@@ -24,7 +24,7 @@ function Online(props) {
             </div>
             <div>
                 <Link className="text-primary">
-                    <strong className="text-primary">{content.mail_in_link.replace("%state_name%", props.stateData.name)}
+                    <strong className="text-primary underline-primary">{content.mail_in_link.replace("%state_name%", props.stateData.name)}
                     <Icon.Launch title="External link opens new window"/></strong>
                 </Link>
             </div>

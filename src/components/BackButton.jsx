@@ -20,7 +20,7 @@ function BackButton(props) {
             </>
             }
             
-            <span className="divider-grey margin-y-6"></span>
+            <span className="divider-grey margin-top-6"></span>
         </>
     );
 }

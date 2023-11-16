@@ -43,7 +43,7 @@ function StateSelection(props) {
                 <h4>{content.dropdown_text}</h4>
             </div>
 
-            <div className="tablet:grid-col-3">               
+            <div className="tablet:grid-col-4">               
                 <div className={handleErrors.state_selected ? 'error-container' : ''}>
                                 <Dropdown 
                                     id="state-dropdown"

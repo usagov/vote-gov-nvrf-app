@@ -27,7 +27,7 @@ function PoliticalParty(props){
 
         {partyVisible && (
             <div className={(partyReq && handleErrors.party_choice) ? 'error-container' : ''}>
-                <Label htmlFor="political-party">
+                <Label className="text-bold" htmlFor="political-party">
                 Choice of party{partyReq && <span className='required-text'>*</span>}
                 <TextInput 
                     id="political-party"
@@ -43,7 +43,7 @@ function PoliticalParty(props){
                     onBlur={(e) => setHandleErrors({ ...handleErrors, party_choice: checkForErrors(e, 'check value exists') })}
                 />
                 {(partyReq && handleErrors.party_choice) && 
-                    <span id="party-choice-error" role="alert" className='error-text'>
+                    <span id="party-choice-error" role="alert" className='error-text text-bold'>
                         Choice of party must be filled out.
                     </span>
                 }
