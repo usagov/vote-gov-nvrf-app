@@ -33,6 +33,7 @@ function Eligibility(props) {
 
                 <form onSubmit={(e) => {e.preventDefault(), props.handleNext()}}>
                     <Fieldset legend="Eligibility" legendStyle="srOnly">
+                        {/* the div class is different than confirmation */}
                         <div className={props.checkboxes.checkboxesValid ? 'error-container' : ''}>
                             <Label htmlFor="eligibility-error" id="eligibility-error">
                                 <strong>{content.heading_confirm}</strong>
@@ -45,11 +46,14 @@ function Eligibility(props) {
                                     label={content.eligibility_check}
                                     aria-required="true"
                                     required={true}
-                                    defaultChecked={props.checkboxes.eligibility}
-                                    onChange={(e) => props.handleCheckbox(e.target.checked, 'eligibility', 0)}
+                                    defaultChecked={props.eligibility}
+                        // this is done in the app.jsx file but need to move the function from the multistep that covers the confirmation check box
+                        onChange={(e) => props.handleCheckbox(e.target.checked)}
                                 />
                             </div>
+                            {/* this is different as well  */}
                             {props.checkboxes.checkboxesValid &&
+
                                 <span id="eligibility-error" rol="alert" className='error-text'>
                     {content.error_message}
                 </span>

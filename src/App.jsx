@@ -18,9 +18,11 @@ function App() {
   const [stateData, setStateData] = useState('');
   const [registrationPath, setRegistrationPath] = useState('');
   const [formStep, setFormStep] = useState(1);
+  // ! i have a feeling this needs to be updated as well since citizen and age are no longer a thing
   const [checkboxes, setCheckboxes] = useState({ citizen: false, age: false, checkboxesValid: null })
   const [boxValues, setBoxValues] = useState([false, false])
 
+  //! lines 25-39 look to be involved with the error handling of the checkbox
   const handleCheckbox = (checked, box, index) => { 
       let copyValues = [...boxValues];
       copyValues[index] = checked;
@@ -34,7 +36,20 @@ function App() {
       } else {
         setCheckboxes({ ...checkboxes, checkboxesValid: false })
       }
-   }
+  }
+
+  // ! brought this over from the multistep file that was referenced in the confirmation checkbox
+           //Acknowledgment field controls
+          const [hasAcknowledged, setHasAcknowledged] = useState(null);
+          const [error, setError] = useState(null)
+          const acknowledgeCheckbox = (checkStatus) => {
+              setHasAcknowledged(checkStatus);
+              setError(!checkStatus);
+          }
+// ! this as well
+      const checkboxValid = () => {
+    (handleCheckbox === null) && setError(true);
+}
 
   const statesList = []
   for (let i = 0; i < states.length; i++) {
@@ -105,6 +120,7 @@ function App() {
           handleCheckbox={handleCheckbox}
           checkBoxValues={checkBoxValues}
           checkboxes={checkboxes}
+          checkboxValid={checkboxValid}
         />}  
         {step === 4 && 
           <PathSelection 
