@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { Dropdown } from '@trussworks/react-uswds';
 import { checkForErrors } from './HelperFunctions/ValidateField';
 import { fetchData } from './HelperFunctions/JsonHelper';
-import "../styles/pages/StateSelection.css";
 import NextButton from './NextButton';
 
 function StateSelection(props) {

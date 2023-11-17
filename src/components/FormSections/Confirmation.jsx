@@ -1,7 +1,6 @@
 import { Alert, Button, Checkbox } from '@trussworks/react-uswds';
 import React, { useState, useEffect } from "react";
 import {fetchData} from '../HelperFunctions/JsonHelper.jsx';
-import "../../styles/pages/Confirmation.css";
 
 function Confirmation(props){
     const [content, setContent] = useState();

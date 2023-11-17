@@ -1,5 +1,4 @@
 import { Button, Link, Icon, Grid } from '@trussworks/react-uswds';
-import "../../styles/pages/Delivery.css";
 import React, { useState, useEffect } from "react";
 import {fetchData} from '../HelperFunctions/JsonHelper.jsx';
 import GenerateFilledPDF from '../GenerateFilledPDF';
