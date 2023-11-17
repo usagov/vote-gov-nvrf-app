@@ -1,6 +1,6 @@
 import { Label, TextInput, Dropdown, Checkbox, Grid, Fieldset } from '@trussworks/react-uswds';
 import React, { useState } from "react";
-import { focusNext, restrictType, restrictLength, checkForErrors } from '../HelperFunctions/ValidateField';
+import { restrictType, checkForErrors, jumpTo } from '../HelperFunctions/ValidateField';
 import "../../styles/pages/Form.css";
 
 function PersonalInfo(props){
@@ -156,7 +156,7 @@ function PersonalInfo(props){
                 <div className={(dobReq && handleErrors.dob) ? 'error-container' : ''}>
                 <Fieldset className="fieldset" legend={dobReq ? ["Date of Birth", <span key={1} className='required-text'>*</span>] : "Date of Birth"} style={{ marginTop:'30px'}}>
                         <span className="usa-hint" id="date-of-birth-hint">
-                        For example: January 19 2000
+                        For example: 01 19 2000
                         </span>
                         <div
                             id="date-of-birth"
@@ -167,37 +167,32 @@ function PersonalInfo(props){
                             data-testid="dateInputGroup"
                             onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) checkDateValues(); }}
                         >
-                            <div className="usa-form-group usa-form-group--month usa-form-group--select">
-                            <label className="usa-label" htmlFor="date_of_birth_month">
-                                Month
-                            <select
-                                className="usa-select"
-                                id="date_of_birth_month"
-                                name="date_of_birth_month"
-                                aria-describedby="dob-error"
-                                required={true}
-                                value={props.fieldData.date_of_birth_month}
-                                onInput={props.saveFieldData('date_of_birth_month')}
-                                onChange={(e) => {focusNext(e, "date_of_birth_day", "month")}}
-                            >
-                                <option value="">- Select -</option>
-                                <option value="01">01 - January</option>
-                                <option value="02">02 - February</option>
-                                <option value="03">03 - March</option>
-                                <option value="04">04 - April</option>
-                                <option value="05">05 - May</option>
-                                <option value="06">06 - June</option>
-                                <option value="07">07 - July</option>
-                                <option value="08">08 - August</option>
-                                <option value="09">09 - September</option>
-                                <option value="10">10 - October</option>
-                                <option value="11">11 - November</option>
-                                <option value="12">12 - December</option>
-                            </select>
+                            <div data-testid="formGroup" className="usa-form-group usa-form-group--month">
+                                <label data-testid="label" className="usa-label" htmlFor="date_of_birth_month">
+                                    Month
+                                <input
+                                    id="date_of_birth_month"
+                                    className="usa-input"
+                                    aria-describedby="dob-error"
+                                    name="date_of_birth_month"
+                                    label="Month"
+                                    unit="month"
+                                    required={true}
+                                    type="text"
+                                    pattern="0[1-9]|1[1,2]"
+                                    inputMode="numeric"
+                                    maxLength={2}
+                                    minLength={2}
+                                    value={props.fieldData.date_of_birth_month}
+                                    onInput={props.saveFieldData('date_of_birth_month')}
+                                    onKeyUp={(e) => jumpTo(e, 'date_of_birth_day')}
+                                    onKeyDown={(e) => restrictType(e, 'number')}
+                                    onBlur={(e) => props.dateFormat(e, 'date_of_birth_month')}
+                                />
                             </label>
                             </div>
                             <div data-testid="formGroup" className="usa-form-group usa-form-group--day">
-                                <label data-testid="label" className="usa-label" htmlFor="testDateInput">
+                                <label data-testid="label" className="usa-label" htmlFor="date_of_birth_day">
                                     Day
                                 <input
                                     id="date_of_birth_day"
@@ -207,20 +202,21 @@ function PersonalInfo(props){
                                     label="Day"
                                     unit="day"
                                     required={true}
-                                    type="number"
+                                    type="text"
+                                    pattern="0[1-9]|[12][0-9]|3[01]"
                                     inputMode="numeric"
-                                    min={1}
-                                    max={31}
                                     minLength={2}
                                     maxLength={2}
                                     value={props.fieldData.date_of_birth_day}
                                     onInput={props.saveFieldData('date_of_birth_day')}
-                                    onChange={(e) => {focusNext(e, "date_of_birth_year"), restrictLength(e, e.target.value, e.target.maxLength) }}
+                                    onKeyUp={(e) => jumpTo(e, 'date_of_birth_year')}
+                                    onKeyDown={(e) => restrictType(e, 'number')}
+                                    onBlur={(e) => props.dateFormat(e, 'date_of_birth_day')}
                                 />
                                 </label>
                             </div>
                             <div data-testid="formGroup" className="usa-form-group usa-form-group--year">
-                                <label data-testid="label" className="usa-label" htmlFor="testDateInput">
+                                <label data-testid="label" className="usa-label" htmlFor="date_of_birth_year">
                                     Year
                                 <input
                                     id="date_of_birth_year"
@@ -231,6 +227,7 @@ function PersonalInfo(props){
                                     unit="year"
                                     required={true}
                                     type="text"
+                                    pattern="(19|20)\d{2}"
                                     inputMode="numeric"
                                     minLength={4}
                                     maxLength={4}
@@ -243,7 +240,7 @@ function PersonalInfo(props){
                         </div>
                 {(dobReq && handleErrors.dob) &&
                     <span id="dob-error" rol="alert" className='error-text'>
-                        Date of Birth must follow the format of January 19 2000.
+                        Date of Birth must follow the format of 01 19 2000.
                     </span>
                 }
                 </Fieldset>
@@ -260,7 +257,7 @@ function PersonalInfo(props){
                             id="phone-number"
                             aria-describedby="phone-number-error"
                             name="phone-number"
-                            type="text"
+                            type="tel"
                             autoComplete="off"
                             required={telephoneReq}
                             maxLength={14}
