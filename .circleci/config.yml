@@ -45,7 +45,6 @@ jobs:
           command: |
             echo $NVRF_PDF_WRITE | tee /tmp/key.txt
             gh auth login --with-token < /tmp/key.txt
-            gh pr close $CIRCLE_BRANCH
             gh pr create --title "Update NVRF PDF" --body "Upload the new NVRF PDF from eac.gov. This is an automated job from CircleCI"
 workflows:
   update-nvrf-workflow:
