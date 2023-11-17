@@ -27,10 +27,6 @@ body {
         border: 1px solid #DCDEE0;
     }
 
-    .usa-form-group--month {
-        width: 10rem;
-    }
-
     .usa-form a:visited {
         color: unset;
     }
