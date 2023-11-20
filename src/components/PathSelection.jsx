@@ -6,7 +6,10 @@ import BackButton from './BackButton';
 
 function PathSelection(props) {
     const [content, setContent] = useState()
+    const [cards, setCards] = useState()
+
     useEffect(() => {
+        fetchData("cards.json", setCards);
         fetchData("path-selection.json", setContent);
     }, []);
 
@@ -22,16 +25,16 @@ function PathSelection(props) {
 
                 <Grid row gap>
                     <CardInfo
-                        header={content.update_btn_header.replace("%state_name%", props.stateData.name)}
-                        paragraph={content.update_btn_paragraph}
-                        button={content.update_btn_txt}
+                        header={cards[0].heading.replace("@state_name", props.stateData.name)}
+                        paragraph={cards[0].body}
+                        button={cards[0].button_label}
                         role={"button"}
                         onClick={() => {props.getRegPath("update"), props.handleNext()}}>
                     </CardInfo>
                     <CardInfo
-                        header={content.new_btn_header.replace("%state_name%", props.stateData.name)}
-                        paragraph={content.new_btn_paragraph}
-                        button={content.new_btn_txt}
+                        header={cards[2].heading.replace("@state_name", props.stateData.name)}
+                        paragraph={cards[2].body}
+                        button={cards[2].button_label}
                         role={"button"}
                         onClick={() => {props.getRegPath("new"),  props.handleNext()}}>
                     </CardInfo>
