@@ -16,7 +16,7 @@
     "name": "Confirm Eligibillity",
     "label": "I am a U.S. citizen and meet the eligibility requirements listed above.",
     "help_text": "",
-    "error_msg": "",
+    "error_msg": "Confirm eligibility to continue.",
     "instructions": "<p>If you do not agree with the above statement, do not continue with registration on Vote.gov.</p>"
     },
     {

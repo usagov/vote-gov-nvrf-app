@@ -21,7 +21,7 @@ function App() {
   const [checkboxes, setCheckboxes] = useState({ citizen: false, age: false, checkboxesValid: null })
   const [boxValues, setBoxValues] = useState([false, false])
 
-  const handleCheckbox = (checked, box, index) => { 
+  const handleCheckbox = (checked, box, index) => {
       let copyValues = [...boxValues];
       copyValues[index] = checked;
       setBoxValues(copyValues)
@@ -71,7 +71,7 @@ function App() {
   }
 
   const getRegPath = (pathSelection) => {
-    setRegistrationPath(pathSelection) 
+    setRegistrationPath(pathSelection)
   };
 
   const getFormStep = (step) => {
@@ -82,42 +82,42 @@ function App() {
     <>
     <section className="usa-prose">
     <div id="scroll-to-top"></div>
-        {step === 1 && 
-          <StateSelection 
-          handleNext={handleNext} 
+        {step === 1 &&
+          <StateSelection
+          handleNext={handleNext}
           handleSubmit={handleSubmit}
-          getSelectedState={getSelectedState} 
+          getSelectedState={getSelectedState}
           state={selectedState}
           stateData={stateData}
-          />}  
-        {step === 2 && 
+          />}
+        {step === 2 &&
             <RegistrationOptions
               handleNext={handleNext}
               handlePrev={handlePrev}
               stateData={stateData}
-          />}  
-        {step === 3 && 
-          <Eligibility 
-          handleNext={handleNext} 
+          />}
+        {step === 3 &&
+          <Eligibility
+          handleNext={handleNext}
           handlePrev={handlePrev}
           state={selectedState}
           stateData={stateData}
           handleCheckbox={handleCheckbox}
           checkBoxValues={checkBoxValues}
           checkboxes={checkboxes}
-        />}  
-        {step === 4 && 
-          <PathSelection 
-          handleNext={handleNext} 
-          handlePrev={handlePrev} 
+        />}
+        {step === 4 &&
+          <PathSelection
+          handleNext={handleNext}
+          handlePrev={handlePrev}
           stateData={stateData}
           registrationPath={registrationPath}
           getRegPath={getRegPath}
           getFormStep={getFormStep}
-          />}  
-        {step === 5 && 
-          <MultiStepForm 
-          // handleNext={handleNext} 
+          />}
+        {step === 5 &&
+          <MultiStepForm
+          // handleNext={handleNext}
           handlePrev={handlePrev}
           statesList={statesList}
           state={selectedState}
