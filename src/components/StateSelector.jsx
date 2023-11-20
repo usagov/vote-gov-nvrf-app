@@ -5,6 +5,7 @@ function StateSelector(props) {
         <>
         <Dropdown 
             id="state" 
+            className={props.classes}
             name="input-dropdown" 
             value={props.state} 
             aria-describedby={props.ariaDescribedBy}
