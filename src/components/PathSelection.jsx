@@ -5,23 +5,22 @@ import CardInfo from "./CardInfo";
 import BackButton from './BackButton';
 
 function PathSelection(props) {
-    const [content, setContent] = useState()
-    const [cards, setCards] = useState()
+    const [content, setContent] = useState('')
+    const [cards, setCards] = useState('')
 
     useEffect(() => {
         fetchData("cards.json", setCards);
-        fetchData("path-selection.json", setContent);
+        fetchData("pages.json", setContent);
     }, []);
 
     if (content) {
+        const introContent = content.find(item => item.uuid === "b3299979-e26c-4885-a949-e1a2c27de91b");
         return (
             <>
-                <BackButton type={'button'} onClick={props.handlePrev} text={content.back_btn}/>
+                <BackButton type={'button'} onClick={props.handlePrev} text={'Replace this text'}/>
 
-                <h1>{content.heading_one.replace("%state_name%", props.stateData.name)}</h1>
-                <p>{content.subheading_one}</p>
-
-                <h2>{content.heading_two}</h2>
+                <h1>{introContent.title.replace("@state_name", props.stateData.name)}</h1>
+                <p>{introContent.body}</p>
 
                 <Grid row gap>
                     <CardInfo
