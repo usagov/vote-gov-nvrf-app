@@ -51,7 +51,7 @@ function Eligibility(props) {
                         </div>
                     </Fieldset>
 
-                    <p className="text-base padding-y-50">{{eligibility.instructions}}</p>
+                    <p className="text-base padding-y-50">{eligibility.instructions}</p>
 
                     <div className="button-container" style={{ margin:'20px' }}>
                         <NextButton type={'submit'} onClick={() => props.checkBoxValues()} text={"Replace this nav text"}/>
