@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { Dropdown } from '@trussworks/react-uswds';
 import { checkForErrors } from './HelperFunctions/ValidateField';
 import { fetchData } from './HelperFunctions/JsonHelper';
-import "../styles/pages/StateSelection.css";
 import NextButton from './NextButton';
 
 function StateSelection(props) {
@@ -29,33 +28,38 @@ function StateSelection(props) {
     if (content) {
         const introContent = content.find(item => item.uuid === "e3461b9a-e0b1-4157-ad4a-13f3835a101c");
         return (
-            <>
-            <h1>{introContent.title}</h1>
+        <>
+            <h2>{introContent.title}</h2>
             {introContent.body} {/* TODO: Need to style each paragraph */}
 
             <form onSubmit={(e) => {props.handleSubmit(e), props.handleNext()}}>
-            <div className='state-dropdown'>
-                <h4>{"I live in: "}</h4>
-                <div>
+
+            <div className="grid-row padding-y-2">
+                <div className="tablet:grid-col-1">
+                    <h4>{"I live in: "}</h4>
+                </div>
+
+                <div className="tablet:grid-col-4">
                     <div className={handleErrors.state_selected ? 'error-container' : ''}>
-                            <Dropdown
-                                id="state-dropdown"
-                                name="input-dropdown"
-                                value={props.state}
-                                required={true}
-                                onChange={e => {
-                                    props.getSelectedState(e.target.value)
-                                }}
-                                onBlur={(e) => setHandleErrors({ state_selected: checkForErrors(e, 'check state selection') })}
-                                >
-                                <option value="">{"Select your state or territory"}</option>
-                                {statesList.map(
-                                state => <option key={state} value={state}>{state}</option>
-                            )}
-                            </Dropdown>
+                        <Dropdown
+                            id="state-dropdown"
+                            className="margin-top-2"
+                            name="input-dropdown"
+                            value={props.state}
+                            required={true}
+                            onChange={e => {
+                                props.getSelectedState(e.target.value)
+                            }}
+                            onBlur={(e) => setHandleErrors({ state_selected: checkForErrors(e, 'check state selection') })}
+                            >
+                            <option value="">{"Select your state or territory"}</option>
+                            {statesList.map(
+                            state => <option key={state} value={state}>{state}</option>
+                        )}
+                        </Dropdown>
                         {handleErrors.state_selected &&
                             <span id="state-dropdown-error" role="alert" className='error-text'>
-                                {"State or territory selection must be made."}
+                                {content.error_state_dropdown}
                             </span>
                         }
                     </div>
@@ -65,7 +69,7 @@ function StateSelection(props) {
             <NextButton type={'submit'} text={"Next"}/>
 
             </form>
-            </>
+        </>
         );
     }
 }

@@ -1,7 +1,6 @@
-import { Button, Grid } from '@trussworks/react-uswds';
+import { Button, CardGroup, Card, CardHeader, CardBody, CardFooter, Icon } from '@trussworks/react-uswds';
 import { useState, useEffect } from 'react';
 import { fetchData } from './HelperFunctions/JsonHelper.jsx';
-import CardInfo from "./CardInfo";
 import BackButton from './BackButton';
 
 function PathSelection(props) {
@@ -24,22 +23,45 @@ function PathSelection(props) {
                 <h1>{introContent.title.replace("@state_name", props.stateData.name)}</h1>
                 <p>{introContent.body}</p>
 
-                <Grid row gap>
-                    <CardInfo
-                        header={cardOne.heading.replace("@state_name", props.stateData.name)}
-                        paragraph={cardOne.body}
-                        button={cardOne.button_label}
-                        role={"button"}
-                        onClick={() => {props.getRegPath("update"), props.handleNext()}}>
-                    </CardInfo>
-                    <CardInfo
-                        header={cardTwo.heading.replace("@state_name", props.stateData.name)}
-                        paragraph={cardTwo.body}
-                        button={cardTwo.button_label}
-                        role={"button"}
-                        onClick={() => {props.getRegPath("new"),  props.handleNext()}}>
-                    </CardInfo>
-                </Grid>
+                <CardGroup className="padding-top-6 border-black container-test-1">
+                    <Card className="card-info border-black container-test-2" gridLayout={{ tablet: { col: 4 } }}>
+                        <CardHeader className="container-test-3">
+                            <h3 className="usa-card__heading">
+                            {cardOne.heading.replace("@state_name", props.stateData.name)}
+                            </h3>
+                        </CardHeader>
+                        <CardBody>
+                            <p>
+                            {cardOne.body}
+                            </p>
+                        </CardBody>
+                        <CardFooter className="padding-top-6">
+                            <Button type="submit" onClick={() => {props.getRegPath("update"), props.handleNext()}}>
+                                {cardOne.button_label}
+                            <Icon.ArrowForward aria-label="forward arrow icon"/>
+                            </Button>
+                        </CardFooter>
+                    </Card>
+
+                    <Card className="card-info" gridLayout={{ tablet: { col: 4 } }}>
+                        <CardHeader>
+                            <h3 className="usa-card__heading">
+                            {cardTwo.heading.replace("@state_name", props.stateData.name)}
+                            </h3>
+                        </CardHeader>
+                        <CardBody>
+                            <p>
+                            {cardTwo.body}
+                            </p>
+                        </CardBody>
+                        <CardFooter className="padding-top-6">
+                            <Button type="submit" onClick={() => {props.getRegPath("new"),  props.handleNext()}}>
+                                {cardTwo.button_label}
+                            <Icon.ArrowForward aria-label="forward arrow icon"/>
+                            </Button>
+                        </CardFooter>
+                    </Card>
+                </CardGroup>
             </>
         );
     }
