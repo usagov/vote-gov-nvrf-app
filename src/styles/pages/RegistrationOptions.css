@@ -1,0 +1,28 @@
+.divider {
+    position: relative;
+}
+
+.divider > span {
+    display: block;
+    height: 48px;
+    width: 48px;
+    line-height: 46px;
+    border-radius: 30px;
+    background-color: #DEE9F0;;
+    color: #11385B;
+
+    text-align: center;
+    font-size: 18px;
+    margin-left: calc(50% - 24px);
+}
+
+.divider:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px; /* suit your need */
+    background: #DEE9F0; /* suit your need */
+    top: 50%;
+    left: 0;
+    z-index: -1;
+}

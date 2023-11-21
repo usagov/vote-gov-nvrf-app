@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Label, TextInput, Button } from '@trussworks/react-uswds';
-import content from "../../data/registration-form.json";
+import { Label, TextInput } from '@trussworks/react-uswds';
 import { restrictType, checkForErrors } from '../HelperFunctions/ValidateField';
 
 function PoliticalParty(props){
+    const content = props.content;
     const stateFieldRequirements = props.stateData.fields_required;
     const stateFieldVisible = props.stateData.fields_visible;
     const stateInstructions = props.stateData.state_field_instructions;
@@ -17,11 +17,6 @@ function PoliticalParty(props){
 
     return (
         <>
-        <Button
-            type="button"
-            onClick={props.handlePrev}>
-            Back to identification
-        </Button>
         <h2>{content.political_party_heading}</h2>
         <div className="usa-alert usa-alert--info">
             <div className="usa-alert__body">
@@ -32,10 +27,11 @@ function PoliticalParty(props){
 
         {partyVisible && (
             <div className={(partyReq && handleErrors.party_choice) ? 'error-container' : ''}>
-                <Label htmlFor="political-party">
+                <Label className="text-bold" htmlFor="political-party">
                 Choice of party{partyReq && <span className='required-text'>*</span>}
                 <TextInput 
                     id="political-party"
+                    className="radius-md"
                     aria-describedby="party-choice-error" 
                     name="political party" 
                     value={props.fieldData.party_choice} 
@@ -47,17 +43,13 @@ function PoliticalParty(props){
                     onBlur={(e) => setHandleErrors({ ...handleErrors, party_choice: checkForErrors(e, 'check value exists') })}
                 />
                 {(partyReq && handleErrors.party_choice) && 
-                    <span id="party-choice-error" role="alert" className='error-text'>
+                    <span id="party-choice-error" role="alert" className='error-text text-bold'>
                         Choice of party must be filled out.
                     </span>
                 }
                 </Label>
             </div>
         )}
-
-        <Button type="submit">
-            Confirm your information
-        </Button>
         </>
     );
 }

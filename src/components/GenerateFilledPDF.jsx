@@ -20,61 +20,62 @@ const GenerateFilledPDF = async function (formData) {
     })*/
 
     //-------- Get PDF Fields by machine name ------------------
+    const citizen = form.getRadioGroup('citizen');
+    const eighteenYearsOld = form.getRadioGroup('eighteen_years');
     const title =  form.getRadioGroup('salutation');
-    const title2 = form.getRadioGroup('salutation_2')
-    const firstName = form.getTextField('First Name');
-    const middleNames = form.getTextField('Middle Names');
-    const lastName = form.getTextField('Last Name');
-    const jrsrSuffix = form.getRadioGroup('suffix');//check
-    const secondSuffix = form.getCheckBox('II');
-    const thirdSuffix = form.getCheckBox('III');
-    const fourthSuffix = form.getCheckBox('IV');
+    const firstName = form.getTextField('first_name');
+    const middleNames = form.getTextField('middle_names');
+    const lastName = form.getTextField('last_name');
+    const jrsrSuffix = form.getRadioGroup('suffix');
+    const secondSuffix = form.getCheckBox('suffix_II');
+    const thirdSuffix = form.getCheckBox('suffix_III');
+    const fourthSuffix = form.getCheckBox('suffix_IV');
 
-    const title3 =  form.getRadioGroup('salutation_3');
-    const title4 = form.getRadioGroup('salutation_4')
-    const firstName2 = form.getTextField('First Name_2');
-    const middleNames2 = form.getTextField('Middle Names_2');
-    const lastName2 = form.getTextField('Last Name_2');
+    const title2 =  form.getRadioGroup('salutation_2');
+    const firstName2 = form.getTextField('first_name_2');
+    const middleNames2 = form.getTextField('middle_names_2');
+    const lastName2 = form.getTextField('last_name_2');
     const jrsrSuffix2 = form.getRadioGroup('suffix_2');
-    const secondSuffix2 = form.getCheckBox('II_2');
-    const thirdSuffix2 = form.getCheckBox('III_2');
-    const fourthSuffix2 = form.getCheckBox('IV_2');
+    const secondSuffix2 = form.getCheckBox('suffix_2_II');
+    const thirdSuffix2 = form.getCheckBox('suffix_2_III');
+    const fourthSuffix2 = form.getCheckBox('suffix_2_IV');
 
-    const dobMonth = form.getTextField('Month');
-    const dobDay = form.getTextField('Day');
-    const dobYear = form.getTextField('Year');
-    const phoneNumber = form.getTextField('Telephone Number optional');
-    const race = form.getTextField('Race or Ethnic Group see item 8 in the instructions for your State');
+    const dobMonth = form.getTextField('dob_month');
+    const dobDay = form.getTextField('dob_day');
+    const dobYear = form.getTextField('dob_year');
+    const phoneNumber = form.getTextField('telephone_number');
+    const race = form.getTextField('race_ethnic_group');
 
-    const homeAddress = form.getTextField('Home Address');
-    const aptNumber = form.getTextField('Apt or Lot');
-    const city = form.getTextField('CityTown');
-    const state = form.getTextField('State');//check
-    const zipcode = form.getTextField('Zip Code');
+    const homeAddress = form.getTextField('home_address');
+    const aptNumber = form.getTextField('apt_lot_number');
+    const city = form.getTextField('city');
+    const state = form.getTextField('state');
+    const zipcode = form.getTextField('zip_code');
 
-    const mailAddress = form.getTextField('Address Where You Get Your Mail If Different From Above');
-    const mailCity = form.getTextField('CityTown_2');
-    const mailState = form.getTextField('State_2');
-    const mailZipcode = form.getTextField('Zip Code_2');
+    const mailAddress = form.getTextField('mail_address');
+    const mailCity = form.getTextField('mail_city');
+    const mailState = form.getTextField('mail_state');
+    const mailZipcode = form.getTextField('mail_zip_code');
 
-    const prevAddress = form.getTextField('Street or route and box number');
-    const prevAptNumber = form.getTextField('Apt or Lot_2');
-    const prevCity = form.getTextField('CityTownCounty');
-    const prevState = form.getTextField('State_3');
-    const prevZipcode = form.getTextField('Zip Code_3');
+    const prevAddress = form.getTextField('prev_address');
+    const prevAptNumber = form.getTextField('prev_apt_lot_number');
+    const prevCity = form.getTextField('prev_city');
+    const prevState = form.getTextField('prev_state');
+    const prevZipcode = form.getTextField('prev_zip_code');
 
-    const idNumber = form.getTextField('undefined_3');
-    const politicalParty = form.getTextField('Choice of Party see item 7 in the instructions for your State');
+    const idNumber = form.getTextField('id_number');
+    const politicalParty = form.getTextField('choice_of_party');
 
     // -----------Fill in the pdf fields--------------------------
     // (1) Personal Information
-    // Logic for title select has to be separated into two radio groups
-    if (formData.title == 'Mr' || formData.title == "Mrs"){
-        title.select(formData.title);
-    } else if (formData.title == 'Miss' || formData.title == 'Ms') {
-        title2.select(formData.title);
-    }
+    //Citizen and age
+    citizen.select('yes');
+    eighteenYearsOld.select('yes');
 
+    //Current Name
+    if(formData.title) {
+        title.select(formData.title);
+    }
     firstName.setText(formData.first_name);
     middleNames.setText(formData.middle_name);
     lastName.setText(formData.last_name);
@@ -93,16 +94,9 @@ const GenerateFilledPDF = async function (formData) {
     }
 
     //Previous Name
-    if (formData.prev_title === 'Mr') {
-        title3.select("Mr_2");
-    } else if (formData.prev_title === "Mrs") {
-        title3.select("Mrs_2");
-    } else if (formData.prev_title === "Miss"){
-        title4.select("Miss_2");
-    } else if (formData.prev_title === "Ms"){
-        title4.select("Ms_2");
+    if(formData.prev_title){
+        title2.select(formData.prev_title);
     }
-
     firstName2.setText(formData.prev_first_name);
     middleNames2.setText(formData.prev_middle_name);
     lastName2.setText(formData.prev_last_name);

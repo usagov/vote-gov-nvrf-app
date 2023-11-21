@@ -1,13 +1,7 @@
-export const focusNext=(e, nextId, type)=>{
-  if (type === "month") {
-    if (e.target.value != true) {
-        document.getElementById(nextId).focus();
-    }
-  }
-
-  if (e.target.value.length == e.target.maxLength)  {
+export const jumpTo = (e, nextId) => {
+  if (e.target.value.length == e.target.maxLength) {
     document.getElementById(nextId).focus();
-}
+  }
 }
 
 export const restrictType = (e, requiredType) => {
@@ -25,10 +19,14 @@ export const restrictType = (e, requiredType) => {
   }
 }
 
-export const restrictLength = (e, value, maxLength) => {
- if (value.length === maxLength) {
-    e.preventDefault();
-    return;
+export const dateFormat = (e, name, setFieldData, fieldData) => {
+  if (e.target.value.length === 1 ) {
+    let newValue = 0 + e.target.value;
+  setFieldData({ ...fieldData, [name]: newValue })
+  } else if (e.target.value.length === 0 ) {
+  setFieldData({ ...fieldData, [name]: '' })
+  } else {
+      return
   }
 }
 
