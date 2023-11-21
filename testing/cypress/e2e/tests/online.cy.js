@@ -2,7 +2,7 @@
 /// <reference types="cypress" />
 const data = require("../../fixtures/data.json");
 
-describe('Validate In Person', () => {
+describe('Validate Online', () => {
   beforeEach('login to app', () => {
     cy.signin(Cypress.env('username'), Cypress.env('password'))
     cy.get('[data-testid="dropdown"]').select(data.online)
