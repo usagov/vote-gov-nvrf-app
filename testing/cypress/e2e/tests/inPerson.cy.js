@@ -6,9 +6,7 @@ describe('Validate In Person', () => {
   beforeEach('login to app', () => {
     cy.signin(Cypress.env('username'), Cypress.env('password'))
     cy.get('[data-testid="dropdown"]').select(data.inPerson)
-    cy.get('[data-testid="button"]').then(btn => {
-      cy.get(btn[1]).click()
-    })
+    cy.get('[class="usa-button next-button margin-top-5"]').click()
   })
 it('Validate Update Registration', () => {
   // check that state link opens in new tab
@@ -16,22 +14,22 @@ it('Validate Update Registration', () => {
   // cy.get('[class="usa-link usa-link--external"]').should('have.attr','target','_blank')
 
 // go to next page
-cy.get('[class="usa-button next-button"]').click()
+cy.get('[class="usa-button next-button margin-top-5"]').click()
 
 // check eligibility page
 // verify that user CANNOT move forward with out checking box
-cy.get('[class="usa-button next-button"]').click()
+cy.get('[class="usa-button next-button margin-top-5"]').click()
 cy.get('[class="error-text"]').should('contain.text', 'Confirm eligibility to continue.')
 
 // verify user CAN move forward after checking box
 cy.get('[class="usa-checkbox__label"]').click()
 // ! come back and add that error message is gone once bug is fixed
 
-cy.get('[class="usa-button next-button"]').click()
+cy.get('[class="usa-button next-button margin-top-5"]').click()
 
 // select registration option
-cy.get('[class="usa-button"]').then(btn => {
-  cy.get(btn[1]).click()
+cy.get('[data-testid="button"]').then(btn => {
+  cy.get(btn[1]).click({force: true})
 })
 
 // fill out personal information 
@@ -56,7 +54,7 @@ cy.get('[data-testid="textInput"]').then(textBox => {
   cy.get(textBox[3]).should('contain.value', data.personalInformationNumber2)
 })
 
-cy.get('[id="date_of_birth_month"]').select(data.personalInformationMonth)
+cy.get('[id="date_of_birth_month"]').type(data.personalInformationMonth)
 cy.get('[id="date_of_birth_day"]').type(data.personalInformationDay)
 cy.get('[id="date_of_birth_year"]').type(data.personalInformationYear)
 // Validate text box has correct text
@@ -64,7 +62,7 @@ cy.get('[id="date_of_birth_month"]').should('have.value', data.personalInformati
 cy.get('[id="date_of_birth_day"]').should('have.value', data.personalInformationDay)
 cy.get('[id="date_of_birth_year"]').should('have.value', data.personalInformationYear)
 
-cy.get('[class="usa-button next-button"]').click()
+cy.get('[class="usa-button next-button margin-top-5"]').click()
 
 
 // address and location page
@@ -81,7 +79,7 @@ cy.get('[data-testid="textInput"]').then(textBox => {
   cy.get(textBox[3]).should('have.value', data.addressZip)
 })
 // * check that mailing address work 
-cy.get('[class="usa-checkbox"]').then(checkBox => {
+cy.get('[class="usa-checkbox__label"]').then(checkBox => {
   cy.get(checkBox[2]).click()
 })
 cy.get('[data-testid="textInput"]').then(textBox => {
@@ -96,12 +94,12 @@ cy.get('[data-testid="textInput"]').then(textBox => {
   cy.get(textBox[7]).should('have.value', data.addressZip)
 })
 // * uncheck mailing address block
-cy.get('[class="usa-checkbox"]').then(checkBox => {
+cy.get('[class="usa-checkbox__label"]').then(checkBox => {
   cy.get(checkBox[2]).click()
 })
 
 // * check recently moved option 
-cy.get('[class="usa-checkbox"]').then(checkBox => {
+cy.get('[class="usa-checkbox__label"]').then(checkBox => {
   cy.get(checkBox[0]).click()
 })
 
@@ -117,12 +115,12 @@ cy.get('[data-testid="textInput"]').then(textBox => {
   cy.get(textBox[7]).should('have.value', data.addressZip)
 })
 // * uncheck recently moved block
-cy.get('[class="usa-checkbox"]').then(checkBox => {
+cy.get('[class="usa-checkbox__label"]').then(checkBox => {
   cy.get(checkBox[0]).click()
 })
 
 // * check does not have permanent option 
-cy.get('[class="usa-checkbox"]').then(checkBox => {
+cy.get('[class="usa-checkbox__label"]').then(checkBox => {
   cy.get(checkBox[1]).click()
 })
 
@@ -131,7 +129,7 @@ cy.get('[data-testid="textInput"]').then(textBox => {
   cy.get(textBox[1]).type(data.addressApt)
   cy.get(textBox[2]).type(data.addressTown)
   cy.get(textBox[3]).type(data.addressZip)
-  cy.get('[class="usa-select"]').select(data.addressState)
+  cy.get('[class="usa-select radius-md"]').select(data.addressState)
 
   // Validate text box has correct text
   cy.get(textBox[0]).should('have.value', data.addressStreet) 
@@ -140,53 +138,48 @@ cy.get('[data-testid="textInput"]').then(textBox => {
   cy.get(textBox[3]).should('have.value', data.addressZip)
 })
 
-cy.get('[class="usa-button next-button"]').click()
+cy.get('[class="usa-button next-button margin-top-5"]').click()
 
 // identification
 // * state driver's license number
 cy.get('[class="usa-select"]').select("State Driver's License Number")
 cy.get('[data-testid="textInput"]').type(data.idNumber)
+cy.get('[id="id_issue_date_month"]').type(data.idMonth)
+cy.get('[id="id_issue_date_day"]').type(data.idDay)
+cy.get('[id="id_issue_date_year"]').type(data.idYear)
+cy.get('[id="id_expire_date_month"]').type(data.idMonth)
+cy.get('[id="id_expire_date_day"]').type(data.idExpireDay)
+cy.get('[id="id_expire_date_year"]').type(data.idExpireYear)
 
-cy.get('[class="usa-select"]').then(dropDown => {
-  cy.get(dropDown[1]).select(data.idMonth)
-  cy.get('[name="id_issue_date_day"]').type(data.idDay)
-  cy.get('[name="id_issue_date_year"]').type(data.idYear)
-  cy.get(dropDown[2]).select(data.idMonth)
-  cy.get('[name="id_expire_date_day"]').type(data.idExpireDay)
-  cy.get('[name="id_expire_date_year"]').type(data.idExpireYear)
-})
 // Validate that fields have correct data
-cy.get('[class="usa-select"]').then(dropDown => {
-  cy.get(dropDown[1]).should('have.value', data.idDay)
+  cy.get('[id="id_issue_date_month"]').should('have.value', data.idDay)
   cy.get('[name="id_issue_date_day"]').should('have.value', data.idDay)
   cy.get('[name="id_issue_date_year"]').should('have.value', data.idYear)
-  cy.get(dropDown[2]).should('have.value', data.idDay)
+  cy.get('[id="id_expire_date_month"]').should('have.value', data.idDay)
   cy.get('[name="id_expire_date_day"]').should('have.value', data.idExpireDay)
   cy.get('[name="id_expire_date_year"]').should('have.value', data.idExpireYear)
-})
 // * state id number
 cy.get('[class="usa-select"]').then(dropDown => {
   cy.get(dropDown[0]).select("State Identification Number")
 })
 cy.get('[data-testid="textInput"]').type(data.idNumber)
 
-cy.get('[class="usa-select"]').then(dropDown => {
-  cy.get(dropDown[1]).select(data.idMonth)
-  cy.get('[name="id_issue_date_day"]').type(data.idDay)
-  cy.get('[name="id_issue_date_year"]').type(data.idYear)
-  cy.get(dropDown[2]).select(data.idMonth)
-  cy.get('[name="id_expire_date_day"]').type(data.idExpireDay)
-  cy.get('[name="id_expire_date_year"]').type(data.idExpireYear)
-})
+cy.get('[class="usa-select"]').select("State Driver's License Number")
+cy.get('[data-testid="textInput"]').type(data.idNumber)
+cy.get('[id="id_issue_date_month"]').type(data.idMonth)
+cy.get('[id="id_issue_date_day"]').type(data.idDay)
+cy.get('[id="id_issue_date_year"]').type(data.idYear)
+cy.get('[id="id_expire_date_month"]').type(data.idMonth)
+cy.get('[id="id_expire_date_day"]').type(data.idExpireDay)
+cy.get('[id="id_expire_date_year"]').type(data.idExpireYear)
+
 // Validate that fields have correct data
-cy.get('[class="usa-select"]').then(dropDown => {
-  cy.get(dropDown[1]).should('have.value', data.idDay)
+  cy.get('[id="id_issue_date_month"]').should('have.value', data.idDay)
   cy.get('[name="id_issue_date_day"]').should('have.value', data.idDay)
   cy.get('[name="id_issue_date_year"]').should('have.value', data.idYear)
-  cy.get(dropDown[2]).should('have.value', data.idDay)
+  cy.get('[id="id_expire_date_month"]').should('have.value', data.idDay)
   cy.get('[name="id_expire_date_day"]').should('have.value', data.idExpireDay)
   cy.get('[name="id_expire_date_year"]').should('have.value', data.idExpireYear)
-})
 // * social security number (last 4 digits)
 cy.get('[class="usa-select"]').then(dropDown => {
   cy.get(dropDown[0]).select("Social Security Number")
@@ -202,7 +195,7 @@ cy.get('[class="usa-select"]').then(dropDown => {
 })
 cy.get('[id="main-content"]').should('contain.text', '"None" will appear on your completed form.')
 
-cy.get('[class="usa-button next-button"]').click()
+cy.get('[class="usa-button next-button margin-top-5"]').click()
 
 cy.get('[data-testid="button"]').then(btn => {
   cy.get(btn[1]).click()
@@ -212,7 +205,7 @@ cy.get('[data-testid="button"]').then(btn => {
   cy.get('[class="required-text"]').should('be.visible')
   cy.get('[data-testid="textInput"]').type(data.politicalParty)
 
-  cy.get('[class="usa-button next-button"]').click()
+  cy.get('[class="usa-button next-button margin-top-5"]').click()
 
 // confirmation page
 cy.get('[id="acknowledge-check"]').click({force: true})
@@ -235,21 +228,21 @@ it('Validate New Registration', () => {
   // cy.get('[class="usa-link usa-link--external"]').should('have.attr','target','_blank')
 
 // go to next page
-cy.get('[class="usa-button next-button"]').click()
+cy.get('[class="usa-button next-button margin-top-5"]').click()
 
 // check eligibility page
 // verify that user CANNOT move forward with out checking box
-cy.get('[class="usa-button next-button"]').click()
+cy.get('[class="usa-button next-button margin-top-5"]').click()
 cy.get('[class="error-text"]').should('contain.text', 'Confirm eligibility to continue.')
 
 // verify user CAN move forward after checking box
 cy.get('[class="usa-checkbox__label"]').click()
 // ! come back and add that error message is gone once bug is fixed
 
-cy.get('[class="usa-button next-button"]').click()
+cy.get('[class="usa-button next-button margin-top-5"]').click()
 
 // select registration option
-cy.get('[class="usa-button"]').then(btn => {
+cy.get('[data-testid="button"]').then(btn => {
   cy.get(btn[2]).click()
 })
 
@@ -275,7 +268,7 @@ cy.get('[data-testid="textInput"]').then(textBox => {
   cy.get(textBox[3]).should('contain.value', data.personalInformationNumber2)
 })
 
-cy.get('[id="date_of_birth_month"]').select(data.personalInformationMonth)
+cy.get('[id="date_of_birth_month"]').type(data.personalInformationMonth)
 cy.get('[id="date_of_birth_day"]').type(data.personalInformationDay)
 cy.get('[id="date_of_birth_year"]').type(data.personalInformationYear)
 // Validate text box has correct text
@@ -283,7 +276,7 @@ cy.get('[id="date_of_birth_month"]').should('have.value', data.personalInformati
 cy.get('[id="date_of_birth_day"]').should('have.value', data.personalInformationDay)
 cy.get('[id="date_of_birth_year"]').should('have.value', data.personalInformationYear)
 
-cy.get('[class="usa-button next-button"]').click()
+cy.get('[class="usa-button next-button margin-top-5"]').click()
 
 
 // address and location page
@@ -300,7 +293,7 @@ cy.get('[data-testid="textInput"]').then(textBox => {
   cy.get(textBox[3]).should('have.value', data.addressZip)
 })
 // * check that mailing address work 
-cy.get('[class="usa-checkbox"]').then(checkBox => {
+cy.get('[class="usa-checkbox__label"]').then(checkBox => {
   cy.get(checkBox[1]).click()
 })
 cy.get('[data-testid="textInput"]').then(textBox => {
@@ -315,12 +308,12 @@ cy.get('[data-testid="textInput"]').then(textBox => {
   cy.get(textBox[7]).should('have.value', data.addressZip)
 })
 // * uncheck mailing address block
-cy.get('[class="usa-checkbox"]').then(checkBox => {
+cy.get('[class="usa-checkbox__label"]').then(checkBox => {
   cy.get(checkBox[1]).click()
 })
 
 // * check does not have permanent option 
-cy.get('[class="usa-checkbox"]').then(checkBox => {
+cy.get('[class="usa-checkbox__label"]').then(checkBox => {
   cy.get(checkBox[0]).click()
 })
 
@@ -329,7 +322,7 @@ cy.get('[data-testid="textInput"]').then(textBox => {
   cy.get(textBox[1]).type(data.addressApt)
   cy.get(textBox[2]).type(data.addressTown)
   cy.get(textBox[3]).type(data.addressZip)
-  cy.get('[class="usa-select"]').select(data.addressState)
+  cy.get('[class="usa-select radius-md"]').select(data.addressState)
 
   // Validate text box has correct text
   cy.get(textBox[0]).should('have.value', data.addressStreet) 
@@ -338,53 +331,51 @@ cy.get('[data-testid="textInput"]').then(textBox => {
   cy.get(textBox[3]).should('have.value', data.addressZip)
 })
 
-cy.get('[class="usa-button next-button"]').click()
+cy.get('[class="usa-button next-button margin-top-5"]').click()
 
 // identification
 // * state driver's license number
 cy.get('[class="usa-select"]').select("State Driver's License Number")
 cy.get('[data-testid="textInput"]').type(data.idNumber)
 
-cy.get('[class="usa-select"]').then(dropDown => {
-  cy.get(dropDown[1]).select(data.idMonth)
-  cy.get('[name="id_issue_date_day"]').type(data.idDay)
-  cy.get('[name="id_issue_date_year"]').type(data.idYear)
-  cy.get(dropDown[2]).select(data.idMonth)
-  cy.get('[name="id_expire_date_day"]').type(data.idExpireDay)
-  cy.get('[name="id_expire_date_year"]').type(data.idExpireYear)
-})
+cy.get('[class="usa-select"]').select("State Driver's License Number")
+cy.get('[data-testid="textInput"]').type(data.idNumber)
+cy.get('[id="id_issue_date_month"]').type(data.idMonth)
+cy.get('[id="id_issue_date_day"]').type(data.idDay)
+cy.get('[id="id_issue_date_year"]').type(data.idYear)
+cy.get('[id="id_expire_date_month"]').type(data.idMonth)
+cy.get('[id="id_expire_date_day"]').type(data.idExpireDay)
+cy.get('[id="id_expire_date_year"]').type(data.idExpireYear)
+
 // Validate that fields have correct data
-cy.get('[class="usa-select"]').then(dropDown => {
-  cy.get(dropDown[1]).should('have.value', data.idDay)
+  cy.get('[id="id_issue_date_month"]').should('have.value', data.idDay)
   cy.get('[name="id_issue_date_day"]').should('have.value', data.idDay)
   cy.get('[name="id_issue_date_year"]').should('have.value', data.idYear)
-  cy.get(dropDown[2]).should('have.value', data.idDay)
+  cy.get('[id="id_expire_date_month"]').should('have.value', data.idDay)
   cy.get('[name="id_expire_date_day"]').should('have.value', data.idExpireDay)
   cy.get('[name="id_expire_date_year"]').should('have.value', data.idExpireYear)
-})
 // * state id number
 cy.get('[class="usa-select"]').then(dropDown => {
   cy.get(dropDown[0]).select("State Identification Number")
 })
 cy.get('[data-testid="textInput"]').type(data.idNumber)
 
-cy.get('[class="usa-select"]').then(dropDown => {
-  cy.get(dropDown[1]).select(data.idMonth)
-  cy.get('[name="id_issue_date_day"]').type(data.idDay)
-  cy.get('[name="id_issue_date_year"]').type(data.idYear)
-  cy.get(dropDown[2]).select(data.idMonth)
-  cy.get('[name="id_expire_date_day"]').type(data.idExpireDay)
-  cy.get('[name="id_expire_date_year"]').type(data.idExpireYear)
-})
+cy.get('[class="usa-select"]').select("State Driver's License Number")
+cy.get('[data-testid="textInput"]').type(data.idNumber)
+cy.get('[id="id_issue_date_month"]').type(data.idMonth)
+cy.get('[id="id_issue_date_day"]').type(data.idDay)
+cy.get('[id="id_issue_date_year"]').type(data.idYear)
+cy.get('[id="id_expire_date_month"]').type(data.idMonth)
+cy.get('[id="id_expire_date_day"]').type(data.idExpireDay)
+cy.get('[id="id_expire_date_year"]').type(data.idExpireYear)
+
 // Validate that fields have correct data
-cy.get('[class="usa-select"]').then(dropDown => {
-  cy.get(dropDown[1]).should('have.value', data.idDay)
+  cy.get('[id="id_issue_date_month"]').should('have.value', data.idDay)
   cy.get('[name="id_issue_date_day"]').should('have.value', data.idDay)
   cy.get('[name="id_issue_date_year"]').should('have.value', data.idYear)
-  cy.get(dropDown[2]).should('have.value', data.idDay)
+  cy.get('[id="id_expire_date_month"]').should('have.value', data.idDay)
   cy.get('[name="id_expire_date_day"]').should('have.value', data.idExpireDay)
   cy.get('[name="id_expire_date_year"]').should('have.value', data.idExpireYear)
-})
 // * social security number (last 4 digits)
 cy.get('[class="usa-select"]').then(dropDown => {
   cy.get(dropDown[0]).select("Social Security Number")
@@ -400,7 +391,7 @@ cy.get('[class="usa-select"]').then(dropDown => {
 })
 cy.get('[id="main-content"]').should('contain.text', '"None" will appear on your completed form.')
 
-cy.get('[class="usa-button next-button"]').click()
+cy.get('[class="usa-button next-button margin-top-5"]').click()
 
 cy.get('[data-testid="button"]').then(btn => {
   cy.get(btn[1]).click()
@@ -410,7 +401,7 @@ cy.get('[data-testid="button"]').then(btn => {
   cy.get('[class="required-text"]').should('be.visible')
   cy.get('[data-testid="textInput"]').type(data.politicalParty)
 
-  cy.get('[class="usa-button next-button"]').click()
+  cy.get('[class="usa-button next-button margin-top-5"]').click()
 
 // confirmation page
 cy.get('[id="acknowledge-check"]').click({force: true})

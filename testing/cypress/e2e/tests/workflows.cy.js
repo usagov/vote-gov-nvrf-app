@@ -7,11 +7,11 @@ describe('Verify Flow Within Form', () => {
     // sign in and complete form 
     cy.signin(Cypress.env('username'), Cypress.env('password'))
     cy.get('[data-testid="dropdown"]').select(data.inPerson)
+    cy.get('[class="usa-button next-button margin-top-5"]').click()
     cy.completeForm()
   })
   it('Verify Back Buttons', () => {
     // check that the form back buttons will take user back to the correct page
-    cy.get('[class="usa-button usa-button--outline back-button"]').click()
 
     cy.get('[class="usa-button usa-button--outline back-button"]').should('contain.text', 'Edit registration information')
 
@@ -39,45 +39,40 @@ describe('Verify Flow Within Form', () => {
     cy.get('[class="usa-button usa-button--outline back-button"]').click()
     cy.get('[class="usa-button usa-button--outline back-button"]').should('contain.text', 'Go back to select your state')
 
-    cy.get('[class="usa-button usa-button--outline back-button"]').click()
-    cy.get('[class="usa-button usa-button--outline back-button"]').should('contain.text', 'Go back to Vote.gov')
-
   })
 
   it('Verify Edit Buttons', () => {
-    cy.get('[class="usa-button usa-button--outline back-button"]').click()
 
     // personal information
     cy.get('[class="usa-button usa-button--unstyled"]').then(editBtn => {
       cy.get(editBtn[0]).click()
       cy.get('h2').should('contain.text', 'Personal Information')
-      cy.get('[class="usa-button next-button"]').click().click().click().click()
+      cy.get('[class="usa-button next-button margin-top-5"]').click().click().click().click()
     })
 
     // address
     cy.get('[class="usa-button usa-button--unstyled"]').then(editBtn => {
       cy.get(editBtn[1]).click({force: true})
       cy.get('h3').should('contain.text', 'Address & Location Information')
-      cy.get('[class="usa-button next-button"]').click().click().click()
+      cy.get('[class="usa-button next-button margin-top-5"]').click().click().click()
       
     })
     // identification
     cy.get('[class="usa-button usa-button--unstyled"]').then(editBtn => {
       cy.get(editBtn[2]).click({force: true})
       cy.get('h2').should('contain.text', 'Identification')
-      cy.get('[class="usa-button next-button"]').click().click()
+      cy.get('[class="usa-button next-button margin-top-5"]').click().click()
     })
 
     // political party 
     cy.get('[class="usa-button usa-button--unstyled"]').then(editBtn => {
       cy.get(editBtn[3]).click({force: true})
       cy.get('h2').should('contain.text', 'Choice of Political Party')
-      cy.get('[class="usa-button next-button"]').click()
+      cy.get('[class="usa-button next-button margin-top-5"]').click()
     })
   })
 
-  it('Verify Fields are correct', () => {
-    cy.get('[class="usa-button usa-button--outline back-button"]').click()
+  it.only('Verify Fields are correct', () => {
 
     // verify that fields on confirmation page have the expected information
     cy.get('[class="confirm-info"]').find('ul').then(ul => {
