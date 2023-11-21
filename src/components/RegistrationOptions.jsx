@@ -7,13 +7,16 @@ import ".././styles/pages/RegistrationOptions.css";
 import BackButton from './BackButton';
 
 function RegistrationOptions(props) {
-    const [content, setContent] = useState()
+    const [content, setContent] = useState('')
     useEffect(() => {
-        fetchData("registration-options.json", setContent);
+        fetchData("pages.json", setContent);
     }, []);
     const regType = props.stateData.reg_type;
 
     if (content) {
+        const onlineContent = content.find(item => item.uuid === "086a212d-4f75-47e8-aad6-24eadc4a559f");
+        const mailContent = content.find(item => item.uuid === "295db8a2-6df6-4c81-825d-8d03064550f9");
+        const noRegContent = content.find(item => item.uuid === "df8fede3-11ad-4099-b2a8-f6a9bb457842");
         return (
             <>
 
@@ -21,19 +24,19 @@ function RegistrationOptions(props) {
 
                 {regType === 'online' &&
                     <Online
-                        content={content}
+                        content={onlineContent}
                         stateData={props.stateData}
                         handleNext={props.handleNext}
                     />}
-                {regType === 'in-person' &&
+                {regType === 'by-mail' &&
                     <ByMail
-                        content={content}
+                        content={mailContent}
                         stateData={props.stateData}
                         handleNext={props.handleNext}
                     />}
                 {regType === 'not-needed' &&
                     <NotNeeded
-                        content={content}
+                        content={noRegContent}
                         stateData={props.stateData}
                     />}
             </>

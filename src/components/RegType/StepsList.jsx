@@ -29,13 +29,13 @@ function StepsList(props) {
     <path d="M21.8955 27.3984H39.2424V29.5668H21.8955V27.3984Z" fill="#11385B"/>
     <path d="M21.8955 32.8203H30.5689V34.9887H21.8955V32.8203Z" fill="#11385B"/>
     </svg>
-    
+
 
     return (
         <>
 
-            <h2>{content.process_heading}</h2>
-            <p>{content.process_parag}</p>
+            <h2>{content.heading}</h2>
+            <p>{content.body}</p>
 
             <IconList className="usa-icon-list--size-lg padding-top-1 padding-bottom-5">
                 <IconListItem className="margin-105">
@@ -45,9 +45,9 @@ function StepsList(props) {
                     </div>
                     </IconListIcon>
                     <IconListContent>
-                    <IconListTitle type="h3">{content.process_heading1}</IconListTitle>
+                    <IconListTitle type="h3">{"List Item 1"}</IconListTitle>
                     <p>
-                        {content.process_text1}
+                        {"text"}
                     </p>
                     </IconListContent>
                 </IconListItem>
@@ -58,9 +58,9 @@ function StepsList(props) {
                     </div>
                     </IconListIcon>
                     <IconListContent>
-                    <IconListTitle type="h3">{content.process_heading2}</IconListTitle>
+                    <IconListTitle type="h3">{"List item 2"}</IconListTitle>
                     <p>
-                        {content.process_text2}
+                        {"text"}
                     </p>
                     </IconListContent>
                 </IconListItem>
@@ -71,9 +71,9 @@ function StepsList(props) {
                     </div>
                     </IconListIcon>
                     <IconListContent>
-                    <IconListTitle type="h3">{content.process_heading3}</IconListTitle>
+                    <IconListTitle type="h3">{"List Item 3"}</IconListTitle>
                     <p>
-                        {content.process_text3}
+                        {"text"}
                     </p>
                     </IconListContent>
                 </IconListItem>
@@ -84,9 +84,9 @@ function StepsList(props) {
                     </div>
                     </IconListIcon>
                     <IconListContent>
-                    <IconListTitle type="h3">{content.process_heading4}</IconListTitle>
+                    <IconListTitle type="h3">{"List item 4"}</IconListTitle>
                     <p>
-                        {content.process_text4}
+                        {"text"}
                     </p>
                     </IconListContent>
                 </IconListItem>

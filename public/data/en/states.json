@@ -638,7 +638,7 @@
     "name": "Maine",
     "abbrev": "me",
     "is_state": "1",
-    "reg_type": "in-person, by-mail",
+    "reg_type": "by-mail",
     "accepts_nvrf": "1",
     "mailing_address_inst": "<p>Elections Division Bureau of Corporations, Elections and Commissions <br />101 State House Station <br />Augusta, ME 04333-0101</p>",
     "reg_eligibility_desc": "<p>To register in Maine you must:</p><ul><li>be a citizen of the United States</li><li>be a resident of Maine and the municipality in which you want to vote</li><li>be at least 17 years old (you must be 18 years old to vote)</li></ul>",
