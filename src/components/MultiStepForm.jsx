@@ -3,17 +3,23 @@ import React, { useState, useEffect } from "react";
 import ProgressBar from './ProgressBar';
 import PersonalInfo from "./FormSections/PersonalInfo";
 import Addresses from "./FormSections/Addresses"
-import content from "../data/registration-form.json";
 import Identification from './FormSections/Identification';
 import Confirmation from './FormSections/Confirmation';
 import Delivery from "./FormSections/Delivery";
 import PoliticalParty from './FormSections/PoliticalParty';
-import { phoneFormat, dayFormat } from './HelperFunctions/ValidateField';
+import { phoneFormat, dateFormat } from './HelperFunctions/ValidateField';
+import { fetchData } from './HelperFunctions/JsonHelper.jsx';
 import BackButton from './BackButton'
 import NextButton from './NextButton';
+import "../styles/pages/Form.css";
 
 
 function MultiStepForm(props) {
+    const [content, setContent] = useState()
+    useEffect(() => {
+        fetchData("registration-form.json", setContent);
+    }, []);
+
     //Field data controls
     const [fieldData, setFieldData] = useState({
         title:'', first_name: '', middle_name: '', last_name: '', suffix:'',
@@ -28,20 +34,30 @@ function MultiStepForm(props) {
         const [hasData, setHasData] = useState(false)
 
     const saveFieldData = (name) => {
-        const day_names = ['date_of_birth_day', 'id_issue_date_day', 'id_expire_date_day' ]
 
         return (event) => {
             event.target.value.length > 0 && setHasData(true)
             if (name === 'phone_number') {
             setFieldData({ ...fieldData, [name]: phoneFormat(event.target.value) });
-        } else if (day_names.includes(name)) {
-            setFieldData({ ...fieldData, [name]: dayFormat(event.target.value) });
         } else {
             setFieldData({ ...fieldData, [name]: event.target.value });
         }
         };
     };
-    // Sets up prompt that if user hits browser back/refresh button and has imputed any data will alert that data will be lost 
+
+    const dateFormat = (e, name) => {
+        if (e.target.value.length === 0 ) {
+            setFieldData({ ...fieldData, [name]: '' })
+        } else if (e.target.value.length === 1 ) {
+          let newValue = 0 + e.target.value;
+          setFieldData({ ...fieldData, [name]: newValue })
+        } else if (e.target.value.length === 2 ) {
+        setFieldData({ ...fieldData, [name]: e.target.value })
+        }
+      }
+
+
+      // Sets up prompt that if user hits browser back/refresh button and has imputed any data will alert that data will be lost
     useEffect(() => {
         const handleBeforeUnload = (event) => {
         event.preventDefault();
@@ -63,7 +79,6 @@ function MultiStepForm(props) {
       }
 
     const handlePrev = () => {
-        console.log('click handleprev', step)
         step != 1 && setStep(step - 1);
         document.getElementById('scroll-to-top').scrollIntoView();
 
@@ -183,17 +198,18 @@ function MultiStepForm(props) {
         }
     }
 
-    return (
-        <>
-        <BackButton type={'button'} onClick={handlePrev} text={backButtonText(step)}/>
+    if (content) {
+        return (
+            <>
+                {step != 6 && <BackButton type={'button'} onClick={handlePrev} text={backButtonText(step)}/>}
 
-        <ProgressBar step={step}/>
-        {step < 5 &&
-        <div>
-            <h1>{content.main_heading}: {props.stateData.name}</h1>
-            <p><strong>{content.reminder}</strong>{content.reminder_text}</p>
-        </div>
-        }
+                <ProgressBar step={step}/>
+                {step < 5 &&
+                    <div>
+                        <h1>{content.main_heading}: {props.stateData.name}</h1>
+                        <p><strong>{content.reminder}</strong>{content.reminder_text}</p>
+                    </div>
+                }
 
         <Form autoComplete="off" style={{ maxWidth:'none' }} onSubmit={(e) => {handleSubmit(e), handleNext()}}>
             {step === 1 &&
@@ -202,15 +218,18 @@ function MultiStepForm(props) {
                 stateData={props.stateData}
                 fieldData={fieldData}
                 saveFieldData = {saveFieldData}
+                dateFormat={dateFormat}
                 registrationPath={props.registrationPath}
                 previousName={previousName}
                 onChangePreviousName={onChangePreviousName}
                 handlePrev={props.handlePrev}
+                content={content}
                 />
             }
             {step === 2 &&
                 <Addresses
                 state={props.state}
+                statesList={props.statesList}
                 stateData={props.stateData}
                 fieldData={fieldData}
                 saveFieldData = {saveFieldData}
@@ -222,6 +241,7 @@ function MultiStepForm(props) {
                 onChangePreviousAddressCheckbox={onChangePreviousAddressCheckbox}
                 hasMailAddress={hasMailAddress}
                 onChangeMailAddressCheckbox={onChangeMailAddressCheckbox}
+                content={content}
                 />
             }
             {step === 3 &&
@@ -230,10 +250,13 @@ function MultiStepForm(props) {
                 stateData={props.stateData}
                 fieldData={fieldData}
                 saveFieldData = {saveFieldData}
+                dateFormat={dateFormat}
                 registrationPath={props.registrationPath}
                 handlePrev={handlePrev}
                 saveIdType={saveIdType}
-                idType={idType}/>
+                idType={idType}
+                content={content}
+                />
             }
             {step === 4 &&
                 <PoliticalParty
@@ -242,7 +265,9 @@ function MultiStepForm(props) {
                 fieldData={fieldData}
                 saveFieldData = {saveFieldData}
                 registrationPath={props.registrationPath}
-                handlePrev={handlePrev}/>
+                handlePrev={handlePrev}
+                content={content}
+                />
             }
             {step === 5 &&
                 <Confirmation
@@ -272,10 +297,11 @@ function MultiStepForm(props) {
                 />
             }
 
-        {step != 6 && <NextButton type={'submit'} onClick={step === 5 ? () => checkboxValid() : undefined} text={nextButtonText(step)}/>}
-        </Form>
-        </>
-    );
+                    {step != 6 && <NextButton type={'submit'} onClick={step === 5 ? () => checkboxValid() : undefined} text={nextButtonText(step)}/>}
+                </Form>
+            </>
+        );
+    }
 }
 
 export default MultiStepForm;
