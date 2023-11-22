@@ -1,4 +1,4 @@
-import { Button, Link, Icon } from '@trussworks/react-uswds';
+import { Link, Icon } from '@trussworks/react-uswds';
 import reactStringReplace from 'react-string-replace';
 
 function NotNeeded(props) {
@@ -17,20 +17,18 @@ function NotNeeded(props) {
                 </Link>
             )}</p>
             <p>
-                <a href={state.election_website_url}><Button type="button">
+                <Link href={state.election_website_url} className="usa-button" target="_blank">
                     {content.more_button}
                     <Icon.Launch title="External link opens new window"/>
-                </Button>
-                </a>
+                </Link>
             </p>
 
             <h2>{content.heading_vote}</h2>
             <p>{content.text_vote}</p>
             <p>
-                <a href="https://vote.gov"><Button type="button">
+                <Link href={"https://vote.gov"} className="usa-button">
                     {content.back_button}
-                </Button>
-                </a>
+                </Link>
             </p>
 
         </>
