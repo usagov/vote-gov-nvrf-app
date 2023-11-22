@@ -46,10 +46,10 @@ function Eligibility(props) {
                                     aria-required="true"
                                     required={true}
                                     defaultChecked={props.hasConfirmed}
-                        onChange={(e) => props.confirmCheckbox(e.target.checked)}
+                                    onChange={(e) => props.confirmCheckbox(e.target.checked)}
                                 />
                             </div>
-                            {/* this is different as well  */}
+
                             {props.error &&
 
                                 <span id="eligibility-error" rol="alert" className='error-text'>
