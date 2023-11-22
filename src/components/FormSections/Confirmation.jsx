@@ -5,7 +5,7 @@ import {fetchData} from '../HelperFunctions/JsonHelper.jsx';
 function Confirmation(props){
     const [content, setContent] = useState();
     useEffect(() => {
-        fetchData("confirmation.json", setContent);
+        fetchData("pages.json", setContent);
     }, []);
 
     const fieldData = props.fieldData;
@@ -25,11 +25,12 @@ function Confirmation(props){
     const fieldDataOverride_id_expire_date = (fieldData.id_expire_date_month === '') ? "" : `${fieldData.id_expire_date_month}/${fieldData.id_expire_date_day}/${fieldData.id_expire_date_year}`;
 
     if (content) {
+        const confirm = content.find(item => item.uuid === "560cd01c-42d1-4f58-a702-372c2ff6bbd9");
         return (
             <>
                 <div className="confirm-info">
-                    <h1>{content.confirmation_heading}</h1>
-                    <p>{content.confirmation_text}</p>
+                    <h1>{confirm.title}</h1>
+                    <p>{confirm.body}</p>
 
                     <h2>Personal Information
                         <span style={{ marginLeft:'0.5rem' }}>
@@ -155,8 +156,7 @@ function Confirmation(props){
 
                 <div className="usa-alert usa-alert--info">
                     <div className="usa-alert__body">
-                        <h4>{content.acknowledge_heading}</h4>
-                        <p>{content.acknowledge_text}</p>
+                        <p>{confirm.instructions}</p>
                     </div>
                 </div>
 
