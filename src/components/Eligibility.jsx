@@ -53,13 +53,13 @@ function Eligibility(props) {
                             {props.error &&
 
                                 <span id="eligibility-error" rol="alert" className='error-text'>
-                    {content.error_message}
-                </span>
+                                    {content.error_message}
+                                </span>
                             }
                         </div>
                     </Fieldset>
 
-                    <p>{content.eligibility_agreement}</p>
+                    <p className="text-base padding-y-50">{content.eligibility_agreement}</p>
 
                     <div className="button-container" style={{ margin:'20px' }}>
                         <NextButton type={'submit'} onClick={() => props.checkboxValid()} text={content.start_button}/>
