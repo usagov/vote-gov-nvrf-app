@@ -18,29 +18,25 @@ function App() {
   const [stateData, setStateData] = useState('');
   const [registrationPath, setRegistrationPath] = useState('');
   const [formStep, setFormStep] = useState(1);
-  const [checkboxes, setCheckboxes] = useState({ citizen: false, age: false, checkboxesValid: null })
-  const [boxValues, setBoxValues] = useState([false, false])
 
-  const handleCheckbox = (checked, box, index) => { 
-      let copyValues = [...boxValues];
-      copyValues[index] = checked;
-      setBoxValues(copyValues)
-      setCheckboxes({ ...checkboxes, [box]: checked })
-  }
 
-  const checkBoxValues = () => {
-      if (boxValues.includes(false)) {
-        setCheckboxes({ ...checkboxes, checkboxesValid: true })
-      } else {
-        setCheckboxes({ ...checkboxes, checkboxesValid: false })
-      }
-   }
+    //Confirm eligibility checkbox controls
+    const [hasConfirmed, setHasConfirmed] = useState(null);
+    const [error, setError] = useState(null)
+    const confirmCheckbox = (checkStatus) => {
+        setHasConfirmed(checkStatus);
+        setError(!checkStatus);
+    }
+
+    const checkboxValid = () => {
+        (hasConfirmed === null) && setError(true);
+    }
 
   const statesList = []
   for (let i = 0; i < states.length; i++) {
     let stateName = states[i].name;
     statesList.push(stateName);
-  };
+  }
 
   const handleNext = () => {
     step != 5 && setStep(step + 1);
@@ -66,8 +62,8 @@ function App() {
     } else {
       setStateData('')
     }
-    // reset eligibilty requirement selections for when user has gone back after completing it and changed state selection
-    setCheckboxes({ citizen: false, age: false, checkboxesValid: null })
+    // reset eligibility requirement selections for when user has gone back after completing it and changed state selection
+    setHasConfirmed(null)
   }
 
   const getRegPath = (pathSelection) => {
@@ -102,9 +98,10 @@ function App() {
           handlePrev={handlePrev}
           state={selectedState}
           stateData={stateData}
-          handleCheckbox={handleCheckbox}
-          checkBoxValues={checkBoxValues}
-          checkboxes={checkboxes}
+          hasConfirmed={hasConfirmed}
+          error={error}
+          confirmCheckbox={confirmCheckbox}
+          checkboxValid={checkboxValid}
         />}  
         {step === 4 && 
           <PathSelection 
