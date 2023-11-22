@@ -58,7 +58,6 @@
     "ssn_hint": "XXXX",
     "ssn_error": "Social Security Number must be 4 digits.",
     "id_none_text": "\"None\" will appear on your completed form.",
-
     "back_btn": {
         "reg_options": "Back to registration options",
         "personal_info": "Back to personal information",
@@ -72,5 +71,11 @@
         "political_party": "Continue to political party",
         "confirm_info": "Confirm your information",
         "confirm_continue": "Confirm and continue"
-    }
+    },
+    "step_label_1": "Personal Information",
+    "step_label_2": "Address and Location Information",
+    "step_label_3": "Identification", 
+    "step_label_4": "Political Party",
+    "step_label_5": "Confirm Your Information",
+    "step_label_6": "Print Your Completed Form"
 }
