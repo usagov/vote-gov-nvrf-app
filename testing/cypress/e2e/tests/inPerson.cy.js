@@ -8,7 +8,7 @@ describe('Validate In Person', () => {
     cy.get('[data-testid="dropdown"]').select(data.inPerson)
     cy.get('[class="usa-button next-button margin-top-5"]').click()
   })
-it.only('Validate Update Registration', () => {
+it('Validate Update Registration', () => {
   // check that state link opens in new tab
   // * will need to add this back in when links are updated
   // cy.get('[class="usa-link usa-link--external"]').should('have.attr','target','_blank')
@@ -23,7 +23,7 @@ cy.get('[class="error-text"]').should('contain.text', 'Confirm eligibility to co
 
 // verify user CAN move forward after checking box
 cy.get('[class="usa-checkbox__label"]').click()
-// ! come back and add that error message is gone once bug is fixed
+cy.get('[class="error-text"]').should('not.exist')
 
 cy.get('[class="usa-button next-button margin-top-5"]').click()
 
@@ -214,11 +214,10 @@ cy.get('[data-testid="button"]').then(btn => {
 })
 
 // political party (required)
-// * check that user can not move forward without selecting an option
+// * check that user can not move forward without giving a party
 cy.get('[class="usa-button next-button margin-top-5"]').click().click()
 cy.get('[class="error-text text-bold"]').should('be.visible')
 
-cy.pause()
 cy.get('[class="required-text"]').should('be.visible')
 cy.get('[data-testid="textInput"]').type(data.politicalParty)
 
@@ -254,7 +253,8 @@ cy.get('[class="error-text"]').should('contain.text', 'Confirm eligibility to co
 
 // verify user CAN move forward after checking box
 cy.get('[class="usa-checkbox__label"]').click()
-// ! come back and add that error message is gone once bug is fixed
+cy.get('[class="error-text"]').should('not.exist')
+
 
 cy.get('[class="usa-button next-button margin-top-5"]').click()
 
@@ -264,6 +264,10 @@ cy.get('[data-testid="button"]').then(btn => {
 })
 
 // fill out personal information 
+// * check that user can not move forward without filling out fields
+cy.get('[class="usa-button next-button margin-top-5"]').click().click()
+cy.get('[class="error-text"]').should('be.visible')
+
 cy.get('[data-testid="dropdown"]').then(dropdown => {
   // title
   cy.get(dropdown[0]).select(data.personalInformationTitle)
@@ -297,6 +301,10 @@ cy.get('[class="usa-button next-button margin-top-5"]').click()
 
 
 // address and location page
+// * check that user can not move forward without filling out fields
+cy.get('[class="usa-button next-button margin-top-5"]').click().click()
+cy.get('[class="error-text"]').should('be.visible')
+
 // * check that current address works
 cy.get('[data-testid="textInput"]').then(textBox => {
   cy.get(textBox[0]).type(data.addressStreet)
@@ -351,6 +359,10 @@ cy.get('[data-testid="textInput"]').then(textBox => {
 cy.get('[class="usa-button next-button margin-top-5"]').click()
 
 // identification
+// * check that user can not move forward without selecting an option
+cy.get('[class="usa-button next-button margin-top-5"]').click().click()
+cy.get('[class="error-text text-bold"]').should('be.visible')
+
 // * state driver's license number
 cy.get('[class="usa-select"]').select("State Driver's License Number")
 cy.get('[data-testid="textInput"]').type(data.idNumber)
@@ -415,6 +427,10 @@ cy.get('[data-testid="button"]').then(btn => {
 })
 
   // political party (required)
+  // * check that user can not move forward without giving a party
+cy.get('[class="usa-button next-button margin-top-5"]').click().click()
+cy.get('[class="error-text text-bold"]').should('be.visible')
+
   cy.get('[class="required-text"]').should('be.visible')
   cy.get('[data-testid="textInput"]').type(data.politicalParty)
 
