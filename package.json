@@ -4,9 +4,10 @@
   "version": "0.0.0",
   "type": "commonjs",
   "scripts": {
+    "install": "vite build",
     "start": "vite",
     "dev": "vite",
-    "pages": "vite build",
+    "pages": "vite build --outDir _site",
     "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
