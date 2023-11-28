@@ -21,7 +21,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-string-replace": "^1.1.1",
-    "vite": "^4.3.9"
+    "vite": "^4.5.0"
   },
   "devDependencies": {
     "eslint": "^8.38.0",
