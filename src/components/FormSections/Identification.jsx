@@ -4,12 +4,21 @@ import { restrictType, checkExpiration, checkForErrors, jumpTo } from '../Helper
 
 function Identification(props){
     const content = props.content;
+    const fields = props.fieldContent;
     const stateFieldRequirements = props.stateData.fields_required;
     const stateFieldVisible = props.stateData.fields_visible;
     const stateInstructions = props.stateData.state_field_instructions;
     const idNumReq = stateFieldRequirements.ID_num;
     const idNumVisible = stateFieldVisible.ID_num;
 
+    //Drupal field data
+    const idTypeField = fields.find(item => item.uuid === "27d3a15c-f8c0-4035-9b0a-c2c0f674519c");
+    const driverLicenseField = fields.find(item => item.uuid === "acd7f272-7a37-43f0-b51a-c78daf31e5fd");
+    const stateIDField = fields.find(item => item.uuid === "e2da00fa-0f1b-4e98-9472-c00649266eb4");
+    const ssnField = fields.find(item => item.uuid === "1e030197-52e7-426e-923c-b67ef521ae3b");
+    const noIdField = fields.find(item => item.uuid === "eb0ce8c5-b4f7-4aae-a0b9-84f0434d2edb");
+
+    //Error handling
     const [handleErrors, setHandleErrors] = useState({
         id_selection: false,
         id_number: false,
@@ -32,7 +41,7 @@ function Identification(props){
             props.fieldData.id_expire_date_year.length === 4,
             checkExpiration(props.fieldData.id_expire_date_year + "-" + props.fieldData.id_expire_date_month + "-" + props.fieldData.id_expire_date_day)
         ]
-        
+
         if (dateValues.includes(false)) {
             setHandleErrors({ ...handleErrors, [dateType]: (true) })
         } else {
@@ -50,8 +59,8 @@ function Identification(props){
         </div>
         {idNumVisible && (
             <div>
-                <h3>{content.choose_id_heading}</h3>
-                <p>{content.choose_id_text}</p>
+                <h3>{idTypeField.label}</h3>
+                <p>{idTypeField.instructions}</p>
 
                 <div className={(idNumReq && handleErrors.id_selection) ? 'error-container' : ''}>
                 <Dropdown
@@ -62,11 +71,11 @@ function Identification(props){
                 onChange={(e) => props.saveIdType(e)}
                 onBlur={(e) => setHandleErrors({ ...handleErrors, id_selection: checkForErrors(e, 'check value exists') })}
                 >
-                    <option key="default" value="">{content.selector_default}</option>
-                    <option key="driver-id-num" value="driver-id-num">{content.selector_driver_id}</option>
-                    <option key="state-id-num" value="state-id-num">{content.selector_state_id}</option>
-                    <option key="ssn" value="ssn">{content.selector_ssn}</option>
-                    <option key="id-none" value="none">{content.selector_none}</option>
+                    <option key="default" value="">{"Select Identification"}</option>
+                    <option key="driver-id-num" value="driver-id-num">{driverLicenseField.label}</option>
+                    <option key="state-id-num" value="state-id-num">{stateIDField.label}</option>
+                    <option key="ssn" value="ssn">{ssnField.label}</option>
+                    <option key="id-none" value="none">{noIdField.label}</option>
                 </Dropdown>
                 {(idNumReq && handleErrors.id_selection) &&
                     <span id="id-num-dropdown-error" role="alert" className='error-text text-bold'>
@@ -80,7 +89,7 @@ function Identification(props){
                 <div className={(idNumReq && handleErrors.id_number) ? 'error-container' : ''}>
                     {(props.idType === 'driver-id-num') &&
 
-                        <Label className="text-bold" htmlFor="state-id-num-error">{content.selector_driver_id}{idNumReq && <span className='required-text'>*</span>}
+                        <Label className="text-bold" htmlFor="state-id-num-error">{driverLicenseField.label}{idNumReq && <span className='required-text'>*</span>}
                         <TextInput
                         id="driver-id-num"
                         className="radius-md"
@@ -101,7 +110,7 @@ function Identification(props){
                     }
                     {(props.idType === 'state-id-num') &&
 
-                        <Label className="text-bold" htmlFor="state-id-num-error">{content.selector_state_id}{idNumReq && <span className='required-text'>*</span>}
+                        <Label className="text-bold" htmlFor="state-id-num-error">{stateIDField.label}{idNumReq && <span className='required-text'>*</span>}
                         <TextInput
                         id="driver-id-num"
                         className="radius-md"
@@ -290,7 +299,7 @@ function Identification(props){
                                         className="usa-input radius-md"
                                         name="id_expire_date_year"
                                         aria-describedby="expire-date-error"
-                                        label="Year" 
+                                        label="Year"
                                         unit="year"
                                         required={true}
                                         type="text"
@@ -321,7 +330,7 @@ function Identification(props){
 
                 {props.idType === 'ssn' &&
                 <div className={(idNumReq && handleErrors.id_ssn) ? 'error-container' : ''}>
-                <Label className="text-bold" htmlFor="ssn-input-error">{content.selector_ssn}{idNumReq && <span className='required-text'>*</span>}</Label>
+                <Label className="text-bold" htmlFor="ssn-input-error">{ssnField.label}{idNumReq && <span className='required-text'>*</span>}</Label>
                 <span className="usa-hint" id="ssn-hint">{content.ssn_hint}</span>
                 <TextInput
                     id="ssn-input"
@@ -345,7 +354,7 @@ function Identification(props){
                     }
                 </div>}
 
-                {props.idType === 'none' && <p>{content.id_none_text}</p>}
+                {props.idType === 'none' && <p>{noIdField.instructions}</p>}
 
             </div>
 

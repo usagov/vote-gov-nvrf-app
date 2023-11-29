@@ -4,10 +4,27 @@ import { restrictType, checkForErrors, jumpTo } from '../HelperFunctions/Validat
 
 function PersonalInfo(props){
     const content = props.content;
+    const fields = props.fieldContent;
     const stateFieldRequirements = props.stateData.fields_required;
     const stateFieldVisible = props.stateData.fields_visible;
     const changeRegistrationVisible = (props.registrationPath === 'update') ? true : false;
 
+    //Drupal field data
+    const titleField = fields.find(item => item.uuid === "86a544cd-cfe9-456a-b634-176a37a38d6d");
+    const firstNameField = fields.find(item => item.uuid === "b7bdae35-e4be-4827-ae11-75d9c3e33bf0");
+    const middleNameField = fields.find(item => item.uuid === "38020ec6-1b53-4227-99e5-feea5f60af07");
+    const lastNameField = fields.find(item => item.uuid === "b306238a-a0f6-4bb8-b8ea-b3216ca75e0b");
+    const suffixField = fields.find(item => item.uuid === "eeff4fa1-00f2-474b-a791-1a4146dab11a");
+    const dobField = fields.find(item => item.uuid === "d31b2a64-36a9-4bc6-a9d1-e68d2be8c211");
+    const phoneNumberField = fields.find(item => item.uuid === "2d61b54a-e568-410f-825a-0ca82dfd3f63");
+    const raceField = fields.find(item => item.uuid === "2bfff6c6-6782-4b14-ac45-642efd278f6a");
+    const prevTitleField = fields.find(item => item.uuid === "34d2669a-d30b-4001-b897-280fe71b3cb0");
+    const prevFirstNameField = fields.find(item => item.uuid === "f282e541-7ca8-4c22-8d87-d4cff56e22e5");
+    const prevMiddleNameField = fields.find(item => item.uuid === "a4919026-91ac-4e05-a75f-e2df479abd76");
+    const prevLastNameField = fields.find(item => item.uuid === "42de34cc-ebf3-4d8e-8873-2571063b62c0");
+    const prevSuffixField = fields.find(item => item.uuid === "09cb2989-d302-4a01-bb3a-33173adcffb2");
+
+    //Field requirements by state data
     const nameVisible = stateFieldVisible.name;
     const nameReq = stateFieldRequirements.name;
     const dobVisible = stateFieldVisible.DOB;
@@ -17,6 +34,7 @@ function PersonalInfo(props){
     const raceVisible = stateFieldVisible.race;
     const raceReq = stateFieldRequirements.race;
 
+    //Error handling
     const [handleErrors, setHandleErrors] = useState({
         first_name: false,
         last_name: false,
@@ -59,7 +77,7 @@ function PersonalInfo(props){
                 <Grid row gap>
                     <Grid col={2}>
                     <Label className="text-bold" htmlFor="title-select">
-                        Title
+                        {titleField.label}
                     <Dropdown className="radius-md" id="title-select" name="title-select" value={props.fieldData.title} onChange={props.saveFieldData('title')} autoComplete="off">
                         <option>- Select -{' '}</option>
                         <option value="Mr">Mr.</option>
@@ -73,7 +91,7 @@ function PersonalInfo(props){
                     <Grid col={5}>
                     <div className={(nameReq && handleErrors.first_name) ? 'error-container' : ''}>
                         <Label className="text-bold" htmlFor="first-name">
-                            First Name{nameReq && <span className='required-text'>*</span>}
+                            {firstNameField.label}{nameReq && <span className='required-text'>*</span>}
                         <TextInput
                             id="first-name"
                             className="radius-md text-semibold"
@@ -97,7 +115,7 @@ function PersonalInfo(props){
 
                     <Grid col={5}>
                         <Label className="text-bold" htmlFor="middle-name">
-                            Middle Name(s)
+                            {middleNameField.label}
                         <TextInput
                             id="middle-name"
                             className="radius-md"
@@ -113,7 +131,7 @@ function PersonalInfo(props){
                     <Grid col={6}>
                     <div className={(nameReq && handleErrors.last_name) ? 'error-container' : ''}>
                         <Label className="text-bold" htmlFor="last-name">
-                            Last Name{nameReq && <span className='required-text'>*</span>}
+                            {lastNameField.label}{nameReq && <span className='required-text'>*</span>}
                         <TextInput
                             id="last-name"
                             className="radius-md"
@@ -137,7 +155,7 @@ function PersonalInfo(props){
 
                     <Grid col={6}>
                     <Label className="text-bold" htmlFor="suffix-select">
-                        Suffix
+                        {suffixField.label}
                     <Dropdown id="suffix-select" className="radius-md" name="suffix-select" value={props.fieldData.suffix} onChange={props.saveFieldData('suffix')} autoComplete="off" required={nameReq}>
                         <option>- Select -{' '}</option>
                         <option value="Jr.">Jr.</option>
@@ -156,9 +174,9 @@ function PersonalInfo(props){
             {dobVisible && (
             <Grid col={5}>
                 <div className={(dobReq && handleErrors.dob) ? 'error-container' : ''}>
-                <Fieldset className="fieldset" legend={dobReq ? [<span className="text-bold">Date of Birth</span>, <span key={1} className='required-text'>*</span>] : "Date of Birth"} style={{ marginTop:'30px'}}>
+                <Fieldset className="fieldset" legend={dobReq ? [<span className="text-bold">{dobField.label}</span>, <span key={1} className='required-text'>*</span>] : "Date of Birth"} style={{ marginTop:'30px'}}>
                         <span className="usa-hint" id="date-of-birth-hint">
-                        For example: 01 19 2000
+                        {dobField.help_text}
                         </span>
                         <div
                             id="date-of-birth"
@@ -254,8 +272,8 @@ function PersonalInfo(props){
                 <Grid col={5} className="input-example">
                 <div className="bottom">
                     <div className={(telephoneReq && handleErrors.phone_number) ? 'error-container' : ''}>
-                        <Label className="text-bold" htmlFor="phone-number">Phone Number{telephoneReq && <span className='required-text'>*</span>}</Label>
-                        <span className="usa-hint" id="date-of-birth-hint">For example: (123) 456-7890</span>
+                        <Label className="text-bold" htmlFor="phone-number">{phoneNumberField.label}{telephoneReq && <span className='required-text'>*</span>}</Label>
+                        <span className="usa-hint" id="date-of-birth-hint">For example: {phoneNumberField.help_text}</span>
                         <TextInput
                             id="phone-number"
                             className="radius-md"
@@ -285,7 +303,7 @@ function PersonalInfo(props){
             <Grid row gap>
             {raceVisible && (
                 <div>
-                    <Label className="text-bold" htmlFor="race-ethic-group-select">Race</Label>
+                    <Label className="text-bold" htmlFor="race-ethic-group-select">{raceField.label}</Label>
                     <Dropdown id="race-ethic-group-select" className="radius-md" name="race-ethic-group-select" value={props.fieldData.race} onChange={props.saveFieldData('race')} autoComplete="off" required={raceReq}>
                         <option>- Select -{' '}</option>
                         <option value="American Indian or Alaska Native">American Indian or Alaska Native</option>
@@ -306,7 +324,7 @@ function PersonalInfo(props){
         <Grid row gap>
             <Grid col={2}>
             <Label className="text-bold" htmlFor="title-select-2">
-                Title
+                {prevTitleField.label}
             <Dropdown id="title-select-2" className="radius-md" name="title-select-2" value={props.fieldData.prev_title} onChange={props.saveFieldData('prev_title')} autoComplete="off">
                 <option>- Select -{' '}</option>
                 <option value="Mr">Mr.</option>
@@ -320,7 +338,7 @@ function PersonalInfo(props){
             <Grid col={5}>
             <div className={(nameReq && handleErrors.prev_first_name) ? 'error-container' : ''}>
                 <Label className="text-bold" htmlFor="first-name-2">
-                    First Name{nameReq && <span className='required-text'>*</span>}
+                    {prevFirstNameField.label}{nameReq && <span className='required-text'>*</span>}
                 <TextInput
                     id="first-name-2"
                     className="radius-md"
@@ -344,7 +362,7 @@ function PersonalInfo(props){
 
             <Grid col={5}>
                 <Label className="text-bold" htmlFor="middle-name-2">
-                    Middle Name
+                    {prevMiddleNameField.label}
                 <TextInput
                     id="middle-name-2"
                     className="radius-md"
@@ -360,7 +378,7 @@ function PersonalInfo(props){
             <Grid col={6}>
             <div className={(nameReq && handleErrors.prev_last_name) ? 'error-container' : ''}>
                 <Label className="text-bold" htmlFor="last-name-2">
-                    Last Name{nameReq && <span className='required-text'>*</span>}
+                    {prevLastNameField.label}{nameReq && <span className='required-text'>*</span>}
                 <TextInput
                     id="last-name-2"
                     className="radius-md"
@@ -384,7 +402,7 @@ function PersonalInfo(props){
 
             <Grid col={6}>
             <Label className="text-bold" htmlFor="suffix-select-2">
-                Suffix
+                {prevSuffixField.label}
             <Dropdown id="suffix-select-2" className="radius-md" name="suffix-select-2" value={props.fieldData.prev_suffix} onChange={props.saveFieldData('prev_suffix')} autoComplete="off" required={nameReq}>
                 <option>- Select -{' '}</option>
                 <option value="Jr.">Jr.</option>

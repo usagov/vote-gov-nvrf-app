@@ -20,6 +20,11 @@ function MultiStepForm(props) {
         fetchData("registration-form.json", setContent);
     }, []);
 
+    const [fieldContent, setFieldContent] = useState('')
+    useEffect(() => {
+        fetchData("fields.json", setFieldContent);
+    },[]);
+
     //Field data controls
     const [fieldData, setFieldData] = useState({
         title:'', first_name: '', middle_name: '', last_name: '', suffix:'',
@@ -198,7 +203,7 @@ function MultiStepForm(props) {
         }
     }
 
-    if (content) {
+    if (content && fieldContent) {
         return (
             <>
                 {step != 6 && <BackButton type={'button'} onClick={handlePrev} text={backButtonText(step)}/>}
@@ -224,6 +229,7 @@ function MultiStepForm(props) {
                 onChangePreviousName={onChangePreviousName}
                 handlePrev={props.handlePrev}
                 content={content}
+                fieldContent={fieldContent}
                 />
             }
             {step === 2 &&
@@ -242,6 +248,7 @@ function MultiStepForm(props) {
                 hasMailAddress={hasMailAddress}
                 onChangeMailAddressCheckbox={onChangeMailAddressCheckbox}
                 content={content}
+                fieldContent={fieldContent}
                 />
             }
             {step === 3 &&
@@ -256,6 +263,7 @@ function MultiStepForm(props) {
                 saveIdType={saveIdType}
                 idType={idType}
                 content={content}
+                fieldContent={fieldContent}
                 />
             }
             {step === 4 &&
@@ -267,6 +275,7 @@ function MultiStepForm(props) {
                 registrationPath={props.registrationPath}
                 handlePrev={handlePrev}
                 content={content}
+                fieldContent={fieldContent}
                 />
             }
             {step === 5 &&
