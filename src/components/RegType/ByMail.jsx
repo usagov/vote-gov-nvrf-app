@@ -10,8 +10,8 @@ function ByMail(props) {
     return (
         <>
 
-            <h1>{content.main_heading.replace("%state_name%", stateContent.name)}</h1>
-            <p className={'usa-intro'}>{content.parag_bymail.replace("%state_name%", stateContent.name)}</p>
+            <h1>{content.title.replace("@state_name", props.stateData.name)}</h1>
+            <p className={'usa-intro'}>{content.body.replace("@state_name", props.stateData.name)}</p>
 
             <div className="padding-bottom-3 padding-top-1">
                 <Link href={props.stateData.election_website_url} className="usa-button" target="_blank">
@@ -21,7 +21,7 @@ function ByMail(props) {
             </div>
             <div>
                 <Link href={props.stateData.download_form} className="text-primary" target="_blank">
-                    <strong className="text-primary underline-primary">{content.mail_in_link.replace("%state_name%", props.stateData.name)}
+                    <strong className="text-primary underline-primary">Go to %state_name%'s mail-in form
                     <Icon.Launch title="External link opens new window"/></strong>
                 </Link>
             </div>
