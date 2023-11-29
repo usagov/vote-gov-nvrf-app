@@ -1,4 +1,4 @@
-import { Button, Link, Icon } from '@trussworks/react-uswds';
+import { Link, Icon } from '@trussworks/react-uswds';
 import NextButton from '../NextButton';
 import StepsList from './StepsList';
 
@@ -11,19 +11,19 @@ function Online(props) {
             <h1>{content.main_heading.replace("%state_name%", props.stateData.name)}</h1>
             <p className={'usa-intro'}>{content.parag_online.replace("%state_name%", props.stateData.name)}</p>
             <div className="padding-top-3 padding-bottom-1">
-                <Button>
+            <Link href={props.stateData.registration_url} className="usa-button" target="_blank">
                     {content.online_form_btn.replace("%state_name%", props.stateData.name)}
                     <Icon.Launch title="External link opens new window"/>
-                </Button>
+                </Link>
             </div>
             <div className="padding-bottom-3 padding-top-1">
-                <Button>
+                <Link href={props.stateData.election_website_url} className="usa-button" target="_blank">
                     {content.check_reg_btn}
                     <Icon.Launch title="External link opens new window"/>
-                </Button>
+                </Link>
             </div>
             <div>
-                <Link className="text-primary">
+                <Link href={props.stateData.download_form} className="text-primary" target="_blank">
                     <strong className="text-primary underline-primary">{content.mail_in_link.replace("%state_name%", props.stateData.name)}
                     <Icon.Launch title="External link opens new window"/></strong>
                 </Link>
@@ -35,7 +35,7 @@ function Online(props) {
 
             <StepsList content={props.content}/>
 
-            <NextButton type={'submit'} onClick={props.handleNext} text={content.next_btn_online}/>
+            <NextButton type={'submit'} onClick={props.handleNext} text={content.next_btn}/>
 
         </>
     );

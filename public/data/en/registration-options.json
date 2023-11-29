@@ -16,8 +16,7 @@
     "online_form_btn": "Go to %state_name%'s online form",
     "check_reg_btn": "Check your registration",
     "mail_in_link": "Go to %state_name%'s mail-in form",
-    "next_btn_online": "Start your online registration on vote.gov",
-    "next_btn_bymail": "Start your mail-in registration on vote.gov",
+    "next_btn": "Start your mail-in registration on vote.gov",
     "back_btn": "Go back to Select your State",
     "not_needed": {
         "main_heading": "%state_name% does not have voter registration!",
@@ -26,6 +25,6 @@
         "heading_vote": "Don’t forget to vote!",
         "text_vote": "Prepare to cast your vote. Explore Vote.gov to learn more about how U.S. elections are run and your voting options. ",
         "more_button": "Learn more about your voting options",
-        "back_button": "Back to Vote.gov"        
+        "back_button": "Back to vote.gov"        
     }
 }
