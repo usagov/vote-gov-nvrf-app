@@ -208,7 +208,7 @@ function MultiStepForm(props) {
             <>
                 {step != 6 && <BackButton type={'button'} onClick={handlePrev} text={backButtonText(step)}/>}
 
-                <ProgressBar step={step}/>
+                <ProgressBar step={step} content={content}/>
                 {step < 5 &&
                     <div>
                         <h1>{content.main_heading}: {props.stateData.name}</h1>

@@ -9,10 +9,10 @@ function Confirmation(props){
     }, []);
 
     const fieldData = props.fieldData;
+    const currentAddress = fieldData.street_address + fieldData.apt_num + fieldData.city + fieldData.zip_code;
     const prevName = fieldData.prev_title + fieldData.prev_first_name + fieldData.prev_middle_name + fieldData.prev_last_name + fieldData.prev_suffix;
     const prevAddress = fieldData.prev_street_address + fieldData.prev_apt_num + fieldData.prev_city + fieldData.prev_state + fieldData.prev_zip_code;
     const prevMailAddress = fieldData.mail_street_address + fieldData.mail_apt_num + fieldData.mail_city + fieldData.mail_state + fieldData.mail_zip_code;
-
 
     //field data overrides for confirm page printing only
     const fieldDataOverride_race = (fieldData.race === '') ? "Not required for your state" : fieldData.race;
@@ -86,6 +86,11 @@ function Confirmation(props){
             </span>
                     </h2>
                     <p><strong>Current Address</strong></p>
+                    {!currentAddress && (
+                        <Alert type="info" headingLevel="h4" noIcon>
+                            You are not registering with a current address, so these fields are blank.
+                        </Alert>
+                    )}
                     <ul>
                         <li>Street Address: {fieldData.street_address}</li>
                         <li>Apt. or Lot #: {fieldData.apt_num}</li>

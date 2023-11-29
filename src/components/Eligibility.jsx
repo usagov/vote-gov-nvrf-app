@@ -30,9 +30,9 @@ function Eligibility(props) {
                 {stateContent.postmarked_mail_deadline_info}{stateContent.received_mail_deadline_info}
 
                 <form onSubmit={(e) => {e.preventDefault(), props.handleNext()}}>
-                    <Fieldset className="padding-y-50" legend="Eligibility" legendStyle="srOnly">
-                        <div className={props.checkboxes.checkboxesValid ? 'error-container' : ''}>
-                            <Label className="text-bold" htmlFor="eligibility-error" id="eligibility-error">
+                    <Fieldset legend="Eligibility" legendStyle="srOnly">
+                        <div className={props.error ? 'error-container' : ''}>
+                            <Label htmlFor="eligibility-error" id="eligibility-error">
                                 <strong>{eligibility.name}</strong>
                             </Label>
                             <div>
@@ -43,11 +43,13 @@ function Eligibility(props) {
                                     label={eligibility.label}
                                     aria-required="true"
                                     required={true}
-                                    defaultChecked={props.checkboxes.eligibility}
-                                    onChange={(e) => props.handleCheckbox(e.target.checked, 'eligibility', 0)}
+                                    defaultChecked={props.hasConfirmed}
+                                    onChange={(e) => props.confirmCheckbox(e.target.checked)}
                                 />
                             </div>
-                            {props.checkboxes.checkboxesValid &&
+
+                            {props.error &&
+
                                 <span id="eligibility-error" rol="alert" className='error-text'>
                                 {eligibility.error_msg}
                                 </span>
@@ -58,7 +60,7 @@ function Eligibility(props) {
                     <p className="text-base padding-y-50">{eligibility.instructions}</p>
 
                     <div className="button-container" style={{ margin:'20px' }}>
-                        <NextButton type={'submit'} onClick={() => props.checkBoxValues()} text={navContent.next.continue}/>
+                        <NextButton type={'submit'} onClick={() => props.checkboxValid()} text={navContent.next.continue}/>
                     </div>
                 </form>
             </>
