@@ -11,14 +11,18 @@ function Eligibility(props) {
         fetchData("pages.json", setData);
         fetchData("fields.json", setFields);
     }, []);
+    const [navContent, setNavContent] = useState('')
+    useEffect(() => {
+        fetchData("navigation.json", setNavContent);
+    }, []);
     const stateContent = props.stateData;
 
-    if (data && fields) {
+    if (data && fields && navContent) {
         const content = data.find(item => item.uuid === "94eab1c9-8343-4747-94b4-08732a175614");
         const eligibility = fields.find(item => item.uuid === "39fc63ad-ed5a-4ad5-98d3-aa236c96c61c");
         return (
             <>
-                <BackButton type={'button'} onClick={props.handlePrev} text={'Back to State Registration Options'}/>
+                <BackButton type={'button'} onClick={props.handlePrev} text={navContent.back.state_reg_options}/>
 
                 <h1>{content.title.replace("@state_name", props.stateData.name)}</h1>
                 <p>{content.body}</p> {/* TODO Formatting each tag */}
@@ -54,7 +58,7 @@ function Eligibility(props) {
                     <p className="text-base padding-y-50">{eligibility.instructions}</p>
 
                     <div className="button-container" style={{ margin:'20px' }}>
-                        <NextButton type={'submit'} onClick={() => props.checkBoxValues()} text={"Replace this nav text"}/>
+                        <NextButton type={'submit'} onClick={() => props.checkBoxValues()} text={navContent.next.continue}/>
                     </div>
                 </form>
             </>

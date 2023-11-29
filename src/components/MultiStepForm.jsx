@@ -16,14 +16,14 @@ import "../styles/pages/Form.css";
 
 function MultiStepForm(props) {
     const [content, setContent] = useState()
+    const [fieldContent, setFieldContent] = useState('')
+    const [navContent, setNavContent] = useState('')
+
     useEffect(() => {
         fetchData("registration-form.json", setContent);
-    }, []);
-
-    const [fieldContent, setFieldContent] = useState('')
-    useEffect(() => {
         fetchData("fields.json", setFieldContent);
-    },[]);
+        fetchData("navigation.json", setNavContent);
+    }, []);
 
     //Field data controls
     const [fieldData, setFieldData] = useState({
@@ -176,34 +176,34 @@ function MultiStepForm(props) {
     const backButtonText = (step) => {
         switch (step) {
         case 1:
-            return content.back_btn.reg_options;
+            return navContent.back.reg_options;
         case 2:
-            return content.back_btn.personal_info;
+            return navContent.back.personal_info;
         case 3:
-            return content.back_btn.address_location;
+            return navContent.back.address_location;
         case 4:
-            return content.back_btn.identification;
+            return navContent.back.identification;
         case 5:
-            return content.back_btn.edit_info;
+            return navContent.back.edit_info;
         }
     }
 
     const nextButtonText = (step) => {
         switch (step) {
             case 1:
-                return content.next_btn.address_location;
+                return navContent.next.address_location;
             case 2:
-                return content.next_btn.identification;
+                return navContent.next.identification;
             case 3:
-                return content.next_btn.political_party;
+                return navContent.next.political_party;
             case 4:
-                return content.next_btn.confirm_info;
+                return navContent.next.confirm_info;
             case 5:
-                return content.next_btn.confirm_continue;
+                return "Confirm and continue";//TODO replace
         }
     }
 
-    if (content && fieldContent) {
+    if (content && fieldContent && navContent) {
         return (
             <>
                 {step != 6 && <BackButton type={'button'} onClick={handlePrev} text={backButtonText(step)}/>}

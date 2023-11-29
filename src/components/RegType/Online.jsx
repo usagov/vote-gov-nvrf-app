@@ -6,13 +6,14 @@ import StepsList from './StepsList';
 
 function Online(props) {
     const content = props.content;
+    const navContent = props.navContent;
     const [cards, setCards] = useState('')
 
     useEffect(() => {
         fetchData("cards.json", setCards);
     }, []);
 
-    if (content && cards) {
+    if (content && cards && navContent) {
         const listContent = cards.find(item => item.uuid === "33a9859d-a62c-4f8e-9e92-5a70f529b62a");
         return (
             <>
@@ -44,7 +45,7 @@ function Online(props) {
 
                 <StepsList content={listContent}/>
 
-                <NextButton type={'submit'} onClick={props.handleNext} text={"Start your online registration on vote.gov"}/>
+                <NextButton type={'submit'} onClick={props.handleNext} text={navContent.next.start}/>
 
             </>
         );

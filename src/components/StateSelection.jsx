@@ -6,13 +6,13 @@ import NextButton from './NextButton';
 
 function StateSelection(props) {
     const [content, setContent] = useState('');
+    const [states, setState] = useState('');
+    const [navContent, setNavContent] = useState('')
+
     useEffect(() => {
         fetchData("pages.json", setContent);
-    }, []);
-
-    const [states, setState] = useState('');
-    useEffect(() => {
         fetchData("states.json", setState);
+        fetchData("navigation.json", setNavContent);
     }, []);
 
     const statesList = []
@@ -25,7 +25,7 @@ function StateSelection(props) {
         state_selected: false
     });
 
-    if (content) {
+    if (content && navContent) {
         const introContent = content.find(item => item.uuid === "e3461b9a-e0b1-4157-ad4a-13f3835a101c");
         return (
         <>
@@ -66,7 +66,7 @@ function StateSelection(props) {
                 </div>
             </div>
 
-            <NextButton type={'submit'} text={"Next"}/>
+            <NextButton type={'submit'} text={navContent.next.next}/>
 
             </form>
         </>

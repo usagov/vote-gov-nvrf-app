@@ -4,6 +4,7 @@ import StepsList from './StepsList';
 
 function ByMail(props) {
     const content = props.content;
+    const navContent = props.navContent;
     const stateContent = props.stateData;
 
     return (
@@ -28,7 +29,7 @@ function ByMail(props) {
 
             <StepsList content={props.content}/>
 
-            <NextButton type={'submit'} onClick={props.handleNext} text={"Start your mail-in registration on vote.gov"}/>
+            <NextButton type={'submit'} onClick={props.handleNext} text={navContent.next.continue}/>
 
         </>
     );

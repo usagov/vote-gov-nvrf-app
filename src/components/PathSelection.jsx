@@ -12,13 +12,18 @@ function PathSelection(props) {
         fetchData("pages.json", setContent);
     }, []);
 
-    if (content && cards) {
+    const [navContent, setNavContent] = useState('')
+    useEffect(() => {
+        fetchData("navigation.json", setNavContent);
+    }, []);
+
+    if (content && cards && navContent) {
         const introContent = content.find(item => item.uuid === "b3299979-e26c-4885-a949-e1a2c27de91b");
         const cardOne = cards.find(item => item.uuid === "0ac52b5d-4381-4b4e-830e-38319f3a3757");
         const cardTwo = cards.find(item => item.uuid === "3abd804c-2787-44f9-a06b-ad6d63ca797f");
         return (
             <>
-                <BackButton type={'button'} onClick={props.handlePrev} text={'Replace this text'}/>
+                <BackButton type={'button'} onClick={props.handlePrev} text={navContent.back.eligibility_req}/>
 
                 <h1>{introContent.title.replace("@state_name", props.stateData.name)}</h1>
                 <p>{introContent.body}</p>
