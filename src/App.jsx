@@ -9,8 +9,11 @@ import {fetchData} from './components/HelperFunctions/JsonHelper.jsx';
 function App() {
 
   const [states, setState] = useState('');
+  const [statesOld, setStatesOld] = useState();
+  const [stateDataOld, setStateDataOld] = useState('');
   useEffect(() => {
     fetchData("states.json", setState);
+    fetchData("states_old.json", setStatesOld);
   }, []);
 
   const [step, setStep] = useState(1);
@@ -62,6 +65,7 @@ function App() {
       for (var i = 0; i < states.length; i++){
         if (states[i].name == selectedState){
         setStateData(states[i]);
+        setStateDataOld(statesOld[0])
       }}
     } else {
       setStateData('')
@@ -69,6 +73,7 @@ function App() {
     // reset eligibilty requirement selections for when user has gone back after completing it and changed state selection
     setCheckboxes({ citizen: false, age: false, checkboxesValid: null })
   }
+
 
   const getRegPath = (pathSelection) => {
     setRegistrationPath(pathSelection)
@@ -121,7 +126,7 @@ function App() {
           handlePrev={handlePrev}
           statesList={statesList}
           state={selectedState}
-          stateData={stateData}
+          stateData={stateDataOld}
           registrationPath={registrationPath}
           getFormStep={getFormStep}
           />}
