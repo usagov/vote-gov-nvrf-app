@@ -1,14 +1,19 @@
 import { Link, Icon } from '@trussworks/react-uswds';
 import reactStringReplace from 'react-string-replace';
+import DOMPurify from "dompurify";
 
 function NotNeeded(props) {
     const content = props.content;
     const state = props.stateData;
+    const contentBody = DOMPurify.sanitize(content.body).replace("@state_name", props.stateData.name);
 
     return (
         <>
 
             <h1>{content.title.replace("@state_name", state.name)}</h1>
+            <div dangerouslySetInnerHTML= {{__html: contentBody}}/>
+
+            {/*
             <p className={'usa-intro'}>{reactStringReplace(
                 "%link% on %state_name%'s election website.".replace("%state_name%", state.name),
                 "%link%",
@@ -22,8 +27,8 @@ function NotNeeded(props) {
                     <Icon.Launch title="External link opens new window"/>
                 </Link>
             </p>
+            */}
 
-            <p>{content.body}</p>
             <p>
                 <Link href={"https://vote.gov"} className="usa-button">
                     {"Back to Vote.gov"}

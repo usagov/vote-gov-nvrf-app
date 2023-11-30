@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import {fetchData} from '../HelperFunctions/JsonHelper.jsx';
 import GenerateFilledPDF from '../GenerateFilledPDF';
 import reactStringReplace from 'react-string-replace';
+import DOMPurify from 'dompurify';
 
 function Delivery(props) {
     const [content, setContent] = useState();
@@ -24,6 +25,7 @@ function Delivery(props) {
 
     if (content) {
         const delivery = content.find(item => item.uuid === "229f283c-6a70-43f6-a80f-15cfa158f062");
+        const deliveryBody = DOMPurify.sanitize(delivery.body.replace("@state_name", props.stateData.name));
         /*const reminderMessage = randomProperty(content.reminder_messages);
 
         const usagov_resource_link = reactStringReplace(
@@ -49,12 +51,12 @@ function Delivery(props) {
                     </Grid>
                 </Grid>
 
-                <p>{delivery.body.replace("%state_name%", props.stateData.name)}</p>
+                <div dangerouslySetInnerHTML= {{__html: deliveryBody}}/>
 
                 <p>
-                    <br />{"Office name"}
-                    <br />{"Street Address"}
-                    <br />{"City and State"}
+                    <br />{"{{ Office name }}"}
+                    <br />{"{{ Street Address }}"}
+                    <br />{"{{ City and State }}"}
                 </p>
 
 

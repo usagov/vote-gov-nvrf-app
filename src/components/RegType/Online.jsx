@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { fetchData } from '../HelperFunctions/JsonHelper';
 import NextButton from '../NextButton';
 import StepsList from './StepsList';
+import DOMPurify from "dompurify";
 
 function Online(props) {
     const content = props.content;
@@ -15,10 +16,11 @@ function Online(props) {
 
     if (content && cards && navContent) {
         const listContent = cards.find(item => item.uuid === "33a9859d-a62c-4f8e-9e92-5a70f529b62a");
+        const contentBody = DOMPurify.sanitize(content.body).replace("@state_name", props.stateData.name);
         return (
             <>
             <h1>{content.title.replace("@state_name", props.stateData.name)}</h1>
-            <p className={'usa-intro'}>{content.body.replace("@state_name", props.stateData.name)}</p>
+            <div dangerouslySetInnerHTML= {{__html: contentBody}}/> {/* TODO: Need to style each paragraph */}
             <div className="padding-top-3 padding-bottom-1">
             <Link href={props.stateData.registration_url} className="usa-button" target="_blank">
                     Go to %state_name%'s online form

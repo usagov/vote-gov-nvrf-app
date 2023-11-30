@@ -1,6 +1,7 @@
 import { Alert, Button, Checkbox } from '@trussworks/react-uswds';
 import React, { useState, useEffect } from "react";
 import {fetchData} from '../HelperFunctions/JsonHelper.jsx';
+import DOMPurify from 'dompurify';
 
 function Confirmation(props){
     const [content, setContent] = useState();
@@ -26,11 +27,13 @@ function Confirmation(props){
 
     if (content) {
         const confirm = content.find(item => item.uuid === "560cd01c-42d1-4f58-a702-372c2ff6bbd9");
+        const confirmBody = DOMPurify.sanitize(confirm.body);
+        const confirmInstructions = DOMPurify.sanitize(confirm.instructions);
         return (
             <>
                 <div className="confirm-info">
                     <h1>{confirm.title}</h1>
-                    <p>{confirm.body}</p>
+                    <div dangerouslySetInnerHTML= {{__html: confirmBody}}/>
 
                     <h2>Personal Information
                         <span style={{ marginLeft:'0.5rem' }}>
@@ -161,7 +164,7 @@ function Confirmation(props){
 
                 <div className="usa-alert usa-alert--info">
                     <div className="usa-alert__body">
-                        <p>{confirm.instructions}</p>
+                        <div dangerouslySetInnerHTML= {{__html: confirmInstructions}}/>
                     </div>
                 </div>
 

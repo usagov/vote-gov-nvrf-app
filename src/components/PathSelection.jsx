@@ -2,18 +2,16 @@ import { Button, CardGroup, Card, CardHeader, CardBody, CardFooter, Icon } from 
 import { useState, useEffect } from 'react';
 import { fetchData } from './HelperFunctions/JsonHelper.jsx';
 import BackButton from './BackButton';
+import DOMPurify from 'dompurify';
 
 function PathSelection(props) {
     const [content, setContent] = useState('')
     const [cards, setCards] = useState('')
+    const [navContent, setNavContent] = useState('')
 
     useEffect(() => {
         fetchData("cards.json", setCards);
         fetchData("pages.json", setContent);
-    }, []);
-
-    const [navContent, setNavContent] = useState('')
-    useEffect(() => {
         fetchData("navigation.json", setNavContent);
     }, []);
 
@@ -21,12 +19,15 @@ function PathSelection(props) {
         const introContent = content.find(item => item.uuid === "b3299979-e26c-4885-a949-e1a2c27de91b");
         const cardOne = cards.find(item => item.uuid === "0ac52b5d-4381-4b4e-830e-38319f3a3757");
         const cardTwo = cards.find(item => item.uuid === "3abd804c-2787-44f9-a06b-ad6d63ca797f");
+        const introContentBody = DOMPurify.sanitize(introContent.body);
+        const cardOneBody = DOMPurify.sanitize(cardOne.body);
+        const cardTwoBody = DOMPurify.sanitize(cardTwo.body);
         return (
             <>
                 <BackButton type={'button'} onClick={props.handlePrev} text={navContent.back.eligibility_req}/>
 
                 <h1>{introContent.title.replace("@state_name", props.stateData.name)}</h1>
-                <p>{introContent.body}</p>
+                <div dangerouslySetInnerHTML= {{__html: introContentBody}}/>
 
                 <CardGroup className="padding-top-6 border-black container-test-1">
                     <Card className="card-info border-black container-test-2" gridLayout={{ tablet: { col: 4 } }}>
@@ -36,9 +37,7 @@ function PathSelection(props) {
                             </h3>
                         </CardHeader>
                         <CardBody>
-                            <p>
-                            {cardOne.body}
-                            </p>
+                            <div dangerouslySetInnerHTML= {{__html: cardOneBody}}/>
                         </CardBody>
                         <CardFooter className="padding-top-6">
                             <Button type="submit" onClick={() => {props.getRegPath("update"), props.handleNext()}}>
@@ -55,9 +54,7 @@ function PathSelection(props) {
                             </h3>
                         </CardHeader>
                         <CardBody>
-                            <p>
-                            {cardTwo.body}
-                            </p>
+                            <div dangerouslySetInnerHTML= {{__html: cardTwoBody}}/>
                         </CardBody>
                         <CardFooter className="padding-top-6">
                             <Button type="submit" onClick={() => {props.getRegPath("new"),  props.handleNext()}}>

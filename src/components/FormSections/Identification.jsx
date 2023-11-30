@@ -1,6 +1,7 @@
 import { Label, TextInput, Dropdown, Grid, Fieldset } from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import { restrictType, checkExpiration, checkForErrors, jumpTo } from '../HelperFunctions/ValidateField';
+import DOMPurify from 'dompurify';
 
 function Identification(props){
     const content = props.content;
@@ -17,6 +18,8 @@ function Identification(props){
     const stateIDField = fields.find(item => item.uuid === "e2da00fa-0f1b-4e98-9472-c00649266eb4");
     const ssnField = fields.find(item => item.uuid === "1e030197-52e7-426e-923c-b67ef521ae3b");
     const noIdField = fields.find(item => item.uuid === "eb0ce8c5-b4f7-4aae-a0b9-84f0434d2edb");
+    const idTypeFieldInstructions = DOMPurify.sanitize(idTypeField.instructions);
+    const noIdFieldInstructions = DOMPurify.sanitize(noIdField.instructions);
 
     //Error handling
     const [handleErrors, setHandleErrors] = useState({
@@ -60,7 +63,7 @@ function Identification(props){
         {idNumVisible && (
             <div>
                 <h3>{idTypeField.label}</h3>
-                <p>{idTypeField.instructions}</p>
+                <div dangerouslySetInnerHTML= {{__html: idTypeFieldInstructions}}/>
 
                 <div className={(idNumReq && handleErrors.id_selection) ? 'error-container' : ''}>
                 <Dropdown
@@ -354,7 +357,7 @@ function Identification(props){
                     }
                 </div>}
 
-                {props.idType === 'none' && <p>{noIdField.instructions}</p>}
+                {props.idType === 'none' && <div dangerouslySetInnerHTML= {{__html: noIdFieldInstructions}}/>}
 
             </div>
 

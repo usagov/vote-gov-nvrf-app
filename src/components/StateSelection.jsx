@@ -3,6 +3,7 @@ import { Dropdown } from '@trussworks/react-uswds';
 import { checkForErrors } from './HelperFunctions/ValidateField';
 import { fetchData } from './HelperFunctions/JsonHelper';
 import NextButton from './NextButton';
+import DOMPurify from "dompurify";
 
 function StateSelection(props) {
     const [content, setContent] = useState('');
@@ -27,10 +28,11 @@ function StateSelection(props) {
 
     if (content && navContent) {
         const introContent = content.find(item => item.uuid === "e3461b9a-e0b1-4157-ad4a-13f3835a101c");
+        const introContentBody = DOMPurify.sanitize(introContent.body);
         return (
         <>
             <h2>{introContent.title}</h2>
-            {introContent.body} {/* TODO: Need to style each paragraph */}
+            <div dangerouslySetInnerHTML= {{__html: introContentBody}}/> {/* TODO: Need to style each paragraph */}
 
             <form onSubmit={(e) => {props.handleSubmit(e), props.handleNext()}}>
 

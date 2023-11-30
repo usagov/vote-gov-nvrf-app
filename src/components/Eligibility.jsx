@@ -3,29 +3,30 @@ import { fetchData } from './HelperFunctions/JsonHelper.jsx';
 import { useState, useEffect } from 'react';
 import BackButton from './BackButton';
 import NextButton from "./NextButton";
+import DOMPurify from "dompurify";
 
 function Eligibility(props) {
+    const stateContent = props.stateData;
     const [data, setData] = useState('')
     const [fields, setFields] = useState('')
+    const [navContent, setNavContent] = useState('')
     useEffect(() => {
         fetchData("pages.json", setData);
         fetchData("fields.json", setFields);
-    }, []);
-    const [navContent, setNavContent] = useState('')
-    useEffect(() => {
         fetchData("navigation.json", setNavContent);
     }, []);
-    const stateContent = props.stateData;
 
     if (data && fields && navContent) {
         const content = data.find(item => item.uuid === "94eab1c9-8343-4747-94b4-08732a175614");
         const eligibility = fields.find(item => item.uuid === "39fc63ad-ed5a-4ad5-98d3-aa236c96c61c");
+        const contentBody = DOMPurify.sanitize(content.body);
+        const eligibilityInstructions = DOMPurify.sanitize(eligibility.instructions);
         return (
             <>
                 <BackButton type={'button'} onClick={props.handlePrev} text={navContent.back.state_reg_options}/>
 
                 <h1>{content.title.replace("@state_name", props.stateData.name)}</h1>
-                <p>{content.body}</p> {/* TODO Formatting each tag */}
+                <div dangerouslySetInnerHTML= {{__html: contentBody}}/>
 
                 {stateContent.postmarked_mail_deadline_info}{stateContent.received_mail_deadline_info}
 
@@ -57,7 +58,7 @@ function Eligibility(props) {
                         </div>
                     </Fieldset>
 
-                    <p className="text-base padding-y-50">{eligibility.instructions}</p>
+                    <div dangerouslySetInnerHTML= {{__html: eligibilityInstructions}}/>
 
                     <div className="button-container" style={{ margin:'20px' }}>
                         <NextButton type={'submit'} onClick={() => props.checkboxValid()} text={navContent.next.continue}/>
