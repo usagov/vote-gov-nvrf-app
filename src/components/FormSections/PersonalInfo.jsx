@@ -5,9 +5,8 @@ import { restrictType, checkForErrors, jumpTo } from '../HelperFunctions/Validat
 function PersonalInfo(props){
     const content = props.content;
     const fields = props.fieldContent;
-    const stateFieldRequirements = props.stateData.fields_required;
-    const stateFieldVisible = props.stateData.fields_visible;
     const changeRegistrationVisible = (props.registrationPath === 'update') ? true : false;
+    const nvrfStateFields = props.stateData.nvrf_fields;
 
     //Drupal field data
     const titleField = fields.find(item => item.uuid === "86a544cd-cfe9-456a-b634-176a37a38d6d");
@@ -25,14 +24,10 @@ function PersonalInfo(props){
     const prevSuffixField = fields.find(item => item.uuid === "09cb2989-d302-4a01-bb3a-33173adcffb2");
 
     //Field requirements by state data
-    const nameVisible = stateFieldVisible.name;
-    const nameReq = stateFieldRequirements.name;
-    const dobVisible = stateFieldVisible.DOB;
-    const dobReq = stateFieldRequirements.DOB;
-    const telephoneVisible = stateFieldVisible.telephone;
-    const telephoneReq = stateFieldRequirements.telephone;
-    const raceVisible = stateFieldVisible.race;
-    const raceReq = stateFieldRequirements.race;
+    const nameFieldState = (nvrfStateFields.find(item => item.uuid === firstNameField.uuid));
+    const dobFieldState = (nvrfStateFields.find(item => item.uuid === dobField.uuid));
+    const telephoneFieldState = (nvrfStateFields.find(item => item.uuid === phoneNumberField.uuid));
+    const raceFieldState = (nvrfStateFields.find(item => item.uuid === raceField.uuid));
 
     //Error handling
     const [handleErrors, setHandleErrors] = useState({
@@ -72,7 +67,7 @@ function PersonalInfo(props){
         </div>
             <h2>What is your legal name?</h2>
             <p>Using the name on your driver’s license or other nondriver ID is recommended.</p>
-        {nameVisible && (
+        {nameFieldState && (
             <>
                 <Grid row gap>
                     <Grid col={2}>
@@ -89,9 +84,9 @@ function PersonalInfo(props){
                     </Grid>
 
                     <Grid col={5}>
-                    <div className={(nameReq && handleErrors.first_name) ? 'error-container' : ''}>
+                    <div className={(nameFieldState.required && handleErrors.first_name) ? 'error-container' : ''}>
                         <Label className="text-bold" htmlFor="first-name">
-                            {firstNameField.label}{nameReq && <span className='required-text'>*</span>}
+                            {firstNameField.label}{nameFieldState.required && <span className='required-text'>*</span>}
                         <TextInput
                             id="first-name"
                             className="radius-md text-semibold"
@@ -99,12 +94,12 @@ function PersonalInfo(props){
                             name="first-name"
                             type="text"
                             autoComplete="off"
-                            required={nameReq}
+                            required={nameFieldState.required}
                             value={props.fieldData.first_name}
                             onChange={props.saveFieldData('first_name')}
                             onBlur={(e) => setHandleErrors({ ...handleErrors, first_name: checkForErrors(e, 'check value exists') })}
                             />
-                        {(nameReq && handleErrors.first_name) &&
+                        {(nameFieldState.required && handleErrors.first_name) &&
                             <span id="first-name-error" role="alert" className='error-text'>
                                 First name must be filled out.
                             </span>
@@ -129,9 +124,9 @@ function PersonalInfo(props){
 
                 <Grid row gap>
                     <Grid col={6}>
-                    <div className={(nameReq && handleErrors.last_name) ? 'error-container' : ''}>
+                    <div className={(nameFieldState.required && handleErrors.last_name) ? 'error-container' : ''}>
                         <Label className="text-bold" htmlFor="last-name">
-                            {lastNameField.label}{nameReq && <span className='required-text'>*</span>}
+                            {lastNameField.label}{nameFieldState.required && <span className='required-text'>*</span>}
                         <TextInput
                             id="last-name"
                             className="radius-md"
@@ -139,12 +134,12 @@ function PersonalInfo(props){
                             name="last-name"
                             type="text"
                             autoComplete="off"
-                            required={nameReq}
+                            required={nameFieldState.required}
                             value={props.fieldData.last_name}
                             onChange={props.saveFieldData('last_name')}
                             onBlur={(e) => setHandleErrors({ ...handleErrors, last_name: checkForErrors(e, 'check value exists') })}
                             />
-                        {(nameReq && handleErrors.last_name) &&
+                        {(nameFieldState.required && handleErrors.last_name) &&
                             <span id="last-name-error" role="alert" className='error-text'>
                                 Last name must be filled out.
                             </span>
@@ -156,7 +151,7 @@ function PersonalInfo(props){
                     <Grid col={6}>
                     <Label className="text-bold" htmlFor="suffix-select">
                         {suffixField.label}
-                    <Dropdown id="suffix-select" className="radius-md" name="suffix-select" value={props.fieldData.suffix} onChange={props.saveFieldData('suffix')} autoComplete="off" required={nameReq}>
+                    <Dropdown id="suffix-select" className="radius-md" name="suffix-select" value={props.fieldData.suffix} onChange={props.saveFieldData('suffix')} autoComplete="off" required={nameFieldState.required}>
                         <option>- Select -{' '}</option>
                         <option value="Jr.">Jr.</option>
                         <option value="Sr.">Sr.</option>
@@ -171,10 +166,10 @@ function PersonalInfo(props){
         )}
 
         <Grid row gap>
-            {dobVisible && (
+            {dobFieldState && (
             <Grid col={5}>
-                <div className={(dobReq && handleErrors.dob) ? 'error-container' : ''}>
-                <Fieldset className="fieldset" legend={dobReq ? [<span className="text-bold">{dobField.label}</span>, <span key={1} className='required-text'>*</span>] : "Date of Birth"} style={{ marginTop:'30px'}}>
+                <div className={(dobFieldState.required && handleErrors.dob) ? 'error-container' : ''}>
+                <Fieldset className="fieldset" legend={dobFieldState.required ? [<span className="text-bold">{dobField.label}</span>, <span key={1} className='required-text'>*</span>] : "Date of Birth"} style={{ marginTop:'30px'}}>
                         <span className="usa-hint" id="date-of-birth-hint">
                         {dobField.help_text}
                         </span>
@@ -183,7 +178,7 @@ function PersonalInfo(props){
                             className="usa-memorable-date"
                             name="date-of-birth"
                             autoComplete="off"
-                            required={dobReq}
+                            required={dobFieldState.required}
                             data-testid="dateInputGroup"
                             onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) checkDateValues(); }}
                         >
@@ -258,7 +253,7 @@ function PersonalInfo(props){
                                 </label>
                             </div>
                         </div>
-                {(dobReq && handleErrors.dob) &&
+                {(dobFieldState.required && handleErrors.dob) &&
                     <span id="dob-error" rol="alert" className='error-text text-bold'>
                         Date of Birth must follow the format of 01 19 2000.
                     </span>
@@ -268,11 +263,11 @@ function PersonalInfo(props){
             </Grid>
             )}
 
-            {telephoneVisible && (
+            {telephoneFieldState && (
                 <Grid col={5} className="input-example">
                 <div className="bottom">
-                    <div className={(telephoneReq && handleErrors.phone_number) ? 'error-container' : ''}>
-                        <Label className="text-bold" htmlFor="phone-number">{phoneNumberField.label}{telephoneReq && <span className='required-text'>*</span>}</Label>
+                    <div className={(telephoneFieldState.required && handleErrors.phone_number) ? 'error-container' : ''}>
+                        <Label className="text-bold" htmlFor="phone-number">{phoneNumberField.label}{telephoneFieldState.required && <span className='required-text'>*</span>}</Label>
                         <span className="usa-hint" id="date-of-birth-hint">For example: {phoneNumberField.help_text}</span>
                         <TextInput
                             id="phone-number"
@@ -281,14 +276,14 @@ function PersonalInfo(props){
                             name="phone-number"
                             type="tel"
                             autoComplete="off"
-                            required={telephoneReq}
+                            required={telephoneFieldState.required}
                             maxLength={14}
                             minLength={14}
                             value={props.fieldData.phone_number}
                             onChange={props.saveFieldData('phone_number')}
                             onBlur={(e) => setHandleErrors({ ...handleErrors, phone_number: checkForErrors(e, 'check value length') })}
                         />
-                        {(telephoneReq && handleErrors.phone_number) &&
+                        {(telephoneFieldState.required && handleErrors.phone_number) &&
                             <span id="phone-number-error" rol="alert" className='error-text'>
                                 Phone number must be 10 digits.
                             </span>
@@ -301,10 +296,10 @@ function PersonalInfo(props){
             </Grid>
 
             <Grid row gap>
-            {raceVisible && (
+            {raceFieldState && (
                 <div>
                     <Label className="text-bold" htmlFor="race-ethic-group-select">{raceField.label}</Label>
-                    <Dropdown id="race-ethic-group-select" className="radius-md" name="race-ethic-group-select" value={props.fieldData.race} onChange={props.saveFieldData('race')} autoComplete="off" required={raceReq}>
+                    <Dropdown id="race-ethic-group-select" className="radius-md" name="race-ethic-group-select" value={props.fieldData.race} onChange={props.saveFieldData('race')} autoComplete="off" required={raceFieldState.required}>
                         <option>- Select -{' '}</option>
                         <option value="American Indian or Alaska Native">American Indian or Alaska Native</option>
                         <option value="Asian or Pacific Islander">Asian or Pacific Islander</option>
@@ -336,9 +331,9 @@ function PersonalInfo(props){
             </Grid>
 
             <Grid col={5}>
-            <div className={(nameReq && handleErrors.prev_first_name) ? 'error-container' : ''}>
+            <div className={(nameFieldState.required && handleErrors.prev_first_name) ? 'error-container' : ''}>
                 <Label className="text-bold" htmlFor="first-name-2">
-                    {prevFirstNameField.label}{nameReq && <span className='required-text'>*</span>}
+                    {prevFirstNameField.label}{nameFieldState.required && <span className='required-text'>*</span>}
                 <TextInput
                     id="first-name-2"
                     className="radius-md"
@@ -346,12 +341,12 @@ function PersonalInfo(props){
                     name="first-name-2"
                     type="text"
                     autoComplete="off"
-                    required={nameReq}
+                    required={nameFieldState.required}
                     value={props.fieldData.prev_first_name}
                     onChange={props.saveFieldData('prev_first_name')}
                     onBlur={(e) => setHandleErrors({ ...handleErrors, prev_first_name: checkForErrors(e, 'check value exists') })}
                 />
-                {(nameReq && handleErrors.prev_first_name) &&
+                {(nameFieldState.required && handleErrors.prev_first_name) &&
                     <span id="prev-first-name-error" role="alert" className='error-text'>
                         First name must be filled out.
                     </span>
@@ -376,9 +371,9 @@ function PersonalInfo(props){
 
         <Grid row gap>
             <Grid col={6}>
-            <div className={(nameReq && handleErrors.prev_last_name) ? 'error-container' : ''}>
+            <div className={(nameFieldState.required && handleErrors.prev_last_name) ? 'error-container' : ''}>
                 <Label className="text-bold" htmlFor="last-name-2">
-                    {prevLastNameField.label}{nameReq && <span className='required-text'>*</span>}
+                    {prevLastNameField.label}{nameFieldState.required && <span className='required-text'>*</span>}
                 <TextInput
                     id="last-name-2"
                     className="radius-md"
@@ -386,12 +381,12 @@ function PersonalInfo(props){
                     name="last-name-2"
                     type="text"
                     autoComplete="off"
-                    required={nameReq}
+                    required={nameFieldState.required}
                     value={props.fieldData.prev_last_name}
                     onChange={props.saveFieldData('prev_last_name')}
                     onBlur={(e) => setHandleErrors({ ...handleErrors, prev_last_name: checkForErrors(e, 'check value exists') })}
                     />
-                {(nameReq && handleErrors.prev_last_name) &&
+                {(nameFieldState.required && handleErrors.prev_last_name) &&
                     <span id="prev-last-name-error" role="alert" className='error-text'>
                         Last name must be filled out.
                     </span>
@@ -403,7 +398,7 @@ function PersonalInfo(props){
             <Grid col={6}>
             <Label className="text-bold" htmlFor="suffix-select-2">
                 {prevSuffixField.label}
-            <Dropdown id="suffix-select-2" className="radius-md" name="suffix-select-2" value={props.fieldData.prev_suffix} onChange={props.saveFieldData('prev_suffix')} autoComplete="off" required={nameReq}>
+            <Dropdown id="suffix-select-2" className="radius-md" name="suffix-select-2" value={props.fieldData.prev_suffix} onChange={props.saveFieldData('prev_suffix')} autoComplete="off" required={nameFieldState.required}>
                 <option>- Select -{' '}</option>
                 <option value="Jr.">Jr.</option>
                 <option value="Sr.">Sr.</option>

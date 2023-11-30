@@ -13,7 +13,6 @@ function App() {
   const [stateDataOld, setStateDataOld] = useState('');
   useEffect(() => {
     fetchData("states.json", setState);
-    fetchData("states_old.json", setStatesOld);
   }, []);
 
   const [step, setStep] = useState(1);
@@ -60,7 +59,6 @@ function App() {
       for (var i = 0; i < states.length; i++){
         if (states[i].name == selectedState){
         setStateData(states[i]);
-        setStateDataOld(statesOld[0])
       }}
     } else {
       setStateData('')
@@ -122,7 +120,7 @@ function App() {
           handlePrev={handlePrev}
           statesList={statesList}
           state={selectedState}
-          stateData={stateDataOld}
+          stateData={stateData}
           registrationPath={registrationPath}
           getFormStep={getFormStep}
           />}

@@ -54,7 +54,64 @@
     "received_mail_deadline": "",
     "inperson_deadline": null,
     "online_deadline": null,
-    "nvrf_fields": [],
+    "nvrf_fields": [
+        {
+        "uuid": "86a544cd-cfe9-456a-b634-176a37a38d6d",
+        "required": "0"
+        },
+        {
+        "uuid": "b7bdae35-e4be-4827-ae11-75d9c3e33bf0",
+        "required": "1"
+        },
+        {
+        "uuid": "38020ec6-1b53-4227-99e5-feea5f60af07",
+        "required": "0"
+        },
+        {
+        "uuid": "b306238a-a0f6-4bb8-b8ea-b3216ca75e0b",
+        "required": "1"
+        },
+        {
+        "uuid": "eeff4fa1-00f2-474b-a791-1a4146dab11a",
+        "required": "0"
+        },
+        {
+        "uuid": "2d61b54a-e568-410f-825a-0ca82dfd3f63",
+        "required": "0"
+        },
+        {
+        "uuid": "6dcb9e8c-b40a-4cda-ba5c-06b98c3375f4",
+        "required": "1"
+        },
+        {
+        "uuid": "deba9b54-68ad-4ef1-8fb5-ee34e4ab8a49",
+        "required": "0"
+        },
+        {
+        "uuid": "7e39a528-7518-40cb-b7b6-b635864dc117",
+        "required": "1"
+        },
+        {
+        "uuid": "cdb06542-0cbd-4aa3-897f-83377b8d65e5",
+        "required": "1"
+        },
+        {
+        "uuid": "27d3a15c-f8c0-4035-9b0a-c2c0f674519c",
+        "required": "1"
+        },
+        {
+        "uuid": "1e030197-52e7-426e-923c-b67ef521ae3b",
+        "required": "0"
+        },
+        {
+        "uuid": "eb0ce8c5-b4f7-4aae-a0b9-84f0434d2edb",
+        "required": "0"
+        },
+        {
+        "uuid": "fd516f06-11bb-4c39-9080-735ed98100cc",
+        "required": "0"
+        }
+        ],
     "nvrf_last_updated_date": "<time datetime=\"2006-03-01T12:00:00Z\">March 01, 2006</time>"
     },
     {

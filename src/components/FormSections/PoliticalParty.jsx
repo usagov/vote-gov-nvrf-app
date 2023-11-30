@@ -5,15 +5,16 @@ import { restrictType, checkForErrors } from '../HelperFunctions/ValidateField';
 function PoliticalParty(props){
     const content = props.content;
     const fields = props.fieldContent;
-    const stateFieldRequirements = props.stateData.fields_required;
-    const stateFieldVisible = props.stateData.fields_visible;
     const stateInstructions = props.stateData.state_field_instructions;
+    const nvrfStateFields = props.stateData.nvrf_fields;
+
 
     //Drupal field data
     const partyField = fields.find(item => item.uuid === "fd516f06-11bb-4c39-9080-735ed98100cc");
 
-    const partyVisible = stateFieldVisible.party;
-    const partyReq = stateFieldRequirements.party
+    //Field requirements by state data
+    const partyFieldState = (nvrfStateFields.find(item => item.uuid === partyField.uuid));
+    console.log(partyFieldState.required);
 
     const [handleErrors, setHandleErrors] = useState({
         party_choice: false
@@ -25,14 +26,14 @@ function PoliticalParty(props){
         <div className="usa-alert usa-alert--info">
             <div className="usa-alert__body">
                 <p>{content.party_text}</p>
-                <p>{stateInstructions.party_text}</p>
+                <p>{"The state party text will go here."}</p>
             </div>
         </div>
 
-        {partyVisible && (
-            <div className={(partyReq && handleErrors.party_choice) ? 'error-container' : ''}>
+        {partyFieldState && (
+            <div className={(partyFieldState.required && handleErrors.party_choice) ? 'error-container' : ''}>
                 <Label className="text-bold" htmlFor="political-party">
-                {partyField.name}{partyReq && <span className='required-text'>*</span>}
+                {partyField.name}{partyFieldState.required && <span className='required-text'>*</span>}
                 <TextInput
                     id="political-party"
                     className="radius-md"
@@ -41,12 +42,12 @@ function PoliticalParty(props){
                     value={props.fieldData.party_choice}
                     type="text"
                     autoComplete="off"
-                    required={partyReq}
+                    required={partyFieldState.required}
                     onChange={props.saveFieldData('party_choice')}
                     onKeyDown={(e) => restrictType(e, 'letters')}
                     onBlur={(e) => setHandleErrors({ ...handleErrors, party_choice: checkForErrors(e, 'check value exists') })}
                 />
-                {(partyReq && handleErrors.party_choice) &&
+                {(partyFieldState.required && handleErrors.party_choice) &&
                     <span id="party-choice-error" role="alert" className='error-text text-bold'>
                         Choice of party must be filled out.
                     </span>
