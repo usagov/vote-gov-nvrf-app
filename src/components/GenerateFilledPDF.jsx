@@ -148,6 +148,23 @@ const GenerateFilledPDF = async function (formData) {
 
     //-------------End PDF Fill---------------
 
+    //Remove unneccessary pages
+    let shift = 0;
+    const totalPages = pdfDoc.getPageCount();
+    let pageCount = totalPages;
+    const pagesKept = [0,1,2,3,4,5,6,7];
+    for(let i = 0; i < totalPages; i++){
+        console.log(`i: ${i}`);
+        console.log(`Total page count: ${pageCount}`);
+        console.log(pagesKept.includes(i));
+        if(!pagesKept.includes(i)){
+            pdfDoc.removePage(i - shift);
+            console.log("page removed");
+            shift++;
+            pageCount--;
+        }
+    }
+
     // Serialize the PDFDocument to bytes (a Uint8Array)
     const pdfBytes = await pdfDoc.save()
 
