@@ -1,7 +1,7 @@
 import { PDFDocument} from 'pdf-lib';
 import download from "downloadjs";
 
-const GenerateFilledPDF = async function (formData) {
+const GenerateFilledPDF = async function (formData,pagesKept) {
     // Fetch the PDF with form fields
     const formUrl = './files/Federal_Voter_Registration_ENG.pdf'
     const formPdfBytes = await fetch(formUrl).then(res => res.arrayBuffer())
@@ -152,7 +152,7 @@ const GenerateFilledPDF = async function (formData) {
     let shift = 0;
     const totalPages = pdfDoc.getPageCount();
     let pageCount = totalPages;
-    const pagesKept = [0,1,2,3,4,5,6,7];
+    //const pagesKept = [0,1,2,3,4,5,6,7];
     for(let i = 0; i < totalPages; i++){
         console.log(`i: ${i}`);
         console.log(`Total page count: ${pageCount}`);
