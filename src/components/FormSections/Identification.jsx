@@ -66,12 +66,12 @@ function Identification(props){
                 <h3>{idTypeField.label}</h3>
                 <div dangerouslySetInnerHTML= {{__html: idTypeFieldInstructions}}/>
 
-                <div className={(idFieldState.required && handleErrors.id_selection) ? 'error-container' : ''}>
+                <div className={(parseInt(idFieldState.required) && handleErrors.id_selection) ? 'error-container' : ''}>
                 <Dropdown
                 id="id-num-dropdown"
                 name="input-dropdown"
                 value={props.idType}
-                required={idFieldState.required}
+                required={parseInt(idFieldState.required)}
                 onChange={(e) => props.saveIdType(e)}
                 onBlur={(e) => setHandleErrors({ ...handleErrors, id_selection: checkForErrors(e, 'check value exists') })}
                 >
@@ -81,7 +81,7 @@ function Identification(props){
                     <option key="ssn" value="ssn">{ssnField.label}</option>
                     <option key="id-none" value="none">{noIdField.label}</option>
                 </Dropdown>
-                {(idFieldState.required && handleErrors.id_selection) &&
+                {(parseInt(idFieldState.required) && handleErrors.id_selection) &&
                     <span id="id-num-dropdown-error" role="alert" className='error-text text-bold'>
                         {content.selector_error}
                     </span>
@@ -90,22 +90,22 @@ function Identification(props){
 
                 {((props.idType === 'driver-id-num') || (props.idType === 'state-id-num')) &&
                 <>
-                <div className={(idFieldState.required && handleErrors.id_number) ? 'error-container' : ''}>
+                <div className={(parseInt(idFieldState.required) && handleErrors.id_number) ? 'error-container' : ''}>
                     {(props.idType === 'driver-id-num') &&
 
-                        <Label className="text-bold" htmlFor="state-id-num-error">{driverLicenseField.label}{idFieldState.required && <span className='required-text'>*</span>}
+                        <Label className="text-bold" htmlFor="state-id-num-error">{driverLicenseField.label}{(idFieldState.required === "1") && <span className='required-text'>*</span>}
                         <TextInput
                         id="driver-id-num"
                         className="radius-md"
                         name="driver-id-num"
                         type="text"
                         autoComplete="off"
-                        required={idFieldState.required}
+                        required={parseInt(idFieldState.required)}
                         value={props.fieldData.id_number}
                         onChange={props.saveFieldData('id_number')}
                         onBlur={(e) => setHandleErrors({ ...handleErrors, id_number: checkForErrors(e, 'check value exists') })}
                         />
-                        {(idFieldState.required && handleErrors.id_number) &&
+                        {(parseInt(idFieldState.required) && handleErrors.id_number) &&
                             <span id="state-id-num-error" role="alert" className='error-text'>
                                 {content.id_error}
                             </span>
@@ -114,19 +114,19 @@ function Identification(props){
                     }
                     {(props.idType === 'state-id-num') &&
 
-                        <Label className="text-bold" htmlFor="state-id-num-error">{stateIDField.label}{idFieldState.required && <span className='required-text'>*</span>}
+                        <Label className="text-bold" htmlFor="state-id-num-error">{stateIDField.label}{(idFieldState.required === "1") && <span className='required-text'>*</span>}
                         <TextInput
                         id="driver-id-num"
                         className="radius-md"
                         name="driver-id-num"
                         type="text"
                         autoComplete="off"
-                        required={idFieldState.required}
+                        required={parseInt(idFieldState.required)}
                         value={props.fieldData.id_number}
                         onChange={props.saveFieldData('id_number')}
                         onBlur={(e) => setHandleErrors({ ...handleErrors, id_number: checkForErrors(e, 'check value exists') })}
                         />
-                        {(idFieldState.required && handleErrors.id_number) &&
+                        {(parseInt(idFieldState.required) && handleErrors.id_number) &&
                             <span id="state-id-num-error" role="alert" className='error-text'>
                                 {content.id_error}
                             </span>
@@ -137,8 +137,8 @@ function Identification(props){
 
                 <Grid row gap>
                     <Grid tablet={{ col: true }}>
-                    <div className={(idFieldState.required && handleErrors.issue_date) ? 'error-container' : ''}>
-                    <Fieldset className="fieldset"  legend={idFieldState.required ? [<span className="text-bold">Issue Date</span>, <span className='required-text'>*</span>] : "Issue Date"} style={{ marginTop:'30px'}}>
+                    <div className={(parseInt(idFieldState.required) && handleErrors.issue_date) ? 'error-container' : ''}>
+                    <Fieldset className="fieldset"  legend={parseInt(idFieldState.required) ? [<span className="text-bold">Issue Date</span>, <span className='required-text'>*</span>] : "Issue Date"} style={{ marginTop:'30px'}}>
                         <span className="usa-hint" id="id-issue-date-hint">
                         {content.id_hint}
                         </span>
@@ -147,7 +147,7 @@ function Identification(props){
                             className="usa-memorable-date radius-md"
                             name="date-of-birth"
                             autoComplete="off"
-                            required={idFieldState.required}
+                            required={parseInt(idFieldState.required)}
                             onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) checkDateValues('issue'); }}
                             data-testid="dateInputGroup"
                         >
@@ -222,7 +222,7 @@ function Identification(props){
                                     </label>
                                 </div>
                         </div>
-                    {(idFieldState.required && handleErrors.issue_date) &&
+                    {(parseInt(idFieldState.required) && handleErrors.issue_date) &&
                         <span id="issue-date-error" role="alert" className='error-text text-bold'>
                         {content.id_issue_date_error}
                         </span>
@@ -232,8 +232,8 @@ function Identification(props){
                     </Grid>
 
                     <Grid tablet={{ col: true }}>
-                    <div className={(idFieldState.required && handleErrors.expire_date) ? 'error-container' : ''}>
-                    <Fieldset className="fieldset" legend={idFieldState.required ? [<span className="text-bold">Expire Date</span>, <span className='required-text'>*</span>] : "Expire Date"} style={{ marginTop:'30px'}}>
+                    <div className={(parseInt(idFieldState.required) && handleErrors.expire_date) ? 'error-container' : ''}>
+                    <Fieldset className="fieldset" legend={parseInt(idFieldState.required) ? [<span className="text-bold">Expire Date</span>, <span className='required-text'>*</span>] : "Expire Date"} style={{ marginTop:'30px'}}>
                         <span className="usa-hint" id="id-issue-date-hint">
                         {content.id_hint}
                         </span>
@@ -242,7 +242,7 @@ function Identification(props){
                             className="usa-memorable-date"
                             name="date-of-birth"
                             autoComplete="off"
-                            required={idFieldState.required}
+                            required={parseInt(idFieldState.required)}
                             onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) checkDateValues('expire'); }}
                             data-testid="dateInputGroup"
                         >
@@ -318,7 +318,7 @@ function Identification(props){
                                     </label>
                                 </div>
                         </div>
-                    {(idFieldState.required && handleErrors.expire_date) &&
+                    {(parseInt(idFieldState.required) && handleErrors.expire_date) &&
                         <span id="expire-date-error" role="alert" className='error-text text-bold'>
                         {content.id_expire_date_error}
                         </span>
@@ -333,15 +333,15 @@ function Identification(props){
 
 
                 {props.idType === 'ssn' &&
-                <div className={(idFieldState.required && handleErrors.id_ssn) ? 'error-container' : ''}>
-                <Label className="text-bold" htmlFor="ssn-input-error">{ssnField.label}{idFieldState.required && <span className='required-text'>*</span>}</Label>
+                <div className={(parseInt(idFieldState.required) && handleErrors.id_ssn) ? 'error-container' : ''}>
+                <Label className="text-bold" htmlFor="ssn-input-error">{ssnField.label}{(idFieldState.required === "1") && <span className='required-text'>*</span>}</Label>
                 <span className="usa-hint" id="ssn-hint">{content.ssn_hint}</span>
                 <TextInput
                     id="ssn-input"
                     className="radius-md"
                     name="ssn-input"
                     autoComplete="off"
-                    required={idFieldState.required}
+                    required={parseInt(idFieldState.required)}
                     type="text"
                     inputMode="numeric"
                     minLength={4}
@@ -351,7 +351,7 @@ function Identification(props){
                     onKeyDown={(e) => restrictType(e, 'number')}
                     onBlur={(e) => setHandleErrors({ ...handleErrors, id_ssn: checkForErrors(e, 'check value length') })}
                     />
-                    {(idFieldState.required && handleErrors.id_ssn) &&
+                    {(parseInt(idFieldState.required) && handleErrors.id_ssn) &&
                     <span id="ssn-input-error" role="alert" className='error-text text-bold'>
                         {content.ssn_error}
                     </span>

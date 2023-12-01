@@ -110,6 +110,10 @@
         {
         "uuid": "fd516f06-11bb-4c39-9080-735ed98100cc",
         "required": "0"
+        },
+        {
+        "uuid": "d31b2a64-36a9-4bc6-a9d1-e68d2be8c211",
+        "required": "1"
         }
         ],
     "nvrf_last_updated_date": "<time datetime=\"2006-03-01T12:00:00Z\">March 01, 2006</time>"

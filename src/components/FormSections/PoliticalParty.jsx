@@ -14,7 +14,6 @@ function PoliticalParty(props){
 
     //Field requirements by state data
     const partyFieldState = (nvrfStateFields.find(item => item.uuid === partyField.uuid));
-    console.log(partyFieldState.required);
 
     const [handleErrors, setHandleErrors] = useState({
         party_choice: false
@@ -31,9 +30,9 @@ function PoliticalParty(props){
         </div>
 
         {partyFieldState && (
-            <div className={(partyFieldState.required && handleErrors.party_choice) ? 'error-container' : ''}>
+            <div className={(parseInt(partyFieldState.required) && handleErrors.party_choice) ? 'error-container' : ''}>
                 <Label className="text-bold" htmlFor="political-party">
-                {partyField.name}{partyFieldState.required && <span className='required-text'>*</span>}
+                {partyField.name}{(partyFieldState.required === "1") && <span className='required-text'>*</span>}
                 <TextInput
                     id="political-party"
                     className="radius-md"
@@ -42,12 +41,12 @@ function PoliticalParty(props){
                     value={props.fieldData.party_choice}
                     type="text"
                     autoComplete="off"
-                    required={partyFieldState.required}
+                    required={parseInt(partyFieldState.required)}
                     onChange={props.saveFieldData('party_choice')}
                     onKeyDown={(e) => restrictType(e, 'letters')}
                     onBlur={(e) => setHandleErrors({ ...handleErrors, party_choice: checkForErrors(e, 'check value exists') })}
                 />
-                {(partyFieldState.required && handleErrors.party_choice) &&
+                {((partyFieldState.required === "1") && handleErrors.party_choice) &&
                     <span id="party-choice-error" role="alert" className='error-text text-bold'>
                         Choice of party must be filled out.
                     </span>
