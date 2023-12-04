@@ -1,15 +1,10 @@
 import { Button, Link, Icon, Grid } from '@trussworks/react-uswds';
-import React, { useState, useEffect } from "react";
-import {fetchData} from '../HelperFunctions/JsonHelper.jsx';
 import GenerateFilledPDF from '../GenerateFilledPDF';
 import reactStringReplace from 'react-string-replace';
 import DOMPurify from 'dompurify';
 
 function Delivery(props) {
-    const [content, setContent] = useState();
-    useEffect(() => {
-        fetchData("pages.json", setContent);
-    }, []);
+    const content = props.content;
 
     // Add A/B Message randomization.
     const randomProperty = function (obj) {

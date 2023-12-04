@@ -9,10 +9,17 @@ import {fetchData} from './components/HelperFunctions/JsonHelper.jsx';
 function App() {
 
   const [states, setState] = useState('');
-  const [statesOld, setStatesOld] = useState();
-  const [stateDataOld, setStateDataOld] = useState('');
+  const [content, setContent] = useState('');
+  const [navContent, setNavContent] = useState('');
+  const [cards, setCards] = useState('');
+  const [fieldContent, setFieldContent] = useState('')
+
   useEffect(() => {
     fetchData("states.json", setState);
+    fetchData("pages.json", setContent);
+    fetchData("navigation.json", setNavContent);
+    fetchData("cards.json", setCards);
+    fetchData("fields.json", setFieldContent);
   }, []);
 
   const [step, setStep] = useState(1);
@@ -84,15 +91,21 @@ function App() {
           <StateSelection
           handleNext={handleNext}
           handleSubmit={handleSubmit}
+          states={states}
           getSelectedState={getSelectedState}
           state={selectedState}
           stateData={stateData}
+          content={content}
+          navContent={navContent}
           />}
         {step === 2 &&
             <RegistrationOptions
               handleNext={handleNext}
               handlePrev={handlePrev}
               stateData={stateData}
+              content={content}
+              navContent={navContent}
+              cards={cards}
           />}
         {step === 3 &&
           <Eligibility
@@ -100,6 +113,9 @@ function App() {
           handlePrev={handlePrev}
           state={selectedState}
           stateData={stateData}
+          content={content}
+          navContent={navContent}
+          fieldContent={fieldContent}
           hasConfirmed={hasConfirmed}
           error={error}
           confirmCheckbox={confirmCheckbox}
@@ -110,6 +126,9 @@ function App() {
           handleNext={handleNext}
           handlePrev={handlePrev}
           stateData={stateData}
+          content={content}
+          navContent={navContent}
+          cards={cards}
           registrationPath={registrationPath}
           getRegPath={getRegPath}
           getFormStep={getFormStep}
@@ -121,6 +140,9 @@ function App() {
           statesList={statesList}
           state={selectedState}
           stateData={stateData}
+          content={content}
+          navContent={navContent}
+          fieldContent={fieldContent}
           registrationPath={registrationPath}
           getFormStep={getFormStep}
           />}

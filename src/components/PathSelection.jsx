@@ -1,19 +1,11 @@
 import { Button, CardGroup, Card, CardHeader, CardBody, CardFooter, Icon } from '@trussworks/react-uswds';
-import { useState, useEffect } from 'react';
-import { fetchData } from './HelperFunctions/JsonHelper.jsx';
 import BackButton from './BackButton';
 import DOMPurify from 'dompurify';
 
 function PathSelection(props) {
-    const [content, setContent] = useState('')
-    const [cards, setCards] = useState('')
-    const [navContent, setNavContent] = useState('')
-
-    useEffect(() => {
-        fetchData("cards.json", setCards);
-        fetchData("pages.json", setContent);
-        fetchData("navigation.json", setNavContent);
-    }, []);
+    const content = props.content;
+    const cards = props.cards;
+    const navContent = props.navContent;
 
     if (content && cards && navContent) {
         const introContent = content.find(item => item.uuid === "b3299979-e26c-4885-a949-e1a2c27de91b");

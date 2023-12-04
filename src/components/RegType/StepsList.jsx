@@ -3,7 +3,6 @@ import DOMPurify from "dompurify";
 
 function StepsList(props) {
     const content = props.content;
-    const contentHeading = DOMPurify.sanitize(content.heading);
     const contentBody = DOMPurify.sanitize(content.body);
 
     const iconConfirmEligible =  <svg width="63" height="64" viewBox="0 0 63 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -36,8 +35,8 @@ function StepsList(props) {
 
     return (
         <>
-            <div dangerouslySetInnerHTML= {{__html: contentHeading}}/> {/* TODO: Need to style each paragraph */}
-            <div dangerouslySetInnerHTML= {{__html: contentBody}}/> {/* TODO: Need to style each paragraph */}
+            <h2>{content.heading}</h2>
+            <div dangerouslySetInnerHTML= {{__html: contentBody}}/>
             {/*
             <IconList className="usa-icon-list--size-lg padding-top-1 padding-bottom-5">
                 <IconListItem className="margin-105">

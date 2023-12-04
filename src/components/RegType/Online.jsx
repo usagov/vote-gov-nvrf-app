@@ -8,11 +8,7 @@ import DOMPurify from "dompurify";
 function Online(props) {
     const content = props.content;
     const navContent = props.navContent;
-    const [cards, setCards] = useState('')
-
-    useEffect(() => {
-        fetchData("cards.json", setCards);
-    }, []);
+    const cards = props.cards;
 
     if (content && cards && navContent) {
         const listContent = cards.find(item => item.uuid === "33a9859d-a62c-4f8e-9e92-5a70f529b62a");

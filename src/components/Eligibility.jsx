@@ -7,13 +7,12 @@ import DOMPurify from "dompurify";
 
 function Eligibility(props) {
     const stateContent = props.stateData;
-    const [data, setData] = useState('')
+    const data = props.content;
+    const navContent = props.navContent;
     const [fields, setFields] = useState('')
-    const [navContent, setNavContent] = useState('')
+
     useEffect(() => {
-        fetchData("pages.json", setData);
         fetchData("fields.json", setFields);
-        fetchData("navigation.json", setNavContent);
     }, []);
 
     if (data && fields && navContent) {

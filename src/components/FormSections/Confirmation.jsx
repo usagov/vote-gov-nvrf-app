@@ -1,14 +1,8 @@
 import { Alert, Button, Checkbox } from '@trussworks/react-uswds';
-import React, { useState, useEffect } from "react";
-import {fetchData} from '../HelperFunctions/JsonHelper.jsx';
 import DOMPurify from 'dompurify';
 
 function Confirmation(props){
-    const [content, setContent] = useState();
-    useEffect(() => {
-        fetchData("pages.json", setContent);
-    }, []);
-
+    const content = props.content;
     const fieldData = props.fieldData;
     const currentAddress = fieldData.street_address + fieldData.apt_num + fieldData.city + fieldData.zip_code;
     const prevName = fieldData.prev_title + fieldData.prev_first_name + fieldData.prev_middle_name + fieldData.prev_last_name + fieldData.prev_suffix;

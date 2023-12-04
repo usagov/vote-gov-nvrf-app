@@ -16,13 +16,12 @@ import "../styles/pages/Form.css";
 
 function MultiStepForm(props) {
     const [content, setContent] = useState()
-    const [fieldContent, setFieldContent] = useState('')
-    const [navContent, setNavContent] = useState('')
+    const navContent = props.navContent;
+    const fieldContent = props.fieldContent;
 
+    //old registration data
     useEffect(() => {
         fetchData("registration-form.json", setContent);
-        fetchData("fields.json", setFieldContent);
-        fetchData("navigation.json", setNavContent);
     }, []);
 
     //Field data controls
@@ -282,6 +281,7 @@ function MultiStepForm(props) {
                 <Confirmation
                 state={props.state}
                 stateData={props.stateData}
+                content={props.content}
                 fieldData={fieldData}
                 saveFieldData = {saveFieldData}
                 registrationPath={props.registrationPath}
@@ -297,6 +297,7 @@ function MultiStepForm(props) {
                 <Delivery
                 state={props.state}
                 stateData={props.stateData}
+                content={props.content}
                 fieldData={fieldData}
                 saveFieldData = {saveFieldData}
                 registrationPath={props.registrationPath}

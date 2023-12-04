@@ -1,24 +1,16 @@
 import { useState, useEffect } from 'react'
 import { Dropdown } from '@trussworks/react-uswds';
 import { checkForErrors } from './HelperFunctions/ValidateField';
-import { fetchData } from './HelperFunctions/JsonHelper';
 import NextButton from './NextButton';
 import DOMPurify from "dompurify";
 
 function StateSelection(props) {
-    const [content, setContent] = useState('');
-    const [states, setState] = useState('');
-    const [navContent, setNavContent] = useState('')
-
-    useEffect(() => {
-        fetchData("pages.json", setContent);
-        fetchData("states.json", setState);
-        fetchData("navigation.json", setNavContent);
-    }, []);
+    const content = props.content;
+    const navContent = props.navContent;
 
     const statesList = []
-    for (let i = 0; i < states.length; i++) {
-        let stateName = states[i].name;
+    for (let i = 0; i < props.states.length; i++) {
+        let stateName = props.states[i].name;
         statesList.push(stateName);
     };
 
@@ -31,8 +23,8 @@ function StateSelection(props) {
         const introContentBody = DOMPurify.sanitize(introContent.body);
         return (
         <>
-            <h2>{introContent.title}</h2>
-            <div dangerouslySetInnerHTML= {{__html: introContentBody}}/> {/* TODO: Need to style each paragraph */}
+            <h1>{introContent.title}</h1>
+            <div className="usa-prose" dangerouslySetInnerHTML= {{__html: introContentBody}}/>
 
             <form onSubmit={(e) => {props.handleSubmit(e), props.handleNext()}}>
 
