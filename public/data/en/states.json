@@ -39,12 +39,13 @@
             "party_text": "You do not have to declare a party affiliation when registering to vote. If you do not choose a party, you will be registered as Undeclared. Alaska has a closed primary election system. Each recognized political party has a separate ballot listing only candidates from that political party. Voters registered as a member of a political party may only vote that party's ballot. Voters registered as undeclared or non-partisan may choose one ballot from the ballots available.",
             "race_text": ""
         },
-        "state_address": 
+        "state_address":
         {
             "office_name": "Division of Elections State of Alaska",
             "street_address": "PO Box 110017",
             "city_state": "Juneau, AK 99811-0017"
-        }
+        },
+        "nvrf_pages_list": [0,1,2,3,4,5,6,7]
     },
     {
         "name": "Maine",
@@ -85,12 +86,13 @@
             "party_text": "You must register with a party if you want to take part in that party’s primary election, caucus, or convention (unless otherwise permitted by a political party).",
             "race_text": ""
         },
-        "state_address": 
+        "state_address":
         {
             "office_name": "Elections Division Bureau of Corporations,\nElections and Commissions",
             "street_address": "101 State House Station",
             "city_state": "Augusta, ME 04333-0101"
-        }
+        },
+        "nvrf_pages_list": [0,1,2,3,4,5,14,15]
     },
     {
         "name": "North Dakota",
