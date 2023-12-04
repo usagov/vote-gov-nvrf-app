@@ -11,7 +11,6 @@ import { phoneFormat, dateFormat } from './HelperFunctions/ValidateField';
 import { fetchData } from './HelperFunctions/JsonHelper.jsx';
 import BackButton from './BackButton'
 import NextButton from './NextButton';
-import "../styles/pages/Form.css";
 
 
 function MultiStepForm(props) {

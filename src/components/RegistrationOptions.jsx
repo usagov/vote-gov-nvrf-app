@@ -3,7 +3,6 @@ import Online from "./RegType/Online";
 import NotNeeded from "./RegType/NotNeeded";
 import { fetchData } from './HelperFunctions/JsonHelper.jsx';
 import { useState, useEffect } from 'react';
-import ".././styles/pages/RegistrationOptions.css";
 import BackButton from './BackButton';
 
 function RegistrationOptions(props) {
