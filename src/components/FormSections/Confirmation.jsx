@@ -87,6 +87,11 @@ function Confirmation(props){
             </div>
         </div>
                     <p><strong>Current Address</strong></p>
+                    {!currentAddress && (
+                        <Alert type="info" headingLevel="h4" noIcon>
+                            You are not registering with a current address, so these fields are blank.
+                        </Alert>
+                    )}
                     <ul>
                         <li>Street Address: {fieldData.street_address}</li>
                         <li>Apt. or Lot #: {fieldData.apt_num}</li>
