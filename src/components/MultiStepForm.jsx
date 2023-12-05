@@ -11,7 +11,6 @@ import { phoneFormat, dateFormat } from './HelperFunctions/ValidateField';
 import { fetchData } from './HelperFunctions/JsonHelper.jsx';
 import BackButton from './BackButton'
 import NextButton from './NextButton';
-import "../styles/pages/Form.css";
 
 
 function MultiStepForm(props) {
@@ -23,18 +22,17 @@ function MultiStepForm(props) {
     //Field data controls
     const [fieldData, setFieldData] = useState({
         title:'', first_name: '', middle_name: '', last_name: '', suffix:'',
-        prev_name_check: false, prev_title:'', prev_first_name: '', prev_middle_name: '', prev_last_name: '', prev_suffix:'',
+        prev_title:'', prev_first_name: '', prev_middle_name: '', prev_last_name: '', prev_suffix:'',
         date_of_birth_month:'', date_of_birth_day:'', date_of_birth_year:'', phone_number:'',race:'',
         street_address:'', apt_num:'', city:'', state:'', zip_code:'',
-        prev_address_check: false, prev_street_address:'', prev_apt_num:'', prev_city:'', prev_state:'', prev_zip_code:'',
-        mail_address_check: false, mail_street_address:'', mail_apt_num:'', mail_city:'', mail_state:'', mail_zip_code:'',
+        prev_street_address:'', prev_apt_num:'', prev_city:'', prev_state:'', prev_zip_code:'',
+        mail_street_address:'', mail_apt_num:'', mail_city:'', mail_state:'', mail_zip_code:'',
         id_number:'', id_issue_date_month:'', id_issue_date_day:'', id_issue_date_year:'', id_expire_date_month:'', id_expire_date_day:'', id_expire_date_year:'',
         party_choice:'',
         email_address:'', sms_alert_phone_number:''});
         const [hasData, setHasData] = useState(false)
 
     const saveFieldData = (name) => {
-
         return (event) => {
             event.target.value.length > 0 && setHasData(true)
             if (name === 'phone_number') {
@@ -112,29 +110,49 @@ function MultiStepForm(props) {
     const [previousName, setPreviousName] = useState(false);
     const onChangePreviousName = (e) => {
         setPreviousName(e.target.checked);
+        //clear prev name form data when box is unchecked
+        !e.target.checked && setFieldData({
+            ...fieldData,
+            prev_title:'', prev_first_name: '', prev_middle_name: '', prev_last_name: '', prev_suffix:'',
+        })
     }
 
         //Addresses
-    const [hasNoAddress, setHasNoAddress] = useState(false);
+    const [hasNoAddress, setHasNoAddress] = useState(false);    
+    const [hasMailAddress, setHasMailAddress] = useState(false);
+    const onChangeMailAddressCheckbox = (e) => {
+        setHasMailAddress(e.target.checked);
+        !e.target.checked && setFieldData({
+            ...fieldData,
+            mail_street_address:'', mail_apt_num:'', mail_city:'', mail_state:'', mail_zip_code:''
+        })
+    }
+
     const hasNoAddressCheckbox = (e) => {
         setHasNoAddress(e.target.checked);
-        //clear any address form data when check is true
-        e.target.checked && setFieldData({
+        setFieldData({
             ...fieldData,
-            street_address:'', apt_num:'', city:'', state:'', zip_code:'',
-            prev_address_check: false, prev_street_address:'', prev_apt_num:'', prev_city:'', prev_state:'', prev_zip_code:'',
-            mail_address_check: false, mail_street_address:'', mail_apt_num:'', mail_city:'', mail_state:'', mail_zip_code:''
+            street_address:'', apt_num:'', city:'', state:'', zip_code:''
         })
+
+        if (!e.target.checked && document.getElementById("alt-mail-addr")) {
+            if (!hasMailAddress) {
+                setFieldData({
+                    ...fieldData,
+                    mail_street_address:'', mail_apt_num:'', mail_city:'', mail_state:'', mail_zip_code:''
+                })                
+            }
+
+        }
     }
 
     const [hasPreviousAddress, setHasPreviousAddress] = useState(false);
     const onChangePreviousAddressCheckbox = (e) => {
         setHasPreviousAddress(e.target.checked);
-    }
-
-    const [hasMailAddress, setHasMailAddress] = useState(false);
-    const onChangeMailAddressCheckbox = (e) => {
-        setHasMailAddress(e.target.checked);
+        !e.target.checked && setFieldData({
+            ...fieldData,
+            prev_street_address:'', prev_apt_num:'', prev_city:'', prev_state:'', prev_zip_code:''
+        })
     }
 
         //Identification
@@ -203,7 +221,7 @@ function MultiStepForm(props) {
             <>
                 {step != 6 && <BackButton type={'button'} onClick={handlePrev} text={backButtonText(step)}/>}
 
-                <ProgressBar step={step}/>
+                <ProgressBar step={step} content={content}/>
                 {step < 5 &&
                     <div>
                         <h1>{content.main_heading}: {props.stateData.name}</h1>

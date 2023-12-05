@@ -1,6 +1,9 @@
 export const jumpTo = (e, nextId) => {
-  if (e.target.value.length == e.target.maxLength) {
-    document.getElementById(nextId).focus();
+  const isNumber = /^[0-9]$/i.test(e.key)
+  if (isNumber) {
+    if (e.target.value.length == e.target.maxLength) {
+      document.getElementById(nextId).focus();
+    }    
   }
 }
 
