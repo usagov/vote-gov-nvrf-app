@@ -32,8 +32,7 @@ function MultiStepForm(props) {
         prev_street_address:'', prev_apt_num:'', prev_city:'', prev_state:'', prev_zip_code:'',
         mail_street_address:'', mail_apt_num:'', mail_city:'', mail_state:'', mail_zip_code:'',
         id_number:'', id_issue_date_month:'', id_issue_date_day:'', id_issue_date_year:'', id_expire_date_month:'', id_expire_date_day:'', id_expire_date_year:'',
-        party_choice:'',
-        email_address:'', sms_alert_phone_number:''});
+        party_choice:'', email_address:''});
         const [hasData, setHasData] = useState(false)
 
     const saveFieldData = (name) => {
@@ -190,6 +189,26 @@ function MultiStepForm(props) {
             (hasAcknowledged === null) && setError(true);
         }
 
+    const emailValid = () => {
+        const emailField = document.getElementById('email-address');
+        if (!fieldData.email_address) {
+            emailField.removeAttribute('required');
+        } else {
+            emailField.value = "";
+        }
+    }
+
+    const nextStepValidation = () => {
+        switch (step) {
+            case 1:
+                emailValid();
+                break;
+            case 5:
+                checkboxValid();
+                break;
+        }
+    }
+
     const backButtonText = (step) => {
         switch (step) {
         case 1:
@@ -325,7 +344,7 @@ function MultiStepForm(props) {
                 />
             }
 
-                    {step != 6 && <NextButton type={'submit'} onClick={step === 5 ? () => checkboxValid() : undefined} text={nextButtonText(step)}/>}
+                    {step != 6 && <NextButton type={'submit'} onClick={() => nextStepValidation()} text={nextButtonText(step)}/>}
                 </Form>
             </>
         );

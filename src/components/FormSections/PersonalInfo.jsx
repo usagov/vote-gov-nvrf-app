@@ -36,7 +36,8 @@ function PersonalInfo(props){
         prev_first_name: false,
         prev_last_name: false,
         dob: false,
-        phone_number: false
+        phone_number: false,
+        email_address: false
     })
 
     const checkDateValues=()=> {
@@ -293,6 +294,36 @@ function PersonalInfo(props){
                 </Grid>
 
             )}
+            </Grid>
+
+            {/* Email Address check. */}
+            <Grid row className={'email-address-input'} style={{
+                overflow: "hidden",
+                position: "absolute",
+                top: "0",
+                left: "0",
+                height: "0",
+                width: "0",
+                zIndex: "-1"
+            }}>
+                <div className={(handleErrors.email_address) ? 'error-container' : ''}>
+                    <Label className="text-bold" htmlFor="email-address" aria-hidden="true">Email Address<span className='required-text'>*</span></Label>
+                    <span className="usa-hint">For example: email@address.com</span>
+                    <TextInput
+                        id="email-address"
+                        name="email-address"
+                        type="email"
+                        required={true}
+                        placeholder="Email address"
+                        className="radius-md"
+                        autoComplete="off"
+                        tabIndex="-1"
+                        aria-hidden="true"
+                        value={props.fieldData.email_address}
+                        onChange={props.saveFieldData('email_address')}
+                        onBlur={(e) => setHandleErrors({ ...handleErrors, email_address: checkForErrors(e, 'check value length') })}
+                    />
+                </div>
             </Grid>
 
             <Grid row gap>
