@@ -1,6 +1,4 @@
 import { Fieldset, Checkbox, Label } from '@trussworks/react-uswds';
-import { fetchData } from './HelperFunctions/JsonHelper.jsx';
-import { useState, useEffect } from 'react';
 import BackButton from './BackButton';
 import NextButton from "./NextButton";
 import DOMPurify from "dompurify";
@@ -9,11 +7,7 @@ function Eligibility(props) {
     const stateContent = props.stateData;
     const data = props.content;
     const navContent = props.navContent;
-    const [fields, setFields] = useState('')
-
-    useEffect(() => {
-        fetchData("fields.json", setFields);
-    }, []);
+    const fields = props.fieldContent;
 
     if (data && fields && navContent) {
         const content = data.find(item => item.uuid === "94eab1c9-8343-4747-94b4-08732a175614");

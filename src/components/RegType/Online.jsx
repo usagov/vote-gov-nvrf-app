@@ -1,6 +1,4 @@
 import { Button, Link, Icon } from '@trussworks/react-uswds';
-import { useState, useEffect } from 'react';
-import { fetchData } from '../HelperFunctions/JsonHelper';
 import NextButton from '../NextButton';
 import StepsList from './StepsList';
 import DOMPurify from "dompurify";
