@@ -1,7 +1,6 @@
 import ByMail from "./RegType/ByMail";
 import Online from "./RegType/Online";
 import NotNeeded from "./RegType/NotNeeded";
-import ".././styles/pages/RegistrationOptions.css";
 import BackButton from './BackButton';
 
 function RegistrationOptions(props) {

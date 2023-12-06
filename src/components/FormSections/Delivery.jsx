@@ -55,7 +55,7 @@ function Delivery(props) {
                 </p>
 
 
-                <Button onClick={() => GenerateFilledPDF(props.fieldData)} type="submit">
+                <Button onClick={() => GenerateFilledPDF(props.fieldData, props.stateData.nvrf_pages_list)} type="submit">
                     {"Open form in a new window"} <Icon.ArrowForward aria-label="forward arrow icon"/>
                 </Button>
 

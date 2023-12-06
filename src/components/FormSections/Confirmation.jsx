@@ -9,6 +9,7 @@ function Confirmation(props){
     const prevAddress = fieldData.prev_street_address + fieldData.prev_apt_num + fieldData.prev_city + fieldData.prev_state + fieldData.prev_zip_code;
     const prevMailAddress = fieldData.mail_street_address + fieldData.mail_apt_num + fieldData.mail_city + fieldData.mail_state + fieldData.mail_zip_code;
 
+
     //field data overrides for confirm page printing only
     const fieldDataOverride_race = (fieldData.race === '') ? "Not required for your state" : fieldData.race;
     const fieldDataOverride_party = (fieldData.party_choice === '') ? "No party entered": fieldData.party_choice;
@@ -25,21 +26,22 @@ function Confirmation(props){
         const confirmInstructions = DOMPurify.sanitize(confirm.instructions);
         return (
             <>
+
                 <div className="confirm-info">
                     <h1>{confirm.title}</h1>
                     <div dangerouslySetInnerHTML= {{__html: confirmBody}}/>
 
-                    <h2>Personal Information
-                        <span style={{ marginLeft:'0.5rem' }}>
-            <Button
-                type="button"
-                onClick={props.handleGoBackSteps(4)}
-                unstyled>
-                Edit
-            </Button>
-            </span>
-                    </h2>
-
+            <div className='grid-row'>
+                <h2>Personal Information</h2>
+            <div className='edit-btn'>
+                <Button
+                    type="button"
+                    onClick={props.handleGoBackSteps(4)}
+                    unstyled>
+                    Edit
+                </Button>
+            </div>
+            </div>
                     {/*Jump to Personal Info Section (Step 1) */}
                     <p><strong>Current Name</strong></p>
                     <ul>
@@ -71,17 +73,17 @@ function Confirmation(props){
                         <li>Race/Ethnicity: {fieldDataOverride_race}</li>
                     </ul>
                     <span className="divider-grey"></span>
-
-                    <h2>Address
-                        <span style={{ marginLeft:'0.5rem' }}>
-            <Button
-                type="button"
-                onClick={props.handleGoBackSteps(3)}
-                unstyled>
-                Edit
-            </Button>
-            </span>
-                    </h2>
+        <div className='grid-row'>
+                <h2>Address</h2>
+            <div className='edit-btn'>
+                <Button
+                    type="button"
+                    onClick={props.handleGoBackSteps(3)}
+                    unstyled>
+                    Edit
+                </Button>
+            </div>
+        </div>
                     <p><strong>Current Address</strong></p>
                     {!currentAddress && (
                         <Alert type="info" headingLevel="h4" noIcon>
@@ -124,33 +126,34 @@ function Confirmation(props){
                         <li>Zip code: {fieldData.mail_zip_code}</li>
                     </ul>
                     <span className="divider-grey"></span>
-
-                    <h2>Identification
-                        <span style={{ marginLeft:'0.5rem' }}>
-                <Button
-                    type="button"
-                    onClick={props.handleGoBackSteps(2)}
-                    unstyled>
-                    Edit
-                </Button>
-            </span>
-                    </h2>
+            <div className='grid-row'>
+                    <h2>Identification</h2>
+                <div className='edit-btn'> 
+                    <Button
+                        type="button"
+                        onClick={props.handleGoBackSteps(2)}
+                        unstyled>
+                        Edit
+                    </Button>
+                </div>
+            </div>
                     <ul>
                         <li>ID number: {fieldData.id_number}</li>
                         <li>ID issue date: {fieldDataOverride_id_issue_date} </li>
                         <li>ID expire date: {fieldDataOverride_id_expire_date}</li>
                     </ul>
                     <span className="divider-grey"></span>
-                    <h2>Choice of Political Party
-                        <span style={{ marginLeft:'0.5rem' }}>
+        <div className='grid-row'>
+                    <h2>Choice of Political Party</h2>
+            <div className='edit-btn'>
                 <Button
                     type="button"
                     onClick={props.handleGoBackSteps(1)}
                     unstyled>
                     Edit
                 </Button>
-            </span>
-                    </h2>
+            </div>        
+        </div>
                     <ul>
                         <li>Political party: {fieldDataOverride_party}</li>
                     </ul>

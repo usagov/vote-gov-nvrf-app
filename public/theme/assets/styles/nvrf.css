@@ -1,0 +1,111 @@
+.nvrf-app-container .usa-button {
+    background-color: #11385b
+}
+
+.nvrf-app-container .usa-card__container {
+    border-radius: 0;
+    border-color: #000
+}
+
+.nvrf-app-container .error-container {
+    border-left: 3px solid #b50909;
+    padding-left: 15px
+}
+
+.nvrf-app-container .error-text {
+    color: #b50909
+}
+
+.nvrf-app-container .back-button {
+    background-color: rgba(0, 0, 0, 0)
+}
+
+.nvrf-app-container .divider-grey {
+    display: inline-block;
+    height: 1px;
+    width: 100%;
+    border: 1px solid #dcdee0
+}
+
+.nvrf-app-container .usa-form a:visited {
+    color: unset
+}
+
+.nvrf-app-container .link-button-outline {
+    background-color: rgba(0, 0, 0, 0);
+    box-shadow: inset 0 0 0 2px #11385b;
+    color: #11385b;
+    text-decoration: none
+}
+
+.nvrf-app-container .link-button-outline:hover {
+    color: #fff !important;
+    background-color: #11385b
+}
+
+.nvrf-app-container .link-button-filled {
+    color: #fff !important;
+    text-decoration: none
+}
+
+@media only screen and (min-width: 640px) {
+    .nvrf-app-container .bottom {
+        position: absolute;
+        bottom: 0
+    }
+}
+
+.nvrf-app-container .input-example {
+    min-height: 154px
+}
+
+.nvrf-app-container .fieldset {
+    display: contents
+}
+
+.nvrf-app-container .usa-step-indicator__header {
+    display: none !important
+}
+
+.nvrf-app-container .confirm-info .usa-button {
+    background-color: inherit
+}
+
+.nvrf-app-container .divider {
+    position: relative
+}
+
+.nvrf-app-container .divider > span {
+    display: block;
+    height: 48px;
+    width: 48px;
+    line-height: 46px;
+    border-radius: 30px;
+    background-color: #dee9f0;
+    color: #11385b;
+    text-align: center;
+    font-size: 18px;
+    margin-left: calc(50% - 24px)
+}
+
+.nvrf-app-container .divider:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: #dee9f0;
+    top: 50%;
+    left: 0;
+    z-index: -1
+}
+
+.edit-btn {
+    margin-left: 8px;
+    margin-top: 18px;
+}
+
+@media (max-width: 480px) {
+    .edit-btn {
+        margin-top: 33px;
+    }
+}

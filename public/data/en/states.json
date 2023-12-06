@@ -54,6 +54,7 @@
     "received_mail_deadline": "",
     "inperson_deadline": null,
     "online_deadline": null,
+    "nvrf_pages_list": [0,1,2,3,4,5,6,7],
     "nvrf_fields": [
         {
         "uuid": "86a544cd-cfe9-456a-b634-176a37a38d6d",
@@ -719,6 +720,7 @@
     "received_mail_deadline": "",
     "inperson_deadline": null,
     "online_deadline": null,
+    "nvrf_pages_list": [0,1,2,3,4,5,14,15],
     "nvrf_fields": [],
     "nvrf_last_updated_date": "<time datetime=\"2012-08-14T12:00:00Z\">August 14, 2012</time>"
     },
