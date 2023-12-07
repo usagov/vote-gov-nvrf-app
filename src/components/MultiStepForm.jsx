@@ -15,6 +15,10 @@ import NextButton from './NextButton';
 
 function MultiStepForm(props) {
     const [content, setContent] = useState()
+    const navContent = props.navContent;
+    const fieldContent = props.fieldContent;
+
+    //old registration data
     useEffect(() => {
         fetchData("registration-form.json", setContent);
     }, []);
@@ -189,34 +193,34 @@ function MultiStepForm(props) {
     const backButtonText = (step) => {
         switch (step) {
         case 1:
-            return content.back_btn.reg_options;
+            return navContent.back.reg_options;
         case 2:
-            return content.back_btn.personal_info;
+            return navContent.back.personal_info;
         case 3:
-            return content.back_btn.address_location;
+            return navContent.back.address_location;
         case 4:
-            return content.back_btn.identification;
+            return navContent.back.identification;
         case 5:
-            return content.back_btn.edit_info;
+            return navContent.back.edit_info;
         }
     }
 
     const nextButtonText = (step) => {
         switch (step) {
             case 1:
-                return content.next_btn.address_location;
+                return navContent.next.address_location;
             case 2:
-                return content.next_btn.identification;
+                return navContent.next.identification;
             case 3:
-                return content.next_btn.political_party;
+                return navContent.next.political_party;
             case 4:
-                return content.next_btn.confirm_info;
+                return navContent.next.confirm_info;
             case 5:
-                return content.next_btn.confirm_continue;
+                return "Confirm and continue";//TODO replace
         }
     }
 
-    if (content) {
+    if (content && fieldContent && navContent) {
         return (
             <>
                 {step != 6 && <BackButton type={'button'} onClick={handlePrev} text={backButtonText(step)}/>}
@@ -242,6 +246,7 @@ function MultiStepForm(props) {
                 onChangePreviousName={onChangePreviousName}
                 handlePrev={props.handlePrev}
                 content={content}
+                fieldContent={fieldContent}
                 />
             }
             {step === 2 &&
@@ -260,6 +265,7 @@ function MultiStepForm(props) {
                 hasMailAddress={hasMailAddress}
                 onChangeMailAddressCheckbox={onChangeMailAddressCheckbox}
                 content={content}
+                fieldContent={fieldContent}
                 />
             }
             {step === 3 &&
@@ -274,6 +280,7 @@ function MultiStepForm(props) {
                 saveIdType={saveIdType}
                 idType={idType}
                 content={content}
+                fieldContent={fieldContent}
                 />
             }
             {step === 4 &&
@@ -285,12 +292,14 @@ function MultiStepForm(props) {
                 registrationPath={props.registrationPath}
                 handlePrev={handlePrev}
                 content={content}
+                fieldContent={fieldContent}
                 />
             }
             {step === 5 &&
                 <Confirmation
                 state={props.state}
                 stateData={props.stateData}
+                content={props.content}
                 fieldData={fieldData}
                 saveFieldData = {saveFieldData}
                 registrationPath={props.registrationPath}
@@ -306,6 +315,7 @@ function MultiStepForm(props) {
                 <Delivery
                 state={props.state}
                 stateData={props.stateData}
+                content={props.content}
                 fieldData={fieldData}
                 saveFieldData = {saveFieldData}
                 registrationPath={props.registrationPath}

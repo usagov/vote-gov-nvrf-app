@@ -1,0 +1,422 @@
+[
+    {
+    "uuid": "fd516f06-11bb-4c39-9080-735ed98100cc",
+    "lang": "en",
+    "nvrf_id": "party",
+    "name": "Choice of party",
+    "label": "Enter the name of party you wish to join or leave blank",
+    "help_text": "",
+    "error_msg": "",
+    "instructions": "<p>If you want to register with a party, enter the full name of the party of your choice. If you do not want to register with a party, leave this field blank. Do not write in the word “independent” if you mean “no party,” because this might be confused with the name of a political party in @state_name.</p>"
+    },
+    {
+    "uuid": "39fc63ad-ed5a-4ad5-98d3-aa236c96c61c",
+    "lang": "en",
+    "nvrf_id": "eligibility",
+    "name": "Confirm Eligibillity",
+    "label": "I am a U.S. citizen and meet the eligibility requirements listed above.",
+    "help_text": "",
+    "error_msg": "Confirm eligibility to continue.",
+    "instructions": "<p>If you do not agree with the above statement, do not continue with registration on Vote.gov.</p>"
+    },
+    {
+    "uuid": "73e74065-fd5a-43c0-907c-268120e34bc3",
+    "lang": "en",
+    "nvrf_id": "confirm_info",
+    "name": "Confirm Information",
+    "label": "I can confirm my information is correct to the best of my knowledge.",
+    "help_text": "",
+    "error_msg": "",
+    "instructions": ""
+    },
+    {
+    "uuid": "b7bdae35-e4be-4827-ae11-75d9c3e33bf0",
+    "lang": "en",
+    "nvrf_id": "first_name",
+    "name": "Current Legal Name: First Name",
+    "label": "First Name",
+    "help_text": "",
+    "error_msg": "",
+    "instructions": ""
+    },
+    {
+    "uuid": "b306238a-a0f6-4bb8-b8ea-b3216ca75e0b",
+    "lang": "en",
+    "nvrf_id": "last_name",
+    "name": "Current Legal Name: Last Name",
+    "label": "Last Name",
+    "help_text": "",
+    "error_msg": "",
+    "instructions": ""
+    },
+    {
+    "uuid": "38020ec6-1b53-4227-99e5-feea5f60af07",
+    "lang": "en",
+    "nvrf_id": "middle_name",
+    "name": "Current Legal Name: Middle Name(s)",
+    "label": "Middle Name(s)",
+    "help_text": "If you do not have a middle name, leave this field blank.",
+    "error_msg": "",
+    "instructions": ""
+    },
+    {
+    "uuid": "eeff4fa1-00f2-474b-a791-1a4146dab11a",
+    "lang": "en",
+    "nvrf_id": "suffix",
+    "name": "Current Legal Name: Suffix",
+    "label": "Suffix",
+    "help_text": "",
+    "error_msg": "",
+    "instructions": ""
+    },
+    {
+    "uuid": "86a544cd-cfe9-456a-b634-176a37a38d6d",
+    "lang": "en",
+    "nvrf_id": "title",
+    "name": "Current Legal Name: Title",
+    "label": "Title",
+    "help_text": "",
+    "error_msg": "",
+    "instructions": ""
+    },
+    {
+    "uuid": "d31b2a64-36a9-4bc6-a9d1-e68d2be8c211",
+    "lang": "en",
+    "nvrf_id": "dob",
+    "name": "Date of Birth",
+    "label": "Date of Birth",
+    "help_text": "MM/DD/YYYY",
+    "error_msg": "",
+    "instructions": "<p>Be careful not to use today’s date.</p>"
+    },
+    {
+    "uuid": "e7340274-ee3f-4d73-a967-c9d7c249be7b",
+    "lang": "en",
+    "nvrf_id": "diff_mailing_address",
+    "name": "Different Mailing Address",
+    "label": "I get my mail at a different address from the one above.",
+    "help_text": "",
+    "error_msg": "",
+    "instructions": ""
+    },
+    {
+    "uuid": "deba9b54-68ad-4ef1-8fb5-ee34e4ab8a49",
+    "lang": "en",
+    "nvrf_id": "apt_lot",
+    "name": "Home Address: Apt or Lot#",
+    "label": "Apartment or Lot#",
+    "help_text": "",
+    "error_msg": "",
+    "instructions": ""
+    },
+    {
+    "uuid": "7e39a528-7518-40cb-b7b6-b635864dc117",
+    "lang": "en",
+    "nvrf_id": "city",
+    "name": "Home Address: City",
+    "label": "City",
+    "help_text": "",
+    "error_msg": "",
+    "instructions": ""
+    },
+    {
+    "uuid": "fe3a2a1d-34bd-472b-a843-3fa0635c4f40",
+    "lang": "en",
+    "nvrf_id": "state",
+    "name": "Home Address: State",
+    "label": "State",
+    "help_text": "",
+    "error_msg": "",
+    "instructions": ""
+    },
+    {
+    "uuid": "6dcb9e8c-b40a-4cda-ba5c-06b98c3375f4",
+    "lang": "en",
+    "nvrf_id": "street",
+    "name": "Home Address: Street Address",
+    "label": "Street Address",
+    "help_text": "1234 Main St.",
+    "error_msg": "",
+    "instructions": ""
+    },
+    {
+    "uuid": "cdb06542-0cbd-4aa3-897f-83377b8d65e5",
+    "lang": "en",
+    "nvrf_id": "zipcode",
+    "name": "Home Address: Zip",
+    "label": "Zip Code",
+    "help_text": "12345",
+    "error_msg": "",
+    "instructions": ""
+    },
+    {
+    "uuid": "e17924f4-9aec-4fc1-9d1c-1fd0bbc5cc7b",
+    "lang": "en",
+    "nvrf_id": "id_expire_date",
+    "name": "ID: Expiration Date",
+    "label": "Expiration Date",
+    "help_text": "MM/DD/YYYY",
+    "error_msg": "",
+    "instructions": ""
+    },
+    {
+    "uuid": "d38bddc1-f183-4827-bfc8-26335a6fd8aa",
+    "lang": "en",
+    "nvrf_id": "id_issue_date",
+    "name": "ID: Issue Date",
+    "label": "Issue Date",
+    "help_text": "MM/DD/YYYY",
+    "error_msg": "",
+    "instructions": ""
+    },
+    {
+    "uuid": "eb0ce8c5-b4f7-4aae-a0b9-84f0434d2edb",
+    "lang": "en",
+    "nvrf_id": "id_no_id",
+    "name": "ID: No valid ID",
+    "label": "I do not have a valid ID number",
+    "help_text": "",
+    "error_msg": "",
+    "instructions": "<p>\"None\" will appear on your completed form.</p>"
+    },
+    {
+    "uuid": "1e030197-52e7-426e-923c-b67ef521ae3b",
+    "lang": "en",
+    "nvrf_id": "ssn",
+    "name": "ID: Social Security Number",
+    "label": "Social Security Number",
+    "help_text": "Provide the last 4 digits, for example (xxx-xx-1234)",
+    "error_msg": "",
+    "instructions": ""
+    },
+    {
+    "uuid": "acd7f272-7a37-43f0-b51a-c78daf31e5fd",
+    "lang": "en",
+    "nvrf_id": "id_number",
+    "name": "ID: State Driver&#039;s License Number",
+    "label": "State Driver&#039;s License Number",
+    "help_text": "",
+    "error_msg": "",
+    "instructions": ""
+    },
+    {
+    "uuid": "e2da00fa-0f1b-4e98-9472-c00649266eb4",
+    "lang": "en",
+    "nvrf_id": "id_non-driver",
+    "name": "ID: State Non-driver ID",
+    "label": "State Non-driver ID",
+    "help_text": "",
+    "error_msg": "",
+    "instructions": ""
+    },
+    {
+    "uuid": "27d3a15c-f8c0-4035-9b0a-c2c0f674519c",
+    "lang": "en",
+    "nvrf_id": "id_type",
+    "name": "Identification Type",
+    "label": "Choose your identification type",
+    "help_text": "",
+    "error_msg": "",
+    "instructions": "<p>Select one option from the drop down. </p>"
+    },
+    {
+    "uuid": "e87ca867-c5a5-4e42-98d5-d742edd03de3",
+    "lang": "en",
+    "nvrf_id": "changed_name",
+    "name": "Legally changed name",
+    "label": "I have legally changed my name since the last time I registered to vote.",
+    "help_text": "",
+    "error_msg": "",
+    "instructions": ""
+    },
+    {
+    "uuid": "9a5baee7-357b-4e59-b4f2-fe2525c0fd6c",
+    "lang": "en",
+    "nvrf_id": "city",
+    "name": "Mailing Address: City",
+    "label": "City",
+    "help_text": "",
+    "error_msg": "",
+    "instructions": ""
+    },
+    {
+    "uuid": "b0f80289-6084-4723-8278-110fda210f0d",
+    "lang": "en",
+    "nvrf_id": "State",
+    "name": "Mailing Address: State",
+    "label": "State",
+    "help_text": "",
+    "error_msg": "",
+    "instructions": ""
+    },
+    {
+    "uuid": "db9b1f7a-565b-4aad-8d7c-56a553c18326",
+    "lang": "en",
+    "nvrf_id": "street",
+    "name": "Mailing Address: Street Address (Or Rural Route and P.O. Box)",
+    "label": "Street (or route and box number)",
+    "help_text": "",
+    "error_msg": "",
+    "instructions": ""
+    },
+    {
+    "uuid": "c4f9c0cb-2a25-4f1d-a93a-b06a19656cfe",
+    "lang": "en",
+    "nvrf_id": "zipcode",
+    "name": "Mailing Address: Zip Code",
+    "label": "Zip Code",
+    "help_text": "12345",
+    "error_msg": "",
+    "instructions": ""
+    },
+    {
+    "uuid": "c3011c62-d174-420c-817a-bffbcd45687a",
+    "lang": "en",
+    "nvrf_id": "moved",
+    "name": "Moved",
+    "label": "I have moved since I last registered in this state.",
+    "help_text": "",
+    "error_msg": "",
+    "instructions": ""
+    },
+    {
+    "uuid": "f282e541-7ca8-4c22-8d87-d4cff56e22e5",
+    "lang": "en",
+    "nvrf_id": "first_name",
+    "name": "Name Before Legally Changed: First Name",
+    "label": "First Name",
+    "help_text": "",
+    "error_msg": "",
+    "instructions": ""
+    },
+    {
+    "uuid": "42de34cc-ebf3-4d8e-8873-2571063b62c0",
+    "lang": "en",
+    "nvrf_id": "last_name",
+    "name": "Name Before Legally Changed: Last Name",
+    "label": "Last Name",
+    "help_text": "",
+    "error_msg": "",
+    "instructions": ""
+    },
+    {
+    "uuid": "a4919026-91ac-4e05-a75f-e2df479abd76",
+    "lang": "en",
+    "nvrf_id": "middle_name",
+    "name": "Name Before Legally Changed: Middle Name(s)",
+    "label": "Middle Name(s)",
+    "help_text": "If you do not have a middle name, you may leave this field blank.",
+    "error_msg": "",
+    "instructions": ""
+    },
+    {
+    "uuid": "09cb2989-d302-4a01-bb3a-33173adcffb2",
+    "lang": "en",
+    "nvrf_id": "suffix",
+    "name": "Name Before Legally Changed: Suffix",
+    "label": "Suffix",
+    "help_text": "",
+    "error_msg": "",
+    "instructions": ""
+    },
+    {
+    "uuid": "34d2669a-d30b-4001-b897-280fe71b3cb0",
+    "lang": "en",
+    "nvrf_id": "title",
+    "name": "Name Before Legally Changed: Title",
+    "label": "Title",
+    "help_text": "",
+    "error_msg": "",
+    "instructions": ""
+    },
+    {
+    "uuid": "35c2b98d-477c-45f3-9f93-f720406080f1",
+    "lang": "en",
+    "nvrf_id": "no_street_address",
+    "name": "No Street Address",
+    "label": "I do not have a street address.",
+    "help_text": "",
+    "error_msg": "",
+    "instructions": ""
+    },
+    {
+    "uuid": "2d61b54a-e568-410f-825a-0ca82dfd3f63",
+    "lang": "en",
+    "nvrf_id": "phone",
+    "name": "Phone Number",
+    "label": "Phone Number",
+    "help_text": "(123) 456-7890",
+    "error_msg": "",
+    "instructions": "<p>You do not have to provide your telephone number. This is used if election officials have questions about your form.</p>"
+    },
+    {
+    "uuid": "c8e2ff17-fb1f-4971-a664-ffbb557b305a",
+    "lang": "en",
+    "nvrf_id": "apt_lot",
+    "name": "Previous Home Address: Apt or Lot#",
+    "label": "Apartment or Lot#",
+    "help_text": "",
+    "error_msg": "",
+    "instructions": ""
+    },
+    {
+    "uuid": "44bf0a5c-adba-4b47-bc99-cc46cede5e80",
+    "lang": "en",
+    "nvrf_id": "city",
+    "name": "Previous Home Address: City",
+    "label": "City",
+    "help_text": "",
+    "error_msg": "",
+    "instructions": ""
+    },
+    {
+    "uuid": "5a8a4b6d-c0f1-42f2-b991-8ea49a32e997",
+    "lang": "en",
+    "nvrf_id": "state",
+    "name": "Previous Home Address: State",
+    "label": "State",
+    "help_text": "",
+    "error_msg": "",
+    "instructions": ""
+    },
+    {
+    "uuid": "c037a3ea-86b7-4661-ad28-c7228f1e682b",
+    "lang": "en",
+    "nvrf_id": "street",
+    "name": "Previous Home Address: Street Address",
+    "label": "Street Address",
+    "help_text": "",
+    "error_msg": "",
+    "instructions": ""
+    },
+    {
+    "uuid": "49a90983-1925-438f-8271-88f39bf19bf1",
+    "lang": "en",
+    "nvrf_id": "zipcode",
+    "name": "Previous Home Address: Zip Code",
+    "label": "Zip Code",
+    "help_text": "124345",
+    "error_msg": "",
+    "instructions": ""
+    },
+    {
+    "uuid": "2bfff6c6-6782-4b14-ac45-642efd278f6a",
+    "lang": "en",
+    "nvrf_id": "race_ethnic",
+    "name": "Race or Ethnic Group",
+    "label": "Race or Ethnic Group",
+    "help_text": "",
+    "error_msg": "",
+    "instructions": "<p>Select the choice that best describes you from the list below.</p>"
+    },
+    {
+    "uuid": "7231330d-523b-4e22-b282-b9f98ee20ef2",
+    "lang": "en",
+    "nvrf_id": "state",
+    "name": "State Selection",
+    "label": "I live in:",
+    "help_text": "",
+    "error_msg": "",
+    "instructions": ""
+    }
+]

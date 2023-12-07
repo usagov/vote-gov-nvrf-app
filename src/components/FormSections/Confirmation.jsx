@@ -1,13 +1,8 @@
 import { Alert, Button, Checkbox } from '@trussworks/react-uswds';
-import React, { useState, useEffect } from "react";
-import {fetchData} from '../HelperFunctions/JsonHelper.jsx';
+import DOMPurify from 'dompurify';
 
 function Confirmation(props){
-    const [content, setContent] = useState();
-    useEffect(() => {
-        fetchData("confirmation.json", setContent);
-    }, []);
-
+    const content = props.content;
     const fieldData = props.fieldData;
     const currentAddress = fieldData.street_address + fieldData.apt_num + fieldData.city + fieldData.zip_code;
     const prevName = fieldData.prev_title + fieldData.prev_first_name + fieldData.prev_middle_name + fieldData.prev_last_name + fieldData.prev_suffix;
@@ -26,12 +21,15 @@ function Confirmation(props){
     const fieldDataOverride_id_expire_date = (fieldData.id_expire_date_month === '') ? "" : `${fieldData.id_expire_date_month}/${fieldData.id_expire_date_day}/${fieldData.id_expire_date_year}`;
 
     if (content) {
+        const confirm = content.find(item => item.uuid === "560cd01c-42d1-4f58-a702-372c2ff6bbd9");
+        const confirmBody = DOMPurify.sanitize(confirm.body);
+        const confirmInstructions = DOMPurify.sanitize(confirm.instructions);
         return (
             <>
 
                 <div className="confirm-info">
-                    <h1>{content.confirmation_heading}</h1>
-                    <p>{content.confirmation_text}</p>
+                    <h1>{confirm.title}</h1>
+                    <div dangerouslySetInnerHTML= {{__html: confirmBody}}/>
 
             <div className='grid-row'>
                 <h2>Personal Information</h2>
@@ -163,8 +161,7 @@ function Confirmation(props){
 
                 <div className="usa-alert usa-alert--info">
                     <div className="usa-alert__body">
-                        <h4>{content.acknowledge_heading}</h4>
-                        <p>{content.acknowledge_text}</p>
+                        <div dangerouslySetInnerHTML= {{__html: confirmInstructions}}/>
                     </div>
                 </div>
 
