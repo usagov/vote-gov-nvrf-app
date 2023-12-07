@@ -7,7 +7,7 @@ import Identification from './FormSections/Identification';
 import Confirmation from './FormSections/Confirmation';
 import Delivery from "./FormSections/Delivery";
 import PoliticalParty from './FormSections/PoliticalParty';
-import { phoneFormat, dateFormat } from './HelperFunctions/ValidateField';
+import { phoneFormat } from './HelperFunctions/ValidateField';
 import { fetchData } from './HelperFunctions/JsonHelper.jsx';
 import BackButton from './BackButton'
 import NextButton from './NextButton';
@@ -139,14 +139,11 @@ function MultiStepForm(props) {
             street_address:'', apt_num:'', city:'', state:'', zip_code:''
         })
 
-        if (!e.target.checked && document.getElementById("alt-mail-addr")) {
-            if (!hasMailAddress) {
-                setFieldData({
-                    ...fieldData,
-                    mail_street_address:'', mail_apt_num:'', mail_city:'', mail_state:'', mail_zip_code:''
-                })                
-            }
-
+        if (!hasMailAddress) {
+            setFieldData({
+                ...fieldData,
+                mail_street_address:'', mail_apt_num:'', mail_city:'', mail_state:'', mail_zip_code:''
+            })                
         }
     }
 
