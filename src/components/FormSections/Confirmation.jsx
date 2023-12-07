@@ -94,7 +94,7 @@ function Confirmation(props){
                         <li>Street Address: {fieldData.street_address}</li>
                         <li>Apt. or Lot #: {fieldData.apt_num}</li>
                         <li>City: {fieldData.city}</li>
-                        <li>State: {fieldDataOverride_state}</li>
+                        <li>State: {currentAddress && fieldDataOverride_state}</li>
                         <li>Zip code: {fieldData.zip_code}</li>
                     </ul>
 
