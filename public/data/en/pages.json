@@ -2,7 +2,7 @@
     {
     "uuid": "df8fede3-11ad-4099-b2a8-f6a9bb457842",
     "lang": "en",
-    "title": "@state_name does not have voter registration.",
+    "title": "",
     "instructions": "",
     "body": "<p>Learn more about voting on @state_name's election website.</p><p>{{ state_link }}</p><h2>Don’t forget to vote!</h2><p>Prepare to cast your vote. Explore Vote.gov to learn more about how U.S. elections are run and your voting options.</p>",
     "omb_number": ""
@@ -10,7 +10,7 @@
     {
     "uuid": "295db8a2-6df6-4c81-825d-8d03064550f9",
     "lang": "en",
-    "title": "@state_name registration options [mail]",
+    "title": "",
     "instructions": "",
     "body": "<p>Online registration is not currently available for @state_name. You may fill out the National Voter Registration Form here on vote.gov, then print and mail in your application.</p>",
     "omb_number": ""
@@ -18,7 +18,7 @@
     {
     "uuid": "086a212d-4f75-47e8-aad6-24eadc4a559f",
     "lang": "en",
-    "title": "@state_name registration options [online]",
+    "title": "",
     "instructions": "",
     "body": "<p>Begin your registration on @state_name’s state election website. Save time by checking to see if you are already registered first.</p>",
     "omb_number": ""
@@ -26,7 +26,7 @@
     {
     "uuid": "560cd01c-42d1-4f58-a702-372c2ff6bbd9",
     "lang": "en",
-    "title": "Confirm your information",
+    "title": "",
     "instructions": "<p>You will be asked to attest to the following when you sign your completed and printed form.</p><p>I have reviewed my state's instructions and I swear/affirm that: I am a United States citizen I meet the eligibility requirements of my state and subscribe to any oath required. The information I have provided is true to the best of my knowledge under penalty of perjury. If I have provided false information, I may be fined, imprisoned, or (if not a U.S. citizen) deported from or refused entry to the United States.</p>",
     "body": "<p>Be sure to review your information carefully before continuing. Once you confirm, you can choose to print now or send the completed form to yourself to print and mail upon receipt.</p><p> </p>",
     "omb_number": "OMB Control No. 3265-0015"
@@ -34,7 +34,7 @@
     {
     "uuid": "94eab1c9-8343-4747-94b4-08732a175614",
     "lang": "en",
-    "title": "Here’s what you need to know about registering to vote in @state_name",
+    "title": "",
     "instructions": "",
     "body": "<h2>Eligibility requirements</h2><p>To register in Alaska you must:</p><p>{{ eligibility_text }}</p><h2>Mail-in registration deadline</h2><p>Take note of the deadline for mailing in your form. Make sure you send it to your state election office in time.</p><p>{{ mail_deadline }}</p>",
     "omb_number": ""
@@ -42,7 +42,7 @@
     {
     "uuid": "b3299979-e26c-4885-a949-e1a2c27de91b",
     "lang": "en",
-    "title": "Let’s get started with your @state_name voting registration",
+    "title": "",
     "instructions": "",
     "body": "<p>Choose whether to report a change to your registration or to begin a new registration. Complete your voter registration by answering a few questions. It should take you between 5 to 10 minutes.</p><h2>Select one of the options below to continue.</h2>",
     "omb_number": ""
@@ -50,7 +50,7 @@
     {
     "uuid": "2c597df4-53b6-4ef5-8301-7817b04e1099",
     "lang": "en",
-    "title": "National Voter Registration Form: @state_name",
+    "title": "",
     "instructions": "",
     "body": "<p><strong>Reminder:</strong> If you close this window, your information will be lost and you will have to restart the process. You will have the opportunity to double check your answers before printing the completed form.</p>",
     "omb_number": "OMB Control No. 3265-0015"
@@ -58,7 +58,7 @@
     {
     "uuid": "e3461b9a-e0b1-4157-ad4a-13f3835a101c",
     "lang": "en",
-    "title": "Register to vote",
+    "title": "",
     "instructions": "",
     "body": "<p>All states except North Dakota require that you register before voting in an election. The process can be a little different for each state. Select your state or territory from the dropdown menu below to see your registration options.</p><h2>Living outside of the United States?</h2><p>U.S. citizens living outside the U.S., including U.S. service members and their families, can register to vote and request an absentee ballot by completing the Federal Post Card Application (FPCA). For more information, visit the Federal Voter Assistance Program.</p><h2>Get started by selecting your state</h2>",
     "omb_number": ""
@@ -66,7 +66,7 @@
     {
     "uuid": "229f283c-6a70-43f6-a80f-15cfa158f062",
     "lang": "en",
-    "title": "Your @state_name registration form is complete and ready to print.",
+    "title": "",
     "instructions": "",
     "body": "<p>You’re almost done! Click below to open your completed form in a new window, where you can download and print.</p><p>Once printed, be sure to sign it, date it, put it in an envelope with the correct postage, and mail it to your state election office.</p><h2>Mail your @state_name registration form to:</h2><p>{{ mailing_address }}</p><p>You may also deliver the application in person to your local voter registration office.</p><p>&lt;hr&gt;</p><h2>A few important notes</h2><h3>Don’t forget to mail your form</h3><p>Taking a minute to set a reminder for yourself could help make sure you mail in your form — add it to your calendar or jot it down on a notepad and put it on your fridge to help you remember.</p><h3>Make a plan to vote</h3><p><strong>Be sure to bring valid ID with you if it’s your first time voting in this state.</strong></p><p>If you are registering to vote for the first time in your jurisdiction and are mailing this registration application, Federal law requires you to show proof of identification the first time you vote.</p><p>Proof of identification includes the following</p><ul><li>A current and valid photo identification or </li><li>A current utility bill, bank statement, government check, paycheck or government document that shows your name and address. </li></ul><h3>Protect your personal information</h3><p>Are you on a public machine? Once you have downloaded or printed your form, close your browser window.</p><p><strong>Explore USA.gov's resources on </strong><a href=\"https://www.usa.gov/how-to-vote\"><strong>how to vote</strong></a><strong>.</strong></p>",
     "omb_number": "OMB Control No. 3265-0015"
