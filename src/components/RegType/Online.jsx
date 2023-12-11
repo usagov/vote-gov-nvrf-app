@@ -17,7 +17,7 @@ function Online(props) {
             <div dangerouslySetInnerHTML= {{__html: contentBody}}/> {/* TODO: Need to style each paragraph */}
             <div className="padding-top-3 padding-bottom-1">
             <Link href={props.stateData.registration_url} className="usa-button" target="_blank">
-                    Go to %state_name%'s online form
+                    {"Go to %state_name%'s online form".replace("%state_name%", props.stateData.name)}
                     <Icon.Launch title="External link opens new window"/>
                 </Link>
             </div>
@@ -29,7 +29,7 @@ function Online(props) {
             </div>
             <div>
                 <Link href={props.stateData.download_form} className="text-primary" target="_blank">
-                    <strong className="text-primary underline-primary">Go to %state_name%'s mail-in form
+                    <strong className="text-primary underline-primary">{"Go to %state_name%'s mail-in form".replace("%state_name%", props.stateData.name)}
                     <Icon.Launch title="External link opens new window"/></strong>
                 </Link>
             </div>

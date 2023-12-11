@@ -27,7 +27,7 @@ function ByMail(props) {
                 </div>
                 <div>
                     <Link href={props.stateData.download_form} className="text-primary" target="_blank">
-                        <strong className="text-primary underline-primary">Go to %state_name%'s mail-in form
+                        <strong className="text-primary underline-primary">{"Go to %state_name%'s mail-in form".replace("%state_name%", props.stateData.name)}
                         <Icon.Launch title="External link opens new window"/></strong>
                     </Link>
                 </div>
