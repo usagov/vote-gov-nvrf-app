@@ -194,7 +194,7 @@ function PersonalInfo(props){
                                     unit="month"
                                     required={true}
                                     type="text"
-                                    pattern="0[1-9]|1[1,2]"
+                                    pattern="0[1-9]|1[0,1,2]"
                                     inputMode="numeric"
                                     maxLength={2}
                                     minLength={2}
