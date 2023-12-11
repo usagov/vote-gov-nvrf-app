@@ -18,5 +18,11 @@
         "identification": "Continue to identification",
         "political_party": "Continue to political party",
         "confirm_info": "Confirm your information"
-    }
+    },
+    "step_label_1": "Personal Information",
+    "step_label_2": "Address and Location",
+    "step_label_3": "Identification",
+    "step_label_4": "Political Party",
+    "step_label_5": "Confirm Your Information",
+    "step_label_6": "Print Your Completed Form"
 }

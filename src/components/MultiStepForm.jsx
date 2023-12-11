@@ -122,7 +122,7 @@ function MultiStepForm(props) {
     }
 
         //Addresses
-    const [hasNoAddress, setHasNoAddress] = useState(false);    
+    const [hasNoAddress, setHasNoAddress] = useState(false);
     const [hasMailAddress, setHasMailAddress] = useState(false);
     const onChangeMailAddressCheckbox = (e) => {
         setHasMailAddress(e.target.checked);
@@ -144,7 +144,7 @@ function MultiStepForm(props) {
                 setFieldData({
                     ...fieldData,
                     mail_street_address:'', mail_apt_num:'', mail_city:'', mail_state:'', mail_zip_code:''
-                })                
+                })
             }
 
         }
@@ -225,7 +225,7 @@ function MultiStepForm(props) {
             <>
                 {step != 6 && <BackButton type={'button'} onClick={handlePrev} text={backButtonText(step)}/>}
 
-                <ProgressBar step={step} content={content}/>
+                <ProgressBar step={step} content={navContent}/>
                 {step < 5 &&
                     <div>
                         <h1>{content.main_heading}: {props.stateData.name}</h1>
