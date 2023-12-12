@@ -247,6 +247,17 @@
     "options": []
     },
     {
+    "uuid": "fe8cf91e-f872-4ed7-848c-09c99a7d83c8",
+    "lang": "en",
+    "nvrf_id": "id_number",
+    "name": "ID: Social Security Number (Full)",
+    "label": "Social Security Number (Full)",
+    "help_text": "Provide all 9 digits, for example (123-55-1234)",
+    "error_msg": "Social Security Number must be 9 digits.",
+    "instructions": "",
+    "options": []
+    },
+    {
     "uuid": "acd7f272-7a37-43f0-b51a-c78daf31e5fd",
     "lang": "en",
     "nvrf_id": "id_number",
