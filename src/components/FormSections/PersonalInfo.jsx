@@ -58,16 +58,16 @@ function PersonalInfo(props){
         <h2>{headings.step_label_1}</h2>
 
         {changeRegistrationVisible && (
-            <Checkbox id="prev-name-change" name="prev-name-change" checked={props.prevh2iousName} onChange={props.onChangePreviousName} label={content.personal_info_checkbox} />
+            <Checkbox id="prev-name-change" name="prev-name-change" checked={props.prevh2iousName} onChange={props.onChangePreviousName} label={"I have legally changed my name since I last registered in this state."} />
         )}
 
         <div className="usa-alert usa-alert--info">
             <div className="usa-alert__body">
-                <p>{content.personal_info_help_text}</p>
+                <p>{firstNameField.section_description}</p>
             </div>
         </div>
             <h3>What is your legal name?</h3>
-            <p>Using the name on your driver’s license or other nondriver ID is recommended.</p>
+            <p>Enter your full legal name. Be sure to include your First, Middle and Last name. Do not use nicknames or initials.</p>
         {nameFieldState && (
             <>
                 <Grid row gap>
@@ -76,10 +76,10 @@ function PersonalInfo(props){
                         {titleField.label}
                     <Dropdown className="radius-md" id="title-select" name="title-select" value={props.fieldData.title} onChange={props.saveFieldData('title')} autoComplete="off">
                         <option>- Select -{' '}</option>
-                        <option value="Mr">Mr.</option>
-                        <option value="Miss">Miss</option>
-                        <option value="Ms">Ms.</option>
-                        <option value="Mrs">Mrs.</option>
+                        <option value={titleField.options[0].value}>{titleField.options[0].key}</option>
+                        <option value={titleField.options[1].value}>{titleField.options[1].key}</option>
+                        <option value={titleField.options[2].value}>{titleField.options[2].key}</option>
+                        <option value={titleField.options[3].value}>{titleField.options[3].key}</option>
                     </Dropdown>
                     </Label>
                     </Grid>
@@ -102,7 +102,7 @@ function PersonalInfo(props){
                             />
                         {(parseInt(nameFieldState.required) && handleErrors.first_name) &&
                             <span id="first-name-error" role="alert" className='error-text'>
-                                First name must be filled out.
+                                {firstNameField.error_msg}
                             </span>
                         }
                         </Label>
@@ -142,7 +142,7 @@ function PersonalInfo(props){
                             />
                         {(parseInt(nameFieldState.required) && handleErrors.last_name) &&
                             <span id="last-name-error" role="alert" className='error-text'>
-                                Last name must be filled out.
+                                {lastNameField.error_msg}
                             </span>
                         }
                         </Label>
@@ -154,11 +154,11 @@ function PersonalInfo(props){
                         {suffixField.label}
                     <Dropdown id="suffix-select" className="radius-md" name="suffix-select" value={props.fieldData.suffix} onChange={props.saveFieldData('suffix')} autoComplete="off" required={parseInt(nameFieldState.required)}>
                         <option>- Select -{' '}</option>
-                        <option value="Jr.">Jr.</option>
-                        <option value="Sr.">Sr.</option>
-                        <option value="II">II</option>
-                        <option value="III">III</option>
-                        <option value="IV">IV</option>
+                        <option value={suffixField.options[0].value}>{suffixField.options[0].key}</option>
+                        <option value={suffixField.options[1].value}>{suffixField.options[1].key}</option>
+                        <option value={suffixField.options[2].value}>{suffixField.options[2].key}</option>
+                        <option value={suffixField.options[3].value}>{suffixField.options[3].key}</option>
+                        <option value={suffixField.options[4].value}>{suffixField.options[4].key}</option>
                     </Dropdown>
                     </Label>
                     </Grid>
@@ -256,7 +256,7 @@ function PersonalInfo(props){
                         </div>
                 {(parseInt(dobFieldState.required) && handleErrors.dob) &&
                     <span id="dob-error" rol="alert" className='error-text text-bold'>
-                        Date of Birth must follow the format of 01 19 2000.
+                        {dobField.error_msg}
                     </span>
                 }
                 </Fieldset>
@@ -286,7 +286,7 @@ function PersonalInfo(props){
                         />
                         {((telephoneFieldState.required === "1")&& handleErrors.phone_number) &&
                             <span id="phone-number-error" rol="alert" className='error-text'>
-                                Phone number must be 10 digits.
+                                {phoneNumberField.error_msg}
                             </span>
                         }
                     </div>
@@ -323,10 +323,10 @@ function PersonalInfo(props){
                 {prevTitleField.label}
             <Dropdown id="title-select-2" className="radius-md" name="title-select-2" value={props.fieldData.prev_title} onChange={props.saveFieldData('prev_title')} autoComplete="off">
                 <option>- Select -{' '}</option>
-                <option value="Mr">Mr.</option>
-                <option value="Miss">Miss</option>
-                <option value="Ms">Ms.</option>
-                <option value="Mrs">Mrs.</option>
+                <option value={prevTitleField.options[0].value}>{prevTitleField.options[0].key}</option>
+                <option value={prevTitleField.options[1].value}>{prevTitleField.options[1].key}</option>
+                <option value={prevTitleField.options[2].value}>{prevTitleField.options[2].key}</option>
+                <option value={prevTitleField.options[3].value}>{prevTitleField.options[3].key}</option>
             </Dropdown>
             </Label>
             </Grid>
@@ -349,7 +349,7 @@ function PersonalInfo(props){
                 />
                 {(parseInt(nameFieldState.required) && handleErrors.prev_first_name) &&
                     <span id="prev-first-name-error" role="alert" className='error-text'>
-                        First name must be filled out.
+                        {prevFirstNameField.error_msg}
                     </span>
                 }
                 </Label>
@@ -389,7 +389,7 @@ function PersonalInfo(props){
                     />
                 {(parseInt(nameFieldState.required) && handleErrors.prev_last_name) &&
                     <span id="prev-last-name-error" role="alert" className='error-text'>
-                        Last name must be filled out.
+                        {prevLastNameField.error_msg}
                     </span>
                 }
                 </Label>
@@ -401,11 +401,11 @@ function PersonalInfo(props){
                 {prevSuffixField.label}
             <Dropdown id="suffix-select-2" className="radius-md" name="suffix-select-2" value={props.fieldData.prev_suffix} onChange={props.saveFieldData('prev_suffix')} autoComplete="off" required={parseInt(nameFieldState.required)}>
                 <option>- Select -{' '}</option>
-                <option value="Jr.">Jr.</option>
-                <option value="Sr.">Sr.</option>
-                <option value="II">II</option>
-                <option value="III">III</option>
-                <option value="IV">IV</option>
+                <option value={prevSuffixField.options[0].value}>{prevSuffixField.options[0].key}</option>
+                <option value={prevSuffixField.options[1].value}>{prevSuffixField.options[1].key}</option>
+                <option value={prevSuffixField.options[2].value}>{prevSuffixField.options[2].key}</option>
+                <option value={prevSuffixField.options[3].value}>{prevSuffixField.options[3].key}</option>
+                <option value={prevSuffixField.options[4].value}>{prevSuffixField.options[4].key}</option>
             </Dropdown>
             </Label>
             </Grid>

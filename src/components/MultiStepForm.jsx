@@ -9,19 +9,19 @@ import Delivery from "./FormSections/Delivery";
 import PoliticalParty from './FormSections/PoliticalParty';
 import { phoneFormat, dateFormat } from './HelperFunctions/ValidateField';
 import { fetchData } from './HelperFunctions/JsonHelper.jsx';
+import DOMPurify from 'dompurify';
 import BackButton from './BackButton'
 import NextButton from './NextButton';
 
 
 function MultiStepForm(props) {
-    const [content, setContent] = useState()
+    const content = props.content;
     const navContent = props.navContent;
     const fieldContent = props.fieldContent;
 
-    //old registration data
-    useEffect(() => {
-        fetchData("registration-form.json", setContent);
-    }, []);
+    const mainContent = content.find(item => item.uuid ==="2c597df4-53b6-4ef5-8301-7817b04e1099");
+    const mainContentTitle = DOMPurify.sanitize(mainContent.title);
+    const mainContentBody = DOMPurify.sanitize(mainContent.body);
 
     //Field data controls
     const [fieldData, setFieldData] = useState({
@@ -228,8 +228,8 @@ function MultiStepForm(props) {
                 <ProgressBar step={step} content={navContent}/>
                 {step < 5 &&
                     <div>
-                        <h1>{content.main_heading}: {props.stateData.name}</h1>
-                        <p><strong>{content.reminder}</strong>{content.reminder_text}</p>
+                        <h1>{mainContentTitle.replace("@state_name", props.stateData.name)}</h1>
+                        <div dangerouslySetInnerHTML= {{__html: mainContentBody}}/>
                     </div>
                 }
 
