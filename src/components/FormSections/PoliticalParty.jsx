@@ -3,9 +3,9 @@ import { Label, TextInput } from '@trussworks/react-uswds';
 import { restrictType, checkForErrors } from '../HelperFunctions/ValidateField';
 
 function PoliticalParty(props){
+    const headings = props.headings;
     const content = props.content;
     const fields = props.fieldContent;
-    const stateInstructions = props.stateData.state_field_instructions;
     const nvrfStateFields = props.stateData.nvrf_fields;
 
 
@@ -21,7 +21,7 @@ function PoliticalParty(props){
 
     return (
         <>
-        <h2>{content.political_party_heading}</h2>
+        <h2>{headings.step_label_4}</h2>
         <div className="usa-alert usa-alert--info">
             <div className="usa-alert__body">
                 <p>{content.party_text}</p>

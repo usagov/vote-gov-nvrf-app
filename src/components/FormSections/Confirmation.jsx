@@ -2,6 +2,7 @@ import { Alert, Button, Checkbox } from '@trussworks/react-uswds';
 import DOMPurify from 'dompurify';
 
 function Confirmation(props){
+    const headings = props.headings;
     const content = props.content;
     const fieldData = props.fieldData;
     const currentAddress = fieldData.street_address + fieldData.apt_num + fieldData.city + fieldData.zip_code;
@@ -32,15 +33,15 @@ function Confirmation(props){
                     <div dangerouslySetInnerHTML= {{__html: confirmBody}}/>
 
             <div className='grid-row'>
-                <h2>Personal Information</h2>
-            <div className='edit-btn'>
-                <Button
-                    type="button"
-                    onClick={props.handleGoBackSteps(4)}
-                    unstyled>
-                    Edit
-                </Button>
-            </div>
+                <h2>{headings.step_label_1}</h2>
+                <div className='edit-btn'>
+                    <Button
+                        type="button"
+                        onClick={props.handleGoBackSteps(4)}
+                        unstyled>
+                        Edit
+                    </Button>
+                </div>
             </div>
                     {/*Jump to Personal Info Section (Step 1) */}
                     <p><strong>Current Name</strong></p>
@@ -74,7 +75,7 @@ function Confirmation(props){
                     </ul>
                     <span className="divider-grey"></span>
         <div className='grid-row'>
-                <h2>Address</h2>
+                <h2>{headings.step_label_2}</h2>
             <div className='edit-btn'>
                 <Button
                     type="button"
@@ -127,8 +128,8 @@ function Confirmation(props){
                     </ul>
                     <span className="divider-grey"></span>
             <div className='grid-row'>
-                    <h2>Identification</h2>
-                <div className='edit-btn'> 
+                    <h2>{headings.step_label_3}</h2>
+                <div className='edit-btn'>
                     <Button
                         type="button"
                         onClick={props.handleGoBackSteps(2)}
@@ -144,7 +145,7 @@ function Confirmation(props){
                     </ul>
                     <span className="divider-grey"></span>
         <div className='grid-row'>
-                    <h2>Choice of Political Party</h2>
+                    <h2>{headings.step_label_4}</h2>
             <div className='edit-btn'>
                 <Button
                     type="button"
@@ -152,7 +153,7 @@ function Confirmation(props){
                     unstyled>
                     Edit
                 </Button>
-            </div>        
+            </div>
         </div>
                     <ul>
                         <li>Political party: {fieldDataOverride_party}</li>

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { restrictType, checkForErrors, jumpTo } from '../HelperFunctions/ValidateField';
 
 function PersonalInfo(props){
+    const headings = props.headings;
     const content = props.content;
     const fields = props.fieldContent;
     const changeRegistrationVisible = (props.registrationPath === 'update') ? true : false;
@@ -54,10 +55,10 @@ function PersonalInfo(props){
 
     return (
         <>
-        <h2>{content.personal_info_heading}</h2>
+        <h2>{headings.step_label_1}</h2>
 
         {changeRegistrationVisible && (
-            <Checkbox id="prev-name-change" name="prev-name-change" checked={props.previousName} onChange={props.onChangePreviousName} label={content.personal_info_checkbox} />
+            <Checkbox id="prev-name-change" name="prev-name-change" checked={props.prevh2iousName} onChange={props.onChangePreviousName} label={content.personal_info_checkbox} />
         )}
 
         <div className="usa-alert usa-alert--info">
@@ -65,7 +66,7 @@ function PersonalInfo(props){
                 <p>{content.personal_info_help_text}</p>
             </div>
         </div>
-            <h2>What is your legal name?</h2>
+            <h3>What is your legal name?</h3>
             <p>Using the name on your driver’s license or other nondriver ID is recommended.</p>
         {nameFieldState && (
             <>

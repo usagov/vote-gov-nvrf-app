@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { restrictType, checkForErrors } from '../HelperFunctions/ValidateField';
 
 function Addresses(props){
+    const headings = props.headings;
     const content = props.content;
     const fields = props.fieldContent;
     const changeRegistrationVisible = (props.registrationPath === 'update') ? true : false;
@@ -64,7 +65,7 @@ function Addresses(props){
 
     return (
         <>
-        <h3>{content.address_heading}</h3>
+        <h2>{headings.step_label_2}</h2>
 
         {addressFieldsState && (
             <div>

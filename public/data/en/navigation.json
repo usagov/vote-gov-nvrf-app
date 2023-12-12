@@ -14,15 +14,15 @@
         "next": "Next",
         "start": "Start your online registration on vote.gov",
         "continue": "Continue with mail-in registration on vote.gov",
-        "address_location": "Continue to address & location",
+        "address_location": "Continue to address and location",
         "identification": "Continue to identification",
         "political_party": "Continue to political party",
         "confirm_info": "Confirm your information"
     },
-    "step_label_1": "Personal Information",
-    "step_label_2": "Address and Location",
+    "step_label_1": "Personal information",
+    "step_label_2": "Address and location",
     "step_label_3": "Identification",
-    "step_label_4": "Political Party",
-    "step_label_5": "Confirm Your Information",
-    "step_label_6": "Print Your Completed Form"
+    "step_label_4": "Political party",
+    "step_label_5": "Confirm your information",
+    "step_label_6": "Print your completed form"
 }

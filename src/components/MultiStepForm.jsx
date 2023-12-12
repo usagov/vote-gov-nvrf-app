@@ -245,6 +245,7 @@ function MultiStepForm(props) {
                 previousName={previousName}
                 onChangePreviousName={onChangePreviousName}
                 handlePrev={props.handlePrev}
+                headings={navContent}
                 content={content}
                 fieldContent={fieldContent}
                 />
@@ -264,6 +265,7 @@ function MultiStepForm(props) {
                 onChangePreviousAddressCheckbox={onChangePreviousAddressCheckbox}
                 hasMailAddress={hasMailAddress}
                 onChangeMailAddressCheckbox={onChangeMailAddressCheckbox}
+                headings={navContent}
                 content={content}
                 fieldContent={fieldContent}
                 />
@@ -279,6 +281,7 @@ function MultiStepForm(props) {
                 handlePrev={handlePrev}
                 saveIdType={saveIdType}
                 idType={idType}
+                headings={navContent}
                 content={content}
                 fieldContent={fieldContent}
                 />
@@ -291,6 +294,7 @@ function MultiStepForm(props) {
                 saveFieldData = {saveFieldData}
                 registrationPath={props.registrationPath}
                 handlePrev={handlePrev}
+                headings={navContent}
                 content={content}
                 fieldContent={fieldContent}
                 />
@@ -299,6 +303,7 @@ function MultiStepForm(props) {
                 <Confirmation
                 state={props.state}
                 stateData={props.stateData}
+                headings={navContent}
                 content={props.content}
                 fieldData={fieldData}
                 saveFieldData = {saveFieldData}
@@ -315,6 +320,7 @@ function MultiStepForm(props) {
                 <Delivery
                 state={props.state}
                 stateData={props.stateData}
+                headings={navContent}
                 content={props.content}
                 fieldData={fieldData}
                 saveFieldData = {saveFieldData}

@@ -4,11 +4,10 @@ import { restrictType, checkExpiration, checkForErrors, jumpTo } from '../Helper
 import DOMPurify from 'dompurify';
 
 function Identification(props){
+    const headings = props.headings;
     const content = props.content;
     const fields = props.fieldContent;
-    const stateInstructions = props.stateData.state_field_instructions;
     const nvrfStateFields = props.stateData.nvrf_fields;
-
 
     //Drupal field data
     const idTypeField = fields.find(item => item.uuid === "27d3a15c-f8c0-4035-9b0a-c2c0f674519c");
@@ -55,7 +54,7 @@ function Identification(props){
 
     return (
         <>
-        <h2>{content.identification_heading}</h2>
+        <h2>{headings.step_label_3}</h2>
         <div className="usa-alert usa-alert--info">
             <div className="usa-alert__body">
                 <p>{"The state instructions will go here."}</p>
