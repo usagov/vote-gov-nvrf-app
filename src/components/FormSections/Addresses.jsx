@@ -81,13 +81,13 @@ function Addresses(props){
                 { !props.hasNoAddress && (<div>
                     <div className="usa-alert usa-alert--info">
                         <div className="usa-alert__body">
-                            <p>{content.home_address_section_text_1}</p>
+                        <div dangerouslySetInnerHTML= {{__html: streetAddressField.section_description}}/>
                             {!changeRegistrationVisible &&
-                                <p>{content.home_address_section_text_2}</p>
+                                <div dangerouslySetInnerHTML= {{__html: streetAddressField.instructions}}/>
                             }
                         </div>
                     </div>
-                    <h3>{content.home_address_heading}</h3>
+                    <h3>What is your current address?</h3>
 
                     <Grid row gap>
                         <Grid col={12}>
@@ -108,7 +108,7 @@ function Addresses(props){
                                 />
                             {((parseInt(addressFieldsState.required)) && handleErrors.street) &&
                                 <span id="street-address-error" role="alert" className='error-text'>
-                                    {content.street_address_error}
+                                    {streetAddressField.error_msg}
                                 </span>
                             }
                             </Label>
@@ -154,7 +154,7 @@ function Addresses(props){
                                 />
                             {((parseInt(addressFieldsState.required)) && handleErrors.city) &&
                                 <span id="city-error" role="alert" className='error-text'>
-                                    {content.city_error}
+                                    {cityField.error_msg}
                                 </span>
                             }
                             </Label>
@@ -180,7 +180,7 @@ function Addresses(props){
                         <Grid col={3}>
                         <div className={((parseInt(addressFieldsState.required)) && handleErrors.zip) ? 'error-container' : ''}>
                             <Label className="text-bold" htmlFor="zip">{zipcodeField.label} {(addressFieldsState.required === "1") && <span className={'required-text'}>*</span>}</Label>
-                            <span className="usa-hint" id="zip-hint">{content.zipcode_hint}</span>
+                            <span className="usa-hint" id="zip-hint">{zipcodeField.help_text}</span>
                             <TextInput
                                 id="zip"
                                 className="radius-md"
@@ -199,7 +199,7 @@ function Addresses(props){
                             />
                             {((parseInt(addressFieldsState.required)) && handleErrors.zip) &&
                                     <span id="zip-error" role="alert" className='error-text text-bold'>
-                                        {content.zipcode_error}
+                                        {zipcodeField.error_msg}
                                     </span>
                             }
                         </div>
@@ -215,14 +215,11 @@ function Addresses(props){
                     <>
                         {props.hasNoAddress && (
                         <div className="usa-alert usa-alert--info">
-                            <div className="usa-alert__body">
-                                <p>{content.mailing_address_text_2}</p>
-                            </div>
+                            <div className="usa-alert__body" dangerouslySetInnerHTML= {{__html: differentMailAddressField.section_description}}/>
                         </div>)}
 
                         <div className="margin-top-3">
-                            <h3>{content.mail_address_heading}</h3>
-                            <p>{content.mailing_address_text}</p>
+                            <div dangerouslySetInnerHTML= {{__html: differentMailAddressField.instructions}}/>
                         </div>
 
                         <Grid row gap>
@@ -244,7 +241,7 @@ function Addresses(props){
                                 />
                                 {((parseInt(addressFieldsState.required)) && handleErrors.mail_street) &&
                                     <span id="mail-street-error" role="alert" className='error-text'>
-                                        {content.mail_address_error}
+                                        {mailStreetAddressField.error_msg}
                                     </span>
                                 }
                             </Label>
@@ -290,7 +287,7 @@ function Addresses(props){
                                 />
                                 {((parseInt(addressFieldsState.required)) && handleErrors.mail_city) &&
                                     <span id="mail-city-error" role="alert" className='error-text'>
-                                       {content.city_error}
+                                       {mailCityField.error_msg}
                                     </span>
                                 }
                                 </Label>
@@ -316,7 +313,7 @@ function Addresses(props){
                                 />
                                 {((parseInt(addressFieldsState.required)) && handleErrors.mail_state) &&
                                     <span id="mail-state-error" role="alert" className='error-text'>
-                                     {content.mail_state_error}
+                                        {mailStateField.error_msg}
                                     </span>
                                 }
                                 </Label>
@@ -346,7 +343,7 @@ function Addresses(props){
                                 />
                                 {((parseInt(addressFieldsState.required)) && handleErrors.mail_zip) &&
                                     <span id="mail-zip-error" role="alert" className='error-text text-bold'>
-                                    {content.zipcode_error}
+                                    {mailZipcodeField.error_msg}
                                     </span>
                                 }
                             </div>
@@ -359,8 +356,7 @@ function Addresses(props){
                 {/******* PREVIOUS ADDRESS BLOCK ********/}
                 {props.hasPreviousAddress && (
                     <>
-                        <h3>{content.previous_address_heading}</h3>
-                        <p>{content.previous_address_text}</p>
+                        <div dangerouslySetInnerHTML= {{__html: prevAddressField.section_description}}/>
                         <Grid row gap>
                             <Grid col={12}>
                             <div className={((parseInt(addressFieldsState.required)) && handleErrors.prev_street) ? 'error-container' : ''}>
@@ -380,7 +376,7 @@ function Addresses(props){
                                 />
                                 {((parseInt(addressFieldsState.required)) && handleErrors.prev_street) &&
                                     <span id="prev-street-error" role="alert" className='error-text'>
-                                        {content.prev_street_address_error}
+                                        {prevStreetAddressField.error_msg}
                                     </span>
                                 }
                                 </Label>
@@ -426,7 +422,7 @@ function Addresses(props){
                                 />
                                 {((parseInt(addressFieldsState.required)) && handleErrors.prev_city) &&
                                     <span id="prev-city-error" role="alert" className='error-text'>
-                                        {content.city_error}
+                                        {prevCityField.error_msg}
                                     </span>
                                 }
                                 </Label>
@@ -452,7 +448,7 @@ function Addresses(props){
                                 />
                                 {((parseInt(addressFieldsState.required)) && handleErrors.prev_state) &&
                                     <span id="prev-state-error" role="alert" className='error-text'>
-                                        {content.prev_state_error}
+                                        {prevStateField.error_msg}
                                     </span>
                                 }
                                 </Label>
@@ -482,7 +478,7 @@ function Addresses(props){
                                 />
                                 {((parseInt(addressFieldsState.required)) && handleErrors.prev_zip) &&
                                     <span id="prev-zip-error" role="alert" className='error-text text-bold'>
-                                        {content.zipcode_error}
+                                        {prevZipcodeField.error_msg}
                                     </span>
                                 }
                             </div>
