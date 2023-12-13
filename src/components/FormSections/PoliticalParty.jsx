@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { Label, TextInput } from '@trussworks/react-uswds';
 import { restrictType, checkForErrors } from '../HelperFunctions/ValidateField';
+import DOMPurify from 'dompurify';
 
 function PoliticalParty(props){
     const headings = props.headings;
     const content = props.content;
+    const state = props.stateData;
     const fields = props.fieldContent;
     const nvrfStateFields = props.stateData.nvrf_fields;
-
+    const partyStateInstructions = DOMPurify.sanitize(state.political_party_inst);
 
     //Drupal field data
     const partyField = fields.find(item => item.uuid === "fd516f06-11bb-4c39-9080-735ed98100cc");
@@ -22,12 +24,10 @@ function PoliticalParty(props){
     return (
         <>
         <h2>{headings.step_label_4}</h2>
+        {partyStateInstructions && (
         <div className="usa-alert usa-alert--info">
-            <div className="usa-alert__body">
-                <p>{content.party_text}</p>
-                <p>{"The state party text will go here."}</p>
-            </div>
-        </div>
+            <div className="usa-alert__body" dangerouslySetInnerHTML= {{__html: partyStateInstructions}}/>
+        </div>)}
 
         {partyFieldState && (
             <div className={(parseInt(partyFieldState.required) && handleErrors.party_choice) ? 'error-container' : ''}>

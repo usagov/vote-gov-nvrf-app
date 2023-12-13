@@ -61,13 +61,16 @@ function PersonalInfo(props){
             <Checkbox id="prev-name-change" name="prev-name-change" checked={props.prevh2iousName} onChange={props.onChangePreviousName} label={"I have legally changed my name since I last registered in this state."} />
         )}
 
+        {firstNameField.section_description && (
         <div className="usa-alert usa-alert--info">
             <div className="usa-alert__body">
                 <p>{firstNameField.section_description}</p>
             </div>
-        </div>
-            <h3>What is your legal name?</h3>
-            <p>Enter your full legal name. Be sure to include your First, Middle and Last name. Do not use nicknames or initials.</p>
+        </div>)}
+
+        <h3>What is your legal name?</h3>
+        <p>Enter your full legal name. Be sure to include your First, Middle and Last name. Do not use nicknames or initials.</p>
+
         {nameFieldState && (
             <>
                 <Grid row gap>

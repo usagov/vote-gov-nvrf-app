@@ -160,11 +160,12 @@ function Confirmation(props){
                     </ul>
                 </div>
 
+                {confirmInstructions && (
                 <div className="usa-alert usa-alert--info">
                     <div className="usa-alert__body">
                         <div dangerouslySetInnerHTML= {{__html: confirmInstructions}}/>
                     </div>
-                </div>
+                </div>)};
 
                 <div className={props.error ? 'error-container margin-y-4' : 'margin-y-4'}>
                     <Checkbox

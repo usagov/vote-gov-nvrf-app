@@ -5,7 +5,7 @@ import DOMPurify from 'dompurify';
 
 function Identification(props){
     const headings = props.headings;
-    const content = props.content;
+    const state = props.stateData;
     const fields = props.fieldContent;
     const nvrfStateFields = props.stateData.nvrf_fields;
 
@@ -17,6 +17,7 @@ function Identification(props){
     const ssnFullField = fields.find(item => item.uuid === "fe8cf91e-f872-4ed7-848c-09c99a7d83c8");
     const noIdField = fields.find(item => item.uuid === "eb0ce8c5-b4f7-4aae-a0b9-84f0434d2edb");
     const idTypeFieldInstructions = DOMPurify.sanitize(idTypeField.instructions);
+    const idStateInstructions = DOMPurify.sanitize(state.id_inst);
     const noIdFieldInstructions = DOMPurify.sanitize(noIdField.instructions);
 
     //Field requirements by state data
@@ -35,11 +36,12 @@ function Identification(props){
     return (
         <>
         <h2>{headings.step_label_3}</h2>
+
+        {idStateInstructions && (
         <div className="usa-alert usa-alert--info">
-            <div className="usa-alert__body">
-                <p>{"The state instructions will go here."}</p>
-            </div>
-        </div>
+            <div className="usa-alert__body" dangerouslySetInnerHTML= {{__html: idStateInstructions}}/>
+        </div>)}
+
         {idFieldState && (
             <div>
                 <h3>{idTypeField.label}</h3>

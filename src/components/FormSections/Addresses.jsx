@@ -79,14 +79,15 @@ function Addresses(props){
                 </div>
                 {/******** Current Address Block *********/}
                 { !props.hasNoAddress && (<div>
+                    {true && (//section_description
                     <div className="usa-alert usa-alert--info">
                         <div className="usa-alert__body">
-                        <div dangerouslySetInnerHTML= {{__html: streetAddressField.section_description}}/>
+                        <div dangerouslySetInnerHTML= {{__html: "<p>Default section description placeholder</p>"}}/>
                             {!changeRegistrationVisible &&
                                 <div dangerouslySetInnerHTML= {{__html: streetAddressField.instructions}}/>
                             }
                         </div>
-                    </div>
+                    </div> )}
                     <h3>What is your current address?</h3>
 
                     <Grid row gap>
@@ -215,7 +216,7 @@ function Addresses(props){
                     <>
                         {props.hasNoAddress && (
                         <div className="usa-alert usa-alert--info">
-                            <div className="usa-alert__body" dangerouslySetInnerHTML= {{__html: differentMailAddressField.section_description}}/>
+                            <div className="usa-alert__body" dangerouslySetInnerHTML= {{__html: "<p>No Address section description placeholder.</p>"}}/>
                         </div>)}
 
                         <div className="margin-top-3">
@@ -356,7 +357,10 @@ function Addresses(props){
                 {/******* PREVIOUS ADDRESS BLOCK ********/}
                 {props.hasPreviousAddress && (
                     <>
-                        <div dangerouslySetInnerHTML= {{__html: prevAddressField.section_description}}/>
+                        { true && (//section_description
+                        <div className="usa-alert usa-alert--info">
+                            <div className="usa-alert__body" dangerouslySetInnerHTML= {{__html: "<p>Has a previous address section description placeholder.</p>"}}/>
+                        </div>)}
                         <Grid row gap>
                             <Grid col={12}>
                             <div className={((parseInt(addressFieldsState.required)) && handleErrors.prev_street) ? 'error-container' : ''}>
