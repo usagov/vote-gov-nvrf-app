@@ -1,16 +1,13 @@
 import { Link, Icon } from '@trussworks/react-uswds';
 import NextButton from '../NextButton';
-import StepsList from './StepsList';
 import DOMPurify from "dompurify";
 
 function ByMail(props) {
     const content = props.content;
     const navContent = props.navContent;
     const stateContent = props.stateData;
-    const cards = props.cards;
 
-    if (content && cards && navContent) {
-        const listContent = cards.find(item => item.uuid === "33a9859d-a62c-4f8e-9e92-5a70f529b62a");
+    if (content && navContent) {
         const contentBody = DOMPurify.sanitize(content.body).replace("@state_name", props.stateData.name);
 
         return (
@@ -31,12 +28,6 @@ function ByMail(props) {
                         <Icon.Launch title="External link opens new window"/></strong>
                     </Link>
                 </div>
-
-                <div className="divider padding-y-6">
-                    <span>{"OK"}</span>
-                </div>
-
-                <StepsList content={listContent}/>
 
                 <NextButton type={'submit'} onClick={props.handleNext} text={navContent.next.continue}/>
 

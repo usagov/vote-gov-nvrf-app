@@ -1,6 +1,7 @@
 import { Fieldset, Checkbox, Label } from '@trussworks/react-uswds';
 import BackButton from './BackButton';
 import NextButton from "./NextButton";
+import StepsList from './RegType/StepsList';
 import DOMPurify from "dompurify";
 
 function Eligibility(props) {
@@ -8,10 +9,12 @@ function Eligibility(props) {
     const data = props.content;
     const navContent = props.navContent;
     const fields = props.fieldContent;
+    const cards = props.cards;
 
-    if (data && fields && navContent) {
+    if (data && fields && navContent && cards) {
         const content = data.find(item => item.uuid === "94eab1c9-8343-4747-94b4-08732a175614");
         const eligibility = fields.find(item => item.uuid === "39fc63ad-ed5a-4ad5-98d3-aa236c96c61c");
+        const listContent = cards.find(item => item.uuid === "33a9859d-a62c-4f8e-9e92-5a70f529b62a");
         const contentBody = DOMPurify.sanitize(content.body);
         const eligibilityInstructions = DOMPurify.sanitize(eligibility.instructions);
         return (
@@ -19,6 +22,7 @@ function Eligibility(props) {
                 <BackButton type={'button'} onClick={props.handlePrev} text={navContent.back.state_reg_options}/>
 
                 <h1>{content.title.replace("@state_name", props.stateData.name)}</h1>
+                <StepsList content={listContent}/>
                 <div dangerouslySetInnerHTML= {{__html: contentBody.replace("@state_name", props.stateData.name)}}/>
 
                 {stateContent.postmarked_mail_deadline_info}{stateContent.received_mail_deadline_info}

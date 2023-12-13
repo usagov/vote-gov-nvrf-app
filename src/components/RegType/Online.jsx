@@ -1,6 +1,5 @@
 import { Button, Link, Icon } from '@trussworks/react-uswds';
 import NextButton from '../NextButton';
-import StepsList from './StepsList';
 import DOMPurify from "dompurify";
 
 function Online(props) {
@@ -33,12 +32,6 @@ function Online(props) {
                     <Icon.Launch title="External link opens new window"/></strong>
                 </Link>
             </div>
-
-            <div  className="divider padding-y-205">
-                <span>{"OR"}</span>
-            </div>
-
-            <StepsList content={listContent}/>
 
             <NextButton type={'submit'} onClick={props.handleNext} text={navContent.next.start}/>
 

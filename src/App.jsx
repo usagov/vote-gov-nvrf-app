@@ -105,7 +105,6 @@ function App() {
               stateData={stateData}
               content={content}
               navContent={navContent}
-              cards={cards}
           />}
         {step === 3 &&
           <Eligibility
@@ -115,6 +114,7 @@ function App() {
           stateData={stateData}
           content={content}
           navContent={navContent}
+          cards={cards}
           fieldContent={fieldContent}
           hasConfirmed={hasConfirmed}
           error={error}
