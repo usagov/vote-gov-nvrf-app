@@ -19,7 +19,7 @@ function Eligibility(props) {
                 <BackButton type={'button'} onClick={props.handlePrev} text={navContent.back.state_reg_options}/>
 
                 <h1>{content.title.replace("@state_name", props.stateData.name)}</h1>
-                <div dangerouslySetInnerHTML= {{__html: contentBody}}/>
+                <div dangerouslySetInnerHTML= {{__html: contentBody.replace("@state_name", props.stateData.name)}}/>
 
                 {stateContent.postmarked_mail_deadline_info}{stateContent.received_mail_deadline_info}
 
