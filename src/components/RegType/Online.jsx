@@ -5,10 +5,8 @@ import DOMPurify from "dompurify";
 function Online(props) {
     const content = props.content;
     const navContent = props.navContent;
-    const cards = props.cards;
 
-    if (content && cards && navContent) {
-        const listContent = cards.find(item => item.uuid === "33a9859d-a62c-4f8e-9e92-5a70f529b62a");
+    if (content && navContent) {
         const contentBody = DOMPurify.sanitize(content.body).replace("@state_name", props.stateData.name);
         return (
             <>

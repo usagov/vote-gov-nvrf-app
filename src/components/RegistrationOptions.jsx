@@ -22,7 +22,6 @@ function RegistrationOptions(props) {
                     <Online
                         content={onlineContent}
                         navContent={props.navContent}
-                        cards={props.cards}
                         stateData={props.stateData}
                         handleNext={props.handleNext}
                     />}
@@ -30,7 +29,6 @@ function RegistrationOptions(props) {
                     <ByMail
                         content={mailContent}
                         navContent={props.navContent}
-                        cards={props.cards}
                         stateData={props.stateData}
                         handleNext={props.handleNext}
                     />}
