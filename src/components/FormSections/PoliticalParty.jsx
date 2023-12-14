@@ -13,6 +13,7 @@ function PoliticalParty(props){
 
     //Drupal field data
     const partyField = fields.find(item => item.uuid === "fd516f06-11bb-4c39-9080-735ed98100cc");
+    const partyGeneralInstructions = DOMPurify.sanitize(partyField.instructions)
 
     //Field requirements by state data
     const partyFieldState = (nvrfStateFields.find(item => item.uuid === partyField.uuid));
@@ -24,8 +25,9 @@ function PoliticalParty(props){
     return (
         <>
         <h2>{headings.step_label_4}</h2>
-        {partyStateInstructions && (
+        {(partyStateInstructions || partyGeneralInstructions) && (
         <div className="usa-alert usa-alert--info">
+            <div className="usa-alert__body" dangerouslySetInnerHTML= {{__html: partyGeneralInstructions}}/>
             <div className="usa-alert__body" dangerouslySetInnerHTML= {{__html: partyStateInstructions}}/>
         </div>)}
 
@@ -48,7 +50,7 @@ function PoliticalParty(props){
                 />
                 {((partyFieldState.required === "1") && handleErrors.party_choice) &&
                     <span id="party-choice-error" role="alert" className='error-text text-bold'>
-                        Choice of party must be filled out.
+                        {partyField.error_msg}
                     </span>
                 }
                 </Label>

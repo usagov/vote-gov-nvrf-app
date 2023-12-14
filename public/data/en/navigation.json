@@ -13,11 +13,11 @@
     "next": {
         "next": "Next",
         "start": "Start your online registration on vote.gov",
-        "continue": "Continue with mail-in registration on vote.gov",
+        "continue": "I want to use vote.gov’s mail-in form",
         "address_location": "Continue to address and location",
         "identification": "Continue to identification",
         "political_party": "Continue to political party",
-        "confirm_info": "Confirm your information"
+        "confirm_info": "Continue to review your information"
     },
     "step_label_1": "Personal information",
     "step_label_2": "Address and location",

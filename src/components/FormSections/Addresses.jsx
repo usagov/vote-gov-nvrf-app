@@ -230,7 +230,7 @@ function Addresses(props){
                         </div>)}
 
                         <h3>{mailAddressSectionField.label}</h3>
-                        <div dangerouslySetInnerHTML= {{__html: differentMailAddressField.instructions}}/>
+                        <div dangerouslySetInnerHTML= {{__html: mailAddressSectionField.section_description}}/>
 
                         <Grid row gap>
                             <Grid col={12}>
