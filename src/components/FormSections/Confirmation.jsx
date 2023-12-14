@@ -33,14 +33,11 @@ function Confirmation(props){
 
             <div className='grid-row'>
                 <h2>Personal Information</h2>
-            <div className='edit-btn'>
-                <Button
-                    type="button"
-                    onClick={props.handleGoBackSteps(4)}
-                    unstyled>
-                    Edit
-                </Button>
-            </div>
+                <div className='edit-btn'>
+                    <button type="button" class="usa-button--unstyled" data-testid="button" onClick={props.handleGoBackSteps(4)}>
+                        Edit
+                    </button>
+                </div>
             </div>
                     {/*Jump to Personal Info Section (Step 1) */}
                     <p><strong>Current Name</strong></p>
@@ -73,17 +70,14 @@ function Confirmation(props){
                         <li>Race/Ethnicity: {fieldDataOverride_race}</li>
                     </ul>
                     <span className="divider-grey"></span>
-        <div className='grid-row'>
+            <div className='grid-row'>
                 <h2>Address</h2>
-            <div className='edit-btn'>
-                <Button
-                    type="button"
-                    onClick={props.handleGoBackSteps(3)}
-                    unstyled>
-                    Edit
-                </Button>
+                <div className='edit-btn'>
+                <button type="button" class="usa-button--unstyled" data-testid="button" onClick={props.handleGoBackSteps(3)}>
+                        Edit
+                </button>
+                </div>
             </div>
-        </div>
                     <p><strong>Current Address</strong></p>
                     {!currentAddress && (
                         <Alert type="info" headingLevel="h4" noIcon>
@@ -127,14 +121,11 @@ function Confirmation(props){
                     </ul>
                     <span className="divider-grey"></span>
             <div className='grid-row'>
-                    <h2>Identification</h2>
+                <h2>Identification</h2>
                 <div className='edit-btn'> 
-                    <Button
-                        type="button"
-                        onClick={props.handleGoBackSteps(2)}
-                        unstyled>
-                        Edit
-                    </Button>
+                <button type="button" class="usa-button--unstyled" data-testid="button" onClick={props.handleGoBackSteps(2)}>
+                    Edit
+                </button>
                 </div>
             </div>
                     <ul>
@@ -143,17 +134,14 @@ function Confirmation(props){
                         <li>ID expire date: {fieldDataOverride_id_expire_date}</li>
                     </ul>
                     <span className="divider-grey"></span>
-        <div className='grid-row'>
-                    <h2>Choice of Political Party</h2>
-            <div className='edit-btn'>
-                <Button
-                    type="button"
-                    onClick={props.handleGoBackSteps(1)}
-                    unstyled>
-                    Edit
-                </Button>
-            </div>        
-        </div>
+            <div className='grid-row'>
+                <h2>Choice of Political Party</h2>
+                <div className='edit-btn'>
+                <button type="button" class="usa-button--unstyled" data-testid="button" onClick={props.handleGoBackSteps(1)}>
+                        Edit
+                </button>
+                </div>        
+            </div>
                     <ul>
                         <li>Political party: {fieldDataOverride_party}</li>
                     </ul>
