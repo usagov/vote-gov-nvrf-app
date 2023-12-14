@@ -92,6 +92,7 @@ function App() {
           handleNext={handleNext}
           handleSubmit={handleSubmit}
           states={states}
+          statesList={statesList}
           getSelectedState={getSelectedState}
           state={selectedState}
           stateData={stateData}

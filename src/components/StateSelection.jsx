@@ -7,12 +7,7 @@ import DOMPurify from "dompurify";
 function StateSelection(props) {
     const content = props.content;
     const navContent = props.navContent;
-
-    const statesList = []
-    for (let i = 0; i < props.states.length; i++) {
-        let stateName = props.states[i].name;
-        statesList.push(stateName);
-    };
+    const statesList = props.statesList;
 
     const [handleErrors, setHandleErrors] = useState({
         state_selected: false

@@ -1,5 +1,5 @@
-import { IconList, IconListItem, IconListContent, IconListIcon, IconListTitle } from '@trussworks/react-uswds';
 import DOMPurify from "dompurify";
+import {renderToStaticMarkup} from "react-dom/server";
 
 function StepsList(props) {
     const content = props.content;
@@ -32,66 +32,16 @@ function StepsList(props) {
     <path d="M21.8955 32.8203H30.5689V34.9887H21.8955V32.8203Z" fill="#11385B"/>
     </svg>
 
+    let contentBodyProcessed = contentBody.replace("@iconCompleteForm", renderToStaticMarkup(iconCompleteForm));
+    contentBodyProcessed = contentBodyProcessed.replace("@iconConfirmEligible", renderToStaticMarkup(iconConfirmEligible));
+    contentBodyProcessed = contentBodyProcessed.replace("@iconCheckmark", renderToStaticMarkup(iconCheckmark));
+    contentBodyProcessed = contentBodyProcessed.replace("@iconSendForm", renderToStaticMarkup(iconSendForm));
+
 
     return (
         <>
             <h2>{content.heading}</h2>
-            <div dangerouslySetInnerHTML= {{__html: contentBody}}/>
-            {/*
-            <IconList className="usa-icon-list--size-lg padding-top-1 padding-bottom-5">
-                <IconListItem className="margin-105">
-                    <IconListIcon className="text-primary-dark">
-                    <div className="text-primary-dark usa-icon-list__icon" data-testid="iconListIcon">
-                        {iconConfirmEligible}
-                    </div>
-                    </IconListIcon>
-                    <IconListContent>
-                    <IconListTitle type="h3">{"List Item 1"}</IconListTitle>
-                    <p>
-                        {"text"}
-                    </p>
-                    </IconListContent>
-                </IconListItem>
-                <IconListItem className="margin-105">
-                    <IconListIcon className="text-primary-dark">
-                    <div className="text-primary-dark usa-icon-list__icon" data-testid="iconListIcon">
-                        {iconCompleteForm}
-                    </div>
-                    </IconListIcon>
-                    <IconListContent>
-                    <IconListTitle type="h3">{"List item 2"}</IconListTitle>
-                    <p>
-                        {"text"}
-                    </p>
-                    </IconListContent>
-                </IconListItem>
-                <IconListItem className="margin-105">
-                    <IconListIcon className="text-primary-dark">
-                    <div className="text-primary-dark usa-icon-list__icon" data-testid="iconListIcon">
-                        {iconCheckmark}
-                    </div>
-                    </IconListIcon>
-                    <IconListContent>
-                    <IconListTitle type="h3">{"List Item 3"}</IconListTitle>
-                    <p>
-                        {"text"}
-                    </p>
-                    </IconListContent>
-                </IconListItem>
-                <IconListItem className="margin-105">
-                    <IconListIcon className="text-primary-dark">
-                    <div className="text-primary-dark usa-icon-list__icon" data-testid="iconListIcon">
-                        {iconSendForm}
-                    </div>
-                    </IconListIcon>
-                    <IconListContent>
-                    <IconListTitle type="h3">{"List item 4"}</IconListTitle>
-                    <p>
-                        {"text"}
-                    </p>
-                    </IconListContent>
-                </IconListItem>
-    </IconList> */}
+            <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: contentBodyProcessed}}/>
         </>
     );
 }
