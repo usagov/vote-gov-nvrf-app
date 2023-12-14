@@ -16,16 +16,16 @@ function Online(props) {
             <h1>{content.title.replace("@state_name", props.stateData.name)}</h1>
             <div dangerouslySetInnerHTML= {{__html: contentBody}}/> {/* TODO: Need to style each paragraph */}
             <div className="padding-top-3 padding-bottom-1">
-            <Link href={props.stateData.registration_url} className="usa-button" target="_blank">
+            <a href={props.stateData.registration_url} className="usa-button" target="_blank">
                     Go to %state_name%'s online form
                     <Icon.Launch title="External link opens new window"/>
-                </Link>
+                </a>
             </div>
             <div className="padding-bottom-3 padding-top-1">
-                <Link href={props.stateData.election_website_url} className="usa-button" target="_blank">
+                <a href={props.stateData.election_website_url} className="usa-button" target="_blank">
                 Check your registration
                     <Icon.Launch title="External link opens new window"/>
-                </Link>
+                </a>
             </div>
             <div>
                 <Link href={props.stateData.download_form} className="text-primary" target="_blank">

@@ -20,20 +20,20 @@ function ByMail(props) {
                 <div dangerouslySetInnerHTML= {{__html: contentBody}}/> {/* TODO: Need to style each paragraph */}
 
                 <div className="padding-bottom-3 padding-top-1">
-                    <Link href={props.stateData.election_website_url} className="usa-button" target="_blank">
+                    <a href={props.stateData.election_website_url} className="usa-button" target="_blank">
                         {"Check your registration"}
                         <Icon.Launch title="External link opens new window"/>
-                    </Link>
+                    </a>
                 </div>
                 <div>
-                    <Link href={props.stateData.download_form} className="text-primary" target="_blank">
+                    <a href={props.stateData.download_form} className="text-primary" target="_blank">
                         <strong className="text-primary underline-primary">Go to %state_name%'s mail-in form
                         <Icon.Launch title="External link opens new window"/></strong>
-                    </Link>
+                    </a>
                 </div>
 
                 <div className="divider padding-y-6">
-                    <span>{"OK"}</span>
+                    <span>{"OR"}</span>
                 </div>
 
                 <StepsList content={listContent}/>
