@@ -4,10 +4,11 @@
     "lang": "en",
     "nvrf_id": "choice_of_party",
     "name": "Choice of party",
-    "label": "Enter the name of party you wish to join or leave blank",
+    "label": "Enter the full name of the political party you wish to join or leave blank.",
     "help_text": "",
     "error_msg": "Choice of party must be filled out.",
-    "instructions": "<p>If you want to register with a party, enter the full name of the party of your choice. If you do not want to register with a party, leave this field blank. Do not write in the word “independent” if you mean “no party,” because this might be confused with the name of a political party in @state_name.</p>",
+    "instructions": "<p>If you don't want to register with a party, don't write in the word “independent” if you mean “no party.” This might be confused with the name of a political party in the state.</p>",
+    "section_description": "",
     "options": []
     },
     {
@@ -19,6 +20,7 @@
     "help_text": "",
     "error_msg": "Confirm eligibility to continue.",
     "instructions": "<p>If you do not agree with the above statement, do not continue with registration on Vote.gov.</p>",
+    "section_description": "",
     "options": []
     },
     {
@@ -26,10 +28,11 @@
     "lang": "en",
     "nvrf_id": "confirm_info",
     "name": "Confirm Information",
-    "label": "I can confirm my information is correct to the best of my knowledge.",
+    "label": "The information I have provided is true to the best of my knowledge under penalty of perjury.",
     "help_text": "",
     "error_msg": "Checkbox must be checked to continue.",
     "instructions": "",
+    "section_description": "",
     "options": []
     },
     {
@@ -37,10 +40,11 @@
     "lang": "en",
     "nvrf_id": "first_name",
     "name": "Current Legal Name: First Name",
-    "label": "First Name",
+    "label": "First name",
     "help_text": "",
     "error_msg": "First name must be filled out.",
     "instructions": "",
+    "section_description": "",
     "options": []
     },
     {
@@ -48,10 +52,11 @@
     "lang": "en",
     "nvrf_id": "last_name",
     "name": "Current Legal Name: Last Name",
-    "label": "Last Name",
+    "label": "Last name",
     "help_text": "",
     "error_msg": "Last name must be filled out.",
     "instructions": "",
+    "section_description": "",
     "options": []
     },
     {
@@ -59,10 +64,11 @@
     "lang": "en",
     "nvrf_id": "middle_names",
     "name": "Current Legal Name: Middle Name(s)",
-    "label": "Middle Name(s)",
+    "label": "Middle name(s)",
     "help_text": "If you do not have a middle name, leave this field blank.",
     "error_msg": "",
     "instructions": "",
+    "section_description": "",
     "options": []
     },
     {
@@ -74,6 +80,7 @@
     "help_text": "",
     "error_msg": "",
     "instructions": "",
+    "section_description": "",
     "options": [
     {
     "key": "Jr.",
@@ -106,6 +113,7 @@
     "help_text": "",
     "error_msg": "",
     "instructions": "",
+    "section_description": "",
     "options": [
     {
     "key": "Mr.",
@@ -129,11 +137,12 @@
     "uuid": "d31b2a64-36a9-4bc6-a9d1-e68d2be8c211",
     "lang": "en",
     "nvrf_id": "dob",
-    "name": "Date of Birth",
-    "label": "Date of Birth",
+    "name": "Date of birth",
+    "label": "Date of birth",
     "help_text": "MM/DD/YYYY",
-    "error_msg": "Date of Birth must follow the format of 01 19 2000.",
+    "error_msg": "Date of birth must follow the format of 01 19 2000.",
     "instructions": "<p>Be careful not to use today’s date.</p>",
+    "section_description": "",
     "options": []
     },
     {
@@ -145,6 +154,7 @@
     "help_text": "",
     "error_msg": "",
     "instructions": "",
+    "section_description": "",
     "options": []
     },
     {
@@ -152,10 +162,11 @@
     "lang": "en",
     "nvrf_id": "apt_lot_number",
     "name": "Home Address: Apt or Lot#",
-    "label": "Apartment or Lot#",
+    "label": "Apartment or lot#",
     "help_text": "",
     "error_msg": "",
     "instructions": "",
+    "section_description": "",
     "options": []
     },
     {
@@ -167,6 +178,7 @@
     "help_text": "",
     "error_msg": "City name must be filled out.",
     "instructions": "",
+    "section_description": "",
     "options": []
     },
     {
@@ -178,6 +190,7 @@
     "help_text": "",
     "error_msg": "",
     "instructions": "",
+    "section_description": "",
     "options": []
     },
     {
@@ -185,10 +198,11 @@
     "lang": "en",
     "nvrf_id": "home_address",
     "name": "Home Address: Street Address",
-    "label": "Street Address",
+    "label": "Street address",
     "help_text": "1234 Main St.",
-    "error_msg": "Street Address must be filled out.",
+    "error_msg": "Street address must be filled out.",
     "instructions": "",
+    "section_description": "",
     "options": []
     },
     {
@@ -196,10 +210,11 @@
     "lang": "en",
     "nvrf_id": "zip_code",
     "name": "Home Address: Zip",
-    "label": "Zip Code",
+    "label": "Zip code",
     "help_text": "12345",
-    "error_msg": "Zip Code must be 5 digits.",
+    "error_msg": "Zip code must be 5 digits.",
     "instructions": "",
+    "section_description": "",
     "options": []
     },
     {
@@ -207,10 +222,11 @@
     "lang": "en",
     "nvrf_id": "id_expire_date",
     "name": "ID: Expiration Date",
-    "label": "Expiration Date",
+    "label": "Expiration date",
     "help_text": "MM/DD/YYYY",
-    "error_msg": "Expire Date must follow the format of January 19 2000 and be in the future.",
+    "error_msg": "Expire date must follow the format of January 19 2000 and be in the future.",
     "instructions": "",
+    "section_description": "",
     "options": []
     },
     {
@@ -218,10 +234,11 @@
     "lang": "en",
     "nvrf_id": "id_issue_date",
     "name": "ID: Issue Date",
-    "label": "Issue Date",
+    "label": "Issue date",
     "help_text": "MM/DD/YYYY",
-    "error_msg": "Issue Date must follow the format of January 19 2000.",
+    "error_msg": "Issue date must follow the format of January 19 2000.",
     "instructions": "",
+    "section_description": "",
     "options": []
     },
     {
@@ -229,10 +246,11 @@
     "lang": "en",
     "nvrf_id": "id_no_id",
     "name": "ID: No valid ID",
-    "label": "I do not have a valid ID number",
+    "label": "I do not have a valid ID number.",
     "help_text": "",
     "error_msg": "",
     "instructions": "<p>\"None\" will appear on your completed form.</p>",
+    "section_description": "",
     "options": []
     },
     {
@@ -240,10 +258,11 @@
     "lang": "en",
     "nvrf_id": "id_number",
     "name": "ID: Social Security Number",
-    "label": "Social Security Number",
+    "label": "Social security number",
     "help_text": "Provide the last 4 digits, for example (xxx-xx-1234)",
-    "error_msg": "Social Security Number must be 4 digits.",
+    "error_msg": "Social security number must be 4 digits.",
     "instructions": "",
+    "section_description": "",
     "options": []
     },
     {
@@ -251,10 +270,11 @@
     "lang": "en",
     "nvrf_id": "id_number",
     "name": "ID: Social Security Number (Full)",
-    "label": "Social Security Number (Full)",
+    "label": "SSN (full)",
     "help_text": "Provide all 9 digits, for example (123-55-1234)",
     "error_msg": "Social Security Number must be 9 digits.",
     "instructions": "",
+    "section_description": "",
     "options": []
     },
     {
@@ -262,10 +282,11 @@
     "lang": "en",
     "nvrf_id": "id_number",
     "name": "ID: State Driver&#039;s License Number",
-    "label": "State Driver&#039;s License Number",
+    "label": "State driver&#039;s license number",
     "help_text": "",
     "error_msg": "ID number must be filled out.",
     "instructions": "",
+    "section_description": "",
     "options": []
     },
     {
@@ -273,10 +294,11 @@
     "lang": "en",
     "nvrf_id": "id_number",
     "name": "ID: State Non-driver ID",
-    "label": "State Non-driver ID",
+    "label": "State non-driver ID",
     "help_text": "",
     "error_msg": "ID number must be filled out.",
     "instructions": "",
+    "section_description": "",
     "options": []
     },
     {
@@ -288,6 +310,7 @@
     "help_text": "",
     "error_msg": "Identification selection must be made from the dropdown.",
     "instructions": "<p>Select one option from the drop down. </p>",
+    "section_description": "",
     "options": [
     {
     "key": "default",
@@ -320,6 +343,7 @@
     "help_text": "",
     "error_msg": "",
     "instructions": "",
+    "section_description": "",
     "options": []
     },
     {
@@ -331,6 +355,7 @@
     "help_text": "",
     "error_msg": "City name must be filled out.",
     "instructions": "",
+    "section_description": "",
     "options": []
     },
     {
@@ -340,8 +365,9 @@
     "name": "Mailing Address: State",
     "label": "State",
     "help_text": "",
-    "error_msg": "Mailing State selection must be made.",
+    "error_msg": "Mailing state selection must be made.",
     "instructions": "",
+    "section_description": "",
     "options": []
     },
     {
@@ -353,6 +379,7 @@
     "help_text": "",
     "error_msg": "&quot;Mailing Street Address must be filled out.",
     "instructions": "",
+    "section_description": "",
     "options": []
     },
     {
@@ -360,10 +387,11 @@
     "lang": "en",
     "nvrf_id": "mail_zip_code",
     "name": "Mailing Address: Zip Code",
-    "label": "Zip Code",
+    "label": "Zip code",
     "help_text": "12345",
-    "error_msg": "Zip Code must be 5 digits.",
+    "error_msg": "Zip code must be 5 digits.",
     "instructions": "",
+    "section_description": "",
     "options": []
     },
     {
@@ -375,6 +403,7 @@
     "help_text": "",
     "error_msg": "",
     "instructions": "",
+    "section_description": "",
     "options": []
     },
     {
@@ -382,10 +411,11 @@
     "lang": "en",
     "nvrf_id": "first_name_2",
     "name": "Name Before Legally Changed: First Name",
-    "label": "First Name",
+    "label": "First name",
     "help_text": "",
     "error_msg": "First name must be filled out.",
     "instructions": "",
+    "section_description": "",
     "options": []
     },
     {
@@ -393,10 +423,11 @@
     "lang": "en",
     "nvrf_id": "last_name_2",
     "name": "Name Before Legally Changed: Last Name",
-    "label": "Last Name",
+    "label": "Last name",
     "help_text": "",
     "error_msg": "Last name must be filled out.",
     "instructions": "",
+    "section_description": "",
     "options": []
     },
     {
@@ -404,10 +435,11 @@
     "lang": "en",
     "nvrf_id": "middle_names_2",
     "name": "Name Before Legally Changed: Middle Name(s)",
-    "label": "Middle Name(s)",
+    "label": "Middle name(s)",
     "help_text": "If you do not have a middle name, you may leave this field blank.",
     "error_msg": "",
     "instructions": "",
+    "section_description": "",
     "options": []
     },
     {
@@ -419,6 +451,7 @@
     "help_text": "",
     "error_msg": "",
     "instructions": "",
+    "section_description": "",
     "options": [
     {
     "key": "Jr.",
@@ -451,6 +484,7 @@
     "help_text": "",
     "error_msg": "",
     "instructions": "",
+    "section_description": "",
     "options": [
     {
     "key": "Mr.",
@@ -479,6 +513,7 @@
     "help_text": "",
     "error_msg": "",
     "instructions": "",
+    "section_description": "",
     "options": []
     },
     {
@@ -486,10 +521,11 @@
     "lang": "en",
     "nvrf_id": "telephone_number",
     "name": "Phone Number",
-    "label": "Phone Number",
+    "label": "Phone number",
     "help_text": "(123) 456-7890",
     "error_msg": "Phone number must be 10 digits.",
     "instructions": "<p>You do not have to provide your telephone number. This is used if election officials have questions about your form.</p>",
+    "section_description": "",
     "options": []
     },
     {
@@ -497,10 +533,11 @@
     "lang": "en",
     "nvrf_id": "prev_apt_lot_number",
     "name": "Previous Home Address: Apt or Lot#",
-    "label": "Apartment or Lot#",
+    "label": "Apartment or lot#",
     "help_text": "",
     "error_msg": "",
     "instructions": "",
+    "section_description": "",
     "options": []
     },
     {
@@ -512,6 +549,7 @@
     "help_text": "",
     "error_msg": "City name must be filled out.",
     "instructions": "",
+    "section_description": "",
     "options": []
     },
     {
@@ -523,6 +561,7 @@
     "help_text": "",
     "error_msg": "Previous State selection must be made.",
     "instructions": "",
+    "section_description": "",
     "options": []
     },
     {
@@ -530,10 +569,11 @@
     "lang": "en",
     "nvrf_id": "prev_address",
     "name": "Previous Home Address: Street Address",
-    "label": "Street Address",
+    "label": "Street address",
     "help_text": "",
-    "error_msg": "Previous Street address must be filled out.",
+    "error_msg": "Previous street address must be filled out.",
     "instructions": "",
+    "section_description": "",
     "options": []
     },
     {
@@ -541,10 +581,11 @@
     "lang": "en",
     "nvrf_id": "prev_zip_code",
     "name": "Previous Home Address: Zip Code",
-    "label": "Zip Code",
+    "label": "Zip code",
     "help_text": "124345",
-    "error_msg": "Zip Code must be 5 digits.",
+    "error_msg": "Zip code must be 5 digits.",
     "instructions": "",
+    "section_description": "",
     "options": []
     },
     {
@@ -552,10 +593,11 @@
     "lang": "en",
     "nvrf_id": "race_ethnic_group",
     "name": "Race or Ethnic Group",
-    "label": "Race or Ethnic Group",
+    "label": "Race or ethnic group",
     "help_text": "",
-    "error_msg": "Race or Ethnic group must be filled out.",
+    "error_msg": "Race or ethnic group must be filled out.",
     "instructions": "<p>Select the choice that best describes you from the list below.</p>",
+    "section_description": "",
     "options": [
     {
     "key": "American Indian or Alaskan Native",
@@ -588,6 +630,66 @@
     ]
     },
     {
+    "uuid": "8dda085c-edf3-4678-b30a-0a457699be46",
+    "lang": "en",
+    "nvrf_id": "null",
+    "name": "Section: Current Legal Name",
+    "label": "What is your legal name?",
+    "help_text": "",
+    "error_msg": "",
+    "instructions": "",
+    "section_description": "<p>Using the name on your driver’s license or other nondriver ID is recommended.</p>",
+    "options": []
+    },
+    {
+    "uuid": "63552bb6-6afb-46e1-8148-860242917a22",
+    "lang": "en",
+    "nvrf_id": "null",
+    "name": "Section: Home Address",
+    "label": "What is your current address?",
+    "help_text": "",
+    "error_msg": "",
+    "instructions": "",
+    "section_description": "",
+    "options": []
+    },
+    {
+    "uuid": "1a856408-6fb2-4b09-b05a-8d8ee9eb9bb5",
+    "lang": "en",
+    "nvrf_id": "null",
+    "name": "Section: Mailing Address",
+    "label": "What is your mailing address?",
+    "help_text": "",
+    "error_msg": "",
+    "instructions": "",
+    "section_description": "<p>Enter the address where you receive mail so voter registration materials can be sent to you.</p>",
+    "options": []
+    },
+    {
+    "uuid": "af4e6259-5b07-4955-9d28-254504ec9df8",
+    "lang": "en",
+    "nvrf_id": "null",
+    "name": "Section: Name Before Legally Changed",
+    "label": "What was your name before you legally changed it?",
+    "help_text": "",
+    "error_msg": "",
+    "instructions": "",
+    "section_description": "",
+    "options": []
+    },
+    {
+    "uuid": "023fda0f-e8bd-4654-ab5c-46f44a0b7bd6",
+    "lang": "en",
+    "nvrf_id": "null",
+    "name": "Section: Previous Home Address",
+    "label": "What was the address where you were registered before?",
+    "help_text": "",
+    "error_msg": "",
+    "instructions": "",
+    "section_description": "<p>If you were registered before but this is the first time you are registering from this address, please tell us the address where you were registered before. Please give us as much of the address as you can remember.</p>",
+    "options": []
+    },
+    {
     "uuid": "7231330d-523b-4e22-b282-b9f98ee20ef2",
     "lang": "en",
     "nvrf_id": "state",
@@ -596,6 +698,7 @@
     "help_text": "",
     "error_msg": "State or territory selection must be made.",
     "instructions": "",
+    "section_description": "",
     "options": []
     }
 ]

@@ -21,13 +21,13 @@ function StateSelection(props) {
     if (content && navContent) {
         const introContent = content.find(item => item.uuid === "e3461b9a-e0b1-4157-ad4a-13f3835a101c");
         const introContentBody = DOMPurify.sanitize(introContent.body);
+        const introContentBodyParts = introContentBody.split('@state_selector');
         return (
         <>
             <h1>{introContent.title}</h1>
-            <div className="usa-prose" dangerouslySetInnerHTML= {{__html: introContentBody}}/>
+            <div className="usa-prose" dangerouslySetInnerHTML= {{__html: introContentBodyParts[0]}}/>
 
             <form onSubmit={(e) => {props.handleSubmit(e), props.handleNext()}}>
-
             <div className="grid-row padding-y-2">
                 <div className="tablet:grid-col-1">
                     <h4>{"I live in: "}</h4>
@@ -59,6 +59,7 @@ function StateSelection(props) {
                     </div>
                 </div>
             </div>
+            <div className="usa-prose" dangerouslySetInnerHTML= {{__html: introContentBodyParts[1]}}/>
 
             <NextButton type={'submit'} text={navContent.next.next}/>
 

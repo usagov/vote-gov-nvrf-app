@@ -23,9 +23,9 @@ function Eligibility(props) {
 
                 <h1>{content.title.replace("@state_name", props.stateData.name)}</h1>
                 <StepsList content={listContent}/>
-                <div dangerouslySetInnerHTML= {{__html: contentBody.replace("@state_name", props.stateData.name)}}/>
-
-                {stateContent.postmarked_mail_deadline_info}{stateContent.received_mail_deadline_info}
+                <div dangerouslySetInnerHTML= {{__html: contentBody.replace("@state_name", props.stateData.name)
+                                                                   .replace("@reg_eligibility_desc", stateContent.reg_eligibility_desc)
+                                                                   .replace("@mail_deadline", stateContent.postmarked_mail_deadline)}}/>
 
                 <form onSubmit={(e) => {e.preventDefault(), props.handleNext()}}>
                     <Fieldset legend="Eligibility" legendStyle="srOnly">
