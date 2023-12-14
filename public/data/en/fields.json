@@ -9,6 +9,7 @@
     "error_msg": "Choice of party must be filled out.",
     "instructions": "<p>If you don't want to register with a party, don't write in the word “independent” if you mean “no party.” This might be confused with the name of a political party in the state.</p>",
     "section_description": "",
+    "section_alert": "",
     "options": []
     },
     {
@@ -21,6 +22,7 @@
     "error_msg": "Confirm eligibility to continue.",
     "instructions": "<p>If you do not agree with the above statement, do not continue with registration on Vote.gov.</p>",
     "section_description": "",
+    "section_alert": "",
     "options": []
     },
     {
@@ -33,6 +35,7 @@
     "error_msg": "Checkbox must be checked to continue.",
     "instructions": "",
     "section_description": "",
+    "section_alert": "",
     "options": []
     },
     {
@@ -45,6 +48,7 @@
     "error_msg": "First name must be filled out.",
     "instructions": "",
     "section_description": "",
+    "section_alert": "",
     "options": []
     },
     {
@@ -57,6 +61,7 @@
     "error_msg": "Last name must be filled out.",
     "instructions": "",
     "section_description": "",
+    "section_alert": "",
     "options": []
     },
     {
@@ -69,6 +74,7 @@
     "error_msg": "",
     "instructions": "",
     "section_description": "",
+    "section_alert": "",
     "options": []
     },
     {
@@ -81,6 +87,7 @@
     "error_msg": "",
     "instructions": "",
     "section_description": "",
+    "section_alert": "",
     "options": [
     {
     "key": "Jr.",
@@ -114,6 +121,7 @@
     "error_msg": "",
     "instructions": "",
     "section_description": "",
+    "section_alert": "",
     "options": [
     {
     "key": "Mr.",
@@ -143,6 +151,7 @@
     "error_msg": "Date of birth must follow the format of 01 19 2000.",
     "instructions": "<p>Be careful not to use today’s date.</p>",
     "section_description": "",
+    "section_alert": "",
     "options": []
     },
     {
@@ -155,6 +164,7 @@
     "error_msg": "",
     "instructions": "",
     "section_description": "",
+    "section_alert": "",
     "options": []
     },
     {
@@ -167,6 +177,7 @@
     "error_msg": "",
     "instructions": "",
     "section_description": "",
+    "section_alert": "",
     "options": []
     },
     {
@@ -179,6 +190,7 @@
     "error_msg": "City name must be filled out.",
     "instructions": "",
     "section_description": "",
+    "section_alert": "",
     "options": []
     },
     {
@@ -191,6 +203,7 @@
     "error_msg": "",
     "instructions": "",
     "section_description": "",
+    "section_alert": "",
     "options": []
     },
     {
@@ -203,6 +216,7 @@
     "error_msg": "Street address must be filled out.",
     "instructions": "",
     "section_description": "",
+    "section_alert": "",
     "options": []
     },
     {
@@ -215,6 +229,7 @@
     "error_msg": "Zip code must be 5 digits.",
     "instructions": "",
     "section_description": "",
+    "section_alert": "",
     "options": []
     },
     {
@@ -227,6 +242,7 @@
     "error_msg": "Expire date must follow the format of January 19 2000 and be in the future.",
     "instructions": "",
     "section_description": "",
+    "section_alert": "",
     "options": []
     },
     {
@@ -239,6 +255,7 @@
     "error_msg": "Issue date must follow the format of January 19 2000.",
     "instructions": "",
     "section_description": "",
+    "section_alert": "",
     "options": []
     },
     {
@@ -251,6 +268,7 @@
     "error_msg": "",
     "instructions": "<p>\"None\" will appear on your completed form.</p>",
     "section_description": "",
+    "section_alert": "",
     "options": []
     },
     {
@@ -263,6 +281,7 @@
     "error_msg": "Social security number must be 4 digits.",
     "instructions": "",
     "section_description": "",
+    "section_alert": "",
     "options": []
     },
     {
@@ -275,6 +294,7 @@
     "error_msg": "Social Security Number must be 9 digits.",
     "instructions": "",
     "section_description": "",
+    "section_alert": "",
     "options": []
     },
     {
@@ -287,6 +307,7 @@
     "error_msg": "ID number must be filled out.",
     "instructions": "",
     "section_description": "",
+    "section_alert": "",
     "options": []
     },
     {
@@ -299,6 +320,7 @@
     "error_msg": "ID number must be filled out.",
     "instructions": "",
     "section_description": "",
+    "section_alert": "",
     "options": []
     },
     {
@@ -311,6 +333,7 @@
     "error_msg": "Identification selection must be made from the dropdown.",
     "instructions": "<p>Select one option from the drop down. </p>",
     "section_description": "",
+    "section_alert": "",
     "options": [
     {
     "key": "default",
@@ -344,6 +367,7 @@
     "error_msg": "",
     "instructions": "",
     "section_description": "",
+    "section_alert": "",
     "options": []
     },
     {
@@ -356,6 +380,7 @@
     "error_msg": "City name must be filled out.",
     "instructions": "",
     "section_description": "",
+    "section_alert": "",
     "options": []
     },
     {
@@ -368,6 +393,7 @@
     "error_msg": "Mailing state selection must be made.",
     "instructions": "",
     "section_description": "",
+    "section_alert": "",
     "options": []
     },
     {
@@ -380,6 +406,7 @@
     "error_msg": "&quot;Mailing Street Address must be filled out.",
     "instructions": "",
     "section_description": "",
+    "section_alert": "",
     "options": []
     },
     {
@@ -392,6 +419,7 @@
     "error_msg": "Zip code must be 5 digits.",
     "instructions": "",
     "section_description": "",
+    "section_alert": "",
     "options": []
     },
     {
@@ -404,6 +432,7 @@
     "error_msg": "",
     "instructions": "",
     "section_description": "",
+    "section_alert": "",
     "options": []
     },
     {
@@ -416,6 +445,7 @@
     "error_msg": "First name must be filled out.",
     "instructions": "",
     "section_description": "",
+    "section_alert": "",
     "options": []
     },
     {
@@ -428,6 +458,7 @@
     "error_msg": "Last name must be filled out.",
     "instructions": "",
     "section_description": "",
+    "section_alert": "",
     "options": []
     },
     {
@@ -440,6 +471,7 @@
     "error_msg": "",
     "instructions": "",
     "section_description": "",
+    "section_alert": "",
     "options": []
     },
     {
@@ -452,6 +484,7 @@
     "error_msg": "",
     "instructions": "",
     "section_description": "",
+    "section_alert": "",
     "options": [
     {
     "key": "Jr.",
@@ -485,6 +518,7 @@
     "error_msg": "",
     "instructions": "",
     "section_description": "",
+    "section_alert": "",
     "options": [
     {
     "key": "Mr.",
@@ -514,6 +548,7 @@
     "error_msg": "",
     "instructions": "",
     "section_description": "",
+    "section_alert": "",
     "options": []
     },
     {
@@ -526,6 +561,7 @@
     "error_msg": "Phone number must be 10 digits.",
     "instructions": "<p>You do not have to provide your telephone number. This is used if election officials have questions about your form.</p>",
     "section_description": "",
+    "section_alert": "",
     "options": []
     },
     {
@@ -538,6 +574,7 @@
     "error_msg": "",
     "instructions": "",
     "section_description": "",
+    "section_alert": "",
     "options": []
     },
     {
@@ -550,6 +587,7 @@
     "error_msg": "City name must be filled out.",
     "instructions": "",
     "section_description": "",
+    "section_alert": "",
     "options": []
     },
     {
@@ -562,6 +600,7 @@
     "error_msg": "Previous State selection must be made.",
     "instructions": "",
     "section_description": "",
+    "section_alert": "",
     "options": []
     },
     {
@@ -574,6 +613,7 @@
     "error_msg": "Previous street address must be filled out.",
     "instructions": "",
     "section_description": "",
+    "section_alert": "",
     "options": []
     },
     {
@@ -586,6 +626,7 @@
     "error_msg": "Zip code must be 5 digits.",
     "instructions": "",
     "section_description": "",
+    "section_alert": "",
     "options": []
     },
     {
@@ -598,6 +639,7 @@
     "error_msg": "Race or ethnic group must be filled out.",
     "instructions": "<p>Select the choice that best describes you from the list below.</p>",
     "section_description": "",
+    "section_alert": "",
     "options": [
     {
     "key": "American Indian or Alaskan Native",
@@ -639,6 +681,7 @@
     "error_msg": "",
     "instructions": "",
     "section_description": "<p>Using the name on your driver’s license or other nondriver ID is recommended.</p>",
+    "section_alert": "<p>Enter your full legal name. Be sure to include your first, middle and last name. Do not use nicknames or initials.</p>",
     "options": []
     },
     {
@@ -651,6 +694,7 @@
     "error_msg": "",
     "instructions": "",
     "section_description": "",
+    "section_alert": "<p>Enter your home address (legal address). Do not put your mailing address here if it’s different from your home address. Do not use a post office box or rural route without a box number.</p>",
     "options": []
     },
     {
@@ -663,6 +707,7 @@
     "error_msg": "",
     "instructions": "",
     "section_description": "<p>Enter the address where you receive mail so voter registration materials can be sent to you.</p>",
+    "section_alert": "<p>If you live in a rural area but do not have a street address, or if you have no address, you must enter an address where you can be reached by mail. You will have the opportunity to show where you live on a map when you print out your form.</p>",
     "options": []
     },
     {
@@ -675,6 +720,7 @@
     "error_msg": "",
     "instructions": "",
     "section_description": "",
+    "section_alert": "",
     "options": []
     },
     {
@@ -687,6 +733,7 @@
     "error_msg": "",
     "instructions": "",
     "section_description": "<p>If you were registered before but this is the first time you are registering from this address, please tell us the address where you were registered before. Please give us as much of the address as you can remember.</p>",
+    "section_alert": "",
     "options": []
     },
     {
@@ -699,6 +746,7 @@
     "error_msg": "State or territory selection must be made.",
     "instructions": "",
     "section_description": "",
+    "section_alert": "",
     "options": []
     }
 ]

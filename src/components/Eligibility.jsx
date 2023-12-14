@@ -10,6 +10,7 @@ function Eligibility(props) {
     const navContent = props.navContent;
     const fields = props.fieldContent;
     const cards = props.cards;
+    const mailDeadline = stateContent.postmarked_mail_deadline || stateContent.received_mail_deadline;
 
     if (data && fields && navContent && cards) {
         const content = data.find(item => item.uuid === "94eab1c9-8343-4747-94b4-08732a175614");
@@ -25,7 +26,7 @@ function Eligibility(props) {
                 <StepsList content={listContent}/>
                 <div dangerouslySetInnerHTML= {{__html: contentBody.replace("@state_name", props.stateData.name)
                                                                    .replace("@reg_eligibility_desc", stateContent.reg_eligibility_desc)
-                                                                   .replace("@mail_deadline", stateContent.postmarked_mail_deadline)}}/>
+                                                                   .replace("@mail_deadline", mailDeadline)}}/>
 
                 <form onSubmit={(e) => {e.preventDefault(), props.handleNext()}}>
                     <Fieldset legend="Eligibility" legendStyle="srOnly">

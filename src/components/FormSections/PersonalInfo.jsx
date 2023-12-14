@@ -1,6 +1,7 @@
 import { Label, TextInput, Dropdown, Checkbox, Grid, Fieldset } from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import { restrictType, checkForErrors, jumpTo } from '../HelperFunctions/ValidateField';
+import DOMPurify from 'dompurify';
 
 function PersonalInfo(props){
     const headings = props.headings;
@@ -10,6 +11,8 @@ function PersonalInfo(props){
     const nvrfStateFields = props.stateData.nvrf_fields;
 
     //Drupal field data
+    const nameSectionField = fields.find(item => item.uuid === "8dda085c-edf3-4678-b30a-0a457699be46");
+    const prevNameSectionField = fields.find(item => item.uuid === "af4e6259-5b07-4955-9d28-254504ec9df8");
     const titleField = fields.find(item => item.uuid === "86a544cd-cfe9-456a-b634-176a37a38d6d");
     const firstNameField = fields.find(item => item.uuid === "b7bdae35-e4be-4827-ae11-75d9c3e33bf0");
     const middleNameField = fields.find(item => item.uuid === "38020ec6-1b53-4227-99e5-feea5f60af07");
@@ -23,6 +26,9 @@ function PersonalInfo(props){
     const prevMiddleNameField = fields.find(item => item.uuid === "a4919026-91ac-4e05-a75f-e2df479abd76");
     const prevLastNameField = fields.find(item => item.uuid === "42de34cc-ebf3-4d8e-8873-2571063b62c0");
     const prevSuffixField = fields.find(item => item.uuid === "09cb2989-d302-4a01-bb3a-33173adcffb2");
+
+    const nameSectionDesc = DOMPurify.sanitize(nameSectionField.section_description);
+    const nameSectionAlert = DOMPurify.sanitize(nameSectionField.section_alert);
 
     //Field requirements by state data
     const nameFieldState = (nvrfStateFields.find(item => item.uuid === firstNameField.uuid));
@@ -61,15 +67,12 @@ function PersonalInfo(props){
             <Checkbox id="prev-name-change" name="prev-name-change" checked={props.prevh2iousName} onChange={props.onChangePreviousName} label={"I have legally changed my name since I last registered in this state."} />
         )}
 
-        {firstNameField.section_description && (
         <div className="usa-alert usa-alert--info">
-            <div className="usa-alert__body">
-                <p>{firstNameField.section_description}</p>
-            </div>
-        </div>)}
+            <div className="usa-alert__body" dangerouslySetInnerHTML={{__html: nameSectionAlert}}/>
+        </div>
 
-        <h3>What is your legal name?</h3>
-        <p>Enter your full legal name. Be sure to include your First, Middle and Last name. Do not use nicknames or initials.</p>
+        <h3>{nameSectionField.label}</h3>
+        <div dangerouslySetInnerHTML= {{__html: nameSectionDesc}}/>
 
         {nameFieldState && (
             <>
@@ -319,7 +322,7 @@ function PersonalInfo(props){
 
         {(props.previousName && changeRegistrationVisible) && (
         <>
-            <h3>Previous Name</h3>
+        <h3>{prevNameSectionField.label}</h3>
         <Grid row gap>
             <Grid col={2}>
             <Label className="text-bold" htmlFor="title-select-2">
