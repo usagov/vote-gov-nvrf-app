@@ -5,6 +5,7 @@ import DOMPurify from 'dompurify';
 
 function Delivery(props) {
     const content = props.content;
+    const state = props.stateData;
 
     // Add A/B Message randomization.
     const randomProperty = function (obj) {
@@ -20,7 +21,9 @@ function Delivery(props) {
 
     if (content) {
         const delivery = content.find(item => item.uuid === "229f283c-6a70-43f6-a80f-15cfa158f062");
+        const mailingAddress = DOMPurify.sanitize(state.mailing_address_inst);
         const deliveryBody = DOMPurify.sanitize(delivery.body.replace("@state_name", props.stateData.name));
+        const deliveryBodyParts = deliveryBody.split('@mailing_address_inst');
         /*const reminderMessage = randomProperty(content.reminder_messages);
 
         const usagov_resource_link = reactStringReplace(
@@ -46,14 +49,9 @@ function Delivery(props) {
                     </Grid>
                 </Grid>
 
-                <div dangerouslySetInnerHTML= {{__html: deliveryBody}}/>
-
-                <p>
-                    <br />{"{{ Office name }}"}
-                    <br />{"{{ Street Address }}"}
-                    <br />{"{{ City and State }}"}
-                </p>
-
+                <div dangerouslySetInnerHTML= {{__html: deliveryBodyParts[0]}}/>
+                <div dangerouslySetInnerHTML= {{__html: mailingAddress }}/>
+                <div dangerouslySetInnerHTML= {{__html: deliveryBodyParts[1]}}/>
 
                 <Button onClick={() => GenerateFilledPDF(props.fieldData, props.stateData.nvrf_pages_list)} type="submit">
                     {"Open form in a new window"} <Icon.ArrowForward aria-label="forward arrow icon"/>
