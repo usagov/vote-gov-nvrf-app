@@ -83,13 +83,6 @@ function Addresses(props){
                 </div>
                 {/******** Current Address Block *********/}
                 { !props.hasNoAddress && (<div>
-                    {!changeRegistrationVisible && (
-                        <div className="usa-alert usa-alert--info">
-                        <div className="usa-alert__body">
-                            <div dangerouslySetInnerHTML= {{__html: "<p>Placeholder</p>"}}/>
-                        </div>
-                    </div> )}
-
                     {homeAddressSectionField.section_alert && (
                     <div className="usa-alert usa-alert--info">
                         <div className="usa-alert__body">
@@ -97,7 +90,7 @@ function Addresses(props){
                         </div>
                     </div> )}
 
-                    <h3>{homeAddressSectionField.label}</h3>
+                    <h3 className='margin-top-8'>{homeAddressSectionField.label}</h3>
                     <div dangerouslySetInnerHTML= {{__html: homeAddressSectionField.instructions}}/>
 
                     <Grid row gap>
@@ -216,7 +209,7 @@ function Addresses(props){
                         </div>
                         </Grid>
                     </Grid>
-                    <Checkbox id="alt-mail-addr" name="alt-mail-addr" checked={props.hasMailAddress} onChange={props.onChangeMailAddressCheckbox} label={differentMailAddressField.label} />
+                    <Checkbox className="margin-top-3" id="alt-mail-addr" name="alt-mail-addr" checked={props.hasMailAddress} onChange={props.onChangeMailAddressCheckbox} label={differentMailAddressField.label} />
                 </div>
                 )}
                 {/******* END BLOCK *********/}
@@ -229,7 +222,7 @@ function Addresses(props){
                             <div className="usa-alert__body" dangerouslySetInnerHTML= {{__html: mailAddressSectionField.section_alert}}/>
                         </div>)}
 
-                        <h3>{mailAddressSectionField.label}</h3>
+                        <h3 className='margin-top-8'>{mailAddressSectionField.label}</h3>
                         <div dangerouslySetInnerHTML= {{__html: mailAddressSectionField.section_description}}/>
 
                         <Grid row gap>
@@ -371,7 +364,7 @@ function Addresses(props){
                             <div className="usa-alert__body" dangerouslySetInnerHTML= {{__html: prevAddressSectionField.section_alert}}/>
                         </div>)}
 
-                        <h3>{prevAddressSectionField.label}</h3>
+                        <h3 className='margin-top-8'>{prevAddressSectionField.label}</h3>
                         <div dangerouslySetInnerHTML= {{__html: prevAddressSectionField.instructions}}/>
 
                         <Grid row gap>

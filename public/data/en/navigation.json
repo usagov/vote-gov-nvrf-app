@@ -12,8 +12,9 @@
     },
     "next": {
         "next": "Next",
-        "start": "Start your online registration on vote.gov",
-        "continue": "I want to use vote.gov’s mail-in form",
+        "start": "I want to use vote.gov’s mail-in form",
+        "continue": "Start your online registration on vote.gov",
+        "reg_options": "Continue to view registration options",
         "address_location": "Continue to address and location",
         "identification": "Continue to identification",
         "political_party": "Continue to political party",

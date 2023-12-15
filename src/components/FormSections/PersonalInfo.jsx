@@ -322,7 +322,7 @@ function PersonalInfo(props){
 
         {(props.previousName && changeRegistrationVisible) && (
         <>
-        <h3>{prevNameSectionField.label}</h3>
+        <h3 className='margin-top-5'>{prevNameSectionField.label}</h3>
         <Grid row gap>
             <Grid col={2}>
             <Label className="text-bold" htmlFor="title-select-2">
