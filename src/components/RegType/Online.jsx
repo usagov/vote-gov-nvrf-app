@@ -11,7 +11,7 @@ function Online(props) {
     if (content && navContent) {
         const contentBody = DOMPurify.sanitize(content.body).replace("@state_name", stateContent.name);
         const stateLinks = () => (
-            <div>
+            <>
                 <div className="padding-top-3 padding-bottom-1">
                     <Link href={stateContent.registration_url} className="usa-button" target="_blank">
                         {"Go to %state_name%'s online form".replace("%state_name%", stateContent.name)}
@@ -24,15 +24,15 @@ function Online(props) {
                         <Icon.Launch title="External link opens new window"/>
                     </Link>
                 </div>
-            </div>
+            </>
         );
         const stateMailinLink = () => (
-            <div>
+            <p>
                 <Link href={stateContent.download_form} className="text-primary" target="_blank">
                     <strong className="text-primary underline-primary">{"Go to %state_name%'s mail-in form".replace("%state_name%", stateContent.name)}
                         <Icon.Launch title="External link opens new window"/></strong>
                 </Link>
-            </div>
+            </p>
         );
         let contentBodyProcessed = contentBody.replace("@state_links", renderToStaticMarkup(stateLinks()));
         contentBodyProcessed = contentBodyProcessed.replace("@state_mailin_link", renderToStaticMarkup(stateMailinLink()))

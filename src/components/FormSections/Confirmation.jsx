@@ -29,7 +29,7 @@ function Confirmation(props) {
 
                 <div className={"confirm-info usa-prose"}>
                     <h1>{confirm.title}</h1>
-                    <div class={'usa-prose'} dangerouslySetInnerHTML={{__html: confirmBody}}/>
+                    <div className={'usa-prose'} dangerouslySetInnerHTML={{__html: confirmBody}}/>
 
                     <div className='grid-row'>
                         <h2>{headings.step_label_1}</h2>

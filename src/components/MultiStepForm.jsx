@@ -245,10 +245,10 @@ function MultiStepForm(props) {
 
                 <ProgressBar step={step} content={navContent}/>
                 {step < 5 &&
-                    <div>
+                    <>
                         <h1>{mainContentTitle.replace("@state_name", props.stateData.name)}</h1>
                         <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: mainContentBody}}/>
-                    </div>
+                    </>
                 }
 
         <Form autoComplete="off" className={'margin-top-8'} style={{ maxWidth:'none' }} onSubmit={(e) => {handleSubmit(e), handleNext()}}>

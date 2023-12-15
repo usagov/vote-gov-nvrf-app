@@ -72,17 +72,13 @@ function Addresses(props){
         <h2>{headings.step_label_2}</h2>
 
         {addressFieldsState && (
-            <div>
+            <>
             { changeRegistrationVisible && (
-                <div>
-                    <Checkbox id="prev-res-addr" name="prev-res-addr" checked={props.hasPreviousAddress} onChange={props.onChangePreviousAddressCheckbox} label={prevAddressField.label} />
-                </div>
+                <Checkbox id="prev-res-addr" name="prev-res-addr" checked={props.hasPreviousAddress} onChange={props.onChangePreviousAddressCheckbox} label={prevAddressField.label} />
             )}
-                <div>
-                    <Checkbox id="no-addr" className="margin-bottom-4" name="no-addr" checked={props.hasNoAddress} onChange={props.hasNoAddressCheckbox} label={noAddressField.label} />
-                </div>
+                <Checkbox id="no-addr" className="margin-bottom-4" name="no-addr" checked={props.hasNoAddress} onChange={props.hasNoAddressCheckbox} label={noAddressField.label} />
                 {/******** Current Address Block *********/}
-                { !props.hasNoAddress && (<div>
+                { !props.hasNoAddress && (<>
                     {homeAddressSectionField.section_alert && (
                     <div className="usa-alert usa-alert--info">
                         <div className="usa-alert__body">
@@ -90,7 +86,7 @@ function Addresses(props){
                         </div>
                     </div> )}
 
-                    <h3 className='margin-top-8'>{homeAddressSectionField.label}</h3>
+                    <h3 className='margin-top-6'>{homeAddressSectionField.label}</h3>
                     <div dangerouslySetInnerHTML= {{__html: homeAddressSectionField.instructions}}/>
 
                     <Grid row gap>
@@ -210,7 +206,7 @@ function Addresses(props){
                         </Grid>
                     </Grid>
                     <Checkbox className="margin-top-3" id="alt-mail-addr" name="alt-mail-addr" checked={props.hasMailAddress} onChange={props.onChangeMailAddressCheckbox} label={differentMailAddressField.label} />
-                </div>
+                </>
                 )}
                 {/******* END BLOCK *********/}
 
@@ -222,7 +218,7 @@ function Addresses(props){
                             <div className="usa-alert__body" dangerouslySetInnerHTML= {{__html: mailAddressSectionField.section_alert}}/>
                         </div>)}
 
-                        <h3 className='margin-top-8'>{mailAddressSectionField.label}</h3>
+                        <h3 className='margin-top-6'>{mailAddressSectionField.label}</h3>
                         <div dangerouslySetInnerHTML= {{__html: mailAddressSectionField.section_description}}/>
 
                         <Grid row gap>
@@ -252,22 +248,23 @@ function Addresses(props){
                             </Grid>
                         </Grid>
 
-                        <Grid row gap>
-                            <Grid col={5}>
-                            <Label className="text-bold" htmlFor="mail-apt">
-                                {aptField.label}
-                            <TextInput
-                                id="mail-apt"
-                                className="radius-md"
-                                name="mail-apt"
-                                type="text"
-                                autoComplete="off"
-                                value={props.fieldData.mail_apt_num}
-                                onChange={props.saveFieldData('mail_apt_num')}
-                            />
-                            </Label>
-                            </Grid>
-                        </Grid>
+                        {/* This field is not present on the NVRF PDF */}
+                        {/*<Grid row gap>*/}
+                        {/*    <Grid col={5}>*/}
+                        {/*    <Label className="text-bold" htmlFor="mail-apt">*/}
+                        {/*        {aptField.label}*/}
+                        {/*    <TextInput*/}
+                        {/*        id="mail-apt"*/}
+                        {/*        className="radius-md"*/}
+                        {/*        name="mail-apt"*/}
+                        {/*        type="text"*/}
+                        {/*        autoComplete="off"*/}
+                        {/*        value={props.fieldData.mail_apt_num}*/}
+                        {/*        onChange={props.saveFieldData('mail_apt_num')}*/}
+                        {/*    />*/}
+                        {/*    </Label>*/}
+                        {/*    </Grid>*/}
+                        {/*</Grid>*/}
 
                         <Grid row gap>
                             <Grid tablet={{ col: true }}>
@@ -497,7 +494,7 @@ function Addresses(props){
                     </>
                 )}
                 {/******* END BLOCK *********/}
-            </div>
+            </>
         )}
         </>
     );

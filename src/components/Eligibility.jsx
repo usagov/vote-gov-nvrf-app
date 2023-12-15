@@ -40,18 +40,16 @@ function Eligibility(props) {
                             <Label htmlFor="eligibility-error" id="eligibility-error">
                                 <strong>{eligibility.name}</strong>
                             </Label>
-                            <div>
-                                <Checkbox
-                                    id="eligibility-checkbox"
-                                    name="eligibility-checkbox"
-                                    value="eligibility-checkbox"
-                                    label={getFieldLabel(fields, "39fc63ad-ed5a-4ad5-98d3-aa236c96c61c")}
-                                    aria-required="true"
-                                    required={true}
-                                    defaultChecked={props.hasConfirmed}
-                                    onChange={(e) => props.confirmCheckbox(e.target.checked)}
-                                />
-                            </div>
+                            <Checkbox
+                                id="eligibility-checkbox"
+                                name="eligibility-checkbox"
+                                value="eligibility-checkbox"
+                                label={getFieldLabel(fields, "39fc63ad-ed5a-4ad5-98d3-aa236c96c61c")}
+                                aria-required="true"
+                                required={true}
+                                defaultChecked={props.hasConfirmed}
+                                onChange={(e) => props.confirmCheckbox(e.target.checked)}
+                            />
 
                             {props.error &&
 

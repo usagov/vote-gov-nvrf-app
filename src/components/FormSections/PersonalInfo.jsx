@@ -72,7 +72,7 @@ function PersonalInfo(props){
             <div className="usa-alert__body" dangerouslySetInnerHTML={{__html: nameSectionAlert}}/>
         </div>
 
-        <h3>{nameSectionField.label}</h3>
+        <h3 className={'margin-top-6'}>{nameSectionField.label}</h3>
         <div dangerouslySetInnerHTML= {{__html: nameSectionDesc}}/>
 
         {nameFieldState && (
@@ -83,10 +83,9 @@ function PersonalInfo(props){
                         {titleField.label}
                     <Dropdown className="radius-md" id="title-select" name="title-select" value={props.fieldData.title} onChange={props.saveFieldData('title')} autoComplete="off">
                         <option>- Select -{' '}</option>
-                        <option value={titleField.options[0].value}>{titleField.options[0].key}</option>
-                        <option value={titleField.options[1].value}>{titleField.options[1].key}</option>
-                        <option value={titleField.options[2].value}>{titleField.options[2].key}</option>
-                        <option value={titleField.options[3].value}>{titleField.options[3].key}</option>
+                        {titleField.options.map((item) => (
+                            <option value={item.value}>{item.key}</option>
+                        ))}
                     </Dropdown>
                     </Label>
                     </Grid>
@@ -161,11 +160,9 @@ function PersonalInfo(props){
                         {suffixField.label}
                     <Dropdown id="suffix-select" className="radius-md" name="suffix-select" value={props.fieldData.suffix} onChange={props.saveFieldData('suffix')} autoComplete="off" required={parseInt(nameFieldState.required)}>
                         <option>- Select -{' '}</option>
-                        <option value={suffixField.options[0].value}>{suffixField.options[0].key}</option>
-                        <option value={suffixField.options[1].value}>{suffixField.options[1].key}</option>
-                        <option value={suffixField.options[2].value}>{suffixField.options[2].key}</option>
-                        <option value={suffixField.options[3].value}>{suffixField.options[3].key}</option>
-                        <option value={suffixField.options[4].value}>{suffixField.options[4].key}</option>
+                        {suffixField.options.map((item) => (
+                            <option value={item.value}>{item.key}</option>
+                        ))}
                     </Dropdown>
                     </Label>
                     </Grid>
@@ -333,37 +330,35 @@ function PersonalInfo(props){
                 </div>
             </Grid>
 
-            <Grid row gap>
+
             {raceFieldState && (
-                <div>
-                    <Label className="text-bold" htmlFor="race-ethic-group-select">{raceField.label}</Label>
-                    <Dropdown id="race-ethic-group-select" className="radius-md" name="race-ethic-group-select" value={props.fieldData.race} onChange={props.saveFieldData('race')} autoComplete="off" required={parseInt(raceFieldState.required)}>
-                        <option>- Select -{' '}</option>
-                        <option value="American Indian or Alaska Native">American Indian or Alaska Native</option>
-                        <option value="Asian or Pacific Islander">Asian or Pacific Islander</option>
-                        <option value="Black, not of Hispanic Origin">Black, not of Hispanic Origin</option>
-                        <option value="Hispanic">Hispanic</option>
-                        <option value="Multi‑racial">Multi‑racial</option>
-                        <option value="White, not of Hispanic Origin">White, not of Hispanic Origin</option>
-                        <option value="Other">Other</option>
-                    </Dropdown>
-                </div>
+                <Grid row gap>
+                    <Grid col={4}>
+                        <Label className="text-bold" htmlFor="race-ethic-group-select">{raceField.label}{parseInt(raceFieldState.required) && <span className='required-text'>*</span>}</Label>
+                        <Dropdown id="race-ethic-group-select" className="radius-md" name="race-ethic-group-select"
+                                  value={props.fieldData.race} onChange={props.saveFieldData('race')} autoComplete="off"
+                                  required={parseInt(raceFieldState.required)}>
+                            <option>- Select -{' '}</option>
+                            {raceField.options.map((item) => (
+                                <option value={item.value}>{item.key}</option>
+                            ))}
+                        </Dropdown>
+                    </Grid>
+                </Grid>
             )}
-        </Grid>
 
         {(props.previousName && changeRegistrationVisible) && (
         <>
-        <h3 className='margin-top-5'>{prevNameSectionField.label}</h3>
+        <h3 className='margin-top-8'>{prevNameSectionField.label}</h3>
         <Grid row gap>
             <Grid col={2}>
             <Label className="text-bold" htmlFor="title-select-2">
                 {prevTitleField.label}
             <Dropdown id="title-select-2" className="radius-md" name="title-select-2" value={props.fieldData.prev_title} onChange={props.saveFieldData('prev_title')} autoComplete="off">
                 <option>- Select -{' '}</option>
-                <option value={prevTitleField.options[0].value}>{prevTitleField.options[0].key}</option>
-                <option value={prevTitleField.options[1].value}>{prevTitleField.options[1].key}</option>
-                <option value={prevTitleField.options[2].value}>{prevTitleField.options[2].key}</option>
-                <option value={prevTitleField.options[3].value}>{prevTitleField.options[3].key}</option>
+                {prevTitleField.options.map((item) => (
+                    <option value={item.value}>{item.key}</option>
+                ))}
             </Dropdown>
             </Label>
             </Grid>
@@ -438,11 +433,9 @@ function PersonalInfo(props){
                 {prevSuffixField.label}
             <Dropdown id="suffix-select-2" className="radius-md" name="suffix-select-2" value={props.fieldData.prev_suffix} onChange={props.saveFieldData('prev_suffix')} autoComplete="off" required={parseInt(nameFieldState.required)}>
                 <option>- Select -{' '}</option>
-                <option value={prevSuffixField.options[0].value}>{prevSuffixField.options[0].key}</option>
-                <option value={prevSuffixField.options[1].value}>{prevSuffixField.options[1].key}</option>
-                <option value={prevSuffixField.options[2].value}>{prevSuffixField.options[2].key}</option>
-                <option value={prevSuffixField.options[3].value}>{prevSuffixField.options[3].key}</option>
-                <option value={prevSuffixField.options[4].value}>{prevSuffixField.options[4].key}</option>
+                {prevSuffixField.options.map((item) => (
+                    <option value={item.value}>{item.key}</option>
+                ))}
             </Dropdown>
             </Label>
             </Grid>
