@@ -2,6 +2,7 @@ import { Fieldset, Checkbox, Label } from '@trussworks/react-uswds';
 import BackButton from './BackButton';
 import NextButton from "./NextButton";
 import StepsList from './RegType/StepsList';
+import { getFieldLabel, getFieldError } from './HelperFunctions/fieldParser';
 import DOMPurify from "dompurify";
 import {renderToStaticMarkup} from "react-dom/server";
 
@@ -44,7 +45,7 @@ function Eligibility(props) {
                                     id="eligibility-checkbox"
                                     name="eligibility-checkbox"
                                     value="eligibility-checkbox"
-                                    label={eligibility.label}
+                                    label={getFieldLabel(fields, "39fc63ad-ed5a-4ad5-98d3-aa236c96c61c")}
                                     aria-required="true"
                                     required={true}
                                     defaultChecked={props.hasConfirmed}
@@ -55,7 +56,7 @@ function Eligibility(props) {
                             {props.error &&
 
                                 <span id="eligibility-error" rol="alert" className='error-text'>
-                                {eligibility.error_msg}
+                                {getFieldError(fields, "39fc63ad-ed5a-4ad5-98d3-aa236c96c61c")}
                                 </span>
                             }
                         </div>

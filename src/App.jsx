@@ -98,6 +98,7 @@ function App() {
           stateData={stateData}
           content={content}
           navContent={navContent}
+          fieldContent={fieldContent}
           />}
         {step === 2 &&
             <RegistrationOptions

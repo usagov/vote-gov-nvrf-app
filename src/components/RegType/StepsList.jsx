@@ -40,7 +40,6 @@ function StepsList(props) {
 
     return (
         <>
-            <h2>{content.heading}</h2>
             <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: contentBodyProcessed}}/>
         </>
     );
