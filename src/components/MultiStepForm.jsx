@@ -8,7 +8,6 @@ import Confirmation from './FormSections/Confirmation';
 import Delivery from "./FormSections/Delivery";
 import PoliticalParty from './FormSections/PoliticalParty';
 import { phoneFormat, dateFormat } from './HelperFunctions/ValidateField';
-import { fetchData } from './HelperFunctions/JsonHelper.jsx';
 import DOMPurify from 'dompurify';
 import BackButton from './BackButton'
 import NextButton from './NextButton';
@@ -229,11 +228,11 @@ function MultiStepForm(props) {
                 {step < 5 &&
                     <div>
                         <h1>{mainContentTitle.replace("@state_name", props.stateData.name)}</h1>
-                        <div dangerouslySetInnerHTML= {{__html: mainContentBody}}/>
+                        <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: mainContentBody}}/>
                     </div>
                 }
 
-        <Form autoComplete="off" style={{ maxWidth:'none' }} onSubmit={(e) => {handleSubmit(e), handleNext()}}>
+        <Form autoComplete="off" className={'margin-top-8'} style={{ maxWidth:'none' }} onSubmit={(e) => {handleSubmit(e), handleNext()}}>
             {step === 1 &&
                 <PersonalInfo
                 state={props.state}
@@ -314,6 +313,7 @@ function MultiStepForm(props) {
                 error={error}
                 acknowledgeCheckbox={acknowledgeCheckbox}
                 checkboxValid={checkboxValid}
+                fieldContent={fieldContent}
                 />
             }
             {step === 6 &&
