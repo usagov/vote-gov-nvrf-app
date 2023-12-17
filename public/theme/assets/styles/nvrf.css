@@ -55,6 +55,13 @@
     }
 }
 
+@media only screen and (max-width: 639px) {
+    .nvrf-app-container .mobile-width {
+        width: -webkit-fill-available;
+        max-width: 480px;
+    }
+}
+
 .nvrf-app-container .input-example {
     min-height: 154px
 }
@@ -97,6 +104,10 @@
     top: 50%;
     left: 0;
     z-index: -1
+}
+
+.nvrf-app-container .usa-form .usa-input {
+    max-width: 480px;
 }
 
 .edit-btn {

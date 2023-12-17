@@ -29,7 +29,7 @@ function StateSelection(props) {
             <form onSubmit={(e) => {props.handleSubmit(e), props.handleNext()}}>
 
             <div className="grid-row padding-y-2">
-                <div className="tablet:grid-col-1">
+                <div className="tablet:grid-col-2">
                     <h4>{"I live in: "}</h4>
                 </div>
 

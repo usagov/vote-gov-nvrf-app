@@ -66,7 +66,7 @@ function Identification(props){
                 <h3>{idTypeField.label}</h3>
                 <div dangerouslySetInnerHTML= {{__html: idTypeFieldInstructions}}/>
 
-                <div className={(parseInt(idFieldState.required) && handleErrors.id_selection) ? 'error-container' : ''}>
+                <div className={(parseInt(idFieldState.required) && handleErrors.id_selection) ? 'error-container mobile-width' : 'mobile-width'}>
                 <Dropdown
                 id="id-num-dropdown"
                 name="input-dropdown"
