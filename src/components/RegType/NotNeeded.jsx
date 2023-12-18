@@ -8,10 +8,10 @@ function NotNeeded(props) {
     const contentBody = DOMPurify.sanitize(content.body).replace("@state_name", props.stateData.name);
     const stateLinks = () => (
         <p>
-            <Link href={stateContent.election_website_url} className="usa-button" target="_blank">
+            <a href={stateContent.election_website_url} className="usa-button" target="_blank">
                 {"Learn more about your voting options"}
                 <Icon.Launch title="External link opens new window"/>
-            </Link>
+            </a>
         </p>
     );
     const contentBodyProcessed = contentBody.replace("@state_links", renderToStaticMarkup(stateLinks()));
@@ -23,9 +23,9 @@ function NotNeeded(props) {
             <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: contentBodyProcessed}}/>
 
             <div className={'margin-top-5'}>
-                <Link href={"https://vote.gov"} className="usa-button">
+                <a href={"https://vote.gov"} className="usa-button">
                     {"Back to Vote.gov"}
-                </Link>
+                </a>
             </div>
 
         </>
