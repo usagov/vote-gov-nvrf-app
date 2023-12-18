@@ -1,10 +1,10 @@
 import { Button, Link, Icon, Grid } from '@trussworks/react-uswds';
 import GenerateFilledPDF from '../GenerateFilledPDF';
-import reactStringReplace from 'react-string-replace';
 import DOMPurify from 'dompurify';
 
 function Delivery(props) {
     const content = props.content;
+    const state = props.stateData;
 
     // Add A/B Message randomization.
     const randomProperty = function (obj) {
@@ -20,7 +20,9 @@ function Delivery(props) {
 
     if (content) {
         const delivery = content.find(item => item.uuid === "229f283c-6a70-43f6-a80f-15cfa158f062");
+        const mailingAddress = DOMPurify.sanitize(state.mailing_address_inst);
         const deliveryBody = DOMPurify.sanitize(delivery.body.replace("@state_name", props.stateData.name));
+        const deliveryBodyParts = deliveryBody.split('@mailing_address_inst');
         /*const reminderMessage = randomProperty(content.reminder_messages);
 
         const usagov_resource_link = reactStringReplace(
@@ -40,26 +42,20 @@ function Delivery(props) {
         return (
             <>
                 <Grid row>
-                    <Grid col={1} className="margin-y-4">{iconCheckmark}</Grid>
-                    <Grid col={11}>
+                    <Grid col={1}>{iconCheckmark}</Grid>
+                    <Grid col={11} className={'usa-prose'}>
                         <h1>{delivery.title.replace("@state_name", props.stateData.name)}</h1>
                     </Grid>
                 </Grid>
 
-                <div dangerouslySetInnerHTML= {{__html: deliveryBody}}/>
-
-                <p>
-                    <br />{"{{ Office name }}"}
-                    <br />{"{{ Street Address }}"}
-                    <br />{"{{ City and State }}"}
-                </p>
-
+                <div className={'usa-prose margin-top-2'} dangerouslySetInnerHTML= {{__html: deliveryBodyParts[0]}}/>
+                <div className={'usa-prose margin-top-2'} dangerouslySetInnerHTML= {{__html: mailingAddress }}/>
 
                 <Button onClick={() => GenerateFilledPDF(props.fieldData, props.stateData.nvrf_pages_list)} type="submit">
                     {"Open form in a new window"} <Icon.ArrowForward aria-label="forward arrow icon"/>
                 </Button>
 
-                <span className="divider-grey margin-top-6"></span>
+                <div className={'usa-prose margin-top-4'} dangerouslySetInnerHTML= {{__html: deliveryBodyParts[1]}}/>
 
             </>
         );

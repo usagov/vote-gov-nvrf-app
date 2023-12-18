@@ -3,7 +3,7 @@ export const jumpTo = (e, nextId) => {
   if (isNumber) {
     if (e.target.value.length == e.target.maxLength) {
       document.getElementById(nextId).focus();
-    }    
+    }
   }
 }
 
@@ -48,19 +48,6 @@ export const dayFormat = (input) => {
   return dateDoubleDigit;
 }
 
-export const checkExpiration=(date)=> {
-  // format is YYYY-MM-DD
-  let expireDate = Date.parse(date);
-  let todayDate = Date.parse(Date());
-
-  let diff = todayDate - expireDate;
-  if (diff > 0) {
-      return false
-      } else {
-        return true
-      }
-}
-
 export const checkForErrors=(e, requirement)=> {
   switch (requirement) {
     case 'check value exists':
@@ -75,7 +62,7 @@ export const checkForErrors=(e, requirement)=> {
         return false
       } else {
         return true
-      } 
+      }
 
     case 'check state selection':
       if (e.target.value === '') {

@@ -7,21 +7,21 @@ import Identification from './FormSections/Identification';
 import Confirmation from './FormSections/Confirmation';
 import Delivery from "./FormSections/Delivery";
 import PoliticalParty from './FormSections/PoliticalParty';
-import { phoneFormat } from './HelperFunctions/ValidateField';
+import { phoneFormat, dateFormat } from './HelperFunctions/ValidateField';
+import DOMPurify from 'dompurify';
 import { fetchData } from './HelperFunctions/JsonHelper.jsx';
 import BackButton from './BackButton'
 import NextButton from './NextButton';
 
 
 function MultiStepForm(props) {
-    const [content, setContent] = useState()
+    const content = props.content;
     const navContent = props.navContent;
     const fieldContent = props.fieldContent;
 
-    //old registration data
-    useEffect(() => {
-        fetchData("registration-form.json", setContent);
-    }, []);
+    const mainContent = content.find(item => item.uuid ==="2c597df4-53b6-4ef5-8301-7817b04e1099");
+    const mainContentTitle = DOMPurify.sanitize(mainContent.title);
+    const mainContentBody = DOMPurify.sanitize(mainContent.body);
 
     //Field data controls
     const [fieldData, setFieldData] = useState({
@@ -121,7 +121,7 @@ function MultiStepForm(props) {
     }
 
         //Addresses
-    const [hasNoAddress, setHasNoAddress] = useState(false);    
+    const [hasNoAddress, setHasNoAddress] = useState(false);
     const [hasMailAddress, setHasMailAddress] = useState(false);
     const onChangeMailAddressCheckbox = (e) => {
         setHasMailAddress(e.target.checked);
@@ -138,11 +138,13 @@ function MultiStepForm(props) {
             street_address:'', apt_num:'', city:'', state:'', zip_code:''
         })
 
-        if (!hasMailAddress) {
-            setFieldData({
-                ...fieldData,
-                mail_street_address:'', mail_apt_num:'', mail_city:'', mail_state:'', mail_zip_code:''
-            })                
+        if (!e.target.checked && document.getElementById("alt-mail-addr")) {
+            if (!hasMailAddress) {
+                setFieldData({
+                    ...fieldData,
+                    mail_street_address:'', mail_apt_num:'', mail_city:'', mail_state:'', mail_zip_code:''
+                })
+            }
         }
     }
 
@@ -241,15 +243,15 @@ function MultiStepForm(props) {
             <>
                 {step != 6 && <BackButton type={'button'} onClick={handlePrev} text={backButtonText(step)}/>}
 
-                <ProgressBar step={step} content={content}/>
+                <ProgressBar step={step} content={navContent}/>
                 {step < 5 &&
-                    <div>
-                        <h1>{content.main_heading}: {props.stateData.name}</h1>
-                        <p><strong>{content.reminder}</strong>{content.reminder_text}</p>
-                    </div>
+                    <>
+                        <h1>{mainContentTitle.replace("@state_name", props.stateData.name)}</h1>
+                        <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: mainContentBody}}/>
+                    </>
                 }
 
-        <Form autoComplete="off" style={{ maxWidth:'none' }} onSubmit={(e) => {handleSubmit(e), handleNext()}}>
+        <Form autoComplete="off" className={'margin-top-8'} style={{ maxWidth:'none' }} onSubmit={(e) => {handleSubmit(e), handleNext()}}>
             {step === 1 &&
                 <PersonalInfo
                 state={props.state}
@@ -261,6 +263,7 @@ function MultiStepForm(props) {
                 previousName={previousName}
                 onChangePreviousName={onChangePreviousName}
                 handlePrev={props.handlePrev}
+                headings={navContent}
                 content={content}
                 fieldContent={fieldContent}
                 />
@@ -280,6 +283,7 @@ function MultiStepForm(props) {
                 onChangePreviousAddressCheckbox={onChangePreviousAddressCheckbox}
                 hasMailAddress={hasMailAddress}
                 onChangeMailAddressCheckbox={onChangeMailAddressCheckbox}
+                headings={navContent}
                 content={content}
                 fieldContent={fieldContent}
                 />
@@ -295,6 +299,7 @@ function MultiStepForm(props) {
                 handlePrev={handlePrev}
                 saveIdType={saveIdType}
                 idType={idType}
+                headings={navContent}
                 content={content}
                 fieldContent={fieldContent}
                 />
@@ -307,6 +312,7 @@ function MultiStepForm(props) {
                 saveFieldData = {saveFieldData}
                 registrationPath={props.registrationPath}
                 handlePrev={handlePrev}
+                headings={navContent}
                 content={content}
                 fieldContent={fieldContent}
                 />
@@ -315,6 +321,7 @@ function MultiStepForm(props) {
                 <Confirmation
                 state={props.state}
                 stateData={props.stateData}
+                headings={navContent}
                 content={props.content}
                 fieldData={fieldData}
                 saveFieldData = {saveFieldData}
@@ -325,12 +332,14 @@ function MultiStepForm(props) {
                 error={error}
                 acknowledgeCheckbox={acknowledgeCheckbox}
                 checkboxValid={checkboxValid}
+                fieldContent={fieldContent}
                 />
             }
             {step === 6 &&
                 <Delivery
                 state={props.state}
                 stateData={props.stateData}
+                headings={navContent}
                 content={props.content}
                 fieldData={fieldData}
                 saveFieldData = {saveFieldData}
