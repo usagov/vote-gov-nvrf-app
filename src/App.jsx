@@ -92,11 +92,13 @@ function App() {
           handleNext={handleNext}
           handleSubmit={handleSubmit}
           states={states}
+          statesList={statesList}
           getSelectedState={getSelectedState}
           state={selectedState}
           stateData={stateData}
           content={content}
           navContent={navContent}
+          fieldContent={fieldContent}
           />}
         {step === 2 &&
             <RegistrationOptions
@@ -105,7 +107,6 @@ function App() {
               stateData={stateData}
               content={content}
               navContent={navContent}
-              cards={cards}
           />}
         {step === 3 &&
           <Eligibility
@@ -115,6 +116,7 @@ function App() {
           stateData={stateData}
           content={content}
           navContent={navContent}
+          cards={cards}
           fieldContent={fieldContent}
           hasConfirmed={hasConfirmed}
           error={error}
