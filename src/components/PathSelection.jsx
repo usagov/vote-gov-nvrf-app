@@ -23,7 +23,7 @@ function PathSelection(props) {
                 <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: introContentBody}}/>
 
                 <CardGroup className="padding-top-4 border-black container-test-1">
-                    <Card className="card-info border-black container-test-2" gridLayout={{ tablet: { col: 4 } }}>
+                    <Card className="card-info border-black container-test-2" gridLayout={{ tablet: { col: 6 } }}>
                         <CardHeader className="container-test-3">
                             <h3 className="usa-card__heading">
                             {cardOne.heading.replace("@state_name", props.stateData.name)}
@@ -38,7 +38,7 @@ function PathSelection(props) {
                         </CardFooter>
                     </Card>
 
-                    <Card className="card-info" gridLayout={{ tablet: { col: 4 } }}>
+                    <Card className="card-info" gridLayout={{ tablet: { col: 6 } }}>
                         <CardHeader>
                             <h3 className="usa-card__heading">
                             {cardTwo.heading.replace("@state_name", props.stateData.name)}

@@ -78,7 +78,7 @@ function PersonalInfo(props){
         {nameFieldState && (
             <>
                 <Grid row gap>
-                    <Grid col={2}>
+                    <Grid tablet={{ col: 2 }}>
                     <Label className="text-bold" htmlFor="title-select">
                         {titleField.label}
                     <Dropdown className="radius-md" id="title-select" name="title-select" value={props.fieldData.title} onChange={props.saveFieldData('title')} autoComplete="off">
@@ -90,7 +90,7 @@ function PersonalInfo(props){
                     </Label>
                     </Grid>
 
-                    <Grid col={5}>
+                    <Grid tablet={{ col: 5 }}>
                     <div className={(parseInt(nameFieldState.required) && handleErrors.first_name) ? 'error-container' : ''}>
                         <Label className="text-bold" htmlFor="first-name">
                             {firstNameField.label}{(nameFieldState.required === "1") && <span className='required-text'>*</span>}
@@ -115,7 +115,7 @@ function PersonalInfo(props){
                     </div>
                     </Grid>
 
-                    <Grid col={5}>
+                    <Grid tablet={{ col: 5 }}>
                         <Label className="text-bold" htmlFor="middle-name">
                             {middleNameField.label}
                         <TextInput
@@ -130,7 +130,7 @@ function PersonalInfo(props){
                 </Grid>
 
                 <Grid row gap>
-                    <Grid col={6}>
+                    <Grid tablet={{ col: 6 }}>
                     <div className={(parseInt(nameFieldState.required) && handleErrors.last_name) ? 'error-container' : ''}>
                         <Label className="text-bold" htmlFor="last-name">
                             {lastNameField.label}{(nameFieldState.required === "1") && <span className='required-text'>*</span>}
@@ -155,7 +155,7 @@ function PersonalInfo(props){
                     </div>
                     </Grid>
 
-                    <Grid col={6}>
+                    <Grid tablet={{ col: 6 }}>
                     <Label className="text-bold" htmlFor="suffix-select">
                         {suffixField.label}
                     <Dropdown id="suffix-select" className="radius-md" name="suffix-select" value={props.fieldData.suffix} onChange={props.saveFieldData('suffix')} autoComplete="off" required={parseInt(nameFieldState.required)}>
@@ -172,7 +172,7 @@ function PersonalInfo(props){
 
         <Grid row gap>
             {dobFieldState && (
-            <Grid col={5}>
+            <Grid tablet={{ col: 5 }}>
                 <div className={(parseInt(dobFieldState.required) && handleErrors.dob) ? 'error-container' : ''}>
                 <Fieldset className="fieldset" legend={parseInt(dobFieldState.required) ? [<span className="text-bold">{dobField.label}</span>, <span key={1} className='required-text'>*</span>] : "Date of Birth"} style={{ marginTop:'30px'}}>
                         <span className="usa-hint" id="date-of-birth-hint">
@@ -269,7 +269,7 @@ function PersonalInfo(props){
             )}
 
             {telephoneFieldState && (
-                <Grid col={5} className="input-example">
+                <Grid tablet={{ col: 5 }} className="input-example">
                 <div className="bottom">
                     <div className={(parseInt(telephoneFieldState.required) && handleErrors.phone_number) ? 'error-container' : ''}>
                         <Label className="text-bold" htmlFor="phone-number">{phoneNumberField.label}{(telephoneFieldState.required === "1") && <span className='required-text'>*</span>}</Label>
@@ -298,7 +298,7 @@ function PersonalInfo(props){
                 </Grid>
 
             )}
-            </Grid>
+        </Grid>
 
             {/* Email Address check. */}
             <Grid row className={'email-address-input'} style={{
@@ -351,7 +351,7 @@ function PersonalInfo(props){
         <>
         <h3 className='margin-top-8'>{prevNameSectionField.label}</h3>
         <Grid row gap>
-            <Grid col={2}>
+            <Grid tablet={{ col: 2 }}>
             <Label className="text-bold" htmlFor="title-select-2">
                 {prevTitleField.label}
             <Dropdown id="title-select-2" className="radius-md" name="title-select-2" value={props.fieldData.prev_title} onChange={props.saveFieldData('prev_title')} autoComplete="off">
@@ -363,7 +363,7 @@ function PersonalInfo(props){
             </Label>
             </Grid>
 
-            <Grid col={5}>
+            <Grid tablet={{ col: 5 }}>
             <div className={(parseInt(nameFieldState.required) && handleErrors.prev_first_name) ? 'error-container' : ''}>
                 <Label className="text-bold" htmlFor="first-name-2">
                     {prevFirstNameField.label}{(nameFieldState.required === "1") && <span className='required-text'>*</span>}
@@ -388,7 +388,7 @@ function PersonalInfo(props){
             </div>
             </Grid>
 
-            <Grid col={5}>
+            <Grid tablet={{ col: 5 }}>
                 <Label className="text-bold" htmlFor="middle-name-2">
                     {prevMiddleNameField.label}
                 <TextInput
@@ -403,7 +403,7 @@ function PersonalInfo(props){
         </Grid>
 
         <Grid row gap>
-            <Grid col={6}>
+            <Grid tablet={{ col: 6 }}>
             <div className={(parseInt(nameFieldState.required) && handleErrors.prev_last_name) ? 'error-container' : ''}>
                 <Label className="text-bold" htmlFor="last-name-2">
                     {prevLastNameField.label}{(nameFieldState.required === "1") && <span className='required-text'>*</span>}
@@ -428,7 +428,7 @@ function PersonalInfo(props){
             </div>
             </Grid>
 
-            <Grid col={6}>
+            <Grid tablet={{ col: 6 }}>
             <Label className="text-bold" htmlFor="suffix-select-2">
                 {prevSuffixField.label}
             <Dropdown id="suffix-select-2" className="radius-md" name="suffix-select-2" value={props.fieldData.prev_suffix} onChange={props.saveFieldData('prev_suffix')} autoComplete="off" required={parseInt(nameFieldState.required)}>
