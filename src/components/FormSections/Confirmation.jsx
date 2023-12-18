@@ -36,8 +36,8 @@ function Confirmation(props) {
                         <div className='edit-btn'>
                             <Button
                                 type="button"
-                                onClick={props.handleGoBackSteps(4)}
-                                unstyled>
+                                class="usa-button--unstyled"
+                                onClick={props.handleGoBackSteps(4)}>
                                 {headings.confirmation.edit.label}
                             </Button>
                         </div>
@@ -78,8 +78,8 @@ function Confirmation(props) {
                         <div className='edit-btn'>
                             <Button
                                 type="button"
-                                onClick={props.handleGoBackSteps(3)}
-                                unstyled>
+                                class="usa-button--unstyled"
+                                onClick={props.handleGoBackSteps(3)}>
                                 {headings.confirmation.edit.label}
                             </Button>
                         </div>
@@ -131,8 +131,8 @@ function Confirmation(props) {
                         <div className='edit-btn'>
                             <Button
                                 type="button"
-                                onClick={props.handleGoBackSteps(2)}
-                                unstyled>
+                                class="usa-button--unstyled"
+                                onClick={props.handleGoBackSteps(2)}>
                                 {headings.confirmation.edit.label}
                             </Button>
                         </div>
@@ -146,8 +146,8 @@ function Confirmation(props) {
                         <div className='edit-btn'>
                             <Button
                                 type="button"
-                                onClick={props.handleGoBackSteps(1)}
-                                unstyled>
+                                class="usa-button--unstyled"
+                                onClick={props.handleGoBackSteps(1)}>
                                 {headings.confirmation.edit.label}
                             </Button>
                         </div>

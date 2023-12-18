@@ -101,11 +101,5 @@
 
 .edit-btn {
     margin-left: 8px;
-    margin-top: 18px;
-}
-
-@media (max-width: 480px) {
-    .edit-btn {
-        margin-top: 33px;
-    }
+    margin-top: 37px;
 }

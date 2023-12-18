@@ -12,18 +12,18 @@ function ByMail(props) {
         const contentBody = DOMPurify.sanitize(content.body).replace("@state_name", stateContent.name);
         const stateLinks = () => (
             <div className="padding-bottom-3 padding-top-1">
-                <Link href={stateContent.election_website_url} className="usa-button" target="_blank">
+                <a href={stateContent.election_website_url} className="usa-button" target="_blank">
                     {"Check your registration"}
                     <Icon.Launch title="External link opens new window"/>
-                </Link>
+                </a>
             </div>
         );
         const stateMailinLink = () => (
             <p>
-                <Link href={stateContent.download_form} className="text-primary" target="_blank">
+                <a href={stateContent.download_form} className="text-primary" target="_blank">
                     <strong className="text-primary underline-primary">{"Go to %state_name%'s mail-in form".replace("%state_name%", props.stateData.name)}
                         <Icon.Launch title="External link opens new window"/></strong>
-                </Link>
+                </a>
             </p>
         );
         let contentBodyProcessed = contentBody.replace("@state_links", renderToStaticMarkup(stateLinks()));

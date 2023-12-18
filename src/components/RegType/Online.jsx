@@ -13,16 +13,16 @@ function Online(props) {
         const stateLinks = () => (
             <>
                 <div className="padding-top-3 padding-bottom-1">
-                    <Link href={stateContent.registration_url} className="usa-button" target="_blank">
+                    <a href={stateContent.registration_url} className="usa-button" target="_blank">
                         {"Go to %state_name%'s online form".replace("%state_name%", stateContent.name)}
                         <Icon.Launch title="External link opens new window"/>
-                    </Link>
+                    </a>
                 </div>
                 <div className="padding-bottom-3 padding-top-1">
-                    <Link href={stateContent.election_website_url} className="usa-button" target="_blank">
+                    <a href={stateContent.election_website_url} className="usa-button" target="_blank">
                         Check your registration
                         <Icon.Launch title="External link opens new window"/>
-                    </Link>
+                    </a>
                 </div>
             </>
         );
