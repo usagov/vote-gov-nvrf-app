@@ -34,6 +34,7 @@ function Eligibility(props) {
                                     id="eligibility-checkbox"
                                     name="eligibility-checkbox"
                                     value="eligibility-checkbox"
+                                    aria-describedby='eligibility-error'
                                     label={eligibility.label}
                                     aria-required="true"
                                     required={true}
@@ -44,7 +45,7 @@ function Eligibility(props) {
 
                             {props.error &&
 
-                                <span id="eligibility-error" rol="alert" className='error-text'>
+                                <span id="eligibility-error" role="alert"  className='error-text'>
                                 {eligibility.error_msg}
                                 </span>
                             }
