@@ -19,18 +19,17 @@ function PathSelection(props) {
                 <BackButton type={'button'} onClick={props.handlePrev} text={navContent.back.eligibility_req}/>
 
                 <h1>{introContent.title.replace("@state_name", props.stateData.name)}</h1>
-                <div dangerouslySetInnerHTML= {{__html: introContentBody}}/>
 
-                <CardGroup className="padding-top-6 border-black container-test-1">
+                <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: introContentBody}}/>
+
+                <CardGroup className="padding-top-4 border-black container-test-1">
                     <Card className="card-info border-black container-test-2" gridLayout={{ tablet: { col: 6 } }}>
                         <CardHeader className="container-test-3">
                             <h3 className="usa-card__heading">
                             {cardOne.heading.replace("@state_name", props.stateData.name)}
                             </h3>
                         </CardHeader>
-                        <CardBody>
-                            <div dangerouslySetInnerHTML= {{__html: cardOneBody}}/>
-                        </CardBody>
+                        <CardBody dangerouslySetInnerHTML= {{__html: cardOneBody}} />
                         <CardFooter className="padding-top-6">
                             <Button type="submit" onClick={() => {props.getRegPath("update"), props.handleNext()}}>
                                 {cardOne.button_label}
@@ -45,9 +44,7 @@ function PathSelection(props) {
                             {cardTwo.heading.replace("@state_name", props.stateData.name)}
                             </h3>
                         </CardHeader>
-                        <CardBody>
-                            <div dangerouslySetInnerHTML= {{__html: cardTwoBody}}/>
-                        </CardBody>
+                        <CardBody dangerouslySetInnerHTML= {{__html: cardTwoBody}}/>
                         <CardFooter className="padding-top-6">
                             <Button type="submit" onClick={() => {props.getRegPath("new"),  props.handleNext()}}>
                                 {cardTwo.button_label}

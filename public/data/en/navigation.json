@@ -12,11 +12,51 @@
     },
     "next": {
         "next": "Next",
-        "start": "Start your online registration on vote.gov",
-        "continue": "Continue with mail-in registration on vote.gov",
-        "address_location": "Continue to address & location",
+        "start": "I want to use vote.gov’s mail-in form",
+        "continue": "Start your online registration on vote.gov",
+        "reg_options": "Continue to view registration options",
+        "address_location": "Continue to address and location",
         "identification": "Continue to identification",
         "political_party": "Continue to political party",
-        "confirm_info": "Confirm your information"
+        "confirm_info": "Continue to review your information"
+    },
+    "step_label_1": "Personal information",
+    "step_label_2": "Address and location",
+    "step_label_3": "Identification",
+    "step_label_4": "Political party",
+    "step_label_5": "Confirm your information",
+    "step_label_6": "Print your completed form",
+    "confirmation": {
+        "current_name": {
+            "label": "Current name"
+        },
+        "previous_name": {
+            "label": "Previous name",
+            "alert": "You have not changed your name, so these fields are blank."
+        },
+        "other_info": {
+            "label": "Other information"
+        },
+        "current_address": {
+            "label": "Other information",
+            "alert": "You are not registering with a current address, so these fields are blank."
+        },
+        "previous_address": {
+            "label": "Previous address",
+            "alert": "You are not registering with a change of address, so these fields are blank."
+        },
+        "mailing_address": {
+            "label": "Mailing address",
+            "alert": "You do not have an alternate mailing address, so these fields are blank."
+        },
+        "id_label": {
+            "label": "ID number"
+        },
+        "political_party": {
+            "label": "Political party"
+        },
+        "edit": {
+            "label": "Edit"
+        }
     }
 }

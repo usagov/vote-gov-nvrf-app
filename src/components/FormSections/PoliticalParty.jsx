@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import { Label, TextInput } from '@trussworks/react-uswds';
 import { restrictType, checkForErrors } from '../HelperFunctions/ValidateField';
+import DOMPurify from 'dompurify';
 
 function PoliticalParty(props){
+    const headings = props.headings;
     const content = props.content;
+    const state = props.stateData;
     const fields = props.fieldContent;
-    const stateInstructions = props.stateData.state_field_instructions;
     const nvrfStateFields = props.stateData.nvrf_fields;
-
+    const partyStateInstructions = DOMPurify.sanitize(state.political_party_inst);
 
     //Drupal field data
     const partyField = fields.find(item => item.uuid === "fd516f06-11bb-4c39-9080-735ed98100cc");
+    const partyGeneralInstructions = DOMPurify.sanitize(partyField.instructions)
 
     //Field requirements by state data
     const partyFieldState = (nvrfStateFields.find(item => item.uuid === partyField.uuid));
@@ -21,16 +24,15 @@ function PoliticalParty(props){
 
     return (
         <>
-        <h2>{content.political_party_heading}</h2>
+        <h2>{headings.step_label_4}</h2>
+        {(partyStateInstructions || partyGeneralInstructions) && (
         <div className="usa-alert usa-alert--info">
-            <div className="usa-alert__body">
-                <p>{content.party_text}</p>
-                <p>{"The state party text will go here."}</p>
-            </div>
-        </div>
+            <div className="usa-alert__body" dangerouslySetInnerHTML= {{__html: partyGeneralInstructions}}/>
+            <div className="usa-alert__body" dangerouslySetInnerHTML= {{__html: partyStateInstructions}}/>
+        </div>)}
 
         {partyFieldState && (
-            <div className={(parseInt(partyFieldState.required) && handleErrors.party_choice) ? 'error-container' : ''}>
+            <div className={(parseInt(partyFieldState.required) && handleErrors.party_choice) ? 'error-container margin-top-6' : 'margin-top-6'}>
                 <Label className="text-bold" htmlFor="political-party">
                 {partyField.name}{(partyFieldState.required === "1") && <span className='required-text'>*</span>}
                 <TextInput
@@ -48,7 +50,7 @@ function PoliticalParty(props){
                 />
                 {((partyFieldState.required === "1") && handleErrors.party_choice) &&
                     <span id="party-choice-error" role="alert" className='error-text text-bold'>
-                        Choice of party must be filled out.
+                        {partyField.error_msg}
                     </span>
                 }
                 </Label>
