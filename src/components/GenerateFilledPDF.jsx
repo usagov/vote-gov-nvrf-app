@@ -163,7 +163,7 @@ const GenerateFilledPDF = async function (formData,pagesKept) {
         console.log(pagesKeptArray.includes(i));*/
         if(!pagesKeptArray.includes(i.toString())){
             pdfDoc.removePage(i - shift);
-            console.log("page removed");
+            // console.log("page removed");
             shift++;
             pageCount--;
         }
