@@ -9,8 +9,17 @@ import {fetchData} from './components/HelperFunctions/JsonHelper.jsx';
 function App() {
 
   const [states, setState] = useState('');
+  const [content, setContent] = useState('');
+  const [navContent, setNavContent] = useState('');
+  const [cards, setCards] = useState('');
+  const [fieldContent, setFieldContent] = useState('')
+
   useEffect(() => {
     fetchData("states.json", setState);
+    fetchData("pages.json", setContent);
+    fetchData("navigation.json", setNavContent);
+    fetchData("cards.json", setCards);
+    fetchData("fields.json", setFieldContent);
   }, []);
 
   const [step, setStep] = useState(1);
@@ -19,18 +28,17 @@ function App() {
   const [registrationPath, setRegistrationPath] = useState('');
   const [formStep, setFormStep] = useState(1);
 
+  //Confirm eligibility checkbox controls
+  const [hasConfirmed, setHasConfirmed] = useState(null);
+  const [error, setError] = useState(null)
+  const confirmCheckbox = (checkStatus) => {
+      setHasConfirmed(checkStatus);
+      setError(!checkStatus);
+  }
 
-    //Confirm eligibility checkbox controls
-    const [hasConfirmed, setHasConfirmed] = useState(null);
-    const [error, setError] = useState(null)
-    const confirmCheckbox = (checkStatus) => {
-        setHasConfirmed(checkStatus);
-        setError(!checkStatus);
-    }
-
-    const checkboxValid = () => {
-        (hasConfirmed === null) && setError(true);
-    }
+  const checkboxValid = () => {
+      (hasConfirmed === null) && setError(true);
+  }
 
   const statesList = []
   for (let i = 0; i < states.length; i++) {
@@ -66,8 +74,9 @@ function App() {
     setHasConfirmed(null)
   }
 
+
   const getRegPath = (pathSelection) => {
-    setRegistrationPath(pathSelection) 
+    setRegistrationPath(pathSelection)
   };
 
   const getFormStep = (step) => {
@@ -78,47 +87,64 @@ function App() {
     <>
     <section className="usa-prose">
     <div id="scroll-to-top"></div>
-        {step === 1 && 
-          <StateSelection 
-          handleNext={handleNext} 
+        {step === 1 &&
+          <StateSelection
+          handleNext={handleNext}
           handleSubmit={handleSubmit}
-          getSelectedState={getSelectedState} 
+          states={states}
+          statesList={statesList}
+          getSelectedState={getSelectedState}
           state={selectedState}
           stateData={stateData}
-          />}  
-        {step === 2 && 
+          content={content}
+          navContent={navContent}
+          fieldContent={fieldContent}
+          />}
+        {step === 2 &&
             <RegistrationOptions
               handleNext={handleNext}
               handlePrev={handlePrev}
               stateData={stateData}
-          />}  
-        {step === 3 && 
-          <Eligibility 
-          handleNext={handleNext} 
+              content={content}
+              navContent={navContent}
+          />}
+        {step === 3 &&
+          <Eligibility
+          handleNext={handleNext}
           handlePrev={handlePrev}
           state={selectedState}
           stateData={stateData}
+          content={content}
+          navContent={navContent}
+          cards={cards}
+          fieldContent={fieldContent}
           hasConfirmed={hasConfirmed}
           error={error}
           confirmCheckbox={confirmCheckbox}
           checkboxValid={checkboxValid}
-        />}  
-        {step === 4 && 
-          <PathSelection 
-          handleNext={handleNext} 
-          handlePrev={handlePrev} 
+        />}
+        {step === 4 &&
+          <PathSelection
+          handleNext={handleNext}
+          handlePrev={handlePrev}
           stateData={stateData}
+          content={content}
+          navContent={navContent}
+          cards={cards}
           registrationPath={registrationPath}
           getRegPath={getRegPath}
           getFormStep={getFormStep}
-          />}  
-        {step === 5 && 
-          <MultiStepForm 
-          // handleNext={handleNext} 
+          />}
+        {step === 5 &&
+          <MultiStepForm
+          // handleNext={handleNext}
           handlePrev={handlePrev}
           statesList={statesList}
           state={selectedState}
           stateData={stateData}
+          content={content}
+          navContent={navContent}
+          fieldContent={fieldContent}
           registrationPath={registrationPath}
           getFormStep={getFormStep}
           />}

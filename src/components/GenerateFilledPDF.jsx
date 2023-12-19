@@ -1,5 +1,4 @@
 import { PDFDocument} from 'pdf-lib';
-import download from "downloadjs";
 
 const GenerateFilledPDF = async function (formData,pagesKept) {
     // Fetch the PDF with form fields
@@ -123,11 +122,16 @@ const GenerateFilledPDF = async function (formData,pagesKept) {
 
     //(2) Addresses
     //Home
+    const currentAddress = formData.street_address + formData.apt_num + formData.city + formData.zip_code;
+    //check if anything other than default state selection is filled out
+    if (currentAddress) {
     homeAddress.setText(formData.street_address);
     aptNumber.setText(formData.apt_num);
     city.setText(formData.city);
     state.setText(formData.state);
     zipcode.setText(formData.zip_code);
+    }
+
     //Mail
     mailAddress.setText(`${formData.mail_street_address} ${formData.mail_apt_num}`);
     mailCity.setText(formData.mail_city);
@@ -152,14 +156,14 @@ const GenerateFilledPDF = async function (formData,pagesKept) {
     let shift = 0;
     const totalPages = pdfDoc.getPageCount();
     let pageCount = totalPages;
-    //const pagesKept = [0,1,2,3,4,5,6,7];
+    const pagesKeptArray = pagesKept.split(',');
     for(let i = 0; i < totalPages; i++){
-        console.log(`i: ${i}`);
+        /*console.log(`i: ${i}`);
         console.log(`Total page count: ${pageCount}`);
-        console.log(pagesKept.includes(i));
-        if(!pagesKept.includes(i)){
+        console.log(pagesKeptArray.includes(i));*/
+        if(!pagesKeptArray.includes(i.toString())){
             pdfDoc.removePage(i - shift);
-            console.log("page removed");
+            // console.log("page removed");
             shift++;
             pageCount--;
         }

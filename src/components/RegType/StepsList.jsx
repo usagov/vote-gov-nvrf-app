@@ -1,7 +1,9 @@
-import { IconList, IconListItem, IconListContent, IconListIcon, IconListTitle } from '@trussworks/react-uswds';
+import DOMPurify from "dompurify";
+import {renderToStaticMarkup} from "react-dom/server";
 
 function StepsList(props) {
     const content = props.content;
+    const contentBody = DOMPurify.sanitize(content.body);
 
     const iconConfirmEligible =  <svg width="63" height="64" viewBox="0 0 63 64" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path fillRule="evenodd" clipRule="evenodd" d="M19.6856 18.7938C19.6856 23.0001 23.1075 26.4226 27.3145 26.4226C31.5215 26.4226 34.9441 23.0001 34.9441 18.7938C34.9441 18.213 34.8731 17.6493 34.7491 17.1052C34.7418 17.0611 34.731 17.019 34.7164 16.9774C33.8987 13.6459 30.895 11.1641 27.3148 11.1641C23.8156 11.1641 20.8661 13.5353 19.9712 16.7533C19.9389 16.8268 19.9196 16.9042 19.9116 16.9831C19.7689 17.5652 19.6855 18.1692 19.6855 18.7938L19.6856 18.7938ZM27.3145 24.8948C23.9504 24.8948 21.212 22.158 21.212 18.7938C21.212 18.3566 21.2602 17.9308 21.3484 17.5193C24.0287 15.6931 25.4254 16.1459 27.6886 16.8922C29.1278 17.3662 30.8959 17.9416 33.3574 17.9866C33.3929 18.2517 33.4173 18.5192 33.4173 18.7938C33.4176 22.158 30.6794 24.8947 27.3145 24.8947L27.3145 24.8948ZM27.3145 12.6917C29.8487 12.6917 32.026 14.245 32.9475 16.4484C30.9464 16.3543 29.4799 15.8743 28.1672 15.4418C26.3104 14.8293 24.646 14.2884 22.3815 15.2164C23.4922 13.6892 25.2872 12.6917 27.3145 12.6917Z" fill="#11385B"/>
@@ -29,68 +31,16 @@ function StepsList(props) {
     <path d="M21.8955 27.3984H39.2424V29.5668H21.8955V27.3984Z" fill="#11385B"/>
     <path d="M21.8955 32.8203H30.5689V34.9887H21.8955V32.8203Z" fill="#11385B"/>
     </svg>
-    
+
+    let contentBodyProcessed = contentBody.replace("@iconCompleteForm", renderToStaticMarkup(iconCompleteForm));
+    contentBodyProcessed = contentBodyProcessed.replace("@iconConfirmEligible", renderToStaticMarkup(iconConfirmEligible));
+    contentBodyProcessed = contentBodyProcessed.replace("@iconCheckmark", renderToStaticMarkup(iconCheckmark));
+    contentBodyProcessed = contentBodyProcessed.replace("@iconSendForm", renderToStaticMarkup(iconSendForm));
+
 
     return (
         <>
-
-            <h2>{content.process_heading}</h2>
-            <p>{content.process_parag}</p>
-
-            <IconList className="usa-icon-list--size-lg padding-top-1 padding-bottom-5">
-                <IconListItem className="margin-105">
-                    <IconListIcon className="text-primary-dark">
-                    <div className="text-primary-dark usa-icon-list__icon" data-testid="iconListIcon">
-                        {iconConfirmEligible}
-                    </div>
-                    </IconListIcon>
-                    <IconListContent>
-                    <IconListTitle type="h3">{content.process_heading1}</IconListTitle>
-                    <p>
-                        {content.process_text1}
-                    </p>
-                    </IconListContent>
-                </IconListItem>
-                <IconListItem className="margin-105">
-                    <IconListIcon className="text-primary-dark">
-                    <div className="text-primary-dark usa-icon-list__icon" data-testid="iconListIcon">
-                        {iconCompleteForm}
-                    </div>
-                    </IconListIcon>
-                    <IconListContent>
-                    <IconListTitle type="h3">{content.process_heading2}</IconListTitle>
-                    <p>
-                        {content.process_text2}
-                    </p>
-                    </IconListContent>
-                </IconListItem>
-                <IconListItem className="margin-105">
-                    <IconListIcon className="text-primary-dark">
-                    <div className="text-primary-dark usa-icon-list__icon" data-testid="iconListIcon">
-                        {iconCheckmark}
-                    </div>
-                    </IconListIcon>
-                    <IconListContent>
-                    <IconListTitle type="h3">{content.process_heading3}</IconListTitle>
-                    <p>
-                        {content.process_text3}
-                    </p>
-                    </IconListContent>
-                </IconListItem>
-                <IconListItem className="margin-105">
-                    <IconListIcon className="text-primary-dark">
-                    <div className="text-primary-dark usa-icon-list__icon" data-testid="iconListIcon">
-                        {iconSendForm}
-                    </div>
-                    </IconListIcon>
-                    <IconListContent>
-                    <IconListTitle type="h3">{content.process_heading4}</IconListTitle>
-                    <p>
-                        {content.process_text4}
-                    </p>
-                    </IconListContent>
-                </IconListItem>
-                </IconList>
+            <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: contentBodyProcessed}}/>
         </>
     );
 }

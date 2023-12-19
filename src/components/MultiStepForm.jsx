@@ -8,16 +8,20 @@ import Confirmation from './FormSections/Confirmation';
 import Delivery from "./FormSections/Delivery";
 import PoliticalParty from './FormSections/PoliticalParty';
 import { phoneFormat, dateFormat } from './HelperFunctions/ValidateField';
+import DOMPurify from 'dompurify';
 import { fetchData } from './HelperFunctions/JsonHelper.jsx';
 import BackButton from './BackButton'
 import NextButton from './NextButton';
 
 
 function MultiStepForm(props) {
-    const [content, setContent] = useState()
-    useEffect(() => {
-        fetchData("registration-form.json", setContent);
-    }, []);
+    const content = props.content;
+    const navContent = props.navContent;
+    const fieldContent = props.fieldContent;
+
+    const mainContent = content.find(item => item.uuid ==="2c597df4-53b6-4ef5-8301-7817b04e1099");
+    const mainContentTitle = DOMPurify.sanitize(mainContent.title);
+    const mainContentBody = DOMPurify.sanitize(mainContent.body);
 
     //Field data controls
     const [fieldData, setFieldData] = useState({
@@ -28,8 +32,7 @@ function MultiStepForm(props) {
         prev_street_address:'', prev_apt_num:'', prev_city:'', prev_state:'', prev_zip_code:'',
         mail_street_address:'', mail_apt_num:'', mail_city:'', mail_state:'', mail_zip_code:'',
         id_number:'', id_issue_date_month:'', id_issue_date_day:'', id_issue_date_year:'', id_expire_date_month:'', id_expire_date_day:'', id_expire_date_year:'',
-        party_choice:'',
-        email_address:'', sms_alert_phone_number:''});
+        party_choice:'', email_address:''});
         const [hasData, setHasData] = useState(false)
 
     const saveFieldData = (name) => {
@@ -118,7 +121,7 @@ function MultiStepForm(props) {
     }
 
         //Addresses
-    const [hasNoAddress, setHasNoAddress] = useState(false);    
+    const [hasNoAddress, setHasNoAddress] = useState(false);
     const [hasMailAddress, setHasMailAddress] = useState(false);
     const onChangeMailAddressCheckbox = (e) => {
         setHasMailAddress(e.target.checked);
@@ -140,9 +143,8 @@ function MultiStepForm(props) {
                 setFieldData({
                     ...fieldData,
                     mail_street_address:'', mail_apt_num:'', mail_city:'', mail_state:'', mail_zip_code:''
-                })                
+                })
             }
-
         }
     }
 
@@ -186,50 +188,70 @@ function MultiStepForm(props) {
             (hasAcknowledged === null) && setError(true);
         }
 
+    const emailValid = () => {
+        const emailField = document.getElementById('email-address');
+        if (!fieldData.email_address) {
+            emailField.removeAttribute('required');
+        } else {
+            emailField.value = "";
+        }
+    }
+
+    const nextStepValidation = () => {
+        switch (step) {
+            case 1:
+                emailValid();
+                break;
+            case 5:
+                checkboxValid();
+                break;
+        }
+    }
+
     const backButtonText = (step) => {
         switch (step) {
         case 1:
-            return content.back_btn.reg_options;
+            return navContent.back.reg_options;
         case 2:
-            return content.back_btn.personal_info;
+            return navContent.back.personal_info;
         case 3:
-            return content.back_btn.address_location;
+            return navContent.back.address_location;
         case 4:
-            return content.back_btn.identification;
+            return navContent.back.identification;
         case 5:
-            return content.back_btn.edit_info;
+            return navContent.back.edit_info;
         }
     }
 
     const nextButtonText = (step) => {
         switch (step) {
             case 1:
-                return content.next_btn.address_location;
+                return navContent.next.address_location;
             case 2:
-                return content.next_btn.identification;
+                return navContent.next.identification;
             case 3:
-                return content.next_btn.political_party;
+                return navContent.next.political_party;
             case 4:
-                return content.next_btn.confirm_info;
+                return navContent.next.confirm_info;
             case 5:
-                return content.next_btn.confirm_continue;
+                return "Confirm and continue";//TODO replace
         }
     }
 
-    if (content) {
+    if (content && fieldContent && navContent) {
         return (
             <>
                 {step != 6 && <BackButton type={'button'} onClick={handlePrev} text={backButtonText(step)}/>}
 
-                <ProgressBar step={step} content={content}/>
+                <ProgressBar step={step} content={navContent}/>
                 {step < 5 &&
-                    <div>
-                        <h1>{content.main_heading}: {props.stateData.name}</h1>
-                        <p><strong>{content.reminder}</strong>{content.reminder_text}</p>
-                    </div>
+                    <>
+                        <h1>{mainContentTitle.replace("@state_name", props.stateData.name)}</h1>
+                        <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: mainContentBody}}/>
+                    </>
                 }
 
-        <Form autoComplete="off" style={{ maxWidth:'none' }} onSubmit={(e) => {handleSubmit(e), handleNext()}}>
+        <Form autoComplete="off" className={'margin-top-8'} style={{ maxWidth:'none' }} onSubmit={(e) => {handleSubmit(e), handleNext()}}>
             {step === 1 &&
                 <PersonalInfo
                 state={props.state}
@@ -241,7 +263,9 @@ function MultiStepForm(props) {
                 previousName={previousName}
                 onChangePreviousName={onChangePreviousName}
                 handlePrev={props.handlePrev}
+                headings={navContent}
                 content={content}
+                fieldContent={fieldContent}
                 />
             }
             {step === 2 &&
@@ -259,7 +283,9 @@ function MultiStepForm(props) {
                 onChangePreviousAddressCheckbox={onChangePreviousAddressCheckbox}
                 hasMailAddress={hasMailAddress}
                 onChangeMailAddressCheckbox={onChangeMailAddressCheckbox}
+                headings={navContent}
                 content={content}
+                fieldContent={fieldContent}
                 />
             }
             {step === 3 &&
@@ -273,7 +299,9 @@ function MultiStepForm(props) {
                 handlePrev={handlePrev}
                 saveIdType={saveIdType}
                 idType={idType}
+                headings={navContent}
                 content={content}
+                fieldContent={fieldContent}
                 />
             }
             {step === 4 &&
@@ -284,13 +312,17 @@ function MultiStepForm(props) {
                 saveFieldData = {saveFieldData}
                 registrationPath={props.registrationPath}
                 handlePrev={handlePrev}
+                headings={navContent}
                 content={content}
+                fieldContent={fieldContent}
                 />
             }
             {step === 5 &&
                 <Confirmation
                 state={props.state}
                 stateData={props.stateData}
+                headings={navContent}
+                content={props.content}
                 fieldData={fieldData}
                 saveFieldData = {saveFieldData}
                 registrationPath={props.registrationPath}
@@ -300,12 +332,15 @@ function MultiStepForm(props) {
                 error={error}
                 acknowledgeCheckbox={acknowledgeCheckbox}
                 checkboxValid={checkboxValid}
+                fieldContent={fieldContent}
                 />
             }
             {step === 6 &&
                 <Delivery
                 state={props.state}
                 stateData={props.stateData}
+                headings={navContent}
+                content={props.content}
                 fieldData={fieldData}
                 saveFieldData = {saveFieldData}
                 registrationPath={props.registrationPath}
@@ -315,7 +350,7 @@ function MultiStepForm(props) {
                 />
             }
 
-                    {step != 6 && <NextButton type={'submit'} onClick={step === 5 ? () => checkboxValid() : undefined} text={nextButtonText(step)}/>}
+                    {step != 6 && <NextButton type={'submit'} onClick={() => nextStepValidation()} text={nextButtonText(step)}/>}
                 </Form>
             </>
         );

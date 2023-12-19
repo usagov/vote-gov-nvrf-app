@@ -1,39 +1,46 @@
 import { Link, Icon } from '@trussworks/react-uswds';
 import NextButton from '../NextButton';
-import StepsList from './StepsList';
+import DOMPurify from "dompurify";
+import {renderToStaticMarkup} from "react-dom/server";
 
 function ByMail(props) {
     const content = props.content;
+    const navContent = props.navContent;
+    const stateContent = props.stateData;
 
-    return (
-        <>
-
-            <h1>{content.main_heading.replace("%state_name%", props.stateData.name)}</h1>
-            <p className={'usa-intro'}>{content.parag_bymail.replace("%state_name%", props.stateData.name)}</p>
-
+    if (content && navContent) {
+        const contentBody = DOMPurify.sanitize(content.body).replace("@state_name", stateContent.name);
+        const stateLinks = () => (
             <div className="padding-bottom-3 padding-top-1">
-                <Link href={props.stateData.election_website_url} className="usa-button" target="_blank">
-                    {content.check_reg_btn}
+                <a href={stateContent.election_website_url} className="usa-button" target="_blank">
+                    {"Check your registration"}
                     <Icon.Launch title="External link opens new window"/>
-                </Link>
+                </a>
             </div>
-            <div>
-                <Link href={props.stateData.download_form} className="text-primary" target="_blank">
-                    <strong className="text-primary underline-primary">{content.mail_in_link.replace("%state_name%", props.stateData.name)}
-                    <Icon.Launch title="External link opens new window"/></strong>
-                </Link>
-            </div>
+        );
+        const stateMailinLink = () => (
+            <p>
+                <a href={stateContent.download_form} className="text-primary" target="_blank">
+                    <strong className="text-primary underline-primary">{"Go to %state_name%'s mail-in form".replace("%state_name%", props.stateData.name)}
+                        <Icon.Launch title="External link opens new window"/></strong>
+                </a>
+            </p>
+        );
+        let contentBodyProcessed = contentBody.replace("@state_links", renderToStaticMarkup(stateLinks()));
+        contentBodyProcessed = contentBodyProcessed.replace("@state_mailin_link", renderToStaticMarkup(stateMailinLink()));
 
-            <div className="divider padding-y-6">
-                <span>{content.divider_text}</span>
-            </div>
+        return (
+            <>
 
-            <StepsList content={props.content}/>
+                <h1>{content.title.replace("@state_name", stateContent.name)}</h1>
 
-            <NextButton type={'submit'} onClick={props.handleNext} text={content.next_btn}/>
+                <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: contentBodyProcessed}}/>
 
-        </>
-    );
+                <NextButton type={'submit'} onClick={props.handleNext} text={navContent.next.continue}/>
+
+            </>
+        );
+    }
 }
 
 export default ByMail;
