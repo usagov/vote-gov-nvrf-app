@@ -129,7 +129,7 @@ const GenerateFilledPDF = async function (formData,pagesKept) {
     aptNumber.setText(formData.apt_num);
     city.setText(formData.city);
     state.setText(formData.state);
-    zipcode.setText(formData.zip_code);        
+    zipcode.setText(formData.zip_code);
     }
 
     //Mail
@@ -156,14 +156,14 @@ const GenerateFilledPDF = async function (formData,pagesKept) {
     let shift = 0;
     const totalPages = pdfDoc.getPageCount();
     let pageCount = totalPages;
-    //const pagesKept = [0,1,2,3,4,5,6,7];
+    const pagesKeptArray = pagesKept.split(',');
     for(let i = 0; i < totalPages; i++){
-        console.log(`i: ${i}`);
+        /*console.log(`i: ${i}`);
         console.log(`Total page count: ${pageCount}`);
-        console.log(pagesKept.includes(i));
-        if(!pagesKept.includes(i)){
+        console.log(pagesKeptArray.includes(i));*/
+        if(!pagesKeptArray.includes(i.toString())){
             pdfDoc.removePage(i - shift);
-            console.log("page removed");
+            // console.log("page removed");
             shift++;
             pageCount--;
         }
