@@ -46,7 +46,6 @@ function Eligibility(props) {
                                 value="eligibility-checkbox"
                                 label={getFieldLabel(fields, "39fc63ad-ed5a-4ad5-98d3-aa236c96c61c")}
                                 aria-required="true"
-                                // ariaDescribedBy="eligibility-error"
                                 aria-describedby="eligibility-error"
                                 required={true}
                                 defaultChecked={props.hasConfirmed}
