@@ -25,16 +25,15 @@ function StateSelection(props) {
             <div className="usa-prose" dangerouslySetInnerHTML= {{__html: introContentBodyParts[0]}}/>
 
             <form onSubmit={(e) => {props.handleSubmit(e), props.handleNext()}}>
-            <div className="grid-row padding-y-2">
-                <div className="tablet:grid-col-1">
-                    <h4>{getFieldLabel(fields, "7231330d-523b-4e22-b282-b9f98ee20ef2")}</h4>
+            <div className="grid-row padding-top-3 flex-align-center">
+                <div className="grid-col-auto margin-right-2">
+                    <h4 className={'margin-0'}>{getFieldLabel(fields, "7231330d-523b-4e22-b282-b9f98ee20ef2")}</h4>
                 </div>
 
-                <div className="tablet:grid-col-4">
-                    <div className={handleErrors.state_selected ? 'error-container' : ''}>
+                <div className="grid-col">
+                    <div className={handleErrors.state_selected ? 'error-container maxw-mobile' : 'maxw-mobile'}>
                         <Dropdown
                             id="state-dropdown"
-                            className="margin-top-2"
                             name="input-dropdown"
                             value={props.state}
                             required={true}

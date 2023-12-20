@@ -90,7 +90,7 @@ function Addresses(props){
                     <div dangerouslySetInnerHTML= {{__html: homeAddressSectionField.instructions}}/>
 
                     <Grid row gap>
-                        <Grid col={12}>
+                        <Grid tablet={{ col: 12}}>
                         <div className={(parseInt(addressFieldsState.required) && handleErrors.street) ? 'error-container' : ''}>
                             <Label className="text-bold" htmlFor="street-address">
                                 {streetAddressField.label}{(addressFieldsState.required === "1") && <span className='required-text'>*</span>}
@@ -117,7 +117,7 @@ function Addresses(props){
                     </Grid>
 
                     <Grid row gap>
-                        <Grid col={5}>
+                        <Grid tablet={{ col: 5}}>
                         <Label className="text-bold" htmlFor="apt-num">
                             {aptField.label}
                         <TextInput
@@ -134,7 +134,7 @@ function Addresses(props){
                     </Grid>
 
                     <Grid row gap>
-                        <Grid col={4}>
+                        <Grid tablet={{ col: 4 }}>
                         <div className="bottom">
                         <div className={((parseInt(addressFieldsState.required)) && handleErrors.city) ? 'error-container' : ''}>
                             <Label className="text-bold" htmlFor="city">
@@ -162,7 +162,7 @@ function Addresses(props){
                         </div>
                         </Grid>
 
-                        <Grid col={4}>
+                        <Grid tablet={{ col: 4 }}>
                         <Label htmlFor="state" className="bottom text-bold">
                             {stateField.label}
                         <StateSelector
@@ -177,7 +177,7 @@ function Addresses(props){
                         </Label>
                         </Grid>
 
-                        <Grid col={3}>
+                        <Grid tablet={{ col: 3 }}>
                         <div className={((parseInt(addressFieldsState.required)) && handleErrors.zip) ? 'error-container' : ''}>
                             <Label className="text-bold" htmlFor="zip">{zipcodeField.label} {(addressFieldsState.required === "1") && <span className={'required-text'}>*</span>}</Label>
                             <span className="usa-hint" id="zip-hint">{zipcodeField.help_text}</span>
@@ -222,7 +222,7 @@ function Addresses(props){
                         <div dangerouslySetInnerHTML= {{__html: mailAddressSectionField.section_description}}/>
 
                         <Grid row gap>
-                            <Grid col={12}>
+                            <Grid tablet={{ col: 12 }}>
                             <div className={((parseInt(addressFieldsState.required)) && handleErrors.mail_street) ? 'error-container' : ''}>
                             <Label className="text-bold" htmlFor="mail-street">
                                 {mailStreetAddressField.label}{(addressFieldsState.required === "1") && <span className='required-text'>*</span>}
@@ -250,7 +250,7 @@ function Addresses(props){
 
                         {/* This field is not present on the NVRF PDF */}
                         {/*<Grid row gap>*/}
-                        {/*    <Grid col={5}>*/}
+                        {/*    <Grid tablet={{ col: 5 }}>*/}
                         {/*    <Label className="text-bold" htmlFor="mail-apt">*/}
                         {/*        {aptField.label}*/}
                         {/*    <TextInput*/}
@@ -365,7 +365,7 @@ function Addresses(props){
                         <div dangerouslySetInnerHTML= {{__html: prevAddressSectionField.instructions}}/>
 
                         <Grid row gap>
-                            <Grid col={12}>
+                            <Grid tablet={{ col: 12 }}>
                             <div className={((parseInt(addressFieldsState.required)) && handleErrors.prev_street) ? 'error-container' : ''}>
                                 <Label className="text-bold" htmlFor="prev-street">
                                     {prevStreetAddressField.label}{(addressFieldsState.required === "1") && <span className='required-text'>*</span>}
@@ -392,7 +392,7 @@ function Addresses(props){
                         </Grid>
 
                         <Grid row gap>
-                            <Grid col={5}>
+                            <Grid tablet={{ col: 5 }}>
                             <Label className="text-bold" htmlFor="prev-apt">
                                 {prevAptField.label}
                             <TextInput
@@ -409,7 +409,7 @@ function Addresses(props){
                         </Grid>
 
                         <Grid row gap>
-                            <Grid col={4}>
+                            <Grid tablet={{ col: 4 }}>
                             <div className="bottom">
                             <div className={((parseInt(addressFieldsState.required)) && handleErrors.prev_city) ? 'error-container' : ''}>
                                 <Label className="text-bold" htmlFor="prev-city">
@@ -437,7 +437,7 @@ function Addresses(props){
                             </div>
                             </Grid>
 
-                        <Grid col={4}>
+                        <Grid tablet={{ col: 4 }}>
                             <div className="bottom">
                             <div className={((parseInt(addressFieldsState.required)) && handleErrors.prev_state) ? 'error-container' : ''}>
                                 <Label className="text-bold" htmlFor="prev-state">
@@ -463,7 +463,7 @@ function Addresses(props){
                             </div>
                         </Grid>
 
-                            <Grid col={4}>
+                            <Grid tablet={{ col: 4 }}>
                             <div className={((parseInt(addressFieldsState.required)) && handleErrors.prev_zip) ? 'error-container' : ''}>
                                 <Label className="text-bold" htmlFor="prev-zip">{prevZipcodeField.label} {(addressFieldsState.required === "1") && <span className={'required-text'}>*</span>}</Label>
                                 <span className="usa-hint" id="prev-zip-hint">For example: 12345</span>
