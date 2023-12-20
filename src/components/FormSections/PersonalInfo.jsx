@@ -333,7 +333,7 @@ function PersonalInfo(props){
             {raceFieldState && (
                 <Grid row gap>
                     <Grid col={4}>
-                        <Label className="text-bold" htmlFor="race-ethic-group-select">{raceField.label}{parseInt(raceFieldState.required) && <span className='required-text'>*</span>}</Label>
+                        <Label className="text-bold" htmlFor="race-ethic-group-select">{raceField.label}{(raceFieldState.required === "1") && <span className='required-text'>*</span>}</Label>
                         <Dropdown id="race-ethic-group-select" className="radius-md" name="race-ethic-group-select"
                                   value={props.fieldData.race} onChange={props.saveFieldData('race')} autoComplete="off"
                                   required={parseInt(raceFieldState.required)}>
