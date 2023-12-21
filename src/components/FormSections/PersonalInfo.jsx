@@ -5,7 +5,6 @@ import DOMPurify from 'dompurify';
 
 function PersonalInfo(props){
     const headings = props.headings;
-    const content = props.content;
     const fields = props.fieldContent;
     const changeRegistrationVisible = (props.registrationPath === 'update') ? true : false;
     const nvrfStateFields = props.stateData.nvrf_fields;
@@ -83,8 +82,8 @@ function PersonalInfo(props){
                         {titleField.label}
                     <Dropdown className="radius-md" id="title-select" name="title-select" value={props.fieldData.title} onChange={props.saveFieldData('title')} autoComplete="off">
                         <option>- Select -{' '}</option>
-                        {titleField.options.map((item) => (
-                            <option value={item.value}>{item.key}</option>
+                        {titleField.options.map((item, index) => (
+                            <option key={index} value={item.value}>{item.key}</option>
                         ))}
                     </Dropdown>
                     </Label>
@@ -160,8 +159,8 @@ function PersonalInfo(props){
                         {suffixField.label}
                     <Dropdown id="suffix-select" className="radius-md" name="suffix-select" value={props.fieldData.suffix} onChange={props.saveFieldData('suffix')} autoComplete="off" required={parseInt(nameFieldState.required)}>
                         <option>- Select -{' '}</option>
-                        {suffixField.options.map((item) => (
-                            <option value={item.value}>{item.key}</option>
+                        {suffixField.options.map((item, index) => (
+                            <option key={index} value={item.value}>{item.key}</option>
                         ))}
                     </Dropdown>
                     </Label>
@@ -339,8 +338,8 @@ function PersonalInfo(props){
                                   value={props.fieldData.race} onChange={props.saveFieldData('race')} autoComplete="off"
                                   required={parseInt(raceFieldState.required)}>
                             <option>- Select -{' '}</option>
-                            {raceField.options.map((item) => (
-                                <option value={item.value}>{item.key}</option>
+                            {raceField.options.map((item, index) => (
+                                <option key={index} value={item.value}>{item.key}</option>
                             ))}
                         </Dropdown>
                     </Grid>
@@ -356,8 +355,8 @@ function PersonalInfo(props){
                 {prevTitleField.label}
             <Dropdown id="title-select-2" className="radius-md" name="title-select-2" value={props.fieldData.prev_title} onChange={props.saveFieldData('prev_title')} autoComplete="off">
                 <option>- Select -{' '}</option>
-                {prevTitleField.options.map((item) => (
-                    <option value={item.value}>{item.key}</option>
+                {prevTitleField.options.map((item, index) => (
+                    <option key={index} value={item.value}>{item.key}</option>
                 ))}
             </Dropdown>
             </Label>
@@ -433,8 +432,8 @@ function PersonalInfo(props){
                 {prevSuffixField.label}
             <Dropdown id="suffix-select-2" className="radius-md" name="suffix-select-2" value={props.fieldData.prev_suffix} onChange={props.saveFieldData('prev_suffix')} autoComplete="off" required={parseInt(nameFieldState.required)}>
                 <option>- Select -{' '}</option>
-                {prevSuffixField.options.map((item) => (
-                    <option value={item.value}>{item.key}</option>
+                {prevSuffixField.options.map((item, index) => (
+                    <option key={index} value={item.value}>{item.key}</option>
                 ))}
             </Dropdown>
             </Label>

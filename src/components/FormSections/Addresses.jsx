@@ -5,7 +5,6 @@ import { restrictType, checkForErrors } from '../HelperFunctions/ValidateField';
 
 function Addresses(props){
     const headings = props.headings;
-    const content = props.content;
     const fields = props.fieldContent;
     const changeRegistrationVisible = (props.registrationPath === 'update') ? true : false;
     const nvrfStateFields = props.stateData.nvrf_fields;
@@ -18,7 +17,6 @@ function Addresses(props){
     const stateField = fields.find(item => item.uuid === "fe3a2a1d-34bd-472b-a843-3fa0635c4f40");
     const zipcodeField = fields.find(item => item.uuid === "cdb06542-0cbd-4aa3-897f-83377b8d65e5");
 
-                    <h3>{homeAddressSectionField.label}</h3>
     const prevAddressSectionField = fields.find(item => item.uuid === "023fda0f-e8bd-4654-ab5c-46f44a0b7bd6");
     const prevAddressField = fields.find(item => item.uuid === "c3011c62-d174-420c-817a-bffbcd45687a");
     const prevStreetAddressField = fields.find(item => item.uuid === "c037a3ea-86b7-4661-ad28-c7228f1e682b");

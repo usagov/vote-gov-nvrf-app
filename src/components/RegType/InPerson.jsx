@@ -1,4 +1,4 @@
-import { Link, Icon } from '@trussworks/react-uswds';
+import { Icon } from '@trussworks/react-uswds';
 import DOMPurify from "dompurify";
 import {renderToStaticMarkup} from "react-dom/server";
 
@@ -18,7 +18,6 @@ function InPerson(props) {
 
     return (
         <>
-
             <h1>{content.title.replace("@state_name", stateContent.name)}</h1>
 
             <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: contentBodyProcessed}}/>
