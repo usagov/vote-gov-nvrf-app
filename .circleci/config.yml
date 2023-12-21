@@ -60,11 +60,13 @@ jobs:
           name: Frontend Testing
           command: |
             cd testing  
+            npm start
             npm run cy:test  
       - run:
           name: Axe Testing
           command: |
             cd testing
+            npm start
             npm run cy:axe          
 
 
