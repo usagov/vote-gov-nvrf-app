@@ -67,7 +67,8 @@ workflows:
           filters:
             branches:
               only:
-                - stage
+                - stage    
+  cypress-test-workflow:
     jobs:
       - update-nvrf
       - cypress-testing
