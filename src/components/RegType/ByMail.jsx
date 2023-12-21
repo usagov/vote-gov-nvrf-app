@@ -10,6 +10,7 @@ function ByMail(props) {
 
     if (content && navContent) {
         const contentBody = DOMPurify.sanitize(content.body).replace("@state_name", stateContent.name);
+        console.log(contentBody);
         const stateLinks = () => (
             <div className="padding-bottom-3 padding-top-1">
                 <a href={stateContent.confirm_reg_url} className="usa-button" target="_blank">
@@ -26,7 +27,7 @@ function ByMail(props) {
                 </a>
             </p>
         );
-        let contentBodyProcessed = contentBody.replace("@state_links", renderToStaticMarkup(stateLinks()));
+        let contentBodyProcessed = contentBody.replace("@state_confirm_link", renderToStaticMarkup(stateLinks()));
         contentBodyProcessed = contentBodyProcessed.replace("@state_mailin_link", renderToStaticMarkup(stateMailinLink()));
 
         return (
