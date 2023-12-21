@@ -60,7 +60,12 @@ jobs:
 
 
 workflows:
+  main-workflow:
+    jobs:
+      - cypress-testing
   update-nvrf-workflow:
+    jobs:
+      - update-nvrf
     triggers:
       - schedule:
           cron: '0 0 * * 5'
@@ -68,10 +73,6 @@ workflows:
             branches:
               only:
                 - stage    
-  cypress-test-workflow:
-    jobs:
-      - update-nvrf
-      - cypress-testing
 
 
 
