@@ -44,7 +44,7 @@
     "lang": "en",
     "title": "Before you get started with your @state_name registration",
     "instructions": "",
-    "body": "<h2>Eligibility requirements</h2><body>@reg_eligibility_desc\n</body><h2>Mail-in registration deadline</h2><p>Take note of the deadline for mailing in your form. Make sure you send it to your state election office in time.</p><body>@mail_deadline\n</body>",
+    "body": "<h2>Eligibility requirements</h2><br /><strong>* Required fields</strong><body>@reg_eligibility_desc\n</body><h2>Mail-in registration deadline</h2><p>Take note of the deadline for mailing in your form. Make sure you send it to your state election office in time.</p><body>@mail_deadline\n</body>",
     "omb_number": ""
     },
     {
@@ -68,7 +68,7 @@
     "lang": "en",
     "title": "Register to vote",
     "instructions": "",
-    "body": "<p>All states except North Dakota require that you register before voting in an election. The process can be a little different for each state. Select your state or territory from the dropdown menu below to see your registration options.</p><h2>Get started by selecting your state</h2><body>@state_selector\n</body><p><br /><strong>Are you living outside of the United States?</strong><br />If you are a U.S. citizen living outside the U.S., a U.S. military service member, and/or family of a military member, visit the <a href=\"https://www.fvap.gov/\">Federal Voter Assistance Program</a> for information on how to register to vote. You will need to complete the<a href=\"https://www.fvap.gov/fpca-privacy-notice\"> Federal Post Card Application (FPCA)</a>.</p>",
+    "body": "<p>All states except North Dakota require that you register before voting in an election. The process can be a little different for each state. Select your state or territory from the dropdown menu below to see your registration options.</p><br /><strong>* Required fields</strong><h2>Get started by selecting your state</h2><body>@state_selector\n</body><p><br /><strong>Are you living outside of the United States?</strong><br />If you are a U.S. citizen living outside the U.S., a U.S. military service member, and/or family of a military member, visit the <a href=\"https://www.fvap.gov/\">Federal Voter Assistance Program</a> for information on how to register to vote. You will need to complete the<a href=\"https://www.fvap.gov/fpca-privacy-notice\"> Federal Post Card Application (FPCA)</a>.</p>",
     "omb_number": ""
     },
     {
