@@ -1,6 +1,7 @@
 version: 2.1
 orbs:
   gh: circleci/github-cli@2.2.0
+  cypress: cypress-io/cypress@3
 jobs:
   update-nvrf:
     docker:
@@ -46,6 +47,19 @@ jobs:
             echo $NVRF_PDF_WRITE | tee /tmp/key.txt
             gh auth login --with-token < /tmp/key.txt
             gh pr create --title "Update NVRF PDF" --body "Upload the new NVRF PDF from eac.gov. This is an automated job from CircleCI"
+  cypress-testing:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - run:  
+          name: install dependencies
+          command: |
+            cd testing  
+            npm install 
+
+
+
 workflows:
   update-nvrf-workflow:
     triggers:
@@ -57,4 +71,59 @@ workflows:
                 - stage
     jobs:
       - update-nvrf
+      - cypress-testing
 
+
+
+
+
+# cypress:
+#     docker:
+#       - image: cypress/included:cypress-12.3.0-node-16.18.1-chrome-109.0.5414.74-1-ff-109.0-edge-109.0.1518.52-1
+#     environment:
+#       cypress_pipeline: 1
+#       cypress_cloudgov_application_name: "${project}-drupal-${CIRCLE_BRANCH}"
+#     steps:
+#       - checkout
+#       - attach_workspace:
+#           at: ~/
+#       - run:
+#           name: "Install cloudfoundry dependencies"
+#           command: |
+#             source ./scripts/pipeline/deb-basic-deps.sh
+#             source ./scripts/pipeline/deb-cf-install.sh
+#       - run:
+#           name: "Cypress - frontend tests"
+#           command: |
+#             cd testing
+#             cypress_baseurl="ssg-${CIRCLE_BRANCH}.vote.gov"
+#             npm install
+#             npm run cy:pipeline:frontEnd
+#       - run:
+#           name: "Cypress - frontend tests - rerun"
+#           command: |
+#             echo "I am the result of frontend tests failed job"
+#             cd testing
+#             cypress_baseurl="ssg-${CIRCLE_BRANCH}.vote.gov"
+#             npm install
+#             npm run cy:pipeline:frontEnd
+#           when: on_fail
+#       - run:
+#           name: "Cypress - axe tests"
+#           command: |
+#             cd testing
+#             cypress_baseurl="ssg-${CIRCLE_BRANCH}.vote.gov"
+#             npm install
+#             npm run cy:pipeline:axe
+#           when: always
+#       - run:
+#           name: "Cypress - axe tests - rerun"
+#           command: |
+#             echo "I am the result of axe tests failed job"
+#             cd testing
+#             cypress_baseurl="ssg-${CIRCLE_BRANCH}.vote.gov"
+#             npm install
+#             npm run cy:pipeline:axe
+#           when: on_fail
+#       - store_artifacts:
+#           path: testing/cypress/screenshots
