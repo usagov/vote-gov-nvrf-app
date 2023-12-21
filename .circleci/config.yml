@@ -52,10 +52,20 @@ jobs:
     steps:
       - checkout
       - run:  
-          name: install dependencies
+          name: Install dependencies
           command: |
             cd testing  
             npm install 
+      - run:  
+          name: Frontend Testing
+          command: |
+            cd testing  
+            npm run cy:test  
+      - run:
+          name: Axe Testing
+          command: |
+            cd testing
+            npm run cy:axe          
 
 
 
