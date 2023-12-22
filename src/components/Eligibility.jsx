@@ -47,6 +47,7 @@ function Eligibility(props) {
                             value="eligibility-checkbox"
                             label={getFieldLabel(fields, "39fc63ad-ed5a-4ad5-98d3-aa236c96c61c")}
                             aria-required="true"
+                            aria-describedby="eligibility-error"
                             required={true}
                             defaultChecked={props.hasConfirmed}
                             onChange={(e) => props.confirmCheckbox(e.target.checked)}
@@ -54,7 +55,7 @@ function Eligibility(props) {
 
                         {props.error &&
 
-                            <span id="eligibility-error" rol="alert" className='error-text'>
+                            <span id="eligibility-error" role="alert" className='error-text'>
                                 {getFieldError(fields, "39fc63ad-ed5a-4ad5-98d3-aa236c96c61c")}
                                 </span>
                         }
