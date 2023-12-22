@@ -34,16 +34,16 @@ function Online(props) {
                 </Link>
             </p>
         );
+
         let contentBodyProcessed = contentBody.replace("@state_links", renderToStaticMarkup(stateLinks()));
         contentBodyProcessed = contentBodyProcessed.replace("@state_mailin_link", renderToStaticMarkup(stateMailinLink()))
 
         return (
             <>
-            <h1>{content.title.replace("@state_name", stateContent.name)}</h1>
-            <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: contentBodyProcessed}}/>
+                <h1>{content.title.replace("@state_name", stateContent.name)}</h1>
+                <div className={'usa-prose'} dangerouslySetInnerHTML={{__html: contentBodyProcessed}}/>
 
-            <NextButton type={'submit'} onClick={props.handleNext} text={navContent.next.start}/>
-
+                <NextButton type={'submit'} onClick={props.handleNext} text={navContent.next.start}/>
             </>
         );
     }
