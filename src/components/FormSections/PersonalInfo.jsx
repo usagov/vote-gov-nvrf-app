@@ -67,7 +67,7 @@ function PersonalInfo(props){
             <Checkbox id="prev-name-change" name="prev-name-change" checked={props.prevh2iousName} onChange={props.onChangePreviousName} label={"I have legally changed my name since I last registered in this state."} />
         )}
 
-        <div className="usa-alert usa-alert--info">
+        <div className="usa-alert usa-alert--info" role="alert">
             <div className="usa-alert__body" dangerouslySetInnerHTML={{__html: nameSectionAlert}}/>
         </div>
 
