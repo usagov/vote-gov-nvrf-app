@@ -156,7 +156,7 @@ function App() {
                 <div className="margin-top-4 text-base">
                   <br/>OMB Control No. 3265-0015Q
                   <br/>Alaska instructions last updated: **03-01-2006 need this data**
-                  <br/><a href="">Privacy policy</a>               
+                  <br/><a href="https://vote.gov/privacy-policy/">Privacy policy</a>               
                 </div>
               }
           </section>
