@@ -5,6 +5,7 @@ import RegistrationOptions from './components/RegistrationOptions';
 import PathSelection from './components/PathSelection';
 import MultiStepForm from './components/MultiStepForm';
 import {fetchData} from './components/HelperFunctions/JsonHelper.jsx';
+import { HelmetProvider } from "react-helmet-async";
 
 function App() {
 
@@ -87,7 +88,7 @@ function App() {
     }
 
     return (
-        <>
+        <HelmetProvider>
           <section className="usa-prose">
             <div id="scroll-to-top"></div>
             {step === 1 &&
@@ -152,7 +153,7 @@ function App() {
                     getFormStep={getFormStep}
                 />}
           </section>
-        </>
+        </HelmetProvider>
     )
   }
 }
