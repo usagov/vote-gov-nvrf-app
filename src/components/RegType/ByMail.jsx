@@ -21,7 +21,7 @@ function ByMail(props) {
         );
         const stateMailinLink = () => (
             <p>
-                <a href={stateContent.election_website_url} className="text-primary" target="_blank">
+                <a href={stateContent.mail_reg_url} className="text-primary" target="_blank">
                     <strong className="text-primary underline-primary">{"Go to %state_name%'s mail-in form".replace("%state_name%", props.stateData.name)}
                         <Icon.Launch title="External link opens new window"/></strong>
                 </a>

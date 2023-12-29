@@ -28,7 +28,7 @@ function Online(props) {
         );
         const stateMailinLink = () => (
             <p>
-                <Link href={stateContent.election_website_url} className="text-primary" target="_blank">
+                <Link href={stateContent.mail_reg_url} className="text-primary" target="_blank">
                     <strong className="text-primary underline-primary">{"Go to %state_name%'s mail-in form".replace("%state_name%", stateContent.name)}
                         <Icon.Launch title="External link opens new window"/></strong>
                 </Link>
