@@ -5,7 +5,6 @@ import DOMPurify from 'dompurify';
 
 function PoliticalParty(props){
     const headings = props.headings;
-    const content = props.content;
     const state = props.stateData;
     const fields = props.fieldContent;
     const nvrfStateFields = props.stateData.nvrf_fields;

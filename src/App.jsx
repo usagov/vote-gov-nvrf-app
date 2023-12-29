@@ -40,12 +40,6 @@ function App() {
       (hasConfirmed === null) && setError(true);
   }
 
-  const statesList = []
-  for (let i = 0; i < states.length; i++) {
-    let stateName = states[i].name;
-    statesList.push(stateName);
-  }
-
   const handleNext = () => {
     step != 5 && setStep(step + 1);
     document.getElementById('scroll-to-top').scrollIntoView();
@@ -83,74 +77,84 @@ function App() {
     formStep === 4 ? null : setFormStep(step + 1);
   };
 
-  return (
-    <>
-    <section className="usa-prose">
-    <div id="scroll-to-top"></div>
-        {step === 1 &&
-          <StateSelection
-          handleNext={handleNext}
-          handleSubmit={handleSubmit}
-          states={states}
-          statesList={statesList}
-          getSelectedState={getSelectedState}
-          state={selectedState}
-          stateData={stateData}
-          content={content}
-          navContent={navContent}
-          fieldContent={fieldContent}
-          />}
-        {step === 2 &&
-            <RegistrationOptions
-              handleNext={handleNext}
-              handlePrev={handlePrev}
-              stateData={stateData}
-              content={content}
-              navContent={navContent}
-          />}
-        {step === 3 &&
-          <Eligibility
-          handleNext={handleNext}
-          handlePrev={handlePrev}
-          state={selectedState}
-          stateData={stateData}
-          content={content}
-          navContent={navContent}
-          cards={cards}
-          fieldContent={fieldContent}
-          hasConfirmed={hasConfirmed}
-          error={error}
-          confirmCheckbox={confirmCheckbox}
-          checkboxValid={checkboxValid}
-        />}
-        {step === 4 &&
-          <PathSelection
-          handleNext={handleNext}
-          handlePrev={handlePrev}
-          stateData={stateData}
-          content={content}
-          navContent={navContent}
-          cards={cards}
-          registrationPath={registrationPath}
-          getRegPath={getRegPath}
-          getFormStep={getFormStep}
-          />}
-        {step === 5 &&
-          <MultiStepForm
-          // handleNext={handleNext}
-          handlePrev={handlePrev}
-          statesList={statesList}
-          state={selectedState}
-          stateData={stateData}
-          content={content}
-          navContent={navContent}
-          fieldContent={fieldContent}
-          registrationPath={registrationPath}
-          getFormStep={getFormStep}
-          />}
-        </section>
-    </>
-  )
+  // Only render the markup if the data is loaded.
+  if (states && content && navContent && fieldContent) {
+
+    const statesList = []
+    for (let i = 0; i < states.length; i++) {
+      let stateName = states[i].name;
+      statesList.push(stateName);
+    }
+
+    return (
+        <>
+          <section className="usa-prose">
+            <div id="scroll-to-top"></div>
+            {step === 1 &&
+                <StateSelection
+                    handleNext={handleNext}
+                    handleSubmit={handleSubmit}
+                    states={states}
+                    statesList={statesList}
+                    getSelectedState={getSelectedState}
+                    state={selectedState}
+                    stateData={stateData}
+                    content={content}
+                    navContent={navContent}
+                    fieldContent={fieldContent}
+                />}
+            {step === 2 &&
+                <RegistrationOptions
+                    handleNext={handleNext}
+                    handlePrev={handlePrev}
+                    stateData={stateData}
+                    content={content}
+                    navContent={navContent}
+                />}
+            {step === 3 &&
+                <Eligibility
+                    handleNext={handleNext}
+                    handlePrev={handlePrev}
+                    state={selectedState}
+                    stateData={stateData}
+                    content={content}
+                    navContent={navContent}
+                    cards={cards}
+                    fieldContent={fieldContent}
+                    hasConfirmed={hasConfirmed}
+                    error={error}
+                    confirmCheckbox={confirmCheckbox}
+                    checkboxValid={checkboxValid}
+                />}
+            {step === 4 &&
+                <PathSelection
+                    handleNext={handleNext}
+                    handlePrev={handlePrev}
+                    stateData={stateData}
+                    content={content}
+                    navContent={navContent}
+                    cards={cards}
+                    registrationPath={registrationPath}
+                    getRegPath={getRegPath}
+                    getFormStep={getFormStep}
+                />}
+            {step === 5 &&
+                <MultiStepForm
+                    // handleNext={handleNext}
+                    handlePrev={handlePrev}
+                    statesList={statesList}
+                    state={selectedState}
+                    stateData={stateData}
+                    content={content}
+                    navContent={navContent}
+                    fieldContent={fieldContent}
+                    registrationPath={registrationPath}
+                    getFormStep={getFormStep}
+                />}
+          </section>
+        </>
+    )
+  }
 }
 
 export default App;

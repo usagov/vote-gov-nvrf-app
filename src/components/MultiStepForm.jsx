@@ -9,7 +9,6 @@ import Delivery from "./FormSections/Delivery";
 import PoliticalParty from './FormSections/PoliticalParty';
 import { phoneFormat, dateFormat } from './HelperFunctions/ValidateField';
 import DOMPurify from 'dompurify';
-import { fetchData } from './HelperFunctions/JsonHelper.jsx';
 import BackButton from './BackButton'
 import NextButton from './NextButton';
 
@@ -58,7 +57,7 @@ function MultiStepForm(props) {
       }
 
 
-      // Sets up prompt that if user hits browser back/refresh button and has imputed any data will alert that data will be lost
+      // Sets up prompt that if user hits browser back/refresh button and has entered any data will alert that data will be lost
     useEffect(() => {
         const handleBeforeUnload = (event) => {
         event.preventDefault();
@@ -238,123 +237,121 @@ function MultiStepForm(props) {
         }
     }
 
-    if (content && fieldContent && navContent) {
-        return (
-            <>
-                {step != 6 && <BackButton type={'button'} onClick={handlePrev} text={backButtonText(step)}/>}
+    return (
+        <>
+            {step != 6 && <BackButton type={'button'} onClick={handlePrev} text={backButtonText(step)}/>}
 
-                <ProgressBar step={step} content={navContent}/>
-                {step < 5 &&
-                    <>
-                        <h1>{mainContentTitle.replace("@state_name", props.stateData.name)}</h1>
-                        <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: mainContentBody}}/>
-                    </>
+            <ProgressBar step={step} content={navContent}/>
+            {step < 5 &&
+                <>
+                    <h1>{mainContentTitle.replace("@state_name", props.stateData.name)}</h1>
+                    <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: mainContentBody}}/>
+                </>
+            }
+
+            <Form autoComplete="off" className={'margin-top-8'} style={{ maxWidth:'none' }} onSubmit={(e) => {handleSubmit(e), handleNext()}}>
+                {step === 1 &&
+                    <PersonalInfo
+                        state={props.state}
+                        stateData={props.stateData}
+                        fieldData={fieldData}
+                        saveFieldData = {saveFieldData}
+                        dateFormat={dateFormat}
+                        registrationPath={props.registrationPath}
+                        previousName={previousName}
+                        onChangePreviousName={onChangePreviousName}
+                        handlePrev={props.handlePrev}
+                        headings={navContent}
+                        content={content}
+                        fieldContent={fieldContent}
+                    />
+                }
+                {step === 2 &&
+                    <Addresses
+                        state={props.state}
+                        statesList={props.statesList}
+                        stateData={props.stateData}
+                        fieldData={fieldData}
+                        saveFieldData = {saveFieldData}
+                        registrationPath={props.registrationPath}
+                        handlePrev={handlePrev}
+                        hasNoAddress={hasNoAddress}
+                        hasNoAddressCheckbox={hasNoAddressCheckbox}
+                        hasPreviousAddress={hasPreviousAddress}
+                        onChangePreviousAddressCheckbox={onChangePreviousAddressCheckbox}
+                        hasMailAddress={hasMailAddress}
+                        onChangeMailAddressCheckbox={onChangeMailAddressCheckbox}
+                        headings={navContent}
+                        content={content}
+                        fieldContent={fieldContent}
+                    />
+                }
+                {step === 3 &&
+                    <Identification
+                        state={props.state}
+                        stateData={props.stateData}
+                        fieldData={fieldData}
+                        saveFieldData = {saveFieldData}
+                        dateFormat={dateFormat}
+                        registrationPath={props.registrationPath}
+                        handlePrev={handlePrev}
+                        saveIdType={saveIdType}
+                        idType={idType}
+                        headings={navContent}
+                        content={content}
+                        fieldContent={fieldContent}
+                    />
+                }
+                {step === 4 &&
+                    <PoliticalParty
+                        state={props.state}
+                        stateData={props.stateData}
+                        fieldData={fieldData}
+                        saveFieldData = {saveFieldData}
+                        registrationPath={props.registrationPath}
+                        handlePrev={handlePrev}
+                        headings={navContent}
+                        content={content}
+                        fieldContent={fieldContent}
+                    />
+                }
+                {step === 5 &&
+                    <Confirmation
+                        state={props.state}
+                        stateData={props.stateData}
+                        headings={navContent}
+                        content={props.content}
+                        fieldData={fieldData}
+                        saveFieldData = {saveFieldData}
+                        registrationPath={props.registrationPath}
+                        handlePrev={handlePrev}
+                        handleGoBackSteps={handleGoBackSteps}
+                        hasAcknowledged={hasAcknowledged}
+                        error={error}
+                        acknowledgeCheckbox={acknowledgeCheckbox}
+                        checkboxValid={checkboxValid}
+                        fieldContent={fieldContent}
+                    />
+                }
+                {step === 6 &&
+                    <Delivery
+                        state={props.state}
+                        stateData={props.stateData}
+                        headings={navContent}
+                        content={props.content}
+                        fieldData={fieldData}
+                        saveFieldData = {saveFieldData}
+                        registrationPath={props.registrationPath}
+                        handlePrev={handlePrev}
+                        deliveryButtonSelected = {deliveryButtonSelected}
+                        handleClickDeliveryButton = {handleClickDeliveryButton}
+                    />
                 }
 
-        <Form autoComplete="off" className={'margin-top-8'} style={{ maxWidth:'none' }} onSubmit={(e) => {handleSubmit(e), handleNext()}}>
-            {step === 1 &&
-                <PersonalInfo
-                state={props.state}
-                stateData={props.stateData}
-                fieldData={fieldData}
-                saveFieldData = {saveFieldData}
-                dateFormat={dateFormat}
-                registrationPath={props.registrationPath}
-                previousName={previousName}
-                onChangePreviousName={onChangePreviousName}
-                handlePrev={props.handlePrev}
-                headings={navContent}
-                content={content}
-                fieldContent={fieldContent}
-                />
-            }
-            {step === 2 &&
-                <Addresses
-                state={props.state}
-                statesList={props.statesList}
-                stateData={props.stateData}
-                fieldData={fieldData}
-                saveFieldData = {saveFieldData}
-                registrationPath={props.registrationPath}
-                handlePrev={handlePrev}
-                hasNoAddress={hasNoAddress}
-                hasNoAddressCheckbox={hasNoAddressCheckbox}
-                hasPreviousAddress={hasPreviousAddress}
-                onChangePreviousAddressCheckbox={onChangePreviousAddressCheckbox}
-                hasMailAddress={hasMailAddress}
-                onChangeMailAddressCheckbox={onChangeMailAddressCheckbox}
-                headings={navContent}
-                content={content}
-                fieldContent={fieldContent}
-                />
-            }
-            {step === 3 &&
-                <Identification
-                state={props.state}
-                stateData={props.stateData}
-                fieldData={fieldData}
-                saveFieldData = {saveFieldData}
-                dateFormat={dateFormat}
-                registrationPath={props.registrationPath}
-                handlePrev={handlePrev}
-                saveIdType={saveIdType}
-                idType={idType}
-                headings={navContent}
-                content={content}
-                fieldContent={fieldContent}
-                />
-            }
-            {step === 4 &&
-                <PoliticalParty
-                state={props.state}
-                stateData={props.stateData}
-                fieldData={fieldData}
-                saveFieldData = {saveFieldData}
-                registrationPath={props.registrationPath}
-                handlePrev={handlePrev}
-                headings={navContent}
-                content={content}
-                fieldContent={fieldContent}
-                />
-            }
-            {step === 5 &&
-                <Confirmation
-                state={props.state}
-                stateData={props.stateData}
-                headings={navContent}
-                content={props.content}
-                fieldData={fieldData}
-                saveFieldData = {saveFieldData}
-                registrationPath={props.registrationPath}
-                handlePrev={handlePrev}
-                handleGoBackSteps={handleGoBackSteps}
-                hasAcknowledged={hasAcknowledged}
-                error={error}
-                acknowledgeCheckbox={acknowledgeCheckbox}
-                checkboxValid={checkboxValid}
-                fieldContent={fieldContent}
-                />
-            }
-            {step === 6 &&
-                <Delivery
-                state={props.state}
-                stateData={props.stateData}
-                headings={navContent}
-                content={props.content}
-                fieldData={fieldData}
-                saveFieldData = {saveFieldData}
-                registrationPath={props.registrationPath}
-                handlePrev={handlePrev}
-                deliveryButtonSelected = {deliveryButtonSelected}
-                handleClickDeliveryButton = {handleClickDeliveryButton}
-                />
-            }
-
-                    {step != 6 && <NextButton type={'submit'} onClick={() => nextStepValidation()} text={nextButtonText(step)}/>}
-                </Form>
-            </>
-        );
-    }
+                {step != 6 && <NextButton type={'submit'} onClick={() => nextStepValidation()} text={nextButtonText(step)}/>}
+            </Form>
+        </>
+    );
 }
 
 export default MultiStepForm;
