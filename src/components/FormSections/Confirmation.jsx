@@ -157,7 +157,7 @@ function Confirmation(props) {
             </div>
 
             {confirmInstructions && (
-                <div className="usa-alert usa-alert--info">
+                <div className="usa-alert usa-alert--info" role="alert">
                     <div className="usa-alert__body" dangerouslySetInnerHTML={{__html: confirmInstructions}}/>
                 </div>)}
 

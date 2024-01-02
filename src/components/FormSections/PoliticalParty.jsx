@@ -25,7 +25,7 @@ function PoliticalParty(props){
         <>
         <h2>{headings.step_label_4}</h2>
         {(partyStateInstructions || partyGeneralInstructions) && (
-        <div className="usa-alert usa-alert--info">
+        <div className="usa-alert usa-alert--info" role="alert">
             <div className="usa-alert__body" dangerouslySetInnerHTML= {{__html: partyGeneralInstructions}}/>
             <div className="usa-alert__body" dangerouslySetInnerHTML= {{__html: partyStateInstructions}}/>
         </div>)}
