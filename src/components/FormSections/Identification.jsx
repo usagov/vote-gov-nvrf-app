@@ -50,11 +50,11 @@ function Identification(props){
         <h2>{headings.step_label_3}</h2>
 
             {idStateInstructions && (
-                <div className="usa-alert usa-alert--info">
+                <div className="usa-alert usa-alert--info" role="alert">
                     <div className="usa-alert__body" dangerouslySetInnerHTML={{__html: idStateInstructions}}/>
                 </div>)}
 
-            <h3 className={'margin-top-6'}>{idTypeField.label}</h3>
+            <h3 className={'margin-top-6'}>{idTypeField.label}<span className='required-text'>*</span></h3>
             <div dangerouslySetInnerHTML={{__html: idTypeFieldInstructions}}/>
 
             <div className={handleErrors.id_selection ? 'error-container mobile-width' : 'mobile-width'}>
@@ -62,7 +62,7 @@ function Identification(props){
                     id="id-num-dropdown"
                     name="input-dropdown"
                     value={props.idType}
-                    required={parseInt(idFieldState.required)}
+                    required={true}
                     onChange={(e) => props.saveIdType(e)}
                     onBlur={(e) => setHandleErrors({
                         ...handleErrors,
