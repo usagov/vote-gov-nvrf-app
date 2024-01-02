@@ -349,7 +349,7 @@ function PersonalInfo(props){
                                     <option key={index} value={item.value}>{item.key}</option>
                                 ))}
                             </Dropdown>
-                            {((parseInt(raceFieldState.required)) && handleErrors.race) &&
+                            {((parseInt(raceFieldState.required) === 1) && handleErrors.race) &&
                                 <span id="race-error" role="alert" className='error-text'>
                                     {raceField.error_msg}
                                 </span>
