@@ -73,7 +73,7 @@ function Identification(props){
                     <option key="driver-id-num" value="driver-id-num">{driverLicenseField.label}</option>
                     <option key="state-id-num" value="state-id-num">{stateIDField.label}</option>
                     {ssnOption}
-                    <option key="id-none" value="none">{noIdField.label}</option>
+                    {(stateData.name != "Utah") && <option key="id-none" value="none">{noIdField.label}</option>}
                 </Dropdown>
                 {handleErrors.id_selection &&
                     <span id="id-num-dropdown-error" role="alert" className='error-text text-bold'>
