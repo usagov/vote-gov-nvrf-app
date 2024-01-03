@@ -145,7 +145,11 @@ const GenerateFilledPDF = async function (formData,pagesKept) {
     prevZipcode.setText(formData.prev_zip_code);
 
     //(3) Identification
-    idNumber.setText(formData.id_number);
+    if(formData.state === "Utah") {
+        idNumber.setText("None, " + formData.id_number);
+    } else {
+        idNumber.setText(formData.id_number);
+    }
 
     //(4) Political Party
     politicalParty.setText(formData.party_choice);
