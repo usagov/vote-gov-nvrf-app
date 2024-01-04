@@ -124,8 +124,7 @@ cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
 
 // identification
 // * state driver's license number
-// ! come back and fix when this bug is fixed
-cy.get('[class="usa-select"]').select("State driver&#039;s license number")
+cy.get('[class="usa-select"]').select("State driver's license number")
 cy.get('[data-testid="textInput"]').type(data.idNumber)
 // * social security number (last 4 digits)
 cy.get('[class="usa-select"]').then(dropDown => {
