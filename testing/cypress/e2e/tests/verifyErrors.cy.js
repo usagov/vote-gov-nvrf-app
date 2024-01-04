@@ -57,9 +57,7 @@ cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
 
 // identification
 // * state driver's license number required fields are needed to move forward
-// ! come back and fix when this bug is fixed
-
-cy.get('[class="usa-select"]').select("State driver&#039;s license number")
+cy.get('[class="usa-select"]').select("State driver's license number")
 cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click().click()
 cy.get('[class="error-text"]').should('contain.text', 'ID number must be filled out.')
 cy.get('[data-testid="textInput"]').type(data.idNumber)
