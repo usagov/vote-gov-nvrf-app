@@ -31,6 +31,7 @@ function App() {
   const [formStep, setFormStep] = useState(1);
 
   const lastUpdatedSanitized = DOMPurify.sanitize(stateData.nvrf_last_updated_date);
+  const lastUpdatedText = "@state_name information last updated "
 
   //Confirm eligibility checkbox controls
   const [hasConfirmed, setHasConfirmed] = useState(null);
@@ -160,8 +161,8 @@ function App() {
                 <div className="margin-top-4 text-base">
                   <div>OMB Control No. 3265-0015Q</div>
                   <span className="last-updated">
-                    {stateData.name} information last updated
-                    <span dangerouslySetInnerHTML= {{__html: renderToStaticMarkup(lastUpdatedSanitized)}}/>
+                    {lastUpdatedText.replace("@state_name", stateData.name)}
+                    <span dangerouslySetInnerHTML= {{__html: lastUpdatedSanitized}}/>
                  </span>
                   <div><a href="https://vote.gov/privacy-policy/">Privacy policy</a></div>               
                 </div>
