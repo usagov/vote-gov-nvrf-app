@@ -12,7 +12,7 @@
     "lang": "en",
     "title": "@state_name registration options",
     "instructions": "",
-    "body": "<p>@state_name requires you to register in person at your local election office. Learn more about how to register on @state_name’s election website.</p><body>@state_links\n</body><h2>Make a plan to vote!</h2><p>Explore USA.gov to learn more information about <a href=\"Don’t forget to vote! Prepare to cast your vote. Explore USA.gov to learn more about U.S. elections and your voting options. \">U.S. voting and elections</a>. </p>",
+    "body": "<p>@state_name requires you to register in person at your local election office. Learn more about how to register on @state_name’s election website.</p><body>@state_links\n</body><h2>Make a plan to vote!</h2><p>Explore USA.gov to learn more information about <a href=\"https://www.usa.gov/voting-and-elections\" target=\"_blank\">U.S. voting and elections</a>.</p>",
     "omb_number": ""
     },
     {
@@ -20,7 +20,7 @@
     "lang": "en",
     "title": "@state_name registration options",
     "instructions": "",
-    "body": "<p>@state_name doesn't currently offer online registration. You can use the state mail-in registration form or you can create your registration form on vote.gov to print and mail. Save time by checking first to see if you’re already registered.</p><body>@state_links\n</body><p> </p><h2>About vote.gov’s mail-in form filler tool</h2><p>You can fill out the National Mail Voter Registration form here by answering a few questions. Use it to register for the first time or to report a change of name, address, or political party to your state’s election office.</p><p>You’ll need access to a printer to print it and to a first-class postage stamp to mail it to your state election office. If you do not have valid state identification, you may indicate that information in the vote.gov mail-in form and your state will assign you a number for registration purposes.</p>",
+    "body": "<p>Register for the first time or report a change of name, address, or political party to @state_name's election office.</p><h2>Mail-in registration</h2><p>@state_name doesn't currently offer online registration. You can use the state mail-in registration form or fill out a registration form online on vote.gov to print and mail. You will need access to a printer and you will need to provide a postage stamp.<br /> </p><body>@state_mailin_link\n</body><body>@vote_nvrf_link\n</body><h2>Check registration</h2><p>Save time by checking first to see if you’re already registered.</p><body>@state_confirm_link\n</body>",
     "omb_number": ""
     },
     {
@@ -28,7 +28,15 @@
     "lang": "en",
     "title": "@state_name registration options",
     "instructions": "",
-    "body": "<p>@state_name offers online registration. For many, this is the fastest way to register to vote in your state. Save time by checking first to see if you’re already registered.</p><body>@state_links\n</body><h2>Mail-in registration </h2><p>If you prefer to use a mail-in form, you can use the state mail-in registration form or create your registration form on vote.gov to print and mail.</p><body>@state_mailin_link\n</body><h3>About vote.gov's mail-in form filler tool</h3><p>You can fill out the National Mail Voter Registration form here by answering a few questions. Use it to register for the first time or to report a change of name, address, or political party to your state’s election office.</p><p>You’ll need access to a printer to print it and to a first-class postage stamp to mail it to your state election office. If you do not have valid state identification, you may indicate that information in the vote.gov mail-in form and your state will assign you a number for registration purposes.</p>",
+    "body": "<p> </p><p>Register for the first time or report a change of name, address, or political party to @state_name's election office.</p><h2>Online Registration</h2><p>@state_name offers online registration. For many, this is the fastest way to register to vote in your state.</p><body>@state_online_link\n</body><p> </p><h2>Mail-in registration </h2><p>If you prefer to use a mail-in form, you can use the state mail-in registration form or fill out a registration form online on vote.gov to print and mail. You will need access to a printer and you will need to provide a postage stamp. </p><body>@state_mailin_link\n</body><body>@vote_nvrf_link\n</body><p> </p><h2>Check registration</h2><p>Save time by checking first to see if you’re already registered.</p><body>@state_confirm_link\n</body><p><br /> </p>",
+    "omb_number": ""
+    },
+    {
+    "uuid": "bfe1aeed-72b1-405e-b3e9-a94303611c71",
+    "lang": "en",
+    "title": "@state_name registration options",
+    "instructions": "",
+    "body": "<p>Register for the first time or report a change of name, address, or political party to @state_name's election office.</p><p> </p><h2>Mail-in registration</h2><p>@state_name doesn't currently offer online registration. You can use the state mail-in registration form. You will need access to a printer and you will need to provide a postage stamp.<br /> </p><body>@state_mailin_link\n</body><p> </p><h2>Check registration</h2><p>Save time by checking first to see if you’re already registered.<br /> </p><body>@state_confirm_link\n</body>",
     "omb_number": ""
     },
     {
