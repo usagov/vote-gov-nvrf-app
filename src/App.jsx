@@ -5,17 +5,19 @@ import RegistrationOptions from './components/RegistrationOptions';
 import PathSelection from './components/PathSelection';
 import MultiStepForm from './components/MultiStepForm';
 import {fetchData} from './components/HelperFunctions/JsonHelper.jsx';
+import DOMPurify from 'dompurify';
+import { renderToStaticMarkup } from 'react-dom/server';
 
 function App() {
 
-  const [states, setState] = useState('');
+  const [states, setStates] = useState('');
   const [content, setContent] = useState('');
   const [navContent, setNavContent] = useState('');
   const [cards, setCards] = useState('');
   const [fieldContent, setFieldContent] = useState('')
 
   useEffect(() => {
-    fetchData("states.json", setState);
+    fetchData("states.json", setStates);
     fetchData("pages.json", setContent);
     fetchData("navigation.json", setNavContent);
     fetchData("cards.json", setCards);
@@ -27,6 +29,8 @@ function App() {
   const [stateData, setStateData] = useState('');
   const [registrationPath, setRegistrationPath] = useState('');
   const [formStep, setFormStep] = useState(1);
+
+  const lastUpdatedSanitized = DOMPurify.sanitize(stateData.nvrf_last_updated_date);
 
   //Confirm eligibility checkbox controls
   const [hasConfirmed, setHasConfirmed] = useState(null);
@@ -154,9 +158,12 @@ function App() {
               
               {step >= 3 && 
                 <div className="margin-top-4 text-base">
-                  <br/>OMB Control No. 3265-0015Q
-                  <br/>Alaska instructions last updated: **03-01-2006 need this data**
-                  <br/><a href="https://vote.gov/privacy-policy/">Privacy policy</a>               
+                  <div>OMB Control No. 3265-0015Q</div>
+                  <span className="last-updated">
+                    {stateData.name} information last updated
+                    <span dangerouslySetInnerHTML= {{__html: renderToStaticMarkup(lastUpdatedSanitized)}}/>
+                 </span>
+                  <div><a href="https://vote.gov/privacy-policy/">Privacy policy</a></div>               
                 </div>
               }
           </section>
