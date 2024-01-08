@@ -21,7 +21,11 @@ function Identification(props){
     const noIdFieldInstructions = DOMPurify.sanitize(noIdField.instructions);
 
     //Field requirements by state data
-    const idFieldState = (nvrfStateFields.find(item => item.uuid === driverLicenseField.uuid));
+    const driverIDFieldReq = (nvrfStateFields.find(item => item.uuid === driverLicenseField.uuid));
+    const stateIDFieldDReq = (nvrfStateFields.find(item => item.uuid === stateIDField.uuid));
+    const ssnFullFieldReq = (nvrfStateFields.find(item => item.uuid === ssnFullField.uuid));
+    const ssnFieldReq = (nvrfStateFields.find(item => item.uuid === ssnField.uuid));
+    const noIdFieldReq = (nvrfStateFields.find(item => item.uuid === noIdField.uuid));
 
     //Error handling
     const [handleErrors, setHandleErrors] = useState({
@@ -32,18 +36,6 @@ function Identification(props){
         id_ssn: false,
         id_none: false
     })
-
-    //conditional ssn field
-    let ssnOption;
-    if ((stateData.abbrev === "ky") ||
-        (stateData.abbrev === "nm") ||
-        (stateData.abbrev === "tn") ||
-        (stateData.abbrev === "va") ||
-        (stateData.abbrev === "ut")) {
-        ssnOption = <option key="ssn-full" value="ssn-full">{ssnFullField.label}</option>;
-    } else {
-        ssnOption = <option key="ssn" value="ssn">{ssnField.label}</option>;
-    }
 
     return (
         <>
@@ -70,10 +62,11 @@ function Identification(props){
                     })}
                 >
                     <option key="default" value="">{"Select Identification"}</option>
-                    <option key="driver-id-num" value="driver-id-num">{driverLicenseField.label}</option>
-                    <option key="state-id-num" value="state-id-num">{stateIDField.label}</option>
-                    {ssnOption}
-                    {(stateData.name != "Utah") && <option key="id-none" value="none">{noIdField.label}</option>}
+                    {(driverIDFieldReq) && <option key="driver-id-num" value="driver-id-num">{driverLicenseField.label}</option>}
+                    {(stateIDFieldDReq) && <option key="state-id-num" value="state-id-num">{stateIDField.label}</option>}
+                    {(ssnFullFieldReq) && <option key="ssn-full" value="ssn-full">{ssnFullField.label}</option>}
+                    {(ssnFieldReq) && <option key="ssn" value="ssn">{ssnField.label}</option>}
+                    {(noIdFieldReq) && <option key="id-none" value="none">{noIdField.label}</option>}
                 </Dropdown>
                 {handleErrors.id_selection &&
                     <span id="id-num-dropdown-error" role="alert" className='error-text text-bold'>
@@ -88,7 +81,7 @@ function Identification(props){
                         {(props.idType === 'driver-id-num') &&
 
                             <Label className="text-bold"
-                                   htmlFor="state-id-num-error">{driverLicenseField.label}{(idFieldState.required === "1") &&
+                                   htmlFor="state-id-num-error">{driverLicenseField.label}{(driverIDFieldReq) &&
                                 <span className='required-text'>*</span>}
                                 <TextInput
                                     id="driver-id-num"
@@ -96,7 +89,7 @@ function Identification(props){
                                     name="driver-id-num"
                                     type="text"
                                     autoComplete="off"
-                                    required={parseInt(idFieldState.required)}
+                                    required={parseInt(driverIDFieldReq.required)}
                                     value={props.fieldData.id_number}
                                     onChange={props.saveFieldData('id_number')}
                                     onBlur={(e) => setHandleErrors({
@@ -114,7 +107,7 @@ function Identification(props){
                         {(props.idType === 'state-id-num') &&
 
                             <Label className="text-bold"
-                                   htmlFor="state-id-num-error">{stateIDField.label}{(idFieldState.required === "1") &&
+                                   htmlFor="state-id-num-error">{stateIDField.label}{(stateIDFieldDReq) &&
                                 <span className='required-text'>*</span>}
                                 <TextInput
                                     id="driver-id-num"
@@ -122,7 +115,7 @@ function Identification(props){
                                     name="driver-id-num"
                                     type="text"
                                     autoComplete="off"
-                                    required={parseInt(idFieldState.required)}
+                                    required={parseInt(stateIDFieldDReq.required)}
                                     value={props.fieldData.id_number}
                                     onChange={props.saveFieldData('id_number')}
                                     onBlur={(e) => setHandleErrors({
@@ -145,7 +138,7 @@ function Identification(props){
             {props.idType === 'ssn' &&
                 <div className={handleErrors.id_ssn ? 'error-container' : ''}>
                     <Label className="text-bold"
-                           htmlFor="ssn-input-error">{ssnField.label}{(idFieldState.required === "1") &&
+                           htmlFor="ssn-input-error">{ssnField.label}{(ssnFieldReq) &&
                         <span className='required-text'>*</span>}</Label>
                     <span className="usa-hint" id="ssn-hint">{ssnField.help_text}</span>
                     <TextInput
@@ -153,7 +146,7 @@ function Identification(props){
                         className="radius-md"
                         name="ssn-input"
                         autoComplete="off"
-                        required={parseInt(idFieldState.required)}
+                        required={parseInt(ssnFieldReq.required)}
                         type="text"
                         inputMode="numeric"
                         minLength={4}
@@ -176,7 +169,7 @@ function Identification(props){
             {props.idType === 'ssn-full' &&
                 <div className={handleErrors.id_ssn ? 'error-container' : ''}>
                     <Label className="text-bold"
-                           htmlFor="ssn-input-error">{ssnFullField.label}{(idFieldState.required === "1") &&
+                           htmlFor="ssn-input-error">{ssnFullField.label}{(ssnFullFieldReq) &&
                         <span className='required-text'>*</span>}</Label>
                     <span className="usa-hint" id="ssn-hint">{ssnFullField.help_text}</span>
                     <TextInput
@@ -184,7 +177,7 @@ function Identification(props){
                         className="radius-md"
                         name="ssn-full-input"
                         autoComplete="off"
-                        required={parseInt(idFieldState.required)}
+                        required={parseInt(ssnFullFieldReq.required)}
                         type="text"
                         inputMode="numeric"
                         minLength={9}
