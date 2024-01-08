@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Label, TextInput } from '@trussworks/react-uswds';
 import { restrictType, checkForErrors } from '../HelperFunctions/ValidateField';
 import DOMPurify from 'dompurify';
+import FieldContainer from "../FieldContainer";
 
 function PoliticalParty(props){
     const headings = props.headings;
@@ -21,6 +22,21 @@ function PoliticalParty(props){
         party_choice: false
     })
 
+    const politicalPartyField =
+        <TextInput
+            id="political-party"
+            className="radius-md"
+            aria-describedby="party-choice-error"
+            name="political party"
+            value={props.fieldData.party_choice}
+            type="text"
+            autoComplete="off"
+            required={partyFieldState.required}
+            onChange={props.saveFieldData('party_choice')}
+            onKeyDown={(e) => restrictType(e, 'letters')}
+            onBlur={(e) => setHandleErrors({ ...handleErrors, party_choice: checkForErrors(e, 'check value exists') })}
+        />        
+
     return (
         <>
         <h2>{headings.step_label_4}</h2>
@@ -31,29 +47,16 @@ function PoliticalParty(props){
         </div>)}
 
         {partyFieldState && (
-            <div className={(parseInt(partyFieldState.required) && handleErrors.party_choice) ? 'error-container margin-top-6' : 'margin-top-6'}>
-                <Label className="text-bold" htmlFor="political-party">
-                {partyField.name}{(partyFieldState.required === "1") && <span className='required-text'>*</span>}
-                <TextInput
-                    id="political-party"
-                    className="radius-md"
-                    aria-describedby="party-choice-error"
-                    name="political party"
-                    value={props.fieldData.party_choice}
-                    type="text"
-                    autoComplete="off"
-                    required={parseInt(partyFieldState.required)}
-                    onChange={props.saveFieldData('party_choice')}
-                    onKeyDown={(e) => restrictType(e, 'letters')}
-                    onBlur={(e) => setHandleErrors({ ...handleErrors, party_choice: checkForErrors(e, 'check value exists') })}
+                <FieldContainer 
+                    inputField={politicalPartyField}
+                    label={partyField.name}
+                    fieldRequired={partyFieldState.required}
+                    classes={'margin-top-6'}
+                    htmlFor={"political-party"}
+                    showError={((partyFieldState.required === "1") && handleErrors.party_choice)}
+                    errorId={"party-choice-error"}
+                    errorMsg={partyField.error_msg}
                 />
-                {((partyFieldState.required === "1") && handleErrors.party_choice) &&
-                    <span id="party-choice-error" role="alert" className='error-text text-bold'>
-                        {partyField.error_msg}
-                    </span>
-                }
-                </Label>
-            </div>
         )}
         </>
     );
