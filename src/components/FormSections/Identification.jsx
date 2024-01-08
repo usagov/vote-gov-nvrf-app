@@ -46,39 +46,41 @@ function Identification(props){
                     <div className="usa-alert__body" dangerouslySetInnerHTML={{__html: idStateInstructions}}/>
                 </div>)}
 
-            <h3 className={'margin-top-6'}>{idTypeField.label}<span className='required-text'>*</span></h3>
-            <div dangerouslySetInnerHTML={{__html: idTypeFieldInstructions}}/>
+            {(stateData.abbrev != "mo") && (
+                <>
+                    <h3 className={'margin-top-6'}>{idTypeField.label}<span className='required-text'>*</span></h3>
+                    <div dangerouslySetInnerHTML={{__html: idTypeFieldInstructions}}/>
+                    <div className={handleErrors.id_selection ? 'error-container mobile-width' : 'mobile-width'}>
+                        <Dropdown
+                            id="id-num-dropdown"
+                            name="input-dropdown"
+                            value={props.idType}
+                            required={true}
+                            onChange={(e) => props.saveIdType(e)}
+                            onBlur={(e) => setHandleErrors({
+                                ...handleErrors,
+                                id_selection: checkForErrors(e, 'check value exists')
+                            })}
+                        >
+                            <option key="default" value="">{"Select Identification"}</option>
+                            {(driverIDFieldReq) && <option key="driver-id-num" value="driver-id-num">{driverLicenseField.label}</option>}
+                            {(stateIDFieldDReq) && <option key="state-id-num" value="state-id-num">{stateIDField.label}</option>}
+                            {(ssnFullFieldReq) && <option key="ssn-full" value="ssn-full">{ssnFullField.label}</option>}
+                            {(ssnFieldReq) && <option key="ssn" value="ssn">{ssnField.label}</option>}
+                            {(noIdFieldReq) && <option key="id-none" value="none">{noIdField.label}</option>}
+                        </Dropdown>
+                        {handleErrors.id_selection &&
+                            <span id="id-num-dropdown-error" role="alert" className='error-text text-bold'>
+                            {stateIDField.error_msg}
+                        </span>
+                        }
+                    </div>
+                </>)}
 
-            <div className={handleErrors.id_selection ? 'error-container mobile-width' : 'mobile-width'}>
-                <Dropdown
-                    id="id-num-dropdown"
-                    name="input-dropdown"
-                    value={props.idType}
-                    required={true}
-                    onChange={(e) => props.saveIdType(e)}
-                    onBlur={(e) => setHandleErrors({
-                        ...handleErrors,
-                        id_selection: checkForErrors(e, 'check value exists')
-                    })}
-                >
-                    <option key="default" value="">{"Select Identification"}</option>
-                    {(driverIDFieldReq) && <option key="driver-id-num" value="driver-id-num">{driverLicenseField.label}</option>}
-                    {(stateIDFieldDReq) && <option key="state-id-num" value="state-id-num">{stateIDField.label}</option>}
-                    {(ssnFullFieldReq) && <option key="ssn-full" value="ssn-full">{ssnFullField.label}</option>}
-                    {(ssnFieldReq) && <option key="ssn" value="ssn">{ssnField.label}</option>}
-                    {(noIdFieldReq) && <option key="id-none" value="none">{noIdField.label}</option>}
-                </Dropdown>
-                {handleErrors.id_selection &&
-                    <span id="id-num-dropdown-error" role="alert" className='error-text text-bold'>
-                    {stateIDField.error_msg}
-                </span>
-                }
-            </div>
-
-            {((props.idType === 'driver-id-num') || (props.idType === 'state-id-num')) &&
+            {((props.idType === 'driver-id-num') || (props.idType === 'state-id-num') || ((stateData.abbrev === "mo"))) &&
                 <>
                     <div className={handleErrors.id_number ? 'error-container' : ''}>
-                        {(props.idType === 'driver-id-num') &&
+                        {((props.idType === 'driver-id-num') || (stateData.abbrev === "mo")) &&
 
                             <Label className="text-bold"
                                    htmlFor="state-id-num-error">{driverLicenseField.label}{(driverIDFieldReq) &&
@@ -134,8 +136,7 @@ function Identification(props){
                 </>
             }
 
-
-            {props.idType === 'ssn' &&
+            {((props.idType === 'ssn') || (stateData.abbrev === "mo")) &&
                 <div className={handleErrors.id_ssn ? 'error-container' : ''}>
                     <Label className="text-bold"
                            htmlFor="ssn-input-error">{ssnField.label}{(ssnFieldReq) &&
