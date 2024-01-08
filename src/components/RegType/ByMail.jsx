@@ -9,15 +9,9 @@ function ByMail(props) {
     const stateContent = props.stateData;
 
     if (content && navContent) {
-        const contentBody = DOMPurify.sanitize(content.body).replace("@state_name", stateContent.name);
-        const stateLinks = () => (
-            <div className="padding-bottom-3 padding-top-1">
-                <a href={stateContent.election_website_url} className="usa-button" target="_blank">
-                    {"Check your registration"}
-                    <Icon.Launch title="External link opens new window"/>
-                </a>
-            </div>
-        );
+        const contentBody = DOMPurify.sanitize(content.body).replaceAll("@state_name", stateContent.name);
+        const contentBodyParts = contentBody.split("@vote_nvrf_link")
+
         const stateMailinLink = () => (
             <p>
                 <a href={stateContent.download_form} className="text-primary" target="_blank">
@@ -26,17 +20,26 @@ function ByMail(props) {
                 </a>
             </p>
         );
-        let contentBodyProcessed = contentBody.replace("@state_links", renderToStaticMarkup(stateLinks()));
-        contentBodyProcessed = contentBodyProcessed.replace("@state_mailin_link", renderToStaticMarkup(stateMailinLink()));
+
+        const checkRegLink = () => (
+            <div className="padding-bottom-3 padding-top-1">
+                <a href={stateContent.election_website_url} className="usa-button" target="_blank">
+                    {"Check your registration"}
+                    <Icon.Launch title="External link opens new window"/>
+                </a>
+            </div>
+        );
+
+        let contentBodyPartOne = contentBodyParts[0].replace("@state_mailin_link", renderToStaticMarkup(stateMailinLink()))
+        let contentBodyPartTwo = contentBodyParts[1].replace("@state_confirm_link", renderToStaticMarkup(checkRegLink()));
 
         return (
             <>
-
                 <h1>{content.title.replace("@state_name", stateContent.name)}</h1>
 
-                <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: contentBodyProcessed}}/>
-
-                <NextButton type={'submit'} onClick={props.handleNext} text={navContent.next.continue}/>
+                <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: contentBodyPartOne}}/>
+                <NextButton type={'submit'} onClick={props.handleNext} text={navContent.next.start}/>
+                <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: contentBodyPartTwo}}/>
 
             </>
         );

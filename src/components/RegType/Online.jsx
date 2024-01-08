@@ -9,7 +9,7 @@ function Online(props) {
     const stateContent = props.stateData;
 
     if (content && navContent) {
-        const contentBody = DOMPurify.sanitize(content.body).replace("@state_name", stateContent.name);
+        const contentBody = DOMPurify.sanitize(content.body).replaceAll("@state_name", stateContent.name);
         const contentBodyParts = contentBody.split("@vote_nvrf_link");
 
         const stateOnlineLink = () => (
