@@ -1,10 +1,11 @@
-import { Fieldset, Checkbox, Label } from '@trussworks/react-uswds';
+import { Checkbox } from '@trussworks/react-uswds';
 import BackButton from './BackButton';
 import NextButton from "./NextButton";
 import StepsList from './RegType/StepsList';
 import { getFieldLabel, getFieldError } from './HelperFunctions/fieldParser';
 import DOMPurify from "dompurify";
 import {renderToStaticMarkup} from "react-dom/server";
+import FieldContainer from './FieldContainer';
 
 function Eligibility(props) {
     let content = props.content;
@@ -25,6 +26,19 @@ function Eligibility(props) {
         </ul>
     );
 
+    const checkboxField =
+        <Checkbox
+            id="eligibility-checkbox"
+            name="eligibility-checkbox"
+            value="eligibility-checkbox"
+            label={getFieldLabel(fields, "39fc63ad-ed5a-4ad5-98d3-aa236c96c61c")}
+            aria-required="true"
+            aria-describedby="eligibility-error"
+            required={true}
+            defaultChecked={props.hasConfirmed}
+            onChange={(e) => props.confirmCheckbox(e.target.checked)}
+        />
+
     return (
         <>
             <BackButton type={'button'} onClick={props.handlePrev} text={navContent.back.state_reg_options}/>
@@ -36,31 +50,14 @@ function Eligibility(props) {
                     .replace("@mail_deadline", renderToStaticMarkup(mailDeadline()))}}/>
 
             <form onSubmit={(e) => {e.preventDefault(), props.handleNext()}}>
-                <Fieldset legend="Eligibility" legendStyle="srOnly">
-                    <div className={props.error ? 'error-container' : ''}>
-                        <Label htmlFor="eligibility-error" id="eligibility-error">
-                            <strong>{eligibility.name}</strong>
-                        </Label>
-                        <Checkbox
-                            id="eligibility-checkbox"
-                            name="eligibility-checkbox"
-                            value="eligibility-checkbox"
-                            label={getFieldLabel(fields, "39fc63ad-ed5a-4ad5-98d3-aa236c96c61c")}
-                            aria-required="true"
-                            aria-describedby="eligibility-error"
-                            required={true}
-                            defaultChecked={props.hasConfirmed}
-                            onChange={(e) => props.confirmCheckbox(e.target.checked)}
-                        />
-
-                        {props.error &&
-
-                            <span id="eligibility-error" role="alert" className='error-text'>
-                                {getFieldError(fields, "39fc63ad-ed5a-4ad5-98d3-aa236c96c61c")}
-                                </span>
-                        }
-                    </div>
-                </Fieldset>
+                <FieldContainer 
+                    inputField={checkboxField}
+                    label={eligibility.name}
+                    htmlFor={"eligibility-checkbox"}
+                    showError={props.error}
+                    errorId={"eligibility-error"}
+                    errorMsg={getFieldError(fields, "39fc63ad-ed5a-4ad5-98d3-aa236c96c61c")}
+                />
 
                 <div dangerouslySetInnerHTML= {{__html: eligibilityInstructions}}/>
 
