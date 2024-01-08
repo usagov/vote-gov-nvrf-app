@@ -44,7 +44,8 @@ function PersonalInfo(props){
         prev_last_name: false,
         dob: false,
         phone_number: false,
-        email_address: false
+        email_address: false,
+        race: false
     })
 
     const checkDateValues=()=> {
@@ -250,19 +251,20 @@ function PersonalInfo(props){
         />
 
     const raceDropdown =
-        <Dropdown 
+        <Dropdown
             id="race-ethic-group-select" 
             className="radius-md" 
             name="race-ethic-group-select"
             value={props.fieldData.race} 
-            onChange={props.saveFieldData('race')} autoComplete="off"
-            //required field not working here
-            // required={parseInt(raceFieldState.required)}
-            >
-            <option>- Select -{' '}</option>
-            {raceField.options.map((item, index) => (
-            <option key={index} value={item.value}>{item.key}</option>
-            ))}
+            onChange={props.saveFieldData('race')} 
+            autoComplete="off"
+            //not working
+            // required={raceFieldState.required}
+            onBlur={(e) => setHandleErrors({ ...handleErrors, race: checkForErrors(e, 'check value exists') })}>
+                <option value="">- Select -{' '}</option>
+                {raceField.options.map((item, index) => (
+                    <option key={index} value={item.value}>{item.key}</option>
+                ))}
         </Dropdown>;
 
     
@@ -350,7 +352,7 @@ function PersonalInfo(props){
             <Checkbox id="prev-name-change" name="prev-name-change" checked={props.prevh2iousName} onChange={props.onChangePreviousName} label={"I have legally changed my name since I last registered in this state."} />
         )}
 
-        <div className="usa-alert usa-alert--info">
+        <div className="usa-alert usa-alert--info" role="alert">
             <div className="usa-alert__body" dangerouslySetInnerHTML={{__html: nameSectionAlert}}/>
         </div>
 
@@ -477,20 +479,32 @@ function PersonalInfo(props){
                 />
             </Grid>
 
-
             {raceFieldState && (
                 <Grid row gap>
                     <Grid col={4}>
-                        <FieldContainer
-                        inputField={raceDropdown}
-                        label={raceField.label}
-                        fieldRequired={"0"}
-                        // helpText={""}
-                        htmlFor={"race-ethic-group-select"}
-                        // showError={""}
-                        // errorId={""}
-                        // errorMsg={""}
-                        />
+                        <div className={((parseInt(raceFieldState.required)) && handleErrors.race) ? 'error-container' : ''}>
+                            <Label className="text-bold" htmlFor="race-ethic-group-select">{raceField.label}{(raceFieldState.required === "1") && <span className='required-text'>*</span>}
+                            <Dropdown
+                            id="race-ethic-group-select" 
+                            className="radius-md" 
+                            name="race-ethic-group-select"
+                            value={props.fieldData.race} 
+                            onChange={props.saveFieldData('race')} 
+                            autoComplete="off"
+                            required={parseInt(raceFieldState.required)}
+                            onBlur={(e) => setHandleErrors({ ...handleErrors, race: checkForErrors(e, 'check value exists') })}>
+                                <option value="">- Select -{' '}</option>
+                                {raceField.options.map((item, index) => (
+                                    <option key={index} value={item.value}>{item.key}</option>
+                                ))}
+                            </Dropdown>
+                            {((parseInt(raceFieldState.required) === 1) && handleErrors.race) &&
+                                <span id="race-error" role="alert" className='error-text'>
+                                    {raceField.error_msg}
+                                </span>
+                            }
+                            </Label>
+                        </div>
                     </Grid>
                 </Grid>
             )}
