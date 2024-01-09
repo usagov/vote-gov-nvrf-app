@@ -5,7 +5,6 @@ import DOMPurify from 'dompurify';
 
 function PoliticalParty(props){
     const headings = props.headings;
-    const content = props.content;
     const state = props.stateData;
     const fields = props.fieldContent;
     const nvrfStateFields = props.stateData.nvrf_fields;
@@ -25,9 +24,10 @@ function PoliticalParty(props){
     return (
         <>
         <h2>{headings.step_label_4}</h2>
+
         {(partyStateInstructions || partyGeneralInstructions) && (
-        <div className="usa-alert usa-alert--info">
-            <div className="usa-alert__body" dangerouslySetInnerHTML= {{__html: partyGeneralInstructions}}/>
+        <div className="usa-alert usa-alert--info" role="alert">
+            {partyFieldState && (<div className="usa-alert__body" dangerouslySetInnerHTML= {{__html: partyGeneralInstructions}}/>)}
             <div className="usa-alert__body" dangerouslySetInnerHTML= {{__html: partyStateInstructions}}/>
         </div>)}
 

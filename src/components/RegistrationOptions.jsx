@@ -22,10 +22,10 @@ function RegistrationOptions(props) {
         const inPersonContent = content.find(item => item.uuid === "c8a3890a-ed6f-4d50-a002-4011ded29e5a");
         const noRegContent = content.find(item => item.uuid === "df8fede3-11ad-4099-b2a8-f6a9bb457842");
 
-        return (
-            <>
+    return (
+        <>
 
-                <BackButton type={'button'} onClick={props.handlePrev} text={navContent.back.select_state}/>
+            <BackButton type={'button'} onClick={props.handlePrev} text={navContent.back.select_state}/>
 
                 {(regType === 'online' && acceptsNVRF === '1') &&
                     <Online

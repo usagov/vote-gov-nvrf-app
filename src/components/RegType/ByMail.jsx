@@ -1,4 +1,4 @@
-import { Link, Icon } from '@trussworks/react-uswds';
+import { Icon } from '@trussworks/react-uswds';
 import NextButton from '../NextButton';
 import DOMPurify from "dompurify";
 import {renderToStaticMarkup} from "react-dom/server";

@@ -17,12 +17,12 @@ Cypress.Commands.add('completeForm', () => {
 const data = require("../fixtures/data.json");
 
 // go to next page
-cy.get('[class="usa-button next-button margin-top-5"]').click()
+cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
 
 // check eligibility page
 cy.get('[class="usa-checkbox__label"]').click()
 
-cy.get('[class="usa-button next-button margin-top-5"]').click()
+cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
 
 // select registration option
 cy.get('[data-testid="button"]').then(btn => {
@@ -61,12 +61,12 @@ cy.get('[data-testid="dropdown"]').then(dropdown => {
 })
 
 cy.get('[data-testid="textInput"]').then(textBox => {
-  cy.get(textBox[4]).type(data.personalInformationName)
-  cy.get(textBox[5]).type(data.personalInformationMiddle)
-  cy.get(textBox[6]).type(data.personalInformationLast)
+  cy.get(textBox[5]).type(data.personalInformationName)
+  cy.get(textBox[6]).type(data.personalInformationMiddle)
+  cy.get(textBox[7]).type(data.personalInformationLast)
 })
 
-cy.get('[class="usa-button next-button margin-top-5"]').click()
+cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
 
 // address and location page
 // * check that current address works
@@ -83,9 +83,8 @@ cy.get('[class="usa-checkbox__label"]').then(checkBox => {
 })
 cy.get('[data-testid="textInput"]').then(textBox => {
   cy.get(textBox[4]).type(data.addressStreet)
-  cy.get(textBox[5]).type(data.addressApt)
-  cy.get(textBox[6]).type(data.addressTown)
-  cy.get(textBox[7]).type(data.addressZip)
+  cy.get(textBox[5]).type(data.addressTown)
+  cy.get(textBox[6]).type(data.addressZip)
 })
 // * uncheck mailing address block
 cy.get('[class="usa-checkbox__label"]').then(checkBox => {
@@ -115,66 +114,44 @@ cy.get('[class="usa-checkbox__label"]').then(checkBox => {
 
 cy.get('[data-testid="textInput"]').then(textBox => {
   cy.get(textBox[0]).type(data.addressStreet)
-  cy.get(textBox[1]).type(data.addressApt)
-  cy.get(textBox[2]).type(data.addressTown)
-  cy.get(textBox[3]).type(data.addressZip)
+  cy.get(textBox[1]).type(data.addressTown)
+  cy.get(textBox[2]).type(data.addressZip)
   cy.get('[class="usa-select radius-md"]').select(data.addressState)
 })
 
-cy.get('[class="usa-button next-button margin-top-5"]').click()
+cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
 
 
 // identification
 // * state driver's license number
-cy.get('[class="usa-select"]').select("State Driver's License Number")
+cy.get('[class="usa-select"]').select("State driver's license number")
 cy.get('[data-testid="textInput"]').type(data.idNumber)
-cy.get('[id="id_issue_date_month"]').type(data.idMonth)
-cy.get('[id="id_issue_date_day"]').type(data.idDay)
-cy.get('[id="id_issue_date_year"]').type(data.idYear)
-cy.get('[id="id_expire_date_month"]').type(data.idMonth)
-cy.get('[id="id_expire_date_day"]').type(data.idExpireDay)
-cy.get('[id="id_expire_date_year"]').type(data.idExpireYear)
 // * social security number (last 4 digits)
 cy.get('[class="usa-select"]').then(dropDown => {
-  cy.get(dropDown[0]).select("Social Security Number")
+  cy.get(dropDown[0]).select("Social security number")
 })
 cy.get('[data-testid="textInput"]').type(data.ssn)
 
 // * no id
 cy.get('[class="usa-select"]').then(dropDown => {
-  cy.get(dropDown[0]).select("I do not have a valid ID number")
+  cy.get(dropDown[0]).select("I do not have a valid ID number.")
 })
 cy.get('[id="main-content"]').should('contain.text', '"None" will appear on your completed form.')
 
 // * state id number
 cy.get('[class="usa-select"]').then(dropDown => {
-  cy.get(dropDown[0]).select("State Identification Number")
+  cy.get(dropDown[0]).select("State non-driver ID")
 })
 cy.get('[data-testid="textInput"]').type(data.idNumber)
 
-cy.get('[class="usa-select"]').select("State Driver's License Number")
-cy.get('[data-testid="textInput"]').type(data.idNumber)
-cy.get('[id="id_issue_date_month"]').type(data.idMonth)
-cy.get('[id="id_issue_date_day"]').type(data.idDay)
-cy.get('[id="id_issue_date_year"]').type(data.idYear)
-cy.get('[id="id_expire_date_month"]').type(data.idMonth)
-cy.get('[id="id_expire_date_day"]').type(data.idExpireDay)
-cy.get('[id="id_expire_date_year"]').type(data.idExpireYear)
 
-
-cy.get('[class="usa-button next-button margin-top-5"]').click()
+cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
 
   // political party (required)
   cy.get('[class="required-text"]').should('be.visible')
   cy.get('[data-testid="textInput"]').type(data.politicalParty)
 
-  cy.get('[class="usa-button next-button margin-top-5"]').click()
+  cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
 
-
-// // confirmation page
-// cy.get('[id="acknowledge-check"]').click({force: true})
-// cy.get('[data-testid="button"]').then(btn => {
-//   cy.get(btn[5]).click()
-// })
 
   })

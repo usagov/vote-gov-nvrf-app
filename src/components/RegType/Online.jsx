@@ -43,8 +43,11 @@ function Online(props) {
         let contentBodyPartTwo = contentBodyParts[1].replace("@state_confirm_link", renderToStaticMarkup(checkRegLink()))
                                                     .replace("@state_mailin_link", renderToStaticMarkup(stateMailinLink()));
 
-        return (
-            <>
+    let contentBodyProcessed = contentBody.replace("@state_links", renderToStaticMarkup(stateLinks()));
+    contentBodyProcessed = contentBodyProcessed.replace("@state_mailin_link", renderToStaticMarkup(stateMailinLink()));
+
+    return (
+        <>
             <h1>{content.title.replace("@state_name", stateContent.name)}</h1>
             <div className={'usa-prose'}>
                 <div dangerouslySetInnerHTML= {{__html: contentBodyPartOne}}/>
