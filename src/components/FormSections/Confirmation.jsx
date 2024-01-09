@@ -13,7 +13,7 @@ function Confirmation(props) {
 
     //field data overrides for confirm page printing only
     const fieldDataOverride_race = (fieldData.race === '') ? "Not required for your state" : fieldData.race;
-    const fieldDataOverride_party = (fieldData.party_choice === '') ? "No party entered" : fieldData.party_choice;
+    const fieldDataOverride_party = (fieldData.party_choice === '') ? "Not required for your state" : fieldData.party_choice;
     const fieldDataOverride_state = props.stateData.name;
     fieldData.state = fieldDataOverride_state;
 
