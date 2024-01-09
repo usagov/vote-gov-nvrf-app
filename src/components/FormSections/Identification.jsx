@@ -1,4 +1,4 @@
-import { Label, TextInput, Dropdown, Grid, Fieldset } from '@trussworks/react-uswds';
+import { Label, TextInput, Dropdown, Checkbox, Grid, Fieldset } from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import { restrictType, checkForErrors, jumpTo } from '../HelperFunctions/ValidateField';
 import DOMPurify from 'dompurify';
@@ -46,6 +46,12 @@ function Identification(props){
                     <div className="usa-alert__body" dangerouslySetInnerHTML={{__html: idStateInstructions}}/>
                 </div>)}
 
+            {(stateData.abbrev === "mo") && (
+                <>
+                <Checkbox id="id-none" name="id-none" onChange={props.saveIdTypeNone} label={noIdField.label} />
+                </>
+            )}
+
             {(stateData.abbrev != "mo") && (
                 <>
                     <h3 className={'margin-top-6'}>{idTypeField.label}<span className='required-text'>*</span></h3>
@@ -77,7 +83,7 @@ function Identification(props){
                     </div>
                 </>)}
 
-            {((props.idType === 'driver-id-num') || (props.idType === 'state-id-num') || ((stateData.abbrev === "mo"))) &&
+            {((props.idType === 'driver-id-num') || (props.idType === 'state-id-num') || ((stateData.abbrev === "mo") && (props.idType != "none"))) &&
                 <>
                     <div className={handleErrors.id_number ? 'error-container' : ''}>
                         {((props.idType === 'driver-id-num') || (stateData.abbrev === "mo")) &&
@@ -136,7 +142,7 @@ function Identification(props){
                 </>
             }
 
-            {((props.idType === 'ssn') || (stateData.abbrev === "mo")) &&
+            {((props.idType === 'ssn') || ((stateData.abbrev === "mo") && (props.idType != "none"))) &&
                 <div className={handleErrors.id_ssn ? 'error-container' : ''}>
                     <Label className="text-bold"
                            htmlFor="ssn-input-error">{ssnField.label}{(ssnFieldReq) &&

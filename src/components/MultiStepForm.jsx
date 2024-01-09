@@ -156,7 +156,7 @@ function MultiStepForm(props) {
         })
     }
 
-        //Identification
+    //Identification
     const [idType, setIdType] = useState('')
     const saveIdType = (e) => {
         setIdType(e.target.value)
@@ -174,18 +174,25 @@ function MultiStepForm(props) {
             :
             setFieldData({ ...fieldData, id_number: '' });
     }
-
-        //Acknowledgment field controls
-        const [hasAcknowledged, setHasAcknowledged] = useState(null);
-        const [error, setError] = useState(null)
-        const acknowledgeCheckbox = (checkStatus) => {
-            setHasAcknowledged(checkStatus);
-            setError(!checkStatus);
+    const saveIdTypeNone = (e) => {
+        if (e.target.checked) {
+            setIdType("none");
+        } else {
+            setIdType("");
         }
+    }
 
-        const checkboxValid = () => {
-            (hasAcknowledged === null) && setError(true);
-        }
+    //Acknowledgment field controls
+    const [hasAcknowledged, setHasAcknowledged] = useState(null);
+    const [error, setError] = useState(null)
+    const acknowledgeCheckbox = (checkStatus) => {
+        setHasAcknowledged(checkStatus);
+        setError(!checkStatus);
+    }
+
+    const checkboxValid = () => {
+        (hasAcknowledged === null) && setError(true);
+    }
 
     const emailValid = () => {
         const emailField = document.getElementById('email-address');
@@ -296,6 +303,7 @@ function MultiStepForm(props) {
                         registrationPath={props.registrationPath}
                         handlePrev={handlePrev}
                         saveIdType={saveIdType}
+                        saveIdTypeNone={saveIdTypeNone}
                         idType={idType}
                         headings={navContent}
                         content={content}
