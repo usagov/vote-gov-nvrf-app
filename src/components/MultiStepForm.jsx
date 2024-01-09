@@ -355,9 +355,9 @@ function MultiStepForm(props) {
             {/* Load Touchpoints feedback form */}
             {step === 6 &&
                 <>
-                    <div id="votegov-accessibility-survey"></div>
+                    <div id="touchpoints-form-embed" className={'margin-top-6'}></div>
                     <Helmet>
-                        <script src="https://touchpoints.app.cloud.gov/touchpoints/77e87d97.js" async></script>
+                        <script src="https://touchpoints.app.cloud.gov/touchpoints/4da46508.js" async></script>
                     </Helmet>
                 </>
             }
