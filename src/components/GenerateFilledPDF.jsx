@@ -147,8 +147,10 @@ const GenerateFilledPDF = async function (formData,pagesKept) {
     //(3) Identification
     if(formData.state === "Utah") {
         idNumber.setText("None, " + formData.id_number);
+    } else if ((formData.id_number != '') && (formData.ssn_number != '')) {
+        idNumber.setText(formData.id_number + ", " + formData.ssn_number);
     } else {
-        idNumber.setText(formData.id_number);
+        idNumber.setText(formData.id_number + formData.ssn_number);
     }
 
     //(4) Political Party

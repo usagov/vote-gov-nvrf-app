@@ -48,7 +48,7 @@ function Identification(props){
 
             {(stateData.abbrev === "mo") && (
                 <>
-                <Checkbox id="id-none" name="id-none" onChange={props.saveIdTypeNone} label={noIdField.label} />
+                <Checkbox id="id-none" name="id-none" checked={props.hasNoId} onChange={props.onChangeHasNoIdCheckbox} label={noIdField.label} />
                 </>
             )}
 
@@ -158,8 +158,8 @@ function Identification(props){
                         inputMode="numeric"
                         minLength={4}
                         maxLength={4}
-                        value={props.fieldData.id_number}
-                        onChange={props.saveFieldData('id_number')}
+                        value={props.fieldData.ssn_number}
+                        onChange={props.saveFieldData('ssn_number')}
                         onKeyDown={(e) => restrictType(e, 'number')}
                         onBlur={(e) => setHandleErrors({
                             ...handleErrors,
@@ -189,8 +189,8 @@ function Identification(props){
                         inputMode="numeric"
                         minLength={9}
                         maxLength={9}
-                        value={props.fieldData.id_number}
-                        onChange={props.saveFieldData('id_number')}
+                        value={props.fieldData.ssn_number}
+                        onChange={props.saveFieldData('ssn_number')}
                         onKeyDown={(e) => restrictType(e, 'number')}
                         onBlur={(e) => setHandleErrors({
                             ...handleErrors,
