@@ -43,7 +43,7 @@ function ByMail(props) {
 
             <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: contentBodyProcessed}}/>
 
-            <NextButton type={'submit'} onClick={props.handleNext} text={navContent.next.continue}/>
+            <NextButton type={'submit'} onClick={props.handleNext} text={navContent.next.start}/>
         </>
     );
 }
