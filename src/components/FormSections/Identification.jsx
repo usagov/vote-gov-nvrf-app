@@ -48,7 +48,7 @@ function Identification(props){
 
             {(stateData.abbrev === "mo") && (
                 <>
-                <Checkbox id="id-none" name="id-none" checked={props.hasNoId} onChange={props.onChangeHasNoIdCheckbox} label={noIdField.label} />
+                <Checkbox id="id-none" name="id-none" checked={props.hasNoID} onChange={props.onChangeHasNoIdCheckbox} label={noIdField.label} />
                 </>
             )}
 

@@ -176,17 +176,17 @@ function MultiStepForm(props) {
             setFieldData({ ...fieldData, id_number: '' });
             setFieldData({ ...fieldData, ssn_number: '' });
     }
-    const [hasNoId, setHasNoID] = useState(false);
+    const [hasNoID, setHasNoID] = useState(false);
     const onChangeHasNoIdCheckbox = (e) => {
         setHasNoID(e.target.checked);
+        setFieldData({
+            ...fieldData,
+            id_number:'', ssn_number: ''
+        })
         if (e.target.checked) {
             setIdType("none");
-            setFieldData({ ...fieldData, id_number: 'none' });
-            setFieldData({ ...fieldData, ssn_number: '' });
         } else {
             setIdType("");
-            setFieldData({ ...fieldData, id_number: '' });
-            setFieldData({ ...fieldData, ssn_number: '' });
         }
     }
 
@@ -312,7 +312,7 @@ function MultiStepForm(props) {
                         handlePrev={handlePrev}
                         saveIdType={saveIdType}
                         onChangeHasNoIdCheckbox={onChangeHasNoIdCheckbox}
-                        hasNoId={hasNoId}
+                        hasNoID={hasNoID}
                         idType={idType}
                         headings={navContent}
                         content={content}
