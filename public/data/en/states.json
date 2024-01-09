@@ -170,7 +170,7 @@
     "registration_url": "https://voterregistration.alaska.gov/",
     "election_website_url": "https://www.elections.alaska.gov/",
     "more_info_url": "https://www.elections.alaska.gov/Core/voterregistration.php",
-    "mail_reg_url": "",
+    "mail_reg_url": "https://www.elections.alaska.gov/doc/forms/C03.pdf",
     "confirm_reg_url": "https://myvoterinformation.alaska.gov/",
     "postmarked_mail_deadline": "Must be postmarked 30 days before Election Day",
     "received_mail_deadline": "",
@@ -305,7 +305,7 @@
     }
     ],
     "nvrf_last_updated_date": "<time datetime=\"2006-03-01T12:00:00Z\">March 01, 2006</time>",
-    "nvrf_pages_list": "1,2,3,4,7"
+    "nvrf_pages_list": "0,1,2,3,4,7"
     },
     {
     "uuid": "7c0f8267-931b-4cb8-b307-4362744bf896",
@@ -3178,7 +3178,7 @@
     "registration_url": "",
     "election_website_url": "https://www.maine.gov/sos/cec/elec/",
     "more_info_url": "https://www.maine.gov/sos/cec/elec/voter-info/voterguide.html",
-    "mail_reg_url": "",
+    "mail_reg_url": "https://www.maine.gov/sos/cec/elec/upcoming/pdf/voterregcard20.pdf",
     "confirm_reg_url": "https://www.maine.gov/sos/cec/elec/data/index.html",
     "postmarked_mail_deadline": "",
     "received_mail_deadline": "Must be received 21 days before Election Day",
