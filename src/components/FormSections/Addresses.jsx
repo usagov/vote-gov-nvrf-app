@@ -78,7 +78,7 @@ function Addresses(props){
                 {/******** Current Address Block *********/}
                 { !props.hasNoAddress && (<>
                     {homeAddressSectionField.section_alert && (
-                    <div className="usa-alert usa-alert--info">
+                    <div className="usa-alert usa-alert--info" role="alert">
                         <div className="usa-alert__body">
                             <div dangerouslySetInnerHTML= {{__html: homeAddressSectionField.section_alert}}/>
                         </div>
@@ -212,7 +212,7 @@ function Addresses(props){
                 {(props.hasMailAddress || props.hasNoAddress) && (
                     <>
                         {props.hasNoAddress && (
-                        <div className="usa-alert usa-alert--info">
+                        <div className="usa-alert usa-alert--info" role="alert">
                             <div className="usa-alert__body" dangerouslySetInnerHTML= {{__html: mailAddressSectionField.section_alert}}/>
                         </div>)}
 
@@ -355,7 +355,7 @@ function Addresses(props){
                 {props.hasPreviousAddress && (
                     <>
                         { prevAddressSectionField.section_alert && (//section_description
-                        <div className="usa-alert usa-alert--info">
+                        <div className="usa-alert usa-alert--info" role="alert">
                             <div className="usa-alert__body" dangerouslySetInnerHTML= {{__html: prevAddressSectionField.section_alert}}/>
                         </div>)}
 

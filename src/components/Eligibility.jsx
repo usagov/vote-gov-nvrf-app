@@ -65,7 +65,7 @@ function Eligibility(props) {
                 <div dangerouslySetInnerHTML= {{__html: eligibilityInstructions}}/>
 
                 <div className="button-container" style={{ margin:'20px' }}>
-                    <NextButton type={'submit'} onClick={() => props.checkboxValid()} text={navContent.next.continue}/>
+                    <NextButton type={'submit'} onClick={() => props.checkboxValid()} text={navContent.next.start}/>
                 </div>
             </form>
         </>
