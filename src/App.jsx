@@ -5,6 +5,7 @@ import RegistrationOptions from './components/RegistrationOptions';
 import PathSelection from './components/PathSelection';
 import MultiStepForm from './components/MultiStepForm';
 import {fetchData} from './components/HelperFunctions/JsonHelper.jsx';
+import {getFieldValue} from "./components/HelperFunctions/fieldParser";
 import DOMPurify from 'dompurify';
 import { renderToStaticMarkup } from 'react-dom/server';
 
@@ -159,12 +160,12 @@ function App() {
               
               {step >= 3 && 
                 <div className="margin-top-4 text-base">
-                  <div>OMB Control No. 3265-0015Q</div>
+                  <div>{getFieldValue(content, "2c597df4-53b6-4ef5-8301-7817b04e1099", "omb_number")}</div>
                   <span className="last-updated">
                     {lastUpdatedText.replace("@state_name", stateData.name)}
                     <span dangerouslySetInnerHTML= {{__html: lastUpdatedSanitized}}/>
                  </span>
-                  <div><a href="https://vote.gov/privacy-policy/">Privacy policy</a></div>               
+                  <div><a href="/privacy-policy/">Privacy policy</a></div>
                 </div>
               }
           </section>
