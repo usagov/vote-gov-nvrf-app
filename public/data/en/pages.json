@@ -12,7 +12,7 @@
     "lang": "en",
     "title": "@state_name registration options",
     "instructions": "",
-    "body": "<p>@state_name requires you to register in person at your local election office. Learn more about how to register on @state_name’s election website.</p><body>@state_links\n</body><h2>Make a plan to vote!</h2><p>Explore USA.gov to learn more information about <a href=\"https://www.usa.gov/voting-and-elections\" target=\"_blank\">U.S. voting and elections</a>.</p>",
+    "body": "<p>@state_name requires you to register in person at your local election office. Learn more about how to register on @state_name’s election website.</p><body>@state_links\n</body>",
     "omb_number": ""
     },
     {
@@ -20,7 +20,23 @@
     "lang": "en",
     "title": "@state_name registration options",
     "instructions": "",
-    "body": "<p>Register for the first time or report a change of name, address, or political party to @state_name's election office.</p><h2>Mail-in registration</h2><p>@state_name doesn't currently offer online registration. You can use the state mail-in registration form or fill out a registration form online on vote.gov to print and mail. You will need access to a printer and you will need to provide a postage stamp.<br /> </p><body>@state_mailin_link\n</body><body>@vote_nvrf_link\n</body><h2>Check registration</h2><p>Save time by checking first to see if you’re already registered.</p><body>@state_confirm_link\n</body>",
+    "body": "<p>Register for the first time or report a change of name or address to @state_name's election office.</p><h2>Mail-in registration</h2><p>@state_name doesn't currently offer online registration. You have two options for filling out a registration form. For either option, you’ll need access to a printer, and you’ll need to provide a postage stamp.<br /> </p><p><strong>Fill out a web-based form on vote.gov. </strong><br />This form walks you through each step with simple instructions. When you’ve completed the form, you can save it to your computer, print and mail it.  </p><body>@vote_nvrf_link\n</body><p><strong>Fill out a PDF form on your state website. </strong><br />Download the PDF and either fill it out on your computer using a PDF form-filler tool or print it and fill out by hand.</p><body>@state_mailin_link\n</body><p> </p><h2>Check registration</h2><p>Save time by checking first to see if you’re already registered.</p><body>@state_confirm_link\n</body>",
+    "omb_number": ""
+    },
+    {
+    "uuid": "216b8cd7-69e3-4947-aa2c-09dca7392a46",
+    "lang": "en",
+    "title": "@state_name registration options",
+    "instructions": "",
+    "body": "<p>Register for the first time or report a change of name or address to @state_name's election office.  </p><h2>Online registration</h2><p>@state_name offers online registration. This is often the fastest way to register to vote. </p><body>@state_online_link\n</body><h2>Check registration</h2><p>Save time by checking first to see if you’re already registered.</p><body>@state_confirm_link\n</body>",
+    "omb_number": ""
+    },
+    {
+    "uuid": "dea1c47d-5b08-4235-9035-7063e5fab041",
+    "lang": "en",
+    "title": "@state_name registration options",
+    "instructions": "",
+    "body": "<p>Register for the first time or report a change of name or address to @state_name's election office.</p><p>Online registration<br />@state_name offers online registration. This is often the fastest way to register to vote.</p><body>@state_online_link\n</body><h2>Mail-in registration</h2><p>You’ll need access to a printer, and you’ll need to provide a postage stamp.</p><p><strong>Fill out a PDF form on your state website.</strong> <br />Download the PDF and either fill it out on your computer using a PDF form-filler tool or print it and fill out by hand. </p><body>@state_mailin_link\n</body><h2>Check registration</h2><p>Save time by checking first to see if you’re already registered.</p><body>@state_confirm_link\n</body>",
     "omb_number": ""
     },
     {
@@ -28,7 +44,7 @@
     "lang": "en",
     "title": "@state_name registration options",
     "instructions": "",
-    "body": "<p> </p><p>Register for the first time or report a change of name, address, or political party to @state_name's election office.</p><h2>Online Registration</h2><p>@state_name offers online registration. For many, this is the fastest way to register to vote in your state.</p><body>@state_online_link\n</body><p> </p><h2>Mail-in registration </h2><p>If you prefer to use a mail-in form, you can use the state mail-in registration form or fill out a registration form online on vote.gov to print and mail. You will need access to a printer and you will need to provide a postage stamp. </p><body>@state_mailin_link\n</body><body>@vote_nvrf_link\n</body><p> </p><h2>Check registration</h2><p>Save time by checking first to see if you’re already registered.</p><body>@state_confirm_link\n</body><p><br /> </p>",
+    "body": "<p> </p><p>Register for the first time or report a change of name or address @state_name's election office.</p><h2>Online Registration</h2><p>@state_name offers online registration. This is the fastest way to register to vote in your state.</p><body>@state_online_link\n</body><h2>Mail-in registration </h2><p>If you prefer to mail in your voter registration, you have two options for filling out a registration form. For either option, you’ll need access to a printer, and you’ll need to provide a postage stamp.<br /><br /><strong>Fill out a web-based form on vote.gov. </strong><br />This form walks you through each step with simple instructions. When you’ve completed the form, you can save it to your computer, print and mail it.</p><body>@vote_nvrf_link\n</body><p><strong>Fill out a PDF form on your state website. </strong><br />Download the PDF and either fill it out on your computer using a PDF form-filler tool or print it and fill out by hand.</p><body>@state_mailin_link\n</body><p> </p><h2>Check registration</h2><p>Save time by checking first to see if you’re already registered.</p><body>@state_confirm_link\n</body><p><br /> </p>",
     "omb_number": ""
     },
     {
@@ -36,7 +52,7 @@
     "lang": "en",
     "title": "@state_name registration options",
     "instructions": "",
-    "body": "<p>Register for the first time or report a change of name, address, or political party to @state_name's election office.</p><p> </p><h2>Mail-in registration</h2><p>@state_name doesn't currently offer online registration. You can use the state mail-in registration form. You will need access to a printer and you will need to provide a postage stamp.<br /> </p><body>@state_mailin_link\n</body><p> </p><h2>Check registration</h2><p>Save time by checking first to see if you’re already registered.<br /> </p><body>@state_confirm_link\n</body>",
+    "body": "<p>Register for the first time or report a change of name or address to @state_name's election office.</p><h2>Mail-in registration</h2><p>@state_name doesn't currently offer online registration. You can use the state mail-in registration form. You will need access to a printer and you will need to provide a postage stamp.</p><p><strong>Fill out a PDF form on your state website. </strong><br />Download the PDF and either fill it out on your computer using a PDF form-filler tool or print it and fill out by hand. </p><body>@state_mailin_link\n</body><p> </p><h2>Check registration</h2><p>Save time by checking first to see if you’re already registered.<br /> </p><body>@state_confirm_link\n</body>",
     "omb_number": ""
     },
     {
@@ -52,7 +68,7 @@
     "lang": "en",
     "title": "Before you get started with your @state_name registration",
     "instructions": "",
-    "body": "<h2>Eligibility requirements</h2><body>@reg_eligibility_desc\n</body><h2>Mail-in registration deadline</h2><p>Take note of the deadline for mailing in your form. Make sure you send it to your state election office in time.</p><body>@mail_deadline\n</body>",
+    "body": "<h2>Eligibility requirements</h2><body>@reg_eligibility_desc\n</body><body>@reg_confirm_eligibility\n</body><h2>Mail-in registration deadline</h2><p>Take note of the deadline for mailing in your form. Make sure you send it to your state election office in time.</p><body>@mail_deadline\n</body>",
     "omb_number": ""
     },
     {

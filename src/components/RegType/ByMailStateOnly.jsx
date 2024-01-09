@@ -3,14 +3,13 @@ import NextButton from '../NextButton';
 import DOMPurify from "dompurify";
 import {renderToStaticMarkup} from "react-dom/server";
 
-function ByMail(props) {
+function ByMailStateOnly(props) {
     const content = props.content;
     const navContent = props.navContent;
     const stateContent = props.stateData;
 
     if (content && navContent) {
         const contentBody = DOMPurify.sanitize(content.body).replaceAll("@state_name", stateContent.name);
-        const contentBodyParts = contentBody.split("@vote_nvrf_link")
 
         const stateMailinLink = () => (
             <div className="padding-bottom-3 padding-top-1">
@@ -30,21 +29,18 @@ function ByMail(props) {
             </div>
         );
 
-        let contentBodyPartOne = contentBodyParts[0]
-        let contentBodyPartTwo = contentBodyParts[1].replace("@state_mailin_link", renderToStaticMarkup(stateMailinLink()))
-                                                    .replace("@state_confirm_link", renderToStaticMarkup(checkRegLink()));
+        let contentBodyProcessed = contentBody.replace("@state_mailin_link", renderToStaticMarkup(stateMailinLink()))
+                                              .replace("@state_confirm_link", renderToStaticMarkup(checkRegLink()));
 
         return (
             <>
                 <h1>{content.title.replace("@state_name", stateContent.name)}</h1>
 
-                <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: contentBodyPartOne}}/>
-                <NextButton type={'submit'} onClick={props.handleNext} text={navContent.next.start}/>
-                <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: contentBodyPartTwo}}/>
+                <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: contentBodyProcessed}}/>
 
             </>
         );
     }
 }
 
-export default ByMail;
+export default ByMailStateOnly;
