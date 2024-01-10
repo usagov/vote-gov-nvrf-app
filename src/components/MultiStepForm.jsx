@@ -21,6 +21,7 @@ function MultiStepForm(props) {
     const mainContent = content.find(item => item.uuid ==="2c597df4-53b6-4ef5-8301-7817b04e1099");
     const mainContentTitle = DOMPurify.sanitize(mainContent.title);
     const mainContentBody = DOMPurify.sanitize(mainContent.body);
+    const scrollToTop = document.getElementById('scroll-to-top');
 
     //Field data controls
     const [fieldData, setFieldData] = useState({
@@ -73,22 +74,26 @@ function MultiStepForm(props) {
 
     //Multiple step NVRF controls
     const [step, setStep] = useState(1);
+
+    const setStepFocus = () => {
+        scrollToTop.focus();
+    }
+
     const handleNext = () => {
-        step != 6 && setStep(step + 1);
-        step != 6 && document.getElementById('scroll-to-top').scrollIntoView();
+        step !== 6 && setStep(step + 1);
+        step !== 6 && setStepFocus();
       }
 
     const handlePrev = () => {
-        step != 1 && setStep(step - 1);
-        document.getElementById('scroll-to-top').scrollIntoView();
-
+        step !== 1 && setStep(step - 1);
+        setStepFocus();
         step === 1 && props.handlePrev();
     }
 
     const handleGoBackSteps = (numSteps) => {
         return () => {
-            step != 1 && setStep(step - numSteps);
-            document.getElementById('scroll-to-top').scrollIntoView();
+            step !== 1 && setStep(step - numSteps);
+            setStepFocus();
         }
     }
 
