@@ -17,6 +17,7 @@ function Eligibility(props) {
     const eligibility = fields.find(item => item.uuid === "39fc63ad-ed5a-4ad5-98d3-aa236c96c61c");
     const listContent = cards.find(item => item.uuid === "33a9859d-a62c-4f8e-9e92-5a70f529b62a");
     const contentBody = DOMPurify.sanitize(content.body);
+    const contentBodyParts = contentBody.split("@reg_confirm_eligibility");
     const eligibilityInstructions = DOMPurify.sanitize(eligibility.instructions);
 
     const mailDeadline = () => (
@@ -31,9 +32,9 @@ function Eligibility(props) {
 
             <h1>{content.title.replace("@state_name", stateContent.name)}</h1>
             <StepsList content={listContent}/>
-            <div className={'usa-prose margin-top-5'} dangerouslySetInnerHTML= {{__html: contentBody.replace("@state_name", stateContent.name)
-                    .replace("@reg_eligibility_desc", stateContent.reg_eligibility_desc)
-                    .replace("@mail_deadline", renderToStaticMarkup(mailDeadline()))}}/>
+
+            <div className={'usa-prose margin-top-5'} dangerouslySetInnerHTML= {{__html: contentBodyParts[0].replace("@state_name", stateContent.name)
+                    .replace("@reg_eligibility_desc", stateContent.reg_eligibility_desc)}}/>
 
             <form onSubmit={(e) => {e.preventDefault(), props.handleNext()}}>
                 <Fieldset legend="Eligibility" legendStyle="srOnly">
@@ -61,8 +62,10 @@ function Eligibility(props) {
                         }
                     </div>
                 </Fieldset>
-
                 <div dangerouslySetInnerHTML= {{__html: eligibilityInstructions}}/>
+
+                <div className={'usa-prose margin-top-5'} dangerouslySetInnerHTML= {{__html: contentBodyParts[1].replace("@state_name", stateContent.name)
+                        .replace("@mail_deadline", renderToStaticMarkup(mailDeadline()))}}/>
 
                 <div className="button-container" style={{ margin:'20px' }}>
                     <NextButton type={'submit'} onClick={() => props.checkboxValid()} text={navContent.next.start}/>
