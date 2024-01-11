@@ -14,8 +14,8 @@ function ByMail(props) {
             {stateContent.confirm_reg_url &&
                 <p>
                     <a href={stateContent.confirm_reg_url} className="usa-button" target="_blank">
-                        {"Check your registration"}
-                        <Icon.Launch title="External link opens new window"/>
+                        <span>{"Check your registration"}</span>
+                        <Icon.Launch title="External link opens new window" style={{margin: "-3px -3px -3px 4px"}}/>
                     </a>
                 </p>
             }

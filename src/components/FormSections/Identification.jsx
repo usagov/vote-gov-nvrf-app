@@ -54,7 +54,7 @@ function Identification(props){
                     <div className="usa-alert__body" dangerouslySetInnerHTML={{__html: idStateInstructions}}/>
                 </div>)}
 
-            <h3 className={'margin-top-6'}>{idTypeField.label}<span className='required-text'>*</span></h3>
+            <h3 className={'margin-top-5'}>{idTypeField.label}<span className='required-text'>*</span></h3>
             <div dangerouslySetInnerHTML={{__html: idTypeFieldInstructions}}/>
 
             <div className={handleErrors.id_selection ? 'error-container mobile-width' : 'mobile-width'}>

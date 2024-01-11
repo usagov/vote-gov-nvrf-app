@@ -32,7 +32,7 @@ function PoliticalParty(props){
         </div>)}
 
         {partyFieldState && (
-            <div className={(parseInt(partyFieldState.required) && handleErrors.party_choice) ? 'error-container margin-top-6' : 'margin-top-6'}>
+            <div className={(parseInt(partyFieldState.required) && handleErrors.party_choice) ? 'error-container margin-top-6' : 'margin-top-5'}>
                 <Label className="text-bold" htmlFor="political-party">
                 {partyField.name}{(partyFieldState.required === "1") && <span className='required-text'>*</span>}
                 <TextInput

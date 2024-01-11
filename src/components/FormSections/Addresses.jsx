@@ -84,7 +84,7 @@ function Addresses(props){
                         </div>
                     </div> )}
 
-                    <h3 className='margin-top-6'>{homeAddressSectionField.label}</h3>
+                    <h3 className='margin-top-5'>{homeAddressSectionField.label}</h3>
                     <div dangerouslySetInnerHTML= {{__html: homeAddressSectionField.instructions}}/>
 
                     <Grid row gap>
@@ -216,7 +216,7 @@ function Addresses(props){
                             <div className="usa-alert__body" dangerouslySetInnerHTML= {{__html: mailAddressSectionField.section_alert}}/>
                         </div>)}
 
-                        <h3 className='margin-top-6'>{mailAddressSectionField.label}</h3>
+                        <h3 className='margin-top-8'>{mailAddressSectionField.label}</h3>
                         <div dangerouslySetInnerHTML= {{__html: mailAddressSectionField.section_description}}/>
 
                         <Grid row gap>

@@ -72,7 +72,7 @@ function PersonalInfo(props){
             <div className="usa-alert__body" dangerouslySetInnerHTML={{__html: nameSectionAlert}}/>
         </div>
 
-        <h3 className={'margin-top-6'}>{nameSectionField.label}</h3>
+        <h3 className={'margin-top-5'}>{nameSectionField.label}</h3>
         <div dangerouslySetInnerHTML= {{__html: nameSectionDesc}}/>
 
         {nameFieldState && (

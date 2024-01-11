@@ -14,16 +14,16 @@ function Online(props) {
             {stateContent.registration_url &&
                 <p>
                     <a href={stateContent.registration_url} className="usa-button" target="_blank">
-                        {"Go to %state_name%'s online form".replace("%state_name%", stateContent.name)}
-                        <Icon.Launch title="External link opens new window"/>
+                        <span>{"Go to %state_name%'s online form".replace("%state_name%", stateContent.name)}</span>
+                        <Icon.Launch title="External link opens new window" style={{margin: "-3px -3px -3px 4px"}}/>
                     </a>
                 </p>
             }
             {stateContent.confirm_reg_url &&
                 <p>
                     <a href={stateContent.confirm_reg_url} className="usa-button" target="_blank">
-                        Check your registration
-                        <Icon.Launch title="External link opens new window"/>
+                        <span>Check your registration</span>
+                        <Icon.Launch title="External link opens new window" style={{margin: "-3px -3px -3px 4px"}}/>
                     </a>
                 </p>
             }
@@ -35,7 +35,8 @@ function Online(props) {
                 <p>
                     <Link href={stateContent.mail_reg_url} className="text-primary" target="_blank">
                         <strong
-                            className="text-primary underline-primary">{"Go to %state_name%'s mail-in form".replace("%state_name%", stateContent.name)}
+                            className="text-primary underline-primary">
+                            {"Go to %state_name%'s mail-in form".replace("%state_name%", stateContent.name)}
                             <Icon.Launch title="External link opens new window"/></strong>
                     </Link>
                 </p>

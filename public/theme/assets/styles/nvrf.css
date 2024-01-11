@@ -1,10 +1,6 @@
 .nvrf-app-container .usa-button {
-    background-color: #11385b
-}
-
-.nvrf-app-container .usa-card__container {
-    border-radius: 0;
-    border-color: #000
+    background-color: #11385b;
+    line-height: 1.2;
 }
 
 .nvrf-app-container .error-container {
@@ -20,11 +16,9 @@
     background-color: rgba(0, 0, 0, 0)
 }
 
-.nvrf-app-container .divider-grey {
-    display: inline-block;
-    height: 1px;
-    width: 100%;
-    border: 1px solid #dcdee0
+.nvrf-app-container hr {
+    border: 0;
+    border-top: 1px solid #adadad;
 }
 
 .nvrf-app-container .usa-form a:visited {
