@@ -69,8 +69,6 @@
     "title": "Register to vote",
     "instructions": "",
     "body": "<p>All states except North Dakota require that you register before voting in an election. The process can be a little different for each state. Select your state or territory from the dropdown menu below to see your registration options.</p><h2>Get started by selecting your state</h2><body>@state_selector\n</body><p><br /><strong>Are you living outside of the United States?</strong><br />If you are a U.S. citizen living outside the U.S., a U.S. military service member, and/or family of a military member, visit the <a href=\"https://www.fvap.gov/\" target=\"_blank\">Federal Voter Assistance Program</a> for information on how to register to vote. You will need to complete the<a href=\"https://www.fvap.gov/fpca-privacy-notice\" target=\"_blank\"> Federal Post Card Application (FPCA)</a>.</p>",
-
-
     "omb_number": ""
     },
     {
