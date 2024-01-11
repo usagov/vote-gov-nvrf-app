@@ -778,7 +778,7 @@
     "registration_url": "https://registertovote.ca.gov/",
     "election_website_url": "https://www.sos.ca.gov/elections",
     "more_info_url": "https://www.sos.ca.gov/elections/voting-resources/voting-california/registering-vote",
-    "mail_reg_url": "",
+    "mail_reg_url": "https://www.sos.ca.gov/elections/voting-resources/voting-california/registering-vote",
     "confirm_reg_url": "https://voterstatus.sos.ca.gov/",
     "postmarked_mail_deadline": "Must be postmarked 15 days before Election Day",
     "received_mail_deadline": "",
