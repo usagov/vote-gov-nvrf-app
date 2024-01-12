@@ -68,6 +68,7 @@ function PersonalInfo(props){
                     className="radius-md" 
                     id="title-select" 
                     name="title-select" 
+                    // aria-describedby=""
                     value={props.fieldData.title} 
                     onChange={props.saveFieldData('title')} 
                     autoComplete="off">
@@ -98,6 +99,7 @@ function PersonalInfo(props){
                     id="middle-name"
                     className="radius-md"
                     name="middle-name"
+                    // aria-describedby=""
                     value={props.fieldData.middle_name}
                     onChange={props.saveFieldData('middle_name')}
                     type="text" autoComplete="off"
@@ -125,6 +127,7 @@ function PersonalInfo(props){
                     id="suffix-select" 
                     className="radius-md" 
                     name="suffix-select" 
+                    // aria-describedby=""
                     value={props.fieldData.suffix} 
                     onChange={props.saveFieldData('suffix')} 
                     autoComplete="off" 
@@ -240,6 +243,7 @@ function PersonalInfo(props){
             id="email-address"
             name="email-address"
             type="email"
+            // aria-describedby=""
             placeholder="Email address"
             className="radius-md"
             autoComplete="off"
@@ -252,9 +256,10 @@ function PersonalInfo(props){
 
     const raceDropdown =
         <Dropdown
-            id="race-ethic-group-select" 
+            id="race-ethnic-group-select" 
             className="radius-md" 
             name="race-ethic-group-select"
+            aria-describedby="race-error"
             value={props.fieldData.race} 
             onChange={props.saveFieldData('race')} 
             autoComplete="off"
@@ -458,6 +463,7 @@ function PersonalInfo(props){
                         inputField={dobFieldset}
                         label={dobField.label}
                         // helpText={""}
+                        htmlFor={"date-of-birth"}
                         fieldRequired={dobFieldState.required}
                         helpText={dobField.help_text}
                         showError={(parseInt(dobFieldState.required) && handleErrors.dob)}
@@ -516,7 +522,7 @@ function PersonalInfo(props){
                             label={raceField.label}
                             fieldRequired={raceFieldState.required}
                             // helpText={""}
-                            htmlFor={"race-ethic-group-select"}
+                            htmlFor={"race-ethnic-group-select"}
                             showError={((parseInt(raceFieldState.required)) && handleErrors.race)}
                             errorId={"race-error" }
                             errorMsg={raceField.error_msg}

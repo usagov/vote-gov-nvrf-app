@@ -87,6 +87,7 @@ function Addresses(props){
                 <TextInput
                     id="apt-num"
                     className="radius-md"
+                    // aria-describedby=""
                     name="apt-num"
                     type="text"
                     autoComplete="off"
@@ -115,6 +116,7 @@ function Addresses(props){
                 <StateSelector
                     classes="radius-md"
                     id="state"
+                    // aria-describedby=""
                     statesList={props.statesList}
                     state={props.stateData.name}
                     saveState={props.saveFieldData('state')}
@@ -233,6 +235,7 @@ function Addresses(props){
                     id="prev-apt"
                     className="radius-md"
                     name="prev-apt"
+                    // aria-describedby=""
                     type="text"
                     autoComplete="off"
                     value={props.fieldData.prev_apt_num}
@@ -480,7 +483,7 @@ function Addresses(props){
                                 inputField={prevAddressFields.street}
                                 label={prevStreetAddressField.label}
                                 fieldRequired={addressFieldsState.required}
-                                // // helpText={""}
+                                // helpText={""}
                                 htmlFor={"prev-street"}
                                 showError={((parseInt(addressFieldsState.required)) && handleErrors.prev_street)}
                                 errorId={"prev-street-error"}

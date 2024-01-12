@@ -7,7 +7,7 @@ function FieldContainer(props) {
             <Label className="text-bold" htmlFor={props.htmlFor}>
                 <strong>{props.label}{(props.fieldRequired === "1") && <span className='required-text'>*</span>}</strong>
             </Label>
-            <span className="usa-hint" id="date-of-birth-hint">
+            <span className="usa-hint">
                 {props.helpText}
             </span>
                 {props.inputField}

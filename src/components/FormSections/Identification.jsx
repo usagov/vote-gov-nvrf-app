@@ -51,6 +51,7 @@ function Identification(props){
             <Dropdown
             id="id-num-dropdown"
             name="id-num-dropdown"
+            aria-describedby="id-num-dropdown-error"
             value={props.idType}
             required={true}
             onChange={(e) => props.saveIdType(e)}
@@ -72,6 +73,7 @@ function Identification(props){
             id="driver-id-num"
             className="radius-md"
             name="driver-id-num"
+            aria-describedby="driver-id-num-error"
             type="text"
             autoComplete="off"
             required={parseInt(idFieldState.required)}
@@ -91,6 +93,7 @@ function Identification(props){
                 id="state-id-num"
                 className="radius-md"
                 name="state-id-num"
+                aria-describedby="state-id-num-error"
                 type="text"
                 autoComplete="off"
                 required={parseInt(idFieldState.required)}
@@ -108,6 +111,7 @@ function Identification(props){
                 id="ssn-input"
                 className="radius-md"
                 name="ssn-input"
+                aria-describedby="ssn-input-error"
                 autoComplete="off"
                 required={parseInt(idFieldState.required)}
                 type="text"
@@ -129,6 +133,7 @@ function Identification(props){
                 id="ssn-full-input"
                 className="radius-md"
                 name="ssn-full-input"
+                aria-describedby="ssn-full-input-error"
                 autoComplete="off"
                 required={parseInt(idFieldState.required)}
                 type="text"
@@ -162,7 +167,7 @@ function Identification(props){
                 // label={""}
                 fieldRequired={true}
                 // helpText={""}
-                // htmlFor={""}
+                htmlFor={"id-num-dropdown-error"}
                 showError={handleErrors.id_selection}
                 errorId={"id-num-dropdown-error"}
                 errorMsg={stateIDField.error_msg}
@@ -174,7 +179,7 @@ function Identification(props){
                             label={driverLicenseField.label}
                             fieldRequired={idFieldState.required}
                             // helpText={""}
-                            htmlFor={"driver-id-num-error"}
+                            htmlFor={"driver-id-num"}
                             showError={handleErrors.id_number}
                             errorId={"driver-id-num-error"}
                             errorMsg={driverLicenseField.error_msg}
@@ -186,7 +191,7 @@ function Identification(props){
                             label={stateIDField.label}
                             fieldRequired={idFieldState.required}
                             // helpText={""}
-                            htmlFor={"state-id-num-error"}
+                            htmlFor={"state-id-num"}
                             showError={handleErrors.id_number}
                             errorId={"state-id-num-error"}
                             errorMsg={stateIDField.error_msg}
@@ -200,7 +205,7 @@ function Identification(props){
                             label={ssnField.label}
                             fieldRequired={idFieldState.required}
                             helpText={ssnField.help_text}
-                            htmlFor={"ssn-input-error"}
+                            htmlFor={"ssn-input"}
                             showError={handleErrors.id_ssn}
                             errorId={"ssn-input-error"}
                             errorMsg={ssnField.error_msg}
@@ -213,7 +218,7 @@ function Identification(props){
                             label={ssnFullField.label}
                             fieldRequired={idFieldState.required}
                             helpText={ssnFullField.help_text}
-                            htmlFor={"ssn-full-input-error"}
+                            htmlFor={"ssn-full-input"}
                             showError={handleErrors.id_ssn}
                             errorId={"ssn-full-input-error"}
                             errorMsg={ssnFullField.error_msg}
