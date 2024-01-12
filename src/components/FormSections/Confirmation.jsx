@@ -13,9 +13,12 @@ function Confirmation(props) {
 
     //field data overrides for confirm page printing only
     const fieldDataOverride_race = (fieldData.race === '') ? "Not required for your state" : fieldData.race;
-    const fieldDataOverride_party = (fieldData.party_choice === '') ? "No party entered" : fieldData.party_choice;
+    const fieldDataOverride_party = (fieldData.party_choice === '') ? "Not required for your state" : fieldData.party_choice;
     const fieldDataOverride_state = props.stateData.name;
     fieldData.state = fieldDataOverride_state;
+
+    //id override
+    const fieldDataOverride_id = ((fieldData.id_number === '') && (fieldData.ssn_number === '')) ? "none" : fieldData.id_number + " " + fieldData.ssn_number;
 
     const confirm = content.find(item => item.uuid === "560cd01c-42d1-4f58-a702-372c2ff6bbd9");
     const confirmBody = DOMPurify.sanitize(confirm.body);
@@ -137,7 +140,7 @@ function Confirmation(props) {
                     </div>
                 </div>
                 <ul>
-                    <li>{headings.confirmation.id_label.label}: {fieldData.id_number}</li>
+                    <li>{headings.confirmation.id_label.label}: {fieldDataOverride_id}</li>
                 </ul>
                 <span className="divider-grey"></span>
                 <div className='grid-row'>

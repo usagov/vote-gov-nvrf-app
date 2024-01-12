@@ -114,3 +114,7 @@
     margin-left: 8px;
     margin-top: 37px;
 }
+
+#touchpoints-form-embed .fba-modal-dialog {
+    margin: 0;
+}

@@ -11,8 +11,8 @@ describe('Validate Not Needed', () => {
   it('Validate Workflow', () => {
     cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
 
-    // Validate that state selections takes you to the not needed page 
-    cy.get('h1').should('contain', 'does not have voter registration')
+    // Validate that state selections takes you to the not needed page
+    cy.get('h1').should('contain', 'does not require voter registration before voting')
 
     // Validate that external links open in new tab
     cy.get('[class="usa-button"]').then(link => {
