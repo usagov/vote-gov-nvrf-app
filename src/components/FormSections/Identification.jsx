@@ -76,7 +76,7 @@ function Identification(props){
                     <option key="id-none" value="none">{noIdField.label}</option>
                 </Dropdown>
                 {handleErrors.id_selection &&
-                    <span id="id-num-dropdown-error" role="alert" className='error-text text-bold'>
+                    <span id="id-num-dropdown-error" role="alert" className='error-text'>
                     {stateIDField.error_msg}
                 </span>
                 }
@@ -167,7 +167,7 @@ function Identification(props){
                         })}
                     />
                     {handleErrors.id_ssn &&
-                        <span id="ssn-input-error" role="alert" className='error-text text-bold'>
+                        <span id="ssn-input-error" role="alert" className='error-text'>
                     {ssnField.error_msg}
                 </span>
                     }
@@ -198,7 +198,7 @@ function Identification(props){
                         })}
                     />
                     {handleErrors.id_ssn &&
-                        <span id="ssn-input-error" role="alert" className='error-text text-bold'>
+                        <span id="ssn-input-error" role="alert" className='error-text'>
                     {ssnFullField.error_msg}
                 </span>
                     }

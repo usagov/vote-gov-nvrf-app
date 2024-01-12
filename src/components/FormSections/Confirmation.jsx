@@ -171,7 +171,7 @@ function Confirmation(props) {
                     onChange={(e) => props.acknowledgeCheckbox(e.target.checked)}
                 />
                 {props.error &&
-                    <span id="first-name-error" role="alert" className='error-text text-bold'>
+                    <span id="first-name-error" role="alert" className='error-text'>
                     {getFieldError("73e74065-fd5a-43c0-907c-268120e34bc3")}
                 </span>
                 }

@@ -49,7 +49,7 @@ function PoliticalParty(props){
                     onBlur={(e) => setHandleErrors({ ...handleErrors, party_choice: checkForErrors(e, 'check value exists') })}
                 />
                 {((partyFieldState.required === "1") && handleErrors.party_choice) &&
-                    <span id="party-choice-error" role="alert" className='error-text text-bold'>
+                    <span id="party-choice-error" role="alert" className='error-text'>
                         {partyField.error_msg}
                     </span>
                 }
