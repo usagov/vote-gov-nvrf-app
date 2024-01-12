@@ -32,7 +32,7 @@ function Confirmation(props) {
 
                 <div className='grid-row'>
                     <h2>{headings.step_label_1}</h2>
-                    <div className='edit-btn'>
+                    <div className='edit-btn' title="Return to Personal information, step one of six, to make a change.">
                         <Button
                             type="button"
                             class="usa-button--unstyled"
@@ -74,7 +74,7 @@ function Confirmation(props) {
                 <span className="divider-grey"></span>
                 <div className='grid-row'>
                     <h2>{headings.step_label_2}</h2>
-                    <div className='edit-btn'>
+                    <div className='edit-btn' title="Return to Address and location, step two of six, to make a change">
                         <Button
                             type="button"
                             class="usa-button--unstyled"
@@ -127,7 +127,7 @@ function Confirmation(props) {
                 <span className="divider-grey"></span>
                 <div className='grid-row'>
                     <h2>{headings.step_label_3}</h2>
-                    <div className='edit-btn'>
+                    <div className='edit-btn' title="Return to Identification, step three of six, to make a change">
                         <Button
                             type="button"
                             class="usa-button--unstyled"
@@ -142,7 +142,7 @@ function Confirmation(props) {
                 <span className="divider-grey"></span>
                 <div className='grid-row'>
                     <h2>{headings.step_label_4}</h2>
-                    <div className='edit-btn'>
+                    <div className='edit-btn' title="Return to Political party, step four of six, to make a change">
                         <Button
                             type="button"
                             class="usa-button--unstyled"
