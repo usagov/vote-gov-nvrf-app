@@ -344,6 +344,24 @@ function PersonalInfo(props){
             </div>
     }
 
+    const raceEthnicityField =
+        <div>
+            <Dropdown
+                id="race-ethic-group-select" 
+                className="radius-md" 
+                name="race-ethic-group-select"
+                value={props.fieldData.race} 
+                onChange={props.saveFieldData('race')} 
+                autoComplete="off"
+                required={parseInt(raceFieldState.required)}
+                onBlur={(e) => setHandleErrors({ ...handleErrors, race: checkForErrors(e, 'check value exists') })}>
+                    <option value="">- Select -{' '}</option>
+                    {raceField.options.map((item, index) => (
+                        <option key={index} value={item.value}>{item.key}</option>
+                    ))}
+            </Dropdown>
+        </div>
+
     return (
         <>
         <h2>{headings.step_label_1}</h2>
@@ -369,6 +387,9 @@ function PersonalInfo(props){
                          // helpText={""}
                             fieldRequired={"0"}
                             htmlFor={"title-select"}
+                        // showError={""}
+                        // errorId={""}
+                        // errorMsg={""}
                         />
                     </Grid>
 
@@ -392,6 +413,9 @@ function PersonalInfo(props){
                             // helpText={""}
                             fieldRequired={"0"}
                             htmlFor={"middle-name"}
+                            // showError={""}
+                            // errorId={""}
+                            // errorMsg={""}
                         />
                     </Grid>
                 </Grid>
@@ -402,6 +426,7 @@ function PersonalInfo(props){
                             inputField={nameFields.last}
                             fieldRequired={nameFieldState.required}
                             label={lastNameField.label}
+                         // helpText={""}
                             htmlFor={"last-name"}
                             showError={(parseInt(nameFieldState.required) && handleErrors.last_name)}
                             errorId={"last-name-error"}
@@ -414,7 +439,11 @@ function PersonalInfo(props){
                             inputField={nameFields.suffix}
                             htmlFor={"suffix-select"}
                             label={suffixField.label}
+                            // helpText={""}
                             fieldRequired={"0"}
+                            // showError={""}
+                            // errorId={""}
+                            // errorMsg={""}
                         />
                     </Grid>
                 </Grid>
@@ -443,14 +472,14 @@ function PersonalInfo(props){
                 <Grid tablet={{ col: 5 }} className="input-example">
                     <div className="bottom">
                         <FieldContainer
-                        inputField={phoneNumField}
-                        label={phoneNumberField.label}
-                        fieldRequired={telephoneFieldState.required}
-                        // helpText={""}
-                        htmlFor={"phone-number"}
-                        showError={((telephoneFieldState.required === "1") && handleErrors.phone_number)}
-                        errorId={"phone-number-error" }
-                        errorMsg={phoneNumberField.error_msg}
+                            inputField={phoneNumField}
+                            label={phoneNumberField.label}
+                            fieldRequired={telephoneFieldState.required}
+                            // helpText={""}
+                            htmlFor={"phone-number"}
+                            showError={((telephoneFieldState.required === "1") && handleErrors.phone_number)}
+                            errorId={"phone-number-error" }
+                            errorMsg={phoneNumberField.error_msg}
                         />
                     </div>
                 </Grid>
@@ -482,29 +511,16 @@ function PersonalInfo(props){
             {raceFieldState && (
                 <Grid row gap>
                     <Grid col={4}>
-                        <div className={((parseInt(raceFieldState.required)) && handleErrors.race) ? 'error-container' : ''}>
-                            <Label className="text-bold" htmlFor="race-ethic-group-select">{raceField.label}{(raceFieldState.required === "1") && <span className='required-text'>*</span>}
-                            <Dropdown
-                            id="race-ethic-group-select" 
-                            className="radius-md" 
-                            name="race-ethic-group-select"
-                            value={props.fieldData.race} 
-                            onChange={props.saveFieldData('race')} 
-                            autoComplete="off"
-                            required={parseInt(raceFieldState.required)}
-                            onBlur={(e) => setHandleErrors({ ...handleErrors, race: checkForErrors(e, 'check value exists') })}>
-                                <option value="">- Select -{' '}</option>
-                                {raceField.options.map((item, index) => (
-                                    <option key={index} value={item.value}>{item.key}</option>
-                                ))}
-                            </Dropdown>
-                            {((parseInt(raceFieldState.required) === 1) && handleErrors.race) &&
-                                <span id="race-error" role="alert" className='error-text'>
-                                    {raceField.error_msg}
-                                </span>
-                            }
-                            </Label>
-                        </div>
+                        <FieldContainer
+                            inputField={raceEthnicityField}
+                            label={raceField.label}
+                            fieldRequired={raceFieldState.required}
+                            // helpText={""}
+                            htmlFor={"race-ethic-group-select"}
+                            showError={((parseInt(raceFieldState.required)) && handleErrors.race)}
+                            errorId={"race-error" }
+                            errorMsg={raceField.error_msg}
+                        />
                     </Grid>
                 </Grid>
             )}
@@ -557,27 +573,27 @@ function PersonalInfo(props){
         <Grid row gap>
             <Grid tablet={{ col: 6 }}>
                 <FieldContainer
-                inputField={prevNameFields.last}
-                label={prevLastNameField.label}
-                fieldRequired={nameFieldState.required}
-                // helpText={""}
-                htmlFor={"last-name-2"}
-                showError={(parseInt(nameFieldState.required) && handleErrors.prev_last_name)}
-                errorId={"prev-last-name-error"}
-                errorMsg={prevLastNameField.error_msg}
+                    inputField={prevNameFields.last}
+                    label={prevLastNameField.label}
+                    fieldRequired={nameFieldState.required}
+                    // helpText={""}
+                    htmlFor={"last-name-2"}
+                    showError={(parseInt(nameFieldState.required) && handleErrors.prev_last_name)}
+                    errorId={"prev-last-name-error"}
+                    errorMsg={prevLastNameField.error_msg}
                 />
             </Grid>
 
             <Grid tablet={{ col: 6 }}>
                 <FieldContainer
-                inputField={prevNameFields.suffix}
-                label={prevSuffixField.label}
-                fieldRequired={"0"}
-                // helpText={""}
-                htmlFor={"suffix-select-2"}
-                // showError={""}
-                // errorId={""}
-                // errorMsg={""}
+                    inputField={prevNameFields.suffix}
+                    label={prevSuffixField.label}
+                    fieldRequired={"0"}
+                    // helpText={""}
+                    htmlFor={"suffix-select-2"}
+                    // showError={""}
+                    // errorId={""}
+                    // errorMsg={""}
                 />
             </Grid>
         </Grid>
