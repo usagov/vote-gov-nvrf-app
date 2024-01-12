@@ -51,31 +51,17 @@ function Eligibility(props) {
                     .replace("@reg_eligibility_desc", stateContent.reg_eligibility_desc)}}/>
 
             <form onSubmit={(e) => {e.preventDefault(), props.handleNext()}}>
-                <Fieldset legend="Eligibility" legendStyle="srOnly">
-                    <div className={props.error ? 'error-container' : ''}>
-                        <Label htmlFor="eligibility-error" id="eligibility-error">
-                            <strong>{eligibility.name}</strong>
-                        </Label>
-                        <Checkbox
-                            id="eligibility-checkbox"
-                            name="eligibility-checkbox"
-                            value="eligibility-checkbox"
-                            label={getFieldLabel(fields, "39fc63ad-ed5a-4ad5-98d3-aa236c96c61c")}
-                            aria-required="true"
-                            aria-describedby="eligibility-error"
-                            required={true}
-                            defaultChecked={props.hasConfirmed}
-                            onChange={(e) => props.confirmCheckbox(e.target.checked)}
-                        />
-
-                        {props.error &&
-
-                            <span id="eligibility-error" role="alert" className='error-text'>
-                                {getFieldError(fields, "39fc63ad-ed5a-4ad5-98d3-aa236c96c61c")}
-                                </span>
-                        }
-                    </div>
-                </Fieldset>
+                <FieldContainer 
+                    inputField={checkboxField}
+                    label={eligibility.name}
+                    // helpText={""}
+                    // fieldRequired={""}
+                    htmlFor={"eligibility-checkbox"}
+                    showError={props.error}
+                    errorId={"eligibility-error"}
+                    errorMsg={getFieldError(fields, "39fc63ad-ed5a-4ad5-98d3-aa236c96c61c")}
+                />
+                
                 <div dangerouslySetInnerHTML= {{__html: eligibilityInstructions}}/>
 
                 <div className={'usa-prose margin-top-5'} dangerouslySetInnerHTML= {{__html: contentBodyParts[1].replace("@state_name", stateContent.name)

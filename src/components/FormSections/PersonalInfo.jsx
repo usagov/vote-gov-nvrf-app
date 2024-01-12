@@ -63,81 +63,70 @@ function PersonalInfo(props){
 
     const nameFields = {
         title:
-            <div>
-                <Dropdown 
-                    className="radius-md" 
-                    id="title-select" 
-                    name="title-select" 
-                    // aria-describedby=""
-                    value={props.fieldData.title} 
-                    onChange={props.saveFieldData('title')} 
-                    autoComplete="off">
+            <Dropdown 
+                className="radius-md" 
+                id="title-select" 
+                name="title-select" 
+                // aria-describedby=""
+                value={props.fieldData.title} 
+                onChange={props.saveFieldData('title')} 
+                autoComplete="off">
+                <option>- Select -{' '}</option>
+                {titleField.options.map((item, index) => (
+                    <option key={index} value={item.value}>{item.key}</option>
+                ))}
+            </Dropdown>,
+        first: 
+            <TextInput
+                id="first-name"
+                className="radius-md text-semibold"
+                aria-describedby="first-name-error"
+                name="first-name"
+                type="text"
+                autoComplete="off"
+                required={parseInt(nameFieldState.required)}
+                value={props.fieldData.first_name}
+                onChange={props.saveFieldData('first_name')}
+                onBlur={(e) => setHandleErrors({ ...handleErrors, first_name: checkForErrors(e, 'check value exists') })}
+            />,
+        middle: 
+            <TextInput
+                id="middle-name"
+                className="radius-md"
+                name="middle-name"
+                // aria-describedby=""
+                value={props.fieldData.middle_name}
+                onChange={props.saveFieldData('middle_name')}
+                type="text" autoComplete="off"
+            />,
+        last: 
+            <TextInput
+                id="last-name"
+                className="radius-md"
+                aria-describedby="last-name-error"
+                name="last-name"
+                type="text"
+                autoComplete="off"
+                required={parseInt(nameFieldState.required)}
+                value={props.fieldData.last_name}
+                onChange={props.saveFieldData('last_name')}
+                onBlur={(e) => setHandleErrors({ ...handleErrors, last_name: checkForErrors(e, 'check value exists') })}
+            />,
+        suffix:
+            <Dropdown 
+                id="suffix-select" 
+                className="radius-md" 
+                name="suffix-select" 
+                // aria-describedby=""
+                value={props.fieldData.suffix} 
+                onChange={props.saveFieldData('suffix')} 
+                autoComplete="off" 
+                required={parseInt(nameFieldState.required)}>
                     <option>- Select -{' '}</option>
-                    {titleField.options.map((item, index) => (
+                    {suffixField.options.map((item, index) => (
                         <option key={index} value={item.value}>{item.key}</option>
                     ))}
-                </Dropdown>
-            </div>,
-        first: 
-            <div>
-                <TextInput
-                    id="first-name"
-                    className="radius-md text-semibold"
-                    aria-describedby="first-name-error"
-                    name="first-name"
-                    type="text"
-                    autoComplete="off"
-                    required={parseInt(nameFieldState.required)}
-                    value={props.fieldData.first_name}
-                    onChange={props.saveFieldData('first_name')}
-                    onBlur={(e) => setHandleErrors({ ...handleErrors, first_name: checkForErrors(e, 'check value exists') })}
-                />
-            </div>,
-        middle: 
-            <div>
-                <TextInput
-                    id="middle-name"
-                    className="radius-md"
-                    name="middle-name"
-                    // aria-describedby=""
-                    value={props.fieldData.middle_name}
-                    onChange={props.saveFieldData('middle_name')}
-                    type="text" autoComplete="off"
-                />
-            </div>,
-
-        last: 
-            <div>
-                <TextInput
-                    id="last-name"
-                    className="radius-md"
-                    aria-describedby="last-name-error"
-                    name="last-name"
-                    type="text"
-                    autoComplete="off"
-                    required={parseInt(nameFieldState.required)}
-                    value={props.fieldData.last_name}
-                    onChange={props.saveFieldData('last_name')}
-                    onBlur={(e) => setHandleErrors({ ...handleErrors, last_name: checkForErrors(e, 'check value exists') })}
-                />
-            </div>,
-        suffix:
-            <div>
-                <Dropdown 
-                    id="suffix-select" 
-                    className="radius-md" 
-                    name="suffix-select" 
-                    // aria-describedby=""
-                    value={props.fieldData.suffix} 
-                    onChange={props.saveFieldData('suffix')} 
-                    autoComplete="off" 
-                    required={parseInt(nameFieldState.required)}>
-                        <option>- Select -{' '}</option>
-                        {suffixField.options.map((item, index) => (
-                            <option key={index} value={item.value}>{item.key}</option>
-                        ))}
-                </Dropdown>
-            </div>
+            </Dropdown>
      };
 
     const dobFieldset = 
@@ -253,103 +242,74 @@ function PersonalInfo(props){
             onChange={props.saveFieldData('email_address')}
             onBlur={(e) => setHandleErrors({ ...handleErrors, email_address: checkForErrors(e, 'check value length') })}
         />
-
-    const raceDropdown =
-        <Dropdown
-            id="race-ethnic-group-select" 
-            className="radius-md" 
-            name="race-ethic-group-select"
-            aria-describedby="race-error"
-            value={props.fieldData.race} 
-            onChange={props.saveFieldData('race')} 
-            autoComplete="off"
-            //not working
-            // required={raceFieldState.required}
-            onBlur={(e) => setHandleErrors({ ...handleErrors, race: checkForErrors(e, 'check value exists') })}>
-                <option value="">- Select -{' '}</option>
-                {raceField.options.map((item, index) => (
-                    <option key={index} value={item.value}>{item.key}</option>
-                ))}
-        </Dropdown>;
-
     
     const prevNameFields = {
         title: 
-            <div>
-                <Dropdown 
-                    id="title-select-2" 
-                    className="radius-md" 
-                    name="title-select-2" 
-                    value={props.fieldData.prev_title} 
-                    onChange={props.saveFieldData('prev_title')} 
-                    autoComplete="off">
-                    <option>- Select -{' '}</option>
-                    {prevTitleField.options.map((item, index) => (
-                        <option key={index} value={item.value}>{item.key}</option>
-                    ))}
-                </Dropdown>
-            </div>,
-        first:
-            <div>
-                <TextInput
-                    id="first-name-2"
-                    className="radius-md"
-                    aria-describedby="prev-first-name-error"
-                    name="first-name-2"
-                    type="text"
-                    autoComplete="off"
-                    required={parseInt(nameFieldState.required)}
-                    value={props.fieldData.prev_first_name}
-                    onChange={props.saveFieldData('prev_first_name')}
-                    onBlur={(e) => setHandleErrors({ ...handleErrors, prev_first_name: checkForErrors(e, 'check value exists') })}
-                />
-            </div>,
-        middle:
-            <div>
-                <TextInput
-                    id="middle-name-2"
-                    className="radius-md"
-                    name="middle-name-2"
-                    value={props.fieldData.prev_middle_name}
-                    onChange={props.saveFieldData('prev_middle_name')}
-                    type="text" autoComplete="off"
-                />
-            </div>,
-        last: 
-            <div>
-                <TextInput
-                    id="last-name-2"
-                    className="radius-md"
-                    aria-describedby="prev-last-name-error"
-                    name="last-name-2"
-                    type="text"
-                    autoComplete="off"
-                    required={parseInt(nameFieldState.required)}
-                    value={props.fieldData.prev_last_name}
-                    onChange={props.saveFieldData('prev_last_name')}
-                    onBlur={(e) => setHandleErrors({ ...handleErrors, prev_last_name: checkForErrors(e, 'check value exists') })}
-                />
-            </div>,
-        suffix:
-            <div>
-                <Dropdown 
-                    id="suffix-select-2" 
-                    className="radius-md" 
-                    name="suffix-select-2" 
-                    value={props.fieldData.prev_suffix} 
-                    onChange={props.saveFieldData('prev_suffix')} 
-                    autoComplete="off" 
-                    required={parseInt(nameFieldState.required)}
-                >
+            <Dropdown 
+                id="title-select-2" 
+                className="radius-md" 
+                name="title-select-2" 
+                value={props.fieldData.prev_title} 
+                onChange={props.saveFieldData('prev_title')} 
+                autoComplete="off">
                 <option>- Select -{' '}</option>
-                {prevSuffixField.options.map((item, index) => (
+                {prevTitleField.options.map((item, index) => (
                     <option key={index} value={item.value}>{item.key}</option>
                 ))}
-                </Dropdown>
-            </div>
+            </Dropdown>,
+        first:
+            <TextInput
+                id="first-name-2"
+                className="radius-md"
+                aria-describedby="prev-first-name-error"
+                name="first-name-2"
+                type="text"
+                autoComplete="off"
+                required={parseInt(nameFieldState.required)}
+                value={props.fieldData.prev_first_name}
+                onChange={props.saveFieldData('prev_first_name')}
+                onBlur={(e) => setHandleErrors({ ...handleErrors, prev_first_name: checkForErrors(e, 'check value exists') })}
+            />,
+        middle:
+            <TextInput
+                id="middle-name-2"
+                className="radius-md"
+                name="middle-name-2"
+                value={props.fieldData.prev_middle_name}
+                onChange={props.saveFieldData('prev_middle_name')}
+                type="text" autoComplete="off"
+            />,
+        last: 
+            <TextInput
+                id="last-name-2"
+                className="radius-md"
+                aria-describedby="prev-last-name-error"
+                name="last-name-2"
+                type="text"
+                autoComplete="off"
+                required={parseInt(nameFieldState.required)}
+                value={props.fieldData.prev_last_name}
+                onChange={props.saveFieldData('prev_last_name')}
+                onBlur={(e) => setHandleErrors({ ...handleErrors, prev_last_name: checkForErrors(e, 'check value exists') })}
+            />,
+        suffix:
+            <Dropdown 
+                id="suffix-select-2" 
+                className="radius-md" 
+                name="suffix-select-2" 
+                value={props.fieldData.prev_suffix} 
+                onChange={props.saveFieldData('prev_suffix')} 
+                autoComplete="off" 
+                required={parseInt(nameFieldState.required)}
+            >
+            <option>- Select -{' '}</option>
+            {prevSuffixField.options.map((item, index) => (
+                <option key={index} value={item.value}>{item.key}</option>
+            ))}
+            </Dropdown>
     }
 
-    const raceEthnicityField =
+    const raceEthnicityField = raceFieldState && (
         <div>
             <Dropdown
                 id="race-ethic-group-select" 
@@ -365,7 +325,7 @@ function PersonalInfo(props){
                         <option key={index} value={item.value}>{item.key}</option>
                     ))}
             </Dropdown>
-        </div>
+        </div>)
 
     return (
         <>

@@ -38,172 +38,187 @@ function Identification(props){
         id_none: false
     })
 
+    const idTypesField = 
+        <Dropdown
+            id="id-num-dropdown"
+            name="input-dropdown"
+            value={props.idType}
+            required={true}
+            onChange={(e) => props.saveIdType(e)}
+            onBlur={(e) => setHandleErrors({
+                ...handleErrors,
+                id_selection: checkForErrors(e, 'check value exists')
+            })}>
+            <option key="default" value="">{"Select Identification"}</option>
+            {(driverIDFieldReq) && <option key="driver-id-num" value="driver-id-num">{driverLicenseField.label}</option>}
+            {(stateIDFieldDReq) && <option key="state-id-num" value="state-id-num">{stateIDField.label}</option>}
+            {(ssnFullFieldReq) && <option key="ssn-full" value="ssn-full">{ssnFullField.label}</option>}
+            {(ssnFieldReq) && <option key="ssn" value="ssn">{ssnField.label}</option>}
+            {(noIdFieldReq) && <option key="id-none" value="none">{noIdField.label}</option>}
+        </Dropdown>
+
+    const driverIdField = 
+        <TextInput
+            id="driver-id-num"
+            className="radius-md"
+            name="driver-id-num"
+            aria-describedby="driver-id-num-error"
+            type="text"
+            autoComplete="off"
+            required={parseInt(driverIDFieldReq.required)}
+            value={props.fieldData.id_number}
+            onChange={props.saveFieldData('id_number')}
+            onBlur={(e) => setHandleErrors({
+                ...handleErrors,
+                id_number: checkForErrors(e, 'check value exists')
+            })}
+        />
+    
+    const stateIdField =
+        <TextInput
+            id="state-id-num"
+            className="radius-md"
+            name="driver-id-num"
+            aria-describedby="state-id-num-error"
+            type="text"
+            autoComplete="off"
+            required={parseInt(stateIDFieldDReq.required)}
+            value={props.fieldData.id_number}
+            onChange={props.saveFieldData('id_number')}
+            onBlur={(e) => setHandleErrors({
+                ...handleErrors,
+                id_number: checkForErrors(e, 'check value exists')
+            })}
+        /> 
+        
+    const ssnInputField =
+        <TextInput
+            id="ssn-input"
+            className="radius-md"
+            name="ssn-input"
+            aria-describedby="ssn-input-error"
+            autoComplete="off"
+            required={parseInt(ssnFieldReq.required)}
+            type="text"
+            inputMode="numeric"
+            minLength={4}
+            maxLength={4}
+            value={props.fieldData.ssn_number}
+            onChange={props.saveFieldData('ssn_number')}
+            onKeyDown={(e) => restrictType(e, 'number')}
+            onBlur={(e) => setHandleErrors({
+                ...handleErrors,
+                id_ssn: checkForErrors(e, 'check value length')
+            })}
+        />
+
+    const ssnFullInputField = ssnFullFieldReq &&
+        <TextInput
+            id="ssn-full-input"
+            className="radius-md"
+            name="ssn-full-input"
+            autoComplete="off"
+            aria-describedby="ssn-full-input-error"
+            required={parseInt(ssnFullFieldReq.required)}
+            type="text"
+            inputMode="numeric"
+            minLength={9}
+            maxLength={9}
+            value={props.fieldData.ssn_number}
+            onChange={props.saveFieldData('ssn_number')}
+            onKeyDown={(e) => restrictType(e, 'number')}
+            onBlur={(e) => setHandleErrors({
+                ...handleErrors,
+                id_ssn: checkForErrors(e, 'check value length')
+            })}
+        />
+
     return (
         <>
         <h2>{headings.step_label_3}</h2>
 
-            {idStateInstructions && (
+            {idStateInstructions && 
                 <div className="usa-alert usa-alert--info" role="alert">
                     <div className="usa-alert__body" dangerouslySetInnerHTML={{__html: idStateInstructions}}/>
-                </div>)}
+                </div>}
 
-            {(stateData.abbrev === "mo") && (
-                <>
+            {(stateData.abbrev === "mo") && 
                 <Checkbox id="id-none" name="id-none" checked={props.hasNoID} onChange={props.onChangeHasNoIdCheckbox} label={noIdField.label} />
-                </>
-            )}
+            }
 
-            {(stateData.abbrev != "mo") && (
+            {(stateData.abbrev != "mo") && 
                 <>
-                    <h3 className={'margin-top-6'}>{idTypeField.label}<span className='required-text'>*</span></h3>
-                    <div dangerouslySetInnerHTML={{__html: idTypeFieldInstructions}}/>
-                    <div className={handleErrors.id_selection ? 'error-container mobile-width' : 'mobile-width'}>
-                        <Dropdown
-                            id="id-num-dropdown"
-                            name="input-dropdown"
-                            value={props.idType}
-                            required={true}
-                            onChange={(e) => props.saveIdType(e)}
-                            onBlur={(e) => setHandleErrors({
-                                ...handleErrors,
-                                id_selection: checkForErrors(e, 'check value exists')
-                            })}
-                        >
-                            <option key="default" value="">{"Select Identification"}</option>
-                            {(driverIDFieldReq) && <option key="driver-id-num" value="driver-id-num">{driverLicenseField.label}</option>}
-                            {(stateIDFieldDReq) && <option key="state-id-num" value="state-id-num">{stateIDField.label}</option>}
-                            {(ssnFullFieldReq) && <option key="ssn-full" value="ssn-full">{ssnFullField.label}</option>}
-                            {(ssnFieldReq) && <option key="ssn" value="ssn">{ssnField.label}</option>}
-                            {(noIdFieldReq) && <option key="id-none" value="none">{noIdField.label}</option>}
-                        </Dropdown>
-                        {handleErrors.id_selection &&
-                            <span id="id-num-dropdown-error" role="alert" className='error-text text-bold'>
-                            {stateIDField.error_msg}
-                        </span>
-                        }
-                    </div>
-                </>)}
-
-            {((props.idType === 'driver-id-num') || (props.idType === 'state-id-num') || ((stateData.abbrev === "mo") && (props.idType != "none"))) &&
-                <>
-                    <div className={handleErrors.id_number ? 'error-container' : ''}>
-                        {((props.idType === 'driver-id-num') || (stateData.abbrev === "mo")) &&
-
-                            <Label className="text-bold"
-                                   htmlFor="state-id-num-error">{driverLicenseField.label}{(driverIDFieldReq) &&
-                                <span className='required-text'>*</span>}
-                                <TextInput
-                                    id="driver-id-num"
-                                    className="radius-md"
-                                    name="driver-id-num"
-                                    type="text"
-                                    autoComplete="off"
-                                    required={parseInt(driverIDFieldReq.required)}
-                                    value={props.fieldData.id_number}
-                                    onChange={props.saveFieldData('id_number')}
-                                    onBlur={(e) => setHandleErrors({
-                                        ...handleErrors,
-                                        id_number: checkForErrors(e, 'check value exists')
-                                    })}
-                                />
-                                {handleErrors.id_number &&
-                                    <span id="state-id-num-error" role="alert" className='error-text'>
-                            {driverLicenseField.error_msg}
-                        </span>
-                                }
-                            </Label>
-                        }
-                        {(props.idType === 'state-id-num') &&
-
-                            <Label className="text-bold"
-                                   htmlFor="state-id-num-error">{stateIDField.label}{(stateIDFieldDReq) &&
-                                <span className='required-text'>*</span>}
-                                <TextInput
-                                    id="driver-id-num"
-                                    className="radius-md"
-                                    name="driver-id-num"
-                                    type="text"
-                                    autoComplete="off"
-                                    required={parseInt(stateIDFieldDReq.required)}
-                                    value={props.fieldData.id_number}
-                                    onChange={props.saveFieldData('id_number')}
-                                    onBlur={(e) => setHandleErrors({
-                                        ...handleErrors,
-                                        id_number: checkForErrors(e, 'check value exists')
-                                    })}
-                                />
-                                {handleErrors.id_number &&
-                                    <span id="state-id-num-error" role="alert" className='error-text'>
-                            {stateIDField.error_msg}
-                        </span>
-                                }
-                            </Label>
-                        }
-                    </div>
+                <h3 className={'margin-top-6'}>{idTypeField.label}<span className='required-text'>*</span></h3>
+                <div dangerouslySetInnerHTML={{__html: idTypeFieldInstructions}}/>
+                <FieldContainer 
+                    inputField={idTypesField}
+                    // label={""}
+                    classes={"mobile-width"}
+                    // helpText={""}
+                    fieldRequired={true}
+                    htmlFor={"id-num"}
+                    showError={handleErrors.id_selection}
+                    errorId={"id-num-error"}
+                    errorMsg={stateIDField.error_msg}
+                />
                 </>
             }
 
+            {((props.idType === 'driver-id-num') || ((stateData.abbrev === "mo") && (props.idType != "none"))) &&
+                <FieldContainer 
+                    inputField={driverIdField}
+                    label={driverLicenseField.label}
+                    // classes={""}
+                    // helpText={""}
+                    fieldRequired={driverIDFieldReq}
+                    htmlFor={"driver-id-num"}
+                    showError={handleErrors.id_number}
+                    errorId={"driver-id-num-error"}
+                    errorMsg={driverLicenseField.error_msg}
+                />
+            }
+
+            {((props.idType === 'state-id-num') || ((stateData.abbrev === "mo") && (props.idType != "none"))) &&
+                <FieldContainer 
+                    inputField={stateIdField}
+                    label={driverLicenseField.label}
+                    // classes={""}
+                    // helpText={""}
+                    fieldRequired={stateIDFieldDReq.required}
+                    htmlFor={"state-id-num"}
+                    showError={handleErrors.id_number}
+                    errorId={"state-id-num-error"}
+                    errorMsg={stateIDField.error_msg}
+                />
+            }
+
             {((props.idType === 'ssn') || ((stateData.abbrev === "mo") && (props.idType != "none"))) &&
-                <div className={handleErrors.id_ssn ? 'error-container' : ''}>
-                    <Label className="text-bold"
-                           htmlFor="ssn-input-error">{ssnField.label}{(ssnFieldReq) &&
-                        <span className='required-text'>*</span>}</Label>
-                    <span className="usa-hint" id="ssn-hint">{ssnField.help_text}</span>
-                    <TextInput
-                        id="ssn-input"
-                        className="radius-md"
-                        name="ssn-input"
-                        autoComplete="off"
-                        required={parseInt(ssnFieldReq.required)}
-                        type="text"
-                        inputMode="numeric"
-                        minLength={4}
-                        maxLength={4}
-                        value={props.fieldData.ssn_number}
-                        onChange={props.saveFieldData('ssn_number')}
-                        onKeyDown={(e) => restrictType(e, 'number')}
-                        onBlur={(e) => setHandleErrors({
-                            ...handleErrors,
-                            id_ssn: checkForErrors(e, 'check value length')
-                        })}
-                    />
-                    {handleErrors.id_ssn &&
-                        <span id="ssn-input-error" role="alert" className='error-text text-bold'>
-                    {ssnField.error_msg}
-                </span>
-                    }
-                </div>}
+                <FieldContainer 
+                    inputField={ssnInputField}
+                    label={ssnField.label}
+                    // classes={""}
+                    // helpText={""}
+                    fieldRequired={ssnFieldReq.required}
+                    htmlFor={"ssn-input"}
+                    showError={handleErrors.id_ssn}
+                    errorId={"ssn-input-error"}
+                    errorMsg={ssnField.error_msg}
+                />
+            }
 
             {props.idType === 'ssn-full' &&
-                <div className={handleErrors.id_ssn ? 'error-container' : ''}>
-                    <Label className="text-bold"
-                           htmlFor="ssn-input-error">{ssnFullField.label}{(ssnFullFieldReq) &&
-                        <span className='required-text'>*</span>}</Label>
-                    <span className="usa-hint" id="ssn-hint">{ssnFullField.help_text}</span>
-                    <TextInput
-                        id="ssn-full-input"
-                        className="radius-md"
-                        name="ssn-full-input"
-                        autoComplete="off"
-                        required={parseInt(ssnFullFieldReq.required)}
-                        type="text"
-                        inputMode="numeric"
-                        minLength={9}
-                        maxLength={9}
-                        value={props.fieldData.ssn_number}
-                        onChange={props.saveFieldData('ssn_number')}
-                        onKeyDown={(e) => restrictType(e, 'number')}
-                        onBlur={(e) => setHandleErrors({
-                            ...handleErrors,
-                            id_ssn: checkForErrors(e, 'check value length')
-                        })}
-                    />
-                    {handleErrors.id_ssn &&
-                        <span id="ssn-input-error" role="alert" className='error-text text-bold'>
-                    {ssnFullField.error_msg}
-                </span>
-                    }
-                </div>}
+                <FieldContainer 
+                    inputField={ssnFullInputField}
+                    label={ssnFullField.label}
+                    // classes={""}
+                    helpText={ssnFullField.help_text}
+                    fieldRequired={ssnFullFieldReq.required}
+                    htmlFor={"ssn-full-input"}
+                    showError={handleErrors.id_ssn}
+                    errorId={"ssn-full-input-error"}
+                    errorMsg={ssnFullField.error_msg}
+                />
+            }
 
             {props.idType === 'none' && <div dangerouslySetInnerHTML={{__html: noIdFieldInstructions}}/>}
 

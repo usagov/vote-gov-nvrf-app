@@ -68,229 +68,201 @@ function Addresses(props){
 
     const addressFields = {
         street: 
-            <div>
-                <TextInput
-                    id="street-address"
-                    className="radius-md"
-                    aria-describedby="street-address-error"
-                    name="street-address"
-                    type="text"
-                    autoComplete="off"
-                    required={(parseInt(addressFieldsState.required))}
-                    value={props.fieldData.street_address}
-                    onChange={props.saveFieldData('street_address')}
-                    onBlur={(e) => setHandleErrors({ ...handleErrors, street: checkForErrors(e, 'check value exists') })}
-                />
-            </div>,
+            <TextInput
+                id="street-address"
+                className="radius-md"
+                aria-describedby="street-address-error"
+                name="street-address"
+                type="text"
+                autoComplete="off"
+                required={(parseInt(addressFieldsState.required))}
+                value={props.fieldData.street_address}
+                onChange={props.saveFieldData('street_address')}
+                onBlur={(e) => setHandleErrors({ ...handleErrors, street: checkForErrors(e, 'check value exists') })}
+            />,
         aptNum: 
-            <div>
-                <TextInput
-                    id="apt-num"
-                    className="radius-md"
-                    // aria-describedby=""
-                    name="apt-num"
-                    type="text"
-                    autoComplete="off"
-                    value={props.fieldData.apt_num}
-                    onChange={props.saveFieldData('apt_num')}
-                />
-            </div>,
+            <TextInput
+                id="apt-num"
+                className="radius-md"
+                // aria-describedby=""
+                name="apt-num"
+                type="text"
+                autoComplete="off"
+                value={props.fieldData.apt_num}
+                onChange={props.saveFieldData('apt_num')}
+            />,
         city:
-            <div>
-                <TextInput
-                    id="city"
-                    className="radius-md"
-                    aria-describedby="city-error"
-                    name="city"
-                    value={props.fieldData.city}
-                    type="text"
-                    autoComplete="off"
-                    required={(parseInt(addressFieldsState.required))}
-                    onChange={props.saveFieldData('city')}
-                    onKeyDown={(e) => restrictType(e, 'letters')}
-                    onBlur={(e) => setHandleErrors({ ...handleErrors, city: checkForErrors(e, 'check value exists') })}
-                />
-            </div>,
+            <TextInput
+                id="city"
+                className="radius-md"
+                aria-describedby="city-error"
+                name="city"
+                value={props.fieldData.city}
+                type="text"
+                autoComplete="off"
+                required={(parseInt(addressFieldsState.required))}
+                onChange={props.saveFieldData('city')}
+                onKeyDown={(e) => restrictType(e, 'letters')}
+                onBlur={(e) => setHandleErrors({ ...handleErrors, city: checkForErrors(e, 'check value exists') })}
+            />,
         state:
-            <div>
-                <StateSelector
-                    classes="radius-md"
-                    id="state"
-                    // aria-describedby=""
-                    statesList={props.statesList}
-                    state={props.stateData.name}
-                    saveState={props.saveFieldData('state')}
-                    autoComplete="off"
-                    disabled={true}
-                    required={(parseInt(addressFieldsState.required))}
-                />
-            </div>,
+            <StateSelector
+                classes="radius-md"
+                id="state"
+                // aria-describedby=""
+                statesList={props.statesList}
+                state={props.stateData.name}
+                saveState={props.saveFieldData('state')}
+                autoComplete="off"
+                disabled={true}
+                required={(parseInt(addressFieldsState.required))}
+            />,
         zip: 
-            <div>
-                <TextInput
-                    id="zip"
-                    className="radius-md"
-                    aria-describedby="zip-error"
-                    name="zip"
-                    type="text"
-                    inputMode="numeric"
-                    autoComplete="off"
-                    required={(parseInt(addressFieldsState.required))}
-                    minLength={5}
-                    maxLength={5}
-                    value={props.fieldData.zip_code}
-                    onChange={props.saveFieldData('zip_code')}
-                    onKeyDown={(e) => restrictType(e, 'number')}
-                    onBlur={(e) => setHandleErrors({ ...handleErrors, zip: checkForErrors(e, 'check value length') })}
-                />
-            </div>
+            <TextInput
+                id="zip"
+                className="radius-md"
+                aria-describedby="zip-error"
+                name="zip"
+                type="text"
+                inputMode="numeric"
+                autoComplete="off"
+                required={(parseInt(addressFieldsState.required))}
+                minLength={5}
+                maxLength={5}
+                value={props.fieldData.zip_code}
+                onChange={props.saveFieldData('zip_code')}
+                onKeyDown={(e) => restrictType(e, 'number')}
+                onBlur={(e) => setHandleErrors({ ...handleErrors, zip: checkForErrors(e, 'check value length') })}
+            />
     }
 
     const mailFields = {
         street:
-            <div>
-                <TextInput
-                    id="mail-street"
-                    className="radius-md"
-                    aria-describedby="mail-street-error"
-                    name="mail-street"
-                    type="text"
-                    autoComplete="off"
-                    required={(parseInt(addressFieldsState.required))}
-                    value={props.fieldData.mail_street_address}
-                    onChange={props.saveFieldData('mail_street_address')}
-                    onBlur={(e) => setHandleErrors({ ...handleErrors, mail_street: checkForErrors(e, 'check value exists') })}
-                />
-            </div>,
+            <TextInput
+                id="mail-street"
+                className="radius-md"
+                aria-describedby="mail-street-error"
+                name="mail-street"
+                type="text"
+                autoComplete="off"
+                required={(parseInt(addressFieldsState.required))}
+                value={props.fieldData.mail_street_address}
+                onChange={props.saveFieldData('mail_street_address')}
+                onBlur={(e) => setHandleErrors({ ...handleErrors, mail_street: checkForErrors(e, 'check value exists') })}
+            />,
         city:
-            <div>
-                <TextInput
-                    id="mail-city"
-                    className="radius-md"
-                    aria-describedby="mail-city-error"
-                    name="mail-city"
-                    type="text"
-                    autoComplete="off"
-                    required={(parseInt(addressFieldsState.required))}
-                    value={props.fieldData.mail_city}
-                    onChange={props.saveFieldData('mail_city')}
-                    onKeyDown={(e) => restrictType(e, 'letters')}
-                    onBlur={(e) => setHandleErrors({ ...handleErrors, mail_city: checkForErrors(e, 'check value exists') })}
-                />
-            </div>,
+            <TextInput
+                id="mail-city"
+                className="radius-md"
+                aria-describedby="mail-city-error"
+                name="mail-city"
+                type="text"
+                autoComplete="off"
+                required={(parseInt(addressFieldsState.required))}
+                value={props.fieldData.mail_city}
+                onChange={props.saveFieldData('mail_city')}
+                onKeyDown={(e) => restrictType(e, 'letters')}
+                onBlur={(e) => setHandleErrors({ ...handleErrors, mail_city: checkForErrors(e, 'check value exists') })}
+            />,
         state:
-            <div>
-                <StateSelector
-                    id="mail-state"
-                    classes="radius-md"
-                    autoComplete="off"
-                    ariaDescribedBy="mail-state-error"
-                    required={(parseInt(addressFieldsState.required))}
-                    statesList={props.statesList}
-                    state={props.fieldData.mail_state}
-                    saveState={props.saveFieldData('mail_state')}
-                    onBlur={(e) => {checkStateValue('mail_state'), setHandleErrors({ ...handleErrors, mail_state: checkForErrors(e, 'check value exists')})} }
-                />
-            </div>,
+            <StateSelector
+                id="mail-state"
+                classes="radius-md"
+                autoComplete="off"
+                ariaDescribedBy="mail-state-error"
+                required={(parseInt(addressFieldsState.required))}
+                statesList={props.statesList}
+                state={props.fieldData.mail_state}
+                saveState={props.saveFieldData('mail_state')}
+                onBlur={(e) => {checkStateValue('mail_state'), setHandleErrors({ ...handleErrors, mail_state: checkForErrors(e, 'check value exists')})} }
+            />,
         zip:
-            <div>
-                <TextInput
-                    id="mail-zip"
-                    className="radius-md"
-                    aria-describedby="mail-zip-error"
-                    name="mail-zip"
-                    value={props.fieldData.mail_zip_code}
-                    type="text"
-                    inputMode="numeric"
-                    autoComplete="off"
-                    required={(parseInt(addressFieldsState.required))}
-                    minLength={5}
-                    maxLength={5}
-                    onChange={props.saveFieldData('mail_zip_code')}
-                    onKeyDown={(e) => restrictType(e, 'number')}
-                    onBlur={(e) => setHandleErrors({ ...handleErrors, mail_zip: checkForErrors(e, 'check value length') })}
-                />
-            </div>
+            <TextInput
+                id="mail-zip"
+                className="radius-md"
+                aria-describedby="mail-zip-error"
+                name="mail-zip"
+                value={props.fieldData.mail_zip_code}
+                type="text"
+                inputMode="numeric"
+                autoComplete="off"
+                required={(parseInt(addressFieldsState.required))}
+                minLength={5}
+                maxLength={5}
+                onChange={props.saveFieldData('mail_zip_code')}
+                onKeyDown={(e) => restrictType(e, 'number')}
+                onBlur={(e) => setHandleErrors({ ...handleErrors, mail_zip: checkForErrors(e, 'check value length') })}
+            />
     }
 
     const prevAddressFields = {
         street:
-            <div>
-                <TextInput
-                    id="prev-street"
-                    className="radius-md"
-                    aria-describedby="prev-street-error"
-                    name="prev-street"
-                    type="text"
-                    autoComplete="off"
-                    required={(parseInt(addressFieldsState.required))}
-                    value={props.fieldData.prev_street_address}
-                    onChange={props.saveFieldData('prev_street_address')}
-                    onBlur={(e) => setHandleErrors({ ...handleErrors, prev_street: checkForErrors(e, 'check value exists') })}
-                />
-            </div>,
+            <TextInput
+                id="prev-street"
+                className="radius-md"
+                aria-describedby="prev-street-error"
+                name="prev-street"
+                type="text"
+                autoComplete="off"
+                required={(parseInt(addressFieldsState.required))}
+                value={props.fieldData.prev_street_address}
+                onChange={props.saveFieldData('prev_street_address')}
+                onBlur={(e) => setHandleErrors({ ...handleErrors, prev_street: checkForErrors(e, 'check value exists') })}
+            />,
         aptNum:
-            <div>
-                <TextInput
-                    id="prev-apt"
-                    className="radius-md"
-                    name="prev-apt"
-                    // aria-describedby=""
-                    type="text"
-                    autoComplete="off"
-                    value={props.fieldData.prev_apt_num}
-                    onChange={props.saveFieldData('prev_apt_num')}
-                />
-            </div>,
+            <TextInput
+                id="prev-apt"
+                className="radius-md"
+                name="prev-apt"
+                // aria-describedby=""
+                type="text"
+                autoComplete="off"
+                value={props.fieldData.prev_apt_num}
+                onChange={props.saveFieldData('prev_apt_num')}
+            />,
         city:
-            <div>
-                <TextInput
-                    id="prev-city"
-                    className="radius-md"
-                    aria-describedby="prev-city-error"
-                    name="prev-city"
-                    type="text"
-                    autoComplete="off"
-                    required={(parseInt(addressFieldsState.required))}
-                    value={props.fieldData.prev_city}
-                    onChange={props.saveFieldData('prev_city')}
-                    onKeyDown={(e) => restrictType(e, 'letters')}
-                    onBlur={(e) => setHandleErrors({ ...handleErrors, prev_city: checkForErrors(e, 'check value exists') })}
-                />
-            </div>,
+            <TextInput
+                id="prev-city"
+                className="radius-md"
+                aria-describedby="prev-city-error"
+                name="prev-city"
+                type="text"
+                autoComplete="off"
+                required={(parseInt(addressFieldsState.required))}
+                value={props.fieldData.prev_city}
+                onChange={props.saveFieldData('prev_city')}
+                onKeyDown={(e) => restrictType(e, 'letters')}
+                onBlur={(e) => setHandleErrors({ ...handleErrors, prev_city: checkForErrors(e, 'check value exists') })}
+            />,
         state:
-            <div>
-                <StateSelector
-                    id="prev-state"
-                    classes="radius-md"
-                    ariaDescribedby="prev-state-error"
-                    autoComplete="off"
-                    required={(parseInt(addressFieldsState.required))}
-                    statesList={props.statesList}
-                    state={props.fieldData.prev_state}
-                    saveState={props.saveFieldData('prev_state')}
-                    onBlur={(e) => checkStateValue('prev_state')}
-                />
-            </div>,
+            <StateSelector
+                id="prev-state"
+                classes="radius-md"
+                ariaDescribedby="prev-state-error"
+                autoComplete="off"
+                required={(parseInt(addressFieldsState.required))}
+                statesList={props.statesList}
+                state={props.fieldData.prev_state}
+                saveState={props.saveFieldData('prev_state')}
+                onBlur={(e) => checkStateValue('prev_state')}
+            />,
         zip:
-            <div>
-                <TextInput
-                    id="prev-zip"
-                    className="radius-md"
-                    aria-describedby="prev-zip-error"
-                    name="prev-zip"
-                    value={props.fieldData.prev_zip_code}
-                    type="text"
-                    inputMode="numeric"
-                    autoComplete="off"
-                    required={(parseInt(addressFieldsState.required))}
-                    minLength={5}
-                    maxLength={5}
-                    onChange={props.saveFieldData('prev_zip_code')}
-                    onKeyDown={(e) => restrictType(e, 'number')}
-                    onBlur={(e) => setHandleErrors({ ...handleErrors, prev_zip: checkForErrors(e, 'check value length') })}
-                />
-            </div>      
+            <TextInput
+                id="prev-zip"
+                className="radius-md"
+                aria-describedby="prev-zip-error"
+                name="prev-zip"
+                value={props.fieldData.prev_zip_code}
+                type="text"
+                inputMode="numeric"
+                autoComplete="off"
+                required={(parseInt(addressFieldsState.required))}
+                minLength={5}
+                maxLength={5}
+                onChange={props.saveFieldData('prev_zip_code')}
+                onKeyDown={(e) => restrictType(e, 'number')}
+                onBlur={(e) => setHandleErrors({ ...handleErrors, prev_zip: checkForErrors(e, 'check value length') })}
+            />     
     }
 
     return (
