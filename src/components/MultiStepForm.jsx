@@ -11,6 +11,7 @@ import { phoneFormat, dateFormat } from './HelperFunctions/ValidateField';
 import DOMPurify from 'dompurify';
 import BackButton from './BackButton'
 import NextButton from './NextButton';
+import { Helmet } from "react-helmet-async";
 
 
 function MultiStepForm(props) {
@@ -372,6 +373,16 @@ function MultiStepForm(props) {
 
                 {step != 6 && <NextButton type={'submit'} onClick={() => nextStepValidation()} text={nextButtonText(step)}/>}
             </Form>
+
+            {/* Load Touchpoints feedback form */}
+            {step === 6 &&
+                <>
+                    <div id="touchpoints-form-embed" className={'margin-top-6'}></div>
+                    <Helmet>
+                        <script src="https://touchpoints.app.cloud.gov/touchpoints/4da46508.js" async></script>
+                    </Helmet>
+                </>
+            }
         </>
     );
 }

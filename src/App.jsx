@@ -5,6 +5,7 @@ import RegistrationOptions from './components/RegistrationOptions';
 import PathSelection from './components/PathSelection';
 import MultiStepForm from './components/MultiStepForm';
 import {fetchData} from './components/HelperFunctions/JsonHelper.jsx';
+import { HelmetProvider } from "react-helmet-async";
 import {getFieldValue} from "./components/HelperFunctions/fieldParser";
 import DOMPurify from 'dompurify';
 import { renderToStaticMarkup } from 'react-dom/server';
@@ -98,7 +99,7 @@ function App() {
     }
 
     return (
-        <>
+        <HelmetProvider>
           <section className="usa-prose">
             <a name="scroll-to-top"
                id="scroll-to-top"
@@ -166,8 +167,8 @@ function App() {
                     registrationPath={registrationPath}
                     getFormStep={getFormStep}
                 />}
-              
-              {step >= 3 && 
+
+              {step >= 3 &&
                 <div className="margin-top-4 text-base">
                   <div>{getFieldValue(content, "2c597df4-53b6-4ef5-8301-7817b04e1099", "omb_number")}</div>
                   <span className="last-updated">
@@ -178,7 +179,7 @@ function App() {
                 </div>
               }
           </section>
-        </>
+        </HelmetProvider>
     )
   }
 }
