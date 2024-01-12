@@ -48,7 +48,7 @@ function Online(props) {
             <h1>{content.title.replace("@state_name", stateContent.name)}</h1>
             <div className={'usa-prose'}>
                 <div dangerouslySetInnerHTML= {{__html: contentBodyPartOne}}/>
-                <NextButton type={'submit'} onClick={props.handleNext} text={navContent.next.start}/>
+                <NextButton noMarginTop type={'submit'} onClick={props.handleNext} text={navContent.next.start}/>
                 <div dangerouslySetInnerHTML= {{__html: contentBodyPartTwo}}/></div>
             </>
         );
