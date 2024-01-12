@@ -21,6 +21,7 @@ function MultiStepForm(props) {
     const mainContent = content.find(item => item.uuid ==="2c597df4-53b6-4ef5-8301-7817b04e1099");
     const mainContentTitle = DOMPurify.sanitize(mainContent.title);
     const mainContentBody = DOMPurify.sanitize(mainContent.body);
+    const scrollToTop = document.getElementById('scroll-to-top');
 
     //Field data controls
     const [fieldData, setFieldData] = useState({
@@ -30,7 +31,7 @@ function MultiStepForm(props) {
         street_address:'', apt_num:'', city:'', state:'', zip_code:'',
         prev_street_address:'', prev_apt_num:'', prev_city:'', prev_state:'', prev_zip_code:'',
         mail_street_address:'', mail_apt_num:'', mail_city:'', mail_state:'', mail_zip_code:'',
-        id_number:'', id_issue_date_month:'', id_issue_date_day:'', id_issue_date_year:'', id_expire_date_month:'', id_expire_date_day:'', id_expire_date_year:'',
+        id_number:'', ssn_number:'',
         party_choice:'', email_address:''});
         const [hasData, setHasData] = useState(false)
 
@@ -73,22 +74,26 @@ function MultiStepForm(props) {
 
     //Multiple step NVRF controls
     const [step, setStep] = useState(1);
+
+    const setStepFocus = () => {
+        scrollToTop.focus();
+    }
+
     const handleNext = () => {
-        step != 6 && setStep(step + 1);
-        step != 6 && document.getElementById('scroll-to-top').scrollIntoView();
+        step !== 6 && setStep(step + 1);
+        step !== 6 && setStepFocus();
       }
 
     const handlePrev = () => {
-        step != 1 && setStep(step - 1);
-        document.getElementById('scroll-to-top').scrollIntoView();
-
+        step !== 1 && setStep(step - 1);
+        setStepFocus();
         step === 1 && props.handlePrev();
     }
 
     const handleGoBackSteps = (numSteps) => {
         return () => {
-            step != 1 && setStep(step - numSteps);
-            document.getElementById('scroll-to-top').scrollIntoView();
+            step !== 1 && setStep(step - numSteps);
+            setStepFocus();
         }
     }
 
@@ -156,7 +161,7 @@ function MultiStepForm(props) {
         })
     }
 
-        //Identification
+    //Identification
     const [idType, setIdType] = useState('')
     const saveIdType = (e) => {
         setIdType(e.target.value)
@@ -164,6 +169,7 @@ function MultiStepForm(props) {
             setFieldData({
                 ...fieldData,
                 id_number: 'none',
+                ssn_number: '',
                 id_issue_date_month:'',
                 id_issue_date_day:'',
                 id_issue_date_year:'',
@@ -173,19 +179,33 @@ function MultiStepForm(props) {
             })
             :
             setFieldData({ ...fieldData, id_number: '' });
+            setFieldData({ ...fieldData, ssn_number: '' });
+    }
+    const [hasNoID, setHasNoID] = useState(false);
+    const onChangeHasNoIdCheckbox = (e) => {
+        setHasNoID(e.target.checked);
+        setFieldData({
+            ...fieldData,
+            id_number:'', ssn_number: ''
+        })
+        if (e.target.checked) {
+            setIdType("none");
+        } else {
+            setIdType("");
+        }
     }
 
-        //Acknowledgment field controls
-        const [hasAcknowledged, setHasAcknowledged] = useState(null);
-        const [error, setError] = useState(null)
-        const acknowledgeCheckbox = (checkStatus) => {
-            setHasAcknowledged(checkStatus);
-            setError(!checkStatus);
-        }
+    //Acknowledgment field controls
+    const [hasAcknowledged, setHasAcknowledged] = useState(null);
+    const [error, setError] = useState(null)
+    const acknowledgeCheckbox = (checkStatus) => {
+        setHasAcknowledged(checkStatus);
+        setError(!checkStatus);
+    }
 
-        const checkboxValid = () => {
-            (hasAcknowledged === null) && setError(true);
-        }
+    const checkboxValid = () => {
+        (hasAcknowledged === null) && setError(true);
+    }
 
     const emailValid = () => {
         const emailField = document.getElementById('email-address');
@@ -296,6 +316,8 @@ function MultiStepForm(props) {
                         registrationPath={props.registrationPath}
                         handlePrev={handlePrev}
                         saveIdType={saveIdType}
+                        onChangeHasNoIdCheckbox={onChangeHasNoIdCheckbox}
+                        hasNoID={hasNoID}
                         idType={idType}
                         headings={navContent}
                         content={content}
