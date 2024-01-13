@@ -39,3 +39,7 @@
     text-indent: -9000px;
     overflow: hidden;
 }
+
+#touchpoints-form-embed .fba-modal-dialog {
+    margin: 0;
+}
