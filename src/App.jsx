@@ -9,6 +9,7 @@ import { HelmetProvider } from "react-helmet-async";
 import {getFieldValue} from "./components/HelperFunctions/fieldParser";
 import DOMPurify from 'dompurify';
 import { renderToStaticMarkup } from 'react-dom/server';
+import {GridContainer} from "@trussworks/react-uswds";
 
 function App() {
 
@@ -169,6 +170,7 @@ function App() {
                 />}
 
               {step >= 3 &&
+                <GridContainer containerSize={'tablet'} className={['usa-prose', 'margin-top-5']}>
                 <div className="margin-top-4 text-base">
                   <div>{getFieldValue(content, "2c597df4-53b6-4ef5-8301-7817b04e1099", "omb_number")}</div>
                   <span className="last-updated">
@@ -177,6 +179,7 @@ function App() {
                  </span>
                   <div><a href="/privacy-policy/">Privacy policy</a></div>
                 </div>
+                </GridContainer>
               }
           </section>
         </HelmetProvider>

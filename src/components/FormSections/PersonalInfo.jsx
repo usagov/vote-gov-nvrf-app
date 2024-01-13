@@ -72,7 +72,7 @@ function PersonalInfo(props){
             <div className="usa-alert__body" dangerouslySetInnerHTML={{__html: nameSectionAlert}}/>
         </div>
 
-        <h3 className={'margin-top-6'}>{nameSectionField.label}</h3>
+        <h3 className={'margin-top-5'}>{nameSectionField.label}</h3>
         <div dangerouslySetInnerHTML= {{__html: nameSectionDesc}}/>
 
         {nameFieldState && (
@@ -170,7 +170,7 @@ function PersonalInfo(props){
             </>
         )}
 
-        <Grid row gap>
+        <Grid row gap className={'flex-align-end'}>
             {dobFieldState && (
             <Grid tablet={{ col: 5 }}>
                 <div className={(parseInt(dobFieldState.required) && handleErrors.dob) ? 'error-container' : ''}>
@@ -259,7 +259,7 @@ function PersonalInfo(props){
                             </div>
                         </div>
                 {(parseInt(dobFieldState.required) && handleErrors.dob) &&
-                    <span id="dob-error" rol="alert" className='error-text text-bold'>
+                    <span id="dob-error" rol="alert" className='error-text'>
                         {dobField.error_msg}
                     </span>
                 }
@@ -269,8 +269,7 @@ function PersonalInfo(props){
             )}
 
             {telephoneFieldState && (
-                <Grid tablet={{ col: 5 }} className="input-example">
-                <div className="bottom">
+                <Grid tablet={{ col: 5 }}>
                     <div className={(parseInt(telephoneFieldState.required) && handleErrors.phone_number) ? 'error-container' : ''}>
                         <Label className="text-bold" htmlFor="phone-number">{phoneNumberField.label}{(telephoneFieldState.required === "1") && <span className='required-text'>*</span>}</Label>
                         <span className="usa-hint" id="date-of-birth-hint">For example: {phoneNumberField.help_text}</span>
@@ -294,7 +293,6 @@ function PersonalInfo(props){
                             </span>
                         }
                     </div>
-                </div>
                 </Grid>
 
             )}

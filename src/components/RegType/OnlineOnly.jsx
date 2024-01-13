@@ -12,21 +12,21 @@ function OnlineOnly(props) {
         let contentBody = DOMPurify.sanitize(content.body).replaceAll("@state_name", stateContent.name);
 
         const stateOnlineLink = () => (
-                <div className="padding-top-3 padding-bottom-1">
+                <p>
                     <a href={stateContent.registration_url} className="usa-button" target="_blank">
-                        {"Go to %state_name%'s online form".replace("%state_name%", stateContent.name)}
-                        <Icon.Launch title="External link opens new window"/>
+                        <span>{"Go to %state_name%'s online form".replace("%state_name%", stateContent.name)}</span>
+                        <Icon.Launch title="External link opens new window" style={{margin: "-3px -3px -3px 4px"}}/>
                     </a>
-                </div>
+                </p>
         );
 
         const checkRegLink = () => (
-            <div className="padding-bottom-3 padding-top-1">
+            <p>
                     <a href={stateContent.election_website_url} className="usa-button" target="_blank">
-                        Check your registration
-                        <Icon.Launch title="External link opens new window"/>
+                        <span>Check your registration</span>
+                        <Icon.Launch title="External link opens new window" style={{margin: "-3px -3px -3px 4px"}}/>
                     </a>
-            </div>
+            </p>
         );
 
         const contentBodyProcessed = contentBody.replace("@state_online_link", renderToStaticMarkup(stateOnlineLink())).replace("@state_confirm_link", renderToStaticMarkup(checkRegLink()));

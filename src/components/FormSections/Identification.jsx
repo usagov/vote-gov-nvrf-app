@@ -54,7 +54,7 @@ function Identification(props){
 
             {(stateData.abbrev != "mo") && (
                 <>
-                    <h3 className={'margin-top-6'}>{idTypeField.label}<span className='required-text'>*</span></h3>
+                    <h3 className={'margin-top-5'}>{idTypeField.label}<span className='required-text'>*</span></h3>
                     <div dangerouslySetInnerHTML={{__html: idTypeFieldInstructions}}/>
                     <div className={handleErrors.id_selection ? 'error-container mobile-width' : 'mobile-width'}>
                         <Dropdown
@@ -76,7 +76,7 @@ function Identification(props){
                             {(noIdFieldReq) && <option key="id-none" value="none">{noIdField.label}</option>}
                         </Dropdown>
                         {handleErrors.id_selection &&
-                            <span id="id-num-dropdown-error" role="alert" className='error-text text-bold'>
+                            <span id="id-num-dropdown-error" role="alert" className='error-text'>
                             {stateIDField.error_msg}
                         </span>
                         }
@@ -167,7 +167,7 @@ function Identification(props){
                         })}
                     />
                     {handleErrors.id_ssn &&
-                        <span id="ssn-input-error" role="alert" className='error-text text-bold'>
+                        <span id="ssn-input-error" role="alert" className='error-text'>
                     {ssnField.error_msg}
                 </span>
                     }
@@ -198,7 +198,7 @@ function Identification(props){
                         })}
                     />
                     {handleErrors.id_ssn &&
-                        <span id="ssn-input-error" role="alert" className='error-text text-bold'>
+                        <span id="ssn-input-error" role="alert" className='error-text'>
                     {ssnFullField.error_msg}
                 </span>
                     }

@@ -160,11 +160,11 @@ function Confirmation(props) {
             </div>
 
             {confirmInstructions && (
-                <div className="usa-alert usa-alert--info" role="alert">
+                <div className="usa-alert usa-alert--info margin-top-6" role="alert">
                     <div className="usa-alert__body" dangerouslySetInnerHTML={{__html: confirmInstructions}}/>
                 </div>)}
 
-            <div className={props.error ? 'error-container margin-y-4' : 'margin-y-4'}>
+            <div className={props.error ? 'error-container margin-top-4' : 'margin-top-4'}>
                 <Checkbox
                     id="acknowledge-check"
                     name="acknowledge-check"
@@ -174,7 +174,7 @@ function Confirmation(props) {
                     onChange={(e) => props.acknowledgeCheckbox(e.target.checked)}
                 />
                 {props.error &&
-                    <span id="first-name-error" role="alert" className='error-text text-bold'>
+                    <span id="first-name-error" role="alert" className='error-text'>
                     {getFieldError("73e74065-fd5a-43c0-907c-268120e34bc3")}
                 </span>
                 }
