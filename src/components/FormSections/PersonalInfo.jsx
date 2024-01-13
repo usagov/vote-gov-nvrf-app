@@ -5,7 +5,6 @@ import DOMPurify from 'dompurify';
 
 function PersonalInfo(props){
     const headings = props.headings;
-    const content = props.content;
     const fields = props.fieldContent;
     const changeRegistrationVisible = (props.registrationPath === 'update') ? true : false;
     const nvrfStateFields = props.stateData.nvrf_fields;
@@ -44,7 +43,8 @@ function PersonalInfo(props){
         prev_last_name: false,
         dob: false,
         phone_number: false,
-        email_address: false
+        email_address: false,
+        race: false
     })
 
     const checkDateValues=()=> {
@@ -68,11 +68,11 @@ function PersonalInfo(props){
             <Checkbox id="prev-name-change" name="prev-name-change" checked={props.prevh2iousName} onChange={props.onChangePreviousName} label={"I have legally changed my name since I last registered in this state."} />
         )}
 
-        <div className="usa-alert usa-alert--info">
+        <div className="usa-alert usa-alert--info" role="alert">
             <div className="usa-alert__body" dangerouslySetInnerHTML={{__html: nameSectionAlert}}/>
         </div>
 
-        <h3 className={'margin-top-6'}>{nameSectionField.label}</h3>
+        <h3 className={'margin-top-5'}>{nameSectionField.label}</h3>
         <div dangerouslySetInnerHTML= {{__html: nameSectionDesc}}/>
 
         {nameFieldState && (
@@ -83,8 +83,8 @@ function PersonalInfo(props){
                         {titleField.label}
                     <Dropdown className="radius-md" id="title-select" name="title-select" value={props.fieldData.title} onChange={props.saveFieldData('title')} autoComplete="off">
                         <option>- Select -{' '}</option>
-                        {titleField.options.map((item) => (
-                            <option value={item.value}>{item.key}</option>
+                        {titleField.options.map((item, index) => (
+                            <option key={index} value={item.value}>{item.key}</option>
                         ))}
                     </Dropdown>
                     </Label>
@@ -160,8 +160,8 @@ function PersonalInfo(props){
                         {suffixField.label}
                     <Dropdown id="suffix-select" className="radius-md" name="suffix-select" value={props.fieldData.suffix} onChange={props.saveFieldData('suffix')} autoComplete="off" required={parseInt(nameFieldState.required)}>
                         <option>- Select -{' '}</option>
-                        {suffixField.options.map((item) => (
-                            <option value={item.value}>{item.key}</option>
+                        {suffixField.options.map((item, index) => (
+                            <option key={index} value={item.value}>{item.key}</option>
                         ))}
                     </Dropdown>
                     </Label>
@@ -170,7 +170,7 @@ function PersonalInfo(props){
             </>
         )}
 
-        <Grid row gap>
+        <Grid row gap className={'flex-align-end'}>
             {dobFieldState && (
             <Grid tablet={{ col: 5 }}>
                 <div className={(parseInt(dobFieldState.required) && handleErrors.dob) ? 'error-container' : ''}>
@@ -259,7 +259,7 @@ function PersonalInfo(props){
                             </div>
                         </div>
                 {(parseInt(dobFieldState.required) && handleErrors.dob) &&
-                    <span id="dob-error" rol="alert" className='error-text text-bold'>
+                    <span id="dob-error" rol="alert" className='error-text'>
                         {dobField.error_msg}
                     </span>
                 }
@@ -269,8 +269,7 @@ function PersonalInfo(props){
             )}
 
             {telephoneFieldState && (
-                <Grid tablet={{ col: 5 }} className="input-example">
-                <div className="bottom">
+                <Grid tablet={{ col: 5 }}>
                     <div className={(parseInt(telephoneFieldState.required) && handleErrors.phone_number) ? 'error-container' : ''}>
                         <Label className="text-bold" htmlFor="phone-number">{phoneNumberField.label}{(telephoneFieldState.required === "1") && <span className='required-text'>*</span>}</Label>
                         <span className="usa-hint" id="date-of-birth-hint">For example: {phoneNumberField.help_text}</span>
@@ -294,7 +293,6 @@ function PersonalInfo(props){
                             </span>
                         }
                     </div>
-                </div>
                 </Grid>
 
             )}
@@ -330,19 +328,32 @@ function PersonalInfo(props){
                 </div>
             </Grid>
 
-
             {raceFieldState && (
                 <Grid row gap>
                     <Grid col={4}>
-                        <Label className="text-bold" htmlFor="race-ethic-group-select">{raceField.label}{parseInt(raceFieldState.required) && <span className='required-text'>*</span>}</Label>
-                        <Dropdown id="race-ethic-group-select" className="radius-md" name="race-ethic-group-select"
-                                  value={props.fieldData.race} onChange={props.saveFieldData('race')} autoComplete="off"
-                                  required={parseInt(raceFieldState.required)}>
-                            <option>- Select -{' '}</option>
-                            {raceField.options.map((item) => (
-                                <option value={item.value}>{item.key}</option>
-                            ))}
-                        </Dropdown>
+                        <div className={((parseInt(raceFieldState.required)) && handleErrors.race) ? 'error-container' : ''}>
+                            <Label className="text-bold" htmlFor="race-ethic-group-select">{raceField.label}{(raceFieldState.required === "1") && <span className='required-text'>*</span>}
+                            <Dropdown
+                            id="race-ethic-group-select" 
+                            className="radius-md" 
+                            name="race-ethic-group-select"
+                            value={props.fieldData.race} 
+                            onChange={props.saveFieldData('race')} 
+                            autoComplete="off"
+                            required={parseInt(raceFieldState.required)}
+                            onBlur={(e) => setHandleErrors({ ...handleErrors, race: checkForErrors(e, 'check value exists') })}>
+                                <option value="">- Select -{' '}</option>
+                                {raceField.options.map((item, index) => (
+                                    <option key={index} value={item.value}>{item.key}</option>
+                                ))}
+                            </Dropdown>
+                            {((parseInt(raceFieldState.required) === 1) && handleErrors.race) &&
+                                <span id="race-error" role="alert" className='error-text'>
+                                    {raceField.error_msg}
+                                </span>
+                            }
+                            </Label>
+                        </div>
                     </Grid>
                 </Grid>
             )}
@@ -356,8 +367,8 @@ function PersonalInfo(props){
                 {prevTitleField.label}
             <Dropdown id="title-select-2" className="radius-md" name="title-select-2" value={props.fieldData.prev_title} onChange={props.saveFieldData('prev_title')} autoComplete="off">
                 <option>- Select -{' '}</option>
-                {prevTitleField.options.map((item) => (
-                    <option value={item.value}>{item.key}</option>
+                {prevTitleField.options.map((item, index) => (
+                    <option key={index} value={item.value}>{item.key}</option>
                 ))}
             </Dropdown>
             </Label>
@@ -433,8 +444,8 @@ function PersonalInfo(props){
                 {prevSuffixField.label}
             <Dropdown id="suffix-select-2" className="radius-md" name="suffix-select-2" value={props.fieldData.prev_suffix} onChange={props.saveFieldData('prev_suffix')} autoComplete="off" required={parseInt(nameFieldState.required)}>
                 <option>- Select -{' '}</option>
-                {prevSuffixField.options.map((item) => (
-                    <option value={item.value}>{item.key}</option>
+                {prevSuffixField.options.map((item, index) => (
+                    <option key={index} value={item.value}>{item.key}</option>
                 ))}
             </Dropdown>
             </Label>

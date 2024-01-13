@@ -2,9 +2,9 @@
     {
     "uuid": "df8fede3-11ad-4099-b2a8-f6a9bb457842",
     "lang": "en",
-    "title": "@state_name does not have voter registration",
+    "title": "@state_name does not require voter registration before voting.",
     "instructions": "",
-    "body": "<p>Learn more about voting on @state_name's election website.</p><body>@state_links\n</body><h2>Make a plan to vote!</h2><p>Explore USA.gov to learn more about <a href=\"https://www.usa.gov/voting-and-elections\">U.S. voting and elections</a>. <br /> </p>",
+    "body": "<p>You can vote without registering. Learn more about voting on @state_name's election website. Make sure you know your polling place and find out other Election Day requirements.</p><body>@state_links\n</body><p><br /> </p>",
     "omb_number": ""
     },
     {
@@ -12,15 +12,23 @@
     "lang": "en",
     "title": "@state_name registration options",
     "instructions": "",
-    "body": "<p>@state_name requires you to register in person at your local election office. Learn more about how to register on @state_name’s election website.</p><body>@state_links\n</body><h2>Make a plan to vote!</h2><p>Explore USA.gov to learn more information about <a href=\"Don’t forget to vote! Prepare to cast your vote. Explore USA.gov to learn more about U.S. elections and your voting options. \">U.S. voting and elections</a>. </p>",
+    "body": "<p>@state_name requires you to register in person at your local election office. Learn more about how to register on @state_name’s election website.</p><body>@state_links\n</body>",
     "omb_number": ""
     },
     {
-    "uuid": "295db8a2-6df6-4c81-825d-8d03064550f9",
+    "uuid": "216b8cd7-69e3-4947-aa2c-09dca7392a46",
     "lang": "en",
     "title": "@state_name registration options",
     "instructions": "",
-    "body": "<p>@state_name doesn't currently offer online registration. You can use the state mail-in registration form or you can create your registration form on vote.gov to print and mail. Save time by checking first to see if you’re already registered.</p><body>@state_links\n</body><p> </p><h2>About vote.gov’s mail-in form filler tool</h2><p>You can fill out the National Mail Voter Registration form here by answering a few questions. Use it to register for the first time or to report a change of name, address, or political party to your state’s election office.</p><p>You’ll need access to a printer to print it and to a first-class postage stamp to mail it to your state election office. If you do not have valid state identification, you may indicate that information in the vote.gov mail-in form and your state will assign you a number for registration purposes.</p>",
+    "body": "<p>Register for the first time or report a change of name or address to @state_name's election office.  </p><h2>Online registration</h2><p>@state_name offers online registration. This is often the fastest way to register to vote. </p><body>@state_online_link\n</body><h2>Check registration</h2><p>Save time by checking first to see if you’re already registered.</p><body>@state_confirm_link\n</body>",
+    "omb_number": ""
+    },
+    {
+    "uuid": "dea1c47d-5b08-4235-9035-7063e5fab041",
+    "lang": "en",
+    "title": "@state_name registration options",
+    "instructions": "",
+    "body": "<p>Register for the first time or report a change of name or address to @state_name's election office.</p><h2>Online registration</h2><p>@state_name offers online registration. This is often the fastest way to register to vote.</p><body>@state_online_link\n</body><h2>Mail-in registration</h2><p>You’ll need access to a printer, and you’ll need to provide a postage stamp.</p><p><strong>Download a PDF form on your state website. </strong> <br />Download the PDF and either fill it out on your computer or print it and fill out by hand, then mail it. </p><body>@state_mailin_link\n</body><h2>Check registration</h2><p>Save time by checking first to see if you’re already registered.</p><body>@state_confirm_link\n</body>",
     "omb_number": ""
     },
     {
@@ -28,7 +36,23 @@
     "lang": "en",
     "title": "@state_name registration options",
     "instructions": "",
-    "body": "<p>@state_name offers online registration. For many, this is the fastest way to register to vote in your state. Save time by checking first to see if you’re already registered.</p><body>@state_links\n</body><h2>Mail-in registration </h2><p>If you prefer to use a mail-in form, you can use the state mail-in registration form or create your registration form on vote.gov to print and mail.</p><body>@state_mailin_link\n</body><h3>About vote.gov's mail-in form filler tool</h3><p>You can fill out the National Mail Voter Registration form here by answering a few questions. Use it to register for the first time or to report a change of name, address, or political party to your state’s election office.</p><p>You’ll need access to a printer to print it and to a first-class postage stamp to mail it to your state election office. If you do not have valid state identification, you may indicate that information in the vote.gov mail-in form and your state will assign you a number for registration purposes.</p>",
+    "body": "<p> </p><p>Register for the first time or report a change of name or address @state_name's election office.</p><h2>Online Registration</h2><p>@state_name offers online registration. This is the fastest way to register to vote in your state.</p><body>@state_online_link\n</body><h2>Mail-in registration </h2><p>If you prefer to mail in your voter registration, you have two options for filling out a registration form. For either option, you’ll need access to a printer, and you’ll need to provide a postage stamp.<br /><br /><strong>Fill out a web-based form on vote.gov. </strong><br />This form walks you through each step with simple instructions. When you’ve completed the form, you can save it to your computer, print and mail it. </p><body>@vote_nvrf_link\n</body><p><strong>Download a PDF form on your state website. </strong><br />Download the PDF and either fill it out on your computer or print it and fill out by hand, then mail it. </p><body>@state_mailin_link\n</body><p> </p><h2>Check registration</h2><p>Save time by checking first to see if you’re already registered.</p><body>@state_confirm_link\n</body><p><br /> </p>",
+    "omb_number": ""
+    },
+    {
+    "uuid": "bfe1aeed-72b1-405e-b3e9-a94303611c71",
+    "lang": "en",
+    "title": "@state_name registration options",
+    "instructions": "",
+    "body": "<p>Register for the first time or report a change of name or address to @state_name's election office.</p><h2>Mail-in registration</h2><p>@state_name doesn't currently offer online registration. You can use the state mail-in registration form. You will need access to a printer and you will need to provide a postage stamp.</p><p><strong>Download a PDF form on your state website. </strong><br />Download the PDF and either fill it out on your computer or print it and fill out by hand, then mail it. </p><body>@state_mailin_link\n</body><h2>Check registration</h2><p>Save time by checking first to see if you’re already registered.<br /> </p><body>@state_confirm_link\n</body>",
+    "omb_number": ""
+    },
+    {
+    "uuid": "295db8a2-6df6-4c81-825d-8d03064550f9",
+    "lang": "en",
+    "title": "@state_name registration options",
+    "instructions": "",
+    "body": "<p>Register for the first time or report a change of name or address to @state_name's election office.</p><h2>Mail-in registration</h2><p>@state_name doesn't currently offer online registration. You have two options for filling out a registration form. For either option, you’ll need access to a printer, and you’ll need to provide a postage stamp.<br /> </p><p><strong>Fill out a web-based form on vote.gov. </strong><br />This form walks you through each step with simple instructions. When you’ve completed the form, you can save it to your computer, print and mail it.  </p><body>@vote_nvrf_link\n</body><p><strong>Download a PDF form on your state website. </strong><br />Download the PDF and either fill it out on your computer or print it and fill out by hand, then mail it.</p><body>@state_mailin_link\n</body><h2>Check registration</h2><p>Save time by checking first to see if you’re already registered.</p><body>@state_confirm_link\n</body>",
     "omb_number": ""
     },
     {
@@ -44,7 +68,7 @@
     "lang": "en",
     "title": "Before you get started with your @state_name registration",
     "instructions": "",
-    "body": "<h2>Eligibility requirements</h2><br /><strong>* Required fields</strong><body>@reg_eligibility_desc\n</body><h2>Mail-in registration deadline</h2><p>Take note of the deadline for mailing in your form. Make sure you send it to your state election office in time.</p><body>@mail_deadline\n</body>",
+    "body": "<h2>Eligibility requirements</h2><p><strong>* Required fields</strong><p><body>@reg_eligibility_desc\n</body><body>@reg_confirm_eligibility\n</body><h2>Mail-in registration deadline</h2><p>Take note of the deadline for mailing in your form. Make sure you send it to your state election office in time.</p><body>@mail_deadline\n</body>",
     "omb_number": ""
     },
     {
@@ -68,7 +92,7 @@
     "lang": "en",
     "title": "Register to vote",
     "instructions": "",
-    "body": "<p>All states except North Dakota require that you register before voting in an election. The process can be a little different for each state. Select your state or territory from the dropdown menu below to see your registration options.</p><br /><strong>* Required fields</strong><h2>Get started by selecting your state</h2><body>@state_selector\n</body><p><br /><strong>Are you living outside of the United States?</strong><br />If you are a U.S. citizen living outside the U.S., a U.S. military service member, and/or family of a military member, visit the <a href=\"https://www.fvap.gov/\">Federal Voter Assistance Program</a> for information on how to register to vote. You will need to complete the<a href=\"https://www.fvap.gov/fpca-privacy-notice\"> Federal Post Card Application (FPCA)</a>.</p>",
+    "body": "<p>All states except North Dakota require that you register before voting in an election. The process can be a little different for each state. Select your state or territory from the dropdown menu below to see your registration options.</p><p><strong>* Required fields</strong></p><h2>Get started by selecting your state</h2><body>@state_selector\n</body><p><br /><strong>Are you living outside of the United States?</strong><br />If you are a U.S. citizen living outside the U.S., a U.S. military service member, and/or family of a military member, visit the <a href=\"https://www.fvap.gov/\" target=\"_blank\">Federal Voter Assistance Program</a> for information on how to register to vote. You will need to complete the<a href=\"https://www.fvap.gov/fpca-privacy-notice\" target=\"_blank\"> Federal Post Card Application (FPCA)</a>.</p>",
     "omb_number": ""
     },
     {

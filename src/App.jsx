@@ -5,17 +5,22 @@ import RegistrationOptions from './components/RegistrationOptions';
 import PathSelection from './components/PathSelection';
 import MultiStepForm from './components/MultiStepForm';
 import {fetchData} from './components/HelperFunctions/JsonHelper.jsx';
+import { HelmetProvider } from "react-helmet-async";
+import {getFieldValue} from "./components/HelperFunctions/fieldParser";
+import DOMPurify from 'dompurify';
+import { renderToStaticMarkup } from 'react-dom/server';
+import {GridContainer} from "@trussworks/react-uswds";
 
 function App() {
 
-  const [states, setState] = useState('');
+  const [states, setStates] = useState('');
   const [content, setContent] = useState('');
   const [navContent, setNavContent] = useState('');
   const [cards, setCards] = useState('');
   const [fieldContent, setFieldContent] = useState('')
 
   useEffect(() => {
-    fetchData("states.json", setState);
+    fetchData("states.json", setStates);
     fetchData("pages.json", setContent);
     fetchData("navigation.json", setNavContent);
     fetchData("cards.json", setCards);
@@ -27,6 +32,10 @@ function App() {
   const [stateData, setStateData] = useState('');
   const [registrationPath, setRegistrationPath] = useState('');
   const [formStep, setFormStep] = useState(1);
+
+  const lastUpdatedSanitized = DOMPurify.sanitize(stateData.nvrf_last_updated_date);
+  const lastUpdatedText = "@state_name information last updated ";
+  const scrollToTop = document.getElementById('scroll-to-top');
 
   //Confirm eligibility checkbox controls
   const [hasConfirmed, setHasConfirmed] = useState(null);
@@ -40,20 +49,18 @@ function App() {
       (hasConfirmed === null) && setError(true);
   }
 
-  const statesList = []
-  for (let i = 0; i < states.length; i++) {
-    let stateName = states[i].name;
-    statesList.push(stateName);
+  const setStepFocus = () => {
+    scrollToTop.focus();
   }
 
   const handleNext = () => {
     step != 5 && setStep(step + 1);
-    document.getElementById('scroll-to-top').scrollIntoView();
+    setStepFocus();
   }
 
   const handlePrev = () => {
     step != 1 && setStep(step - 1);
-    document.getElementById('scroll-to-top').scrollIntoView();
+    setStepFocus();
   }
 
   const handleSubmit = (e) => {
@@ -83,74 +90,101 @@ function App() {
     formStep === 4 ? null : setFormStep(step + 1);
   };
 
-  return (
-    <>
-    <section className="usa-prose">
-    <div id="scroll-to-top"></div>
-        {step === 1 &&
-          <StateSelection
-          handleNext={handleNext}
-          handleSubmit={handleSubmit}
-          states={states}
-          statesList={statesList}
-          getSelectedState={getSelectedState}
-          state={selectedState}
-          stateData={stateData}
-          content={content}
-          navContent={navContent}
-          fieldContent={fieldContent}
-          />}
-        {step === 2 &&
-            <RegistrationOptions
-              handleNext={handleNext}
-              handlePrev={handlePrev}
-              stateData={stateData}
-              content={content}
-              navContent={navContent}
-          />}
-        {step === 3 &&
-          <Eligibility
-          handleNext={handleNext}
-          handlePrev={handlePrev}
-          state={selectedState}
-          stateData={stateData}
-          content={content}
-          navContent={navContent}
-          cards={cards}
-          fieldContent={fieldContent}
-          hasConfirmed={hasConfirmed}
-          error={error}
-          confirmCheckbox={confirmCheckbox}
-          checkboxValid={checkboxValid}
-        />}
-        {step === 4 &&
-          <PathSelection
-          handleNext={handleNext}
-          handlePrev={handlePrev}
-          stateData={stateData}
-          content={content}
-          navContent={navContent}
-          cards={cards}
-          registrationPath={registrationPath}
-          getRegPath={getRegPath}
-          getFormStep={getFormStep}
-          />}
-        {step === 5 &&
-          <MultiStepForm
-          // handleNext={handleNext}
-          handlePrev={handlePrev}
-          statesList={statesList}
-          state={selectedState}
-          stateData={stateData}
-          content={content}
-          navContent={navContent}
-          fieldContent={fieldContent}
-          registrationPath={registrationPath}
-          getFormStep={getFormStep}
-          />}
-        </section>
-    </>
-  )
+  // Only render the markup if the data is loaded.
+  if (states && content && navContent && fieldContent) {
+
+    const statesList = []
+    for (let i = 0; i < states.length; i++) {
+      let stateName = states[i].name;
+      statesList.push(stateName);
+    }
+
+    return (
+        <HelmetProvider>
+          <section className="usa-prose">
+            <a name="scroll-to-top"
+               id="scroll-to-top"
+               tabIndex={-1}
+               style={{outline: "0 none"}}
+            ></a>
+            {step === 1 &&
+                <StateSelection
+                    handleNext={handleNext}
+                    handleSubmit={handleSubmit}
+                    states={states}
+                    statesList={statesList}
+                    getSelectedState={getSelectedState}
+                    state={selectedState}
+                    stateData={stateData}
+                    content={content}
+                    navContent={navContent}
+                    fieldContent={fieldContent}
+                />}
+            {step === 2 &&
+                <RegistrationOptions
+                    handleNext={handleNext}
+                    handlePrev={handlePrev}
+                    stateData={stateData}
+                    content={content}
+                    navContent={navContent}
+                />}
+            {step === 3 &&
+                <Eligibility
+                    handleNext={handleNext}
+                    handlePrev={handlePrev}
+                    state={selectedState}
+                    stateData={stateData}
+                    content={content}
+                    navContent={navContent}
+                    cards={cards}
+                    fieldContent={fieldContent}
+                    hasConfirmed={hasConfirmed}
+                    error={error}
+                    confirmCheckbox={confirmCheckbox}
+                    checkboxValid={checkboxValid}
+                />}
+            {step === 4 &&
+                <PathSelection
+                    handleNext={handleNext}
+                    handlePrev={handlePrev}
+                    stateData={stateData}
+                    content={content}
+                    navContent={navContent}
+                    cards={cards}
+                    registrationPath={registrationPath}
+                    getRegPath={getRegPath}
+                    getFormStep={getFormStep}
+                />}
+            {step === 5 &&
+                <MultiStepForm
+                    // handleNext={handleNext}
+                    handlePrev={handlePrev}
+                    statesList={statesList}
+                    state={selectedState}
+                    stateData={stateData}
+                    content={content}
+                    navContent={navContent}
+                    fieldContent={fieldContent}
+                    registrationPath={registrationPath}
+                    getFormStep={getFormStep}
+                />}
+
+              {step >= 3 &&
+                <GridContainer containerSize={'tablet'} className={['usa-prose', 'margin-top-5']}>
+                <div className="margin-top-4 text-base">
+                  <div>{getFieldValue(content, "2c597df4-53b6-4ef5-8301-7817b04e1099", "omb_number")}</div>
+                  <span className="last-updated">
+                    {lastUpdatedText.replace("@state_name", stateData.name)}
+                    <span dangerouslySetInnerHTML= {{__html: lastUpdatedSanitized}}/>
+                 </span>
+                  <div><a href="/privacy-policy/">Privacy policy</a></div>
+                </div>
+                </GridContainer>
+              }
+          </section>
+        </HelmetProvider>
+    )
+  }
 }
 
 export default App;
