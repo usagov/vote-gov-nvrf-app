@@ -177,7 +177,7 @@ function App() {
                     {lastUpdatedText.replace("@state_name", stateData.name)}
                     <span dangerouslySetInnerHTML= {{__html: lastUpdatedSanitized}}/>
                  </span>
-                  <div><a href="privacy">Privacy policy</a></div>
+                  <div><a href="privacy" target="_blank">Privacy policy</a></div>
                 </div>
                 </GridContainer>
               }
