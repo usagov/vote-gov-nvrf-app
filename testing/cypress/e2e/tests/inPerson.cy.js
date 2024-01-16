@@ -150,8 +150,7 @@ cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click().cli
 cy.get('[class="error-text text-bold"]').should('be.visible')
 
 // * state driver's license number
-// ! come back and fix when this bug is fixed
-cy.get('[class="usa-select"]').select("State driver&#039;s license number")
+cy.get('[class="usa-select"]').select("State driver's license number")
 cy.get('[data-testid="textInput"]').type(data.idNumber)
 
 // Validate that fields have correct data
@@ -332,8 +331,7 @@ cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click().cli
 cy.get('[class="error-text text-bold"]').should('be.visible')
 
 // * state driver's license number
-// ! come back and fix when this bug is fixed
-cy.get('[class="usa-select"]').select("State driver&#039;s license number")
+cy.get('[class="usa-select"]').select("State driver's license number")
 cy.get('[data-testid="textInput"]').type(data.idNumber)
 
 // Validate that fields have correct data

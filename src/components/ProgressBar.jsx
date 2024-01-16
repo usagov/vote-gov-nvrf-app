@@ -13,7 +13,7 @@ function ProgressBar(props) {
 
     return (
         <>
-        <StepIndicator centered className="margin-top-6" headingLevel="h2">
+        <StepIndicator centered className="margin-top-4" headingLevel="h2">
             <StepIndicatorStep label={props.content.step_label_1} status={stepProgress(1)}/>
             <StepIndicatorStep label={props.content.step_label_2} status={stepProgress(2)}/>
             <StepIndicatorStep label={props.content.step_label_3} status={stepProgress(3)}/>

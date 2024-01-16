@@ -1,4 +1,4 @@
-import { Form } from '@trussworks/react-uswds';
+import {Form, GridContainer} from '@trussworks/react-uswds';
 import React, { useState, useEffect } from "react";
 import ProgressBar from './ProgressBar';
 import PersonalInfo from "./FormSections/PersonalInfo";
@@ -11,6 +11,7 @@ import { phoneFormat, dateFormat } from './HelperFunctions/ValidateField';
 import DOMPurify from 'dompurify';
 import BackButton from './BackButton'
 import NextButton from './NextButton';
+import { Helmet } from "react-helmet-async";
 
 
 function MultiStepForm(props) {
@@ -21,6 +22,7 @@ function MultiStepForm(props) {
     const mainContent = content.find(item => item.uuid ==="2c597df4-53b6-4ef5-8301-7817b04e1099");
     const mainContentTitle = DOMPurify.sanitize(mainContent.title);
     const mainContentBody = DOMPurify.sanitize(mainContent.body);
+    const scrollToTop = document.getElementById('scroll-to-top');
 
     //Field data controls
     const [fieldData, setFieldData] = useState({
@@ -30,7 +32,7 @@ function MultiStepForm(props) {
         street_address:'', apt_num:'', city:'', state:'', zip_code:'',
         prev_street_address:'', prev_apt_num:'', prev_city:'', prev_state:'', prev_zip_code:'',
         mail_street_address:'', mail_apt_num:'', mail_city:'', mail_state:'', mail_zip_code:'',
-        id_number:'', id_issue_date_month:'', id_issue_date_day:'', id_issue_date_year:'', id_expire_date_month:'', id_expire_date_day:'', id_expire_date_year:'',
+        id_number:'', ssn_number:'',
         party_choice:'', email_address:''});
         const [hasData, setHasData] = useState(false)
 
@@ -73,22 +75,26 @@ function MultiStepForm(props) {
 
     //Multiple step NVRF controls
     const [step, setStep] = useState(1);
+
+    const setStepFocus = () => {
+        scrollToTop.focus();
+    }
+
     const handleNext = () => {
-        step != 6 && setStep(step + 1);
-        step != 6 && document.getElementById('scroll-to-top').scrollIntoView();
+        step !== 6 && setStep(step + 1);
+        step !== 6 && setStepFocus();
       }
 
     const handlePrev = () => {
-        step != 1 && setStep(step - 1);
-        document.getElementById('scroll-to-top').scrollIntoView();
-
+        step !== 1 && setStep(step - 1);
+        setStepFocus();
         step === 1 && props.handlePrev();
     }
 
     const handleGoBackSteps = (numSteps) => {
         return () => {
-            step != 1 && setStep(step - numSteps);
-            document.getElementById('scroll-to-top').scrollIntoView();
+            step !== 1 && setStep(step - numSteps);
+            setStepFocus();
         }
     }
 
@@ -109,7 +115,7 @@ function MultiStepForm(props) {
 
     //Form Sections controls//
         //Personal Info
-    const [previousName, setPreviousName] = useState(false);
+    const [hasPreviousName, setPreviousName] = useState(false);
     const onChangePreviousName = (e) => {
         setPreviousName(e.target.checked);
         //clear prev name form data when box is unchecked
@@ -156,7 +162,7 @@ function MultiStepForm(props) {
         })
     }
 
-        //Identification
+    //Identification
     const [idType, setIdType] = useState('')
     const saveIdType = (e) => {
         setIdType(e.target.value)
@@ -164,6 +170,7 @@ function MultiStepForm(props) {
             setFieldData({
                 ...fieldData,
                 id_number: 'none',
+                ssn_number: '',
                 id_issue_date_month:'',
                 id_issue_date_day:'',
                 id_issue_date_year:'',
@@ -173,19 +180,33 @@ function MultiStepForm(props) {
             })
             :
             setFieldData({ ...fieldData, id_number: '' });
+            setFieldData({ ...fieldData, ssn_number: '' });
+    }
+    const [hasNoID, setHasNoID] = useState(false);
+    const onChangeHasNoIdCheckbox = (e) => {
+        setHasNoID(e.target.checked);
+        setFieldData({
+            ...fieldData,
+            id_number:'', ssn_number: ''
+        })
+        if (e.target.checked) {
+            setIdType("none");
+        } else {
+            setIdType("");
+        }
     }
 
-        //Acknowledgment field controls
-        const [hasAcknowledged, setHasAcknowledged] = useState(null);
-        const [error, setError] = useState(null)
-        const acknowledgeCheckbox = (checkStatus) => {
-            setHasAcknowledged(checkStatus);
-            setError(!checkStatus);
-        }
+    //Acknowledgment field controls
+    const [hasAcknowledged, setHasAcknowledged] = useState(null);
+    const [error, setError] = useState(null)
+    const acknowledgeCheckbox = (checkStatus) => {
+        setHasAcknowledged(checkStatus);
+        setError(!checkStatus);
+    }
 
-        const checkboxValid = () => {
-            (hasAcknowledged === null) && setError(true);
-        }
+    const checkboxValid = () => {
+        (hasAcknowledged === null) && setError(true);
+    }
 
     const emailValid = () => {
         const emailField = document.getElementById('email-address');
@@ -242,6 +263,7 @@ function MultiStepForm(props) {
             {step != 6 && <BackButton type={'button'} onClick={handlePrev} text={backButtonText(step)}/>}
 
             <ProgressBar step={step} content={navContent}/>
+            <GridContainer containerSize={'tablet'} className={['usa-prose', 'margin-top-8']}>
             {step < 5 &&
                 <>
                     <h1>{mainContentTitle.replace("@state_name", props.stateData.name)}</h1>
@@ -249,7 +271,7 @@ function MultiStepForm(props) {
                 </>
             }
 
-            <Form autoComplete="off" className={'margin-top-8'} style={{ maxWidth:'none' }} onSubmit={(e) => {handleSubmit(e), handleNext()}}>
+            <Form autoComplete="off" className={'margin-top-5'} style={{ maxWidth:'none' }} onSubmit={(e) => {handleSubmit(e), handleNext()}}>
                 {step === 1 &&
                     <PersonalInfo
                         state={props.state}
@@ -258,7 +280,7 @@ function MultiStepForm(props) {
                         saveFieldData = {saveFieldData}
                         dateFormat={dateFormat}
                         registrationPath={props.registrationPath}
-                        previousName={previousName}
+                        previousName={hasPreviousName}
                         onChangePreviousName={onChangePreviousName}
                         handlePrev={props.handlePrev}
                         headings={navContent}
@@ -296,6 +318,8 @@ function MultiStepForm(props) {
                         registrationPath={props.registrationPath}
                         handlePrev={handlePrev}
                         saveIdType={saveIdType}
+                        onChangeHasNoIdCheckbox={onChangeHasNoIdCheckbox}
+                        hasNoID={hasNoID}
                         idType={idType}
                         headings={navContent}
                         content={content}
@@ -350,6 +374,17 @@ function MultiStepForm(props) {
 
                 {step != 6 && <NextButton type={'submit'} onClick={() => nextStepValidation()} text={nextButtonText(step)}/>}
             </Form>
+
+            {/* Load Touchpoints feedback form */}
+            {step === 6 &&
+                <>
+                    <div id="touchpoints-form-embed" className={'margin-top-6'}></div>
+                    <Helmet>
+                        <script src="https://touchpoints.app.cloud.gov/touchpoints/4da46508.js" async></script>
+                    </Helmet>
+                </>
+            }
+          </GridContainer>
         </>
     );
 }

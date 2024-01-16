@@ -11,8 +11,8 @@ function InPerson(props) {
             {stateContent.election_website_url &&
                 <p>
                     <a href={stateContent.election_website_url} className="usa-button" target="_blank">
-                        {"Learn more about your voting options"}
-                        <Icon.Launch title="External link opens new window"/>
+                        <span>{"Learn more about your voting options"}</span>
+                        <Icon.Launch title="External link opens new window" style={{margin: "-3px -3px -3px 4px"}}/>
                     </a>
                 </p>
             }
@@ -27,9 +27,7 @@ function InPerson(props) {
             <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: contentBodyProcessed}}/>
 
             <div className={'margin-top-5'}>
-                <a href={"https://vote.gov"} className="usa-button">
-                    {"Back to Vote.gov"}
-                </a>
+                <a href={"https://vote.gov"}>{"Back to Vote.gov"}</a>
             </div>
 
         </>

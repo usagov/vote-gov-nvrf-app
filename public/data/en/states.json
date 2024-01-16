@@ -8,7 +8,7 @@
     "reg_type": "online",
     "accepts_nvrf": "1",
     "mailing_address_inst": "<p>Office of the Secretary of State  <br />P.O. Box 5616 <br />Montgomery, AL 36103-5616</p>",
-    "reg_eligibility_desc": "<p>To register in Alabama you must:  </p><ul><li>Be a citizen of the United States  </li><li>Be a resident of Alabama and your county at the time of registration</li><li>Be 18 years old before any election</li><li>Not have been convicted of a felony involving moral turpitude (or have had your civil and political rights restored). The list of moral turpitude felonies is available on the Secretary of State web site at: <a href=\"sos.alabama.gov/mtfelonies\">sos.alabama.gov/mtfelonies</a>  </li><li>Not currently be declared mentally incompetent through a competency hearing  </li><li>Swear or affirm to “support and defend the Constitution of the U.S. and the State of Alabama and further disavow any belief or affiliation with any group which advocates the overthrow of the governments of the U.S. or the State of Alabama by unlawful means and that the information contained herein is true, so help me God”  <br /> </li></ul>",
+    "reg_eligibility_desc": "<p>To register in Alabama you must:  </p><ul><li>Be a citizen of the United States  </li><li>Be a resident of Alabama and your county at the time of registration</li><li>Be 18 years old before any election</li><li>Not have been convicted of a felony involving moral turpitude (or have had your civil and political rights restored). The <a href=\"https://alisondb.legislature.state.al.us/alison/CodeOfAlabama/1975/17-3-30.1.htm\">list of moral turpitude felonies</a> is available on the Secretary of State web site</li><li>Not currently be declared mentally incompetent through a competency hearing  </li><li>Swear or affirm to “support and defend the Constitution of the U.S. and the State of Alabama and further disavow any belief or affiliation with any group which advocates the overthrow of the governments of the U.S. or the State of Alabama by unlawful means and that the information contained herein is true, so help me God”  <br /> </li></ul>",
     "id_inst": "<p>If you have one, you must provide your Alabama driver's license number or Alabama nondriver identification card number. If you do not have an Alabama driver's license or nondriver identification card, you must provide the last 4 digits of your Social Security number. If you have not been issued any of these numbers you must select “I do not have a valid ID” and a unique identifier will be provided for you. </p>",
     "address_inst": "",
     "personal_info_inst": "",
@@ -16,6 +16,7 @@
     "registration_url": "https://www.alabamainteractive.org/sos/voter_registration/voterRegistrationWelcome.action",
     "election_website_url": "https://www.sos.alabama.gov/alabama-votes",
     "more_info_url": "https://www.sos.alabama.gov/alabama-votes/voter/register-to-vote",
+    "mail_reg_url": "https://sos.alabama.gov/sites/default/files/voter-pdfs/nvra-2.pdf?_ga=2.31423352.617260843.1699554949-1581979923.1699554949",
     "confirm_reg_url": "https://myinfo.alabamavotes.gov/VoterView/RegistrantSearch.do",
     "postmarked_mail_deadline": "Must be postmarked 15 days before Election Day",
     "received_mail_deadline": "",
@@ -169,8 +170,8 @@
     "registration_url": "https://voterregistration.alaska.gov/",
     "election_website_url": "https://www.elections.alaska.gov/",
     "more_info_url": "https://www.elections.alaska.gov/Core/voterregistration.php",
-    "confirm_reg_url": "https://myvoterinformation.alaska.gov/",
     "mail_reg_url": "https://www.elections.alaska.gov/doc/forms/C03.pdf",
+    "confirm_reg_url": "https://myvoterinformation.alaska.gov/",
     "postmarked_mail_deadline": "Must be postmarked 30 days before Election Day",
     "received_mail_deadline": "",
     "nvrf_fields": [
@@ -323,6 +324,7 @@
     "registration_url": "",
     "election_website_url": "https://aselectionoffice.gov/",
     "more_info_url": "https://aselectionoffice.gov/node/3",
+    "mail_reg_url": "",
     "confirm_reg_url": "https://aselectionoffice.gov/status.php",
     "postmarked_mail_deadline": "",
     "received_mail_deadline": "Must be received 29 days before Election Day",
@@ -476,6 +478,7 @@
     "registration_url": "https://servicearizona.com/VoterRegistration/selectLanguage",
     "election_website_url": "https://azsos.gov/elections",
     "more_info_url": "https://azsos.gov/elections/voting-election/register-vote-or-update-your-current-voter-information",
+    "mail_reg_url": "https://azsos.gov/sites/default/files/voter_registration_form.pdf",
     "confirm_reg_url": "https://my.arizona.vote/WhereToVote.aspx?s=individual",
     "postmarked_mail_deadline": "Must be postmarked 29 days before Election Day",
     "received_mail_deadline": "",
@@ -625,6 +628,7 @@
     "registration_url": "",
     "election_website_url": "https://www.sos.arkansas.gov/elections/",
     "more_info_url": "https://www.sos.arkansas.gov/elections/voter-information/",
+    "mail_reg_url": "https://www.sos.arkansas.gov/uploads/elections/ArkansasVoterRegistrationApplication.pdf",
     "confirm_reg_url": "https://www.voterview.ar-nova.org/voterview",
     "postmarked_mail_deadline": "Must be postmarked 30 days before Election Day",
     "received_mail_deadline": "",
@@ -774,6 +778,7 @@
     "registration_url": "https://registertovote.ca.gov/",
     "election_website_url": "https://www.sos.ca.gov/elections",
     "more_info_url": "https://www.sos.ca.gov/elections/voting-resources/voting-california/registering-vote",
+    "mail_reg_url": "https://www.sos.ca.gov/elections/voting-resources/voting-california/registering-vote",
     "confirm_reg_url": "https://voterstatus.sos.ca.gov/",
     "postmarked_mail_deadline": "Must be postmarked 15 days before Election Day",
     "received_mail_deadline": "",
@@ -923,6 +928,7 @@
     "registration_url": "https://www.sos.state.co.us/voter/pages/pub/olvr/verifyNewVoter.xhtml",
     "election_website_url": "https://www.sos.state.co.us/pubs/elections/",
     "more_info_url": "https://www.coloradosos.gov/voter/pages/pub/home.xhtml",
+    "mail_reg_url": "https://www.sos.state.co.us/pubs/elections/vote/VoterRegFormEnglish.pdf",
     "confirm_reg_url": "https://www.sos.state.co.us/voter/pages/pub/olvr/findVoterReg.xhtml",
     "postmarked_mail_deadline": "Must be postmarked 8 days before Election Day",
     "received_mail_deadline": "",
@@ -1072,6 +1078,7 @@
     "registration_url": "https://voterregistration.ct.gov/OLVR/welcome.do",
     "election_website_url": "https://portal.ct.gov/sots",
     "more_info_url": "https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Voter-Fact-Sheet",
+    "mail_reg_url": "https://portal.ct.gov/-/media/SOTS/ElectionServices/ElectForms/electforms/ED-671-En-8x10-No-code.pdf",
     "confirm_reg_url": "https://portaldir.ct.gov/sots/LookUp.aspx",
     "postmarked_mail_deadline": "Must be postmarked 7 days before Election Day",
     "received_mail_deadline": "",
@@ -1185,10 +1192,6 @@
     "required": "1"
     },
     {
-    "uuid": "e2da00fa-0f1b-4e98-9472-c00649266eb4",
-    "required": "1"
-    },
-    {
     "uuid": "1e030197-52e7-426e-923c-b67ef521ae3b",
     "required": "1"
     },
@@ -1221,6 +1224,7 @@
     "registration_url": "https://ivote.de.gov/VoterView/registrant/newregistrant",
     "election_website_url": "https://elections.delaware.gov/index.shtml",
     "more_info_url": "https://elections.delaware.gov/voter/votereg.shtml",
+    "mail_reg_url": "https://elections.delaware.gov/voter/pdfs/VoterRegApplication.pdf",
     "confirm_reg_url": "https://ivote.de.gov/VoterView",
     "postmarked_mail_deadline": "Must be postmarked 24 days before Election Day",
     "received_mail_deadline": "",
@@ -1369,8 +1373,9 @@
     "political_party_inst": "<p>You must register with a party if you want to take part in that party’s primary election, caucus, or convention.</p>",
     "registration_url": "https://vr.dcboe.org/213324797239968?agency_code=12",
     "election_website_url": "https://dcboe.org/",
-    "more_info_url": "https://www.dcboe.org/Voters/Register-To-Vote/Register-to-Vote",
-    "confirm_reg_url": "https://dcboe.org/Voters/Register-To-Vote/Check-Voter-Registration-Status",
+    "more_info_url": "https://www.dcboe.org/voters/register-to-vote/register-update-voter-registration",
+    "mail_reg_url": "",
+    "confirm_reg_url": "https://vr.dcboe.org/213324797239968?agency_code=12",
     "postmarked_mail_deadline": "",
     "received_mail_deadline": "Must be received 21 days before Election Day",
     "nvrf_fields": [
@@ -1487,10 +1492,6 @@
     "required": "1"
     },
     {
-    "uuid": "e2da00fa-0f1b-4e98-9472-c00649266eb4",
-    "required": "1"
-    },
-    {
     "uuid": "1e030197-52e7-426e-923c-b67ef521ae3b",
     "required": "1"
     },
@@ -1523,6 +1524,7 @@
     "registration_url": "https://registertovoteflorida.gov/eligibilityreactive",
     "election_website_url": "https://dos.myflorida.com/elections/",
     "more_info_url": "https://registertovoteflorida.gov/home",
+    "mail_reg_url": "https://files.floridados.gov/media/707200/dsde39-english-pre-7066-20230209.pdf",
     "confirm_reg_url": "https://registration.elections.myflorida.com/CheckVoterStatus",
     "postmarked_mail_deadline": "Must be postmarked 29 days before Election Day",
     "received_mail_deadline": "",
@@ -1676,6 +1678,7 @@
     "registration_url": "https://registertovote.sos.ga.gov/GAOLVR/welcome.do#no-back-button",
     "election_website_url": "https://sos.ga.gov/index.php/elections",
     "more_info_url": "https://sos.ga.gov/elections-division-georgia-secretary-states-office",
+    "mail_reg_url": "https://sos.ga.gov/sites/default/files/forms/GA_VR_APP_2019.pdf",
     "confirm_reg_url": "https://mvp.sos.ga.gov/s/",
     "postmarked_mail_deadline": "Must be postmarked 29 days before Election Day",
     "received_mail_deadline": "",
@@ -1829,6 +1832,7 @@
     "registration_url": "https://gec.guam.gov/register/",
     "election_website_url": "https://gec.guam.gov/",
     "more_info_url": "https://gec.guam.gov/",
+    "mail_reg_url": "",
     "confirm_reg_url": "https://gec.guam.gov/validate/",
     "postmarked_mail_deadline": "",
     "received_mail_deadline": "Must be received 11 business days before Election Day",
@@ -1982,6 +1986,7 @@
     "registration_url": "https://olvr.hawaii.gov/",
     "election_website_url": "https://elections.hawaii.gov/",
     "more_info_url": "https://elections.hawaii.gov/voters/registration/",
+    "mail_reg_url": "https://elections.hawaii.gov/wp-content/uploads/Voter-Registration-and-Permanent-Absentee-Application_Form-Fillable.pdf",
     "confirm_reg_url": "https://olvr.hawaii.gov/",
     "postmarked_mail_deadline": "Must be postmarked 8 days before Election Day",
     "received_mail_deadline": "",
@@ -2135,6 +2140,7 @@
     "registration_url": "https://elections.sos.idaho.gov/ElectionLink/ElectionLink/ApplicationInstructions.aspx",
     "election_website_url": "https://idahovotes.gov/",
     "more_info_url": "https://idahovotes.gov/voting/",
+    "mail_reg_url": "https://sos.idaho.gov/elections/forms/voter_registration.pdf",
     "confirm_reg_url": "https://elections.sos.idaho.gov/ElectionLink/ElectionLink/VoterSearch.aspx",
     "postmarked_mail_deadline": "Must be postmarked 25 days before Election Day",
     "received_mail_deadline": "",
@@ -2284,6 +2290,7 @@
     "registration_url": "https://ova.elections.il.gov/",
     "election_website_url": "https://www.elections.il.gov/",
     "more_info_url": "https://www.elections.il.gov/Default.aspx",
+    "mail_reg_url": "https://www.elections.il.gov/NewDocDisplay.aspx?%2fM0cs48zOKVZyk9eAbpEoxjoGz9b5YaGOZJlr8CbkngFbsRPV%2f1ATx4aQkxzja565ESGno4fDfetZNJEnD3jlKUsS4RoI55UaaHzJzO%2bW22z%2bFdnOD0t%2f9pfEFOppxmWN9FTGwiaU9tDHyRuCznbqw%3d%3d",
     "confirm_reg_url": "https://ova.elections.il.gov/RegistrationLookup.aspx",
     "postmarked_mail_deadline": "Must be postmarked 28 days before Election Day",
     "received_mail_deadline": "",
@@ -2429,10 +2436,11 @@
     "id_inst": "<p>Your state voter ID number is your ten digit Indiana issued driver's license number. If you do not possess an Indiana driver's license then provide the last four digits of your social security number. Please indicate which number was provided. (Indiana Code 3-7-13-13)</p>",
     "address_inst": "",
     "personal_info_inst": "",
-    "political_party_inst": "",
+    "political_party_inst": "<p>Indiana does not accept political party information on this form.</p>",
     "registration_url": "https://indianavoters.in.gov/",
     "election_website_url": "https://www.in.gov/sos/elections/",
     "more_info_url": "https://www.in.gov/sos/elections/2403.htm",
+    "mail_reg_url": "https://forms.in.gov/Download.aspx?id=9341",
     "confirm_reg_url": "https://indianavoters.in.gov/",
     "postmarked_mail_deadline": "Must be postmarked 29 days before Election Day",
     "received_mail_deadline": "",
@@ -2546,10 +2554,6 @@
     "required": "1"
     },
     {
-    "uuid": "e2da00fa-0f1b-4e98-9472-c00649266eb4",
-    "required": "1"
-    },
-    {
     "uuid": "1e030197-52e7-426e-923c-b67ef521ae3b",
     "required": "1"
     },
@@ -2578,6 +2582,7 @@
     "registration_url": "https://mymvd.iowadot.gov/Account/Login?ReturnUrl=%2fVoterRegistration",
     "election_website_url": "https://sos.iowa.gov/",
     "more_info_url": "https://sos.iowa.gov/elections/voterinformation/voterregistration.html",
+    "mail_reg_url": "https://sos.iowa.gov/elections/pdf/voteapp.pdf",
     "confirm_reg_url": "https://sos.iowa.gov/elections/voterreg/regtovote/search.aspx",
     "postmarked_mail_deadline": "Must be postmarked 15 days before Election Day",
     "received_mail_deadline": "",
@@ -2727,6 +2732,7 @@
     "registration_url": "https://www.kdor.ks.gov/Apps/VoterReg/Default.aspx",
     "election_website_url": "https://sos.ks.gov/elections/elections.html",
     "more_info_url": "https://sos.ks.gov/elections/voter-information.html",
+    "mail_reg_url": "https://www.kssos.org/forms/elections/voterregistration.pdf",
     "confirm_reg_url": "https://myvoteinfo.voteks.org/voterview/",
     "postmarked_mail_deadline": "Must be postmarked 21 days before Election Day",
     "received_mail_deadline": "",
@@ -2876,6 +2882,7 @@
     "registration_url": "https://vrsws.sos.ky.gov/ovrweb/",
     "election_website_url": "https://elect.ky.gov/Pages/default.aspx",
     "more_info_url": "https://elect.ky.gov/Resources/Pages/Registration.aspx",
+    "mail_reg_url": "https://elect.ky.gov/registertovote/Documents/SBE%2001%20406%20Mail%20In%20Voter%20Registration%20Application.pdf",
     "confirm_reg_url": "https://vrsws.sos.ky.gov/VIC/",
     "postmarked_mail_deadline": "Must be postmarked 29 days before Election Day",
     "received_mail_deadline": "",
@@ -2985,15 +2992,7 @@
     "required": "1"
     },
     {
-    "uuid": "acd7f272-7a37-43f0-b51a-c78daf31e5fd",
-    "required": "1"
-    },
-    {
-    "uuid": "e2da00fa-0f1b-4e98-9472-c00649266eb4",
-    "required": "1"
-    },
-    {
-    "uuid": "1e030197-52e7-426e-923c-b67ef521ae3b",
+    "uuid": "fe8cf91e-f872-4ed7-848c-09c99a7d83c8",
     "required": "1"
     },
     {
@@ -3025,6 +3024,7 @@
     "registration_url": "https://voterportal.sos.la.gov/VoterRegistration",
     "election_website_url": "https://www.sos.la.gov/ElectionsAndVoting/Pages/default.aspx",
     "more_info_url": "https://www.sos.la.gov/ElectionsAndVoting/RegisterToVote/Pages/default.aspx",
+    "mail_reg_url": "https://www.sos.la.gov/ElectionsAndVoting/PublishedDocuments/ApplicationToRegisterToVote.pdf",
     "confirm_reg_url": "https://voterportal.sos.la.gov/",
     "postmarked_mail_deadline": "Must be postmarked 30 days before Election Day",
     "received_mail_deadline": "",
@@ -3169,7 +3169,7 @@
     "is_state": "1",
     "reg_type": "by-mail",
     "accepts_nvrf": "1",
-    "mailing_address_inst": "<p>Elections Division Bureau of Corporations, Elections and Commissions <br />101 State House Station <br />Augusta, ME 04333-0101</p><p>Municipal addresses: To meet registration deadlines, especially in the two weeks before the closed period (three weeks before an election) you should return the completed voter registration application directly to your municipal clerk. A complete list of municipal clerks is available at <a href=\"https://www. maine.gov/sos/cec/elec/\">https://www. maine.gov/sos/cec/elec/</a>.</p>",
+    "mailing_address_inst": "<p>Elections Division Bureau of Corporations, Elections and Commissions <br />101 State House Station <br />Augusta, ME 04333-0101</p><p>Municipal addresses: To meet registration deadlines, especially in the two weeks before the closed period (three weeks before an election) you should return the completed voter registration application directly to your municipal clerk. A complete list of municipal clerks is available at <a href=\"https://www.maine.gov/sos/cec/elec/munic.html\" target=\"_blank\" class=\"usa-link--external\">https://www.maine.gov/sos/cec/elec/munic.html</a>.</p>",
     "reg_eligibility_desc": "<p>To register in Maine you must:  </p><ul><li>Be a citizen of the United States  </li><li>Be a resident of Maine and the municipality in which you want to vote</li><li>Be at least 16 years old (you must  be 18 years old to vote, or 17 years old for a Primary Election in which you will be 18 years old by that General Election) </li></ul>",
     "id_inst": "<p>You must list your valid Maine driver’s license number. If you don’t have a valid Maine driver’s license, then you must provide the last four digits of your Social Security Number. Voters who don’t have either of these forms of ID must select “I do not have a valid ID” on this form.</p>",
     "address_inst": "",
@@ -3178,8 +3178,8 @@
     "registration_url": "",
     "election_website_url": "https://www.maine.gov/sos/cec/elec/",
     "more_info_url": "https://www.maine.gov/sos/cec/elec/voter-info/voterguide.html",
-    "confirm_reg_url": "https://www.maine.gov/sos/cec/elec/data/index.html",
     "mail_reg_url": "https://www.maine.gov/sos/cec/elec/upcoming/pdf/voterregcard20.pdf",
+    "confirm_reg_url": "https://www.maine.gov/sos/cec/elec/data/index.html",
     "postmarked_mail_deadline": "",
     "received_mail_deadline": "Must be received 21 days before Election Day",
     "nvrf_fields": [
@@ -3292,10 +3292,6 @@
     "required": "1"
     },
     {
-    "uuid": "e2da00fa-0f1b-4e98-9472-c00649266eb4",
-    "required": "1"
-    },
-    {
     "uuid": "1e030197-52e7-426e-923c-b67ef521ae3b",
     "required": "1"
     },
@@ -3305,7 +3301,7 @@
     },
     {
     "uuid": "fd516f06-11bb-4c39-9080-735ed98100cc",
-    "required": "1"
+    "required": "0"
     }
     ],
     "nvrf_last_updated_date": "<time datetime=\"2023-11-24T12:00:00Z\">November 24, 2023</time>",
@@ -3328,6 +3324,7 @@
     "registration_url": "https://voterservices.elections.maryland.gov/OnlineVoterRegistration/InstructionsStep1",
     "election_website_url": "https://elections.maryland.gov/",
     "more_info_url": "https://www.elections.maryland.gov/voter_registration/application.html",
+    "mail_reg_url": "",
     "confirm_reg_url": "https://voterservices.elections.maryland.gov/VoterSearch",
     "postmarked_mail_deadline": "Must be postmarked 21 days before Election Day",
     "received_mail_deadline": "",
@@ -3477,6 +3474,7 @@
     "registration_url": "https://www.sec.state.ma.us/ovr/",
     "election_website_url": "https://www.sec.state.ma.us/ele/eleidx.htm",
     "more_info_url": "https://www.sec.state.ma.us/divisions/elections/voter-resources/registering-to-vote.htm",
+    "mail_reg_url": "https://elections.maryland.gov/voter_registration/documents/English_Internet_VRA.pdf",
     "confirm_reg_url": "https://www.sec.state.ma.us/VoterRegistrationSearch/MyVoterRegStatus.aspx",
     "postmarked_mail_deadline": "Must be postmarked 10 days before Election Day",
     "received_mail_deadline": "",
@@ -3590,10 +3588,6 @@
     "required": "1"
     },
     {
-    "uuid": "e2da00fa-0f1b-4e98-9472-c00649266eb4",
-    "required": "1"
-    },
-    {
     "uuid": "1e030197-52e7-426e-923c-b67ef521ae3b",
     "required": "1"
     },
@@ -3626,6 +3620,7 @@
     "registration_url": "https://mvic.sos.state.mi.us/registervoter",
     "election_website_url": "https://www.michigan.gov/sos/elections",
     "more_info_url": "https://mvic.sos.state.mi.us/",
+    "mail_reg_url": "https://www.michigan.gov/sos/-/media/Project/Websites/sos/Elections/Election-Forms/Voter-Registration-Form-English.pdf?rev=9b0ee49b142047b7a88ef32987c3f1b4&amp;amp;hash=13246777B383C5B7939663504EF6472D",
     "confirm_reg_url": "https://mvic.sos.state.mi.us/Voter/Index",
     "postmarked_mail_deadline": "Must be postmarked 15 days before Election Day",
     "received_mail_deadline": "",
@@ -3771,10 +3766,11 @@
     "id_inst": "<p>You are required to provide your Minnesota driver’s license or state ID number to register to Vote. If you do not have a Minnesota driver’s license or state ID then you will have to provide the last four digits of your social security number. If you have neither, please select “I do not have a valid ID” on the form. </p>",
     "address_inst": "",
     "personal_info_inst": "",
-    "political_party_inst": "",
+    "political_party_inst": "<p>Minnesota does not accept political party information on this form.</p>",
     "registration_url": "https://mnvotes.sos.state.mn.us/VoterRegistration/VoterRegistrationMain.aspx",
     "election_website_url": "https://www.sos.state.mn.us/elections-voting/",
     "more_info_url": "https://www.sos.state.mn.us/elections-voting/register-to-vote/",
+    "mail_reg_url": "https://www.sos.state.mn.us/media/1587/minnesota-voter-registration-application.pdf",
     "confirm_reg_url": "https://mnvotes.sos.state.mn.us/VoterStatus.aspx",
     "postmarked_mail_deadline": "",
     "received_mail_deadline": "Must be received 21 days before Election Day",
@@ -3920,6 +3916,7 @@
     "registration_url": "",
     "election_website_url": "https://www.sos.ms.gov/elections-voting/voter-registration-information",
     "more_info_url": "https://www.sos.ms.gov/elections-voting/voter-registration-information",
+    "mail_reg_url": "https://www.sos.ms.gov/content/documents/elections/Mail-in%20Voter%20Registration%20Application.pdf",
     "confirm_reg_url": "https://www.msegov.com/sos/voter_registration/amiregistered/Search",
     "postmarked_mail_deadline": "Must be postmarked 30 days before Election Day",
     "received_mail_deadline": "",
@@ -4033,10 +4030,6 @@
     "required": "1"
     },
     {
-    "uuid": "e2da00fa-0f1b-4e98-9472-c00649266eb4",
-    "required": "1"
-    },
-    {
     "uuid": "1e030197-52e7-426e-923c-b67ef521ae3b",
     "required": "1"
     },
@@ -4069,6 +4062,7 @@
     "registration_url": "https://s1.sos.mo.gov/elections/voterregistration/",
     "election_website_url": "https://www.sos.mo.gov/elections",
     "more_info_url": "https://www.sos.mo.gov/elections/goVoteMissouri/register",
+    "mail_reg_url": "https://www.sos.ms.gov/content/documents/elections/Mail-in%20Voter%20Registration%20Application.pdf",
     "confirm_reg_url": "https://mvic.sos.state.mi.us/Voter/Index",
     "postmarked_mail_deadline": "Must be postmarked 27 days before Election Day",
     "received_mail_deadline": "",
@@ -4218,6 +4212,7 @@
     "registration_url": "",
     "election_website_url": "https://sosmt.gov/elections/",
     "more_info_url": "https://sosmt.gov/elections/vote/",
+    "mail_reg_url": "https://sosmt.gov/wp-admin/admin-ajax.php?juwpfisadmin=false&amp;amp;action=wpfd&amp;amp;task=file.download&amp;amp;wpfd_category_id=766&amp;amp;wpfd_file_id=47309&amp;amp;token=acb38cbb998e43108cfd572bc458c4ff&amp;amp;preview=1",
     "confirm_reg_url": "https://prodvoterportal.mt.gov/WhereToVote.aspx",
     "postmarked_mail_deadline": "Must be postmarked 30 days before Election Day",
     "received_mail_deadline": "",
@@ -4367,6 +4362,7 @@
     "registration_url": "https://www.nebraska.gov/apps-sos-voter-registration/",
     "election_website_url": "https://sos.nebraska.gov/elections/2020-elections",
     "more_info_url": "https://sos.nebraska.gov/elections/voter-forms",
+    "mail_reg_url": "https://sos.nebraska.gov/sites/sos.nebraska.gov/files/doc/elections/vr-fillable.pdf",
     "confirm_reg_url": "https://www.votercheck.necvr.ne.gov/voterview",
     "postmarked_mail_deadline": "Must be postmarked 18 days before Election Day",
     "received_mail_deadline": "",
@@ -4480,10 +4476,6 @@
     "required": "1"
     },
     {
-    "uuid": "e2da00fa-0f1b-4e98-9472-c00649266eb4",
-    "required": "1"
-    },
-    {
     "uuid": "1e030197-52e7-426e-923c-b67ef521ae3b",
     "required": "1"
     },
@@ -4516,6 +4508,7 @@
     "registration_url": "https://www.nvsos.gov/SOSVoterServices/start.aspx",
     "election_website_url": "https://www.nvsos.gov/sos/elections",
     "more_info_url": "https://www.nvsos.gov/sos/elections/voters/registering-to-vote",
+    "mail_reg_url": "https://www.nvsos.gov/sosvoterregform/",
     "confirm_reg_url": "https://www.nvsos.gov/votersearch/",
     "postmarked_mail_deadline": "Must be postmarked 28 days before Election Day",
     "received_mail_deadline": "",
@@ -4665,6 +4658,7 @@
     "registration_url": "",
     "election_website_url": "https://sos.nh.gov/home",
     "more_info_url": "https://www.sos.nh.gov/elections/voters/register-vote",
+    "mail_reg_url": "",
     "confirm_reg_url": "https://app.sos.nh.gov/voterinformation",
     "postmarked_mail_deadline": "",
     "received_mail_deadline": "Must be received 13 days before Election Day",
@@ -4818,6 +4812,7 @@
     "registration_url": "https://voter.svrs.nj.gov/register",
     "election_website_url": "https://www.state.nj.us/state/elections/index.shtml",
     "more_info_url": "https://nj.gov/state/elections/voter-registration.shtml",
+    "mail_reg_url": "https://www.nj.gov/state/elections/assets/pdf/forms-voter-registration/68-voter-registration-english.pdf",
     "confirm_reg_url": "https://voter.svrs.nj.gov/registration-check",
     "postmarked_mail_deadline": "",
     "received_mail_deadline": "Must be received 21 days before Election Day",
@@ -4931,10 +4926,6 @@
     "required": "1"
     },
     {
-    "uuid": "e2da00fa-0f1b-4e98-9472-c00649266eb4",
-    "required": "1"
-    },
-    {
     "uuid": "1e030197-52e7-426e-923c-b67ef521ae3b",
     "required": "1"
     },
@@ -4963,6 +4954,7 @@
     "registration_url": "https://portal.sos.state.nm.us/OVR/WebPages/InstructionsStep1.aspx",
     "election_website_url": "https://www.sos.state.nm.us/voting-and-elections/",
     "more_info_url": "https://www.sos.state.nm.us/voting-and-elections/voter-information/voter-registration-information/",
+    "mail_reg_url": "https://portal.sos.state.nm.us/ovr/VRForms/VRFormEnglishFinal.pdf",
     "confirm_reg_url": "https://voterportal.servis.sos.state.nm.us/WhereToVote.aspx",
     "postmarked_mail_deadline": "Must be postmarked 28 days before Election Day",
     "received_mail_deadline": "",
@@ -5072,15 +5064,7 @@
     "required": "1"
     },
     {
-    "uuid": "acd7f272-7a37-43f0-b51a-c78daf31e5fd",
-    "required": "1"
-    },
-    {
-    "uuid": "e2da00fa-0f1b-4e98-9472-c00649266eb4",
-    "required": "1"
-    },
-    {
-    "uuid": "1e030197-52e7-426e-923c-b67ef521ae3b",
+    "uuid": "fe8cf91e-f872-4ed7-848c-09c99a7d83c8",
     "required": "1"
     },
     {
@@ -5112,6 +5096,7 @@
     "registration_url": "https://dmv.ny.gov/more-info/electronic-voter-registration-application",
     "election_website_url": "https://www.elections.ny.gov/",
     "more_info_url": "https://www.elections.ny.gov/votingregister.html",
+    "mail_reg_url": "https://www.elections.ny.gov/NYSBOE/download/voting/voteregform-eng-fillable.pdf",
     "confirm_reg_url": "https://voterlookup.elections.ny.gov/",
     "postmarked_mail_deadline": "",
     "received_mail_deadline": "Must be received 10 days before Election Day",
@@ -5225,10 +5210,6 @@
     "required": "1"
     },
     {
-    "uuid": "e2da00fa-0f1b-4e98-9472-c00649266eb4",
-    "required": "1"
-    },
-    {
     "uuid": "1e030197-52e7-426e-923c-b67ef521ae3b",
     "required": "1"
     },
@@ -5261,6 +5242,7 @@
     "registration_url": "https://www.ncdot.gov/dmv/offices-services/online/Pages/voter-registration-application.aspx",
     "election_website_url": "https://www.ncsbe.gov/voting",
     "more_info_url": "https://www.ncsbe.gov/registering/how-register",
+    "mail_reg_url": "https://s3.amazonaws.com/dl.ncsbe.gov/Voter_Registration/NCVoterRegForm_06W.pdf",
     "confirm_reg_url": "https://vt.ncsbe.gov/RegLkup/",
     "postmarked_mail_deadline": "Must be postmarked 25 days before Election Day",
     "received_mail_deadline": "",
@@ -5414,6 +5396,7 @@
     "registration_url": "",
     "election_website_url": "https://vip.sos.nd.gov/PortalList.aspx",
     "more_info_url": "https://vip.sos.nd.gov/PortalList.aspx",
+    "mail_reg_url": "",
     "confirm_reg_url": "https://vip.sos.nd.gov/WhereToVote.aspx?tab=&amp;amp;ptlPKID=&amp;amp;ptlhPKID=",
     "postmarked_mail_deadline": "",
     "received_mail_deadline": "",
@@ -5567,6 +5550,7 @@
     "registration_url": "",
     "election_website_url": "https://www.votecnmi.gov.mp/",
     "more_info_url": "https://www.votecnmi.gov.mp/",
+    "mail_reg_url": "",
     "confirm_reg_url": "https://www.votecnmi.gov.mp/voter/are-you-registered-to-vote",
     "postmarked_mail_deadline": "",
     "received_mail_deadline": "",
@@ -5720,6 +5704,7 @@
     "registration_url": "https://olvr.ohiosos.gov/",
     "election_website_url": "https://www.sos.state.oh.us/elections/",
     "more_info_url": "https://olvr.ohiosos.gov/",
+    "mail_reg_url": "https://www.ohiosos.gov/globalassets/elections/forms/vr_form_04-2015.pdf",
     "confirm_reg_url": "https://voterlookup.ohiosos.gov/voterlookup.aspx",
     "postmarked_mail_deadline": "Must be postmarked 30 days before Election Day",
     "received_mail_deadline": "",
@@ -5842,7 +5827,7 @@
     },
     {
     "uuid": "eb0ce8c5-b4f7-4aae-a0b9-84f0434d2edb",
-    "required": "1"
+    "required": "0"
     },
     {
     "uuid": "fd516f06-11bb-4c39-9080-735ed98100cc",
@@ -5869,6 +5854,7 @@
     "registration_url": "",
     "election_website_url": "https://www.ok.gov/elections/",
     "more_info_url": "https://oklahoma.gov/elections/voter-registration/register-to-vote.html",
+    "mail_reg_url": "https://oklahoma.gov/content/dam/ok/en/elections/forms/voter-registration-application.pdf",
     "confirm_reg_url": "https://okvoterportal.okelections.us/",
     "postmarked_mail_deadline": "Must be postmarked 25 days before Election Day",
     "received_mail_deadline": "",
@@ -6018,6 +6004,7 @@
     "registration_url": "https://secure.sos.state.or.us/orestar/vr/register.do",
     "election_website_url": "https://sos.oregon.gov/voting-elections/Pages/default.aspx",
     "more_info_url": "https://sos.oregon.gov/voting/Pages/registration.aspx",
+    "mail_reg_url": "https://sos.oregon.gov/elections/Documents/SEL500.pdf",
     "confirm_reg_url": "https://secure.sos.state.or.us/orestar/vr/showVoterSearch.do?lang=eng&amp;amp;source=SOS",
     "postmarked_mail_deadline": "Must be postmarked 21 days before Election Day",
     "received_mail_deadline": "",
@@ -6167,6 +6154,7 @@
     "registration_url": "https://www.pavoterservices.pa.gov/Pages/VoterRegistrationApplication.aspx",
     "election_website_url": "https://www.pa.gov/guides/voting-and-elections/",
     "more_info_url": "https://www.pa.gov/guides/voting-and-elections/#RegisteringtoVote",
+    "mail_reg_url": "https://www.vote.pa.gov/Resources/Documents/Voter_Registration_Application_English.pdf",
     "confirm_reg_url": "https://www.pavoterservices.pa.gov/pages/voterregistrationstatus.aspx",
     "postmarked_mail_deadline": "",
     "received_mail_deadline": "Must be received 15 days before Election Day",
@@ -6284,10 +6272,6 @@
     "required": "1"
     },
     {
-    "uuid": "e2da00fa-0f1b-4e98-9472-c00649266eb4",
-    "required": "1"
-    },
-    {
     "uuid": "1e030197-52e7-426e-923c-b67ef521ae3b",
     "required": "1"
     },
@@ -6320,6 +6304,7 @@
     "registration_url": "",
     "election_website_url": "https://ww2.ceepur.org/Home/Index?aspxerrorpath=/es-pr/Paginas/default.aspx",
     "more_info_url": "https://ww2.ceepur.org/es-pr/Paginas/cee-english.aspx",
+    "mail_reg_url": "",
     "confirm_reg_url": "https://consulta.ceepur.org/",
     "postmarked_mail_deadline": "",
     "received_mail_deadline": "",
@@ -6473,6 +6458,7 @@
     "registration_url": "https://vote.sos.ri.gov/Home/RegistertoVote",
     "election_website_url": "https://elections.ri.gov/",
     "more_info_url": "https://vote.sos.ri.gov/Voter/RegisterToVote",
+    "mail_reg_url": "https://vote.sos.ri.gov/Content/Pdfs/voter_registration_form.pdf",
     "confirm_reg_url": "https://vote.sos.ri.gov/Home/UpdateVoterRecord?ActiveFlag=0",
     "postmarked_mail_deadline": "Must be postmarked 30 days before Election Day",
     "received_mail_deadline": "",
@@ -6622,6 +6608,7 @@
     "registration_url": "https://info.scvotes.sc.gov/eng/ovr/start.aspx",
     "election_website_url": "https://www.scvotes.gov/",
     "more_info_url": "https://scvotes.gov/voters/register-to-vote/",
+    "mail_reg_url": "https://scvotes.gov/wp-content/uploads/2023/08/SEC-FRM-1301-202305-VR-by-Mail-web-1.pdf",
     "confirm_reg_url": "https://info.scvotes.sc.gov/eng/voterinquiry/VoterInformationRequest.aspx?PageMode=VoterInfo",
     "postmarked_mail_deadline": "Must be postmarked 30 days before Election Day",
     "received_mail_deadline": "",
@@ -6735,14 +6722,6 @@
     "required": "1"
     },
     {
-    "uuid": "acd7f272-7a37-43f0-b51a-c78daf31e5fd",
-    "required": "1"
-    },
-    {
-    "uuid": "e2da00fa-0f1b-4e98-9472-c00649266eb4",
-    "required": "1"
-    },
-    {
     "uuid": "1e030197-52e7-426e-923c-b67ef521ae3b",
     "required": "1"
     },
@@ -6775,6 +6754,7 @@
     "registration_url": "",
     "election_website_url": "https://sdsos.gov/elections-voting/",
     "more_info_url": "https://sdsos.gov/elections-voting/voting/register-to-vote/default.aspx",
+    "mail_reg_url": "https://sdsos.gov/elections-voting/assets/VoterRegistrationFormFillable.pdf",
     "confirm_reg_url": "https://vip.sdsos.gov/VIPLogin.aspx",
     "postmarked_mail_deadline": "",
     "received_mail_deadline": "Must be received 15 days before Election Day",
@@ -6924,6 +6904,7 @@
     "registration_url": "https://ovr.govote.tn.gov/",
     "election_website_url": "https://sos.tn.gov/elections",
     "more_info_url": "https://sos.tn.gov/products/elections/register-vote",
+    "mail_reg_url": "https://sos-prod.tnsosgovfiles.com/s3fs-public/document/ss-3010_1.pdf?VersionId=NASWbVvb2dRNg4ZUe2unnbFwusHjA6Mn",
     "confirm_reg_url": "https://tnmap.tn.gov/voterlookup/",
     "postmarked_mail_deadline": "Must be postmarked 30 days before Election Day",
     "received_mail_deadline": "",
@@ -7037,15 +7018,7 @@
     "required": "1"
     },
     {
-    "uuid": "acd7f272-7a37-43f0-b51a-c78daf31e5fd",
-    "required": "1"
-    },
-    {
-    "uuid": "e2da00fa-0f1b-4e98-9472-c00649266eb4",
-    "required": "1"
-    },
-    {
-    "uuid": "1e030197-52e7-426e-923c-b67ef521ae3b",
+    "uuid": "fe8cf91e-f872-4ed7-848c-09c99a7d83c8",
     "required": "1"
     },
     {
@@ -7077,6 +7050,7 @@
     "registration_url": "",
     "election_website_url": "https://www.votetexas.gov/index.html",
     "more_info_url": "https://www.votetexas.gov/register-to-vote/index.html",
+    "mail_reg_url": "https://www.sos.state.tx.us/elections/forms/vr-with-receipt.pdf",
     "confirm_reg_url": "https://teamrv-mvp.sos.texas.gov/MVP/mvp.do",
     "postmarked_mail_deadline": "Must be postmarked 30 days before Election Day",
     "received_mail_deadline": "",
@@ -7190,10 +7164,6 @@
     "required": "1"
     },
     {
-    "uuid": "e2da00fa-0f1b-4e98-9472-c00649266eb4",
-    "required": "1"
-    },
-    {
     "uuid": "1e030197-52e7-426e-923c-b67ef521ae3b",
     "required": "1"
     },
@@ -7226,6 +7196,7 @@
     "registration_url": "",
     "election_website_url": "https://vivote.gov/voters/register-to-vote/",
     "more_info_url": "https://vivote.gov/voters/register-to-vote/",
+    "mail_reg_url": "",
     "confirm_reg_url": "https://vivote.gov/voters/lookup/",
     "postmarked_mail_deadline": "",
     "received_mail_deadline": "",
@@ -7379,6 +7350,7 @@
     "registration_url": "https://secure.utah.gov/voterreg/login.html?selection=REGISTER",
     "election_website_url": "https://elections.utah.gov/",
     "more_info_url": "https://voteinfo.utah.gov/",
+    "mail_reg_url": "https://voteinfo.utah.gov/wp-content/uploads/sites/42/2020/05/Voter-Registration-Form5-20.pdf",
     "confirm_reg_url": "https://votesearch.utah.gov/voter-search/search/search-by-voter/voter-info",
     "postmarked_mail_deadline": "",
     "received_mail_deadline": "Must be received 11 days before Election Day",
@@ -7528,6 +7500,7 @@
     "registration_url": "https://olvr.vermont.gov/",
     "election_website_url": "https://sos.vermont.gov/elections/",
     "more_info_url": "https://sos.vermont.gov/elections/voters/registration/",
+    "mail_reg_url": "https://outside.vermont.gov/dept/sos/Elections%20Division/voters/voterapplication.pdf",
     "confirm_reg_url": "https://mvp.vermont.gov/",
     "postmarked_mail_deadline": "",
     "received_mail_deadline": "Must be received by or on Election Day",
@@ -7645,10 +7618,6 @@
     "required": "1"
     },
     {
-    "uuid": "e2da00fa-0f1b-4e98-9472-c00649266eb4",
-    "required": "1"
-    },
-    {
     "uuid": "1e030197-52e7-426e-923c-b67ef521ae3b",
     "required": "1"
     },
@@ -7677,10 +7646,11 @@
     "id_inst": "<p>Your full social security number is required. Your social security number will appear on reports produced only for official use by voter registration and election officials and, for jury selection purposes, by courts. Article II, §2, Constitution of Virginia (1971).</p>",
     "address_inst": "",
     "personal_info_inst": "",
-    "political_party_inst": "",
+    "political_party_inst": "<p>Virginia does not accept political party information on this form.</p>",
     "registration_url": "https://www.elections.virginia.gov/citizen-portal/",
     "election_website_url": "https://www.elections.virginia.gov/",
     "more_info_url": "https://www.elections.virginia.gov/registration/how-to-register/",
+    "mail_reg_url": "https://www.elections.virginia.gov/media/formswarehouse/veris-voter-registration/applications/VA-NVRA-1-Voter-Registration-Application-rev-4-2023.-(3).pdf",
     "confirm_reg_url": "https://www.elections.virginia.gov/registration/view-your-info/",
     "postmarked_mail_deadline": "Must be postmarked 22 days before Election Day",
     "received_mail_deadline": "",
@@ -7790,15 +7760,7 @@
     "required": "1"
     },
     {
-    "uuid": "acd7f272-7a37-43f0-b51a-c78daf31e5fd",
-    "required": "1"
-    },
-    {
-    "uuid": "e2da00fa-0f1b-4e98-9472-c00649266eb4",
-    "required": "1"
-    },
-    {
-    "uuid": "1e030197-52e7-426e-923c-b67ef521ae3b",
+    "uuid": "fe8cf91e-f872-4ed7-848c-09c99a7d83c8",
     "required": "1"
     },
     {
@@ -7826,6 +7788,7 @@
     "registration_url": "https://voter.votewa.gov/WhereToVote.aspx",
     "election_website_url": "https://www.sos.wa.gov/elections/",
     "more_info_url": "https://www.sos.wa.gov/elections/voters/",
+    "mail_reg_url": "https://www.sos.wa.gov/elections/voters/voter-registration/print-voter-registration-form",
     "confirm_reg_url": "https://voter.votewa.gov/WhereToVote.aspx",
     "postmarked_mail_deadline": "",
     "received_mail_deadline": "Must be received 8 days before Election Day",
@@ -7975,6 +7938,7 @@
     "registration_url": "https://ovr.sos.wv.gov/Register/Landing",
     "election_website_url": "https://sos.wv.gov/elections/Pages/default.aspx",
     "more_info_url": "https://ovr.sos.wv.gov/Register/Landing",
+    "mail_reg_url": "https://sos.wv.gov/FormSearch/Elections/Voter/mail%20in%20voter%20registration%20application.pdf",
     "confirm_reg_url": "https://apps.sos.wv.gov/Elections/voter/amiregisteredtovote",
     "postmarked_mail_deadline": "Must be postmarked 21 days before Election Day",
     "received_mail_deadline": "",
@@ -8088,10 +8052,6 @@
     "required": "1"
     },
     {
-    "uuid": "e2da00fa-0f1b-4e98-9472-c00649266eb4",
-    "required": "1"
-    },
-    {
     "uuid": "1e030197-52e7-426e-923c-b67ef521ae3b",
     "required": "1"
     },
@@ -8124,6 +8084,7 @@
     "registration_url": "https://myvote.wi.gov/en-us/RegisterToVote",
     "election_website_url": "https://elections.wi.gov/voters",
     "more_info_url": "https://elections.wi.gov/Register",
+    "mail_reg_url": "https://elections.wi.gov/sites/default/files/legacy/2020-06/El-131%2520Voter%2520Registration%2520App_Fillable-%2520%2528REV%25202020-06%2529_0.pdf",
     "confirm_reg_url": "https://myvote.wi.gov/en-us/MyVoterInfo",
     "postmarked_mail_deadline": "Must be postmarked 20 days before Election Day",
     "received_mail_deadline": "",
@@ -8277,6 +8238,7 @@
     "registration_url": "",
     "election_website_url": "https://sos.wyo.gov/elections/state/registeringtovote.aspx",
     "more_info_url": "https://sos.wyo.gov/Elections/State/RegisteringToVote.aspx",
+    "mail_reg_url": "https://sos.wyo.gov/Forms/Elections/General/VoterRegistrationForm.pdf",
     "confirm_reg_url": "https://sos.wyo.gov/Elections/Docs/WYCountyClerks.pdf",
     "postmarked_mail_deadline": "",
     "received_mail_deadline": "Must be received 14 days before Election Day",

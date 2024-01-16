@@ -24,14 +24,15 @@ function PoliticalParty(props){
     return (
         <>
         <h2>{headings.step_label_4}</h2>
+
         {(partyStateInstructions || partyGeneralInstructions) && (
         <div className="usa-alert usa-alert--info" role="alert">
-            <div className="usa-alert__body" dangerouslySetInnerHTML= {{__html: partyGeneralInstructions}}/>
+            {partyFieldState && (<div className="usa-alert__body" dangerouslySetInnerHTML= {{__html: partyGeneralInstructions}}/>)}
             <div className="usa-alert__body" dangerouslySetInnerHTML= {{__html: partyStateInstructions}}/>
         </div>)}
 
         {partyFieldState && (
-            <div className={(parseInt(partyFieldState.required) && handleErrors.party_choice) ? 'error-container margin-top-6' : 'margin-top-6'}>
+            <div className={(parseInt(partyFieldState.required) && handleErrors.party_choice) ? 'error-container margin-top-6' : 'margin-top-5'}>
                 <Label className="text-bold" htmlFor="political-party">
                 {partyField.name}{(partyFieldState.required === "1") && <span className='required-text'>*</span>}
                 <TextInput
@@ -48,7 +49,7 @@ function PoliticalParty(props){
                     onBlur={(e) => setHandleErrors({ ...handleErrors, party_choice: checkForErrors(e, 'check value exists') })}
                 />
                 {((partyFieldState.required === "1") && handleErrors.party_choice) &&
-                    <span id="party-choice-error" role="alert" className='error-text text-bold'>
+                    <span id="party-choice-error" role="alert" className='error-text'>
                         {partyField.error_msg}
                     </span>
                 }
