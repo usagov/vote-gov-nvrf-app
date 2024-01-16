@@ -65,7 +65,7 @@ function PersonalInfo(props){
         <h2>{headings.step_label_1}</h2>
 
         {changeRegistrationVisible && (
-            <Checkbox id="prev-name-change" name="prev-name-change" checked={props.prevh2iousName} onChange={props.onChangePreviousName} label={"I have legally changed my name since I last registered in this state."} />
+            <Checkbox id="prev-name-change" name="prev-name-change" checked={props.previousName} onChange={props.onChangePreviousName} label={"I have legally changed my name since I last registered in this state."} />
         )}
 
         <div className="usa-alert usa-alert--info" role="alert">

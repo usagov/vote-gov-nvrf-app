@@ -115,7 +115,7 @@ function MultiStepForm(props) {
 
     //Form Sections controls//
         //Personal Info
-    const [previousName, setPreviousName] = useState(false);
+    const [hasPreviousName, setPreviousName] = useState(false);
     const onChangePreviousName = (e) => {
         setPreviousName(e.target.checked);
         //clear prev name form data when box is unchecked
@@ -280,7 +280,7 @@ function MultiStepForm(props) {
                         saveFieldData = {saveFieldData}
                         dateFormat={dateFormat}
                         registrationPath={props.registrationPath}
-                        previousName={previousName}
+                        previousName={hasPreviousName}
                         onChangePreviousName={onChangePreviousName}
                         handlePrev={props.handlePrev}
                         headings={navContent}
