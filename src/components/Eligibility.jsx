@@ -39,7 +39,7 @@ function Eligibility(props) {
             <Form autoComplete="off" className={'margin-top-2'} style={{ maxWidth:'none' }} onSubmit={(e) => {e.preventDefault(), props.handleNext()}}>
                 <Fieldset legend="Eligibility" legendStyle="srOnly">
                     <div className={props.error ? 'error-container' : ''}>
-                        <Label htmlFor="eligibility-error" id="eligibility-error">
+                        <Label htmlFor="eligibility-error" id="eligibility-error" className={'margin-top-1'}>
                             <strong>{eligibility.name}</strong>
                         </Label>
                         <Checkbox

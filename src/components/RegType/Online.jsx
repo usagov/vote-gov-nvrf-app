@@ -46,11 +46,10 @@ function Online(props) {
     return (
         <>
             <h1>{content.title.replace("@state_name", stateContent.name)}</h1>
-            <div className={'usa-prose'}>
-                <div dangerouslySetInnerHTML= {{__html: contentBodyPartOne}}/>
-                <p><NextButton noMarginTop type={'submit'} onClick={props.handleNext} text={navContent.next.start}/></p>
-                <div dangerouslySetInnerHTML= {{__html: contentBodyPartTwo}}/></div>
-            </>
+            <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: contentBodyPartOne}}/>
+            <p><NextButton noMarginTop type={'submit'} onClick={props.handleNext} text={navContent.next.start}/></p>
+            <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: contentBodyPartTwo}}/>
+        </>
         );
     }
 }
