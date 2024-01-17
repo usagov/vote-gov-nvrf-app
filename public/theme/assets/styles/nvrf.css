@@ -10,9 +10,11 @@
 .nvrf-app-container .grid-container-tablet {
     max-width: 720px;
 }
+.nvrf-app-container .usa-prose > hr,
 .nvrf-app-container hr {
     border: 0;
     border-top: 1px solid #adadad;
+    margin-top: 2rem 0;
 }
 .nvrf-app-container .usa-form .usa-input {
     max-width: 480px;
