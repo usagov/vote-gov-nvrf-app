@@ -35,7 +35,7 @@ function PoliticalParty(props){
             onChange={props.saveFieldData('party_choice')}
             onKeyDown={(e) => restrictType(e, 'letters')}
             onBlur={(e) => setHandleErrors({ ...handleErrors, party_choice: checkForErrors(e, 'check value exists') })}
-        />        
+        />  
 
     return (
         <>

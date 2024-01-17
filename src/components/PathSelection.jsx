@@ -1,4 +1,4 @@
-import { Button, CardGroup, Card, CardHeader, CardBody, CardFooter, Icon } from '@trussworks/react-uswds';
+import {Button, CardGroup, Card, CardHeader, CardBody, CardFooter, Icon, GridContainer} from '@trussworks/react-uswds';
 import BackButton from './BackButton';
 import DOMPurify from 'dompurify';
 
@@ -17,42 +17,49 @@ function PathSelection(props) {
     return (
         <>
             <BackButton type={'button'} onClick={props.handlePrev} text={navContent.back.eligibility_req}/>
-
+            <GridContainer containerSize={'tablet'} className={['usa-prose', 'margin-top-5']}>
             <h1>{introContent.title.replace("@state_name", props.stateData.name)}</h1>
 
             <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: introContentBody}}/>
 
-            <CardGroup className="padding-top-4 border-black container-test-1">
-                <Card className="card-info border-black container-test-2" gridLayout={{ tablet: { col: 6 } }}>
+            <CardGroup className="padding-top-4">
+                <Card className="card-info"
+                      gridLayout={{ tablet: { col: 6 } }}
+                      containerProps={{ className: 'border-1px border-gray-30 radius-md' }}
+                >
                     <CardHeader className="container-test-3">
                         <h3 className="usa-card__heading">
                             {cardOne.heading.replace("@state_name", props.stateData.name)}
                         </h3>
                     </CardHeader>
                     <CardBody dangerouslySetInnerHTML= {{__html: cardOneBody}} />
-                    <CardFooter className="padding-top-6">
+                    <CardFooter className="margin-top-3">
                         <Button type="submit" onClick={() => {props.getRegPath("update"), props.handleNext()}}>
-                            {cardOne.button_label}
-                            <Icon.ArrowForward aria-label="forward arrow icon"/>
+                            <span>{cardOne.button_label}</span>
+                            <Icon.ArrowForward aria-label="forward arrow icon" style={{margin: "-3px -3px -3px 4px"}}/>
                         </Button>
                     </CardFooter>
                 </Card>
 
-                <Card className="card-info" gridLayout={{ tablet: { col: 6 } }}>
+                <Card className="card-info"
+                      gridLayout={{ tablet: { col: 6 } }}
+                      containerProps={{ className: 'border-1px border-gray-30 radius-md' }}
+                >
                     <CardHeader>
                         <h3 className="usa-card__heading">
                             {cardTwo.heading.replace("@state_name", props.stateData.name)}
                         </h3>
                     </CardHeader>
                     <CardBody dangerouslySetInnerHTML= {{__html: cardTwoBody}}/>
-                    <CardFooter className="padding-top-6">
+                    <CardFooter className="margin-top-3">
                         <Button type="submit" onClick={() => {props.getRegPath("new"),  props.handleNext()}}>
-                            {cardTwo.button_label}
-                            <Icon.ArrowForward aria-label="forward arrow icon"/>
+                            <span>{cardTwo.button_label}</span>
+                            <Icon.ArrowForward aria-label="forward arrow icon" style={{margin: "-3px -3px -3px 4px"}}/>
                         </Button>
                     </CardFooter>
                 </Card>
             </CardGroup>
+            </GridContainer>
         </>
     );
 }

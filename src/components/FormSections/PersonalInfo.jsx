@@ -332,14 +332,14 @@ function PersonalInfo(props){
         <h2>{headings.step_label_1}</h2>
 
         {changeRegistrationVisible && (
-            <Checkbox id="prev-name-change" name="prev-name-change" checked={props.prevh2iousName} onChange={props.onChangePreviousName} label={"I have legally changed my name since I last registered in this state."} />
+            <Checkbox id="prev-name-change" name="prev-name-change" checked={props.previousName} onChange={props.onChangePreviousName} label={"I have legally changed my name since I last registered in this state."} />
         )}
 
         <div className="usa-alert usa-alert--info" role="alert">
             <div className="usa-alert__body" dangerouslySetInnerHTML={{__html: nameSectionAlert}}/>
         </div>
 
-        <h3 className={'margin-top-6'}>{nameSectionField.label}</h3>
+        <h3 className={'margin-top-5'}>{nameSectionField.label}</h3>
         <div dangerouslySetInnerHTML= {{__html: nameSectionDesc}}/>
 
         {nameFieldState && (
@@ -415,7 +415,7 @@ function PersonalInfo(props){
             </>
         )}
 
-        <Grid row gap>
+        <Grid row gap className={'flex-align-end'}>
             {dobFieldState && (
             <Grid tablet={{ col: 5 }}>
                 <Fieldset className="fieldset" style={{ marginTop:'30px'}}>
@@ -435,19 +435,17 @@ function PersonalInfo(props){
             )}
 
             {telephoneFieldState && (
-                <Grid tablet={{ col: 5 }} className="input-example">
-                    <div className="bottom">
-                        <FieldContainer
-                            inputField={phoneNumField}
-                            label={phoneNumberField.label}
-                            fieldRequired={telephoneFieldState.required}
-                            // helpText={""}
-                            htmlFor={"phone-number"}
-                            showError={((telephoneFieldState.required === "1") && handleErrors.phone_number)}
-                            errorId={"phone-number-error" }
-                            errorMsg={phoneNumberField.error_msg}
-                        />
-                    </div>
+                <Grid tablet={{ col: 5 }}>
+                    <FieldContainer
+                        inputField={phoneNumField}
+                        label={phoneNumberField.label}
+                        fieldRequired={telephoneFieldState.required}
+                        // helpText={""}
+                        htmlFor={"phone-number"}
+                        showError={((telephoneFieldState.required === "1") && handleErrors.phone_number)}
+                        errorId={"phone-number-error" }
+                        errorMsg={phoneNumberField.error_msg}
+                    />
                 </Grid>
             )}
         </Grid>

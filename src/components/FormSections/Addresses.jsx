@@ -284,7 +284,7 @@ function Addresses(props){
                         </div>
                     </div> )}
 
-                    <h3 className='margin-top-6'>{homeAddressSectionField.label}</h3>
+                    <h3 className='margin-top-5'>{homeAddressSectionField.label}</h3>
                     <div dangerouslySetInnerHTML= {{__html: homeAddressSectionField.instructions}}/>
 
                     <Grid row gap>
@@ -317,33 +317,46 @@ function Addresses(props){
                         </Grid>
                     </Grid>
 
-                    <Grid row gap>
+                    <Grid row gap className={'flex-align-end'}>
                         <Grid tablet={{ col: 4 }}>
-                        <div className="bottom">
-                            <FieldContainer
-                                inputField={addressFields.city}
-                                label={cityField.label}
-                                fieldRequired={addressFieldsState.required}
-                                // helpText={""}
-                                htmlFor={"city"}
-                                showError={((parseInt(addressFieldsState.required)) && handleErrors.city)}
-                                errorId={"city-error"}
-                                errorMsg={cityField.error_msg}
-                            />
-                        </div>
+                            <div className={((parseInt(addressFieldsState.required)) && handleErrors.city) ? 'error-container' : ''}>
+                                <Label className="text-bold" htmlFor="city">
+                                    {cityField.label}{(addressFieldsState.required === "1") && <span className='required-text'>*</span>}
+                                    <TextInput
+                                        id="city"
+                                        className="radius-md"
+                                        aria-describedby="city-error"
+                                        name="city"
+                                        value={props.fieldData.city}
+                                        type="text"
+                                        autoComplete="off"
+                                        required={(parseInt(addressFieldsState.required))}
+                                        onChange={props.saveFieldData('city')}
+                                        onKeyDown={(e) => restrictType(e, 'letters')}
+                                        onBlur={(e) => setHandleErrors({ ...handleErrors, city: checkForErrors(e, 'check value exists') })}
+                                    />
+                                    {((parseInt(addressFieldsState.required)) && handleErrors.city) &&
+                                        <span id="city-error" role="alert" className='error-text'>
+                                    {cityField.error_msg}
+                                </span>
+                                    }
+                                </Label>
+                            </div>
                         </Grid>
 
                         <Grid tablet={{ col: 4 }}>
-                            <FieldContainer
-                                inputField={addressFields.state}
-                                label={stateField.label}
-                                fieldRequired={addressFieldsState.required}
-                                // helpText={""}
-                                htmlFor={"state"}
-                                // showError={""}
-                                // errorId={""}
-                                // errorMsg={""}
-                            />
+                        <Label htmlFor="state" className="text-bold">
+                            {stateField.label}
+                        <StateSelector
+                            classes="radius-md"
+                            statesList={props.statesList}
+                            state={props.stateData.name}
+                            saveState={props.saveFieldData('state')}
+                            autoComplete="off"
+                            disabled={true}
+                            required={(parseInt(addressFieldsState.required))}
+                        />
+                        </Label>
                         </Grid>
 
                         <Grid tablet={{ col: 3 }}>
@@ -372,7 +385,7 @@ function Addresses(props){
                             <div className="usa-alert__body" dangerouslySetInnerHTML= {{__html: mailAddressSectionField.section_alert}}/>
                         </div>)}
 
-                        <h3 className='margin-top-6'>{mailAddressSectionField.label}</h3>
+                        <h3 className='margin-top-8'>{mailAddressSectionField.label}</h3>
                         <div dangerouslySetInnerHTML= {{__html: mailAddressSectionField.section_description}}/>
 
                         <Grid row gap>
@@ -390,9 +403,8 @@ function Addresses(props){
                             </Grid>
                         </Grid>
 
-                        <Grid row gap>
+                        <Grid row gap className={'flex-align-end'}>
                             <Grid tablet={{ col: true }}>
-                            <div className="bottom">
                                 <FieldContainer
                                     inputField={mailFields.city}
                                     label={mailCityField.label}
@@ -403,7 +415,6 @@ function Addresses(props){
                                     errorId={"mail-city-error"}
                                     errorMsg={mailCityField.error_msg}
                                 />
-                            </div>
                             </Grid>
 
                             <Grid tablet={{ col: true }}>
@@ -464,7 +475,7 @@ function Addresses(props){
                             </Grid>
                         </Grid>
 
-                        <Grid row gap>
+                        <Grid row gap className={'flex-align-end'}>
                             <Grid tablet={{ col: 5 }}>
                                 <FieldContainer
                                     inputField={prevAddressFields.aptNum}
@@ -481,7 +492,6 @@ function Addresses(props){
 
                         <Grid row gap>
                             <Grid tablet={{ col: 4 }}>
-                            <div className="bottom">
                                 <FieldContainer
                                     inputField={prevAddressFields.city}
                                     label={prevCityField.label}
@@ -492,7 +502,6 @@ function Addresses(props){
                                     errorId={"prev-city-error"}
                                     errorMsg={prevCityField.error_msg}
                                 />
-                            </div>
                             </Grid>
 
                         <Grid tablet={{ col: 4 }}>

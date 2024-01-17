@@ -35,7 +35,7 @@ function Delivery(props) {
             <>
                 <Grid row>
                     <Grid col={1}>{iconCheckmark}</Grid>
-                    <Grid col={11} className={'usa-prose'}>
+                    <Grid col={11} className={['usa-prose', 'padding-left-2']}>
                         <h1>{delivery.title.replace("@state_name", props.stateData.name)}</h1>
                     </Grid>
                 </Grid>
@@ -44,7 +44,7 @@ function Delivery(props) {
                 <div className={'usa-prose margin-top-2'} dangerouslySetInnerHTML= {{__html: mailingAddress }}/>
 
                 <Button onClick={() => GenerateFilledPDF(props.fieldData, props.stateData.nvrf_pages_list)} type="submit">
-                    {"Open form in a new window"} <Icon.ArrowForward aria-label="forward arrow icon"/>
+                    <span>{"Open form in a new window"}</span>
                 </Button>
 
                 <div className={'usa-prose margin-top-4'} dangerouslySetInnerHTML= {{__html: deliveryBodyParts[1]}}/>

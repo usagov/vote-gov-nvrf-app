@@ -1,4 +1,4 @@
-import { Label, TextInput, Dropdown, Checkbox, Grid, Fieldset } from '@trussworks/react-uswds';
+import { TextInput, Dropdown, Checkbox } from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import { restrictType, checkForErrors } from '../HelperFunctions/ValidateField';
 import DOMPurify from 'dompurify';
@@ -148,7 +148,7 @@ function Identification(props){
 
             {(stateData.abbrev != "mo") && 
                 <>
-                <h3 className={'margin-top-6'}>{idTypeField.label}<span className='required-text'>*</span></h3>
+                <h3 className={'margin-top-5'}>{idTypeField.label}<span className='required-text'>*</span></h3>
                 <div dangerouslySetInnerHTML={{__html: idTypeFieldInstructions}}/>
                 <FieldContainer 
                     inputField={idTypesField}

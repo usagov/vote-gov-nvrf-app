@@ -1,4 +1,4 @@
-import { Form } from '@trussworks/react-uswds';
+import {Form, GridContainer} from '@trussworks/react-uswds';
 import React, { useState, useEffect } from "react";
 import ProgressBar from './ProgressBar';
 import PersonalInfo from "./FormSections/PersonalInfo";
@@ -11,6 +11,7 @@ import { phoneFormat, dateFormat } from './HelperFunctions/ValidateField';
 import DOMPurify from 'dompurify';
 import BackButton from './BackButton'
 import NextButton from './NextButton';
+import { Helmet } from "react-helmet-async";
 
 
 function MultiStepForm(props) {
@@ -114,7 +115,7 @@ function MultiStepForm(props) {
 
     //Form Sections controls//
         //Personal Info
-    const [previousName, setPreviousName] = useState(false);
+    const [hasPreviousName, setPreviousName] = useState(false);
     const onChangePreviousName = (e) => {
         setPreviousName(e.target.checked);
         //clear prev name form data when box is unchecked
@@ -262,6 +263,7 @@ function MultiStepForm(props) {
             {step != 6 && <BackButton type={'button'} onClick={handlePrev} text={backButtonText(step)}/>}
 
             <ProgressBar step={step} content={navContent}/>
+            <GridContainer containerSize={'tablet'} className={['usa-prose', 'margin-top-8']}>
             {step < 5 &&
                 <>
                     <h1>{mainContentTitle.replace("@state_name", props.stateData.name)}</h1>
@@ -269,7 +271,7 @@ function MultiStepForm(props) {
                 </>
             }
 
-            <Form autoComplete="off" className={'margin-top-8'} style={{ maxWidth:'none' }} onSubmit={(e) => {handleSubmit(e), handleNext()}}>
+            <Form autoComplete="off" className={'margin-top-5'} style={{ maxWidth:'none' }} onSubmit={(e) => {handleSubmit(e), handleNext()}}>
                 {step === 1 &&
                     <PersonalInfo
                         state={props.state}
@@ -278,7 +280,7 @@ function MultiStepForm(props) {
                         saveFieldData = {saveFieldData}
                         dateFormat={dateFormat}
                         registrationPath={props.registrationPath}
-                        previousName={previousName}
+                        previousName={hasPreviousName}
                         onChangePreviousName={onChangePreviousName}
                         handlePrev={props.handlePrev}
                         headings={navContent}
@@ -372,6 +374,17 @@ function MultiStepForm(props) {
 
                 {step != 6 && <NextButton type={'submit'} onClick={() => nextStepValidation()} text={nextButtonText(step)}/>}
             </Form>
+
+            {/* Load Touchpoints feedback form */}
+            {step === 6 &&
+                <>
+                    <div id="touchpoints-form-embed" className={'margin-top-6'}></div>
+                    <Helmet>
+                        <script src="https://touchpoints.app.cloud.gov/touchpoints/4da46508.js" async></script>
+                    </Helmet>
+                </>
+            }
+          </GridContainer>
         </>
     );
 }

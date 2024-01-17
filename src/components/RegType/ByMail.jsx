@@ -13,21 +13,21 @@ function ByMail(props) {
         const contentBodyParts = contentBody.split("@vote_nvrf_link")
 
         const stateMailinLink = () => (
-            <div className="padding-bottom-3 padding-top-1">
+            <p>
                 <a href={stateContent.mail_reg_url} className="usa-button" target="_blank" title="Opens a new PDF window">
-                   {"Go to the PDF form on %state_name%'s website".replace("%state_name%", props.stateData.name)}
-                    <Icon.Launch title="External link opens new window"/>
+                    <span>{"Go to the PDF form on %state_name%'s website".replace("%state_name%", props.stateData.name)}</span>
+                    <Icon.Launch title="External link opens new window" style={{margin: "-3px -3px -3px 4px"}}/>
                 </a>
-            </div>
+            </p>
         );
 
         const checkRegLink = () => (
-            <div className="padding-bottom-3 padding-top-1">
+            <p>
                 <a href={stateContent.election_website_url} className="usa-button" target="_blank">
-                    {"Check your registration"}
-                    <Icon.Launch title="External link opens new window"/>
+                    <span>{"Check your registration"}</span>
+                    <Icon.Launch title="External link opens new window" style={{margin: "-3px -3px -3px 4px"}}/>
                 </a>
-            </div>
+            </p>
         );
 
         let contentBodyPartOne = contentBodyParts[0]
@@ -39,7 +39,7 @@ function ByMail(props) {
                 <h1>{content.title.replace("@state_name", stateContent.name)}</h1>
 
                 <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: contentBodyPartOne}}/>
-                <NextButton noMarginTop type={'submit'} onClick={props.handleNext} text={navContent.next.start}/>
+                <p><NextButton noMarginTop type={'submit'} onClick={props.handleNext} text={navContent.next.start}/></p>
                 <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: contentBodyPartTwo}}/>
 
             </>

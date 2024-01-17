@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Dropdown } from '@trussworks/react-uswds';
+import {Dropdown, GridContainer} from '@trussworks/react-uswds';
 import { checkForErrors } from './HelperFunctions/ValidateField';
 import NextButton from './NextButton';
 import { getFieldError, getFieldLabel } from './HelperFunctions/fieldParser';
@@ -39,11 +39,12 @@ function StateSelection(props) {
 
     return (
         <>
+            <GridContainer containerSize={'tablet'} className={['usa-prose', 'margin-top-5']}>
             <h1>{introContent.title}</h1>
             <div className="usa-prose" dangerouslySetInnerHTML= {{__html: introContentBodyParts[0]}}/>
 
             <form onSubmit={(e) => {props.handleSubmit(e), props.handleNext()}}>
-                <div className="grid-row padding-top-3 flex-align-center">
+                <div className="grid-row margin-top-3 flex-align-center">
                     <div className="grid-col-auto margin-right-2">
                         <h4 className={'margin-0'}>{getFieldLabel(fields, "7231330d-523b-4e22-b282-b9f98ee20ef2")}</h4>
                     </div>
@@ -63,6 +64,7 @@ function StateSelection(props) {
                 <NextButton type={'submit'} text={navContent.next.reg_options}/>
 
             </form>
+            </GridContainer>
         </>
     );
 }
