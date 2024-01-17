@@ -1,4 +1,4 @@
-import { Fieldset, Checkbox, Label } from '@trussworks/react-uswds';
+import {Fieldset, Checkbox, Label, GridContainer, Form} from '@trussworks/react-uswds';
 import BackButton from './BackButton';
 import NextButton from "./NextButton";
 import StepsList from './RegType/StepsList';
@@ -29,17 +29,17 @@ function Eligibility(props) {
     return (
         <>
             <BackButton type={'button'} onClick={props.handlePrev} text={navContent.back.state_reg_options}/>
-
+            <GridContainer containerSize={'tablet'} className={['usa-prose', 'margin-top-5']}>
             <h1>{content.title.replace("@state_name", stateContent.name)}</h1>
             <StepsList content={listContent}/>
 
             <div className={'usa-prose margin-top-5'} dangerouslySetInnerHTML= {{__html: contentBodyParts[0].replace("@state_name", stateContent.name)
                     .replace("@reg_eligibility_desc", stateContent.reg_eligibility_desc)}}/>
 
-            <form onSubmit={(e) => {e.preventDefault(), props.handleNext()}}>
+            <Form autoComplete="off" className={'margin-top-2'} style={{ maxWidth:'none' }} onSubmit={(e) => {e.preventDefault(), props.handleNext()}}>
                 <Fieldset legend="Eligibility" legendStyle="srOnly">
                     <div className={props.error ? 'error-container' : ''}>
-                        <Label htmlFor="eligibility-error" id="eligibility-error">
+                        <Label htmlFor="eligibility-error" id="eligibility-error" className={'margin-top-1'}>
                             <strong>{eligibility.name}</strong>
                         </Label>
                         <Checkbox
@@ -67,10 +67,9 @@ function Eligibility(props) {
                 <div className={'usa-prose margin-top-5'} dangerouslySetInnerHTML= {{__html: contentBodyParts[1].replace("@state_name", stateContent.name)
                         .replace("@mail_deadline", renderToStaticMarkup(mailDeadline()))}}/>
 
-                <div className="button-container" style={{ margin:'20px' }}>
-                    <NextButton type={'submit'} onClick={() => props.checkboxValid()} text={navContent.next.start}/>
-                </div>
-            </form>
+                <NextButton type={'submit'} onClick={() => props.checkboxValid()} text={navContent.next.start}/>
+            </Form>
+            </GridContainer>
         </>
     );
 }

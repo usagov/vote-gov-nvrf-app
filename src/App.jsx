@@ -5,9 +5,11 @@ import RegistrationOptions from './components/RegistrationOptions';
 import PathSelection from './components/PathSelection';
 import MultiStepForm from './components/MultiStepForm';
 import {fetchData} from './components/HelperFunctions/JsonHelper.jsx';
+import { HelmetProvider } from "react-helmet-async";
 import {getFieldValue} from "./components/HelperFunctions/fieldParser";
 import DOMPurify from 'dompurify';
 import { renderToStaticMarkup } from 'react-dom/server';
+import {GridContainer} from "@trussworks/react-uswds";
 
 function App() {
 
@@ -32,7 +34,8 @@ function App() {
   const [formStep, setFormStep] = useState(1);
 
   const lastUpdatedSanitized = DOMPurify.sanitize(stateData.nvrf_last_updated_date);
-  const lastUpdatedText = "@state_name information last updated "
+  const lastUpdatedText = "@state_name information last updated ";
+  const scrollToTop = document.getElementById('scroll-to-top');
 
   //Confirm eligibility checkbox controls
   const [hasConfirmed, setHasConfirmed] = useState(null);
@@ -46,14 +49,18 @@ function App() {
       (hasConfirmed === null) && setError(true);
   }
 
+  const setStepFocus = () => {
+    scrollToTop.focus();
+  }
+
   const handleNext = () => {
     step != 5 && setStep(step + 1);
-    document.getElementById('scroll-to-top').scrollIntoView();
+    setStepFocus();
   }
 
   const handlePrev = () => {
     step != 1 && setStep(step - 1);
-    document.getElementById('scroll-to-top').scrollIntoView();
+    setStepFocus();
   }
 
   const handleSubmit = (e) => {
@@ -93,9 +100,13 @@ function App() {
     }
 
     return (
-        <>
+        <HelmetProvider>
           <section className="usa-prose">
-            <div id="scroll-to-top"></div>
+            <a name="scroll-to-top"
+               id="scroll-to-top"
+               tabIndex={-1}
+               style={{outline: "0 none"}}
+            ></a>
             {step === 1 &&
                 <StateSelection
                     handleNext={handleNext}
@@ -157,19 +168,21 @@ function App() {
                     registrationPath={registrationPath}
                     getFormStep={getFormStep}
                 />}
-              
-              {step >= 3 && 
+
+              {step >= 3 &&
+                <GridContainer containerSize={'tablet'} className={['usa-prose', 'margin-top-5']}>
                 <div className="margin-top-4 text-base">
                   <div>{getFieldValue(content, "2c597df4-53b6-4ef5-8301-7817b04e1099", "omb_number")}</div>
                   <span className="last-updated">
                     {lastUpdatedText.replace("@state_name", stateData.name)}
                     <span dangerouslySetInnerHTML= {{__html: lastUpdatedSanitized}}/>
                  </span>
-                  <div><a href="/privacy-policy/">Privacy policy</a></div>
+                  <div><a href="privacy" target="_blank">Privacy policy</a></div>
                 </div>
+                </GridContainer>
               }
           </section>
-        </>
+        </HelmetProvider>
     )
   }
 }
