@@ -74,7 +74,7 @@ function Confirmation(props) {
                     <li>{getFieldLabel("2d61b54a-e568-410f-825a-0ca82dfd3f63")}: {fieldData.phone_number}</li>
                     <li>{getFieldLabel("2bfff6c6-6782-4b14-ac45-642efd278f6a")}: {fieldDataOverride_race}</li>
                 </ul>
-                <span className="divider-grey"></span>
+                <hr />
                 <div className='grid-row'>
                     <h2>{headings.step_label_2}</h2>
                     <div className='edit-btn'>
@@ -127,7 +127,7 @@ function Confirmation(props) {
                     <li>{getFieldLabel("b0f80289-6084-4723-8278-110fda210f0d")}: {fieldData.mail_state}</li>
                     <li>{getFieldLabel("c4f9c0cb-2a25-4f1d-a93a-b06a19656cfe")}: {fieldData.mail_zip_code}</li>
                 </ul>
-                <span className="divider-grey"></span>
+                <hr />
                 <div className='grid-row'>
                     <h2>{headings.step_label_3}</h2>
                     <div className='edit-btn'>
@@ -142,7 +142,7 @@ function Confirmation(props) {
                 <ul>
                     <li>{headings.confirmation.id_label.label}: {fieldDataOverride_id}</li>
                 </ul>
-                <span className="divider-grey"></span>
+                <hr />
                 <div className='grid-row'>
                     <h2>{headings.step_label_4}</h2>
                     <div className='edit-btn'>
@@ -158,6 +158,7 @@ function Confirmation(props) {
                     <li>{headings.confirmation.political_party.label}: {fieldDataOverride_party}</li>
                 </ul>
             </div>
+            <hr />
 
             {confirmInstructions && (
                 <div className="usa-alert usa-alert--info margin-top-6" role="alert">
