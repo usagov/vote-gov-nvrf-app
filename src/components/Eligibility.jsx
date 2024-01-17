@@ -51,17 +51,20 @@ function Eligibility(props) {
                     .replace("@reg_eligibility_desc", stateContent.reg_eligibility_desc)}}/>
 
             <Form autoComplete="off" className={'margin-top-2'} style={{ maxWidth:'none' }} onSubmit={(e) => {e.preventDefault(), props.handleNext()}}>
-                <FieldContainer 
-                    inputField={checkboxField}
-                    label={eligibility.name}
-                    classes={'margin-top-1'}
-                    // helpText={""}
-                    // fieldRequired={""}
-                    htmlFor={"eligibility-checkbox"}
-                    showError={props.error}
-                    errorId={"eligibility-error"}
-                    errorMsg={getFieldError(fields, "39fc63ad-ed5a-4ad5-98d3-aa236c96c61c")}
-                />
+                <div className="margin-top-1">
+                    <FieldContainer 
+                        inputField={checkboxField}
+                        label={eligibility.name}
+                        // classes={""}
+                        // helpText={""}
+                        // fieldRequired={""}
+                        htmlFor={"eligibility-checkbox"}
+                        showError={props.error}
+                        errorId={"eligibility-error"}
+                        errorMsg={getFieldError(fields, "39fc63ad-ed5a-4ad5-98d3-aa236c96c61c")}
+                    />                    
+                </div>
+                
                 <div dangerouslySetInnerHTML= {{__html: eligibilityInstructions}}/>
 
                 <div className={'usa-prose margin-top-5'} dangerouslySetInnerHTML= {{__html: contentBodyParts[1].replace("@state_name", stateContent.name)

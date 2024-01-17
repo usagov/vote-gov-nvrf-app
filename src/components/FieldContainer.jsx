@@ -22,7 +22,7 @@ function FieldContainer({
             </span>
                 {inputField}
                 {showError &&
-                    <span id={errorId} role="alert" className="error-text text-bold">
+                    <span id={errorId} role="alert" className="error-text">
                         {errorMsg}
                     </span>
                 }

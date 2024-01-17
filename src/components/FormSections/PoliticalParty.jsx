@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Label, TextInput } from '@trussworks/react-uswds';
+import { TextInput } from '@trussworks/react-uswds';
 import { restrictType, checkForErrors } from '../HelperFunctions/ValidateField';
 import DOMPurify from 'dompurify';
 import FieldContainer from "../FieldContainer";
@@ -35,7 +35,7 @@ function PoliticalParty(props){
             onChange={props.saveFieldData('party_choice')}
             onKeyDown={(e) => restrictType(e, 'letters')}
             onBlur={(e) => setHandleErrors({ ...handleErrors, party_choice: checkForErrors(e, 'check value exists') })}
-        />  
+        />        
 
     return (
         <>
@@ -48,16 +48,17 @@ function PoliticalParty(props){
         </div>)}
 
         {partyFieldState && (
+            <div className='margin-top-5'>
                 <FieldContainer 
                     inputField={politicalPartyField}
                     label={partyField.name}
                     fieldRequired={partyFieldState.required}
-                    classes={'margin-top-6'}
                     htmlFor={"political-party"}
                     showError={((partyFieldState.required === "1") && handleErrors.party_choice)}
                     errorId={"party-choice-error"}
                     errorMsg={partyField.error_msg}
                 />
+            </div>
         )}
         </>
     );

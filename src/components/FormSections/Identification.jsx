@@ -150,17 +150,19 @@ function Identification(props){
                 <>
                 <h3 className={'margin-top-5'}>{idTypeField.label}<span className='required-text'>*</span></h3>
                 <div dangerouslySetInnerHTML={{__html: idTypeFieldInstructions}}/>
-                <FieldContainer 
-                    inputField={idTypesField}
-                    // label={""}
-                    classes={"mobile-width"}
-                    // helpText={""}
-                    fieldRequired={true}
-                    htmlFor={"id-num"}
-                    showError={handleErrors.id_selection}
-                    errorId={"id-num-error"}
-                    errorMsg={stateIDField.error_msg}
-                />
+                <div className="mobile-width">
+                    <FieldContainer 
+                        inputField={idTypesField}
+                        // label={""}
+                        // classes={""}
+                        // helpText={""}
+                        fieldRequired={true}
+                        htmlFor={"id-num"}
+                        showError={handleErrors.id_selection}
+                        errorId={"id-num-error"}
+                        errorMsg={stateIDField.error_msg}
+                    />
+                </div>
                 </>
             }
 

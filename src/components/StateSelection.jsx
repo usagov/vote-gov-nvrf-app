@@ -48,11 +48,11 @@ function StateSelection(props) {
                     <div className="grid-col-auto margin-right-2">
                         <h4 className={'margin-0'}>{getFieldLabel(fields, "7231330d-523b-4e22-b282-b9f98ee20ef2")}</h4>
                     </div>
-                    <div className="grid-col">
+                    <div className="grid-col maxw-mobile">
                         <FieldContainer 
                           inputField={stateSelectionField}
                           htmlFor="state-dropdown"
-                          classes={'maxw-mobile'}
+                        //   classes={''}
                           showError={handleErrors.state_selected}
                           errorId={"state-dropdown-error"}
                           errorMsg={getFieldError(fields, "7231330d-523b-4e22-b282-b9f98ee20ef2")}
