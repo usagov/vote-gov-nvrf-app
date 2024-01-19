@@ -1,26 +1,26 @@
 [
-    {
+  {
     "uuid": "0ac52b5d-4381-4b4e-830e-38319f3a3757",
     "lang": "en",
     "heading": "I am already registered in @state_name and need to change my information.",
-    "body": "<p>Report a change to registration information, such as name, address, or political party.</p>",
+    "body": "\u003Cp\u003EReport a change to registration information, such as name, address, or political party.\u003C\/p\u003E",
     "button_label": "Change registration information",
     "image_url": ""
-    },
-    {
+  },
+  {
     "uuid": "33a9859d-a62c-4f8e-9e92-5a70f529b62a",
     "lang": "en",
     "heading": "",
-    "body": "<p>Review the steps below to understand what to expect. You can use this tool to register for the first time or report a change of name, address or political party to your election office. </p><ul class=\"usa-icon-list--size-lg padding-top-1 padding-bottom-5 usa-icon-list\"><li class=\"margin-105 usa-icon-list__item\"><div class=\"text-primary-dark usa-icon-list__icon\"><div class=\"text-primary-dark usa-icon-list__icon\">@iconConfirmEligible</div></div><div class=\"usa-icon-list__content\"><h3 class=\"usa-icon-list__title\">Make sure you meet registration eligibility requirements</h3><p>Review the requirements below and confirm your eligibility to begin.</p></div></li><li class=\"margin-105 usa-icon-list__item\"><div class=\"text-primary-dark usa-icon-list__icon\"><div class=\"text-primary-dark usa-icon-list__icon\">@iconCompleteForm</div></div><div class=\"usa-icon-list__content\"><h3 class=\"usa-icon-list__title\">Take 5-10 minutes to answer a few questions</h3><p>You'll be asked to enter your name, address and identification information. If you do not have valid state identification, you may indicate that in the form-filler; your state will assign you a number for registration purposes.</p></div></li><li class=\"margin-105 usa-icon-list__item\"><div class=\"text-primary-dark usa-icon-list__icon\"><div class=\"text-primary-dark usa-icon-list__icon\">@iconCheckmark</div></div><div class=\"usa-icon-list__content\"><h3 class=\"usa-icon-list__title\">Confirm all information is correct and print</h3><p>Make sure your information is correct and make any necessary edits. Once you confirm, this tool will generate a mail-in form. You'll want to print or download the form immediately. Vote.gov does not store your information.</p></div></li><li class=\"margin-105 usa-icon-list__item\"><div class=\"text-primary-dark usa-icon-list__icon\"><div class=\"text-primary-dark usa-icon-list__icon\">@iconSendForm</div></div><div class=\"usa-icon-list__content\"><h3 class=\"usa-icon-list__title\">Sign and mail to your election office</h3><p>Don’t forget these last steps! You will need to sign and mail the form to your state office. We’ll provide the address; you provide the first-class postage.</p></div></li></ul>",
+    "body": "\u003Cp\u003EReview the steps below to understand what to expect. You can use this tool to register for the first time or report a change of name, address or political party to your election office.\u00a0\u003C\/p\u003E\u003Cul class=\u0022usa-icon-list--size-lg padding-top-1 padding-bottom-5 usa-icon-list\u0022\u003E\u003Cli class=\u0022margin-105 usa-icon-list__item\u0022\u003E\u003Cdiv class=\u0022text-primary-dark usa-icon-list__icon\u0022\u003E\u003Cdiv class=\u0022text-primary-dark usa-icon-list__icon\u0022\u003E@iconConfirmEligible\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022usa-icon-list__content\u0022\u003E\u003Ch3 class=\u0022usa-icon-list__title\u0022\u003EMake sure you meet registration eligibility requirements\u003C\/h3\u003E\u003Cp\u003EReview the requirements below and confirm your eligibility to begin.\u003C\/p\u003E\u003C\/div\u003E\u003C\/li\u003E\u003Cli class=\u0022margin-105 usa-icon-list__item\u0022\u003E\u003Cdiv class=\u0022text-primary-dark usa-icon-list__icon\u0022\u003E\u003Cdiv class=\u0022text-primary-dark usa-icon-list__icon\u0022\u003E@iconCompleteForm\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022usa-icon-list__content\u0022\u003E\u003Ch3 class=\u0022usa-icon-list__title\u0022\u003ETake 5-10 minutes to answer a few questions\u003C\/h3\u003E\u003Cp\u003EYou\u0027ll be asked to enter your name, address and identification information. If you do not have valid state identification, you may still use this form.\u003C\/p\u003E\u003C\/div\u003E\u003C\/li\u003E\u003Cli class=\u0022margin-105 usa-icon-list__item\u0022\u003E\u003Cdiv class=\u0022text-primary-dark usa-icon-list__icon\u0022\u003E\u003Cdiv class=\u0022text-primary-dark usa-icon-list__icon\u0022\u003E@iconCheckmark\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022usa-icon-list__content\u0022\u003E\u003Ch3 class=\u0022usa-icon-list__title\u0022\u003EConfirm all information is correct and print\u003C\/h3\u003E\u003Cp\u003EMake sure your information is correct and make any necessary edits. Once you confirm, this tool will generate a mail-in form. You\u0027ll want to print or download the form immediately. Vote.gov does not store your information.\u003C\/p\u003E\u003C\/div\u003E\u003C\/li\u003E\u003Cli class=\u0022margin-105 usa-icon-list__item\u0022\u003E\u003Cdiv class=\u0022text-primary-dark usa-icon-list__icon\u0022\u003E\u003Cdiv class=\u0022text-primary-dark usa-icon-list__icon\u0022\u003E@iconSendForm\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022usa-icon-list__content\u0022\u003E\u003Ch3 class=\u0022usa-icon-list__title\u0022\u003ESign and mail to your election office\u003C\/h3\u003E\u003Cp\u003EDon\u2019t forget these last steps! You will need to sign and mail the form to your state office. We\u2019ll provide the address; you provide the first-class postage.\u003C\/p\u003E\u003C\/div\u003E\u003C\/li\u003E\u003C\/ul\u003E",
     "button_label": "",
     "image_url": ""
-    },
-    {
+  },
+  {
     "uuid": "3abd804c-2787-44f9-a06b-ad6d63ca797f",
     "lang": "en",
     "heading": "I am registering in @state_name for the first time.",
-    "body": "<p>Register for the first time in this state. We recommend having your driver’s license or non-driver identification number available.</p>",
+    "body": "\u003Cp\u003ERegister for the first time in this state. We recommend having your driver\u2019s license or non-driver identification number available.\u003C\/p\u003E",
     "button_label": "Begin new registration",
     "image_url": ""
-    }
+  }
 ]
