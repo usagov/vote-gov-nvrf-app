@@ -1,7 +1,7 @@
 import { Link, Icon } from '@trussworks/react-uswds';
 import NextButton from '../NextButton';
-import DOMPurify from "dompurify";
 import {renderToStaticMarkup} from "react-dom/server";
+import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
 
 function OnlineOnly(props) {
     const content = props.content;
@@ -9,7 +9,7 @@ function OnlineOnly(props) {
     const stateContent = props.stateData;
 
     if (content && navContent) {
-        let contentBody = DOMPurify.sanitize(content.body).replaceAll("@state_name", stateContent.name);
+        let contentBody = sanitizeDOM(content.body).replaceAll("@state_name", stateContent.name);
 
         const stateOnlineLink = () => (
                 <p>

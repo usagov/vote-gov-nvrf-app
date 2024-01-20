@@ -3,7 +3,7 @@ import {Dropdown, Grid, GridContainer} from '@trussworks/react-uswds';
 import { checkForErrors } from './HelperFunctions/ValidateField';
 import NextButton from './NextButton';
 import { getFieldError, getFieldLabel } from './HelperFunctions/fieldParser';
-import DOMPurify from "dompurify";
+import {sanitizeDOM} from "./HelperFunctions/JsonHelper";
 
 function StateSelection(props) {
     const content = props.content;
@@ -12,7 +12,7 @@ function StateSelection(props) {
     const fields = props.fieldContent;
 
     const introContent = content.find(item => item.uuid === "e3461b9a-e0b1-4157-ad4a-13f3835a101c");
-    const introContentBody = DOMPurify.sanitize(introContent.body);
+    const introContentBody = sanitizeDOM(introContent.body);
     const introContentBodyParts = introContentBody.split('@state_selector');
 
     const [handleErrors, setHandleErrors] = useState({

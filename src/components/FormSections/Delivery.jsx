@@ -1,6 +1,6 @@
 import { Button, Icon, Grid } from '@trussworks/react-uswds';
 import GenerateFilledPDF from '../GenerateFilledPDF';
-import DOMPurify from 'dompurify';
+import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
 
 function Delivery(props) {
     const content = props.content;
@@ -20,8 +20,8 @@ function Delivery(props) {
 
     if (content) {
         const delivery = content.find(item => item.uuid === "229f283c-6a70-43f6-a80f-15cfa158f062");
-        const mailingAddress = DOMPurify.sanitize(state.mailing_address_inst);
-        const deliveryBody = DOMPurify.sanitize(delivery.body.replace("@state_name", props.stateData.name));
+        const mailingAddress = sanitizeDOM(state.mailing_address_inst);
+        const deliveryBody = sanitizeDOM(delivery.body.replace("@state_name", props.stateData.name));
         const deliveryBodyParts = deliveryBody.split('@mailing_address_inst');
         // const reminderMessage = randomProperty(content.reminder_messages);
 

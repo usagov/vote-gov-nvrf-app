@@ -1,7 +1,7 @@
 import { Label, TextInput, Dropdown, Checkbox, Grid, Fieldset } from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import { restrictType, checkForErrors, jumpTo } from '../HelperFunctions/ValidateField';
-import DOMPurify from 'dompurify';
+import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
 
 function PersonalInfo(props){
     const headings = props.headings;
@@ -26,8 +26,8 @@ function PersonalInfo(props){
     const prevLastNameField = fields.find(item => item.uuid === "42de34cc-ebf3-4d8e-8873-2571063b62c0");
     const prevSuffixField = fields.find(item => item.uuid === "09cb2989-d302-4a01-bb3a-33173adcffb2");
 
-    const nameSectionDesc = DOMPurify.sanitize(nameSectionField.section_description);
-    const nameSectionAlert = DOMPurify.sanitize(nameSectionField.section_alert);
+    const nameSectionDesc = sanitizeDOM(nameSectionField.section_description);
+    const nameSectionAlert = sanitizeDOM(nameSectionField.section_alert);
 
     //Field requirements by state data
     const nameFieldState = (nvrfStateFields.find(item => item.uuid === firstNameField.uuid));

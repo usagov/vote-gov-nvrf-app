@@ -1,7 +1,7 @@
 import { Label, TextInput, Dropdown, Checkbox, Grid, Fieldset } from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import { restrictType, checkForErrors, jumpTo } from '../HelperFunctions/ValidateField';
-import DOMPurify from 'dompurify';
+import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
 
 function Identification(props){
     const headings = props.headings;
@@ -16,9 +16,9 @@ function Identification(props){
     const ssnField = fields.find(item => item.uuid === "1e030197-52e7-426e-923c-b67ef521ae3b");
     const ssnFullField = fields.find(item => item.uuid === "fe8cf91e-f872-4ed7-848c-09c99a7d83c8");
     const noIdField = fields.find(item => item.uuid === "eb0ce8c5-b4f7-4aae-a0b9-84f0434d2edb");
-    const idTypeFieldInstructions = DOMPurify.sanitize(idTypeField.instructions);
-    const idStateInstructions = DOMPurify.sanitize(stateData.id_inst);
-    const noIdFieldInstructions = DOMPurify.sanitize(noIdField.instructions);
+    const idTypeFieldInstructions = sanitizeDOM(idTypeField.instructions);
+    const idStateInstructions = sanitizeDOM(stateData.id_inst);
+    const noIdFieldInstructions = sanitizeDOM(noIdField.instructions);
 
     //Field requirements by state data
     const driverIDFieldReq = (nvrfStateFields.find(item => item.uuid === driverLicenseField.uuid));

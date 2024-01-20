@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import { Label, TextInput } from '@trussworks/react-uswds';
 import { restrictType, checkForErrors } from '../HelperFunctions/ValidateField';
-import DOMPurify from 'dompurify';
+import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
 
 function PoliticalParty(props){
     const headings = props.headings;
     const state = props.stateData;
     const fields = props.fieldContent;
     const nvrfStateFields = props.stateData.nvrf_fields;
-    const partyStateInstructions = DOMPurify.sanitize(state.political_party_inst);
+    const partyStateInstructions = sanitizeDOM(state.political_party_inst);
 
     //Drupal field data
     const partyField = fields.find(item => item.uuid === "fd516f06-11bb-4c39-9080-735ed98100cc");
-    const partyGeneralInstructions = DOMPurify.sanitize(partyField.instructions)
+    const partyGeneralInstructions = sanitizeDOM(partyField.instructions)
 
     //Field requirements by state data
     const partyFieldState = (nvrfStateFields.find(item => item.uuid === partyField.uuid));

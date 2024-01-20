@@ -1,6 +1,6 @@
 import {Button, CardGroup, Card, CardHeader, CardBody, CardFooter, Icon, GridContainer} from '@trussworks/react-uswds';
 import BackButton from './BackButton';
-import DOMPurify from 'dompurify';
+import {sanitizeDOM} from "./HelperFunctions/JsonHelper";
 
 function PathSelection(props) {
     const content = props.content;
@@ -10,9 +10,9 @@ function PathSelection(props) {
     const introContent = content.find(item => item.uuid === "b3299979-e26c-4885-a949-e1a2c27de91b");
     const cardOne = cards.find(item => item.uuid === "0ac52b5d-4381-4b4e-830e-38319f3a3757");
     const cardTwo = cards.find(item => item.uuid === "3abd804c-2787-44f9-a06b-ad6d63ca797f");
-    const introContentBody = DOMPurify.sanitize(introContent.body);
-    const cardOneBody = DOMPurify.sanitize(cardOne.body);
-    const cardTwoBody = DOMPurify.sanitize(cardTwo.body);
+    const introContentBody = sanitizeDOM(introContent.body);
+    const cardOneBody = sanitizeDOM(cardOne.body);
+    const cardTwoBody = sanitizeDOM(cardTwo.body);
 
     return (
         <>

@@ -1,11 +1,11 @@
 import { Link, Icon } from '@trussworks/react-uswds';
-import DOMPurify from "dompurify";
 import {renderToStaticMarkup} from "react-dom/server";
+import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
 
 function NotNeeded(props) {
     const content = props.content;
     const stateContent = props.stateData;
-    const contentBody = DOMPurify.sanitize(content.body).replace("@state_name", props.stateData.name);
+    const contentBody = sanitizeDOM(content.body).replace("@state_name", props.stateData.name);
 
     const stateLinks = () => (
         <>
