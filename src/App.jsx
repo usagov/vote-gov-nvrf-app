@@ -155,7 +155,6 @@ function App() {
                 />}
             {step === 5 &&
                 <MultiStepForm
-                    // handleNext={handleNext}
                     handlePrev={handlePrev}
                     statesList={statesList}
                     state={selectedState}
