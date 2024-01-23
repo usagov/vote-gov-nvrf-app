@@ -1,114 +1,114 @@
 [
   {
-    "uuid": "df8fede3-11ad-4099-b2a8-f6a9bb457842",
-    "lang": "en",
-    "title": "@state_name does not require voter registration before voting.",
-    "instructions": "",
-    "body": "\u003Cp\u003EYou can vote without registering. Learn more about voting on @state_name\u0027s election website. Make sure you know your polling place and find out other Election Day requirements.\u003C\/p\u003E\u003Cbody\u003E@state_links\n\u003C\/body\u003E\u003Cp\u003E\u003Cbr \/\u003E\u00a0\u003C\/p\u003E",
-    "omb_number": ""
+  "uuid": "df8fede3-11ad-4099-b2a8-f6a9bb457842",
+  "lang": "en",
+  "title": "@state_name does not require voter registration before voting.",
+  "instructions": "",
+  "body": "<p>You can vote without registering. Learn more about voting on @state_name's election website. Make sure you know your polling place and find out other Election Day requirements.</p><body>@state_links\n</body><p><br /> </p>",
+  "omb_number": ""
   },
   {
-    "uuid": "c8a3890a-ed6f-4d50-a002-4011ded29e5a",
-    "lang": "en",
-    "title": "@state_name registration options",
-    "instructions": "",
-    "body": "\u003Cp\u003E@state_name requires you to register in person at your local election office. Learn more about how to register on @state_name\u2019s election website.\u003C\/p\u003E\u003Cbody\u003E@state_links\n\u003C\/body\u003E",
-    "omb_number": ""
+  "uuid": "c8a3890a-ed6f-4d50-a002-4011ded29e5a",
+  "lang": "en",
+  "title": "@state_name registration options",
+  "instructions": "",
+  "body": "<p>@state_name requires you to register in person at your local election office. Learn more about how to register on @state_name’s election website.</p><body>@state_links\n</body>",
+  "omb_number": ""
   },
   {
-    "uuid": "216b8cd7-69e3-4947-aa2c-09dca7392a46",
-    "lang": "en",
-    "title": "@state_name registration options",
-    "instructions": "",
-    "body": "\u003Cp\u003ERegister for the first time or report a change of name or address to @state_name\u0027s election office. \u00a0\u003C\/p\u003E\u003Ch2\u003EOnline registration\u003C\/h2\u003E\u003Cp\u003E@state_name offers online registration. This is often the fastest way to register to vote.\u00a0\u003C\/p\u003E\u003Cbody\u003E@state_online_link\n\u003C\/body\u003E\u003Ch2\u003ECheck registration\u003C\/h2\u003E\u003Cp\u003ESave time by checking first to see if you\u2019re already registered.\u003C\/p\u003E\u003Cbody\u003E@state_confirm_link\n\u003C\/body\u003E",
-    "omb_number": ""
+  "uuid": "216b8cd7-69e3-4947-aa2c-09dca7392a46",
+  "lang": "en",
+  "title": "@state_name registration options",
+  "instructions": "",
+  "body": "<p>Register for the first time or report a change of name or address to @state_name's election office.  </p><h2>Online registration</h2><p>@state_name offers online registration. This is often the fastest way to register to vote. </p><body>@state_online_link\n</body><h2>Check registration</h2><p>Save time by checking first to see if you’re already registered.</p><body>@state_confirm_link\n</body>",
+  "omb_number": ""
   },
   {
-    "uuid": "54aab86d-419f-45ec-947e-414490ddfb87",
-    "lang": "en",
-    "title": "@state_name registration options",
-    "instructions": "",
-    "body": "\u003Cp\u003ERegister for the first time or report a change of name or address to @state_name\u0027s election office.\u003C\/p\u003E\u003Ch2\u003EOnline Registration\u003C\/h2\u003E\u003Cp\u003E@state_name offers online registration. This is the fastest way to register to vote in your state.\u003C\/p\u003E\u003Cbody\u003E@state_online_link\n\u003C\/body\u003E\u003Ch2\u003EMail-in registration\u00a0\u003C\/h2\u003E\u003Cp\u003EIf you prefer to mail in your voter registration, you can complete a registration form on vote.gov. You\u2019ll need access to a printer, and you\u2019ll need to provide a postage stamp.\u003Cbr \/\u003E\u003Cbr \/\u003E\u003Cstrong\u003EFill out a web-based form on vote.gov.\u00a0\u003C\/strong\u003E\u003Cbr \/\u003EThis form walks you through each step with simple instructions. When you\u2019ve completed the form, you can save it to your computer, print and mail it.\u00a0\u003C\/p\u003E\u003Cbody\u003E@vote_nvrf_link\n\u003C\/body\u003E\u003Ch2\u003ECheck registration\u003C\/h2\u003E\u003Cp\u003ESave time by checking first to see if you\u2019re already registered.\u003C\/p\u003E\u003Cbody\u003E@state_confirm_link\n\u003C\/body\u003E",
-    "omb_number": ""
+  "uuid": "54aab86d-419f-45ec-947e-414490ddfb87",
+  "lang": "en",
+  "title": "@state_name registration options",
+  "instructions": "",
+  "body": "<p>Register for the first time or report a change of name or address to @state_name's election office.</p><h2>Online Registration</h2><p>@state_name offers online registration. This is the fastest way to register to vote in your state.</p><body>@state_online_link\n</body><h2>Mail-in registration </h2><p>If you prefer to mail in your voter registration, you can complete a registration form on vote.gov. You’ll need access to a printer, and you’ll need to provide a postage stamp.<br /><br /><strong>Fill out a web-based form on vote.gov. </strong><br />This form walks you through each step with simple instructions. When you’ve completed the form, you can save it to your computer, print and mail it. </p><body>@vote_nvrf_link\n</body><h2>Check registration</h2><p>Save time by checking first to see if you’re already registered.</p><body>@state_confirm_link\n</body>",
+  "omb_number": ""
   },
   {
-    "uuid": "dea1c47d-5b08-4235-9035-7063e5fab041",
-    "lang": "en",
-    "title": "@state_name registration options",
-    "instructions": "",
-    "body": "\u003Cp\u003ERegister for the first time or report a change of name or address to @state_name\u0027s election office.\u003C\/p\u003E\u003Ch2\u003EOnline registration\u003C\/h2\u003E\u003Cp\u003E@state_name offers online registration. This is often the fastest way to register to vote.\u003C\/p\u003E\u003Cbody\u003E@state_online_link\n\u003C\/body\u003E\u003Ch2\u003EMail-in registration\u003C\/h2\u003E\u003Cp\u003EYou\u2019ll need access to a printer, and you\u2019ll need to provide a postage stamp.\u003C\/p\u003E\u003Cp\u003E\u003Cstrong\u003EDownload a PDF form on your state website.\u00a0\u003C\/strong\u003E\u00a0\u003Cbr \/\u003EDownload the PDF and either fill it out on your computer or print it and fill out by hand, then mail it.\u00a0\u003C\/p\u003E\u003Cbody\u003E@state_mailin_link\n\u003C\/body\u003E\u003Ch2\u003ECheck registration\u003C\/h2\u003E\u003Cp\u003ESave time by checking first to see if you\u2019re already registered.\u003C\/p\u003E\u003Cbody\u003E@state_confirm_link\n\u003C\/body\u003E",
-    "omb_number": ""
+  "uuid": "dea1c47d-5b08-4235-9035-7063e5fab041",
+  "lang": "en",
+  "title": "@state_name registration options",
+  "instructions": "",
+  "body": "<p>Register for the first time or report a change of name or address to @state_name's election office.</p><h2>Online registration</h2><p>@state_name offers online registration. This is often the fastest way to register to vote.</p><body>@state_online_link\n</body><h2>Mail-in registration</h2><p>You’ll need access to a printer, and you’ll need to provide a postage stamp.</p><p><strong>Download a PDF form on your state website. </strong> <br />Download the PDF and either fill it out on your computer or print it and fill out by hand, then mail it. </p><body>@state_mailin_link\n</body><h2>Check registration</h2><p>Save time by checking first to see if you’re already registered.</p><body>@state_confirm_link\n</body>",
+  "omb_number": ""
   },
   {
-    "uuid": "086a212d-4f75-47e8-aad6-24eadc4a559f",
-    "lang": "en",
-    "title": "@state_name registration options",
-    "instructions": "",
-    "body": "\u003Cp\u003E\u00a0\u003C\/p\u003E\u003Cp\u003ERegister for the first time or report a change of name or address to @state_name\u0027s election office.\u003C\/p\u003E\u003Ch2\u003EOnline Registration\u003C\/h2\u003E\u003Cp\u003E@state_name offers online registration. This is the fastest way to register to vote in your state.\u003C\/p\u003E\u003Cbody\u003E@state_online_link\n\u003C\/body\u003E\u003Ch2\u003EMail-in registration\u00a0\u003C\/h2\u003E\u003Cp\u003EIf you prefer to mail in your voter registration, you have two options for filling out a registration form. For either option, you\u2019ll need access to a printer, and you\u2019ll need to provide a postage stamp.\u003Cbr \/\u003E\u003Cbr \/\u003E\u003Cstrong\u003EFill out a web-based form on vote.gov.\u00a0\u003C\/strong\u003E\u003Cbr \/\u003EThis form walks you through each step with simple instructions. When you\u2019ve completed the form, you can save it to your computer, print and mail it.\u00a0\u003C\/p\u003E\u003Cbody\u003E@vote_nvrf_link\n\u003C\/body\u003E\u003Cp\u003E\u003Cstrong\u003EDownload a PDF form on your state website.\u00a0\u003C\/strong\u003E\u003Cbr \/\u003EDownload the PDF and either fill it out on your computer or print it and fill out by hand, then mail it.\u00a0\u003C\/p\u003E\u003Cbody\u003E@state_mailin_link\n\u003C\/body\u003E\u003Cp\u003E\u00a0\u003C\/p\u003E\u003Ch2\u003ECheck registration\u003C\/h2\u003E\u003Cp\u003ESave time by checking first to see if you\u2019re already registered.\u003C\/p\u003E\u003Cbody\u003E@state_confirm_link\n\u003C\/body\u003E\u003Cp\u003E\u003Cbr \/\u003E\u00a0\u003C\/p\u003E",
-    "omb_number": ""
+  "uuid": "086a212d-4f75-47e8-aad6-24eadc4a559f",
+  "lang": "en",
+  "title": "@state_name registration options",
+  "instructions": "",
+  "body": "<p> </p><p>Register for the first time or report a change of name or address to @state_name's election office.</p><h2>Online Registration</h2><p>@state_name offers online registration. This is the fastest way to register to vote in your state.</p><body>@state_online_link\n</body><h2>Mail-in registration </h2><p>If you prefer to mail in your voter registration, you have two options for filling out a registration form. For either option, you’ll need access to a printer, and you’ll need to provide a postage stamp.<br /><br /><strong>Fill out a web-based form on vote.gov. </strong><br />This form walks you through each step with simple instructions. When you’ve completed the form, you can save it to your computer, print and mail it. </p><body>@vote_nvrf_link\n</body><p><strong>Download a PDF form on your state website. </strong><br />Download the PDF and either fill it out on your computer or print it and fill out by hand, then mail it. </p><body>@state_mailin_link\n</body><p> </p><h2>Check registration</h2><p>Save time by checking first to see if you’re already registered.</p><body>@state_confirm_link\n</body><p><br /> </p>",
+  "omb_number": ""
   },
   {
-    "uuid": "bfe1aeed-72b1-405e-b3e9-a94303611c71",
-    "lang": "en",
-    "title": "@state_name registration options",
-    "instructions": "",
-    "body": "\u003Cp\u003ERegister for the first time or report a change of name or address to @state_name\u0027s election office.\u003C\/p\u003E\u003Ch2\u003EMail-in registration\u003C\/h2\u003E\u003Cp\u003E@state_name doesn\u0027t currently offer online registration. You can use the state mail-in registration form. You will need access to a printer and you will need to provide a postage stamp.\u003C\/p\u003E\u003Cp\u003E\u003Cstrong\u003EDownload a PDF form on your state website.\u00a0\u003C\/strong\u003E\u003Cbr \/\u003EDownload the PDF and either fill it out on your computer or print it and fill out by hand, then mail it.\u00a0\u003C\/p\u003E\u003Cbody\u003E@state_mailin_link\n\u003C\/body\u003E\u003Ch2\u003ECheck registration\u003C\/h2\u003E\u003Cp\u003ESave time by checking first to see if you\u2019re already registered.\u003Cbr \/\u003E\u00a0\u003C\/p\u003E\u003Cbody\u003E@state_confirm_link\n\u003C\/body\u003E",
-    "omb_number": ""
+  "uuid": "bfe1aeed-72b1-405e-b3e9-a94303611c71",
+  "lang": "en",
+  "title": "@state_name registration options",
+  "instructions": "",
+  "body": "<p>Register for the first time or report a change of name or address to @state_name's election office.</p><h2>Mail-in registration</h2><p>@state_name doesn't currently offer online registration. You can use the state mail-in registration form. You will need access to a printer and you will need to provide a postage stamp.</p><p><strong>Download a PDF form on your state website. </strong><br />Download the PDF and either fill it out on your computer or print it and fill out by hand, then mail it. </p><body>@state_mailin_link\n</body><h2>Check registration</h2><p>Save time by checking first to see if you’re already registered.<br /> </p><body>@state_confirm_link\n</body>",
+  "omb_number": ""
   },
   {
-    "uuid": "295db8a2-6df6-4c81-825d-8d03064550f9",
-    "lang": "en",
-    "title": "@state_name registration options",
-    "instructions": "",
-    "body": "\u003Cp\u003ERegister for the first time or report a change of name or address to @state_name\u0027s election office.\u003C\/p\u003E\u003Ch2\u003EMail-in registration\u003C\/h2\u003E\u003Cp\u003E@state_name doesn\u0027t currently offer online registration. You have two options for filling out a registration form. For either option, you\u2019ll need access to a printer, and you\u2019ll need to provide a postage stamp.\u003Cbr \/\u003E\u00a0\u003C\/p\u003E\u003Cp\u003E\u003Cstrong\u003EFill out a web-based form on vote.gov.\u00a0\u003C\/strong\u003E\u003Cbr \/\u003EThis form walks you through each step with simple instructions. When you\u2019ve completed the form, you can save it to your computer, print and mail it. \u00a0\u003C\/p\u003E\u003Cbody\u003E@vote_nvrf_link\n\u003C\/body\u003E\u003Cp\u003E\u003Cstrong\u003EDownload a PDF form on your state website.\u00a0\u003C\/strong\u003E\u003Cbr \/\u003EDownload the PDF and either fill it out on your computer or print it and fill out by hand, then mail it.\u003C\/p\u003E\u003Cbody\u003E@state_mailin_link\n\u003C\/body\u003E\u003Ch2\u003ECheck registration\u003C\/h2\u003E\u003Cp\u003ESave time by checking first to see if you\u2019re already registered.\u003C\/p\u003E\u003Cbody\u003E@state_confirm_link\n\u003C\/body\u003E",
-    "omb_number": ""
+  "uuid": "295db8a2-6df6-4c81-825d-8d03064550f9",
+  "lang": "en",
+  "title": "@state_name registration options",
+  "instructions": "",
+  "body": "<p>Register for the first time or report a change of name or address to @state_name's election office.</p><h2>Mail-in registration</h2><p>@state_name doesn't currently offer online registration. You have two options for filling out a registration form. For either option, you’ll need access to a printer, and you’ll need to provide a postage stamp.<br /> </p><p><strong>Fill out a web-based form on vote.gov. </strong><br />This form walks you through each step with simple instructions. When you’ve completed the form, you can save it to your computer, print and mail it.  </p><body>@vote_nvrf_link\n</body><p><strong>Download a PDF form on your state website. </strong><br />Download the PDF and either fill it out on your computer or print it and fill out by hand, then mail it.</p><body>@state_mailin_link\n</body><h2>Check registration</h2><p>Save time by checking first to see if you’re already registered.</p><body>@state_confirm_link\n</body>",
+  "omb_number": ""
   },
   {
-    "uuid": "560cd01c-42d1-4f58-a702-372c2ff6bbd9",
-    "lang": "en",
-    "title": "Confirm your information",
-    "instructions": "\u003Cp\u003EWhen you print and sign or make your mark, make sure you agree with the following statements:\u00a0\u003C\/p\u003E\u003Cul\u003E\u003Cli\u003EI am a United States citizen.\u00a0\u003C\/li\u003E\u003Cli\u003EI meet the eligibility requirements of my state and subscribe to any oath required.\u00a0\u003C\/li\u003E\u003Cli\u003EThe information I have provided is true to the best of my knowledge under penalty of perjury. If I have provided false information, I may be fined, imprisoned, or (if not a U.S. citizen) deported from or refused entry to the United States.\u003C\/li\u003E\u003C\/ul\u003E",
-    "body": "\u003Cp\u003EBe sure to review your information carefully before continuing. Once you confirm, you will be able to print and mail your completed form.\u00a0\u003C\/p\u003E\u003Cp\u003E\u00a0\u003C\/p\u003E",
-    "omb_number": "OMB Control No. 3265-0015"
+  "uuid": "560cd01c-42d1-4f58-a702-372c2ff6bbd9",
+  "lang": "en",
+  "title": "Confirm your information",
+  "instructions": "<p>When you print and sign or make your mark, make sure you agree with the following statements: </p><ul><li>I am a United States citizen. </li><li>I meet the eligibility requirements of my state and subscribe to any oath required. </li><li>The information I have provided is true to the best of my knowledge under penalty of perjury. If I have provided false information, I may be fined, imprisoned, or (if not a U.S. citizen) deported from or refused entry to the United States.</li></ul>",
+  "body": "<p>Be sure to review your information carefully before continuing. Once you confirm, you will be able to print and mail your completed form. </p><p> </p>",
+  "omb_number": "OMB Control No. 3265-0015"
   },
   {
-    "uuid": "94eab1c9-8343-4747-94b4-08732a175614",
-    "lang": "en",
-    "title": "Before you get started with your @state_name registration",
-    "instructions": "",
-    "body": "\u003Ch2\u003EEligibility requirements\u003C\/h2\u003E\u003Cp\u003E\u003Cstrong\u003E* Required fields\u003C\/strong\u003E\u003C\/p\u003E\u003Cbody\u003E@reg_eligibility_desc\n\u003C\/body\u003E\u003Cbody\u003E@reg_confirm_eligibility\n\u003C\/body\u003E\u003Ch2\u003EMail-in registration deadline\u003C\/h2\u003E\u003Cp\u003ETake note of the deadline for mailing in your form. Make sure you send it to your state election office in time.\u003C\/p\u003E\u003Cbody\u003E@mail_deadline\n\u003C\/body\u003E",
-    "omb_number": ""
+  "uuid": "94eab1c9-8343-4747-94b4-08732a175614",
+  "lang": "en",
+  "title": "Before you get started with your @state_name registration",
+  "instructions": "",
+  "body": "<h2>Eligibility requirements</h2><p><strong>* Required fields</strong></p><body>@reg_eligibility_desc\n</body><body>@reg_confirm_eligibility\n</body><h2>Mail-in registration deadline</h2><p>Take note of the deadline for mailing in your form. Make sure you send it to your state election office in time.</p><body>@mail_deadline\n</body>",
+  "omb_number": ""
   },
   {
-    "uuid": "b3299979-e26c-4885-a949-e1a2c27de91b",
-    "lang": "en",
-    "title": "Let\u2019s get started with your @state_name voting registration",
-    "instructions": "",
-    "body": "\u003Cp\u003ERegister for the first time or report a change to your registration. Complete your voter registration by answering a few questions. It should take you between 5 to 10 minutes.\u003C\/p\u003E\u003Ch2\u003ESelect an option below to continue.\u003C\/h2\u003E",
-    "omb_number": ""
+  "uuid": "b3299979-e26c-4885-a949-e1a2c27de91b",
+  "lang": "en",
+  "title": "Let’s get started with your @state_name voting registration",
+  "instructions": "",
+  "body": "<p>Register for the first time or report a change to your registration. Complete your voter registration by answering a few questions. It should take you between 5 to 10 minutes.</p><h2>Select an option below to continue.</h2>",
+  "omb_number": ""
   },
   {
-    "uuid": "2c597df4-53b6-4ef5-8301-7817b04e1099",
-    "lang": "en",
-    "title": "National Voter Registration Form: @state_name",
-    "instructions": "",
-    "body": "\u003Cp\u003E\u003Cstrong\u003EReminder:\u003C\/strong\u003E If you close this window, your information will be lost and you\u0027ll have to restart the process. You\u0027ll be able to check your answers before printing your completed form.\u003Cbr \/\u003E\u003Cbr \/\u003E\u003Cstrong\u003E* Required fields\u003C\/strong\u003E\u003C\/p\u003E",
-    "omb_number": "OMB Control No. 3265-0015"
+  "uuid": "2c597df4-53b6-4ef5-8301-7817b04e1099",
+  "lang": "en",
+  "title": "National Voter Registration Form: @state_name",
+  "instructions": "",
+  "body": "<p><strong>Reminder:</strong> If you close this window, your information will be lost and you'll have to restart the process. You'll be able to check your answers before printing your completed form.<br /><br /><strong>* Required fields</strong></p>",
+  "omb_number": "OMB Control No. 3265-0015"
   },
   {
-    "uuid": "e3461b9a-e0b1-4157-ad4a-13f3835a101c",
-    "lang": "en",
-    "title": "Register to vote",
-    "instructions": "",
-    "body": "\u003Cp\u003EAll states except North Dakota require that you register before voting in an election. The process can be a little different for each state. Select your state or territory from the dropdown menu below to see your registration options.\u003C\/p\u003E\u003Cp\u003E\u003Cstrong\u003E* Required fields\u003C\/strong\u003E\u003C\/p\u003E\u003Ch2\u003EGet started by selecting your state\u003C\/h2\u003E\u003Cbody\u003E@state_selector\n\u003C\/body\u003E\u003Cp\u003E\u003Cbr \/\u003E\u003Cstrong\u003EAre you living outside of the United States?\u003C\/strong\u003E\u003Cbr \/\u003EIf you are a U.S. citizen living outside the U.S., a U.S. military service member, and\/or family of a military member, visit the \u003Ca class=\u0022usa-link--external\u0022 href=\u0022https:\/\/www.fvap.gov\/\u0022 target=\u0022_blank\u0022\u003EFederal Voter Assistance Program\u003C\/a\u003E for information on how to register to vote. You will need to complete the\u003Ca class=\u0022usa-link--external\u0022 href=\u0022https:\/\/www.fvap.gov\/fpca-privacy-notice\u0022 target=\u0022_blank\u0022\u003E Federal Post Card Application (FPCA)\u003C\/a\u003E.\u003C\/p\u003E",
-    "omb_number": ""
+  "uuid": "e3461b9a-e0b1-4157-ad4a-13f3835a101c",
+  "lang": "en",
+  "title": "Register to vote",
+  "instructions": "",
+  "body": "<p>All states except North Dakota require that you register before voting in an election. The process can be a little different for each state. Select your state or territory from the dropdown menu below to see your registration options.</p><p><strong>* Required fields</strong></p><h2>Get started by selecting your state</h2><body>@state_selector\n</body><p><br /><strong>Are you living outside of the United States?</strong><br />If you are a U.S. citizen living outside the U.S., a U.S. military service member, and/or family of a military member, visit the <a class=\"usa-link--external\" href=\"https://www.fvap.gov/\" target=\"_blank\">Federal Voter Assistance Program</a> for information on how to register to vote. You will need to complete the <a class=\"usa-link--external\" href=\"https://www.fvap.gov/fpca-privacy-notice\" target=\"_blank\">Federal Post Card Application (FPCA)</a>.</p>",
+  "omb_number": ""
   },
   {
-    "uuid": "229f283c-6a70-43f6-a80f-15cfa158f062",
-    "lang": "en",
-    "title": "Your @state_name mail-in registration form is complete and ready to print.",
-    "instructions": "",
-    "body": "\u003Cp\u003EYou\u2019re almost done! Click below to open your completed form in a new window, where you can download and print. Please note that the document will be 4-6 pages long, including the mail-in address and state instructions (extracted from the full NVRF) for you to review.\u003C\/p\u003E\u003Cp\u003EOnce printed, be sure to sign it, date it, put it in an envelope with the correct postage (usually one first-class stamp is enough), and mail it to your state election office. Be sure to include a copy of valid identification if required.\u003C\/p\u003E\u003Ch2\u003EMail your @state_name registration form to:\u003C\/h2\u003E\u003Cbody\u003E@mailing_address_inst\n\u003C\/body\u003E\u003Cp\u003EYou may also deliver the application in person to your local voter registration office.\u003C\/p\u003E\u003Chr \/\u003E\u003Ch2\u003EA few important notes\u003C\/h2\u003E\u003Ch3\u003EDon\u2019t forget to mail your form\u003C\/h3\u003E\u003Cp\u003ETake a minute to set a reminder for yourself to help remember to mail in your form. Add it to your calendar or jot it down on a notepad and put it on your fridge to help you remember.\u003C\/p\u003E\u003Ch3\u003EMake a plan to vote\u003C\/h3\u003E\u003Cp\u003E\u003Cstrong\u003EBe sure to bring valid ID with you if it\u2019s your first time voting in this state.\u003C\/strong\u003E\u003C\/p\u003E\u003Cp\u003EIf you are registering to vote for the first time in your jurisdiction and are mailing this registration application, Federal law requires you to show proof of identification the first time you vote.\u003C\/p\u003E\u003Cp\u003EProof of identification must be current and show your name and address. You may use:\u003C\/p\u003E\u003Cul\u003E\u003Cli\u003EValid photo identification\u00a0\u003C\/li\u003E\u003Cli\u003EUtility bill\u003C\/li\u003E\u003Cli\u003EBank statement\u003C\/li\u003E\u003Cli\u003EGovernment check or document\u003C\/li\u003E\u003Cli\u003EPaycheck\u00a0\u003C\/li\u003E\u003C\/ul\u003E\u003Ch3\u003EProtect your personal information\u003C\/h3\u003E\u003Cp\u003EAre you on a public device? After you\u0027ve downloaded or printed your form, close your browser window to ensure your information cannot be seen by others.\u003C\/p\u003E\u003Cp\u003E\u003Cstrong\u003EExplore USA.gov\u0027s resources on \u003C\/strong\u003E\u003Ca href=\u0022https:\/\/www.usa.gov\/how-to-vote\u0022\u003E\u003Cstrong\u003Ehow to vote\u003C\/strong\u003E\u003C\/a\u003E\u003Cstrong\u003E.\u003C\/strong\u003E\u003C\/p\u003E",
-    "omb_number": "OMB Control No. 3265-0015"
+  "uuid": "229f283c-6a70-43f6-a80f-15cfa158f062",
+  "lang": "en",
+  "title": "Your @state_name mail-in registration form is complete and ready to print.",
+  "instructions": "",
+  "body": "<p>You’re almost done! Click below to open your completed form in a new window, where you can download and print. Please note that the document will be 4-6 pages long, including the mail-in address and state instructions (extracted from the full NVRF) for you to review.</p><p>Once printed, be sure to sign it, date it, put it in an envelope with the correct postage (usually one first-class stamp is enough), and mail it to your state election office. Be sure to include a copy of valid identification if required.</p><h2>Mail your @state_name registration form to:</h2><body>@mailing_address_inst\n</body><p>You may also deliver the application in person to your local voter registration office.</p><hr /><h2>A few important notes</h2><h3>Don’t forget to mail your form</h3><p>Take a minute to set a reminder for yourself to help remember to mail in your form. Add it to your calendar or jot it down on a notepad and put it on your fridge to help you remember.</p><h3>Make a plan to vote</h3><p><strong>Be sure to bring valid ID with you if it’s your first time voting in this state.</strong></p><p>If you are registering to vote for the first time in your jurisdiction and are mailing this registration application, Federal law requires you to show proof of identification the first time you vote.</p><p>Proof of identification must be current and show your name and address. You may use:</p><ul><li>Valid photo identification </li><li>Utility bill</li><li>Bank statement</li><li>Government check or document</li><li>Paycheck </li></ul><h3>Protect your personal information</h3><p>Are you on a public device? After you've downloaded or printed your form, close your browser window to ensure your information cannot be seen by others.</p><p><strong>Explore USA.gov's resources on </strong><a href=\"https://www.usa.gov/how-to-vote\"><strong>how to vote</strong></a><strong>.</strong></p>",
+  "omb_number": "OMB Control No. 3265-0015"
   }
 ]
