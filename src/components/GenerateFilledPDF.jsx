@@ -87,7 +87,6 @@ const GenerateFilledPDF = async function (formData,pagesKept) {
     lastName2.setText(formData.prev_last_name);
 
     //Dropdown to checkbox/radio logic for suffix
-    console.log(formData.prev_suffix)
     if(formData.prev_suffix){
         suffix2.select(formData.prev_suffix);
     }
