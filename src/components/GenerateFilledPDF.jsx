@@ -137,11 +137,8 @@ const GenerateFilledPDF = async function (formData,pagesKept) {
     prevZipcode.setText(formData.prev_zip_code);
 
     //(3) Identification
-    //Utah special case
-    if(formData.state === "Utah" && formData.ssn_number) {
-        idNumber.setText("None, " + formData.ssn_number);
     //No id or ssn
-    } else if ((formData.id_number === '') && (formData.ssn_number === '')) {
+    if ((formData.id_number === '') && (formData.ssn_number === '')) {
         idNumber.setText("None");
     //Both id and ssn
     } else if ((formData.id_number != '') && (formData.ssn_number != '')) {
