@@ -14,7 +14,7 @@ it('Validate Update Registration', () => {
   // cy.get('[class="usa-link usa-link--external"]').should('have.attr','target','_blank')
 
 // go to next page
-cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
+cy.get('[class="usa-button next-button mobile-width"]').click()
 
 // check eligibility page
 // verify that user CANNOT move forward with out checking box
@@ -147,7 +147,7 @@ cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
 // identification
 // * check that user can not move forward without selecting an option
 cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click().click()
-cy.get('[class="error-text text-bold"]').should('be.visible')
+cy.get('[class="error-text"]').should('be.visible')
 
 // * state driver's license number
 cy.get('[class="usa-select"]').select("State driver's license number")
@@ -206,7 +206,7 @@ it('Validate New Registration', () => {
   // cy.get('[class="usa-link usa-link--external"]').should('have.attr','target','_blank')
 
 // go to next page
-cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
+cy.get('[class="usa-button next-button mobile-width"]').click()
 
 // check eligibility page
 // verify that user CANNOT move forward with out checking box
@@ -334,7 +334,7 @@ cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
 // identification
 // * check that user can not move forward without selecting an option
 cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click().click()
-cy.get('[class="error-text text-bold"]').should('be.visible')
+cy.get('[class="error-text"]').should('be.visible')
 
 // * state driver's license number
 cy.get('[class="usa-select"]').select("State driver's license number")
