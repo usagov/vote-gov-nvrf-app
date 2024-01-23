@@ -10,14 +10,6 @@ const GenerateFilledPDF = async function (formData,pagesKept) {
     // Get the form containing all the fields
     const form = pdfDoc.getForm()
 
-    //Optional - print the names of all form fields
-    /*const fields = form.getFields()
-    fields.forEach(field => {
-    const type = field.constructor.name
-    const name = field.getName()
-    console.log(`${type}: ${name}`)
-    })*/
-
     //-------- Get PDF Fields by machine name ------------------
     const citizen = form.getRadioGroup('citizen');
     const eighteenYearsOld = form.getRadioGroup('eighteen_years');
@@ -170,12 +162,8 @@ const GenerateFilledPDF = async function (formData,pagesKept) {
     let pageCount = totalPages;
     const pagesKeptArray = pagesKept.split(',');
     for(let i = 0; i < totalPages; i++){
-        /*console.log(`i: ${i}`);
-        console.log(`Total page count: ${pageCount}`);
-        console.log(pagesKeptArray.includes(i));*/
         if(!pagesKeptArray.includes(i.toString())){
             pdfDoc.removePage(i - shift);
-            // console.log("page removed");
             shift++;
             pageCount--;
         }
@@ -185,8 +173,6 @@ const GenerateFilledPDF = async function (formData,pagesKept) {
     const pdfBytes = await pdfDoc.save()
 
     // Trigger the browser to download the PDF document
-    //download(pdfBytes, `national_voter_registration_form_${formData.state}.pdf`, "application/pdf");
-    //open(URL.createObjectURL(new Blob(pdfBytes, {type: "application/pdf"})));
     var blobURL = URL.createObjectURL(new Blob([pdfBytes], {type: 'application/pdf'}));
     window.open(blobURL);
 }
