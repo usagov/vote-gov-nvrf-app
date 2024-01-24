@@ -17,19 +17,13 @@ const GenerateFilledPDF = async function (formData,pagesKept) {
     const firstName = form.getTextField('first_name');
     const middleNames = form.getTextField('middle_names');
     const lastName = form.getTextField('last_name');
-    const jrsrSuffix = form.getRadioGroup('suffix');
-    const secondSuffix = form.getCheckBox('suffix_II');
-    const thirdSuffix = form.getCheckBox('suffix_III');
-    const fourthSuffix = form.getCheckBox('suffix_IV');
+    const suffix = form.getRadioGroup('suffix');
 
     const title2 =  form.getRadioGroup('salutation_2');
     const firstName2 = form.getTextField('first_name_2');
     const middleNames2 = form.getTextField('middle_names_2');
     const lastName2 = form.getTextField('last_name_2');
-    const jrsrSuffix2 = form.getRadioGroup('suffix_2');
-    const secondSuffix2 = form.getCheckBox('suffix_2_II');
-    const thirdSuffix2 = form.getCheckBox('suffix_2_III');
-    const fourthSuffix2 = form.getCheckBox('suffix_2_IV');
+    const suffix2 = form.getRadioGroup('suffix_2');
 
     const dobMonth = form.getTextField('dob_month');
     const dobDay = form.getTextField('dob_day');
@@ -72,16 +66,8 @@ const GenerateFilledPDF = async function (formData,pagesKept) {
     lastName.setText(formData.last_name);
 
     //Dropdown to checkbox/radio logic for suffix
-    if (formData.suffix === 'II') {
-        secondSuffix.check();
-    } else if (formData.suffix === 'III') {
-        thirdSuffix.check();
-    } else if (formData.suffix === 'IV') {
-        fourthSuffix.check();
-    } else if (formData.suffix === 'Jr.') {
-        jrsrSuffix.select('Jr');
-    } else if (formData.suffix === 'Sr.') {
-        jrsrSuffix.select('Sr');
+    if(formData.suffix){
+        suffix.select(formData.suffix);
     }
 
     //Previous Name
@@ -93,16 +79,8 @@ const GenerateFilledPDF = async function (formData,pagesKept) {
     lastName2.setText(formData.prev_last_name);
 
     //Dropdown to checkbox/radio logic for suffix
-    if (formData.prev_suffix === 'II') {
-        secondSuffix2.check();
-    } else if (formData.prev_suffix === 'III') {
-        thirdSuffix2.check();
-    } else if (formData.prev_suffix === 'IV') {
-        fourthSuffix2.check();
-    } else if (formData.prev_suffix === 'Jr.') {
-        jrsrSuffix2.select('Jr_2');
-    } else if (formData.prev_suffix === 'Sr.') {
-        jrsrSuffix2.select('Sr_2');
+    if(formData.prev_suffix){
+        suffix2.select(formData.prev_suffix);
     }
 
     //Date of Birth, Phone, Race
