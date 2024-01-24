@@ -1,6 +1,7 @@
 import ByMail from "./RegType/ByMail";
 import ByMailStateOnly from "./RegType/ByMailStateOnly";
 import Online from "./RegType/Online";
+import OnlineNoStateMail from "./RegType/OnlineNoStateMail";
 import OnlineOnly from "./RegType/OnlineOnly";
 import OnlineNoNVRF from "./RegType/OnlineNoNvrf";
 import NotNeeded from "./RegType/NotNeeded";
@@ -16,6 +17,7 @@ function RegistrationOptions(props) {
 
     if (content && navContent) {
         const onlineContent = content.find(item => item.uuid === "086a212d-4f75-47e8-aad6-24eadc4a559f");
+        const onlineNoStateMailContent = content.find(item => item.uuid === "54aab86d-419f-45ec-947e-414490ddfb87");
         const onlineOnlyContent = content.find(item => item.uuid === "216b8cd7-69e3-4947-aa2c-09dca7392a46");
         const onlineNoNvrfContent = content.find(item => item.uuid === "dea1c47d-5b08-4235-9035-7063e5fab041");
         const mailContent = content.find(item => item.uuid === "295db8a2-6df6-4c81-825d-8d03064550f9");
@@ -28,9 +30,16 @@ function RegistrationOptions(props) {
 
             <BackButton type={'button'} onClick={props.handlePrev} text={navContent.back.select_state}/>
             <GridContainer containerSize={'tablet'} className={['usa-prose', 'margin-top-5']}>
-                {(regType === 'online' && acceptsNVRF === '1') &&
+                {(regType === 'online' && acceptsNVRF === '1' && props.stateData.mail_reg_url != "") &&
                     <Online
                         content={onlineContent}
+                        navContent={props.navContent}
+                        stateData={props.stateData}
+                        handleNext={props.handleNext}
+                    />}
+                {(regType === 'online' && acceptsNVRF === '1' && props.stateData.mail_reg_url === "") &&
+                    <OnlineNoStateMail
+                        content={onlineNoStateMailContent}
                         navContent={props.navContent}
                         stateData={props.stateData}
                         handleNext={props.handleNext}
