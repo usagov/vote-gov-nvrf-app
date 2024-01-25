@@ -31,8 +31,6 @@ function Identification(props){
     const [handleErrors, setHandleErrors] = useState({
         id_selection: false,
         id_number: false,
-        issue_date: false,
-        expire_date: false,
         id_ssn: false,
         id_none: false
     })
