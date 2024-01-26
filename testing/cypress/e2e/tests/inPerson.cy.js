@@ -204,7 +204,7 @@ cy.get('@open').should('have.been.calledOnce')
 
 })
 
-it.only('Validate New Registration', () => {
+it('Validate New Registration', () => {
       // check that state link opens in new tab
   // * will need to add this back in when links are updated
   // cy.get('[class="usa-link usa-link--external"]').should('have.attr','target','_blank')
@@ -332,11 +332,11 @@ cy.get('[data-testid="textInput"]').type(data.idNumber)
 // Validate that fields have correct data
   cy.get('[data-testid="textInput"]').should('have.value', data.idNumber)
 // !come back to this when bug is fixed 
-// // * state id number
-// cy.get('[class="usa-select"]').then(dropDown => {
-//   cy.get(dropDown[0]).select("State non-driver ID")
-// })
-// cy.get('[data-testid="textInput"]').type(data.idNumber)
+// * state id number
+cy.get('[class="usa-select"]').then(dropDown => {
+  cy.get(dropDown[0]).select("State non-driver ID")
+})
+cy.get('[data-testid="textInput"]').type(data.idNumber)
 
 // Validate that fields have correct data
   cy.get('[data-testid="textInput"]').should('have.value', data.idNumber)

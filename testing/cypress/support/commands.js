@@ -17,7 +17,7 @@ Cypress.Commands.add('completeForm', () => {
 const data = require("../fixtures/data.json");
 
 // go to next page
-cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
+cy.get('[class="usa-button next-button mobile-width"]').click()
 
 // check eligibility page
 cy.get('[class="usa-checkbox__label"]').click()

@@ -191,7 +191,7 @@ cy.get('[data-testid="button"]').then(btn => {
   cy.get(btn[5]).click()
 })
 
-cy.get('[class="grid-col-11 usa-prose"]').should('contain.text', 'Your Alaska mail-in registration form is complete and ready to print.')
+cy.get('[class="grid-col-11 usa-prose padding-left-2"]').should('contain.text', 'Your Alaska mail-in registration form is complete and ready to print.')
 // * check that download opens in new window
 cy.get('[class="usa-button"]').then(btn => {
   cy.get(btn[1]).click()
@@ -378,7 +378,7 @@ cy.get('[data-testid="button"]').then(btn => {
   cy.get(btn[5]).click()
 })
 
-cy.get('[class="grid-col-11 usa-prose"]').should('contain.text', 'Your Alaska mail-in registration form is complete and ready to print.')
+cy.get('[class="grid-col-11 usa-prose padding-left-2"]').should('contain.text', 'Your Alaska mail-in registration form is complete and ready to print.')
 
 // * check that download opens in new window
 cy.get('[class="usa-button"]').then(btn => {
