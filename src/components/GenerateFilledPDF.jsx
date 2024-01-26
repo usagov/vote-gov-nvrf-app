@@ -10,14 +10,6 @@ const GenerateFilledPDF = async function (formData,pagesKept) {
     // Get the form containing all the fields
     const form = pdfDoc.getForm()
 
-    //Optional - print the names of all form fields
-    /*const fields = form.getFields()
-    fields.forEach(field => {
-    const type = field.constructor.name
-    const name = field.getName()
-    console.log(`${type}: ${name}`)
-    })*/
-
     //-------- Get PDF Fields by machine name ------------------
     const citizen = form.getRadioGroup('citizen');
     const eighteenYearsOld = form.getRadioGroup('eighteen_years');
@@ -25,19 +17,13 @@ const GenerateFilledPDF = async function (formData,pagesKept) {
     const firstName = form.getTextField('first_name');
     const middleNames = form.getTextField('middle_names');
     const lastName = form.getTextField('last_name');
-    const jrsrSuffix = form.getRadioGroup('suffix');
-    const secondSuffix = form.getCheckBox('suffix_II');
-    const thirdSuffix = form.getCheckBox('suffix_III');
-    const fourthSuffix = form.getCheckBox('suffix_IV');
+    const suffix = form.getRadioGroup('suffix');
 
     const title2 =  form.getRadioGroup('salutation_2');
     const firstName2 = form.getTextField('first_name_2');
     const middleNames2 = form.getTextField('middle_names_2');
     const lastName2 = form.getTextField('last_name_2');
-    const jrsrSuffix2 = form.getRadioGroup('suffix_2');
-    const secondSuffix2 = form.getCheckBox('suffix_2_II');
-    const thirdSuffix2 = form.getCheckBox('suffix_2_III');
-    const fourthSuffix2 = form.getCheckBox('suffix_2_IV');
+    const suffix2 = form.getRadioGroup('suffix_2');
 
     const dobMonth = form.getTextField('dob_month');
     const dobDay = form.getTextField('dob_day');
@@ -80,16 +66,8 @@ const GenerateFilledPDF = async function (formData,pagesKept) {
     lastName.setText(formData.last_name);
 
     //Dropdown to checkbox/radio logic for suffix
-    if (formData.suffix === 'II') {
-        secondSuffix.check();
-    } else if (formData.suffix === 'III') {
-        thirdSuffix.check();
-    } else if (formData.suffix === 'IV') {
-        fourthSuffix.check();
-    } else if (formData.suffix === 'Jr.') {
-        jrsrSuffix.select('Jr');
-    } else if (formData.suffix === 'Sr.') {
-        jrsrSuffix.select('Sr');
+    if(formData.suffix){
+        suffix.select(formData.suffix);
     }
 
     //Previous Name
@@ -101,16 +79,8 @@ const GenerateFilledPDF = async function (formData,pagesKept) {
     lastName2.setText(formData.prev_last_name);
 
     //Dropdown to checkbox/radio logic for suffix
-    if (formData.prev_suffix === 'II') {
-        secondSuffix2.check();
-    } else if (formData.prev_suffix === 'III') {
-        thirdSuffix2.check();
-    } else if (formData.prev_suffix === 'IV') {
-        fourthSuffix2.check();
-    } else if (formData.prev_suffix === 'Jr.') {
-        jrsrSuffix2.select('Jr_2');
-    } else if (formData.prev_suffix === 'Sr.') {
-        jrsrSuffix2.select('Sr_2');
+    if(formData.prev_suffix){
+        suffix2.select(formData.prev_suffix);
     }
 
     //Date of Birth, Phone, Race
@@ -145,11 +115,8 @@ const GenerateFilledPDF = async function (formData,pagesKept) {
     prevZipcode.setText(formData.prev_zip_code);
 
     //(3) Identification
-    //Utah special case
-    if(formData.state === "Utah" && formData.ssn_number) {
-        idNumber.setText("None, " + formData.ssn_number);
     //No id or ssn
-    } else if ((formData.id_number === '') && (formData.ssn_number === '')) {
+    if ((formData.id_number === '') && (formData.ssn_number === '')) {
         idNumber.setText("None");
     //Both id and ssn
     } else if ((formData.id_number != '') && (formData.ssn_number != '')) {
@@ -170,12 +137,8 @@ const GenerateFilledPDF = async function (formData,pagesKept) {
     let pageCount = totalPages;
     const pagesKeptArray = pagesKept.split(',');
     for(let i = 0; i < totalPages; i++){
-        /*console.log(`i: ${i}`);
-        console.log(`Total page count: ${pageCount}`);
-        console.log(pagesKeptArray.includes(i));*/
         if(!pagesKeptArray.includes(i.toString())){
             pdfDoc.removePage(i - shift);
-            // console.log("page removed");
             shift++;
             pageCount--;
         }
@@ -185,8 +148,6 @@ const GenerateFilledPDF = async function (formData,pagesKept) {
     const pdfBytes = await pdfDoc.save()
 
     // Trigger the browser to download the PDF document
-    //download(pdfBytes, `national_voter_registration_form_${formData.state}.pdf`, "application/pdf");
-    //open(URL.createObjectURL(new Blob(pdfBytes, {type: "application/pdf"})));
     var blobURL = URL.createObjectURL(new Blob([pdfBytes], {type: 'application/pdf'}));
     window.open(blobURL);
 }
