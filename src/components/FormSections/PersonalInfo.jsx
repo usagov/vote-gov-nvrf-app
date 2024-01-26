@@ -82,7 +82,7 @@ function PersonalInfo(props){
                     <Label className="text-bold" htmlFor="title-select">
                         {titleField.label}
                     <Dropdown className="radius-md" id="title-select" name="title-select" value={props.fieldData.title} onChange={props.saveFieldData('title')} autoComplete="off">
-                        <option>- Select -{' '}</option>
+                        <option value={''}>- Select -{' '}</option>
                         {titleField.options.map((item, index) => (
                             <option key={index} value={item.value}>{item.key}</option>
                         ))}
@@ -158,8 +158,8 @@ function PersonalInfo(props){
                     <Grid tablet={{ col: 6 }}>
                     <Label className="text-bold" htmlFor="suffix-select">
                         {suffixField.label}
-                    <Dropdown id="suffix-select" className="radius-md" name="suffix-select" value={props.fieldData.suffix} onChange={props.saveFieldData('suffix')} autoComplete="off" required={parseInt(nameFieldState.required)}>
-                        <option>- Select -{' '}</option>
+                    <Dropdown id="suffix-select" className="radius-md" name="suffix-select" value={props.fieldData.suffix} onChange={props.saveFieldData('suffix')} autoComplete="off">
+                        <option value={''}>- Select -{' '}</option>
                         {suffixField.options.map((item, index) => (
                             <option key={index} value={item.value}>{item.key}</option>
                         ))}
@@ -366,7 +366,7 @@ function PersonalInfo(props){
             <Label className="text-bold" htmlFor="title-select-2">
                 {prevTitleField.label}
             <Dropdown id="title-select-2" className="radius-md" name="title-select-2" value={props.fieldData.prev_title} onChange={props.saveFieldData('prev_title')} autoComplete="off">
-                <option>- Select -{' '}</option>
+                <option value={''}>- Select -{' '}</option>
                 {prevTitleField.options.map((item, index) => (
                     <option key={index} value={item.value}>{item.key}</option>
                 ))}
@@ -442,8 +442,8 @@ function PersonalInfo(props){
             <Grid tablet={{ col: 6 }}>
             <Label className="text-bold" htmlFor="suffix-select-2">
                 {prevSuffixField.label}
-            <Dropdown id="suffix-select-2" className="radius-md" name="suffix-select-2" value={props.fieldData.prev_suffix} onChange={props.saveFieldData('prev_suffix')} autoComplete="off" required={parseInt(nameFieldState.required)}>
-                <option>- Select -{' '}</option>
+            <Dropdown id="suffix-select-2" className="radius-md" name="suffix-select-2" value={props.fieldData.prev_suffix} onChange={props.saveFieldData('prev_suffix')} autoComplete="off">
+                <option value={''}>- Select -{' '}</option>
                 {prevSuffixField.options.map((item, index) => (
                     <option key={index} value={item.value}>{item.key}</option>
                 ))}
