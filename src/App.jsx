@@ -49,6 +49,8 @@ function App() {
 
   const setStepFocus = () => {
     scrollToTop.focus();
+    // scrollToTop.touchend();
+    return;
   }
 
   const handleNext = () => {
