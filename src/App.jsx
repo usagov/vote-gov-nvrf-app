@@ -48,7 +48,7 @@ function App() {
   }
 
   const setStepFocus = () => {
-    scrollToTop.focus();
+    scrollToTop.scrollIntoView();
   }
 
   const handleNext = () => {
