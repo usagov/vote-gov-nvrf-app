@@ -8,6 +8,7 @@ import {fetchData, sanitizeDOM} from './components/HelperFunctions/JsonHelper.js
 import { HelmetProvider } from "react-helmet-async";
 import {getFieldValue} from "./components/HelperFunctions/fieldParser";
 import {GridContainer} from "@trussworks/react-uswds";
+import * as string from './strings.json';
 
 function App() {
 
@@ -32,7 +33,7 @@ function App() {
   const [formStep, setFormStep] = useState(1);
 
   const lastUpdatedSanitized = sanitizeDOM(stateData.nvrf_last_updated_date);
-  const lastUpdatedText = "@state_name information last updated ";
+  const lastUpdatedText = (string.lastUpdated);
   const scrollToTop = document.getElementById('scroll-to-top');
 
   //Confirm eligibility checkbox controls
@@ -174,7 +175,7 @@ function App() {
                     {lastUpdatedText.replace("@state_name", stateData.name)}
                     <span dangerouslySetInnerHTML= {{__html: lastUpdatedSanitized}}/>
                  </span>
-                  <div><a href="privacy" target="_blank">Privacy policy</a></div>
+                  <div><a href="privacy" target="_blank">{(string.privacyPolicy)}</a></div>
                 </div>
                 </GridContainer>
               }

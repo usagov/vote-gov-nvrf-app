@@ -4,6 +4,8 @@ import { checkForErrors } from './HelperFunctions/ValidateField';
 import NextButton from './NextButton';
 import { getFieldError, getFieldLabel } from './HelperFunctions/fieldParser';
 import {sanitizeDOM} from "./HelperFunctions/JsonHelper";
+import * as string from '../strings.json';
+
 
 function StateSelection(props) {
     const content = props.content;
@@ -43,7 +45,7 @@ function StateSelection(props) {
                                 }}
                                 onBlur={(e) => setHandleErrors({ state_selected: checkForErrors(e, 'check state selection') })}
                             >
-                                <option value="">{"Select your state or territory"}</option>
+                                <option value="">{(string.select)}</option>
                                 {statesList.map(
                                     state => <option key={state} value={state}>{state}</option>
                                 )}

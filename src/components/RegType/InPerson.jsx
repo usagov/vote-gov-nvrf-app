@@ -1,6 +1,7 @@
 import { Icon } from '@trussworks/react-uswds';
 import {renderToStaticMarkup} from "react-dom/server";
 import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
+import * as string from '../../strings.json';
 
 function InPerson(props) {
     const content = props.content;
@@ -11,7 +12,7 @@ function InPerson(props) {
             {stateContent.election_website_url &&
                 <p>
                     <a href={stateContent.election_website_url} className="usa-button" target="_blank">
-                        <span>{"Learn more about your voting options"}</span>
+                        <span>{(string.learnMore)}</span>
                         <Icon.Launch title="External link opens new window" style={{margin: "-3px -3px -3px 4px"}}/>
                     </a>
                 </p>
@@ -27,7 +28,7 @@ function InPerson(props) {
             <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: contentBodyProcessed}}/>
 
             <div className={'margin-top-5'}>
-                <a href={"https://vote.gov"}>{"Back to Vote.gov"}</a>
+                <a href={"https://vote.gov"}>{(string.backBtn)}</a>
             </div>
 
         </>

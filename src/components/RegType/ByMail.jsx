@@ -2,6 +2,7 @@ import { Icon } from '@trussworks/react-uswds';
 import NextButton from '../NextButton';
 import {renderToStaticMarkup} from "react-dom/server";
 import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
+import * as string from '../../strings.json';
 
 function ByMail(props) {
     const content = props.content;
@@ -15,7 +16,7 @@ function ByMail(props) {
         const stateMailinLink = () => (
             <p>
                 <a href={stateContent.mail_reg_url} className="usa-button" target="_blank" title="Opens a new PDF window">
-                    <span>{"Go to the PDF form on %state_name%'s website".replace("%state_name%", props.stateData.name)}</span>
+                    <span>{(string.stateName).replace("%state_name%", props.stateData.name)}</span>
                     <Icon.Launch title="External link opens new window" style={{margin: "-3px -3px -3px 4px"}}/>
                 </a>
             </p>
@@ -24,7 +25,7 @@ function ByMail(props) {
         const checkRegLink = () => (
             <p>
                 <a href={stateContent.election_website_url} className="usa-button" target="_blank">
-                    <span>{"Check your registration"}</span>
+                    <span>{(string.checkReg)}</span>
                     <Icon.Launch title="External link opens new window" style={{margin: "-3px -3px -3px 4px"}}/>
                 </a>
             </p>

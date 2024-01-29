@@ -1,5 +1,6 @@
 import {Alert, Button, Checkbox} from '@trussworks/react-uswds';
 import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
+import * as string from '../../strings.json';
 
 function Confirmation(props) {
     const headings = props.headings;
@@ -12,8 +13,8 @@ function Confirmation(props) {
     const prevMailAddress = fieldData.mail_street_address + fieldData.mail_apt_num + fieldData.mail_city + fieldData.mail_state + fieldData.mail_zip_code;
 
     //field data overrides for confirm page printing only
-    const fieldDataOverride_race = (fieldData.race === '') ? "Not required for your state" : fieldData.race;
-    const fieldDataOverride_party = (fieldData.party_choice === '') ? "Not required for your state" : fieldData.party_choice;
+    const fieldDataOverride_race = (fieldData.race === '') ? (string.notRequired) : fieldData.race;
+    const fieldDataOverride_party = (fieldData.party_choice === '') ? (string.notRequired) : fieldData.party_choice;
     const fieldDataOverride_state = props.stateData.name;
     fieldData.state = fieldDataOverride_state;
 

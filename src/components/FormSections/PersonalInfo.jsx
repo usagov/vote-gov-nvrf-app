@@ -2,6 +2,7 @@ import { Label, TextInput, Dropdown, Checkbox, Grid, Fieldset } from '@trusswork
 import React, { useState } from "react";
 import { restrictType, checkForErrors, jumpTo } from '../HelperFunctions/ValidateField';
 import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
+import * as string from '../../strings.json';
 
 function PersonalInfo(props){
     const headings = props.headings;
@@ -65,7 +66,7 @@ function PersonalInfo(props){
         <h2>{headings.step_label_1}</h2>
 
         {changeRegistrationVisible && (
-            <Checkbox id="prev-name-change" name="prev-name-change" checked={props.previousName} onChange={props.onChangePreviousName} label={"I have legally changed my name since I last registered in this state."} />
+            <Checkbox id="prev-name-change" name="prev-name-change" checked={props.previousName} onChange={props.onChangePreviousName} label={(string.nameChange)} />
         )}
 
         <div className="usa-alert usa-alert--info" role="alert">
@@ -174,7 +175,7 @@ function PersonalInfo(props){
             {dobFieldState && (
             <Grid tablet={{ col: 5 }}>
                 <div className={(parseInt(dobFieldState.required) && handleErrors.dob) ? 'error-container' : ''}>
-                <Fieldset className="fieldset" legend={parseInt(dobFieldState.required) ? [<span className="text-bold">{dobField.label}</span>, <span key={1} className='required-text'>*</span>] : "Date of Birth"} style={{ marginTop:'30px'}}>
+                <Fieldset className="fieldset" legend={parseInt(dobFieldState.required) ? [<span className="text-bold">{dobField.label}</span>, <span key={1} className='required-text'>*</span>] : (string.dob)} style={{ marginTop:'30px'}}>
                         <span className="usa-hint" id="date-of-birth-hint">
                         {dobField.help_text}
                         </span>
@@ -189,7 +190,7 @@ function PersonalInfo(props){
                         >
                             <div data-testid="formGroup" className="usa-form-group usa-form-group--month">
                                 <label data-testid="label" className="usa-label" htmlFor="date_of_birth_month">
-                                    Month
+                                <span dangerouslySetInnerHTML= {{__html: string.month}}/>
                                 <input
                                     id="date_of_birth_month"
                                     className="usa-input radius-md"
@@ -213,7 +214,7 @@ function PersonalInfo(props){
                             </div>
                             <div data-testid="formGroup" className="usa-form-group usa-form-group--day">
                                 <label data-testid="label" className="usa-label" htmlFor="date_of_birth_day">
-                                    Day
+                                <span dangerouslySetInnerHTML= {{__html: string.day}}/>
                                 <input
                                     id="date_of_birth_day"
                                     className="usa-input radius-md"
@@ -237,7 +238,7 @@ function PersonalInfo(props){
                             </div>
                             <div data-testid="formGroup" className="usa-form-group usa-form-group--year">
                                 <label data-testid="label" className="usa-label" htmlFor="date_of_birth_year">
-                                    Year
+                                <span dangerouslySetInnerHTML= {{__html: string.year}}/>
                                 <input
                                     id="date_of_birth_year"
                                     className="usa-input radius-md"

@@ -1,6 +1,7 @@
 import { Button, Icon, Grid } from '@trussworks/react-uswds';
 import GenerateFilledPDF from '../GenerateFilledPDF';
 import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
+import * as string from '../../strings.json';
 
 function Delivery(props) {
     const content = props.content;
@@ -42,7 +43,7 @@ function Delivery(props) {
                 <div className={'usa-prose margin-top-2'} dangerouslySetInnerHTML= {{__html: mailingAddress }}/>
 
                 <Button onClick={() => GenerateFilledPDF(props.fieldData, props.stateData.nvrf_pages_list)} type="submit">
-                    <span>{"Open form in a new window"}</span>
+                    <span>{(string.newWindow)}</span>
                 </Button>
 
                 <div className={'usa-prose margin-top-4'} dangerouslySetInnerHTML= {{__html: deliveryBodyParts[1]}}/>
