@@ -190,7 +190,7 @@ function PersonalInfo(props){
                         >
                             <div data-testid="formGroup" className="usa-form-group usa-form-group--month">
                                 <label data-testid="label" className="usa-label" htmlFor="date_of_birth_month">
-                                <span dangerouslySetInnerHTML= {{__html: string.month}}/>
+                                {string.month}
                                 <input
                                     id="date_of_birth_month"
                                     className="usa-input radius-md"
@@ -214,7 +214,7 @@ function PersonalInfo(props){
                             </div>
                             <div data-testid="formGroup" className="usa-form-group usa-form-group--day">
                                 <label data-testid="label" className="usa-label" htmlFor="date_of_birth_day">
-                                <span dangerouslySetInnerHTML= {{__html: string.day}}/>
+                                    {string.day}
                                 <input
                                     id="date_of_birth_day"
                                     className="usa-input radius-md"
@@ -238,7 +238,7 @@ function PersonalInfo(props){
                             </div>
                             <div data-testid="formGroup" className="usa-form-group usa-form-group--year">
                                 <label data-testid="label" className="usa-label" htmlFor="date_of_birth_year">
-                                <span dangerouslySetInnerHTML= {{__html: string.year}}/>
+                                    {string.year}
                                 <input
                                     id="date_of_birth_year"
                                     className="usa-input radius-md"
