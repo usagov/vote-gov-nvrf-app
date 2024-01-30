@@ -16,7 +16,7 @@ function ByMail(props) {
         const stateMailinLink = () => (
             <p>
                 <a href={stateContent.mail_reg_url} className="usa-button" target="_blank" title="Opens a new PDF window">
-                    <span>{(string.stateName).replace("%state_name%", props.stateData.name)}</span>
+                    <span>{(string.stateName).replace("@state_name", props.stateData.name)}</span>
                     <Icon.Launch title="External link opens new window" style={{margin: "-3px -3px -3px 4px"}}/>
                 </a>
             </p>

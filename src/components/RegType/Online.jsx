@@ -16,7 +16,7 @@ function Online(props) {
         const stateOnlineLink = () => (
                 <p>
                     <a href={stateContent.registration_url} className="usa-button" target="_blank">
-                        <span>{(string.stateName).replace("%state_name%", stateContent.name)}</span>
+                        <span>{(string.stateName).replace("@state_name", stateContent.name)}</span>
                         <Icon.Launch title="External link opens new window" style={{margin: "-3px -3px -3px 4px"}}/>
                     </a>
                 </p>
@@ -25,7 +25,7 @@ function Online(props) {
         const stateMailinLink = () => (
             <p>
                 <a href={stateContent.mail_reg_url} className="usa-button" target="_blank" title="Opens a new PDF window">
-                    <span>{(string.stateName).replace("%state_name%", props.stateData.name)}</span>
+                    <span>{(string.stateName).replace("@state_name", props.stateData.name)}</span>
                     <Icon.Launch title="External link opens new window" style={{margin: "-3px -3px -3px 4px"}}/>
                 </a>
             </p>
