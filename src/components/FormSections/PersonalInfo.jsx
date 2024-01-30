@@ -47,18 +47,56 @@ function PersonalInfo(props){
         race: false
     })
 
-    const checkDateValues=()=> {
+    const checkDateValues = (type) => {
+      let month = props.fieldData.date_of_birth_month;
+      let day = props.fieldData.date_of_birth_day;
+      let year = props.fieldData.date_of_birth_year;
+      let yearStart = year.slice(0, 2);
+      let birthdate = year + '-' + month + '-' + day;
+      let age = Math.floor((new Date() - new Date(birthdate).getTime()) / 3.15576e+10)
+
+      if (type === "all") {
         let dobValues = [
-            props.fieldData.date_of_birth_month.length === 2,
-            props.fieldData.date_of_birth_day.length === 2,
-            props.fieldData.date_of_birth_year.length === 4
-        ]
+          month.length === 2,
+          day.length === 2,
+          year.length === 4,
+
+          month <= 12,
+          month >= 1,
+          day <= 31,
+          day >= 1,
+          yearStart <= 20,
+          yearStart >= 19,
+          age <= 110,
+          age >= 17
+        ];
+
         if (dobValues.includes(false)) {
-            setHandleErrors({ ...handleErrors, dob: (true) })
+          setHandleErrors({ ...handleErrors, dob: true });
         } else {
-            setHandleErrors({ ...handleErrors, dob: (false) })
+          setHandleErrors({ ...handleErrors, dob: false });
         }
-     }
+      } else if (type === "month") {
+        if (month > 12 || month < 1) {
+          setHandleErrors({ ...handleErrors, dob: true });
+        } else {
+          setHandleErrors({ ...handleErrors, dob: false });
+        }
+      } else if (type === "day") {
+        if (day > 31 || day < 1) {
+          setHandleErrors({ ...handleErrors, dob: true });
+        } else {
+          setHandleErrors({ ...handleErrors, dob: false });
+        }
+      } else if (type === "year") {
+        if (age > 110 || age < 17) {
+          setHandleErrors({ ...handleErrors, dob: true });
+        } else {
+          setHandleErrors({ ...handleErrors, dob: false });
+        }
+      }
+    };
+
 
     return (
         <>
@@ -185,8 +223,8 @@ function PersonalInfo(props){
                             autoComplete="off"
                             required={parseInt(dobFieldState.required)}
                             data-testid="dateInputGroup"
-                            onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) checkDateValues(); }}
-                        >
+                            onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) checkDateValues('all'); }}
+                            >
                             <div data-testid="formGroup" className="usa-form-group usa-form-group--month">
                                 <label data-testid="label" className="usa-label" htmlFor="date_of_birth_month">
                                     Month
@@ -207,8 +245,8 @@ function PersonalInfo(props){
                                     onInput={props.saveFieldData('date_of_birth_month')}
                                     onKeyUp={(e) => jumpTo(e, 'date_of_birth_day')}
                                     onKeyDown={(e) => restrictType(e, 'number')}
-                                    onBlur={(e) => props.dateFormat(e, 'date_of_birth_month')}
-                                />
+                                    onBlur={(e) => {props.dateFormat(e, 'date_of_birth_month'), checkDateValues('month')}}
+                                    />
                             </label>
                             </div>
                             <div data-testid="formGroup" className="usa-form-group usa-form-group--day">
@@ -231,8 +269,8 @@ function PersonalInfo(props){
                                     onInput={props.saveFieldData('date_of_birth_day')}
                                     onKeyUp={(e) => jumpTo(e, 'date_of_birth_year')}
                                     onKeyDown={(e) => restrictType(e, 'number')}
-                                    onBlur={(e) => props.dateFormat(e, 'date_of_birth_day')}
-                                />
+                                    onBlur={(e) => {props.dateFormat(e, 'date_of_birth_day'), checkDateValues('day')}}
+                                    />
                                 </label>
                             </div>
                             <div data-testid="formGroup" className="usa-form-group usa-form-group--year">
@@ -254,6 +292,7 @@ function PersonalInfo(props){
                                     value={props.fieldData.date_of_birth_year}
                                     onInput={props.saveFieldData('date_of_birth_year')}
                                     onKeyDown={(e) => restrictType(e, 'number')}
+                                    onBlur={(e) => checkDateValues('year')}
                                 />
                                 </label>
                             </div>
