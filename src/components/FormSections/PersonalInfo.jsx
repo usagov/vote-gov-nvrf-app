@@ -119,7 +119,14 @@ function PersonalInfo(props){
                     <Grid tablet={{ col: 2 }}>
                     <Label className="text-bold" htmlFor="title-select">
                         {titleField.label}
-                    <Dropdown className="radius-md" id="title-select" name="title-select" value={props.fieldData.title} onChange={props.saveFieldData('title')} autoComplete="off">
+                    <Dropdown 
+                        className="radius-md" id="title-select" name="title-select" 
+                        value={props.fieldData.title} 
+                        onChange={props.saveFieldData('title')} 
+                        autoComplete="off"
+                        onInvalid={(e) => e.target.setCustomValidity(' ')}
+                        onInput={(e) => e.target.setCustomValidity('')}
+                        >
                         <option>- Select -{' '}</option>
                         {titleField.options.map((item, index) => (
                             <option key={index} value={item.value}>{item.key}</option>
@@ -143,6 +150,8 @@ function PersonalInfo(props){
                             value={props.fieldData.first_name}
                             onChange={props.saveFieldData('first_name')}
                             onBlur={(e) => setHandleErrors({ ...handleErrors, first_name: checkForErrors(e, 'check value exists') })}
+                            onInvalid={(e) => e.target.setCustomValidity(' ')}
+                            onInput={(e) => e.target.setCustomValidity('')}
                             />
                         {(parseInt(nameFieldState.required) && handleErrors.first_name) &&
                             <span id="first-name-error" role="alert" className='error-text'>
@@ -162,7 +171,9 @@ function PersonalInfo(props){
                             name="middle-name"
                             value={props.fieldData.middle_name}
                             onChange={props.saveFieldData('middle_name')}
-                            type="text" autoComplete="off"/>
+                            type="text" autoComplete="off"
+                            onInvalid={(e) => e.target.setCustomValidity(' ')}
+                            onInput={(e) => e.target.setCustomValidity('')}/>
                         </Label>
                     </Grid>
                 </Grid>
@@ -183,6 +194,8 @@ function PersonalInfo(props){
                             value={props.fieldData.last_name}
                             onChange={props.saveFieldData('last_name')}
                             onBlur={(e) => setHandleErrors({ ...handleErrors, last_name: checkForErrors(e, 'check value exists') })}
+                            onInvalid={(e) => e.target.setCustomValidity(' ')}
+                            onInput={(e) => e.target.setCustomValidity('')}
                             />
                         {(parseInt(nameFieldState.required) && handleErrors.last_name) &&
                             <span id="last-name-error" role="alert" className='error-text'>
@@ -196,7 +209,15 @@ function PersonalInfo(props){
                     <Grid tablet={{ col: 6 }}>
                     <Label className="text-bold" htmlFor="suffix-select">
                         {suffixField.label}
-                    <Dropdown id="suffix-select" className="radius-md" name="suffix-select" value={props.fieldData.suffix} onChange={props.saveFieldData('suffix')} autoComplete="off" required={parseInt(nameFieldState.required)}>
+                    <Dropdown 
+                        id="suffix-select" className="radius-md" name="suffix-select" 
+                        value={props.fieldData.suffix} 
+                        onChange={props.saveFieldData('suffix')} 
+                        autoComplete="off" 
+                        required={parseInt(nameFieldState.required)}
+                        onInvalid={(e) => e.target.setCustomValidity(' ')}
+                        onInput={(e) => e.target.setCustomValidity('')}
+                        >
                         <option>- Select -{' '}</option>
                         {suffixField.options.map((item, index) => (
                             <option key={index} value={item.value}>{item.key}</option>
@@ -244,8 +265,9 @@ function PersonalInfo(props){
                                     value={props.fieldData.date_of_birth_month}
                                     onInput={props.saveFieldData('date_of_birth_month')}
                                     onKeyUp={(e) => jumpTo(e, 'date_of_birth_day')}
-                                    onKeyDown={(e) => restrictType(e, 'number')}
+                                    onKeyDown={(e) => {restrictType(e, 'number'), e.target.setCustomValidity('')}}
                                     onBlur={(e) => {props.dateFormat(e, 'date_of_birth_month'), checkDateValues('month')}}
+                                    onInvalid={(e) => e.target.setCustomValidity(' ')}
                                     />
                             </label>
                             </div>
@@ -268,8 +290,9 @@ function PersonalInfo(props){
                                     value={props.fieldData.date_of_birth_day}
                                     onInput={props.saveFieldData('date_of_birth_day')}
                                     onKeyUp={(e) => jumpTo(e, 'date_of_birth_year')}
-                                    onKeyDown={(e) => restrictType(e, 'number')}
+                                    onKeyDown={(e) => {restrictType(e, 'number'), e.target.setCustomValidity('')}}
                                     onBlur={(e) => {props.dateFormat(e, 'date_of_birth_day'), checkDateValues('day')}}
+                                    onInvalid={(e) => e.target.setCustomValidity(' ')}
                                     />
                                 </label>
                             </div>
@@ -291,8 +314,9 @@ function PersonalInfo(props){
                                     maxLength={4}
                                     value={props.fieldData.date_of_birth_year}
                                     onInput={props.saveFieldData('date_of_birth_year')}
-                                    onKeyDown={(e) => restrictType(e, 'number')}
+                                    onKeyDown={(e) => {restrictType(e, 'number'), e.target.setCustomValidity('')}}
                                     onBlur={(e) => checkDateValues('year')}
+                                    onInvalid={(e) => e.target.setCustomValidity(' ')}
                                 />
                                 </label>
                             </div>
@@ -325,6 +349,8 @@ function PersonalInfo(props){
                             value={props.fieldData.phone_number}
                             onChange={props.saveFieldData('phone_number')}
                             onBlur={(e) => setHandleErrors({ ...handleErrors, phone_number: checkForErrors(e, 'check value length') })}
+                            onInvalid={(e) => e.target.setCustomValidity(' ')}
+                            onInput={(e) => e.target.setCustomValidity('')}
                         />
                         {((telephoneFieldState.required === "1")&& handleErrors.phone_number) &&
                             <span id="phone-number-error" rol="alert" className='error-text'>
@@ -363,6 +389,8 @@ function PersonalInfo(props){
                         value={props.fieldData.email_address}
                         onChange={props.saveFieldData('email_address')}
                         onBlur={(e) => setHandleErrors({ ...handleErrors, email_address: checkForErrors(e, 'check value length') })}
+                        onInvalid={(e) => e.target.setCustomValidity(' ')}
+                        onInput={(e) => e.target.setCustomValidity('')}
                     />
                 </div>
             </Grid>
@@ -380,7 +408,9 @@ function PersonalInfo(props){
                             onChange={props.saveFieldData('race')} 
                             autoComplete="off"
                             required={parseInt(raceFieldState.required)}
-                            onBlur={(e) => setHandleErrors({ ...handleErrors, race: checkForErrors(e, 'check value exists') })}>
+                            onBlur={(e) => setHandleErrors({ ...handleErrors, race: checkForErrors(e, 'check value exists') })}
+                            onInvalid={(e) => e.target.setCustomValidity(' ')}
+                            onInput={(e) => e.target.setCustomValidity('')}>
                                 <option value="">- Select -{' '}</option>
                                 {raceField.options.map((item, index) => (
                                     <option key={index} value={item.value}>{item.key}</option>
@@ -404,7 +434,14 @@ function PersonalInfo(props){
             <Grid tablet={{ col: 2 }}>
             <Label className="text-bold" htmlFor="title-select-2">
                 {prevTitleField.label}
-            <Dropdown id="title-select-2" className="radius-md" name="title-select-2" value={props.fieldData.prev_title} onChange={props.saveFieldData('prev_title')} autoComplete="off">
+            <Dropdown 
+                id="title-select-2" className="radius-md" name="title-select-2" 
+                value={props.fieldData.prev_title} 
+                onChange={props.saveFieldData('prev_title')} 
+                autoComplete="off"
+                onInvalid={(e) => e.target.setCustomValidity(' ')}
+                onInput={(e) => e.target.setCustomValidity('')}
+                >
                 <option>- Select -{' '}</option>
                 {prevTitleField.options.map((item, index) => (
                     <option key={index} value={item.value}>{item.key}</option>
@@ -428,6 +465,8 @@ function PersonalInfo(props){
                     value={props.fieldData.prev_first_name}
                     onChange={props.saveFieldData('prev_first_name')}
                     onBlur={(e) => setHandleErrors({ ...handleErrors, prev_first_name: checkForErrors(e, 'check value exists') })}
+                    onInvalid={(e) => e.target.setCustomValidity(' ')}
+                    onInput={(e) => e.target.setCustomValidity('')}
                 />
                 {(parseInt(nameFieldState.required) && handleErrors.prev_first_name) &&
                     <span id="prev-first-name-error" role="alert" className='error-text'>
@@ -447,7 +486,9 @@ function PersonalInfo(props){
                     name="middle-name-2"
                     value={props.fieldData.prev_middle_name}
                     onChange={props.saveFieldData('prev_middle_name')}
-                    type="text" autoComplete="off"/>
+                    type="text" autoComplete="off"
+                    onInvalid={(e) => e.target.setCustomValidity(' ')}
+                    onInput={(e) => e.target.setCustomValidity('')}/>
                 </Label>
             </Grid>
         </Grid>
@@ -468,6 +509,8 @@ function PersonalInfo(props){
                     value={props.fieldData.prev_last_name}
                     onChange={props.saveFieldData('prev_last_name')}
                     onBlur={(e) => setHandleErrors({ ...handleErrors, prev_last_name: checkForErrors(e, 'check value exists') })}
+                    onInvalid={(e) => e.target.setCustomValidity(' ')}
+                    onInput={(e) => e.target.setCustomValidity('')}
                     />
                 {(parseInt(nameFieldState.required) && handleErrors.prev_last_name) &&
                     <span id="prev-last-name-error" role="alert" className='error-text'>
@@ -481,7 +524,14 @@ function PersonalInfo(props){
             <Grid tablet={{ col: 6 }}>
             <Label className="text-bold" htmlFor="suffix-select-2">
                 {prevSuffixField.label}
-            <Dropdown id="suffix-select-2" className="radius-md" name="suffix-select-2" value={props.fieldData.prev_suffix} onChange={props.saveFieldData('prev_suffix')} autoComplete="off" required={parseInt(nameFieldState.required)}>
+            <Dropdown 
+                id="suffix-select-2" className="radius-md" name="suffix-select-2" 
+                value={props.fieldData.prev_suffix} onChange={props.saveFieldData('prev_suffix')} 
+                autoComplete="off" 
+                required={parseInt(nameFieldState.required)}
+                onInvalid={(e) => e.target.setCustomValidity(' ')}
+                onInput={(e) => e.target.setCustomValidity('')}
+                >
                 <option>- Select -{' '}</option>
                 {prevSuffixField.options.map((item, index) => (
                     <option key={index} value={item.value}>{item.key}</option>

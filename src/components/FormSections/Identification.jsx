@@ -65,6 +65,8 @@ function Identification(props){
                                 ...handleErrors,
                                 id_selection: checkForErrors(e, 'check value exists')
                             })}
+                            onInvalid={(e) => e.target.setCustomValidity(' ')}
+                            onInput={(e) => e.target.setCustomValidity('')}
                         >
                             <option key="default" value="">{"Select Identification"}</option>
                             {(driverIDFieldReq) && <option key="driver-id-num" value="driver-id-num">{driverLicenseField.label}</option>}
@@ -102,6 +104,8 @@ function Identification(props){
                                         ...handleErrors,
                                         id_number: checkForErrors(e, 'check value exists')
                                     })}
+                                    onInvalid={(e) => e.target.setCustomValidity(' ')}
+                                    onInput={(e) => e.target.setCustomValidity('')}
                                 />
                                 {handleErrors.id_number &&
                                     <span id="state-id-num-error" role="alert" className='error-text'>
@@ -128,6 +132,8 @@ function Identification(props){
                                         ...handleErrors,
                                         id_number: checkForErrors(e, 'check value exists')
                                     })}
+                                    onInvalid={(e) => e.target.setCustomValidity(' ')}
+                                    onInput={(e) => e.target.setCustomValidity('')}
                                 />
                                 {handleErrors.id_number &&
                                     <span id="state-id-num-error" role="alert" className='error-text'>
@@ -163,6 +169,8 @@ function Identification(props){
                             ...handleErrors,
                             id_ssn: checkForErrors(e, 'check value length')
                         })}
+                        onInvalid={(e) => e.target.setCustomValidity(' ')}
+                        onInput={(e) => e.target.setCustomValidity('')}
                     />
                     {handleErrors.id_ssn &&
                         <span id="ssn-input-error" role="alert" className='error-text'>
@@ -194,6 +202,8 @@ function Identification(props){
                             ...handleErrors,
                             id_ssn: checkForErrors(e, 'check value length')
                         })}
+                        onInvalid={(e) => e.target.setCustomValidity(' ')}
+                        onInput={(e) => e.target.setCustomValidity('')}
                     />
                     {handleErrors.id_ssn &&
                         <span id="ssn-input-error" role="alert" className='error-text'>

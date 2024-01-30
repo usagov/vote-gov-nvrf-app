@@ -42,6 +42,8 @@ function StateSelection(props) {
                                     props.getSelectedState(e.target.value)
                                 }}
                                 onBlur={(e) => setHandleErrors({ state_selected: checkForErrors(e, 'check state selection') })}
+                                onInvalid={(e) => e.target.setCustomValidity(' ')}
+                                onInput={(e) => e.target.setCustomValidity('')}
                             >
                                 <option value="">{"Select your state or territory"}</option>
                                 {statesList.map(

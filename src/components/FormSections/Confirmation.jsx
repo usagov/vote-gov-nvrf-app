@@ -173,6 +173,8 @@ function Confirmation(props) {
                     defaultChecked={props.hasAcknowledged}
                     label={getFieldLabel("73e74065-fd5a-43c0-907c-268120e34bc3")}
                     onChange={(e) => props.acknowledgeCheckbox(e.target.checked)}
+                    onInvalid={(e) => e.target.setCustomValidity(' ')}
+                    onInput={(e) => e.target.setCustomValidity('')}
                 />
                 {props.error &&
                     <span id="first-name-error" role="alert" className='error-text'>

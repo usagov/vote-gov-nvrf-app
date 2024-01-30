@@ -45,7 +45,9 @@ function PoliticalParty(props){
                             required={parseInt(partyFieldState.required)}
                             onChange={props.saveFieldData('party_choice')}
                             onKeyDown={(e) => restrictType(e, 'letters')}
-                            onBlur={(e) => setHandleErrors({ ...handleErrors, party_choice: checkForErrors(e, 'check value exists') })} />
+                            onBlur={(e) => setHandleErrors({ ...handleErrors, party_choice: checkForErrors(e, 'check value exists') })}
+                            onInvalid={(e) => e.target.setCustomValidity(' ')}
+                            onInput={(e) => e.target.setCustomValidity('')} />
                         {((partyFieldState.required === "1") && handleErrors.party_choice) &&
                             <span id="party-choice-error" role="alert" className='error-text'>
                                 {partyField.error_msg}

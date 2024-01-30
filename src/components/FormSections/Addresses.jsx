@@ -102,6 +102,8 @@ function Addresses(props){
                                 value={props.fieldData.street_address}
                                 onChange={props.saveFieldData('street_address')}
                                 onBlur={(e) => setHandleErrors({ ...handleErrors, street: checkForErrors(e, 'check value exists') })}
+                                onInvalid={(e) => e.target.setCustomValidity(' ')}
+                                onInput={(e) => e.target.setCustomValidity('')}
                                 />
                             {((parseInt(addressFieldsState.required)) && handleErrors.street) &&
                                 <span id="street-address-error" role="alert" className='error-text'>
@@ -125,6 +127,8 @@ function Addresses(props){
                             autoComplete="off"
                             value={props.fieldData.apt_num}
                             onChange={props.saveFieldData('apt_num')}
+                            onInvalid={(e) => e.target.setCustomValidity(' ')}
+                            onInput={(e) => e.target.setCustomValidity('')}
                         />
                         </Label>
                         </Grid>
@@ -147,6 +151,8 @@ function Addresses(props){
                                         onChange={props.saveFieldData('city')}
                                         onKeyDown={(e) => restrictType(e, 'letters')}
                                         onBlur={(e) => setHandleErrors({ ...handleErrors, city: checkForErrors(e, 'check value exists') })}
+                                        onInvalid={(e) => e.target.setCustomValidity(' ')}
+                                        onInput={(e) => e.target.setCustomValidity('')}
                                     />
                                     {((parseInt(addressFieldsState.required)) && handleErrors.city) &&
                                         <span id="city-error" role="alert" className='error-text'>
@@ -168,6 +174,8 @@ function Addresses(props){
                             autoComplete="off"
                             disabled={true}
                             required={(parseInt(addressFieldsState.required))}
+                            onInvalid={(e) => e.target.setCustomValidity(' ')}
+                            onInput={(e) => e.target.setCustomValidity('')}
                         />
                         </Label>
                         </Grid>
@@ -191,6 +199,8 @@ function Addresses(props){
                                 onChange={props.saveFieldData('zip_code')}
                                 onKeyDown={(e) => restrictType(e, 'number')}
                                 onBlur={(e) => setHandleErrors({ ...handleErrors, zip: checkForErrors(e, 'check value length') })}
+                                onInvalid={(e) => e.target.setCustomValidity(' ')}
+                                onInput={(e) => e.target.setCustomValidity('')}
                             />
                             {((parseInt(addressFieldsState.required)) && handleErrors.zip) &&
                                     <span id="zip-error" role="alert" className='error-text'>
@@ -232,6 +242,8 @@ function Addresses(props){
                                     value={props.fieldData.mail_street_address}
                                     onChange={props.saveFieldData('mail_street_address')}
                                     onBlur={(e) => setHandleErrors({ ...handleErrors, mail_street: checkForErrors(e, 'check value exists') })}
+                                    onInvalid={(e) => e.target.setCustomValidity(' ')}
+                                    onInput={(e) => e.target.setCustomValidity('')}
                                 />
                                 {((parseInt(addressFieldsState.required)) && handleErrors.mail_street) &&
                                     <span id="mail-street-error" role="alert" className='error-text'>
@@ -242,24 +254,6 @@ function Addresses(props){
                             </div>
                             </Grid>
                         </Grid>
-
-                        {/* This field is not present on the NVRF PDF */}
-                        {/*<Grid row gap>*/}
-                        {/*    <Grid tablet={{ col: 5 }}>*/}
-                        {/*    <Label className="text-bold" htmlFor="mail-apt">*/}
-                        {/*        {aptField.label}*/}
-                        {/*    <TextInput*/}
-                        {/*        id="mail-apt"*/}
-                        {/*        className="radius-md"*/}
-                        {/*        name="mail-apt"*/}
-                        {/*        type="text"*/}
-                        {/*        autoComplete="off"*/}
-                        {/*        value={props.fieldData.mail_apt_num}*/}
-                        {/*        onChange={props.saveFieldData('mail_apt_num')}*/}
-                        {/*    />*/}
-                        {/*    </Label>*/}
-                        {/*    </Grid>*/}
-                        {/*</Grid>*/}
 
                         <Grid row gap className={'flex-align-end'}>
                             <Grid tablet={{ col: true }}>
@@ -278,6 +272,8 @@ function Addresses(props){
                                             onChange={props.saveFieldData('mail_city')}
                                             onKeyDown={(e) => restrictType(e, 'letters')}
                                             onBlur={(e) => setHandleErrors({ ...handleErrors, mail_city: checkForErrors(e, 'check value exists') })}
+                                            onInvalid={(e) => e.target.setCustomValidity(' ')}
+                                            onInput={(e) => e.target.setCustomValidity('')}
                                         />
                                         {((parseInt(addressFieldsState.required)) && handleErrors.mail_city) &&
                                             <span id="mail-city-error" role="alert" className='error-text'>
@@ -302,6 +298,8 @@ function Addresses(props){
                                             state={props.fieldData.mail_state}
                                             saveState={props.saveFieldData('mail_state')}
                                             onBlur={(e) => {checkStateValue('mail_state'), setHandleErrors({ ...handleErrors, mail_state: checkForErrors(e, 'check value exists')})} }
+                                            onInvalid={(e) => e.target.setCustomValidity(' ')}
+                                            onInput={(e) => e.target.setCustomValidity('')}
                                         />
                                         {((parseInt(addressFieldsState.required)) && handleErrors.mail_state) &&
                                             <span id="mail-state-error" role="alert" className='error-text'>
@@ -331,6 +329,8 @@ function Addresses(props){
                                     onChange={props.saveFieldData('mail_zip_code')}
                                     onKeyDown={(e) => restrictType(e, 'number')}
                                     onBlur={(e) => setHandleErrors({ ...handleErrors, mail_zip: checkForErrors(e, 'check value length') })}
+                                    onInvalid={(e) => e.target.setCustomValidity(' ')}
+                                    onInput={(e) => e.target.setCustomValidity('')}
                                 />
                                 {((parseInt(addressFieldsState.required)) && handleErrors.mail_zip) &&
                                     <span id="mail-zip-error" role="alert" className='error-text'>
@@ -371,6 +371,8 @@ function Addresses(props){
                                     value={props.fieldData.prev_street_address}
                                     onChange={props.saveFieldData('prev_street_address')}
                                     onBlur={(e) => setHandleErrors({ ...handleErrors, prev_street: checkForErrors(e, 'check value exists') })}
+                                    onInvalid={(e) => e.target.setCustomValidity(' ')}
+                                    onInput={(e) => e.target.setCustomValidity('')}
                                 />
                                 {((parseInt(addressFieldsState.required)) && handleErrors.prev_street) &&
                                     <span id="prev-street-error" role="alert" className='error-text'>
@@ -394,6 +396,8 @@ function Addresses(props){
                                 autoComplete="off"
                                 value={props.fieldData.prev_apt_num}
                                 onChange={props.saveFieldData('prev_apt_num')}
+                                onInvalid={(e) => e.target.setCustomValidity(' ')}
+                                onInput={(e) => e.target.setCustomValidity('')}
                                 />
                             </Label>
                             </Grid>
@@ -416,6 +420,8 @@ function Addresses(props){
                                             onChange={props.saveFieldData('prev_city')}
                                             onKeyDown={(e) => restrictType(e, 'letters')}
                                             onBlur={(e) => setHandleErrors({ ...handleErrors, prev_city: checkForErrors(e, 'check value exists') })}
+                                            onInvalid={(e) => e.target.setCustomValidity(' ')}
+                                            onInput={(e) => e.target.setCustomValidity('')}
                                         />
                                         {((parseInt(addressFieldsState.required)) && handleErrors.prev_city) &&
                                             <span id="prev-city-error" role="alert" className='error-text'>
@@ -440,6 +446,8 @@ function Addresses(props){
                                         state={props.fieldData.prev_state}
                                         saveState={props.saveFieldData('prev_state')}
                                         onBlur={(e) => checkStateValue('prev_state')}
+                                        onInvalid={(e) => e.target.setCustomValidity(' ')}
+                                        onInput={(e) => e.target.setCustomValidity('')}
                                     />
                                     {((parseInt(addressFieldsState.required)) && handleErrors.prev_state) &&
                                         <span id="prev-state-error" role="alert" className='error-text'>
@@ -469,6 +477,8 @@ function Addresses(props){
                                     onChange={props.saveFieldData('prev_zip_code')}
                                     onKeyDown={(e) => restrictType(e, 'number')}
                                     onBlur={(e) => setHandleErrors({ ...handleErrors, prev_zip: checkForErrors(e, 'check value length') })}
+                                    onInvalid={(e) => e.target.setCustomValidity(' ')}
+                                    onInput={(e) => e.target.setCustomValidity('')}
                                 />
                                 {((parseInt(addressFieldsState.required)) && handleErrors.prev_zip) &&
                                     <span id="prev-zip-error" role="alert" className='error-text'>

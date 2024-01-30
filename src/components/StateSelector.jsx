@@ -13,6 +13,8 @@ function StateSelector(props) {
             disabled={props.disabled} 
             required={true}
             onBlur={props.onBlur}
+            onInvalid={(e) => e.target.setCustomValidity(' ')}
+            onInput={(e) => e.target.setCustomValidity('')}
         >
         <option value="">Select your state or territory</option>
             {props.statesList.map(

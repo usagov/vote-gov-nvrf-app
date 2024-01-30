@@ -52,6 +52,8 @@ function Eligibility(props) {
                             required={true}
                             defaultChecked={props.hasConfirmed}
                             onChange={(e) => props.confirmCheckbox(e.target.checked)}
+                            onInvalid={(e) => e.target.setCustomValidity(' ')}
+                            onInput={(e) => e.target.setCustomValidity('')}
                         />
 
                         {props.error &&
