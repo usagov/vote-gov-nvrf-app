@@ -3,8 +3,8 @@ import BackButton from './BackButton';
 import NextButton from "./NextButton";
 import StepsList from './RegType/StepsList';
 import { getFieldLabel, getFieldError } from './HelperFunctions/fieldParser';
-import DOMPurify from "dompurify";
 import {renderToStaticMarkup} from "react-dom/server";
+import {sanitizeDOM} from "./HelperFunctions/JsonHelper";
 
 function Eligibility(props) {
     let content = props.content;
@@ -16,9 +16,9 @@ function Eligibility(props) {
     content = content.find(item => item.uuid === "94eab1c9-8343-4747-94b4-08732a175614");
     const eligibility = fields.find(item => item.uuid === "39fc63ad-ed5a-4ad5-98d3-aa236c96c61c");
     const listContent = cards.find(item => item.uuid === "33a9859d-a62c-4f8e-9e92-5a70f529b62a");
-    const contentBody = DOMPurify.sanitize(content.body);
+    const contentBody = sanitizeDOM(content.body);
     const contentBodyParts = contentBody.split("@reg_confirm_eligibility");
-    const eligibilityInstructions = DOMPurify.sanitize(eligibility.instructions);
+    const eligibilityInstructions = sanitizeDOM(eligibility.instructions);
 
     const mailDeadline = () => (
         <ul>

@@ -8,10 +8,10 @@ import Confirmation from './FormSections/Confirmation';
 import Delivery from "./FormSections/Delivery";
 import PoliticalParty from './FormSections/PoliticalParty';
 import { phoneFormat, dateFormat } from './HelperFunctions/ValidateField';
-import DOMPurify from 'dompurify';
 import BackButton from './BackButton'
 import NextButton from './NextButton';
 import { Helmet } from "react-helmet-async";
+import {sanitizeDOM} from "./HelperFunctions/JsonHelper";
 
 
 function MultiStepForm(props) {
@@ -20,8 +20,8 @@ function MultiStepForm(props) {
     const fieldContent = props.fieldContent;
 
     const mainContent = content.find(item => item.uuid ==="2c597df4-53b6-4ef5-8301-7817b04e1099");
-    const mainContentTitle = DOMPurify.sanitize(mainContent.title);
-    const mainContentBody = DOMPurify.sanitize(mainContent.body);
+    const mainContentTitle = sanitizeDOM(mainContent.title);
+    const mainContentBody = sanitizeDOM(mainContent.body);
     const scrollToTop = document.getElementById('scroll-to-top');
 
     //Field data controls
@@ -166,21 +166,11 @@ function MultiStepForm(props) {
     const [idType, setIdType] = useState('')
     const saveIdType = (e) => {
         setIdType(e.target.value)
-        e.target.value === 'none' ?
-            setFieldData({
-                ...fieldData,
-                id_number: 'none',
-                ssn_number: '',
-                id_issue_date_month:'',
-                id_issue_date_day:'',
-                id_issue_date_year:'',
-                id_expire_date_month:'',
-                id_expire_date_day:'',
-                id_expire_date_year:''
-            })
-            :
-            setFieldData({ ...fieldData, id_number: '' });
-            setFieldData({ ...fieldData, ssn_number: '' });
+        setFieldData({
+            ...fieldData,
+            id_number: '',
+            ssn_number: '',
+        })
     }
     const [hasNoID, setHasNoID] = useState(false);
     const onChangeHasNoIdCheckbox = (e) => {

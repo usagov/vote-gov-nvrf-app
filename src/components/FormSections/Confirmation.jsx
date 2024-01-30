@@ -1,5 +1,5 @@
 import {Alert, Button, Checkbox} from '@trussworks/react-uswds';
-import DOMPurify from 'dompurify';
+import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
 
 function Confirmation(props) {
     const headings = props.headings;
@@ -21,8 +21,8 @@ function Confirmation(props) {
     const fieldDataOverride_id = ((fieldData.id_number === '') && (fieldData.ssn_number === '')) ? "none" : fieldData.id_number + " " + fieldData.ssn_number;
 
     const confirm = content.find(item => item.uuid === "560cd01c-42d1-4f58-a702-372c2ff6bbd9");
-    const confirmBody = DOMPurify.sanitize(confirm.body);
-    const confirmInstructions = DOMPurify.sanitize(confirm.instructions);
+    const confirmBody = sanitizeDOM(confirm.body);
+    const confirmInstructions = sanitizeDOM(confirm.instructions);
 
     const getFieldLabel = (uuid) => fields.find(item => item.uuid === uuid).label;
     const getFieldError = (uuid) => fields.find(item => item.uuid === uuid).error_msg;

@@ -4,11 +4,9 @@ import Eligibility from './components/Eligibility';
 import RegistrationOptions from './components/RegistrationOptions';
 import PathSelection from './components/PathSelection';
 import MultiStepForm from './components/MultiStepForm';
-import {fetchData} from './components/HelperFunctions/JsonHelper.jsx';
+import {fetchData, sanitizeDOM} from './components/HelperFunctions/JsonHelper.jsx';
 import { HelmetProvider } from "react-helmet-async";
 import {getFieldValue} from "./components/HelperFunctions/fieldParser";
-import DOMPurify from 'dompurify';
-import { renderToStaticMarkup } from 'react-dom/server';
 import {GridContainer} from "@trussworks/react-uswds";
 
 function App() {
@@ -33,7 +31,7 @@ function App() {
   const [registrationPath, setRegistrationPath] = useState('');
   const [formStep, setFormStep] = useState(1);
 
-  const lastUpdatedSanitized = DOMPurify.sanitize(stateData.nvrf_last_updated_date);
+  const lastUpdatedSanitized = sanitizeDOM(stateData.nvrf_last_updated_date);
   const lastUpdatedText = "@state_name information last updated ";
   const scrollToTop = document.getElementById('scroll-to-top');
 
@@ -157,7 +155,6 @@ function App() {
                 />}
             {step === 5 &&
                 <MultiStepForm
-                    // handleNext={handleNext}
                     handlePrev={handlePrev}
                     statesList={statesList}
                     state={selectedState}

@@ -1,11 +1,11 @@
 import { Icon } from '@trussworks/react-uswds';
-import DOMPurify from "dompurify";
 import {renderToStaticMarkup} from "react-dom/server";
+import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
 
 function InPerson(props) {
     const content = props.content;
     const stateContent = props.stateData;
-    const contentBody = DOMPurify.sanitize(content.body).replaceAll("@state_name", props.stateData.name);
+    const contentBody = sanitizeDOM(content.body).replaceAll("@state_name", props.stateData.name);
     const stateLinks = () => (
         <>
             {stateContent.election_website_url &&

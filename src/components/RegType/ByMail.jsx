@@ -1,7 +1,7 @@
 import { Icon } from '@trussworks/react-uswds';
 import NextButton from '../NextButton';
-import DOMPurify from "dompurify";
 import {renderToStaticMarkup} from "react-dom/server";
+import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
 
 function ByMail(props) {
     const content = props.content;
@@ -9,7 +9,7 @@ function ByMail(props) {
     const stateContent = props.stateData;
 
     if (content && navContent) {
-        const contentBody = DOMPurify.sanitize(content.body).replaceAll("@state_name", stateContent.name);
+        const contentBody = sanitizeDOM(content.body).replaceAll("@state_name", stateContent.name);
         const contentBodyParts = contentBody.split("@vote_nvrf_link")
 
         const stateMailinLink = () => (

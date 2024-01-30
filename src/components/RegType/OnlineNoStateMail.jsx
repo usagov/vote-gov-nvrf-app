@@ -3,13 +3,14 @@ import NextButton from '../NextButton';
 import {renderToStaticMarkup} from "react-dom/server";
 import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
 
-function OnlineOnly(props) {
+function OnlineNoStateMail(props) {
     const content = props.content;
     const navContent = props.navContent;
     const stateContent = props.stateData;
 
     if (content && navContent) {
-        let contentBody = sanitizeDOM(content.body).replaceAll("@state_name", stateContent.name);
+        const contentBody = sanitizeDOM(content.body).replaceAll("@state_name", stateContent.name);
+        const contentBodyParts = contentBody.split("@vote_nvrf_link");
 
         const stateOnlineLink = () => (
                 <p>
@@ -29,15 +30,18 @@ function OnlineOnly(props) {
             </p>
         );
 
-        const contentBodyProcessed = contentBody.replace("@state_online_link", renderToStaticMarkup(stateOnlineLink())).replace("@state_confirm_link", renderToStaticMarkup(checkRegLink()));
+        let contentBodyPartOne = contentBodyParts[0].replace("@state_online_link", renderToStaticMarkup(stateOnlineLink()));
+        let contentBodyPartTwo = contentBodyParts[1].replace("@state_confirm_link", renderToStaticMarkup(checkRegLink()));
 
-        return (
-            <>
+    return (
+        <>
             <h1>{content.title.replace("@state_name", stateContent.name)}</h1>
-            <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: contentBodyProcessed}}/>
-            </>
+            <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: contentBodyPartOne}}/>
+            <p><NextButton noMarginTop type={'submit'} onClick={props.handleNext} text={navContent.next.start}/></p>
+            <div className={'usa-prose'} style={{marginTop: "3rem"}} dangerouslySetInnerHTML= {{__html: contentBodyPartTwo}}/>
+        </>
         );
     }
 }
 
-export default OnlineOnly;
+export default OnlineNoStateMail;
