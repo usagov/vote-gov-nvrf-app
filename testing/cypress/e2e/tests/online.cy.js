@@ -14,7 +14,7 @@ it('Validate Update Registration', () => {
   // cy.get('[class="usa-link usa-link--external"]').should('have.attr','target','_blank')
 
 // go to next page
-cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
+cy.get('[class="usa-button next-button mobile-width"]').click()
 
 // check eligibility page
 // verify that user CANNOT move forward with out checking box
@@ -147,7 +147,7 @@ cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
 // identification
 // * check that user can not move forward without selecting an option
 cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click().click()
-cy.get('[class="error-text text-bold"]').should('be.visible')
+cy.get('[class="error-text"]').should('be.visible')
 
 // * state driver's license number
 cy.get('[class="usa-select"]').select("State driver's license number")
@@ -191,7 +191,7 @@ cy.get('[data-testid="button"]').then(btn => {
   cy.get(btn[5]).click()
 })
 
-cy.get('[class="grid-col-11 usa-prose"]').should('contain.text', 'Your Alaska mail-in registration form is complete and ready to print.')
+cy.get('[class="grid-col-11 usa-prose padding-left-2"]').should('contain.text', 'Your Alaska mail-in registration form is complete and ready to print.')
 // * check that download opens in new window
 cy.get('[class="usa-button"]').then(btn => {
   cy.get(btn[1]).click()
@@ -206,7 +206,7 @@ it('Validate New Registration', () => {
   // cy.get('[class="usa-link usa-link--external"]').should('have.attr','target','_blank')
 
 // go to next page
-cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
+cy.get('[class="usa-button next-button mobile-width"]').click()
 
 // check eligibility page
 // verify that user CANNOT move forward with out checking box
@@ -334,7 +334,7 @@ cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
 // identification
 // * check that user can not move forward without selecting an option
 cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click().click()
-cy.get('[class="error-text text-bold"]').should('be.visible')
+cy.get('[class="error-text"]').should('be.visible')
 
 // * state driver's license number
 cy.get('[class="usa-select"]').select("State driver's license number")
@@ -378,7 +378,7 @@ cy.get('[data-testid="button"]').then(btn => {
   cy.get(btn[5]).click()
 })
 
-cy.get('[class="grid-col-11 usa-prose"]').should('contain.text', 'Your Alaska mail-in registration form is complete and ready to print.')
+cy.get('[class="grid-col-11 usa-prose padding-left-2"]').should('contain.text', 'Your Alaska mail-in registration form is complete and ready to print.')
 
 // * check that download opens in new window
 cy.get('[class="usa-button"]').then(btn => {
