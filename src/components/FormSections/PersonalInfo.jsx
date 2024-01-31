@@ -2,13 +2,14 @@ import { Label, TextInput, Dropdown, Checkbox, Grid, Fieldset } from '@trusswork
 import React, { useState } from "react";
 import { restrictType, checkForErrors, jumpTo } from '../HelperFunctions/ValidateField';
 import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
-import * as string from '../../strings.json';
+// import * as string from '../../../public/data/en/strings.json';
 
 function PersonalInfo(props){
     const headings = props.headings;
     const fields = props.fieldContent;
     const changeRegistrationVisible = (props.registrationPath === 'update') ? true : false;
     const nvrfStateFields = props.stateData.nvrf_fields;
+    const stringContent = props.stringContent
 
     //Drupal field data
     const nameSectionField = fields.find(item => item.uuid === "8dda085c-edf3-4678-b30a-0a457699be46");
@@ -66,7 +67,7 @@ function PersonalInfo(props){
         <h2>{headings.step_label_1}</h2>
 
         {changeRegistrationVisible && (
-            <Checkbox id="prev-name-change" name="prev-name-change" checked={props.previousName} onChange={props.onChangePreviousName} label={(string.nameChange)} />
+            <Checkbox id="prev-name-change" name="prev-name-change" checked={props.previousName} onChange={props.onChangePreviousName} label={stringContent.nameChange} />
         )}
 
         <div className="usa-alert usa-alert--info" role="alert">

@@ -2,7 +2,7 @@ import { Icon } from '@trussworks/react-uswds';
 import NextButton from '../NextButton';
 import {renderToStaticMarkup} from "react-dom/server";
 import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
-import * as string from '../../strings.json';
+import * as string from '../../../public/data/en/strings.json';
 
 function ByMail(props) {
     const content = props.content;

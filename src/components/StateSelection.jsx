@@ -4,7 +4,7 @@ import { checkForErrors } from './HelperFunctions/ValidateField';
 import NextButton from './NextButton';
 import { getFieldError, getFieldLabel } from './HelperFunctions/fieldParser';
 import {sanitizeDOM} from "./HelperFunctions/JsonHelper";
-import * as string from '../strings.json';
+import * as string from '../../public/data/en/strings.json';
 
 
 function StateSelection(props) {

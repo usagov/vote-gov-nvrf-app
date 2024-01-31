@@ -2,7 +2,7 @@ import { Label, TextInput, Checkbox, Grid } from '@trussworks/react-uswds';
 import StateSelector from '../StateSelector';
 import React, { useState } from "react";
 import { restrictType, checkForErrors } from '../HelperFunctions/ValidateField';
-import * as string from '../../strings.json';
+import * as string from '../../../public/data/en/strings.json';
 
 
 function Addresses(props){
@@ -455,7 +455,7 @@ function Addresses(props){
                             <Grid tablet={{ col: 4 }}>
                             <div className={((parseInt(addressFieldsState.required)) && handleErrors.prev_zip) ? 'error-container' : ''}>
                                 <Label className="text-bold" htmlFor="prev-zip">{prevZipcodeField.label} {(addressFieldsState.required === "1") && <span className={'required-text'}>*</span>}</Label>
-                                <span className="usa-hint" id="prev-zip-hint">{(string.zip)}</span>
+                                <span className="usa-hint" id="prev-zip-hint">{(stringContent.zip)}</span>
                                 <TextInput
                                     id="prev-zip"
                                     className="radius-md"

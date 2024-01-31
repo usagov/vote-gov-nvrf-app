@@ -8,7 +8,7 @@ import {fetchData, sanitizeDOM} from './components/HelperFunctions/JsonHelper.js
 import { HelmetProvider } from "react-helmet-async";
 import {getFieldValue} from "./components/HelperFunctions/fieldParser";
 import {GridContainer} from "@trussworks/react-uswds";
-import * as string from './strings.json';
+// import * as string from '../public/data/en/strings.json';
 
 function App() {
 
@@ -17,6 +17,7 @@ function App() {
   const [navContent, setNavContent] = useState('');
   const [cards, setCards] = useState('');
   const [fieldContent, setFieldContent] = useState('')
+  const [stringContent, setStringContent] = useState('')
 
   useEffect(() => {
     fetchData("states.json", setStates);
@@ -24,6 +25,7 @@ function App() {
     fetchData("navigation.json", setNavContent);
     fetchData("cards.json", setCards);
     fetchData("fields.json", setFieldContent);
+    fetchData("strings.json", setStringContent)
   }, []);
 
   const [step, setStep] = useState(1);
@@ -33,7 +35,7 @@ function App() {
   const [formStep, setFormStep] = useState(1);
 
   const lastUpdatedSanitized = sanitizeDOM(stateData.nvrf_last_updated_date);
-  const lastUpdatedText = (string.lastUpdated);
+  const lastUpdatedText = (stringContent.lastUpdated);
   const scrollToTop = document.getElementById('scroll-to-top');
 
   //Confirm eligibility checkbox controls
@@ -90,7 +92,7 @@ function App() {
   };
 
   // Only render the markup if the data is loaded.
-  if (states && content && navContent && fieldContent) {
+  if (states && content && navContent && fieldContent && stringContent) {
 
     const statesList = []
     for (let i = 0; i < states.length; i++) {
@@ -118,6 +120,7 @@ function App() {
                     content={content}
                     navContent={navContent}
                     fieldContent={fieldContent}
+                    stringContent={stringContent}
                 />}
             {step === 2 &&
                 <RegistrationOptions

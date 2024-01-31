@@ -1,7 +1,7 @@
 import { Button, Icon, Grid } from '@trussworks/react-uswds';
 import GenerateFilledPDF from '../GenerateFilledPDF';
 import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
-import * as string from '../../strings.json';
+import * as string from '../../../public/data/en/strings.json';
 
 function Delivery(props) {
     const content = props.content;

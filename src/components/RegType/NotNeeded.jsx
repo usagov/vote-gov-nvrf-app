@@ -1,7 +1,7 @@
 import { Link, Icon } from '@trussworks/react-uswds';
 import {renderToStaticMarkup} from "react-dom/server";
 import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
-import * as string from '../../strings.json';
+import * as string from '../../../public/data/en/strings.json';
 
 function NotNeeded(props) {
     const content = props.content;

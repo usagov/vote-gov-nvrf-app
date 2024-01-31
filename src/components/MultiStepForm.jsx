@@ -12,7 +12,7 @@ import BackButton from './BackButton'
 import NextButton from './NextButton';
 import { Helmet } from "react-helmet-async";
 import {sanitizeDOM} from "./HelperFunctions/JsonHelper";
-import * as string from '../strings.json';
+import * as string from '../../public/data/en/strings.json';
 
 
 
@@ -20,6 +20,7 @@ function MultiStepForm(props) {
     const content = props.content;
     const navContent = props.navContent;
     const fieldContent = props.fieldContent;
+    const stringContent = props.stringContent
 
     const mainContent = content.find(item => item.uuid ==="2c597df4-53b6-4ef5-8301-7817b04e1099");
     const mainContentTitle = sanitizeDOM(mainContent.title);
@@ -278,6 +279,7 @@ function MultiStepForm(props) {
                         headings={navContent}
                         content={content}
                         fieldContent={fieldContent}
+                        stringContent={stringContent}
                     />
                 }
                 {step === 2 &&
@@ -298,6 +300,7 @@ function MultiStepForm(props) {
                         headings={navContent}
                         content={content}
                         fieldContent={fieldContent}
+                        stringContent={stringContent}
                     />
                 }
                 {step === 3 &&
@@ -316,6 +319,7 @@ function MultiStepForm(props) {
                         headings={navContent}
                         content={content}
                         fieldContent={fieldContent}
+                        stringContent={stringContent}
                     />
                 }
                 {step === 4 &&
@@ -329,6 +333,7 @@ function MultiStepForm(props) {
                         headings={navContent}
                         content={content}
                         fieldContent={fieldContent}
+                        stringContent={stringContent}
                     />
                 }
                 {step === 5 &&
@@ -347,6 +352,7 @@ function MultiStepForm(props) {
                         acknowledgeCheckbox={acknowledgeCheckbox}
                         checkboxValid={checkboxValid}
                         fieldContent={fieldContent}
+                        stringContent={stringContent}
                     />
                 }
                 {step === 6 &&
@@ -361,6 +367,7 @@ function MultiStepForm(props) {
                         handlePrev={handlePrev}
                         deliveryButtonSelected = {deliveryButtonSelected}
                         handleClickDeliveryButton = {handleClickDeliveryButton}
+                        stringContent={stringContent}
                     />
                 }
 

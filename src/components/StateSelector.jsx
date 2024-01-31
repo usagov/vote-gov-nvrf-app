@@ -1,5 +1,5 @@
 import { Dropdown } from '@trussworks/react-uswds';
-import * as string from '../strings.json';
+// import * as string from '../../public/data/en/strings.json';
 
 function StateSelector(props) {
     return (
