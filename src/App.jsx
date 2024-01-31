@@ -33,7 +33,7 @@ function App() {
 
   const lastUpdatedSanitized = sanitizeDOM(stateData.nvrf_last_updated_date);
   const lastUpdatedText = "@state_name information last updated ";
-  const scrollToTop = document.querySelector('#scroll-to-top');
+  const scrollToTop = document.getElementById('scroll-to-top');
 
   //Confirm eligibility checkbox controls
   const [hasConfirmed, setHasConfirmed] = useState(null);
@@ -48,10 +48,7 @@ function App() {
   }
 
   const setStepFocus = () => {
-    // scrollToTop.focus();
-    // scrollToTop.touchend();
-    // return;
-    scrollToTop.scrollTop()
+    scrollToTop.focus();
   }
 
   const handleNext = () => {

@@ -22,7 +22,7 @@ function MultiStepForm(props) {
     const mainContent = content.find(item => item.uuid ==="2c597df4-53b6-4ef5-8301-7817b04e1099");
     const mainContentTitle = sanitizeDOM(mainContent.title);
     const mainContentBody = sanitizeDOM(mainContent.body);
-    const scrollToTop = document.querySelector('#scroll-to-top');
+    const scrollToTop = document.getElementById('scroll-to-top');
 
     //Field data controls
     const [fieldData, setFieldData] = useState({
@@ -77,10 +77,7 @@ function MultiStepForm(props) {
     const [step, setStep] = useState(1);
 
     const setStepFocus = () => {
-        // scrollToTop.focus();
-        // scrollToTop.touchend();
-        // return;
-        scrollToTop.scrollTop()
+        scrollToTop.focus();
     }
 
     const handleNext = () => {
@@ -252,14 +249,7 @@ function MultiStepForm(props) {
     }
 
     return (
-        
         <>
-
-<a name="scroll-to-top"
-               id="scroll-to-top"
-               tabIndex={-1}
-               style={{outline: "0 none"}}
-            ></a>
             {step != 6 && <BackButton type={'button'} onClick={handlePrev} text={backButtonText(step)}/>}
 
             <ProgressBar step={step} content={navContent}/>
