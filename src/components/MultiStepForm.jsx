@@ -251,7 +251,14 @@ function MultiStepForm(props) {
     }
 
     return (
+        
         <>
+
+<a name="scroll-to-top"
+               id="scroll-to-top"
+               tabIndex={-1}
+               style={{outline: "0 none"}}
+            ></a>
             {step != 6 && <BackButton type={'button'} onClick={handlePrev} text={backButtonText(step)}/>}
 
             <ProgressBar step={step} content={navContent}/>
