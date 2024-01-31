@@ -33,7 +33,7 @@ function App() {
 
   const lastUpdatedSanitized = sanitizeDOM(stateData.nvrf_last_updated_date);
   const lastUpdatedText = "@state_name information last updated ";
-  const scrollToTop = document.getElementById('scroll-to-top');
+  const scrollToTop = document.querySelector('#scroll-to-top');
 
   //Confirm eligibility checkbox controls
   const [hasConfirmed, setHasConfirmed] = useState(null);
