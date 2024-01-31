@@ -39,7 +39,8 @@ function Confirmation(props) {
                         <Button
                             type="button"
                             class="usa-button--unstyled"
-                            onClick={props.handleGoBackSteps(4)}>
+                            onClick={props.handleGoBackSteps(4)}
+                            title="Return to Personal information, step one of six, to make a change">
                             {headings.confirmation.edit.label}
                         </Button>
                     </div>
@@ -81,7 +82,8 @@ function Confirmation(props) {
                         <Button
                             type="button"
                             class="usa-button--unstyled"
-                            onClick={props.handleGoBackSteps(3)}>
+                            onClick={props.handleGoBackSteps(3)}
+                            title="Return to Address and location, step two of six, to make a change">
                             {headings.confirmation.edit.label}
                         </Button>
                     </div>
@@ -134,7 +136,8 @@ function Confirmation(props) {
                         <Button
                             type="button"
                             class="usa-button--unstyled"
-                            onClick={props.handleGoBackSteps(2)}>
+                            onClick={props.handleGoBackSteps(2)}
+                            title="Return to Identification, step three of six, to make a change">
                             {headings.confirmation.edit.label}
                         </Button>
                     </div>
@@ -149,7 +152,8 @@ function Confirmation(props) {
                         <Button
                             type="button"
                             class="usa-button--unstyled"
-                            onClick={props.handleGoBackSteps(1)}>
+                            onClick={props.handleGoBackSteps(1)}
+                            title="Return to Political party, step four of six, to make a change">
                             {headings.confirmation.edit.label}
                         </Button>
                     </div>
