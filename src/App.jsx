@@ -34,8 +34,6 @@ function App() {
   const lastUpdatedSanitized = sanitizeDOM(stateData.nvrf_last_updated_date);
   const lastUpdatedText = "@state_name information last updated ";
   const scrollToTop = document.getElementById('scroll-to-top');
-  // const nextBtn = document.getElementById('next-btn')
-
 
   //Confirm eligibility checkbox controls
   const [hasConfirmed, setHasConfirmed] = useState(null);
@@ -50,15 +48,7 @@ function App() {
   }
 
   const setStepFocus = () => {
-    scrollToTop.focus({ focusVisible: true });
-    // nextBtn.addEventListener('click', () => {
-    //   scrollToTop.focus()
-  // })
-
-  // document.getElementById("next-btn").addEventListener("click", () => {
-  //   document.getElementById("scroll-to-top").focus({ focusVisible: true });
-  // });
-
+    scrollToTop.focus();
   }
 
   const handleNext = () => {

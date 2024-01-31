@@ -23,7 +23,6 @@ function MultiStepForm(props) {
     const mainContentTitle = sanitizeDOM(mainContent.title);
     const mainContentBody = sanitizeDOM(mainContent.body);
     const scrollToTop = document.getElementById('scroll-to-top');
-    // const nextBtn = document.getElementById('next-btn')
 
     //Field data controls
     const [fieldData, setFieldData] = useState({
@@ -78,12 +77,8 @@ function MultiStepForm(props) {
     const [step, setStep] = useState(1);
 
     const setStepFocus = () => {
-        scrollToTop.focus({ focusVisible: true });
-        // nextBtn.addEventListener('click', () => {
-        //     scrollToTop.focus()
-        // })
+        scrollToTop.focus();
     }
-
 
     const handleNext = () => {
         step !== 6 && setStep(step + 1);
