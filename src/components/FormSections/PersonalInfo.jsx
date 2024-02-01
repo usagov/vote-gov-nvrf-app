@@ -309,14 +309,12 @@ function PersonalInfo(props){
                 zIndex: "-1"
             }}>
                 <div className={(handleErrors.email_address) ? 'error-container' : ''}>
-                    <Label className="text-bold" htmlFor="email-address" aria-hidden="true">Email Address<span className='required-text'>*</span></Label>
+                    <Label className="text-bold" htmlFor="voter-contact" aria-hidden="true">Voter Contact<span className='required-text'>*</span></Label>
                     <span className="usa-hint">For example: email@address.com</span>
                     <TextInput
-                        id="email-address"
-                        name="email-address"
+                        id="voter-contact"
                         type="email"
                         required={true}
-                        placeholder="Email address"
                         className="radius-md"
                         autoComplete="off"
                         tabIndex="-1"
