@@ -111,13 +111,13 @@ function PersonalInfo(props){
                     </Label>
                     <Dropdown 
                         className="radius-md" id="title-select" name="title-select" 
-                        value={props.fieldData.title} 
-                        onChange={props.saveFieldData('title')} 
+                        value={props.fieldData.title}
+                        onChange={props.saveFieldData('title')}
                         autoComplete="off"
                         onInvalid={(e) => e.target.setCustomValidity(' ')}
                         onInput={(e) => e.target.setCustomValidity('')}
                         >
-                        <option>- Select -{' '}</option>
+                        <option value={''}>- Select -{' '}</option>
                         {titleField.options.map((item, index) => (
                             <option key={index} value={item.value}>{item.key}</option>
                         ))}
@@ -204,7 +204,7 @@ function PersonalInfo(props){
                         onInvalid={(e) => e.target.setCustomValidity(' ')}
                         onInput={(e) => e.target.setCustomValidity('')}
                         >
-                        <option>- Select -{' '}</option>
+                        <option value={''}>- Select -{' '}</option>
                         {suffixField.options.map((item, index) => (
                             <option key={index} value={item.value}>{item.key}</option>
                         ))}
@@ -427,7 +427,7 @@ function PersonalInfo(props){
                 onInvalid={(e) => e.target.setCustomValidity(' ')}
                 onInput={(e) => e.target.setCustomValidity('')}
                 >
-                <option>- Select -{' '}</option>
+                <option value={''}>- Select -{' '}</option>
                 {prevTitleField.options.map((item, index) => (
                     <option key={index} value={item.value}>{item.key}</option>
                 ))}
@@ -513,7 +513,7 @@ function PersonalInfo(props){
                 onInvalid={(e) => e.target.setCustomValidity(' ')}
                 onInput={(e) => e.target.setCustomValidity('')}
                 >
-                <option>- Select -{' '}</option>
+                <option value={''}>- Select -{' '}</option>
                 {prevSuffixField.options.map((item, index) => (
                     <option key={index} value={item.value}>{item.key}</option>
                 ))}

@@ -179,8 +179,11 @@ function MultiStepForm(props) {
                 id_expire_date_year:''
             })
             :
-            setFieldData({ ...fieldData, id_number: '' });
-            setFieldData({ ...fieldData, ssn_number: '' });
+            setFieldData({
+                ...fieldData,
+                id_number: '',
+                ssn_number: '',
+            })
             
         document.getElementById('state-id').className = "";
     }
