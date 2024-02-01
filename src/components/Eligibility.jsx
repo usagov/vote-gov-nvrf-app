@@ -1,10 +1,11 @@
-import {Fieldset, Checkbox, Label, GridContainer, Form} from '@trussworks/react-uswds';
+import { Checkbox, Label, GridContainer, Form } from '@trussworks/react-uswds';
 import BackButton from './BackButton';
 import NextButton from "./NextButton";
 import StepsList from './RegType/StepsList';
 import { getFieldLabel, getFieldError } from './HelperFunctions/fieldParser';
-import {renderToStaticMarkup} from "react-dom/server";
-import {sanitizeDOM} from "./HelperFunctions/JsonHelper";
+import { renderToStaticMarkup } from "react-dom/server";
+import { sanitizeDOM } from "./HelperFunctions/JsonHelper";
+import { focusError, toggleError } from './HelperFunctions/ValidateField';
 
 function Eligibility(props) {
     let content = props.content;
@@ -36,10 +37,9 @@ function Eligibility(props) {
             <div className={'usa-prose margin-top-5'} dangerouslySetInnerHTML= {{__html: contentBodyParts[0].replace("@state_name", stateContent.name)
                     .replace("@reg_eligibility_desc", stateContent.reg_eligibility_desc)}}/>
 
-            <Form autoComplete="off" className={'margin-top-2'} style={{ maxWidth:'none' }} onSubmit={(e) => {e.preventDefault(), props.handleNext()}}>
-                <Fieldset legend="Eligibility" legendStyle="srOnly">
-                    <div className={props.error ? 'error-container' : ''}>
-                        <Label htmlFor="eligibility-error" id="eligibility-error" className={'margin-top-1'}>
+            <Form id="eligibility" autoComplete="off" className={'margin-top-2'} style={{ maxWidth:'none' }} onSubmit={(e) => {e.preventDefault(), props.handleNext()}}>
+                    <div className="input-parent">
+                        <Label htmlFor="eligibility-error" className={'margin-top-1'}>
                             <strong>{eligibility.name}</strong>
                         </Label>
                         <Checkbox
@@ -54,22 +54,18 @@ function Eligibility(props) {
                             onChange={(e) => props.confirmCheckbox(e.target.checked)}
                             onInvalid={(e) => e.target.setCustomValidity(' ')}
                             onInput={(e) => e.target.setCustomValidity('')}
+                            onBlur={(e) => toggleError(e, !props.hasConfirmed)}
                         />
-
-                        {props.error &&
-
-                            <span id="eligibility-error" role="alert" className='error-text'>
-                                {getFieldError(fields, "39fc63ad-ed5a-4ad5-98d3-aa236c96c61c")}
-                                </span>
-                        }
+                        <span id="eligibility-error" role="alert" className='error-text'>
+                            {getFieldError(fields, "39fc63ad-ed5a-4ad5-98d3-aa236c96c61c")}
+                        </span>
                     </div>
-                </Fieldset>
                 <div dangerouslySetInnerHTML= {{__html: eligibilityInstructions}}/>
 
                 <div className={'usa-prose margin-top-5'} dangerouslySetInnerHTML= {{__html: contentBodyParts[1].replace("@state_name", stateContent.name)
                         .replace("@mail_deadline", renderToStaticMarkup(mailDeadline()))}}/>
 
-                <NextButton type={'submit'} onClick={() => props.checkboxValid()} text={navContent.next.start}/>
+                <NextButton type={'submit'} onClick={(e) => focusError('eligibility')} text={navContent.next.start}/>
             </Form>
             </GridContainer>
         </>

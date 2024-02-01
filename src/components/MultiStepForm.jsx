@@ -7,7 +7,7 @@ import Identification from './FormSections/Identification';
 import Confirmation from './FormSections/Confirmation';
 import Delivery from "./FormSections/Delivery";
 import PoliticalParty from './FormSections/PoliticalParty';
-import { phoneFormat, dateFormat } from './HelperFunctions/ValidateField';
+import { phoneFormat, focusError } from './HelperFunctions/ValidateField';
 import BackButton from './BackButton'
 import NextButton from './NextButton';
 import { Helmet } from "react-helmet-async";
@@ -181,6 +181,8 @@ function MultiStepForm(props) {
             :
             setFieldData({ ...fieldData, id_number: '' });
             setFieldData({ ...fieldData, ssn_number: '' });
+            
+        document.getElementById('state-id').className = "";
     }
     const [hasNoID, setHasNoID] = useState(false);
     const onChangeHasNoIdCheckbox = (e) => {
@@ -198,14 +200,8 @@ function MultiStepForm(props) {
 
     //Acknowledgment field controls
     const [hasAcknowledged, setHasAcknowledged] = useState(null);
-    const [error, setError] = useState(null)
     const acknowledgeCheckbox = (checkStatus) => {
         setHasAcknowledged(checkStatus);
-        setError(!checkStatus);
-    }
-
-    const checkboxValid = () => {
-        (hasAcknowledged === null) && setError(true);
     }
 
     const emailValid = () => {
@@ -221,9 +217,6 @@ function MultiStepForm(props) {
         switch (step) {
             case 1:
                 emailValid();
-                break;
-            case 5:
-                checkboxValid();
                 break;
         }
     }
@@ -271,7 +264,7 @@ function MultiStepForm(props) {
                 </>
             }
 
-            <Form autoComplete="off" className={'margin-top-5'} style={{ maxWidth:'none' }} onSubmit={(e) => {handleSubmit(e), handleNext()}}>
+            <Form autoComplete="off" id="nvrf" className={'margin-top-5'} style={{ maxWidth:'none' }} onSubmit={(e) => {handleSubmit(e), handleNext()}}>
                 {step === 1 &&
                     <PersonalInfo
                         state={props.state}
@@ -351,9 +344,7 @@ function MultiStepForm(props) {
                         handlePrev={handlePrev}
                         handleGoBackSteps={handleGoBackSteps}
                         hasAcknowledged={hasAcknowledged}
-                        error={error}
                         acknowledgeCheckbox={acknowledgeCheckbox}
-                        checkboxValid={checkboxValid}
                         fieldContent={fieldContent}
                     />
                 }
@@ -372,7 +363,7 @@ function MultiStepForm(props) {
                     />
                 }
 
-                {step != 6 && <NextButton type={'submit'} onClick={() => nextStepValidation()} text={nextButtonText(step)}/>}
+                {step != 6 && <NextButton type={'submit'} onClick={() => {nextStepValidation(), focusError('nvrf')}} text={nextButtonText(step)}/>}
             </Form>
 
             {/* Load Touchpoints feedback form */}

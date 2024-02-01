@@ -37,14 +37,8 @@ function App() {
 
   //Confirm eligibility checkbox controls
   const [hasConfirmed, setHasConfirmed] = useState(null);
-  const [error, setError] = useState(null)
   const confirmCheckbox = (checkStatus) => {
       setHasConfirmed(checkStatus);
-      setError(!checkStatus);
-  }
-
-  const checkboxValid = () => {
-      (hasConfirmed === null) && setError(true);
   }
 
   const setStepFocus = () => {
@@ -137,9 +131,7 @@ function App() {
                     cards={cards}
                     fieldContent={fieldContent}
                     hasConfirmed={hasConfirmed}
-                    error={error}
                     confirmCheckbox={confirmCheckbox}
-                    checkboxValid={checkboxValid}
                 />}
             {step === 4 &&
                 <PathSelection
