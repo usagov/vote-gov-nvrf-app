@@ -200,7 +200,6 @@ function PersonalInfo(props){
                         value={props.fieldData.suffix} 
                         onChange={props.saveFieldData('suffix')} 
                         autoComplete="off" 
-                        required={parseInt(nameFieldState.required)}
                         onInvalid={(e) => e.target.setCustomValidity(' ')}
                         onInput={(e) => e.target.setCustomValidity('')}
                         >
@@ -509,7 +508,6 @@ function PersonalInfo(props){
                 id="suffix-select-2" className="radius-md" name="suffix-select-2" 
                 value={props.fieldData.prev_suffix} onChange={props.saveFieldData('prev_suffix')} 
                 autoComplete="off" 
-                required={parseInt(nameFieldState.required)}
                 onInvalid={(e) => e.target.setCustomValidity(' ')}
                 onInput={(e) => e.target.setCustomValidity('')}
                 >
