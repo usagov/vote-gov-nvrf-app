@@ -106,6 +106,7 @@ function App() {
                tabIndex={-1}
                style={{
                  outline: "0 none",
+                 display: "block",
                  scrollMargin: "20px"
                }}
             ></a>
