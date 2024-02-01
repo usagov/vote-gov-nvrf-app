@@ -104,7 +104,10 @@ function App() {
             <a name="scroll-to-top"
                id="scroll-to-top"
                tabIndex={-1}
-               style={{outline: "0 none"}}
+               style={{
+                 outline: "0 none",
+                 scrollMargin: "20px"
+               }}
             ></a>
             {step === 1 &&
                 <StateSelection
