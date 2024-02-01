@@ -1,19 +1,20 @@
 import { Link, Icon } from '@trussworks/react-uswds';
 import {renderToStaticMarkup} from "react-dom/server";
 import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
-import * as string from '../../../public/data/en/strings.json';
+// import * as string from '../../../public/data/en/strings.json';
 
 function NotNeeded(props) {
     const content = props.content;
     const stateContent = props.stateData;
     const contentBody = sanitizeDOM(content.body).replace("@state_name", props.stateData.name);
+    const stringContent = props.stringContent
 
     const stateLinks = () => (
         <>
             {stateContent.election_website_url &&
                 <p>
                     <a href={stateContent.election_website_url} className="usa-button" target="_blank">
-                        <span>{(string.learnMore)}</span>
+                        <span>{stringContent.learnMore}</span>
                         <Icon.Launch title="External link opens new window" style={{margin: "-3px -3px -3px 4px"}}/>
                     </a>
                 </p>
@@ -29,7 +30,7 @@ function NotNeeded(props) {
             <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: contentBodyProcessed}}/>
 
             <div className={'margin-top-5'}>
-                <a href={"https://vote.gov"}>{(string.backBtn)}</a>
+                <a href={"https://vote.gov"}>{stringContent.backBtn}</a>
             </div>
         </>
     );

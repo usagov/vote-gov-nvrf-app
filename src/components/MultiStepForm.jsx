@@ -12,7 +12,7 @@ import BackButton from './BackButton'
 import NextButton from './NextButton';
 import { Helmet } from "react-helmet-async";
 import {sanitizeDOM} from "./HelperFunctions/JsonHelper";
-import * as string from '../../public/data/en/strings.json';
+// import * as string from '../../public/data/en/strings.json';
 
 
 
@@ -247,7 +247,7 @@ function MultiStepForm(props) {
             case 4:
                 return navContent.next.confirm_info;
             case 5:
-                return (string.confirm);//TODO replace
+                return (stringContent.confirm);//TODO replace
         }
     }
 

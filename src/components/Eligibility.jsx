@@ -12,6 +12,7 @@ function Eligibility(props) {
     const stateContent = props.stateData;
     const fields = props.fieldContent;
     const cards = props.cards;
+    // const stringContent = props.stringContent
 
     content = content.find(item => item.uuid === "94eab1c9-8343-4747-94b4-08732a175614");
     const eligibility = fields.find(item => item.uuid === "39fc63ad-ed5a-4ad5-98d3-aa236c96c61c");

@@ -1,5 +1,4 @@
-
-  {
+{
     "notRequired": "Not required for your state",
     "newWindow": "Open form in a new window",
     "nameChange": "I have legally changed my name since I last registered in this state.",
@@ -17,7 +16,4 @@
     "lastUpdated": "@state_name information last updated ",
     "privacyPolicy": "Privacy policy",
     "zip": "For example: 12345"
-  }
-
-
-
+}

@@ -2,12 +2,13 @@ import { Link, Icon } from '@trussworks/react-uswds';
 import NextButton from '../NextButton';
 import {renderToStaticMarkup} from "react-dom/server";
 import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
-import * as string from '../../../public/data/en/strings.json';
+// import * as string from '../../../public/data/en/strings.json';
 
 function OnlineNoNVRF(props) {
     const content = props.content;
     const navContent = props.navContent;
     const stateContent = props.stateData;
+    const stringContent = props.stringContent
 
     if (content && navContent) {
         const contentBody = sanitizeDOM(content.body).replaceAll("@state_name", stateContent.name);
@@ -15,7 +16,7 @@ function OnlineNoNVRF(props) {
         const stateOnlineLink = () => (
                 <p>
                     <a href={stateContent.registration_url} className="usa-button" target="_blank">
-                        <span>{(string.stateOnlineName).replace("@state_name", stateContent.name)}</span>
+                        <span>{stringContent.stateOnlineName.replace("@state_name", stateContent.name)}</span>
                         <Icon.Launch title="External link opens new window" style={{margin: "-3px -3px -3px 4px"}}/>
                     </a>
                 </p>
@@ -24,7 +25,7 @@ function OnlineNoNVRF(props) {
         const stateMailinLink = () => (
             <p>
                 <a href={stateContent.mail_reg_url} className="usa-button" target="_blank" title="Opens a new PDF window">
-                    <span>{(string.stateName).replace("%state_name%", props.stateData.name)}</span>
+                    <span>{stringContent.stateName.replace("%state_name%", props.stateData.name)}</span>
                     <Icon.Launch title="External link opens new window" style={{margin: "-3px -3px -3px 4px"}}/>
                 </a>
             </p>
@@ -33,7 +34,7 @@ function OnlineNoNVRF(props) {
         const checkRegLink = () => (
             <p>
                     <a href={stateContent.election_website_url} className="usa-button" target="_blank">
-                        <span>{(string.checkReg)}</span>
+                        <span>{stringContent.checkReg}</span>
                         <Icon.Launch title="External link opens new window" style={{margin: "-3px -3px -3px 4px"}}/>
                     </a>
             </p>

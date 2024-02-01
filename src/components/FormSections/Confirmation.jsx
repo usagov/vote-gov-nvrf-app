@@ -1,6 +1,6 @@
 import {Alert, Button, Checkbox} from '@trussworks/react-uswds';
 import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
-import * as string from '../../../public/data/en/strings.json';
+// import * as string from '../../../public/data/en/strings.json';
 
 function Confirmation(props) {
     const headings = props.headings;

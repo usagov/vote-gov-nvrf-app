@@ -4,14 +4,13 @@ import { checkForErrors } from './HelperFunctions/ValidateField';
 import NextButton from './NextButton';
 import { getFieldError, getFieldLabel } from './HelperFunctions/fieldParser';
 import {sanitizeDOM} from "./HelperFunctions/JsonHelper";
-import * as string from '../../public/data/en/strings.json';
-
 
 function StateSelection(props) {
     const content = props.content;
     const navContent = props.navContent;
     const statesList = props.statesList;
     const fields = props.fieldContent;
+    const stringContent = props.stringContent
 
     const introContent = content.find(item => item.uuid === "e3461b9a-e0b1-4157-ad4a-13f3835a101c");
     const introContentBody = sanitizeDOM(introContent.body);
@@ -45,7 +44,7 @@ function StateSelection(props) {
                                 }}
                                 onBlur={(e) => setHandleErrors({ state_selected: checkForErrors(e, 'check state selection') })}
                             >
-                                <option value="">{(string.select)}</option>
+                                <option value="">{stringContent.select}</option>
                                 {statesList.map(
                                     state => <option key={state} value={state}>{state}</option>
                                 )}

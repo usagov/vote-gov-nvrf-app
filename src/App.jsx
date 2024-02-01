@@ -8,7 +8,6 @@ import {fetchData, sanitizeDOM} from './components/HelperFunctions/JsonHelper.js
 import { HelmetProvider } from "react-helmet-async";
 import {getFieldValue} from "./components/HelperFunctions/fieldParser";
 import {GridContainer} from "@trussworks/react-uswds";
-// import * as string from '../public/data/en/strings.json';
 
 function App() {
 
@@ -129,6 +128,7 @@ function App() {
                     stateData={stateData}
                     content={content}
                     navContent={navContent}
+                    stringContent={stringContent}
                 />}
             {step === 3 &&
                 <Eligibility
@@ -140,6 +140,7 @@ function App() {
                     navContent={navContent}
                     cards={cards}
                     fieldContent={fieldContent}
+                    // stringContent={stringContent}
                     hasConfirmed={hasConfirmed}
                     error={error}
                     confirmCheckbox={confirmCheckbox}
@@ -155,6 +156,7 @@ function App() {
                     cards={cards}
                     registrationPath={registrationPath}
                     getRegPath={getRegPath}
+                    stringContent={stringContent}
                     getFormStep={getFormStep}
                 />}
             {step === 5 &&
@@ -168,6 +170,7 @@ function App() {
                     fieldContent={fieldContent}
                     registrationPath={registrationPath}
                     getFormStep={getFormStep}
+                    stringContent={stringContent}
                 />}
 
               {step >= 3 &&
