@@ -22,7 +22,7 @@ function MultiStepForm(props) {
     const mainContent = content.find(item => item.uuid ==="2c597df4-53b6-4ef5-8301-7817b04e1099");
     const mainContentTitle = sanitizeDOM(mainContent.title);
     const mainContentBody = sanitizeDOM(mainContent.body);
-    const scrollToTop = document.querySelector('.usa-header');
+    const scrollToTop = document.getElementById('scroll-to-top');
 
     //Field data controls
     const [fieldData, setFieldData] = useState({
@@ -77,6 +77,7 @@ function MultiStepForm(props) {
     const [step, setStep] = useState(1);
 
     const setStepFocus = () => {
+        scrollToTop.focus();
         scrollToTop.scrollIntoView();
     }
 
