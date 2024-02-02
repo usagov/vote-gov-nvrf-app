@@ -1,9 +1,8 @@
 import { Dropdown } from '@trussworks/react-uswds';
-import * as string from '../../public/data/en/strings.json';
 
 function StateSelector(props) {
-    const stringContent = props.stringContent
-
+    const statesList = props.statesList;
+    
     return (
         <>
         <Dropdown 
@@ -17,8 +16,8 @@ function StateSelector(props) {
             required={true}
             onBlur={props.onBlur}
         >
-        <option value="">{stringContent.select}</option>
-            {props.statesList.map(
+        <option value="">stringContent.select</option>
+            {statesList.map(
             state => <option key={state} value={state}>{state}</option>
         )}
         </Dropdown>

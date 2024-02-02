@@ -2,7 +2,6 @@ import { Label, TextInput, Checkbox, Grid } from '@trussworks/react-uswds';
 import StateSelector from '../StateSelector';
 import React, { useState } from "react";
 import { restrictType, checkForErrors } from '../HelperFunctions/ValidateField';
-// import * as string from '../../../public/data/en/strings.json';
 
 
 function Addresses(props){

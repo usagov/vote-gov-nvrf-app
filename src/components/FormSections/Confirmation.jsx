@@ -7,14 +7,16 @@ function Confirmation(props) {
     const content = props.content;
     const fieldData = props.fieldData;
     const fields = props.fieldContent;
+    const stringContent = props.stringContent
+
     const currentAddress = fieldData.street_address + fieldData.apt_num + fieldData.city + fieldData.zip_code;
     const prevName = fieldData.prev_title + fieldData.prev_first_name + fieldData.prev_middle_name + fieldData.prev_last_name + fieldData.prev_suffix;
     const prevAddress = fieldData.prev_street_address + fieldData.prev_apt_num + fieldData.prev_city + fieldData.prev_state + fieldData.prev_zip_code;
     const prevMailAddress = fieldData.mail_street_address + fieldData.mail_apt_num + fieldData.mail_city + fieldData.mail_state + fieldData.mail_zip_code;
 
     //field data overrides for confirm page printing only
-    const fieldDataOverride_race = (fieldData.race === '') ? (string.notRequired) : fieldData.race;
-    const fieldDataOverride_party = (fieldData.party_choice === '') ? (string.notRequired) : fieldData.party_choice;
+    const fieldDataOverride_race = (fieldData.race === '') ? (stringContent.notRequired) : fieldData.race;
+    const fieldDataOverride_party = (fieldData.party_choice === '') ? (stringContent.notRequired) : fieldData.party_choice;
     const fieldDataOverride_state = props.stateData.name;
     fieldData.state = fieldDataOverride_state;
 

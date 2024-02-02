@@ -140,7 +140,6 @@ function App() {
                     navContent={navContent}
                     cards={cards}
                     fieldContent={fieldContent}
-                    // stringContent={stringContent}
                     hasConfirmed={hasConfirmed}
                     error={error}
                     confirmCheckbox={confirmCheckbox}
@@ -181,7 +180,7 @@ function App() {
                     {lastUpdatedText.replace("@state_name", stateData.name)}
                     <span dangerouslySetInnerHTML= {{__html: lastUpdatedSanitized}}/>
                  </span>
-                  <div><a href="privacy" target="_blank">{(string.privacyPolicy)}</a></div>
+                  <div><a href="privacy" target="_blank">{stringContent.privacyPolicy}</a></div>
                 </div>
                 </GridContainer>
               }

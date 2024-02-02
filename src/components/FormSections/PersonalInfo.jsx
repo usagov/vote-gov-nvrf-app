@@ -2,7 +2,6 @@ import { Label, TextInput, Dropdown, Checkbox, Grid, Fieldset } from '@trusswork
 import React, { useState } from "react";
 import { restrictType, checkForErrors, jumpTo } from '../HelperFunctions/ValidateField';
 import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
-// import * as string from '../../../public/data/en/strings.json';
 
 function PersonalInfo(props){
     const headings = props.headings;
@@ -191,7 +190,7 @@ function PersonalInfo(props){
                         >
                             <div data-testid="formGroup" className="usa-form-group usa-form-group--month">
                                 <label data-testid="label" className="usa-label" htmlFor="date_of_birth_month">
-                                {string.month}
+                                {stringContent.month}
                                 <input
                                     id="date_of_birth_month"
                                     className="usa-input radius-md"
@@ -215,7 +214,7 @@ function PersonalInfo(props){
                             </div>
                             <div data-testid="formGroup" className="usa-form-group usa-form-group--day">
                                 <label data-testid="label" className="usa-label" htmlFor="date_of_birth_day">
-                                    {string.day}
+                                    {stringContent.day}
                                 <input
                                     id="date_of_birth_day"
                                     className="usa-input radius-md"
@@ -239,7 +238,7 @@ function PersonalInfo(props){
                             </div>
                             <div data-testid="formGroup" className="usa-form-group usa-form-group--year">
                                 <label data-testid="label" className="usa-label" htmlFor="date_of_birth_year">
-                                    {string.year}
+                                    {stringContent.year}
                                 <input
                                     id="date_of_birth_year"
                                     className="usa-input radius-md"
