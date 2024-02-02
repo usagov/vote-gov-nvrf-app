@@ -7,7 +7,6 @@ import OnlineNoNVRF from "./RegType/OnlineNoNvrf";
 import NotNeeded from "./RegType/NotNeeded";
 import BackButton from './BackButton';
 import InPerson from "./RegType/InPerson";
-import {GridContainer} from "@trussworks/react-uswds";
 
 function RegistrationOptions(props) {
     const regType = props.stateData.reg_type;
@@ -29,7 +28,7 @@ function RegistrationOptions(props) {
         <>
 
             <BackButton type={'button'} onClick={props.handlePrev} text={navContent.back.select_state}/>
-            <GridContainer containerSize={'tablet'} className={['usa-prose', 'margin-top-5']}>
+            <div className={'usa-prose margin-top-5 maxw-tablet margin-x-auto'}>
                 {(regType === 'online' && acceptsNVRF === '1' && props.stateData.mail_reg_url != "") &&
                     <Online
                         content={onlineContent}
@@ -82,7 +81,7 @@ function RegistrationOptions(props) {
                         content={noRegContent}
                         stateData={props.stateData}
                     />}
-            </GridContainer>
+            </div>
             </>
         );
     }

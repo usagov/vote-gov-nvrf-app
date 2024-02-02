@@ -1,4 +1,4 @@
-import {Form, GridContainer} from '@trussworks/react-uswds';
+import {Form} from '@trussworks/react-uswds';
 import React, { useState, useEffect } from "react";
 import ProgressBar from './ProgressBar';
 import PersonalInfo from "./FormSections/PersonalInfo";
@@ -7,7 +7,7 @@ import Identification from './FormSections/Identification';
 import Confirmation from './FormSections/Confirmation';
 import Delivery from "./FormSections/Delivery";
 import PoliticalParty from './FormSections/PoliticalParty';
-import { phoneFormat, dateFormat } from './HelperFunctions/ValidateField';
+import { phoneFormat } from './HelperFunctions/ValidateField';
 import BackButton from './BackButton'
 import NextButton from './NextButton';
 import { Helmet } from "react-helmet-async";
@@ -253,7 +253,7 @@ function MultiStepForm(props) {
             {step != 6 && <BackButton type={'button'} onClick={handlePrev} text={backButtonText(step)}/>}
 
             <ProgressBar step={step} content={navContent}/>
-            <GridContainer containerSize={'tablet'} className={['usa-prose', 'margin-top-8']}>
+            <div className={'usa-prose margin-top-8 maxw-tablet margin-x-auto'}>
             {step < 5 &&
                 <>
                     <h1>{mainContentTitle.replace("@state_name", props.stateData.name)}</h1>
@@ -374,7 +374,7 @@ function MultiStepForm(props) {
                     </Helmet>
                 </>
             }
-          </GridContainer>
+          </div>
         </>
     );
 }
