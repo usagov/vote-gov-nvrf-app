@@ -199,7 +199,7 @@ function MultiStepForm(props) {
     }
 
     const emailValid = () => {
-        const emailField = document.getElementById('email-address');
+        const emailField = document.getElementById('voter-contact');
         if (!fieldData.email_address) {
             emailField.removeAttribute('required');
         } else {
