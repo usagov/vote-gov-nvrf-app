@@ -27,34 +27,31 @@ function PoliticalParty(props){
 
         {(partyStateInstructions || partyGeneralInstructions) && (
         <div className="usa-alert usa-alert--info" role="alert">
-            {partyFieldState && (<div className="usa-alert__body" dangerouslySetInnerHTML= {{__html: partyGeneralInstructions}}/>)}
             <div className="usa-alert__body" dangerouslySetInnerHTML= {{__html: partyStateInstructions}}/>
         </div>)}
 
         {partyFieldState && (
-            <div className={(parseInt(partyFieldState.required) && handleErrors.party_choice) ? 'error-container margin-top-6' : 'margin-top-5'}>
-                <Label className="text-bold" htmlFor="political-party">
-                {partyField.name}{(partyFieldState.required === "1") && <span className='required-text'>*</span>}
-                <TextInput
-                    id="political-party"
-                    className="radius-md"
-                    aria-describedby="party-choice-error"
-                    name="political party"
-                    value={props.fieldData.party_choice}
-                    type="text"
-                    autoComplete="off"
-                    required={parseInt(partyFieldState.required)}
-                    onChange={props.saveFieldData('party_choice')}
-                    onKeyDown={(e) => restrictType(e, 'letters')}
-                    onBlur={(e) => setHandleErrors({ ...handleErrors, party_choice: checkForErrors(e, 'check value exists') })}
-                />
-                {((partyFieldState.required === "1") && handleErrors.party_choice) &&
-                    <span id="party-choice-error" role="alert" className='error-text'>
-                        {partyField.error_msg}
-                    </span>
-                }
-                </Label>
-            </div>
+            <><div className={(parseInt(partyFieldState.required) && handleErrors.party_choice) ? 'error-container margin-top-6' : 'margin-top-5'}>
+                    <Label className="text-bold" htmlFor="political-party">
+                        {partyField.name}{(partyFieldState.required === "1") && <span className='required-text'>*</span>}
+                        <TextInput
+                            id="political-party"
+                            className="radius-md"
+                            aria-describedby="party-choice-error"
+                            name="political party"
+                            value={props.fieldData.party_choice}
+                            type="text"
+                            autoComplete="off"
+                            required={parseInt(partyFieldState.required)}
+                            onChange={props.saveFieldData('party_choice')}
+                            onKeyDown={(e) => restrictType(e, 'letters')}
+                            onBlur={(e) => setHandleErrors({ ...handleErrors, party_choice: checkForErrors(e, 'check value exists') })} />
+                        {((partyFieldState.required === "1") && handleErrors.party_choice) &&
+                            <span id="party-choice-error" role="alert" className='error-text'>
+                                {partyField.error_msg}
+                            </span>}
+                    </Label>
+                </div><div dangerouslySetInnerHTML={{ __html: partyGeneralInstructions }} /></>
         )}
         </>
     );

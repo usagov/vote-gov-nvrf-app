@@ -166,21 +166,11 @@ function MultiStepForm(props) {
     const [idType, setIdType] = useState('')
     const saveIdType = (e) => {
         setIdType(e.target.value)
-        e.target.value === 'none' ?
-            setFieldData({
-                ...fieldData,
-                id_number: 'none',
-                ssn_number: '',
-                id_issue_date_month:'',
-                id_issue_date_day:'',
-                id_issue_date_year:'',
-                id_expire_date_month:'',
-                id_expire_date_day:'',
-                id_expire_date_year:''
-            })
-            :
-            setFieldData({ ...fieldData, id_number: '' });
-            setFieldData({ ...fieldData, ssn_number: '' });
+        setFieldData({
+            ...fieldData,
+            id_number: '',
+            ssn_number: '',
+        })
     }
     const [hasNoID, setHasNoID] = useState(false);
     const onChangeHasNoIdCheckbox = (e) => {
@@ -209,7 +199,7 @@ function MultiStepForm(props) {
     }
 
     const emailValid = () => {
-        const emailField = document.getElementById('email-address');
+        const emailField = document.getElementById('voter-contact');
         if (!fieldData.email_address) {
             emailField.removeAttribute('required');
         } else {

@@ -7,7 +7,7 @@
     "label": "Enter the full name of the political party you wish to join or leave blank.",
     "help_text": false,
     "error_msg": "Choice of party must be filled out.",
-    "instructions": "\u003Cp\u003EIf you don\u0027t want to register with a party, don\u0027t write in the word \u201cindependent\u201d if you mean \u201cno party.\u201d This might be confused with the name of a political party in the state.\u003C\/p\u003E",
+    "instructions": "\u003Cp\u003EIf you don\u0027t want to register with any political party, leave this field blank.\u003C\/p\u003E",
     "section_description": "",
     "section_alert": "",
     "options": []
@@ -16,11 +16,11 @@
     "uuid": "39fc63ad-ed5a-4ad5-98d3-aa236c96c61c",
     "lang": "en",
     "nvrf_id": "eligibility",
-    "name": "Confirm Eligibillity*",
+    "name": "Confirm Eligibility*",
     "label": "I am a U.S. citizen and meet the eligibility requirements listed above.",
     "help_text": false,
     "error_msg": "Confirm eligibility to continue.",
-    "instructions": "\u003Cp\u003EIf you do not agree with the above statement, do not continue with registration on Vote.gov.\u003C\/p\u003E",
+    "instructions": "\u003Cp\u003EIf you do not agree with the above statement, do not continue with registration on vote.gov.\u003C\/p\u003E",
     "section_description": "",
     "section_alert": "",
     "options": []
@@ -250,7 +250,7 @@
     "lang": "en",
     "nvrf_id": "id_number",
     "name": "ID: Social Security Number",
-    "label": "Social security number",
+    "label": "Social security number (last 4 digits)",
     "help_text": "Provide the last 4 digits, for example (xxx-xx-1234)",
     "error_msg": "Social security number must be 4 digits.",
     "instructions": "",
@@ -263,9 +263,9 @@
     "lang": "en",
     "nvrf_id": "id_number",
     "name": "ID: Social Security Number (Full)",
-    "label": "SSN (full)",
+    "label": "Full social security number",
     "help_text": "Provide all 9 digits, for example (123-55-1234)",
-    "error_msg": "Social Security Number must be 9 digits.",
+    "error_msg": "Social security number must be 9 digits.",
     "instructions": "",
     "section_description": "",
     "section_alert": "",
@@ -323,7 +323,11 @@
       },
       {
         "key": "ssn",
-        "value": "Social Security Number"
+        "value": "Social Security Number (Last 4 digits)"
+      },
+      {
+        "key": "ssn-full",
+        "value": "Full Social Security Number"
       },
       {
         "key": "none",
@@ -377,7 +381,7 @@
     "name": "Mailing Address: Street Address (Or Rural Route and P.O. Box)",
     "label": "Street (or route and box number)",
     "help_text": false,
-    "error_msg": "Mailing Street Address must be filled out.",
+    "error_msg": "Mailing street address must be filled out.",
     "instructions": "",
     "section_description": "",
     "section_alert": "",
@@ -571,7 +575,7 @@
     "name": "Previous Home Address: State",
     "label": "State",
     "help_text": false,
-    "error_msg": "Previous State selection must be made.",
+    "error_msg": "Previous state selection must be made.",
     "instructions": "",
     "section_description": "",
     "section_alert": "",

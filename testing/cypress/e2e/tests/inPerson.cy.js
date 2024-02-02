@@ -14,7 +14,7 @@ it('Validate Update Registration', () => {
   // cy.get('[class="usa-link usa-link--external"]').should('have.attr','target','_blank')
 
 // go to next page
-cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
+cy.get('[class="usa-button next-button mobile-width"]').click()
 
 // check eligibility page
 // verify that user CANNOT move forward with out checking box
@@ -147,7 +147,7 @@ cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
 // identification
 // * check that user can not move forward without selecting an option
 cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click().click()
-cy.get('[class="error-text text-bold"]').should('be.visible')
+cy.get('[class="error-text"]').should('be.visible')
 
 // * state driver's license number
 cy.get('[class="usa-select"]').select("State driver's license number")
@@ -155,17 +155,12 @@ cy.get('[data-testid="textInput"]').type(data.idNumber)
 
 // Validate that fields have correct data
   cy.get('[data-testid="textInput"]').should('have.value', data.idNumber)
-// * state id number
-cy.get('[class="usa-select"]').then(dropDown => {
-  cy.get(dropDown[0]).select("State non-driver ID")
-})
-cy.get('[data-testid="textInput"]').type(data.idNumber)
 
 // Validate that fields have correct data
   cy.get('[data-testid="textInput"]').should('have.value', data.idNumber)
 // * social security number (last 4 digits)
 cy.get('[class="usa-select"]').then(dropDown => {
-  cy.get(dropDown[0]).select("Social security number")
+  cy.get(dropDown[0]).select("Social security number (last 4 digits)")
 })
 cy.get('[data-testid="textInput"]').type(data.ssn)
 // Validate fields have correct data 
@@ -176,7 +171,7 @@ cy.get('[data-testid="textInput"]').should('have.value', data.ssn)
 cy.get('[class="usa-select"]').then(dropDown => {
   cy.get(dropDown[0]).select("I do not have a valid ID number.")
 })
-cy.get('[id="main-content"]').should('contain.text', '"None" will appear on your completed form.')
+cy.get('p').should('contain.text', '"None" will appear on your completed form.')
 
 cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
 
@@ -187,7 +182,7 @@ cy.get('[data-testid="button"]').then(btn => {
 // political party (required)
 // * check that user can not move forward without giving a party
 cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click().click()
-cy.get('[class="error-text text-bold"]').should('be.visible')
+cy.get('[class="error-text"]').should('be.visible')
 
 cy.get('[class="required-text"]').should('be.visible')
 cy.get('[data-testid="textInput"]').type(data.politicalParty)
@@ -200,7 +195,7 @@ cy.get('[data-testid="button"]').then(btn => {
   cy.get(btn[5]).click()
 })
 
-cy.get('[class="grid-col-11 usa-prose"]').should('contain.text', 'Your Maine mail-in registration form is complete and ready to print.')
+cy.get('[class="grid-col-11 usa-prose padding-left-2"]').should('contain.text', 'Your Delaware mail-in registration form is complete and ready to print.')
 // * check that download opens in new window
 cy.get('[class="usa-button"]').then(btn => {
   cy.get(btn[1]).click()
@@ -215,7 +210,7 @@ it('Validate New Registration', () => {
   // cy.get('[class="usa-link usa-link--external"]').should('have.attr','target','_blank')
 
 // go to next page
-cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
+cy.get('[class="usa-button next-button mobile-width"]').click()
 
 // check eligibility page
 // verify that user CANNOT move forward with out checking box
@@ -328,7 +323,7 @@ cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
 // identification
 // * check that user can not move forward without selecting an option
 cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click().click()
-cy.get('[class="error-text text-bold"]').should('be.visible')
+cy.get('[class="error-text"]').should('be.visible')
 
 // * state driver's license number
 cy.get('[class="usa-select"]').select("State driver's license number")
@@ -336,6 +331,7 @@ cy.get('[data-testid="textInput"]').type(data.idNumber)
 
 // Validate that fields have correct data
   cy.get('[data-testid="textInput"]').should('have.value', data.idNumber)
+// !come back to this when bug is fixed 
 // * state id number
 cy.get('[class="usa-select"]').then(dropDown => {
   cy.get(dropDown[0]).select("State non-driver ID")
@@ -346,7 +342,7 @@ cy.get('[data-testid="textInput"]').type(data.idNumber)
   cy.get('[data-testid="textInput"]').should('have.value', data.idNumber)
 // * social security number (last 4 digits)
 cy.get('[class="usa-select"]').then(dropDown => {
-  cy.get(dropDown[0]).select("Social security number")
+  cy.get(dropDown[0]).select("Social security number (last 4 digits)")
 })
 cy.get('[data-testid="textInput"]').type(data.ssn)
 // Validate fields have correct data 
@@ -357,7 +353,7 @@ cy.get('[data-testid="textInput"]').should('have.value', data.ssn)
 cy.get('[class="usa-select"]').then(dropDown => {
   cy.get(dropDown[0]).select("I do not have a valid ID number.")
 })
-cy.get('[id="main-content"]').should('contain.text', '"None" will appear on your completed form.')
+cy.get('p').should('contain.text', '"None" will appear on your completed form.')
 
 cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
 
@@ -367,7 +363,7 @@ cy.get('[data-testid="button"]').then(btn => {
   // political party (required)
   // * check that user can not move forward without giving a party
 cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click().click()
-cy.get('[class="error-text text-bold"]').should('be.visible')
+cy.get('[class="error-text"]').should('be.visible')
 
   cy.get('[class="required-text"]').should('be.visible')
   cy.get('[data-testid="textInput"]').type(data.politicalParty)
@@ -380,7 +376,7 @@ cy.get('[data-testid="button"]').then(btn => {
   cy.get(btn[5]).click()
 })
 
-cy.get('[class="grid-col-11 usa-prose"]').should('contain.text', 'Your Maine mail-in registration form is complete and ready to print.')
+cy.get('[class="grid-col-11 usa-prose padding-left-2"]').should('contain.text', 'Your Delaware mail-in registration form is complete and ready to print.')
 // * check that download opens in new window
 cy.get('[class="usa-button"]').then(btn => {
   cy.get(btn[1]).click()

@@ -10,8 +10,8 @@ jobs:
       NVRF_FILE_NAME: Federal_Voter_Registration_ENG.pdf
       NEW_BRANCH_NAME: upload-nvrf-pdf
     steps:
-      #checkout repo and install gh
-      - checkout
+      #checkout pdf branch and install gh
+      - run: git clone -b "update-nvrf-pdf" "$CIRCLE_REPOSITORY_URL"
       - gh/install
       #configure git
       - run:
@@ -51,18 +51,18 @@ jobs:
       - image: cypress/included:cypress-13.3.0-node-20.6.1-chrome-116.0.5845.187-1-ff-117.0-edge-116.0.1938.76-1
     steps:
       - checkout
-      - run:  
+      - run:
           name: Install dependencies
           command: |
             npm install
-            cd testing  
-            npm install  
-      - run:  
+            cd testing
+            npm install
+      - run:
           name: Frontend Testing
           command: |
             npm start &
-            cd testing  
-            npm run cy:test           
+            cd testing
+            npm run cy:test
 workflows:
   main-workflow:
     jobs:
@@ -76,4 +76,4 @@ workflows:
           filters:
             branches:
               only:
-                - stage    
+                - stage
