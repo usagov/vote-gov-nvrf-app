@@ -166,6 +166,7 @@ function Addresses(props){
                         <StateSelector
                             classes="radius-md"
                             statesList={props.statesList}
+                            stringContent={props.stringContent}
                             state={props.stateData.name}
                             saveState={props.saveFieldData('state')}
                             autoComplete="off"
@@ -302,6 +303,7 @@ function Addresses(props){
                                             ariaDescribedBy="mail-state-error"
                                             required={(parseInt(addressFieldsState.required))}
                                             statesList={props.statesList}
+                                            stringContent={props.stringContent}
                                             state={props.fieldData.mail_state}
                                             saveState={props.saveFieldData('mail_state')}
                                             onBlur={(e) => {checkStateValue('mail_state'), setHandleErrors({ ...handleErrors, mail_state: checkForErrors(e, 'check value exists')})} }
@@ -440,6 +442,7 @@ function Addresses(props){
                                         autoComplete="off"
                                         required={(parseInt(addressFieldsState.required))}
                                         statesList={props.statesList}
+                                        stringContent={props.stringContent}
                                         state={props.fieldData.prev_state}
                                         saveState={props.saveFieldData('prev_state')}
                                         onBlur={(e) => checkStateValue('prev_state')}
