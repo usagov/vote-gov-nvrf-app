@@ -78,6 +78,7 @@ function MultiStepForm(props) {
 
     const setStepFocus = () => {
         scrollToTop.focus();
+        scrollToTop.scrollIntoView();
     }
 
     const handleNext = () => {

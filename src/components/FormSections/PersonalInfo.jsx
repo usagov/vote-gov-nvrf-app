@@ -328,7 +328,7 @@ function PersonalInfo(props){
 
             {raceFieldState && (
                 <Grid row gap>
-                    <Grid col={4}>
+                    <Grid tablet={{ col: 4 }}>
                         <div className={((parseInt(raceFieldState.required)) && handleErrors.race) ? 'error-container' : ''}>
                             <Label className="text-bold" htmlFor="race-ethic-group-select">{raceField.label}{(raceFieldState.required === "1") && <span className='required-text'>*</span>}
                             <Dropdown
