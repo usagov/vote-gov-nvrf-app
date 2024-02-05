@@ -145,7 +145,6 @@ const GenerateFilledPDF = async function (formData,pagesKept) {
     }
 
     // Rearrange pages
-    // "nvrf_pages_list": "1,2,3,4,7" => "3,4,1,2,7"
     const genInstrutPages = pagesKeptArray.splice(0,2);
     pagesKeptArray.splice(2,0,genInstrutPages[0],genInstrutPages[1]);
 
