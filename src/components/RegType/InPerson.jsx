@@ -1,7 +1,6 @@
 import { Icon } from '@trussworks/react-uswds';
 import {renderToStaticMarkup} from "react-dom/server";
 import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
-// import * as string from '../../../public/data/en/strings.json';
 
 function InPerson(props) {
     const content = props.content;

@@ -2,7 +2,6 @@ import { Link, Icon } from '@trussworks/react-uswds';
 import NextButton from '../NextButton';
 import {renderToStaticMarkup} from "react-dom/server";
 import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
-// import * as string from '../../../public/data/en/strings.json';
 
 function OnlineOnly(props) {
     const content = props.content;
