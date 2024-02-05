@@ -7,7 +7,6 @@ import MultiStepForm from './components/MultiStepForm';
 import {fetchData, sanitizeDOM} from './components/HelperFunctions/JsonHelper.jsx';
 import { HelmetProvider } from "react-helmet-async";
 import {getFieldValue} from "./components/HelperFunctions/fieldParser";
-import {GridContainer} from "@trussworks/react-uswds";
 
 function App() {
 
@@ -43,6 +42,7 @@ function App() {
 
   const setStepFocus = () => {
     scrollToTop.focus();
+    scrollToTop.scrollIntoView();
   }
 
   const handleNext = () => {
@@ -97,7 +97,11 @@ function App() {
             <a name="scroll-to-top"
                id="scroll-to-top"
                tabIndex={-1}
-               style={{outline: "0 none"}}
+               style={{
+                 outline: "0 none",
+                 display: "block",
+                 scrollMargin: "20px"
+               }}
             ></a>
             {step === 1 &&
                 <StateSelection
@@ -159,8 +163,7 @@ function App() {
                 />}
 
               {step >= 3 &&
-                <GridContainer containerSize={'tablet'} className={['usa-prose', 'margin-top-5']}>
-                <div className="margin-top-4 text-base">
+                <div className="text-base usa-prose margin-top-5 maxw-tablet margin-x-auto">
                   <div>{getFieldValue(content, "2c597df4-53b6-4ef5-8301-7817b04e1099", "omb_number")}</div>
                   <span className="last-updated">
                     {lastUpdatedText.replace("@state_name", stateData.name)}
@@ -168,7 +171,6 @@ function App() {
                  </span>
                   <div><a href="privacy" target="_blank">Privacy policy</a></div>
                 </div>
-                </GridContainer>
               }
           </section>
         </HelmetProvider>

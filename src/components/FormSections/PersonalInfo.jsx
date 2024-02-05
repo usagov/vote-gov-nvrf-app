@@ -42,13 +42,13 @@ function PersonalInfo(props){
         let yearStart = year.slice(0, 2);
         let birthdate = year + '-' + month + '-' + day;
         let age = Math.floor((new Date() - new Date(birthdate).getTime()) / 3.15576e+10)
-  
+
         if (type === "all") {
           let dobValues = [
             month.length === 2,
             day.length === 2,
             year.length === 4,
-  
+
             month <= 12,
             month >= 1,
             day <= 31,
@@ -58,7 +58,7 @@ function PersonalInfo(props){
             age <= 110,
             age >= 17
           ];
-  
+
           if (dobValues.includes(false)) {
             return true
           } else {
@@ -109,8 +109,8 @@ function PersonalInfo(props){
                     <Label className="text-bold" htmlFor="title-select">
                         {titleField.label}
                     </Label>
-                    <Dropdown 
-                        className="radius-md" id="title-select" name="title-select" 
+                    <Dropdown
+                        className="radius-md" id="title-select" name="title-select"
                         value={props.fieldData.title}
                         onChange={props.saveFieldData('title')}
                         autoComplete="off"
@@ -195,11 +195,11 @@ function PersonalInfo(props){
                     <Label className="text-bold" htmlFor="suffix-select">
                         {suffixField.label}
                     </Label>
-                    <Dropdown 
-                        id="suffix-select" className="radius-md" name="suffix-select" 
-                        value={props.fieldData.suffix} 
-                        onChange={props.saveFieldData('suffix')} 
-                        autoComplete="off" 
+                    <Dropdown
+                        id="suffix-select" className="radius-md" name="suffix-select"
+                        value={props.fieldData.suffix}
+                        onChange={props.saveFieldData('suffix')}
+                        autoComplete="off"
                         onInvalid={(e) => e.target.setCustomValidity(' ')}
                         onInput={(e) => e.target.setCustomValidity('')}
                         >
@@ -356,16 +356,14 @@ function PersonalInfo(props){
                 zIndex: "-1"
             }}>
                 <div className="input-parent">
-                    <Label className="text-bold" htmlFor="email-address" aria-hidden="true">
-                        Email Address<span className='required-text'>*</span>
+                    <Label className="text-bold" htmlFor="voter-contact" aria-hidden="true">
+                        Voter Contact<span className='required-text'>*</span>
                     </Label>
                     <span className="usa-hint">For example: email@address.com</span>
                     <TextInput
-                        id="email-address"
-                        name="email-address"
+                        id="voter-contact"
                         type="email"
                         required={true}
-                        placeholder="Email address"
                         className="radius-md"
                         autoComplete="off"
                         tabIndex="-1"
@@ -381,7 +379,7 @@ function PersonalInfo(props){
 
             {raceFieldState && (
                 <Grid row gap>
-                    <Grid col={4}>
+                    <Grid tablet={{ col: 4 }}>
                         <div className="input-parent">
                             <Label className="text-bold" htmlFor="race-ethic-group-select">
                                 {raceField.label}{(raceFieldState.required === "1") && <span className='required-text'>*</span>}
@@ -418,10 +416,10 @@ function PersonalInfo(props){
             <Label className="text-bold" htmlFor="title-select-2">
                 {prevTitleField.label}
             </Label>
-            <Dropdown 
-                id="title-select-2" className="radius-md" name="title-select-2" 
-                value={props.fieldData.prev_title} 
-                onChange={props.saveFieldData('prev_title')} 
+            <Dropdown
+                id="title-select-2" className="radius-md" name="title-select-2"
+                value={props.fieldData.prev_title}
+                onChange={props.saveFieldData('prev_title')}
                 autoComplete="off"
                 onInvalid={(e) => e.target.setCustomValidity(' ')}
                 onInput={(e) => e.target.setCustomValidity('')}
@@ -504,10 +502,10 @@ function PersonalInfo(props){
             <Label className="text-bold" htmlFor="suffix-select-2">
                 {prevSuffixField.label}
             </Label>
-            <Dropdown 
-                id="suffix-select-2" className="radius-md" name="suffix-select-2" 
-                value={props.fieldData.prev_suffix} onChange={props.saveFieldData('prev_suffix')} 
-                autoComplete="off" 
+            <Dropdown
+                id="suffix-select-2" className="radius-md" name="suffix-select-2"
+                value={props.fieldData.prev_suffix} onChange={props.saveFieldData('prev_suffix')}
+                autoComplete="off"
                 onInvalid={(e) => e.target.setCustomValidity(' ')}
                 onInput={(e) => e.target.setCustomValidity('')}
                 >
