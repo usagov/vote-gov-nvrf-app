@@ -450,7 +450,7 @@ function Addresses(props){
                             </div>
                         </Grid>
 
-                            <Grid tablet={{ col: 4 }}>
+                            <Grid tablet={{ col: 3}}>
                             <div className={((parseInt(addressFieldsState.required)) && handleErrors.prev_zip) ? 'error-container' : ''}>
                                 <Label className="text-bold" htmlFor="prev-zip">{prevZipcodeField.label} {(addressFieldsState.required === "1") && <span className={'required-text'}>*</span>}</Label>
                                 <span className="usa-hint" id="prev-zip-hint">For example: 12345</span>
