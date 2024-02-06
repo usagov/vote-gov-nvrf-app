@@ -399,7 +399,7 @@ function Addresses(props){
                             </Grid>
                         </Grid>
 
-                        <Grid row gap>
+                        <Grid row gap className={'flex-align-end'}>
                             <Grid tablet={{ col: 4 }}>
                                 <div className={((parseInt(addressFieldsState.required)) && handleErrors.prev_city) ? 'error-container' : ''}>
                                     <Label className="text-bold" htmlFor="prev-city">
