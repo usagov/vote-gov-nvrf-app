@@ -1,4 +1,4 @@
-import {Button, CardGroup, Card, CardHeader, CardBody, CardFooter, Icon, GridContainer} from '@trussworks/react-uswds';
+import {Button, CardGroup, Card, CardHeader, CardBody, CardFooter, Icon} from '@trussworks/react-uswds';
 import BackButton from './BackButton';
 import {sanitizeDOM} from "./HelperFunctions/JsonHelper";
 
@@ -18,7 +18,7 @@ function PathSelection(props) {
     return (
         <>
             <BackButton stringContent={stringContent} type={'button'} onClick={props.handlePrev} text={navContent.back.eligibility_req}/>
-            <GridContainer containerSize={'tablet'} className={['usa-prose', 'margin-top-5']}>
+            <div className={'usa-prose margin-top-5 maxw-tablet margin-x-auto'}>
             <h1>{introContent.title.replace("@state_name", props.stateData.name)}</h1>
 
             <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: introContentBody}}/>
@@ -60,7 +60,7 @@ function PathSelection(props) {
                     </CardFooter>
                 </Card>
             </CardGroup>
-            </GridContainer>
+            </div>
         </>
     );
 }

@@ -310,11 +310,10 @@ function PersonalInfo(props){
                 zIndex: "-1"
             }}>
                 <div className={(handleErrors.email_address) ? 'error-container' : ''}>
-                    <Label className="text-bold" htmlFor="email-address" aria-hidden="true">{stringContent.emailLabel}<span className='required-text'>*</span></Label>
+                    <Label className="text-bold" htmlFor="voter-contact" aria-hidden="true">{stringContent.emailLabel}<span className='required-text'>*</span></Label>
                     <span className="usa-hint">{stringContent.emailHint}</span>
                     <TextInput
-                        id="email-address"
-                        name="email-address"
+                        id="voter-contact"
                         type="email"
                         required={true}
                         className="radius-md"
@@ -330,7 +329,7 @@ function PersonalInfo(props){
 
             {raceFieldState && (
                 <Grid row gap>
-                    <Grid col={4}>
+                    <Grid tablet={{ col: 4 }}>
                         <div className={((parseInt(raceFieldState.required)) && handleErrors.race) ? 'error-container' : ''}>
                             <Label className="text-bold" htmlFor="race-ethic-group-select">{raceField.label}{(raceFieldState.required === "1") && <span className='required-text'>*</span>}
                             <Dropdown

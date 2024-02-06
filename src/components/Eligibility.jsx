@@ -1,4 +1,4 @@
-import {Fieldset, Checkbox, Label, GridContainer, Form} from '@trussworks/react-uswds';
+import {Fieldset, Checkbox, Label, Form} from '@trussworks/react-uswds';
 import BackButton from './BackButton';
 import NextButton from "./NextButton";
 import StepsList from './RegType/StepsList';
@@ -30,7 +30,7 @@ function Eligibility(props) {
     return (
         <>
             <BackButton stringContent={stringContent} type={'button'} onClick={props.handlePrev} text={navContent.back.state_reg_options}/>
-            <GridContainer containerSize={'tablet'} className={['usa-prose', 'margin-top-5']}>
+            <div className={'usa-prose margin-top-5 maxw-tablet margin-x-auto'}>
             <h1>{content.title.replace("@state_name", stateContent.name)}</h1>
             <StepsList content={listContent}/>
 
@@ -70,7 +70,7 @@ function Eligibility(props) {
 
                 <NextButton stringContent={stringContent} type={'submit'} onClick={() => props.checkboxValid()} text={navContent.next.start}/>
             </Form>
-            </GridContainer>
+            </div>
         </>
     );
 }
