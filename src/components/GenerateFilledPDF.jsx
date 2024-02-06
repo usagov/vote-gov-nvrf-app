@@ -149,8 +149,8 @@ const GenerateFilledPDF = async function (formData,pagesKept) {
 
     // Trigger the browser to download the PDF document
     var blobURL = URL.createObjectURL(new Blob([pdfBytes], {type: 'application/pdf'}));
-    // window.open(blobURL);
-    window.location.href = blobURL;
+    window.open(blobURL, '_blank');
+    // window.location.href = blobURL;
 }
 
 export default GenerateFilledPDF;
