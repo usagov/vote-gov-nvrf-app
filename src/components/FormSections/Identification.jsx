@@ -59,7 +59,8 @@ function Identification(props){
                             id="id-num-dropdown"
                             name="input-dropdown"
                             value={props.idType}
-                            required={true}
+                            // required={true}
+                            aria-required={true}
                             onChange={(e) => props.saveIdType(e)}
                             onBlur={(e) => setHandleErrors({
                                 ...handleErrors,

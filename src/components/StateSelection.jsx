@@ -37,7 +37,8 @@ function StateSelection(props) {
                                 id="state-dropdown"
                                 name="input-dropdown"
                                 value={props.state}
-                                required={true}
+                                // required={true}
+                                aria-required={true}
                                 onChange={e => {
                                     props.getSelectedState(e.target.value)
                                 }}
