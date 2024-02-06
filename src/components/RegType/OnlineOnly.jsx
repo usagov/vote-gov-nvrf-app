@@ -16,7 +16,7 @@ function OnlineOnly(props) {
                 <p>
                     <a href={stateContent.registration_url} className="usa-button" target="_blank">
                         <span>{stringContent.stateOnlineName.replace("@state_name", stateContent.name)}</span>
-                        <Icon.Launch title="External link opens new window" style={{margin: "-3px -3px -3px 4px"}}/>
+                        <Icon.Launch title={stringContent.extlink} style={{margin: "-3px -3px -3px 4px"}}/>
                     </a>
                 </p>
         );
@@ -25,7 +25,7 @@ function OnlineOnly(props) {
             <p>
                     <a href={stateContent.election_website_url} className="usa-button" target="_blank">
                         <span>{stringContent.checkReg}</span>
-                        <Icon.Launch title="External link opens new window" style={{margin: "-3px -3px -3px 4px"}}/>
+                        <Icon.Launch title={stringContent.extlink} style={{margin: "-3px -3px -3px 4px"}}/>
                     </a>
             </p>
         );

@@ -59,7 +59,7 @@ function StateSelection(props) {
                 </div>
                 <div className="usa-prose" dangerouslySetInnerHTML= {{__html: introContentBodyParts[1]}}/>
 
-                <NextButton type={'submit'} text={navContent.next.reg_options}/>
+                <NextButton type={'submit'} text={navContent.next.reg_options} stringContent={stringContent}/>
 
             </form>
             </GridContainer>

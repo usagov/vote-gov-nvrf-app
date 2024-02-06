@@ -29,7 +29,7 @@ function RegistrationOptions(props) {
     return (
         <>
 
-            <BackButton type={'button'} onClick={props.handlePrev} text={navContent.back.select_state}/>
+            <BackButton stringContent={stringContent} type={'button'} onClick={props.handlePrev} text={navContent.back.select_state}/>
             <GridContainer containerSize={'tablet'} className={['usa-prose', 'margin-top-5']}>
                 {(regType === 'online' && acceptsNVRF === '1' && props.stateData.mail_reg_url != "") &&
                     <Online

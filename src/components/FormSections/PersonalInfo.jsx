@@ -83,7 +83,7 @@ function PersonalInfo(props){
                     <Label className="text-bold" htmlFor="title-select">
                         {titleField.label}
                     <Dropdown className="radius-md" id="title-select" name="title-select" value={props.fieldData.title} onChange={props.saveFieldData('title')} autoComplete="off">
-                        <option value={''}>- Select -{' '}</option>
+                        <option value={''}>{stringContent.select}</option>
                         {titleField.options.map((item, index) => (
                             <option key={index} value={item.value}>{item.key}</option>
                         ))}
@@ -160,7 +160,7 @@ function PersonalInfo(props){
                     <Label className="text-bold" htmlFor="suffix-select">
                         {suffixField.label}
                     <Dropdown id="suffix-select" className="radius-md" name="suffix-select" value={props.fieldData.suffix} onChange={props.saveFieldData('suffix')} autoComplete="off">
-                        <option value={''}>- Select -{' '}</option>
+                        <option value={''}>{stringContent.select}</option>
                         {suffixField.options.map((item, index) => (
                             <option key={index} value={item.value}>{item.key}</option>
                         ))}
@@ -196,7 +196,7 @@ function PersonalInfo(props){
                                     className="usa-input radius-md"
                                     aria-describedby="dob-error"
                                     name="date_of_birth_month"
-                                    label="Month"
+                                    label={stringContent.month}
                                     unit="month"
                                     required={true}
                                     type="text"
@@ -220,7 +220,7 @@ function PersonalInfo(props){
                                     className="usa-input radius-md"
                                     aria-describedby="dob-error"
                                     name="date_of_birth_day"
-                                    label="Day"
+                                    label={stringContent.day}
                                     unit="day"
                                     required={true}
                                     type="text"
@@ -244,7 +244,7 @@ function PersonalInfo(props){
                                     className="usa-input radius-md"
                                     aria-describedby="dob-error"
                                     name="date_of_birth_year"
-                                    label="Year"
+                                    label={stringContent.year}
                                     unit="year"
                                     required={true}
                                     type="text"
@@ -273,7 +273,7 @@ function PersonalInfo(props){
                 <Grid tablet={{ col: 5 }}>
                     <div className={(parseInt(telephoneFieldState.required) && handleErrors.phone_number) ? 'error-container' : ''}>
                         <Label className="text-bold" htmlFor="phone-number">{phoneNumberField.label}{(telephoneFieldState.required === "1") && <span className='required-text'>*</span>}</Label>
-                        <span className="usa-hint" id="date-of-birth-hint">For example: {phoneNumberField.help_text}</span>
+                        <span className="usa-hint" id="date-of-birth-hint">{phoneNumberField.help_text}</span>
                         <TextInput
                             id="phone-number"
                             className="radius-md"
@@ -310,14 +310,13 @@ function PersonalInfo(props){
                 zIndex: "-1"
             }}>
                 <div className={(handleErrors.email_address) ? 'error-container' : ''}>
-                    <Label className="text-bold" htmlFor="email-address" aria-hidden="true">Email Address<span className='required-text'>*</span></Label>
-                    <span className="usa-hint">For example: email@address.com</span>
+                    <Label className="text-bold" htmlFor="email-address" aria-hidden="true">{stringContent.emailLabel}<span className='required-text'>*</span></Label>
+                    <span className="usa-hint">{stringContent.emailHint}</span>
                     <TextInput
                         id="email-address"
                         name="email-address"
                         type="email"
                         required={true}
-                        placeholder="Email address"
                         className="radius-md"
                         autoComplete="off"
                         tabIndex="-1"
@@ -343,7 +342,7 @@ function PersonalInfo(props){
                             autoComplete="off"
                             required={parseInt(raceFieldState.required)}
                             onBlur={(e) => setHandleErrors({ ...handleErrors, race: checkForErrors(e, 'check value exists') })}>
-                                <option value="">- Select -{' '}</option>
+                                <option value="">{stringContent.select}</option>
                                 {raceField.options.map((item, index) => (
                                     <option key={index} value={item.value}>{item.key}</option>
                                 ))}
@@ -367,7 +366,7 @@ function PersonalInfo(props){
             <Label className="text-bold" htmlFor="title-select-2">
                 {prevTitleField.label}
             <Dropdown id="title-select-2" className="radius-md" name="title-select-2" value={props.fieldData.prev_title} onChange={props.saveFieldData('prev_title')} autoComplete="off">
-                <option value={''}>- Select -{' '}</option>
+                <option value={''}>{stringContent.select}</option>
                 {prevTitleField.options.map((item, index) => (
                     <option key={index} value={item.value}>{item.key}</option>
                 ))}
@@ -444,7 +443,7 @@ function PersonalInfo(props){
             <Label className="text-bold" htmlFor="suffix-select-2">
                 {prevSuffixField.label}
             <Dropdown id="suffix-select-2" className="radius-md" name="suffix-select-2" value={props.fieldData.prev_suffix} onChange={props.saveFieldData('prev_suffix')} autoComplete="off">
-                <option value={''}>- Select -{' '}</option>
+                <option value={''}>{stringContent.select}</option>
                 {prevSuffixField.options.map((item, index) => (
                     <option key={index} value={item.value}>{item.key}</option>
                 ))}

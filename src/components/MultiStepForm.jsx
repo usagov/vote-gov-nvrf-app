@@ -12,9 +12,6 @@ import BackButton from './BackButton'
 import NextButton from './NextButton';
 import { Helmet } from "react-helmet-async";
 import {sanitizeDOM} from "./HelperFunctions/JsonHelper";
-// import * as string from '../../public/data/en/strings.json';
-
-
 
 function MultiStepForm(props) {
     const content = props.content;
@@ -253,7 +250,7 @@ function MultiStepForm(props) {
 
     return (
         <>
-            {step != 6 && <BackButton type={'button'} onClick={handlePrev} text={backButtonText(step)}/>}
+            {step != 6 && <BackButton stringContent={stringContent} type={'button'} onClick={handlePrev} text={backButtonText(step)}/>}
 
             <ProgressBar step={step} content={navContent}/>
             <GridContainer containerSize={'tablet'} className={['usa-prose', 'margin-top-8']}>
@@ -371,7 +368,7 @@ function MultiStepForm(props) {
                     />
                 }
 
-                {step != 6 && <NextButton type={'submit'} onClick={() => nextStepValidation()} text={nextButtonText(step)}/>}
+                {step != 6 && <NextButton stringContent={stringContent} type={'submit'} onClick={() => nextStepValidation()} text={nextButtonText(step)}/>}
             </Form>
 
             {/* Load Touchpoints feedback form */}

@@ -14,7 +14,7 @@ function NotNeeded(props) {
                 <p>
                     <a href={stateContent.election_website_url} className="usa-button" target="_blank">
                         <span>{stringContent.learnMore}</span>
-                        <Icon.Launch title="External link opens new window" style={{margin: "-3px -3px -3px 4px"}}/>
+                        <Icon.Launch title={stringContent.extlink} style={{margin: "-3px -3px -3px 4px"}}/>
                     </a>
                 </p>
             }

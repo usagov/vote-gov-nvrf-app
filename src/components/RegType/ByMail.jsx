@@ -15,9 +15,9 @@ function ByMail(props) {
 
         const stateMailinLink = () => (
             <p>
-                <a href={stateContent.mail_reg_url} className="usa-button" target="_blank" title="Opens a new PDF window">
+                <a href={stateContent.mail_reg_url} className="usa-button" target="_blank" title={stringContent.newWindow}>
                     <span>{stringContent.stateName.replace("@state_name", props.stateData.name)}</span>
-                    <Icon.Launch title="External link opens new window" style={{margin: "-3px -3px -3px 4px"}}/>
+                    <Icon.Launch title={stringContent.extlink} style={{margin: "-3px -3px -3px 4px"}}/>
                 </a>
             </p>
         );
@@ -26,7 +26,7 @@ function ByMail(props) {
             <p>
                 <a href={stateContent.election_website_url} className="usa-button" target="_blank">
                     <span>{stringContent.checkReg}</span>
-                    <Icon.Launch title="External link opens new window" style={{margin: "-3px -3px -3px 4px"}}/>
+                    <Icon.Launch title={stringContent.extlink} style={{margin: "-3px -3px -3px 4px"}}/>
                 </a>
             </p>
         );
@@ -40,7 +40,7 @@ function ByMail(props) {
                 <h1>{content.title.replace("@state_name", stateContent.name)}</h1>
 
                 <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: contentBodyPartOne}}/>
-                <p><NextButton noMarginTop type={'submit'} onClick={props.handleNext} text={navContent.next.start}/></p>
+                <p><NextButton stringContent={stringContent} noMarginTop type={'submit'} onClick={props.handleNext} text={navContent.next.start}/></p>
                 <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: contentBodyPartTwo}}/>
 
             </>
