@@ -15,6 +15,7 @@ function App() {
   const [navContent, setNavContent] = useState('');
   const [cards, setCards] = useState('');
   const [fieldContent, setFieldContent] = useState('')
+  const [stringContent, setStringContent] = useState('')
 
   useEffect(() => {
     fetchData("states.json", setStates);
@@ -22,6 +23,7 @@ function App() {
     fetchData("navigation.json", setNavContent);
     fetchData("cards.json", setCards);
     fetchData("fields.json", setFieldContent);
+    fetchData("strings.json", setStringContent)
   }, []);
 
   const [step, setStep] = useState(1);
@@ -31,7 +33,7 @@ function App() {
   const [formStep, setFormStep] = useState(1);
 
   const lastUpdatedSanitized = sanitizeDOM(stateData.nvrf_last_updated_date);
-  const lastUpdatedText = "@state_name information last updated ";
+  const lastUpdatedText = (stringContent.lastUpdated);
   const scrollToTop = document.getElementById('scroll-to-top');
 
   //Confirm eligibility checkbox controls
@@ -89,7 +91,7 @@ function App() {
   };
 
   // Only render the markup if the data is loaded.
-  if (states && content && navContent && fieldContent) {
+  if (states && content && navContent && fieldContent && stringContent) {
 
     const statesList = []
     for (let i = 0; i < states.length; i++) {
@@ -121,6 +123,7 @@ function App() {
                     content={content}
                     navContent={navContent}
                     fieldContent={fieldContent}
+                    stringContent={stringContent}
                 />}
             {step === 2 &&
                 <RegistrationOptions
@@ -129,6 +132,7 @@ function App() {
                     stateData={stateData}
                     content={content}
                     navContent={navContent}
+                    stringContent={stringContent}
                 />}
             {step === 3 &&
                 <Eligibility
@@ -138,6 +142,7 @@ function App() {
                     stateData={stateData}
                     content={content}
                     navContent={navContent}
+                    stringContent={stringContent}
                     cards={cards}
                     fieldContent={fieldContent}
                     hasConfirmed={hasConfirmed}
@@ -155,6 +160,7 @@ function App() {
                     cards={cards}
                     registrationPath={registrationPath}
                     getRegPath={getRegPath}
+                    stringContent={stringContent}
                     getFormStep={getFormStep}
                 />}
             {step === 5 &&
@@ -168,6 +174,7 @@ function App() {
                     fieldContent={fieldContent}
                     registrationPath={registrationPath}
                     getFormStep={getFormStep}
+                    stringContent={stringContent}
                 />}
 
               {step >= 3 &&
@@ -177,7 +184,7 @@ function App() {
                     {lastUpdatedText.replace("@state_name", stateData.name)}
                     <span dangerouslySetInnerHTML= {{__html: lastUpdatedSanitized}}/>
                  </span>
-                  <div><a href="privacy" target="_blank">Privacy policy</a></div>
+                  <div><a href="privacy" target="_blank">{stringContent.privacyPolicy}</a></div>
                 </div>
               }
           </section>

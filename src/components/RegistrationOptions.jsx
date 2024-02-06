@@ -13,8 +13,9 @@ function RegistrationOptions(props) {
     const acceptsNVRF = props.stateData.accepts_nvrf;
     const content = props.content;
     const navContent = props.navContent;
+    const stringContent = props.stringContent
 
-    if (content && navContent) {
+    if (content && navContent && stringContent) {
         const onlineContent = content.find(item => item.uuid === "086a212d-4f75-47e8-aad6-24eadc4a559f");
         const onlineNoStateMailContent = content.find(item => item.uuid === "54aab86d-419f-45ec-947e-414490ddfb87");
         const onlineOnlyContent = content.find(item => item.uuid === "216b8cd7-69e3-4947-aa2c-09dca7392a46");
@@ -27,7 +28,7 @@ function RegistrationOptions(props) {
     return (
         <>
 
-            <BackButton type={'button'} onClick={props.handlePrev} text={navContent.back.select_state}/>
+            <BackButton stringContent={stringContent} type={'button'} onClick={props.handlePrev} text={navContent.back.select_state}/>
             <div className={'usa-prose margin-top-5 maxw-tablet margin-x-auto'}>
                 {(regType === 'online' && acceptsNVRF === '1' && props.stateData.mail_reg_url != "") &&
                     <Online
@@ -35,6 +36,7 @@ function RegistrationOptions(props) {
                         navContent={props.navContent}
                         stateData={props.stateData}
                         handleNext={props.handleNext}
+                        stringContent={props.stringContent}
                     />}
                 {(regType === 'online' && acceptsNVRF === '1' && props.stateData.mail_reg_url === "") &&
                     <OnlineNoStateMail
@@ -42,6 +44,7 @@ function RegistrationOptions(props) {
                         navContent={props.navContent}
                         stateData={props.stateData}
                         handleNext={props.handleNext}
+                        stringContent={props.stringContent}
                     />}
                 {(regType === 'online' && acceptsNVRF === '0' && props.stateData.name === "Guam") &&
                     <OnlineOnly
@@ -49,6 +52,7 @@ function RegistrationOptions(props) {
                         navContent={props.navContent}
                         stateData={props.stateData}
                         handleNext={props.handleNext}
+                        stringContent={props.stringContent}
                     />}
                 {(regType === 'online' && acceptsNVRF === '0' && props.stateData.name != "Guam") &&
                     <OnlineNoNVRF
@@ -56,6 +60,7 @@ function RegistrationOptions(props) {
                         navContent={props.navContent}
                         stateData={props.stateData}
                         handleNext={props.handleNext}
+                        stringContent={props.stringContent}
                     />}
                 {(regType === 'by-mail' && acceptsNVRF === '1') &&
                     <ByMail
@@ -63,6 +68,7 @@ function RegistrationOptions(props) {
                         navContent={props.navContent}
                         stateData={props.stateData}
                         handleNext={props.handleNext}
+                        stringContent={props.stringContent}
                     />}
                  {(regType === 'by-mail' && acceptsNVRF === '0') &&
                     <ByMailStateOnly
@@ -70,16 +76,19 @@ function RegistrationOptions(props) {
                         navContent={props.navContent}
                         stateData={props.stateData}
                         handleNext={props.handleNext}
+                        stringContent={props.stringContent}
                     />}
                 {regType === 'in-person' &&
                     <InPerson
                         content={inPersonContent}
                         stateData={props.stateData}
+                        stringContent={props.stringContent}
                     />}
                 {regType === 'not-needed' &&
                     <NotNeeded
                         content={noRegContent}
                         stateData={props.stateData}
+                        stringContent={props.stringContent}
                     />}
             </div>
             </>

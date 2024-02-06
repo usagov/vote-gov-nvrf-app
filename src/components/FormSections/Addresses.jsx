@@ -3,11 +3,14 @@ import StateSelector from '../StateSelector';
 import React, { useState } from "react";
 import { restrictType, checkForErrors } from '../HelperFunctions/ValidateField';
 
+
 function Addresses(props){
     const headings = props.headings;
     const fields = props.fieldContent;
     const changeRegistrationVisible = (props.registrationPath === 'update') ? true : false;
     const nvrfStateFields = props.stateData.nvrf_fields;
+    const stringContent = props.stringContent
+
 
     //Drupal field data
     const homeAddressSectionField = fields.find(item => item.uuid === "63552bb6-6afb-46e1-8148-860242917a22");
@@ -163,6 +166,7 @@ function Addresses(props){
                         <StateSelector
                             classes="radius-md"
                             statesList={props.statesList}
+                            stringContent={props.stringContent}
                             state={props.stateData.name}
                             saveState={props.saveFieldData('state')}
                             autoComplete="off"
@@ -299,6 +303,7 @@ function Addresses(props){
                                             ariaDescribedBy="mail-state-error"
                                             required={(parseInt(addressFieldsState.required))}
                                             statesList={props.statesList}
+                                            stringContent={props.stringContent}
                                             state={props.fieldData.mail_state}
                                             saveState={props.saveFieldData('mail_state')}
                                             onBlur={(e) => {checkStateValue('mail_state'), setHandleErrors({ ...handleErrors, mail_state: checkForErrors(e, 'check value exists')})} }
@@ -437,6 +442,7 @@ function Addresses(props){
                                         autoComplete="off"
                                         required={(parseInt(addressFieldsState.required))}
                                         statesList={props.statesList}
+                                        stringContent={props.stringContent}
                                         state={props.fieldData.prev_state}
                                         saveState={props.saveFieldData('prev_state')}
                                         onBlur={(e) => checkStateValue('prev_state')}
@@ -453,7 +459,7 @@ function Addresses(props){
                             <Grid tablet={{ col: 4 }}>
                             <div className={((parseInt(addressFieldsState.required)) && handleErrors.prev_zip) ? 'error-container' : ''}>
                                 <Label className="text-bold" htmlFor="prev-zip">{prevZipcodeField.label} {(addressFieldsState.required === "1") && <span className={'required-text'}>*</span>}</Label>
-                                <span className="usa-hint" id="prev-zip-hint">For example: 12345</span>
+                                <span className="usa-hint" id="prev-zip-hint">{stringContent.zip}</span>
                                 <TextInput
                                     id="prev-zip"
                                     className="radius-md"

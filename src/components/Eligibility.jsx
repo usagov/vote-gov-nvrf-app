@@ -10,6 +10,7 @@ function Eligibility(props) {
     let content = props.content;
     const navContent = props.navContent;
     const stateContent = props.stateData;
+    const stringContent = props.stringContent;
     const fields = props.fieldContent;
     const cards = props.cards;
 
@@ -28,7 +29,7 @@ function Eligibility(props) {
 
     return (
         <>
-            <BackButton type={'button'} onClick={props.handlePrev} text={navContent.back.state_reg_options}/>
+            <BackButton stringContent={stringContent} type={'button'} onClick={props.handlePrev} text={navContent.back.state_reg_options}/>
             <div className={'usa-prose margin-top-5 maxw-tablet margin-x-auto'}>
             <h1>{content.title.replace("@state_name", stateContent.name)}</h1>
             <StepsList content={listContent}/>
@@ -67,7 +68,7 @@ function Eligibility(props) {
                 <div className={'usa-prose margin-top-5'} dangerouslySetInnerHTML= {{__html: contentBodyParts[1].replace("@state_name", stateContent.name)
                         .replace("@mail_deadline", renderToStaticMarkup(mailDeadline()))}}/>
 
-                <NextButton type={'submit'} onClick={() => props.checkboxValid()} text={navContent.next.start}/>
+                <NextButton stringContent={stringContent} type={'submit'} onClick={() => props.checkboxValid()} text={navContent.next.start}/>
             </Form>
             </div>
         </>

@@ -10,6 +10,7 @@ function StateSelection(props) {
     const navContent = props.navContent;
     const statesList = props.statesList;
     const fields = props.fieldContent;
+    const stringContent = props.stringContent
 
     const introContent = content.find(item => item.uuid === "e3461b9a-e0b1-4157-ad4a-13f3835a101c");
     const introContentBody = sanitizeDOM(introContent.body);
@@ -42,7 +43,7 @@ function StateSelection(props) {
                                 }}
                                 onBlur={(e) => setHandleErrors({ state_selected: checkForErrors(e, 'check state selection') })}
                             >
-                                <option value="">{"Select your state or territory"}</option>
+                                <option value="">{stringContent.select}</option>
                                 {statesList.map(
                                     state => <option key={state} value={state}>{state}</option>
                                 )}
@@ -57,7 +58,7 @@ function StateSelection(props) {
                 </div>
                 <div className="usa-prose" dangerouslySetInnerHTML= {{__html: introContentBodyParts[1]}}/>
 
-                <NextButton type={'submit'} text={navContent.next.reg_options}/>
+                <NextButton type={'submit'} text={navContent.next.reg_options} stringContent={stringContent}/>
 
             </form>
         </div>
