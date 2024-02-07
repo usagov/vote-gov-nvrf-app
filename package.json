@@ -13,7 +13,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@trussworks/react-uswds": "^4.2.1",
+    "@trussworks/react-uswds": "6.2.0",
     "@types/react": "^18.2.36",
     "@types/react-dom": "^18.2.14",
     "@vitejs/plugin-react": "^4.1.1",

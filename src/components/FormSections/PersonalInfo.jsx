@@ -1,4 +1,4 @@
-import { Label, TextInput, Dropdown, Checkbox, Grid, Fieldset } from '@trussworks/react-uswds';
+import { Label, TextInput, Select, Checkbox, Grid, Fieldset } from '@trussworks/react-uswds';
 import React, { useState } from "react";
 import { restrictType, checkForErrors, jumpTo } from '../HelperFunctions/ValidateField';
 import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
@@ -82,12 +82,14 @@ function PersonalInfo(props){
                     <Grid tablet={{ col: 2 }}>
                     <Label className="text-bold" htmlFor="title-select">
                         {titleField.label}
-                    <Dropdown className="radius-md" id="title-select" name="title-select" value={props.fieldData.title} onChange={props.saveFieldData('title')} autoComplete="off">
-                        <option value={''}>{stringContent.select}</option>
+                    <Select className="radius-md" id="title-select" name="title-select" value={props.fieldData.title} onChange={props.saveFieldData('title')} autoComplete="off">
+                    <React.Fragment key=".0">                        
+                    <option value={''}>{stringContent.select}</option>
                         {titleField.options.map((item, index) => (
                             <option key={index} value={item.value}>{item.key}</option>
                         ))}
-                    </Dropdown>
+                    </React.Fragment>
+                    </Select>
                     </Label>
                     </Grid>
 
@@ -159,12 +161,14 @@ function PersonalInfo(props){
                     <Grid tablet={{ col: 6 }}>
                     <Label className="text-bold" htmlFor="suffix-select">
                         {suffixField.label}
-                    <Dropdown id="suffix-select" className="radius-md" name="suffix-select" value={props.fieldData.suffix} onChange={props.saveFieldData('suffix')} autoComplete="off">
+                    <Select id="suffix-select" className="radius-md" name="suffix-select" value={props.fieldData.suffix} onChange={props.saveFieldData('suffix')} autoComplete="off">
+                    <React.Fragment key=".0">                        
                         <option value={''}>{stringContent.select}</option>
                         {suffixField.options.map((item, index) => (
                             <option key={index} value={item.value}>{item.key}</option>
                         ))}
-                    </Dropdown>
+                    </React.Fragment>
+                    </Select>
                     </Label>
                     </Grid>
                 </Grid>
@@ -332,7 +336,7 @@ function PersonalInfo(props){
                     <Grid tablet={{ col: 4 }}>
                         <div className={((parseInt(raceFieldState.required)) && handleErrors.race) ? 'error-container' : ''}>
                             <Label className="text-bold" htmlFor="race-ethic-group-select">{raceField.label}{(raceFieldState.required === "1") && <span className='required-text'>*</span>}
-                            <Dropdown
+                            <Select
                             id="race-ethic-group-select" 
                             className="radius-md" 
                             name="race-ethic-group-select"
@@ -341,11 +345,13 @@ function PersonalInfo(props){
                             autoComplete="off"
                             required={parseInt(raceFieldState.required)}
                             onBlur={(e) => setHandleErrors({ ...handleErrors, race: checkForErrors(e, 'check value exists') })}>
+                            <React.Fragment key=".0">                        
                                 <option value="">{stringContent.select}</option>
                                 {raceField.options.map((item, index) => (
                                     <option key={index} value={item.value}>{item.key}</option>
                                 ))}
-                            </Dropdown>
+                            </React.Fragment>
+                            </Select>
                             {((parseInt(raceFieldState.required) === 1) && handleErrors.race) &&
                                 <span id="race-error" role="alert" className='error-text'>
                                     {raceField.error_msg}
@@ -364,12 +370,14 @@ function PersonalInfo(props){
             <Grid tablet={{ col: 2 }}>
             <Label className="text-bold" htmlFor="title-select-2">
                 {prevTitleField.label}
-            <Dropdown id="title-select-2" className="radius-md" name="title-select-2" value={props.fieldData.prev_title} onChange={props.saveFieldData('prev_title')} autoComplete="off">
+            <Select id="title-select-2" className="radius-md" name="title-select-2" value={props.fieldData.prev_title} onChange={props.saveFieldData('prev_title')} autoComplete="off">
+            <React.Fragment key=".0">                        
                 <option value={''}>{stringContent.select}</option>
                 {prevTitleField.options.map((item, index) => (
                     <option key={index} value={item.value}>{item.key}</option>
                 ))}
-            </Dropdown>
+            </React.Fragment>
+            </Select>
             </Label>
             </Grid>
 
@@ -441,12 +449,14 @@ function PersonalInfo(props){
             <Grid tablet={{ col: 6 }}>
             <Label className="text-bold" htmlFor="suffix-select-2">
                 {prevSuffixField.label}
-            <Dropdown id="suffix-select-2" className="radius-md" name="suffix-select-2" value={props.fieldData.prev_suffix} onChange={props.saveFieldData('prev_suffix')} autoComplete="off">
+            <Select id="suffix-select-2" className="radius-md" name="suffix-select-2" value={props.fieldData.prev_suffix} onChange={props.saveFieldData('prev_suffix')} autoComplete="off">
+            <React.Fragment key=".0">                           
                 <option value={''}>{stringContent.select}</option>
                 {prevSuffixField.options.map((item, index) => (
                     <option key={index} value={item.value}>{item.key}</option>
                 ))}
-            </Dropdown>
+            </React.Fragment>
+            </Select>
             </Label>
             </Grid>
         </Grid>

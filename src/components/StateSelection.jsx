@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import {Dropdown} from '@trussworks/react-uswds';
+import React, { useState } from 'react';
+import { Select } from '@trussworks/react-uswds';
 import { checkForErrors } from './HelperFunctions/ValidateField';
 import NextButton from './NextButton';
 import { getFieldError, getFieldLabel } from './HelperFunctions/fieldParser';
@@ -33,9 +33,9 @@ function StateSelection(props) {
 
                     <div className="grid-col">
                         <div className={handleErrors.state_selected ? 'error-container maxw-mobile' : 'maxw-mobile'}>
-                            <Dropdown
+                            <Select
                                 id="state-dropdown"
-                                name="input-dropdown"
+                                name="state-dropdown"
                                 value={props.state}
                                 required={true}
                                 onChange={e => {
@@ -43,11 +43,13 @@ function StateSelection(props) {
                                 }}
                                 onBlur={(e) => setHandleErrors({ state_selected: checkForErrors(e, 'check state selection') })}
                             >
+                            <React.Fragment key=".0">
                                 <option value="">{stringContent.select}</option>
                                 {statesList.map(
                                     state => <option key={state} value={state}>{state}</option>
                                 )}
-                            </Dropdown>
+                            </React.Fragment>
+                            </Select>
                             {handleErrors.state_selected &&
                                 <span id="state-dropdown-error" role="alert" className='error-text'>
                                 {getFieldError(fields, "7231330d-523b-4e22-b282-b9f98ee20ef2")}

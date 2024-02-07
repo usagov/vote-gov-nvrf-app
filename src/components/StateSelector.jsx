@@ -1,4 +1,5 @@
-import { Dropdown } from '@trussworks/react-uswds';
+import React from 'react';
+import { Select } from '@trussworks/react-uswds';
 
 function StateSelector(props) {
     const statesList = props.statesList;
@@ -6,7 +7,7 @@ function StateSelector(props) {
     
     return (
         <>
-        <Dropdown 
+        <Select
             id="state" 
             className={props.classes}
             name="input-dropdown" 
@@ -17,11 +18,13 @@ function StateSelector(props) {
             required={true}
             onBlur={props.onBlur}
         >
-        <option value="">{stringContent.select}</option>
-            {statesList.map(
-            state => <option key={state} value={state}>{state}</option>
-        )}
-        </Dropdown>
+        <React.Fragment key=".0">
+            <option value="">{stringContent.select}</option>
+                {statesList.map(
+                state => <option key={state} value={state}>{state}</option>
+            )}
+        </React.Fragment>
+        </Select>
         </>
     );
 }
