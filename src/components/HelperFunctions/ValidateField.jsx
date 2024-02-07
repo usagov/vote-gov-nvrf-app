@@ -72,23 +72,27 @@ export const dayFormat = (input) => {
 }
 
 export const checkForErrors=(e, requirement)=> {
+  const value = e.target.value;
+  const valueRequired = e.target.required; 
+
+  if (value || valueRequired) {
   switch (requirement) {
     case 'check value exists':
-      if (e.target.value) {
+      if (value) {
         return false
       } else {
         return true
       }
-
     case 'check value length':
-      if (e.target.value.length === e.target.maxLength) {
+      let valueIsLength = e.target.value.length === e.target.maxLength;
+      if (valueIsLength) {
         return false
       } else {
         return true
       }
 
     case 'check state selection':
-      if (e.target.value === '') {
+      if (value === '') {
         return true
       } else {
         return false
@@ -96,5 +100,6 @@ export const checkForErrors=(e, requirement)=> {
 
     default:
       return
+  }    
   }
 }
