@@ -146,11 +146,12 @@ const GenerateFilledPDF = async function (formData,pagesKept) {
 
     // Serialize the PDFDocument to bytes (a Uint8Array)
     const pdfBytes = await pdfDoc.save()
+    var new_tab=window.open()
 
     // Trigger the browser to download the PDF document
     var blobURL = URL.createObjectURL(new Blob([pdfBytes], {type: 'application/pdf'}));
     // window.open(blobURL, '_blank');
-    window.location.href = blobURL;
+    new_tab.location.href = blobURL;
 }
 
 export default GenerateFilledPDF;
