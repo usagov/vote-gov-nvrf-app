@@ -5,6 +5,7 @@ import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
 function Delivery(props) {
     const content = props.content;
     const state = props.stateData;
+    const stringContent = props.stringContent
 
     // Add A/B Message randomization.
     // example: const reminderMessage = randomProperty(content.reminder_messages);
@@ -42,7 +43,7 @@ function Delivery(props) {
                 <div className={'usa-prose margin-top-2'} dangerouslySetInnerHTML= {{__html: mailingAddress }}/>
 
                 <Button onClick={() => GenerateFilledPDF(props.fieldData, props.stateData.nvrf_pages_list)} type="submit">
-                    <span>{"Open form in a new window"}</span>
+                    <span>{stringContent.newWindow}</span>
                 </Button>
 
                 <div className={'usa-prose margin-top-4'} dangerouslySetInnerHTML= {{__html: deliveryBodyParts[1]}}/>

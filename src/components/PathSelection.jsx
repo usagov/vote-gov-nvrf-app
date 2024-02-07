@@ -6,6 +6,7 @@ function PathSelection(props) {
     const content = props.content;
     const cards = props.cards;
     const navContent = props.navContent;
+    const stringContent = props.stringContent;
 
     const introContent = content.find(item => item.uuid === "b3299979-e26c-4885-a949-e1a2c27de91b");
     const cardOne = cards.find(item => item.uuid === "0ac52b5d-4381-4b4e-830e-38319f3a3757");
@@ -16,7 +17,7 @@ function PathSelection(props) {
 
     return (
         <>
-            <BackButton type={'button'} onClick={props.handlePrev} text={navContent.back.eligibility_req}/>
+            <BackButton stringContent={stringContent} type={'button'} onClick={props.handlePrev} text={navContent.back.eligibility_req}/>
             <div className={'usa-prose margin-top-5 maxw-tablet margin-x-auto'}>
             <h1>{introContent.title.replace("@state_name", props.stateData.name)}</h1>
 
@@ -36,7 +37,7 @@ function PathSelection(props) {
                     <CardFooter className="margin-top-3">
                         <Button type="submit" onClick={() => {props.getRegPath("update"), props.handleNext()}}>
                             <span>{cardOne.button_label}</span>
-                            <Icon.ArrowForward aria-label="forward arrow icon" style={{margin: "-3px -3px -3px 4px"}}/>
+                            <Icon.ArrowForward aria-label={stringContent.forwardIcon} style={{margin: "-3px -3px -3px 4px"}}/>
                         </Button>
                     </CardFooter>
                 </Card>
@@ -54,7 +55,7 @@ function PathSelection(props) {
                     <CardFooter className="margin-top-3">
                         <Button type="submit" onClick={() => {props.getRegPath("new"),  props.handleNext()}}>
                             <span>{cardTwo.button_label}</span>
-                            <Icon.ArrowForward aria-label="forward arrow icon" style={{margin: "-3px -3px -3px 4px"}}/>
+                            <Icon.ArrowForward aria-label={stringContent.forwardIcon} style={{margin: "-3px -3px -3px 4px"}}/>
                         </Button>
                     </CardFooter>
                 </Card>
