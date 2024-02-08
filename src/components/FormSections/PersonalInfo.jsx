@@ -39,25 +39,26 @@ function PersonalInfo(props){
     const checkDateValues = (type) => {
         let month = props.fieldData.date_of_birth_month;
         let day = props.fieldData.date_of_birth_day;
-        let year = props.fieldData.date_of_birth_year;
-        let yearStart = year.slice(0, 2);
-        let birthdate = year + '-' + month + '-' + day;
-        let age = Math.floor((new Date() - new Date(birthdate).getTime()) / 3.15576e+10)
+        /* removing age validation temporarily */
+        // let year = props.fieldData.date_of_birth_year;
+        // let yearStart = year.slice(0, 2);
+        // let birthdate = year + '-' + month + '-' + day;
+        // let age = Math.floor((new Date() - new Date(birthdate).getTime()) / 3.15576e+10)
 
         if (type === "all") {
           let dobValues = [
             month.length === 2,
             day.length === 2,
-            year.length === 4,
+            // year.length === 4,
 
             month <= 12,
             month >= 1,
             day <= 31,
             day >= 1,
-            yearStart <= 20,
-            yearStart >= 19,
-            age <= 110,
-            age >= 17
+            // yearStart <= 20,
+            // yearStart >= 19,
+            // age <= 110,
+            // age >= 17
           ];
 
           if (dobValues.includes(false)) {
@@ -78,12 +79,13 @@ function PersonalInfo(props){
           } else {
             return false
           }
-        } else if (type === "year") {
-          if (age > 110 || age < 17) {
-            return true
-          } else {
-            return false
-          }
+        /* removing age validation temporarily */
+        // } else if (type === "year") {
+        //   if (age > 110 || age < 17) {
+        //     return true
+        //   } else {
+        //     return false
+        //   }
         }
       };
 
@@ -294,14 +296,13 @@ function PersonalInfo(props){
                                     unit="year"
                                     required={true}
                                     type="text"
-                                    pattern="(19|20)\d{2}"
                                     inputMode="numeric"
                                     minLength={4}
                                     maxLength={4}
                                     value={props.fieldData.date_of_birth_year}
                                     onInput={props.saveFieldData('date_of_birth_year')}
                                     onKeyDown={(e) => {restrictType(e, 'number'), e.target.setCustomValidity('')}}
-                                    onBlur={(e) => toggleError(e, checkDateValues('year'))}
+                                    onBlur={(e) => toggleError(e, checkForErrors(e, 'check value length'))}
                                     onInvalid={(e) => e.target.setCustomValidity(' ')}
                                 />
                             </div>
