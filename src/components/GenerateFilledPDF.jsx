@@ -1,5 +1,5 @@
 import { PDFDocument} from 'pdf-lib';
-var new_tab=window.open()
+// var new_tab=window.open()
 
 
 const GenerateFilledPDF = async function (formData,pagesKept) {
@@ -154,7 +154,8 @@ const GenerateFilledPDF = async function (formData,pagesKept) {
     // Trigger the browser to download the PDF document
     var blobURL = URL.createObjectURL(new Blob([pdfBytes], {type: 'application/pdf'}));
     // window.open(blobURL, '_blank');
-    new_tab.location.href = blobURL;
+    // new_tab.location.href = blobURL;
+    window.location.assign(blobURL)
 }
 
 export default GenerateFilledPDF;
