@@ -69,7 +69,7 @@ function PersonalInfo(props){
             <Checkbox id="prev-name-change" name="prev-name-change" ariaLabelledby="prev-name-change-alert" checked={props.previousName} onChange={props.onChangePreviousName} label={stringContent.nameChange} />
         )}
 
-        <div id="prev-name-change-alert" className="usa-alert usa-alert--info" role="region">
+        <div id="prev-name-change-alert" className="usa-alert usa-alert--info" role="alert">
             <div className="usa-alert__body" dangerouslySetInnerHTML={{__html: nameSectionAlert}}/>
         </div>
 
