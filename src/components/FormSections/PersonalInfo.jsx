@@ -66,7 +66,7 @@ function PersonalInfo(props){
         <h2>{headings.step_label_1}</h2>
 
         {changeRegistrationVisible && (
-            <Checkbox id="prev-name-change" aria-describedby="" name="prev-name-change-alert" checked={props.previousName} onChange={props.onChangePreviousName} label={stringContent.nameChange} />
+            <Checkbox id="prev-name-change" aria-describedby="prev-name-change-alert" name="prev-name-change" checked={props.previousName} onChange={props.onChangePreviousName} label={stringContent.nameChange} />
         )}
 
         <div id="prev-name-change-alert" className="usa-alert usa-alert--info" role="alert">
