@@ -198,7 +198,7 @@ function PersonalInfo(props){
                                     name="date_of_birth_month"
                                     label={stringContent.month}
                                     unit="month"
-                                    // required={true}
+                                    required={true}
                                     aria-required={true}
                                     type="text"
                                     pattern="0[1-9]|1[0,1,2]"
@@ -223,7 +223,7 @@ function PersonalInfo(props){
                                     name="date_of_birth_day"
                                     label={stringContent.day}
                                     unit="day"
-                                    // required={true}
+                                    required={true}
                                     aria-required={true}
                                     type="text"
                                     pattern="0[1-9]|[12][0-9]|3[01]"
@@ -248,7 +248,7 @@ function PersonalInfo(props){
                                     name="date_of_birth_year"
                                     label={stringContent.year}
                                     unit="year"
-                                    // required={true}
+                                    required={true}
                                     aria-required={true}
                                     type="text"
                                     pattern="(19|20)\d{2}"
@@ -318,7 +318,7 @@ function PersonalInfo(props){
                     <TextInput
                         id="voter-contact"
                         type="email"
-                        // required={true}
+                        required={true}
                         aria-required={true}
                         className="radius-md"
                         autoComplete="off"

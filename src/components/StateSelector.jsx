@@ -14,7 +14,7 @@ function StateSelector(props) {
             aria-describedby={props.ariaDescribedBy}
             onChange={props.saveState} 
             disabled={props.disabled} 
-            // required={true}
+            required={true}
             aria-required={true}
             onBlur={props.onBlur}
         >
