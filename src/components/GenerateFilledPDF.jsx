@@ -1,6 +1,10 @@
 import { PDFDocument} from 'pdf-lib';
+var new_tab=window.open()
+
 
 const GenerateFilledPDF = async function (formData,pagesKept) {
+    // var importantStuff = window.open('', '_blank');
+
     // Fetch the PDF with form fields
     const formUrl = './files/Federal_Voter_Registration_ENG.pdf'
     const formPdfBytes = await fetch(formUrl).then(res => res.arrayBuffer())
@@ -146,7 +150,6 @@ const GenerateFilledPDF = async function (formData,pagesKept) {
 
     // Serialize the PDFDocument to bytes (a Uint8Array)
     const pdfBytes = await pdfDoc.save()
-    var new_tab=window.open()
 
     // Trigger the browser to download the PDF document
     var blobURL = URL.createObjectURL(new Blob([pdfBytes], {type: 'application/pdf'}));
