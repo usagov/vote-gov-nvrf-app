@@ -332,6 +332,7 @@ function PersonalInfo(props){
                             required={parseInt(telephoneFieldState.required)}
                             maxLength={14}
                             minLength={14}
+                            pattern="\(\d\d\d\)\s\d\d\d-\d\d\d\d"
                             value={props.fieldData.phone_number}
                             onChange={props.saveFieldData('phone_number')}
                             onBlur={(e) => toggleError(e, checkForErrors(e, 'check value length'))}
