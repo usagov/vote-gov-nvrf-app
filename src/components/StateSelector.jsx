@@ -17,7 +17,7 @@ function StateSelector(props) {
             required={true}
             onBlur={props.onBlur}
         >
-        <option value="">{stringContent.select}</option>
+        <option value="">{stringContent.selectState}</option>
             {statesList.map(
             state => <option key={state} value={state}>{state}</option>
         )}

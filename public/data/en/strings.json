@@ -14,7 +14,7 @@
     "forwardIcon": "forward arrow icon",
     "stateOnlineName": "Go to @state_name's online form",
     "confirm": "Confirm and continue",
-    "select": "Select your state or territory",
+    "selectState": "Select your state or territory",
     "lastUpdated": "@state_name information last updated ",
     "privacyPolicy": "Privacy policy",
     "zip": "For example: 12345",
