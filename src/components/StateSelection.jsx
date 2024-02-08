@@ -43,7 +43,7 @@ function StateSelection(props) {
                                 }}
                                 onBlur={(e) => setHandleErrors({ state_selected: checkForErrors(e, 'check state selection') })}
                             >
-                                <option value="">{stringContent.select}</option>
+                                <option value="">{stringContent.selectState}</option>
                                 {statesList.map(
                                     state => <option key={state} value={state}>{state}</option>
                                 )}
