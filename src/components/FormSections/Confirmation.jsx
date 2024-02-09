@@ -59,7 +59,7 @@ function Confirmation(props) {
 
                 <p><strong>{headings.confirmation.previous_name.label}</strong></p>
                 {!prevName && (
-                    <Alert type="info" headingLevel="h4" noIcon>
+                    <Alert type="info" headingLevel="h4" role="region" aria-live="polite" noIcon>
                         {headings.confirmation.previous_name.alert}
                     </Alert>
                 )}
@@ -92,7 +92,7 @@ function Confirmation(props) {
                 </div>
                 <p><strong>{headings.confirmation.current_address.label}</strong></p>
                 {!currentAddress && (
-                    <Alert type="info" headingLevel="h4" noIcon>
+                    <Alert type="info" headingLevel="h4"role="region" aria-live="polite" noIcon>
                         {headings.confirmation.current_address.alert}
                     </Alert>
                 )}
@@ -106,7 +106,7 @@ function Confirmation(props) {
 
                 <p><strong>{headings.confirmation.previous_address.label}</strong></p>
                 {!prevAddress && (
-                    <Alert type="info" headingLevel="h4" noIcon>
+                    <Alert type="info" headingLevel="h4"role="region" aria-live="polite" noIcon>
                         {headings.confirmation.previous_address.alert}
                     </Alert>
                 )}
@@ -120,7 +120,7 @@ function Confirmation(props) {
 
                 <p><strong>{headings.confirmation.mailing_address.label}</strong></p>
                 {!prevMailAddress && (
-                    <Alert type="info" headingLevel="h4" noIcon>
+                    <Alert type="info" headingLevel="h4"role="region" aria-live="polite" noIcon>
                         {headings.confirmation.mailing_address.alert}
                     </Alert>
                 )}
@@ -167,7 +167,7 @@ function Confirmation(props) {
             <hr />
 
             {confirmInstructions && (
-                <div className="usa-alert usa-alert--info margin-top-6" role="alert">
+                <div id="acknowledge-check-alert" className="usa-alert usa-alert--info margin-top-6" role="region" aria-live="polite">
                     <div className="usa-alert__body" dangerouslySetInnerHTML={{__html: confirmInstructions}}/>
                 </div>)}
 
@@ -175,6 +175,7 @@ function Confirmation(props) {
                 <Checkbox
                     id="acknowledge-check"
                     name="acknowledge-check"
+                    aria-describedby="acknowledge-check-alert"
                     required
                     defaultChecked={props.hasAcknowledged}
                     label={getFieldLabel("73e74065-fd5a-43c0-907c-268120e34bc3")}

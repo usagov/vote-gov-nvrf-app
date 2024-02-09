@@ -76,11 +76,11 @@ function Addresses(props){
             { changeRegistrationVisible && (
                 <Checkbox id="prev-res-addr" name="prev-res-addr" checked={props.hasPreviousAddress} onChange={props.onChangePreviousAddressCheckbox} label={prevAddressField.label} />
             )}
-                <Checkbox id="no-addr" className="margin-bottom-4" name="no-addr" checked={props.hasNoAddress} onChange={props.hasNoAddressCheckbox} label={noAddressField.label} />
+                <Checkbox id="no-addr" aria-describedby="no-address-alert" className="margin-bottom-4" name="no-addr" checked={props.hasNoAddress} onChange={props.hasNoAddressCheckbox} label={noAddressField.label} />
                 {/******** Current Address Block *********/}
                 { !props.hasNoAddress && (<>
                     {homeAddressSectionField.section_alert && (
-                    <div className="usa-alert usa-alert--info" role="alert">
+                    <div id="no-address-alert" className="usa-alert usa-alert--info" role="region" aria-live="polite">
                         <div className="usa-alert__body">
                             <div dangerouslySetInnerHTML= {{__html: homeAddressSectionField.section_alert}}/>
                         </div>

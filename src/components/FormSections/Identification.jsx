@@ -40,7 +40,7 @@ function Identification(props){
         <h2>{headings.step_label_3}</h2>
 
             {idStateInstructions && (
-                <div className="usa-alert usa-alert--info" role="alert">
+                <div id="identificiation-alert" className="usa-alert usa-alert--info" role="region" aria-live="polite">
                     <div className="usa-alert__body" dangerouslySetInnerHTML={{__html: idStateInstructions}}/>
                 </div>)}
 
