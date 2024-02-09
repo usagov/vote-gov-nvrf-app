@@ -1,3 +1,26 @@
+export const focusError = (formId) => {
+  if(!document.getElementById(formId).checkValidity()){
+      const firstInvalidChild = document.getElementById(formId).querySelectorAll(':invalid')[0];
+      let errorContainer;
+      errorContainer = firstInvalidChild.id === "eligibility-checkbox" || firstInvalidChild.id === "acknowledge-checkbox" ? firstInvalidChild.parentNode.parentNode : firstInvalidChild.parentNode;
+      errorContainer.className = "error-container";
+  }
+}
+
+export const toggleError = (e, error) => {
+  let input = e.currentTarget;
+  let dateOfBirthInputs = input.id === "date_of_birth_month" || input.id === "date_of_birth_day" || input.id === "date_of_birth_year";
+  let errorContainer;
+  errorContainer = input.id === "eligibility-checkbox" || input.id === "date-of-birth" || input.id === "acknowledge-checkbox" ? input.parentNode.parentNode : input.parentNode;
+  errorContainer = dateOfBirthInputs ? input.parentNode.parentNode.parentNode.parentNode : errorContainer;
+
+  if (error) {
+    errorContainer.className = "error-container";
+  } else {
+    errorContainer.className = "";
+  }
+}
+
 export const jumpTo = (e, nextId) => {
   const isNumber = /^[0-9]$/i.test(e.key)
   if (isNumber) {
@@ -49,23 +72,27 @@ export const dayFormat = (input) => {
 }
 
 export const checkForErrors=(e, requirement)=> {
+  const value = e.target.value;
+  const valueRequired = e.target.required; 
+
+  if (value || valueRequired) {
   switch (requirement) {
     case 'check value exists':
-      if (e.target.value) {
+      if (value) {
         return false
       } else {
         return true
       }
-
     case 'check value length':
-      if (e.target.value.length === e.target.maxLength) {
+      let valueIsLength = e.target.value.length === e.target.maxLength;
+      if (valueIsLength) {
         return false
       } else {
         return true
       }
 
     case 'check state selection':
-      if (e.target.value === '') {
+      if (value === '') {
         return true
       } else {
         return false
@@ -73,5 +100,6 @@ export const checkForErrors=(e, requirement)=> {
 
     default:
       return
+  }    
   }
 }
