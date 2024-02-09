@@ -15,7 +15,7 @@ function StateSelector(props) {
             onChange={props.saveState} 
             disabled={props.disabled} 
             required={true}
-            aria-required={true}
+            aria-invalid={false}
             onBlur={props.onBlur}
             onInvalid={(e) => e.target.setCustomValidity(' ')}
             onInput={(e) => e.target.setCustomValidity('')}
