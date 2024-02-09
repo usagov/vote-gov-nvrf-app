@@ -1,5 +1,6 @@
-import {Alert, Button, Checkbox} from '@trussworks/react-uswds';
+import {Alert, Button, Checkbox, Label} from '@trussworks/react-uswds';
 import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
+import { toggleError } from '../HelperFunctions/ValidateField';
 
 function Confirmation(props) {
     const headings = props.headings;
@@ -171,20 +172,21 @@ function Confirmation(props) {
                     <div className="usa-alert__body" dangerouslySetInnerHTML={{__html: confirmInstructions}}/>
                 </div>)}
 
-            <div className={props.error ? 'error-container margin-top-4' : 'margin-top-4'}>
+            <div className="input-parent">
                 <Checkbox
-                    id="acknowledge-check"
+                    id="acknowledge-checkbox"
                     name="acknowledge-check"
                     required
                     defaultChecked={props.hasAcknowledged}
                     label={getFieldLabel("73e74065-fd5a-43c0-907c-268120e34bc3")}
                     onChange={(e) => props.acknowledgeCheckbox(e.target.checked)}
+                    onBlur={(e) => toggleError(e, !props.hasAcknowledged)}
+                    onInvalid={(e) => e.target.setCustomValidity(' ')}
+                    onInput={(e) => e.target.setCustomValidity('')}
                 />
-                {props.error &&
-                    <span id="first-name-error" role="alert" className='error-text'>
+                <span id="first-name-error" role="alert" className='error-text'>
                     {getFieldError("73e74065-fd5a-43c0-907c-268120e34bc3")}
                 </span>
-                }
             </div>
         </>
     );
