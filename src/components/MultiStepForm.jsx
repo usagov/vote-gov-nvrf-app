@@ -169,7 +169,9 @@ function MultiStepForm(props) {
         setIdType(e.target.value)
         e.target.value === 'none' ?
             setFieldData({
-                ...fieldData
+                ...fieldData,
+                id_number: 'none',
+                ssn_number: '',
             })
             :
             setFieldData({

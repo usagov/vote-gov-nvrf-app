@@ -296,6 +296,7 @@ function PersonalInfo(props){
                                     unit="year"
                                     required={true}
                                     type="text"
+                                    pattern="19\d{2}|200\d{1}"
                                     inputMode="numeric"
                                     minLength={4}
                                     maxLength={4}
