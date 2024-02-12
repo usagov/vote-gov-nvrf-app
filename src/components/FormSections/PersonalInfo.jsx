@@ -111,6 +111,7 @@ function PersonalInfo(props){
                     <Grid tablet={{ col: 2 }}>
                     <Label className="text-bold" htmlFor="title-select">
                         {titleField.label}
+                    </Label>
                     <Select 
                         className="radius-md" id="title-select" name="title-select"
                         value={props.fieldData.title}
@@ -126,7 +127,6 @@ function PersonalInfo(props){
                         ))}
                     </React.Fragment>
                     </Select>
-                    </Label>
                     </Grid>
 
                     <Grid tablet={{ col: 5 }}>
