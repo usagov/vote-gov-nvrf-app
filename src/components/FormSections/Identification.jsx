@@ -1,4 +1,4 @@
-import { Label, TextInput, Dropdown, Checkbox } from '@trussworks/react-uswds';
+import { Label, TextInput, Checkbox, Select } from '@trussworks/react-uswds';
 import React from "react";
 import { restrictType, checkForErrors, toggleError } from '../HelperFunctions/ValidateField';
 import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
@@ -47,7 +47,7 @@ function Identification(props){
                     <h3 className={'margin-top-5'}>{idTypeField.label}<span className='required-text'>*</span></h3>
                     <div dangerouslySetInnerHTML={{__html: idTypeFieldInstructions}}/>
                     <div className="input-parent">
-                        <Dropdown
+                        <Select
                             id="id-num-dropdown"
                             name="input-dropdown"
                             value={props.idType}
@@ -57,13 +57,15 @@ function Identification(props){
                             onInvalid={(e) => e.target.setCustomValidity(' ')}
                             onInput={(e) => e.target.setCustomValidity('')}
                         >
+                        <React.Fragment key=".0">
                             <option key="default" value="">{"Select Identification"}</option>
                             {(driverIDFieldReq) && <option key="driver-id-num" value="driver-id-num">{driverLicenseField.label}</option>}
                             {(stateIDFieldDReq) && <option key="state-id-num" value="state-id-num">{stateIDField.label}</option>}
                             {(ssnFullFieldReq) && <option key="ssn-full" value="ssn-full">{ssnFullField.label}</option>}
                             {(ssnFieldReq) && <option key="ssn" value="ssn">{ssnField.label}</option>}
                             {(noIdFieldReq) && <option key="id-none" value="none">{noIdField.label}</option>}
-                        </Dropdown>
+                        </React.Fragment>
+                        </Select>
                         <span id="id-num-dropdown-error" role="alert" className='error-text'>
                             {stateIDField.error_msg}
                         </span>

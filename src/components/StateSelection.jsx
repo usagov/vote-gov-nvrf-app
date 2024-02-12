@@ -1,4 +1,5 @@
-import {Dropdown} from '@trussworks/react-uswds';
+import React from 'react';
+import { Select } from '@trussworks/react-uswds';
 import { checkForErrors } from './HelperFunctions/ValidateField';
 import NextButton from './NextButton';
 import { getFieldError, getFieldLabel } from './HelperFunctions/fieldParser';
@@ -29,9 +30,9 @@ function StateSelection(props) {
 
                     <div className="grid-col">
                         <div className="input-parent">
-                            <Dropdown
+                            <Select
                                 id="state-dropdown"
-                                name="input-dropdown"
+                                name="state-dropdown"
                                 value={props.state}
                                 required={true}
                                 onChange={e => {
@@ -41,11 +42,13 @@ function StateSelection(props) {
                                 onInvalid={(e) => e.target.setCustomValidity(' ')}
                                 onInput={(e) => e.target.setCustomValidity('')}
                             >
+                            <React.Fragment key=".0">
                                 <option value="">{stringContent.selectState}</option>
                                 {statesList.map(
                                     state => <option key={state} value={state}>{state}</option>
                                 )}
-                            </Dropdown>
+                            </React.Fragment>
+                            </Select>
                             <span id="state-dropdown-error" role="alert" className='error-text'>
                                 {getFieldError(fields, "7231330d-523b-4e22-b282-b9f98ee20ef2")}
                             </span>

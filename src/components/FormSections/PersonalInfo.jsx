@@ -1,4 +1,4 @@
-import { Label, TextInput, Dropdown, Checkbox, Grid, Fieldset } from '@trussworks/react-uswds';
+import { Label, TextInput, Select, Checkbox, Grid, Fieldset } from '@trussworks/react-uswds';
 import React from "react";
 import { restrictType, checkForErrors, jumpTo, toggleError } from '../HelperFunctions/ValidateField';
 import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
@@ -112,19 +112,21 @@ function PersonalInfo(props){
                     <Label className="text-bold" htmlFor="title-select">
                         {titleField.label}
                     </Label>
-                    <Dropdown
+                    <Select 
                         className="radius-md" id="title-select" name="title-select"
                         value={props.fieldData.title}
                         onChange={props.saveFieldData('title')}
                         autoComplete="off"
                         onInvalid={(e) => e.target.setCustomValidity(' ')}
-                        onInput={(e) => e.target.setCustomValidity('')}
-                        >
-                        <option value={''}>{stringContent.select}</option>
+                        onInput={(e) => e.target.setCustomValidity('')}>
+                        <React.Fragment key=".0"
+                    >                        
+                    <option value={''}>{stringContent.select}</option>
                         {titleField.options.map((item, index) => (
                             <option key={index} value={item.value}>{item.key}</option>
                         ))}
-                    </Dropdown>
+                    </React.Fragment>
+                    </Select>
                     </Grid>
 
                     <Grid tablet={{ col: 5 }}>
@@ -198,19 +200,21 @@ function PersonalInfo(props){
                     <Label className="text-bold" htmlFor="suffix-select">
                         {suffixField.label}
                     </Label>
-                    <Dropdown
-                        id="suffix-select" className="radius-md" name="suffix-select"
-                        value={props.fieldData.suffix}
-                        onChange={props.saveFieldData('suffix')}
-                        autoComplete="off"
-                        onInvalid={(e) => e.target.setCustomValidity(' ')}
-                        onInput={(e) => e.target.setCustomValidity('')}
-                        >
+                    <Select 
+                    id="suffix-select" className="radius-md" name="suffix-select"
+                    value={props.fieldData.suffix}
+                    onChange={props.saveFieldData('suffix')}
+                    autoComplete="off"
+                    onInvalid={(e) => e.target.setCustomValidity(' ')}
+                    onInput={(e) => e.target.setCustomValidity('')}
+                    >
+                    <React.Fragment key=".0">                        
                         <option value={''}>{stringContent.select}</option>
                         {suffixField.options.map((item, index) => (
                             <option key={index} value={item.value}>{item.key}</option>
                         ))}
-                    </Dropdown>
+                    </React.Fragment>
+                    </Select>
                     </Grid>
                 </Grid>
             </>
@@ -388,7 +392,7 @@ function PersonalInfo(props){
                             <Label className="text-bold" htmlFor="race-ethic-group-select">
                                 {raceField.label}{(raceFieldState.required === "1") && <span className='required-text'>*</span>}
                             </Label>
-                            <Dropdown
+                            <Select
                             id="race-ethic-group-select" 
                             className="radius-md" 
                             name="race-ethic-group-select"
@@ -399,11 +403,13 @@ function PersonalInfo(props){
                             onBlur={(e) => toggleError(e, checkForErrors(e, 'check value exists'))}
                             onInvalid={(e) => e.target.setCustomValidity(' ')}
                             onInput={(e) => e.target.setCustomValidity('')}>
+                            <React.Fragment key=".0">                        
                                 <option value="">{stringContent.select}</option>
                                 {raceField.options.map((item, index) => (
                                     <option key={index} value={item.value}>{item.key}</option>
                                 ))}
-                            </Dropdown>
+                            </React.Fragment>
+                            </Select>
                             <span id="race-error" role="alert" className='error-text'>
                                 {raceField.error_msg}
                             </span>
@@ -420,7 +426,7 @@ function PersonalInfo(props){
             <Label className="text-bold" htmlFor="title-select-2">
                 {prevTitleField.label}
             </Label>
-            <Dropdown
+            <Select
                 id="title-select-2" className="radius-md" name="title-select-2"
                 value={props.fieldData.prev_title}
                 onChange={props.saveFieldData('prev_title')}
@@ -428,11 +434,13 @@ function PersonalInfo(props){
                 onInvalid={(e) => e.target.setCustomValidity(' ')}
                 onInput={(e) => e.target.setCustomValidity('')}
                 >
+            <React.Fragment key=".0"> 
                 <option value={''}>{stringContent.select}</option>
                 {prevTitleField.options.map((item, index) => (
                     <option key={index} value={item.value}>{item.key}</option>
                 ))}
-            </Dropdown>
+            </React.Fragment>
+            </Select>
             </Grid>
 
             <Grid tablet={{ col: 5 }}>
@@ -506,18 +514,20 @@ function PersonalInfo(props){
             <Label className="text-bold" htmlFor="suffix-select-2">
                 {prevSuffixField.label}
             </Label>
-            <Dropdown
+            <Select
                 id="suffix-select-2" className="radius-md" name="suffix-select-2"
                 value={props.fieldData.prev_suffix} onChange={props.saveFieldData('prev_suffix')}
                 autoComplete="off"
                 onInvalid={(e) => e.target.setCustomValidity(' ')}
                 onInput={(e) => e.target.setCustomValidity('')}
                 >
+            <React.Fragment key=".0">                           
                 <option value={''}>{stringContent.select}</option>
                 {prevSuffixField.options.map((item, index) => (
                     <option key={index} value={item.value}>{item.key}</option>
                 ))}
-            </Dropdown>
+            </React.Fragment>
+            </Select>
             </Grid>
         </Grid>
         </>
