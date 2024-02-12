@@ -30,11 +30,16 @@
     border-left: 3px solid #b50909;
     padding-left: 15px;
 }
+
+.nvrf-app-container .error-container .error-text {
+    display: block;
+}
+
 .nvrf-app-container .error-text {
     color: #b50909;
     font-size: 1rem;
     margin-top: 0.5rem;
-    display: block;
+    display: none;
 }
 .nvrf-app-container .usa-step-indicator__header {
     position: absolute;

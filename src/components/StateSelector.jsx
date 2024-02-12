@@ -17,9 +17,11 @@ function StateSelector(props) {
             disabled={props.disabled} 
             required={true}
             onBlur={props.onBlur}
+            onInvalid={(e) => e.target.setCustomValidity(' ')}
+            onInput={(e) => e.target.setCustomValidity('')}
         >
         <React.Fragment key=".0">
-            <option value="">{stringContent.select}</option>
+            <option value="">{stringContent.selectState}</option>
                 {statesList.map(
                 state => <option key={state} value={state}>{state}</option>
             )}
