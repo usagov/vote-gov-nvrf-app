@@ -249,6 +249,7 @@ function PersonalInfo(props){
                                     label={stringContent.month}
                                     unit="month"
                                     required={true}
+                                    aria-invalid={false}
                                     type="text"
                                     pattern="0[1-9]|1[0,1,2]"
                                     inputMode="numeric"
@@ -274,6 +275,7 @@ function PersonalInfo(props){
                                     label={stringContent.day}
                                     unit="day"
                                     required={true}
+                                    aria-invalid={false}
                                     type="text"
                                     pattern="0[1-9]|[12][0-9]|3[01]"
                                     inputMode="numeric"
@@ -299,6 +301,7 @@ function PersonalInfo(props){
                                     label={stringContent.year}
                                     unit="year"
                                     required={true}
+                                    aria-invalid={false}
                                     type="text"
                                     pattern="19\d{2}|200\d{1}"
                                     inputMode="numeric"
@@ -372,6 +375,7 @@ function PersonalInfo(props){
                         id="voter-contact"
                         type="email"
                         required={true}
+                        aria-invalid={false}
                         className="radius-md"
                         autoComplete="off"
                         tabIndex="-1"

@@ -52,6 +52,7 @@ function Identification(props){
                             name="input-dropdown"
                             value={props.idType}
                             required={true}
+                            aria-invalid={false}
                             onChange={(e) => props.saveIdType(e)}
                             onBlur={(e) => toggleError(e, checkForErrors(e, 'check value exists'))}
                             onInvalid={(e) => e.target.setCustomValidity(' ')}
