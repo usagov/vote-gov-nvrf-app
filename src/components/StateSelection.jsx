@@ -32,6 +32,7 @@ function StateSelection(props) {
                             <Dropdown
                                 id="state-dropdown"
                                 name="input-dropdown"
+                                aria-describedby="state-dropdown_error"
                                 value={props.state}
                                 required={true}
                                 onChange={e => {
@@ -46,7 +47,7 @@ function StateSelection(props) {
                                     state => <option key={state} value={state}>{state}</option>
                                 )}
                             </Dropdown>
-                            <span id="state-dropdown-error" role="alert" className='error-text'>
+                            <span id="state-dropdown_error" role="alert" className='error-text'>
                                 {getFieldError(fields, "7231330d-523b-4e22-b282-b9f98ee20ef2")}
                             </span>
                         </div>

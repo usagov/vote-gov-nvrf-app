@@ -35,8 +35,8 @@ function PoliticalParty(props){
                 <TextInput
                     id="political-party"
                     className="radius-md"
-                    aria-describedby="party-choice-error"
-                    name="political party"
+                    aria-describedby="political-party_error"
+                    name="political-party"
                     value={props.fieldData.party_choice}
                     type="text"
                     autoComplete="off"
@@ -47,7 +47,7 @@ function PoliticalParty(props){
                     onInvalid={(e) => e.target.setCustomValidity(' ')}
                     onInput={(e) => e.target.setCustomValidity('')} 
                     />
-                <span id="party-choice-error" role="alert" className='error-text'>
+                <span id="political-party_error" role="alert" className='error-text'>
                     {partyField.error_msg}
                 </span>
             </div>

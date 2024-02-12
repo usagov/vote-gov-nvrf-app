@@ -46,13 +46,13 @@ function Addresses(props){
         {addressFieldsState && (
             <>
             { changeRegistrationVisible && (
-                <Checkbox id="prev-res-addr" name="prev-res-addr" checked={props.hasPreviousAddress} onChange={props.onChangePreviousAddressCheckbox} label={prevAddressField.label} />
+                <Checkbox id="prev-address" name="prev-address" checked={props.hasPreviousAddress} onChange={props.onChangePreviousAddressCheckbox} label={prevAddressField.label} />
             )}
-                <Checkbox id="no-addr" aria-describedby="no-address-alert" className="margin-bottom-4" name="no-addr" checked={props.hasNoAddress} onChange={props.hasNoAddressCheckbox} label={noAddressField.label} />
+                <Checkbox id="no-address" aria-describedby="no-address_alert" className="margin-bottom-4" name="no-addr" checked={props.hasNoAddress} onChange={props.hasNoAddressCheckbox} label={noAddressField.label} />
                 {/******** Current Address Block *********/}
                 { !props.hasNoAddress && (<>
                     {homeAddressSectionField.section_alert && (
-                    <div id="no-address-alert" className="usa-alert usa-alert--info" role="region" aria-live="polite">
+                    <div id="no-address_alert" className="usa-alert usa-alert--info" role="region" aria-live="polite">
                         <div className="usa-alert__body">
                             <div dangerouslySetInnerHTML= {{__html: homeAddressSectionField.section_alert}}/>
                         </div>
@@ -64,14 +64,14 @@ function Addresses(props){
                     <Grid row gap>
                         <Grid tablet={{ col: 12}}>
                         <div className="input-parent">
-                            <Label className="text-bold" htmlFor="street-address">
+                            <Label className="text-bold" htmlFor="street">
                                 {streetAddressField.label}{(addressFieldsState.required === "1") && <span className='required-text'>*</span>}
                             </Label>
                             <TextInput
-                                id="street-address"
+                                id="street"
                                 className="radius-md"
-                                aria-describedby="street-address-error"
-                                name="street-address"
+                                aria-describedby="street_error"
+                                name="street"
                                 type="text"
                                 autoComplete="off"
                                 required={(parseInt(addressFieldsState.required))}
@@ -81,7 +81,7 @@ function Addresses(props){
                                 onInvalid={(e) => e.target.setCustomValidity(' ')}
                                 onInput={(e) => e.target.setCustomValidity('')}
                                 />
-                            <span id="street-address-error" role="alert" className='error-text'>
+                            <span id="street_error" role="alert" className='error-text'>
                                 {streetAddressField.error_msg}
                             </span>
                         </div>
@@ -90,13 +90,14 @@ function Addresses(props){
 
                     <Grid row gap>
                         <Grid tablet={{ col: 5}}>
-                        <Label className="text-bold" htmlFor="apt-num">
+                        <Label className="text-bold" htmlFor="apartment-number">
                             {aptField.label}
                         </Label>
                         <TextInput
-                            id="apt-num"
+                            id="apartment-number"
                             className="radius-md"
-                            name="apt-num"
+                            name="apartment-number"
+                            aria-describedby=""
                             type="text"
                             autoComplete="off"
                             value={props.fieldData.apt_num}
@@ -116,7 +117,7 @@ function Addresses(props){
                                     <TextInput
                                         id="city"
                                         className="radius-md"
-                                        aria-describedby="city-error"
+                                        aria-describedby="city_error"
                                         name="city"
                                         value={props.fieldData.city}
                                         type="text"
@@ -128,7 +129,7 @@ function Addresses(props){
                                         onInvalid={(e) => e.target.setCustomValidity(' ')}
                                         onInput={(e) => e.target.setCustomValidity('')}
                                     />
-                                <span id="city-error" role="alert" className='error-text'>
+                                <span id="city_error" role="alert" className='error-text'>
                                     {cityField.error_msg}
                                 </span>
                             </div>
@@ -154,15 +155,15 @@ function Addresses(props){
 
                         <Grid tablet={{ col: 3 }}>
                         <div className="input-parent">
-                            <Label className="text-bold" htmlFor="zip">
+                            <Label className="text-bold" htmlFor="zip-code">
                                 {zipcodeField.label} {(addressFieldsState.required === "1") && <span className={'required-text'}>*</span>}
                             </Label>
                             <span className="usa-hint" id="zip-hint">{zipcodeField.help_text}</span>
                             <TextInput
-                                id="zip"
+                                id="zip-code"
                                 className="radius-md"
-                                aria-describedby="zip-error"
-                                name="zip"
+                                aria-describedby="zip-code_error"
+                                name="zip-code"
                                 type="text"
                                 inputMode="numeric"
                                 autoComplete="off"
@@ -176,7 +177,7 @@ function Addresses(props){
                                 onInvalid={(e) => e.target.setCustomValidity(' ')}
                                 onInput={(e) => e.target.setCustomValidity('')}
                             />
-                            <span id="zip-error" role="alert" className='error-text'>
+                            <span id="zip-code_error" role="alert" className='error-text'>
                                 {zipcodeField.error_msg}
                             </span>
                         </div>
@@ -207,7 +208,7 @@ function Addresses(props){
                                 <TextInput
                                     id="mail-street"
                                     className="radius-md"
-                                    aria-describedby="mail-street-error"
+                                    aria-describedby="mail-street_error"
                                     name="mail-street"
                                     type="text"
                                     autoComplete="off"
@@ -218,7 +219,7 @@ function Addresses(props){
                                     onInvalid={(e) => e.target.setCustomValidity(' ')}
                                     onInput={(e) => e.target.setCustomValidity('')}
                                 />
-                            <span id="mail-street-error" role="alert" className='error-text'>
+                            <span id="mail-street_error" role="alert" className='error-text'>
                                 {mailStreetAddressField.error_msg}
                             </span>
                             </div>
@@ -234,7 +235,7 @@ function Addresses(props){
                                         <TextInput
                                             id="mail-city"
                                             className="radius-md"
-                                            aria-describedby="mail-city-error"
+                                            aria-describedby="mail-city_error"
                                             name="mail-city"
                                             type="text"
                                             autoComplete="off"
@@ -246,7 +247,7 @@ function Addresses(props){
                                             onInvalid={(e) => e.target.setCustomValidity(' ')}
                                             onInput={(e) => e.target.setCustomValidity('')}
                                         />
-                                    <span id="mail-city-error" role="alert" className='error-text'>
+                                    <span id="mail-city_error" role="alert" className='error-text'>
                                        {mailCityField.error_msg}
                                     </span>
                                 </div>
@@ -261,7 +262,7 @@ function Addresses(props){
                                             id="mail-state"
                                             classes="radius-md"
                                             autoComplete="off"
-                                            ariaDescribedBy="mail-state-error"
+                                            ariaDescribedBy="mail-state_error"
                                             required={(parseInt(addressFieldsState.required))}
                                             statesList={props.statesList}
                                             stringContent={props.stringContent}
@@ -271,7 +272,7 @@ function Addresses(props){
                                             onInvalid={(e) => e.target.setCustomValidity(' ')}
                                             onInput={(e) => e.target.setCustomValidity('')}
                                         />
-                                    <span id="mail-state-error" role="alert" className='error-text'>
+                                    <span id="mail-state_error" role="alert" className='error-text'>
                                         {mailStateField.error_msg}
                                     </span>
                                 </div>
@@ -279,14 +280,14 @@ function Addresses(props){
 
                             <Grid tablet={{ col: true }}>
                             <div className="input-parent">
-                                <Label className="text-bold" htmlFor="mail-zip">
+                                <Label className="text-bold" htmlFor="mail-zip-code">
                                     {mailZipcodeField.label} {(addressFieldsState.required === "1") && <span className={'required-text'}>*</span>}
                                 </Label>
                                 <span className="usa-hint" id="mail-zip-hint">For example: 12345</span>
                                 <TextInput
-                                    id="mail-zip"
+                                    id="mail-zip-code"
                                     className="radius-md"
-                                    aria-describedby="mail-zip-error"
+                                    aria-describedby="mail-zip-code_error"
                                     name="mail-zip"
                                     value={props.fieldData.mail_zip_code}
                                     type="text"
@@ -301,7 +302,7 @@ function Addresses(props){
                                     onInvalid={(e) => e.target.setCustomValidity(' ')}
                                     onInput={(e) => e.target.setCustomValidity('')}
                                 />
-                                <span id="mail-zip-error" role="alert" className='error-text'>
+                                <span id="mail-zip-code_error" role="alert" className='error-text'>
                                     {mailZipcodeField.error_msg}
                                 </span>
                             </div>
@@ -331,7 +332,7 @@ function Addresses(props){
                                 <TextInput
                                     id="prev-street"
                                     className="radius-md"
-                                    aria-describedby="prev-street-error"
+                                    aria-describedby="prev-street_error"
                                     name="prev-street"
                                     type="text"
                                     autoComplete="off"
@@ -342,7 +343,7 @@ function Addresses(props){
                                     onInvalid={(e) => e.target.setCustomValidity(' ')}
                                     onInput={(e) => e.target.setCustomValidity('')}
                                 />
-                                <span id="prev-street-error" role="alert" className='error-text'>
+                                <span id="prev-street_error" role="alert" className='error-text'>
                                     {prevStreetAddressField.error_msg}
                                 </span>
                             </div>
@@ -351,13 +352,14 @@ function Addresses(props){
 
                         <Grid row gap className={'flex-align-end'}>
                             <Grid tablet={{ col: 5 }}>
-                            <Label className="text-bold" htmlFor="prev-apt">
+                            <Label className="text-bold" htmlFor="prev-apartment-number">
                                 {prevAptField.label}
                             </Label>
                             <TextInput
-                                id="prev-apt"
+                                id="prev-apartment-number"
                                 className="radius-md"
-                                name="prev-apt"
+                                name="prev-apartment-number"
+                                aria-describedby=""
                                 type="text"
                                 autoComplete="off"
                                 value={props.fieldData.prev_apt_num}
@@ -377,7 +379,7 @@ function Addresses(props){
                                         <TextInput
                                             id="prev-city"
                                             className="radius-md"
-                                            aria-describedby="prev-city-error"
+                                            aria-describedby="prev-city_error"
                                             name="prev-city"
                                             type="text"
                                             autoComplete="off"
@@ -389,7 +391,7 @@ function Addresses(props){
                                             onInvalid={(e) => e.target.setCustomValidity(' ')}
                                             onInput={(e) => e.target.setCustomValidity('')}
                                         />
-                                    <span id="prev-city-error" role="alert" className='error-text'>
+                                    <span id="prev-city_error" role="alert" className='error-text'>
                                         {prevCityField.error_msg}
                                     </span>
                                 </div>
@@ -403,7 +405,7 @@ function Addresses(props){
                                     <StateSelector
                                         id="prev-state"
                                         classes="radius-md"
-                                        ariaDescribedby="prev-state-error"
+                                        ariaDescribedby="prev-state_error"
                                         autoComplete="off"
                                         required={(parseInt(addressFieldsState.required))}
                                         statesList={props.statesList}
@@ -414,7 +416,7 @@ function Addresses(props){
                                         onInvalid={(e) => e.target.setCustomValidity(' ')}
                                         onInput={(e) => e.target.setCustomValidity('')}
                                     />
-                                <span id="prev-state-error" role="alert" className='error-text'>
+                                <span id="prev-state_error" role="alert" className='error-text'>
                                     {prevStateField.error_msg}
                                 </span>
                             </div>
@@ -422,15 +424,15 @@ function Addresses(props){
 
                             <Grid tablet={{ col: 4 }}>
                             <div className="input-parent">
-                                <Label className="text-bold" htmlFor="prev-zip">
+                                <Label className="text-bold" htmlFor="prev-zip-code">
                                     {prevZipcodeField.label} {(addressFieldsState.required === "1") && <span className={'required-text'}>*</span>}
                                 </Label>
                                 <span className="usa-hint" id="prev-zip-hint">{stringContent.zip}</span>
                                 <TextInput
-                                    id="prev-zip"
+                                    id="prev-zip-code"
                                     className="radius-md"
-                                    aria-describedby="prev-zip-error"
-                                    name="prev-zip"
+                                    aria-describedby="prev-zip-code_error"
+                                    name="prev-zip-code"
                                     value={props.fieldData.prev_zip_code}
                                     type="text"
                                     inputMode="numeric"
@@ -444,7 +446,7 @@ function Addresses(props){
                                     onInvalid={(e) => e.target.setCustomValidity(' ')}
                                     onInput={(e) => e.target.setCustomValidity('')}
                                 />
-                                <span id="prev-zip-error" role="alert" className='error-text'>
+                                <span id="prev-zip-code_error" role="alert" className='error-text'>
                                     {prevZipcodeField.error_msg}
                                 </span>
                             </div>
