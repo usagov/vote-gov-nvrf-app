@@ -305,7 +305,7 @@
     "label": "Choose your identification type",
     "help_text": false,
     "error_msg": "Identification selection must be made from the dropdown.",
-    "instructions": "\u003Cp\u003ESelect one option from the drop down.\u00a0\u003C\/p\u003E",
+    "instructions": "\u003Cp\u003ESelect one option from the drop down.\u0026nbsp;\u003C\/p\u003E",
     "section_description": "",
     "section_alert": "",
     "options": [
