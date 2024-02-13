@@ -7,7 +7,6 @@ import MultiStepForm from './components/MultiStepForm';
 import {fetchData, sanitizeDOM} from './components/HelperFunctions/JsonHelper.jsx';
 import { HelmetProvider } from "react-helmet-async";
 import {getFieldValue} from "./components/HelperFunctions/fieldParser";
-import {GridContainer} from "@trussworks/react-uswds";
 
 function App() {
 
@@ -16,6 +15,7 @@ function App() {
   const [navContent, setNavContent] = useState('');
   const [cards, setCards] = useState('');
   const [fieldContent, setFieldContent] = useState('')
+  const [stringContent, setStringContent] = useState('')
 
   useEffect(() => {
     fetchData("states.json", setStates);
@@ -23,6 +23,7 @@ function App() {
     fetchData("navigation.json", setNavContent);
     fetchData("cards.json", setCards);
     fetchData("fields.json", setFieldContent);
+    fetchData("strings.json", setStringContent)
   }, []);
 
   const [step, setStep] = useState(1);
@@ -32,23 +33,18 @@ function App() {
   const [formStep, setFormStep] = useState(1);
 
   const lastUpdatedSanitized = sanitizeDOM(stateData.nvrf_last_updated_date);
-  const lastUpdatedText = "@state_name information last updated ";
+  const lastUpdatedText = (stringContent.lastUpdated);
   const scrollToTop = document.getElementById('scroll-to-top');
 
   //Confirm eligibility checkbox controls
   const [hasConfirmed, setHasConfirmed] = useState(null);
-  const [error, setError] = useState(null)
   const confirmCheckbox = (checkStatus) => {
       setHasConfirmed(checkStatus);
-      setError(!checkStatus);
-  }
-
-  const checkboxValid = () => {
-      (hasConfirmed === null) && setError(true);
   }
 
   const setStepFocus = () => {
     scrollToTop.focus();
+    scrollToTop.scrollIntoView();
   }
 
   const handleNext = () => {
@@ -89,7 +85,7 @@ function App() {
   };
 
   // Only render the markup if the data is loaded.
-  if (states && content && navContent && fieldContent) {
+  if (states && content && navContent && fieldContent && stringContent) {
 
     const statesList = []
     for (let i = 0; i < states.length; i++) {
@@ -103,7 +99,11 @@ function App() {
             <a name="scroll-to-top"
                id="scroll-to-top"
                tabIndex={-1}
-               style={{outline: "0 none"}}
+               style={{
+                 outline: "0 none",
+                 display: "block",
+                 scrollMargin: "20px"
+               }}
             ></a>
             {step === 1 &&
                 <StateSelection
@@ -117,6 +117,7 @@ function App() {
                     content={content}
                     navContent={navContent}
                     fieldContent={fieldContent}
+                    stringContent={stringContent}
                 />}
             {step === 2 &&
                 <RegistrationOptions
@@ -125,6 +126,7 @@ function App() {
                     stateData={stateData}
                     content={content}
                     navContent={navContent}
+                    stringContent={stringContent}
                 />}
             {step === 3 &&
                 <Eligibility
@@ -134,12 +136,11 @@ function App() {
                     stateData={stateData}
                     content={content}
                     navContent={navContent}
+                    stringContent={stringContent}
                     cards={cards}
                     fieldContent={fieldContent}
                     hasConfirmed={hasConfirmed}
-                    error={error}
                     confirmCheckbox={confirmCheckbox}
-                    checkboxValid={checkboxValid}
                 />}
             {step === 4 &&
                 <PathSelection
@@ -151,6 +152,7 @@ function App() {
                     cards={cards}
                     registrationPath={registrationPath}
                     getRegPath={getRegPath}
+                    stringContent={stringContent}
                     getFormStep={getFormStep}
                 />}
             {step === 5 &&
@@ -164,19 +166,18 @@ function App() {
                     fieldContent={fieldContent}
                     registrationPath={registrationPath}
                     getFormStep={getFormStep}
+                    stringContent={stringContent}
                 />}
 
               {step >= 3 &&
-                <GridContainer containerSize={'tablet'} className={['usa-prose', 'margin-top-5']}>
-                <div className="margin-top-4 text-base">
+                <div className="text-base usa-prose margin-top-5 maxw-tablet margin-x-auto">
                   <div>{getFieldValue(content, "2c597df4-53b6-4ef5-8301-7817b04e1099", "omb_number")}</div>
                   <span className="last-updated">
                     {lastUpdatedText.replace("@state_name", stateData.name)}
                     <span dangerouslySetInnerHTML= {{__html: lastUpdatedSanitized}}/>
                  </span>
-                  <div><a href="privacy" target="_blank">Privacy policy</a></div>
+                  <div><a href="privacy" target="_blank">{stringContent.privacyPolicy}</a></div>
                 </div>
-                </GridContainer>
               }
           </section>
         </HelmetProvider>

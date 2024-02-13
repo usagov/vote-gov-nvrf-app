@@ -160,7 +160,7 @@ cy.get('[data-testid="textInput"]').type(data.idNumber)
   cy.get('[data-testid="textInput"]').should('have.value', data.idNumber)
 // * social security number (last 4 digits)
 cy.get('[class="usa-select"]').then(dropDown => {
-  cy.get(dropDown[0]).select("Social security number")
+  cy.get(dropDown[0]).select("Social security number (last 4 digits)")
 })
 cy.get('[data-testid="textInput"]').type(data.ssn)
 // Validate fields have correct data 
@@ -171,7 +171,7 @@ cy.get('[data-testid="textInput"]').should('have.value', data.ssn)
 cy.get('[class="usa-select"]').then(dropDown => {
   cy.get(dropDown[0]).select("I do not have a valid ID number.")
 })
-cy.get('[id="main-content"]').should('contain.text', '"None" will appear on your completed form.')
+cy.get('p').should('contain.text', '"None" will appear on your completed form.')
 
 cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
 
@@ -342,7 +342,7 @@ cy.get('[data-testid="textInput"]').type(data.idNumber)
   cy.get('[data-testid="textInput"]').should('have.value', data.idNumber)
 // * social security number (last 4 digits)
 cy.get('[class="usa-select"]').then(dropDown => {
-  cy.get(dropDown[0]).select("Social security number")
+  cy.get(dropDown[0]).select("Social security number (last 4 digits)")
 })
 cy.get('[data-testid="textInput"]').type(data.ssn)
 // Validate fields have correct data 
@@ -353,7 +353,7 @@ cy.get('[data-testid="textInput"]').should('have.value', data.ssn)
 cy.get('[class="usa-select"]').then(dropDown => {
   cy.get(dropDown[0]).select("I do not have a valid ID number.")
 })
-cy.get('[id="main-content"]').should('contain.text', '"None" will appear on your completed form.')
+cy.get('p').should('contain.text', '"None" will appear on your completed form.')
 
 cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
 

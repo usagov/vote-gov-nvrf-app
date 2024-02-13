@@ -128,7 +128,7 @@ cy.get('[class="usa-select"]').select("State driver's license number")
 cy.get('[data-testid="textInput"]').type(data.idNumber)
 // * social security number (last 4 digits)
 cy.get('[class="usa-select"]').then(dropDown => {
-  cy.get(dropDown[0]).select("Social security number")
+  cy.get(dropDown[0]).select("Social security number (last 4 digits)")
 })
 cy.get('[data-testid="textInput"]').type(data.ssn)
 
@@ -136,7 +136,7 @@ cy.get('[data-testid="textInput"]').type(data.ssn)
 cy.get('[class="usa-select"]').then(dropDown => {
   cy.get(dropDown[0]).select("I do not have a valid ID number.")
 })
-cy.get('[id="main-content"]').should('contain.text', '"None" will appear on your completed form.')
+cy.get('p').should('contain.text', '"None" will appear on your completed form.')
 
 // * state id number
 cy.get('[class="usa-select"]').then(dropDown => {
