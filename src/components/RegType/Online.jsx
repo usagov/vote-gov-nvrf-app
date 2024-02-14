@@ -33,7 +33,7 @@ function Online(props) {
 
         const checkRegLink = () => (
             <p>
-                    <a href={stateContent.election_website_url} className="usa-button" target="_blank">
+                    <a href={stateContent.confirm_reg_url} className="usa-button" target="_blank">
                         <span>{stringContent.checkReg}</span>
                         <Icon.Launch title={stringContent.extlink} style={{margin: "-3px -3px -3px 4px"}}/>
                     </a>
