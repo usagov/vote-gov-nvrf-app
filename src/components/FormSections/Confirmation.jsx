@@ -1,19 +1,22 @@
-import {Alert, Button, Checkbox} from '@trussworks/react-uswds';
+import {Alert, Button, Checkbox, Label} from '@trussworks/react-uswds';
 import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
+import { toggleError } from '../HelperFunctions/ValidateField';
 
 function Confirmation(props) {
     const headings = props.headings;
     const content = props.content;
     const fieldData = props.fieldData;
     const fields = props.fieldContent;
+    const stringContent = props.stringContent
+
     const currentAddress = fieldData.street_address + fieldData.apt_num + fieldData.city + fieldData.zip_code;
     const prevName = fieldData.prev_title + fieldData.prev_first_name + fieldData.prev_middle_name + fieldData.prev_last_name + fieldData.prev_suffix;
     const prevAddress = fieldData.prev_street_address + fieldData.prev_apt_num + fieldData.prev_city + fieldData.prev_state + fieldData.prev_zip_code;
     const prevMailAddress = fieldData.mail_street_address + fieldData.mail_apt_num + fieldData.mail_city + fieldData.mail_state + fieldData.mail_zip_code;
 
     //field data overrides for confirm page printing only
-    const fieldDataOverride_race = (fieldData.race === '') ? "Not required for your state" : fieldData.race;
-    const fieldDataOverride_party = (fieldData.party_choice === '') ? "Not required for your state" : fieldData.party_choice;
+    const fieldDataOverride_race = (fieldData.race === '') ? (stringContent.notRequired) : fieldData.race;
+    const fieldDataOverride_party = (fieldData.party_choice === '') ? (stringContent.notRequired) : fieldData.party_choice;
     const fieldDataOverride_state = props.stateData.name;
     fieldData.state = fieldDataOverride_state;
 
@@ -39,7 +42,8 @@ function Confirmation(props) {
                         <Button
                             type="button"
                             class="usa-button--unstyled"
-                            onClick={props.handleGoBackSteps(4)}>
+                            onClick={props.handleGoBackSteps(4)}
+                            title="Return to Personal information, step one of six, to make a change">
                             {headings.confirmation.edit.label}
                         </Button>
                     </div>
@@ -81,7 +85,8 @@ function Confirmation(props) {
                         <Button
                             type="button"
                             class="usa-button--unstyled"
-                            onClick={props.handleGoBackSteps(3)}>
+                            onClick={props.handleGoBackSteps(3)}
+                            title="Return to Address and location, step two of six, to make a change">
                             {headings.confirmation.edit.label}
                         </Button>
                     </div>
@@ -134,7 +139,8 @@ function Confirmation(props) {
                         <Button
                             type="button"
                             class="usa-button--unstyled"
-                            onClick={props.handleGoBackSteps(2)}>
+                            onClick={props.handleGoBackSteps(2)}
+                            title="Return to Identification, step three of six, to make a change">
                             {headings.confirmation.edit.label}
                         </Button>
                     </div>
@@ -149,7 +155,8 @@ function Confirmation(props) {
                         <Button
                             type="button"
                             class="usa-button--unstyled"
-                            onClick={props.handleGoBackSteps(1)}>
+                            onClick={props.handleGoBackSteps(1)}
+                            title="Return to Political party, step four of six, to make a change">
                             {headings.confirmation.edit.label}
                         </Button>
                     </div>
@@ -165,20 +172,21 @@ function Confirmation(props) {
                     <div className="usa-alert__body" dangerouslySetInnerHTML={{__html: confirmInstructions}}/>
                 </div>)}
 
-            <div className={props.error ? 'error-container margin-top-4' : 'margin-top-4'}>
+            <div className="input-parent">
                 <Checkbox
-                    id="acknowledge-check"
+                    id="acknowledge-checkbox"
                     name="acknowledge-check"
                     required
                     defaultChecked={props.hasAcknowledged}
                     label={getFieldLabel("73e74065-fd5a-43c0-907c-268120e34bc3")}
                     onChange={(e) => props.acknowledgeCheckbox(e.target.checked)}
+                    onBlur={(e) => toggleError(e, !props.hasAcknowledged)}
+                    onInvalid={(e) => e.target.setCustomValidity(' ')}
+                    onInput={(e) => e.target.setCustomValidity('')}
                 />
-                {props.error &&
-                    <span id="first-name-error" role="alert" className='error-text'>
+                <span id="first-name-error" role="alert" className='error-text'>
                     {getFieldError("73e74065-fd5a-43c0-907c-268120e34bc3")}
                 </span>
-                }
             </div>
         </>
     );
