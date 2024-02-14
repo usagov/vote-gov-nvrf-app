@@ -16,7 +16,7 @@ function Online(props) {
         const stateOnlineLink = () => (
                 <p>
                     <a href={stateContent.registration_url} className="usa-button" target="_blank">
-                        <span>{stringContent.stateName.replace("@state_name", stateContent.name)}</span>
+                        <span>{stringContent.stateOnlineName.replace("@state_name", stateContent.name)}</span>
                         <Icon.Launch title={stringContent.extlink} style={{margin: "-3px -3px -3px 4px"}}/>
                     </a>
                 </p>
