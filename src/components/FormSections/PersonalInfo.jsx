@@ -149,7 +149,7 @@ function PersonalInfo(props){
                             onInvalid={(e) => e.target.setCustomValidity(' ')}
                             onInput={(e) => e.target.setCustomValidity('')}
                             />
-                        <span id="first-name-error" role="alert" className={'error-text'}>
+                        <span data-test="errorText" id="first-name-error" role="alert" className={'error-text'}>
                             {firstNameField.error_msg}
                         </span>
                     </div>
@@ -191,7 +191,7 @@ function PersonalInfo(props){
                             onInvalid={(e) => e.target.setCustomValidity(' ')}
                             onInput={(e) => e.target.setCustomValidity('')}
                             />
-                        <span id="last-name-error" role="alert" className={'error-text'}>
+                        <span data-test="errorText" id="last-name-error" role="alert" className={'error-text'}>
                             {lastNameField.error_msg}
                         </span>
                     </div>
@@ -433,6 +433,7 @@ function PersonalInfo(props){
                 {prevTitleField.label}
             </Label>
             <Select
+                data-test="select"
                 id="title-select-2" className="radius-md" name="title-select-2"
                 value={props.fieldData.prev_title}
                 onChange={props.saveFieldData('prev_title')}
@@ -521,6 +522,7 @@ function PersonalInfo(props){
                 {prevSuffixField.label}
             </Label>
             <Select
+                data-test="select"
                 id="suffix-select-2" className="radius-md" name="suffix-select-2"
                 value={props.fieldData.prev_suffix} onChange={props.saveFieldData('prev_suffix')}
                 autoComplete="off"
