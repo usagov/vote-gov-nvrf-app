@@ -17,20 +17,21 @@ Cypress.Commands.add('completeForm', () => {
 const data = require("../fixtures/data.json");
 
 // go to next page
-cy.get('[class="usa-button next-button mobile-width"]').click()
+cy.get('[data-test="nextBtn"]').click()
 
 // check eligibility page
 cy.get('[class="usa-checkbox__label"]').click()
+// cy.pause()
 
 cy.get('[data-test="nextBtn"]').click()
 
 // select registration option
-cy.get('[data-testid="button"]').then(btn => {
-  cy.get(btn[1]).click({force: true})
+cy.get('[data-test="pathBtn"]').then(btn => {
+  cy.get(btn[0]).click({force: true})
 })
 
 // fill out personal information 
-cy.get('[data-testid="dropdown"]').then(dropdown => {
+cy.get('[data-test="select"]').then(dropdown => {
   // title
   cy.get(dropdown[0]).select(data.personalInformationTitle)
   cy.get(dropdown[0]).should('contain', data.personalInformationTitle)
@@ -51,7 +52,9 @@ cy.get('[id="date_of_birth_day"]').type(data.personalInformationDay)
 cy.get('[id="date_of_birth_year"]').type(data.personalInformationYear)
 
 cy.get('[class="usa-checkbox__label"]').click()
-cy.get('[data-testid="dropdown"]').then(dropdown => {
+cy.get('[data-test="select"]').then(dropdown => {
+
+  // cy.get(dropdown[1])
   // title
   cy.get(dropdown[2]).select(data.personalInformationTitle)
   cy.get(dropdown[2]).should('contain', data.personalInformationTitle)
@@ -116,7 +119,7 @@ cy.get('[data-testid="textInput"]').then(textBox => {
   cy.get(textBox[0]).type(data.addressStreet)
   cy.get(textBox[1]).type(data.addressTown)
   cy.get(textBox[2]).type(data.addressZip)
-  cy.get('[class="usa-select radius-md"]').select(data.addressState)
+  cy.get('[data-testid="Select"]').select(data.addressState)
 })
 
 cy.get('[data-test="nextBtn"]').click()
@@ -124,22 +127,22 @@ cy.get('[data-test="nextBtn"]').click()
 
 // identification
 // * state driver's license number
-cy.get('[class="usa-select"]').select("State driver's license number")
+cy.get('[data-test="dropDown"]').select("State driver's license number")
 cy.get('[data-testid="textInput"]').type(data.idNumber)
 // * social security number (last 4 digits)
-cy.get('[class="usa-select"]').then(dropDown => {
+cy.get('[data-test="dropDown"]').then(dropDown => {
   cy.get(dropDown[0]).select("Social security number (last 4 digits)")
 })
 cy.get('[data-testid="textInput"]').type(data.ssn)
 
 // * no id
-cy.get('[class="usa-select"]').then(dropDown => {
+cy.get('[data-test="dropDown"]').then(dropDown => {
   cy.get(dropDown[0]).select("I do not have a valid ID number.")
 })
 cy.get('p').should('contain.text', '"None" will appear on your completed form.')
 
 // * state id number
-cy.get('[class="usa-select"]').then(dropDown => {
+cy.get('[data-test="dropDown"]').then(dropDown => {
   cy.get(dropDown[0]).select("State non-driver ID")
 })
 cy.get('[data-testid="textInput"]').type(data.idNumber)
@@ -147,8 +150,7 @@ cy.get('[data-testid="textInput"]').type(data.idNumber)
 
 cy.get('[data-test="nextBtn"]').click()
 
-  // political party (required)
-  cy.get('[class="required-text"]').should('be.visible')
+  // political party
   cy.get('[data-testid="textInput"]').type(data.politicalParty)
 
   cy.get('[data-test="nextBtn"]').click()

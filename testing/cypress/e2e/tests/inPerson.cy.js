@@ -127,11 +127,7 @@ cy.get('[data-test="checkBox"]').then(checkBox => {
 })
 
 cy.get('[data-testid="textInput"]').then(textBox => {
-  // cy.get(textBox[0]).type(data.addressStreet)
-  // cy.get(textBox[1]).type(data.addressTown)
-  // cy.get(textBox[2]).type(data.addressZip)
   cy.get('[data-testid="Select"]').select(data.addressState)
-
   // Validate text box has correct text for mailing address
   cy.get(textBox[0]).should('have.value', data.addressStreet) 
   cy.get(textBox[1]).should('have.value', data.addressTown)
@@ -180,11 +176,9 @@ cy.get('[data-test="nextBtn"]').click()
 cy.get('[data-test="confirm"]').click({force: true})
 cy.get('[data-test="nextBtn"]').click()
 
-cy.get('[class="grid-col-11 usa-prose padding-left-2"]').should('contain.text', 'Your Delaware mail-in registration form is complete and ready to print.')
+cy.get('[data-test="addressConfirm"]').should('contain.text', 'Your Delaware mail-in registration form is complete and ready to print.')
 // * check that download opens in new window
-cy.get('[class="usa-button"]').then(btn => {
-  cy.get(btn[1]).click()
-})
+cy.get('[data-test="pdfBtn"]').click()
 cy.get('@open').should('have.been.calledOnce')
 
 })
@@ -207,8 +201,8 @@ cy.get('[data-test="checkBox"]').click()
 cy.get('[data-test="nextBtn"]').click()
 
 // select registration option
-cy.get('[data-testid="button"]').then(btn => {
-  cy.get(btn[2]).click()
+cy.get('[data-test="pathBtn"]').then(btn => {
+  cy.get(btn[1]).click({force: true})
 })
 
 // fill out personal information 
@@ -348,11 +342,9 @@ cy.get('[data-test="confirm"]').click({force: true})
 cy.get('[data-test="nextBtn"]').click()
 
 
-cy.get('[class="grid-col-11 usa-prose padding-left-2"]').should('contain.text', 'Your Delaware mail-in registration form is complete and ready to print.')
+cy.get('[data-test="addressConfirm"]').should('contain.text', 'Your Delaware mail-in registration form is complete and ready to print.')
 // * check that download opens in new window
-cy.get('[class="usa-button"]').then(btn => {
-  cy.get(btn[1]).click()
-})
+cy.get('[data-test="pdfBtn"]').click()
 cy.get('@open').should('have.been.calledOnce')
 
   })

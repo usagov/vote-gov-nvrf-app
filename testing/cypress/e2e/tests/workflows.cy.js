@@ -6,13 +6,13 @@ describe('Verify Flow Within Form', () => {
   beforeEach('Complete Form', () => {
     // sign in and complete form 
     cy.signin(Cypress.env('username'), Cypress.env('password'))
-    cy.get('[data-testid="dropdown"]').select(data.inPerson)
+    cy.get('[data-test="dropDown"]').select(data.inPerson)
     cy.get('[data-test="nextBtn"]').click()
     cy.completeForm()
   })
   it('Verify Back Buttons', () => {
     // check that the form back buttons will take user back to the correct page
-
+cy.pause()
     cy.get('[class="usa-button usa-button--outline back-button"]').should('contain.text', 'Edit registration information')
 
     cy.get('[class="usa-button usa-button--outline back-button"]').click()

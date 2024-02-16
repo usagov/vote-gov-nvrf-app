@@ -5,14 +5,14 @@ const data = require("../../fixtures/data.json");
 describe('Validate Errors', () => {
   beforeEach('login to app', () => {
     cy.signin(Cypress.env('username'), Cypress.env('password'))
-    cy.get('[data-testid="dropdown"]').select(data.inPerson)
+    cy.get('[data-test="dropDown"]').select(data.inPerson)
     cy.get('[data-test="nextBtn"]').click()
   })
 it('Check Error Functions', () => {
 // Move forward in test
-cy.get('[class="usa-button next-button mobile-width"]').click()
 cy.get('[data-test="nextBtn"]').click()
-cy.get('[class="usa-checkbox__label"]').click()
+cy.get('[data-test="nextBtn"]').click()
+cy.get('[data-test="checkBox"]').click()
 cy.get('[data-test="nextBtn"]').click()
 
 // select registration option
@@ -57,12 +57,12 @@ cy.get('[data-test="nextBtn"]').click()
 
 // identification
 // * state driver's license number required fields are needed to move forward
-cy.get('[class="usa-select"]').select("State driver's license number")
+cy.get('[data-test="dropDown"]').select("State driver's license number")
 cy.get('[data-test="nextBtn"]').click().click()
 cy.get('[data-test="errorText"]').should('contain.text', 'ID number must be filled out.')
 cy.get('[data-testid="textInput"]').type(data.idNumber)
 // * state id number
-cy.get('[class="usa-select"]').then(dropDown => {
+cy.get('[data-test="dropDown"]').then(dropDown => {
   cy.get(dropDown[0]).select("State non-driver ID")
 })
 cy.get('[data-test="nextBtn"]').click().click()
@@ -70,7 +70,7 @@ cy.get('[data-test="errorText"]').should('contain.text', 'ID number must be fill
 cy.get('[data-testid="textInput"]').type(data.idNumber)
 
 // * social security number (last 4 digits)
-cy.get('[class="usa-select"]').then(dropDown => {
+cy.get('[data-test="dropDown"]').then(dropDown => {
   cy.get(dropDown[0]).select("Social security number (last 4 digits)")
 })
 
@@ -80,16 +80,14 @@ cy.get('[data-testid="textInput"]').type(data.ssn)
 cy.get('[data-test="nextBtn"]').click()
 
 // political party 
-cy.get('[data-test="nextBtn"]').click().click()
-cy.get('[data-test="errorText"]').should('contain.text', 'Choice of party must be filled out.')
-  cy.get('[data-testid="textInput"]').type(data.politicalParty)
   cy.get('[data-test="nextBtn"]').click()
 
 // confirmation page
 cy.get('[data-test="nextBtn"]').click()
 cy.get('[data-test="errorText"]').should('contain.text', 'Checkbox must be checked to continue.')
-cy.get('[id="acknowledge-check"]').click({force: true})
+cy.get('[data-test="confirm"]').click({force: true})
 // * verify that error message goes away
-cy.get('[class="error-text text-bold"]').should('not.exist')
+// todo: come back when fixed
+cy.get('[data-test="errorText"]').should('not.exist')
 })
 })
