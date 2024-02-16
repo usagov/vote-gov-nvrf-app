@@ -32,6 +32,7 @@ function StateSelection(props) {
                         <div className="input-parent">
                             <Select
                                 id="state-dropdown"
+                                data-test="dropDown"
                                 name="state-dropdown"
                                 value={props.state}
                                 required={true}
@@ -50,7 +51,7 @@ function StateSelection(props) {
                                 )}
                             </React.Fragment>
                             </Select>
-                            <span id="state-dropdown-error" role="alert" className='error-text'>
+                            <span id="state-dropdown-error" role="alert" className='error-text' data-test="errorText">
                                 {getFieldError(fields, "7231330d-523b-4e22-b282-b9f98ee20ef2")}
                             </span>
                         </div>
