@@ -7,7 +7,7 @@ describe('Verify Flow Within Form', () => {
     // sign in and complete form 
     cy.signin(Cypress.env('username'), Cypress.env('password'))
     cy.get('[data-testid="dropdown"]').select(data.inPerson)
-    cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
+    cy.get('[data-test="nextBtn"]').click()
     cy.completeForm()
   })
   it('Verify Back Buttons', () => {
@@ -47,28 +47,28 @@ describe('Verify Flow Within Form', () => {
     cy.get('[class="usa-button usa-button--unstyled"]').then(editBtn => {
       cy.get(editBtn[0]).click()
       cy.get('h2').should('contain.text', 'Personal Information')
-      cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click().click().click().click()
+      cy.get('[data-test="nextBtn"]').click().click().click().click()
     })
 
     // address
     cy.get('[class="usa-button usa-button--unstyled"]').then(editBtn => {
       cy.get(editBtn[1]).click({force: true})
       cy.get('h3').should('contain.text', 'Address & Location Information')
-      cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click().click().click()
+      cy.get('[data-test="nextBtn"]').click().click().click()
       
     })
     // identification
     cy.get('[class="usa-button usa-button--unstyled"]').then(editBtn => {
       cy.get(editBtn[2]).click({force: true})
       cy.get('h2').should('contain.text', 'Identification')
-      cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click().click()
+      cy.get('[data-test="nextBtn"]').click().click()
     })
 
     // political party 
     cy.get('[class="usa-button usa-button--unstyled"]').then(editBtn => {
       cy.get(editBtn[3]).click({force: true})
       cy.get('h2').should('contain.text', 'Choice of Political Party')
-      cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
+      cy.get('[data-test="nextBtn"]').click()
     })
   })
 

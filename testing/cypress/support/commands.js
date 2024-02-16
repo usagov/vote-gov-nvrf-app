@@ -22,7 +22,7 @@ cy.get('[class="usa-button next-button mobile-width"]').click()
 // check eligibility page
 cy.get('[class="usa-checkbox__label"]').click()
 
-cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
+cy.get('[data-test="nextBtn"]').click()
 
 // select registration option
 cy.get('[data-testid="button"]').then(btn => {
@@ -66,7 +66,7 @@ cy.get('[data-testid="textInput"]').then(textBox => {
   cy.get(textBox[7]).type(data.personalInformationLast)
 })
 
-cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
+cy.get('[data-test="nextBtn"]').click()
 
 // address and location page
 // * check that current address works
@@ -119,7 +119,7 @@ cy.get('[data-testid="textInput"]').then(textBox => {
   cy.get('[class="usa-select radius-md"]').select(data.addressState)
 })
 
-cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
+cy.get('[data-test="nextBtn"]').click()
 
 
 // identification
@@ -145,13 +145,13 @@ cy.get('[class="usa-select"]').then(dropDown => {
 cy.get('[data-testid="textInput"]').type(data.idNumber)
 
 
-cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
+cy.get('[data-test="nextBtn"]').click()
 
   // political party (required)
   cy.get('[class="required-text"]').should('be.visible')
   cy.get('[data-testid="textInput"]').type(data.politicalParty)
 
-  cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
+  cy.get('[data-test="nextBtn"]').click()
 
 
   })

@@ -6,7 +6,7 @@ describe('Validate Online', () => {
   beforeEach('login to app', () => {
     cy.signin(Cypress.env('username'), Cypress.env('password'))
     cy.get('[data-testid="dropdown"]').select(data.online)
-    cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
+    cy.get('[data-test="nextBtn"]').click()
   })
 it('Validate Update Registration', () => {
   // check that state link opens in new tab
@@ -18,14 +18,14 @@ cy.get('[class="usa-button next-button mobile-width"]').click()
 
 // check eligibility page
 // verify that user CANNOT move forward with out checking box
-cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
-cy.get('[class="error-text"]').should('contain.text', 'Confirm eligibility to continue.')
+cy.get('[data-test="nextBtn"]').click()
+cy.get('[data-test="errorText"]').should('contain.text', 'Confirm eligibility to continue.')
 
 // verify user CAN move forward after checking box
 cy.get('[class="usa-checkbox__label"]').click()
-cy.get('[class="error-text"]').should('not.exist')
+cy.get('[data-test="errorText"]').should('not.exist')
 
-cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
+cy.get('[data-test="nextBtn"]').click()
 
 // select registration option
 cy.get('[data-testid="button"]').then(btn => {
@@ -34,8 +34,8 @@ cy.get('[data-testid="button"]').then(btn => {
 
 // fill out personal information 
 // * check that user can not move forward without filling out fields
-cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click().click()
-cy.get('[class="error-text"]').should('be.visible')
+cy.get('[data-test="nextBtn"]').click().click()
+cy.get('[data-test="errorText"]').should('be.visible')
 
 cy.get('[data-testid="dropdown"]').then(dropdown => {
   // title
@@ -66,13 +66,13 @@ cy.get('[id="date_of_birth_month"]').should('have.value', data.personalInformati
 cy.get('[id="date_of_birth_day"]').should('have.value', data.personalInformationDay)
 cy.get('[id="date_of_birth_year"]').should('have.value', data.personalInformationYear)
 
-cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
+cy.get('[data-test="nextBtn"]').click()
 
 
 // address and location page
 // * check that user can not move forward without filling out fields
-cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click().click()
-cy.get('[class="error-text"]').should('be.visible')
+cy.get('[data-test="nextBtn"]').click().click()
+cy.get('[data-test="errorText"]').should('be.visible')
 
 // * check that current address works
 cy.get('[data-testid="textInput"]').then(textBox => {
@@ -142,12 +142,12 @@ cy.get('[data-testid="textInput"]').then(textBox => {
   cy.get(textBox[2]).should('have.value', data.addressZip)
 })
 
-cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
+cy.get('[data-test="nextBtn"]').click()
 
 // identification
 // * check that user can not move forward without selecting an option
-cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click().click()
-cy.get('[class="error-text"]').should('be.visible')
+cy.get('[data-test="nextBtn"]').click().click()
+cy.get('[data-test="errorText"]').should('be.visible')
 
 // * state driver's license number
 cy.get('[class="usa-select"]').select("State driver's license number")
@@ -178,12 +178,12 @@ cy.get('[class="usa-select"]').then(dropDown => {
 })
 cy.get('p').should('contain.text', '"None" will appear on your completed form.')
 
-cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
+cy.get('[data-test="nextBtn"]').click()
 
   // political party 
   cy.get('[data-testid="textInput"]').type(data.politicalParty)
 
-  cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
+  cy.get('[data-test="nextBtn"]').click()
 
 // confirmation page
 cy.get('[id="acknowledge-check"]').click({force: true})
@@ -210,14 +210,14 @@ cy.get('[class="usa-button next-button mobile-width"]').click()
 
 // check eligibility page
 // verify that user CANNOT move forward with out checking box
-cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
-cy.get('[class="error-text"]').should('contain.text', 'Confirm eligibility to continue.')
+cy.get('[data-test="nextBtn"]').click()
+cy.get('[data-test="errorText"]').should('contain.text', 'Confirm eligibility to continue.')
 
 // verify user CAN move forward after checking box
 cy.get('[class="usa-checkbox__label"]').click()
-cy.get('[class="error-text"]').should('not.exist')
+cy.get('[data-test="errorText"]').should('not.exist')
 
-cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
+cy.get('[data-test="nextBtn"]').click()
 
 // select registration option
 cy.get('[data-testid="button"]').then(btn => {
@@ -226,8 +226,8 @@ cy.get('[data-testid="button"]').then(btn => {
 
 // fill out personal information 
 // * check that user can not move forward without filling out fields
-cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click().click()
-cy.get('[class="error-text"]').should('be.visible')
+cy.get('[data-test="nextBtn"]').click().click()
+cy.get('[data-test="errorText"]').should('be.visible')
 
 cy.get('[data-testid="dropdown"]').then(dropdown => {
   // title
@@ -258,13 +258,13 @@ cy.get('[id="date_of_birth_month"]').should('have.value', data.personalInformati
 cy.get('[id="date_of_birth_day"]').should('have.value', data.personalInformationDay)
 cy.get('[id="date_of_birth_year"]').should('have.value', data.personalInformationYear)
 
-cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
+cy.get('[data-test="nextBtn"]').click()
 
 
 // address and location page
 // * check that user can not move forward without filling out fields
-cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click().click()
-cy.get('[class="error-text"]').should('be.visible')
+cy.get('[data-test="nextBtn"]').click().click()
+cy.get('[data-test="errorText"]').should('be.visible')
 
 // * check that current address works
 cy.get('[data-testid="textInput"]').then(textBox => {
@@ -329,12 +329,12 @@ cy.get('[data-testid="textInput"]').then(textBox => {
   cy.get(textBox[2]).should('have.value', data.addressZip)
 })
 
-cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
+cy.get('[data-test="nextBtn"]').click()
 
 // identification
 // * check that user can not move forward without selecting an option
-cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click().click()
-cy.get('[class="error-text"]').should('be.visible')
+cy.get('[data-test="nextBtn"]').click().click()
+cy.get('[data-test="errorText"]').should('be.visible')
 
 // * state driver's license number
 cy.get('[class="usa-select"]').select("State driver's license number")
@@ -365,12 +365,12 @@ cy.get('[class="usa-select"]').then(dropDown => {
 })
 cy.get('p').should('contain.text', '"None" will appear on your completed form.')
 
-cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
+cy.get('[data-test="nextBtn"]').click()
 
   // political party
   cy.get('[data-testid="textInput"]').type(data.politicalParty)
 
-  cy.get('[class="usa-button next-button mobile-width margin-top-5"]').click()
+  cy.get('[data-test="nextBtn"]').click()
 
 // confirmation page
 cy.get('[id="acknowledge-check"]').click({force: true})
