@@ -25,7 +25,7 @@ function StateSelection(props) {
             <form id="state-selection" onSubmit={(e) => {props.handleSubmit(e), props.handleNext()}}>
                 <div className="grid-row margin-top-3 flex-align-center">
                     <div className="grid-col-auto margin-right-2">
-                        <h4 className={'margin-0'}>{getFieldLabel(fields, "7231330d-523b-4e22-b282-b9f98ee20ef2")}</h4>
+                        <strong className={'margin-0'}>{getFieldLabel(fields, "7231330d-523b-4e22-b282-b9f98ee20ef2")}</strong>
                     </div>
 
                     <div className="grid-col">
