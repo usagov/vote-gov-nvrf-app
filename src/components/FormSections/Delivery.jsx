@@ -43,7 +43,7 @@ function Delivery(props) {
                 <div className={'usa-prose margin-top-2'} dangerouslySetInnerHTML= {{__html: mailingAddress }}/>
 
                 {/* <Button onClick={() => } type="submit"> */}
-                <Button type="submit" onClick={window.open(pdf)} >
+                <Button type="submit" onClick={() => window.open(pdf)} >
                     <span>{"Open form in a new window"}</span>
                 </Button>
 
