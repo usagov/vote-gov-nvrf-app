@@ -1,5 +1,6 @@
 import { Button, Icon, Grid } from '@trussworks/react-uswds';
 import GenerateFilledPDF from '../GenerateFilledPDF';
+import DownloadFilledPDF from '../DownloadFilledPDF';
 import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
 
 function Delivery(props) {
@@ -45,6 +46,14 @@ function Delivery(props) {
                 <Button onClick={() => GenerateFilledPDF(props.fieldData, props.stateData.nvrf_pages_list)} type="submit">
                     <span>{stringContent.newWindow}</span>
                 </Button>
+
+
+            <div className={'usa-prose margin-top-4'}>
+                <p>If form does not open in a new tab you can download using the option below.</p>
+                <Button onClick={() => DownloadFilledPDF(props.fieldData, props.stateData.nvrf_pages_list)} type="submit">
+                    <span>{stringContent.download}</span>
+                </Button>
+            </div>
 
                 <div className={'usa-prose margin-top-4'} dangerouslySetInnerHTML= {{__html: deliveryBodyParts[1]}}/>
             </>
