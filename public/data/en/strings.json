@@ -21,5 +21,7 @@
     "extlink": "External link opens new window",
     "emailLabel": "Voter Contact",
     "emailHint": "For example: email@address.com",
-    "select": "- Select -"
+    "select": "- Select -",
+    "download": "Download Form"
+
 }
