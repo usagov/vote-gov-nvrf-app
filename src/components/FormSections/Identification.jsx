@@ -48,6 +48,7 @@ function Identification(props){
                     <div dangerouslySetInnerHTML={{__html: idTypeFieldInstructions}}/>
                     <div className="input-parent">
                         <Select
+                            data-test="dropDown"
                             id="id-num-dropdown"
                             name="input-dropdown"
                             value={props.idType}
@@ -67,7 +68,7 @@ function Identification(props){
                             {(noIdFieldReq) && <option key="id-none" value="none">{noIdField.label}</option>}
                         </React.Fragment>
                         </Select>
-                        <span id="id-num-dropdown-error" role="alert" className='error-text'>
+                        <span id="id-num-dropdown-error" role="alert" className='error-text' data-test="errorText">
                             {stateIDField.error_msg}
                         </span>
                     </div>
@@ -93,7 +94,7 @@ function Identification(props){
                                 onInvalid={(e) => e.target.setCustomValidity(' ')}
                                 onInput={(e) => e.target.setCustomValidity('')}
                             />
-                            <span id="state-id-num-error" role="alert" className='error-text'>
+                            <span id="state-id-num-error" role="alert" className='error-text' data-test="errorText">
                                 {driverLicenseField.error_msg}
                             </span>  
                         </>
@@ -117,7 +118,7 @@ function Identification(props){
                                 onInvalid={(e) => e.target.setCustomValidity(' ')}
                                 onInput={(e) => e.target.setCustomValidity('')}
                             />
-                            <span id="state-id-num-error" role="alert" className='error-text'>
+                            <span id="state-id-num-error" role="alert" className='error-text' data-test="errorText">
                                 {stateIDField.error_msg}
                             </span>
                         </>
@@ -147,7 +148,7 @@ function Identification(props){
                         onInvalid={(e) => e.target.setCustomValidity(' ')}
                         onInput={(e) => e.target.setCustomValidity('')}
                     />
-                    <span id="ssn-input-error" role="alert" className='error-text'>
+                    <span id="ssn-input-error" role="alert" className='error-text' data-test="errorText">
                         {ssnField.error_msg}
                     </span>
                 </div>}
@@ -175,7 +176,7 @@ function Identification(props){
                         onInvalid={(e) => e.target.setCustomValidity(' ')}
                         onInput={(e) => e.target.setCustomValidity('')}
                     />
-                    <span id="ssn-input-error" role="alert" className='error-text'>
+                    <span id="ssn-input-error" role="alert" className='error-text' data-test="errorText">
                         {ssnFullField.error_msg}
                     </span>
                 </div>}

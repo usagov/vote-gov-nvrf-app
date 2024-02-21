@@ -95,7 +95,7 @@ function PersonalInfo(props){
         <h2>{headings.step_label_1}</h2>
 
         {changeRegistrationVisible && (
-            <Checkbox id="prev-name-change" name="prev-name-change" checked={props.previousName} onChange={props.onChangePreviousName} label={stringContent.nameChange} />
+            <Checkbox data-test="checkBox" id="prev-name-change" name="prev-name-change" checked={props.previousName} onChange={props.onChangePreviousName} label={stringContent.nameChange} />
         )}
 
         <div className="usa-alert usa-alert--info" role="alert">
@@ -113,6 +113,7 @@ function PersonalInfo(props){
                         {titleField.label}
                     </Label>
                     <Select 
+                        data-test="select"
                         className="radius-md" id="title-select" name="title-select"
                         value={props.fieldData.title}
                         onChange={props.saveFieldData('title')}
@@ -148,7 +149,7 @@ function PersonalInfo(props){
                             onInvalid={(e) => e.target.setCustomValidity(' ')}
                             onInput={(e) => e.target.setCustomValidity('')}
                             />
-                        <span id="first-name-error" role="alert" className={'error-text'}>
+                        <span data-test="errorText" id="first-name-error" role="alert" className={'error-text'}>
                             {firstNameField.error_msg}
                         </span>
                     </div>
@@ -190,7 +191,7 @@ function PersonalInfo(props){
                             onInvalid={(e) => e.target.setCustomValidity(' ')}
                             onInput={(e) => e.target.setCustomValidity('')}
                             />
-                        <span id="last-name-error" role="alert" className={'error-text'}>
+                        <span data-test="errorText" id="last-name-error" role="alert" className={'error-text'}>
                             {lastNameField.error_msg}
                         </span>
                     </div>
@@ -201,6 +202,7 @@ function PersonalInfo(props){
                         {suffixField.label}
                     </Label>
                     <Select 
+                    data-test="select"
                     id="suffix-select" className="radius-md" name="suffix-select"
                     value={props.fieldData.suffix}
                     onChange={props.saveFieldData('suffix')}
@@ -315,7 +317,7 @@ function PersonalInfo(props){
                                 />
                             </div>
                         </div>
-                    <span id="dob-error" rol="alert" className='error-text'>
+                    <span id="dob-error" role="alert" className='error-text' data-test="errorText">
                         {dobField.error_msg}
                     </span>
                 </Fieldset>
@@ -347,7 +349,7 @@ function PersonalInfo(props){
                             onInvalid={(e) => e.target.setCustomValidity(' ')}
                             onInput={(e) => e.target.setCustomValidity('')}
                         />
-                        <span id="phone-number-error" rol="alert" className='error-text'>
+                        <span id="phone-number-error" role="alert" className='error-text' data-test="errorText">
                             {phoneNumberField.error_msg}
                         </span>
                     </div>
@@ -414,7 +416,7 @@ function PersonalInfo(props){
                                 ))}
                             </React.Fragment>
                             </Select>
-                            <span id="race-error" role="alert" className='error-text'>
+                            <span id="race-error" role="alert" className='error-text' data-test="errorText">
                                 {raceField.error_msg}
                             </span>
                         </div>
@@ -431,6 +433,7 @@ function PersonalInfo(props){
                 {prevTitleField.label}
             </Label>
             <Select
+                data-test="select"
                 id="title-select-2" className="radius-md" name="title-select-2"
                 value={props.fieldData.prev_title}
                 onChange={props.saveFieldData('prev_title')}
@@ -466,7 +469,7 @@ function PersonalInfo(props){
                     onInvalid={(e) => e.target.setCustomValidity(' ')}
                     onInput={(e) => e.target.setCustomValidity('')}
                 />
-                <span id="prev-first-name-error" role="alert" className='error-text'>
+                <span id="prev-first-name-error" role="alert" className='error-text' data-test="errorText">
                     {prevFirstNameField.error_msg}
                 </span>
             </div>
@@ -508,7 +511,7 @@ function PersonalInfo(props){
                     onInvalid={(e) => e.target.setCustomValidity(' ')}
                     onInput={(e) => e.target.setCustomValidity('')}
                     />
-                    <span id="prev-last-name-error" role="alert" className='error-text'>
+                    <span id="prev-last-name-error" role="alert" className='error-text' data-test="errorText">
                         {prevLastNameField.error_msg}
                     </span>
             </div>
@@ -519,6 +522,7 @@ function PersonalInfo(props){
                 {prevSuffixField.label}
             </Label>
             <Select
+                data-test="select"
                 id="suffix-select-2" className="radius-md" name="suffix-select-2"
                 value={props.fieldData.prev_suffix} onChange={props.saveFieldData('prev_suffix')}
                 autoComplete="off"

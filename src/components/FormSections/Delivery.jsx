@@ -35,14 +35,14 @@ function Delivery(props) {
                 <Grid row>
                     <Grid col={1}>{iconCheckmark}</Grid>
                     <Grid col={11} className={['usa-prose', 'padding-left-2']}>
-                        <h1>{delivery.title.replace("@state_name", props.stateData.name)}</h1>
+                        <h1 data-test="addressConfirm" >{delivery.title.replace("@state_name", props.stateData.name)}</h1>
                     </Grid>
                 </Grid>
 
                 <div className={'usa-prose margin-top-2'} dangerouslySetInnerHTML= {{__html: deliveryBodyParts[0]}}/>
                 <div className={'usa-prose margin-top-2'} dangerouslySetInnerHTML= {{__html: mailingAddress }}/>
 
-                <Button onClick={() => GenerateFilledPDF(props.fieldData, props.stateData.nvrf_pages_list)} type="submit">
+                <Button data-test="pdfBtn" onClick={() => GenerateFilledPDF(props.fieldData, props.stateData.nvrf_pages_list)} type="submit">
                     <span>{stringContent.newWindow}</span>
                 </Button>
 
