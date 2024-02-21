@@ -13,9 +13,20 @@ function StepsList(props) {
     <path fillRule="evenodd" clipRule="evenodd" d="M27.4754 42.0011C28.0863 42.0011 28.5865 41.5726 28.5865 41.0459C28.5865 40.5223 28.0863 40.0938 27.4754 40.0938C26.8609 40.0938 26.3613 40.5222 26.3613 41.0459C26.3617 41.5729 26.8609 42.0011 27.4754 42.0011Z" fill="#11385B"/>
     </svg>
 
-    const iconCheckmark = <svg aria-hidden="true" focusable="false" width="63" height="64" viewBox="0 0 63 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M16.5 32C16.5 24.0095 23.0095 17.5 31 17.5C38.9905 17.5 45.5 24.0095 45.5 32C45.5 39.9905 38.9905 46.5 31 46.5C23.0095 46.5 16.5 39.9905 16.5 32ZM18.5 32C18.5 38.9095 24.0905 44.5 31 44.5C37.9095 44.5 43.5 38.9095 43.5 32C43.5 25.0905 37.9095 19.5 31 19.5C24.0905 19.5 18.5 25.0905 18.5 32Z" fill="#11385B" stroke="white"/>
-    <path d="M29.4241 34.4536L24.2412 29.1967L22 31.4699L29.4241 39L40 28.2732L37.7588 26L29.4241 34.4536Z" fill="#11385B"/>
+    const iconPrinter = <svg width="63" height="63" viewBox="0 0 63 63" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_4627_1581)">
+        <mask id="mask0_4627_1581" style={{ maskType: 'luminance'}} maskUnits="userSpaceOnUse" x="16" y="15" width="31" height="33">
+        <path d="M47 15H16V48H47V15Z" fill="white"/>
+        </mask>
+        <g mask="url(#mask0_4627_1581)">
+        <path d="M42.2308 29.1429C42.2308 29.7911 41.6942 30.3214 41.0385 30.3214H37.4615C36.8058 30.3214 36.2692 29.7911 36.2692 29.1429C36.2692 28.4946 36.8058 27.9643 37.4615 27.9643H41.0385C41.6942 27.9643 42.2308 28.4946 42.2308 29.1429ZM47 26.7857V36.2143C47 38.1589 45.3904 39.75 43.4231 39.75H41.0385V44.4643C41.0385 46.4089 39.4288 48 37.4615 48H25.5385C23.5712 48 21.9615 46.4089 21.9615 44.4643V39.75H19.5769C17.6096 39.75 16 38.1589 16 36.2143V26.7857C16 24.8411 17.6096 23.25 19.5769 23.25H21.9615V18.5357C21.9615 16.5911 23.5712 15 25.5385 15H37.4615C39.4288 15 41.0385 16.5911 41.0385 18.5357V23.25H43.4231C45.3904 23.25 47 24.8411 47 26.7857ZM24.3462 23.25H38.6538V18.5357C38.6538 17.8875 38.1173 17.3571 37.4615 17.3571H25.5385C24.8827 17.3571 24.3462 17.8875 24.3462 18.5357V23.25ZM38.6538 35.0357H24.3462V44.4643C24.3462 45.1125 24.8827 45.6429 25.5385 45.6429H37.4615C38.1173 45.6429 38.6538 45.1125 38.6538 44.4643V35.0357ZM44.6154 26.7857C44.6154 26.1375 44.0788 25.6071 43.4231 25.6071H19.5769C18.9212 25.6071 18.3846 26.1375 18.3846 26.7857V36.2143C18.3846 36.8625 18.9212 37.3929 19.5769 37.3929H21.9615V35.0357C21.9615 33.7393 23.0346 32.6786 24.3462 32.6786H38.6538C39.9654 32.6786 41.0385 33.7393 41.0385 35.0357V37.3929H43.4231C44.0788 37.3929 44.6154 36.8625 44.6154 36.2143V26.7857ZM35.0769 40.9286H27.9231C27.2673 40.9286 26.7308 41.4589 26.7308 42.1071C26.7308 42.7554 27.2673 43.2857 27.9231 43.2857H35.0769C35.7327 43.2857 36.2692 42.7554 36.2692 42.1071C36.2692 41.4589 35.7327 40.9286 35.0769 40.9286ZM35.0769 37.3929H27.9231C27.2673 37.3929 26.7308 37.9232 26.7308 38.5714C26.7308 39.2196 27.2673 39.75 27.9231 39.75H35.0769C35.7327 39.75 36.2692 39.2196 36.2692 38.5714C36.2692 37.9232 35.7327 37.3929 35.0769 37.3929Z" fill="#11385B"/>
+        </g>
+    </g>
+    <defs>
+        <clipPath id="clip0_4627_1581">
+        <rect width="63" height="63" fill="white"/>
+        </clipPath>
+    </defs>
     </svg>
 
     const iconSendForm = <svg aria-hidden="true" focusable="false" width="63" height="64" viewBox="0 0 63 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -34,7 +45,7 @@ function StepsList(props) {
 
     let contentBodyProcessed = contentBody.replace("@iconCompleteForm", renderToStaticMarkup(iconCompleteForm));
     contentBodyProcessed = contentBodyProcessed.replace("@iconConfirmEligible", renderToStaticMarkup(iconConfirmEligible));
-    contentBodyProcessed = contentBodyProcessed.replace("@iconCheckmark", renderToStaticMarkup(iconCheckmark));
+    contentBodyProcessed = contentBodyProcessed.replace("@iconPrinter", renderToStaticMarkup(iconPrinter));
     contentBodyProcessed = contentBodyProcessed.replace("@iconSendForm", renderToStaticMarkup(iconSendForm));
 
 
