@@ -44,7 +44,6 @@ function Eligibility(props) {
                             <strong>{eligibility.name}</strong>
                         </Label>
                         <Checkbox
-                            
                             id="eligibility-checkbox"
                             name="eligibility-checkbox"
                             value="eligibility-checkbox"
