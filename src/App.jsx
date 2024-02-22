@@ -137,7 +137,6 @@ function App() {
                     content={content}
                     navContent={navContent}
                     stringContent={stringContent}
-                    cards={cards}
                     fieldContent={fieldContent}
                     hasConfirmed={hasConfirmed}
                     confirmCheckbox={confirmCheckbox}
