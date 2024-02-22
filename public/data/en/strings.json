@@ -1,6 +1,6 @@
 {
     "notRequired": "Not required for your state",
-    "newWindow": "Open form in a new window",
+    "newWindow": "Print your mail-in form in a new window",
     "nameChange": "I have legally changed my name since I last registered in this state.",
     "dob": "Date of Birth",
     "month": "Month",
@@ -22,6 +22,6 @@
     "emailLabel": "Voter Contact",
     "emailHint": "For example: email@address.com",
     "select": "- Select -",
-    "download": "Download Form"
+    "download": "Download your mail-in form"
 
 }
