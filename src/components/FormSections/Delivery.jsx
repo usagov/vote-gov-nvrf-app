@@ -42,8 +42,13 @@ function Delivery(props) {
                 <div className={'usa-prose margin-top-2'} dangerouslySetInnerHTML= {{__html: deliveryBodyParts[0]}}/>
                 <div className={'usa-prose margin-top-2'} dangerouslySetInnerHTML= {{__html: mailingAddress }}/>
 
-                <Button data-test="pdfBtn" onClick={() => GenerateFilledPDF(props.fieldData, props.stateData.nvrf_pages_list)} type="submit">
+                <Button data-test="pdfBtn" onClick={() => GenerateFilledPDF('newTab', props.fieldData, props.stateData.nvrf_pages_list)} type="submit">
                     <span>{stringContent.newWindow}</span>
+                </Button>
+
+                <p className={'margin-top-4'}>{stringContent.downloadText}</p>
+                <Button style={{marginTop: 0}} onClick={() => GenerateFilledPDF('download', props.fieldData, props.stateData.nvrf_pages_list)} type="submit">
+                    <span>{stringContent.download}</span>
                 </Button>
 
                 <div className={'usa-prose margin-top-4'} dangerouslySetInnerHTML= {{__html: deliveryBodyParts[1]}}/>
