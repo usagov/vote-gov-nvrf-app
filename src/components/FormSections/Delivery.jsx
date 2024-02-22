@@ -46,13 +46,10 @@ function Delivery(props) {
                     <span>{stringContent.newWindow}</span>
                 </Button>
 
-
-            <div className={'usa-prose margin-top-4'}>
-                <p>If form does not open in a new tab you can download using the option below.</p>
-                <Button onClick={() => GenerateFilledPDF('download', props.fieldData, props.stateData.nvrf_pages_list)} type="submit">
+                <p className={'margin-top-4'}>{stringContent.downloadText}</p>
+                <Button style={{marginTop: 0}} onClick={() => GenerateFilledPDF('download', props.fieldData, props.stateData.nvrf_pages_list)} type="submit">
                     <span>{stringContent.download}</span>
                 </Button>
-            </div>
 
                 <div className={'usa-prose margin-top-4'} dangerouslySetInnerHTML= {{__html: deliveryBodyParts[1]}}/>
             </>

@@ -162,14 +162,11 @@ const GenerateFilledPDF = async function (btnType,formData,pagesKept) {
     // Serialize the PDFDocument to bytes (a Uint8Array)
     const pdfBytes = await pdfDoc.save()
 
-    // Trigger the browser to download the PDF document
-    // var blobURL = URL.createObjectURL(new Blob([pdfBytes], {type: 'application/pdf'}));
-    // window.open(blobURL);
 
     if (btnType === 'newTab') {
-        // Trigger the browser to download the PDF document
+        // Trigger the browser to open a new tab with the PDF document
         var blobURL = URL.createObjectURL(new Blob([pdfBytes], {type: 'application/pdf'}));
-    window.open(blobURL);
+        window.open(blobURL);
     } else if (btnType === 'download') {
         // Trigger the browser to download the PDF document
         download(pdfBytes, `national_voter_registration_form_${formData.state}.pdf`, "application/pdf");
