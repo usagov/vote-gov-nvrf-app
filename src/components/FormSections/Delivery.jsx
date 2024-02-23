@@ -5,7 +5,6 @@ import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
 function Delivery(props) {
     const content = props.content;
     const state = props.stateData;
-    const stateContent = props.stateData;
     const stringContent = props.stringContent
 
     // Add A/B Message randomization.
@@ -41,7 +40,6 @@ function Delivery(props) {
                     </Grid>
                 </Grid>
                 <div className={'usa-prose margin-top-2'} dangerouslySetInnerHTML= {{__html: deliveryBodyParts[0]}}/>
-
                 <div className={'usa-prose margin-top-2'} dangerouslySetInnerHTML= {{__html: mailingAddress }}/>
                 
                 <p><b>{stringContent.mailInDeadline}</b> {mailDeadline} </p>
@@ -54,7 +52,6 @@ function Delivery(props) {
                 <Button style={{marginTop: 0}} onClick={() => GenerateFilledPDF('download', props.fieldData, props.stateData.nvrf_pages_list)} type="submit">
                     <span>{stringContent.download}</span>
                 </Button>
-
 
                 <div className={'usa-prose margin-top-4'} dangerouslySetInnerHTML= {{__html: deliveryBodyParts[1]}}/>
             </>
