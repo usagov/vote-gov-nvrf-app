@@ -46,9 +46,9 @@ function Addresses(props){
         {addressFieldsState && (
             <>
             { changeRegistrationVisible && (
-                <Checkbox id="prev-address" name="prev-address" checked={props.hasPreviousAddress} onChange={props.onChangePreviousAddressCheckbox} label={prevAddressField.label} />
+                <Checkbox id="prev-address" name="prev-address" data-test="checkBox" checked={props.hasPreviousAddress} onChange={props.onChangePreviousAddressCheckbox} label={prevAddressField.label} />
             )}
-                <Checkbox id="no-address" aria-describedby="no-address_alert" className="margin-bottom-4" name="no-addr" checked={props.hasNoAddress} onChange={props.hasNoAddressCheckbox} label={noAddressField.label} />
+                <Checkbox id="no-address" aria-describedby="no-address_alert" className="margin-bottom-4" name="no-addr" data-test="checkBox" checked={props.hasNoAddress} onChange={props.hasNoAddressCheckbox} label={noAddressField.label} />
                 {/******** Current Address Block *********/}
                 { !props.hasNoAddress && (<>
                     {homeAddressSectionField.section_alert && (
@@ -81,7 +81,7 @@ function Addresses(props){
                                 onInvalid={(e) => e.target.setCustomValidity(' ')}
                                 onInput={(e) => e.target.setCustomValidity('')}
                                 />
-                            <span id="street_error" role="alert" className='error-text'>
+                            <span id="street_error" role="alert" className='error-text' data-test="errorText">
                                 {streetAddressField.error_msg}
                             </span>
                         </div>
@@ -129,7 +129,7 @@ function Addresses(props){
                                         onInvalid={(e) => e.target.setCustomValidity(' ')}
                                         onInput={(e) => e.target.setCustomValidity('')}
                                     />
-                                <span id="city_error" role="alert" className='error-text'>
+                                <span id="city_error" role="alert" className='error-text' data-test="errorText">
                                     {cityField.error_msg}
                                 </span>
                             </div>
@@ -141,6 +141,7 @@ function Addresses(props){
                         </Label>
                         <StateSelector
                             classes="radius-md"
+                            data-test="select"
                             statesList={props.statesList}
                             stringContent={props.stringContent}
                             state={props.stateData.name}
@@ -177,13 +178,13 @@ function Addresses(props){
                                 onInvalid={(e) => e.target.setCustomValidity(' ')}
                                 onInput={(e) => e.target.setCustomValidity('')}
                             />
-                            <span id="zip-code_error" role="alert" className='error-text'>
+                            <span id="zip-code_error" role="alert" className='error-text' data-test="errorText">
                                 {zipcodeField.error_msg}
                             </span>
                         </div>
                         </Grid>
                     </Grid>
-                    <Checkbox className="margin-top-3" id="alt-mail-addr" name="alt-mail-addr" checked={props.hasMailAddress} onChange={props.onChangeMailAddressCheckbox} label={differentMailAddressField.label} />
+                    <Checkbox data-test="checkBox" className="margin-top-3" id="alt-mail-addr" name="alt-mail-addr" checked={props.hasMailAddress} onChange={props.onChangeMailAddressCheckbox} label={differentMailAddressField.label} />
                 </>
                 )}
                 {/******* END BLOCK *********/}
@@ -219,7 +220,7 @@ function Addresses(props){
                                     onInvalid={(e) => e.target.setCustomValidity(' ')}
                                     onInput={(e) => e.target.setCustomValidity('')}
                                 />
-                            <span id="mail-street_error" role="alert" className='error-text'>
+                            <span id="mail-street_error" role="alert" className='error-text' data-test="errorText">
                                 {mailStreetAddressField.error_msg}
                             </span>
                             </div>
@@ -247,7 +248,7 @@ function Addresses(props){
                                             onInvalid={(e) => e.target.setCustomValidity(' ')}
                                             onInput={(e) => e.target.setCustomValidity('')}
                                         />
-                                    <span id="mail-city_error" role="alert" className='error-text'>
+                                    <span id="mail-city_error" role="alert" className='error-text' data-test="errorText">
                                        {mailCityField.error_msg}
                                     </span>
                                 </div>
@@ -272,7 +273,7 @@ function Addresses(props){
                                             onInvalid={(e) => e.target.setCustomValidity(' ')}
                                             onInput={(e) => e.target.setCustomValidity('')}
                                         />
-                                    <span id="mail-state_error" role="alert" className='error-text'>
+                                    <span id="mail-state_error" role="alert" className='error-text' data-test="errorText">
                                         {mailStateField.error_msg}
                                     </span>
                                 </div>
@@ -302,7 +303,7 @@ function Addresses(props){
                                     onInvalid={(e) => e.target.setCustomValidity(' ')}
                                     onInput={(e) => e.target.setCustomValidity('')}
                                 />
-                                <span id="mail-zip-code_error" role="alert" className='error-text'>
+                                <span id="mail-zip-code_error" role="alert" className='error-text' data-test="errorText">
                                     {mailZipcodeField.error_msg}
                                 </span>
                             </div>
@@ -343,7 +344,7 @@ function Addresses(props){
                                     onInvalid={(e) => e.target.setCustomValidity(' ')}
                                     onInput={(e) => e.target.setCustomValidity('')}
                                 />
-                                <span id="prev-street_error" role="alert" className='error-text'>
+                                <span id="prev-street_error" role="alert" className='error-text' data-test="errorText">
                                     {prevStreetAddressField.error_msg}
                                 </span>
                             </div>
@@ -391,7 +392,7 @@ function Addresses(props){
                                             onInvalid={(e) => e.target.setCustomValidity(' ')}
                                             onInput={(e) => e.target.setCustomValidity('')}
                                         />
-                                    <span id="prev-city_error" role="alert" className='error-text'>
+                                    <span id="prev-city_error" role="alert" className='error-text' data-test="errorText">
                                         {prevCityField.error_msg}
                                     </span>
                                 </div>
@@ -416,7 +417,7 @@ function Addresses(props){
                                         onInvalid={(e) => e.target.setCustomValidity(' ')}
                                         onInput={(e) => e.target.setCustomValidity('')}
                                     />
-                                <span id="prev-state_error" role="alert" className='error-text'>
+                                <span id="prev-state_error" role="alert" className='error-text' data-test="errorText">
                                     {prevStateField.error_msg}
                                 </span>
                             </div>
@@ -446,7 +447,7 @@ function Addresses(props){
                                     onInvalid={(e) => e.target.setCustomValidity(' ')}
                                     onInput={(e) => e.target.setCustomValidity('')}
                                 />
-                                <span id="prev-zip-code_error" role="alert" className='error-text'>
+                                <span id="prev-zip-code_error" role="alert" className='error-text' data-test="errorText">
                                     {prevZipcodeField.error_msg}
                                 </span>
                             </div>

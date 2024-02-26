@@ -1,4 +1,4 @@
-import { Label, TextInput, Dropdown, Checkbox, Grid, Fieldset } from '@trussworks/react-uswds';
+import { Label, TextInput, Select, Checkbox, Grid, Fieldset } from '@trussworks/react-uswds';
 import React from "react";
 import { restrictType, checkForErrors, jumpTo, toggleError } from '../HelperFunctions/ValidateField';
 import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
@@ -95,7 +95,7 @@ function PersonalInfo(props){
         <h2>{headings.step_label_1}</h2>
 
         {changeRegistrationVisible && (
-            <Checkbox id="prev-name-change" aria-describedby="prev-name-change_alert" name="prev-name-change" checked={props.previousName} onChange={props.onChangePreviousName} label={stringContent.nameChange} />
+            <Checkbox id="prev-name-change" aria-describedby="prev-name-change_alert" name="prev-name-change" data-test="checkBox" checked={props.previousName} onChange={props.onChangePreviousName} label={stringContent.nameChange} />
         )}
 
         <div id="prev-name-change_alert" className="usa-alert usa-alert--info" role="region" aria-live="polite">
@@ -112,20 +112,23 @@ function PersonalInfo(props){
                     <Label className="text-bold" htmlFor="title">
                         {titleField.label}
                     </Label>
-                    <Dropdown
+                    <Select
                         className="radius-md" id="title" name="title"
                         aria-describedby=""
+                        data-test="select"
                         value={props.fieldData.title}
                         onChange={props.saveFieldData('title')}
                         autoComplete="off"
                         onInvalid={(e) => e.target.setCustomValidity(' ')}
-                        onInput={(e) => e.target.setCustomValidity('')}
-                        >
-                        <option value={''}>{stringContent.select}</option>
+                        onInput={(e) => e.target.setCustomValidity('')}>
+                        <React.Fragment key=".0"
+                    >                        
+                    <option value={''}>{stringContent.select}</option>
                         {titleField.options.map((item, index) => (
                             <option key={index} value={item.value}>{item.key}</option>
                         ))}
-                    </Dropdown>
+                    </React.Fragment>
+                    </Select>
                     </Grid>
 
                     <Grid tablet={{ col: 5 }}>
@@ -147,7 +150,7 @@ function PersonalInfo(props){
                             onInvalid={(e) => e.target.setCustomValidity(' ')}
                             onInput={(e) => e.target.setCustomValidity('')}
                             />
-                        <span id="first-name_error" role="alert" className={'error-text'}>
+                        <span id="first-name_error" role="alert" className={'error-text'} data-test="errorText">
                             {firstNameField.error_msg}
                         </span>
                     </div>
@@ -190,7 +193,7 @@ function PersonalInfo(props){
                             onInvalid={(e) => e.target.setCustomValidity(' ')}
                             onInput={(e) => e.target.setCustomValidity('')}
                             />
-                        <span id="last-name_error" role="alert" className={'error-text'}>
+                        <span id="last-name_error" role="alert" className={'error-text'} data-test="errorText">
                             {lastNameField.error_msg}
                         </span>
                     </div>
@@ -200,20 +203,22 @@ function PersonalInfo(props){
                     <Label className="text-bold" htmlFor="suffix">
                         {suffixField.label}
                     </Label>
-                    <Dropdown
-                        id="suffix" className="radius-md" name="suffix"
-                        aria-describedby=""
-                        value={props.fieldData.suffix}
-                        onChange={props.saveFieldData('suffix')}
-                        autoComplete="off"
-                        onInvalid={(e) => e.target.setCustomValidity(' ')}
-                        onInput={(e) => e.target.setCustomValidity('')}
-                        >
+                    <Select 
+                    data-test="select"
+                    id="suffix" className="radius-md" name="suffix"
+                    value={props.fieldData.suffix}
+                    onChange={props.saveFieldData('suffix')}
+                    autoComplete="off"
+                    onInvalid={(e) => e.target.setCustomValidity(' ')}
+                    onInput={(e) => e.target.setCustomValidity('')}
+                    >
+                    <React.Fragment key=".0">                        
                         <option value={''}>{stringContent.select}</option>
                         {suffixField.options.map((item, index) => (
                             <option key={index} value={item.value}>{item.key}</option>
                         ))}
-                    </Dropdown>
+                    </React.Fragment>
+                    </Select>
                     </Grid>
                 </Grid>
             </>
@@ -248,6 +253,7 @@ function PersonalInfo(props){
                                     label={stringContent.month}
                                     unit="month"
                                     required={true}
+                                    aria-invalid={false}
                                     type="text"
                                     pattern="0[1-9]|1[0,1,2]"
                                     inputMode="numeric"
@@ -273,6 +279,7 @@ function PersonalInfo(props){
                                     label={stringContent.day}
                                     unit="day"
                                     required={true}
+                                    aria-invalid={false}
                                     type="text"
                                     pattern="0[1-9]|[12][0-9]|3[01]"
                                     inputMode="numeric"
@@ -298,6 +305,7 @@ function PersonalInfo(props){
                                     label={stringContent.year}
                                     unit="year"
                                     required={true}
+                                    aria-invalid={false}
                                     type="text"
                                     pattern="19\d{2}|200\d{1}"
                                     inputMode="numeric"
@@ -311,7 +319,7 @@ function PersonalInfo(props){
                                 />
                             </div>
                         </div>
-                    <span id="date-of-birth_error" role="alert" className='error-text'>
+                    <span id="date-of-birth_error" role="alert" className='error-text' data-test="errorText">
                         {dobField.error_msg}
                     </span>
                 </Fieldset>
@@ -343,7 +351,7 @@ function PersonalInfo(props){
                             onInvalid={(e) => e.target.setCustomValidity(' ')}
                             onInput={(e) => e.target.setCustomValidity('')}
                         />
-                        <span id="phone-number_error" rol="alert" className='error-text'>
+                        <span id="phone-number_error" rol="alert" className='error-text' data-test="errorText">
                             {phoneNumberField.error_msg}
                         </span>
                     </div>
@@ -371,6 +379,7 @@ function PersonalInfo(props){
                         id="voter-contact"
                         type="email"
                         required={true}
+                        aria-invalid={false}
                         className="radius-md"
                         autoComplete="off"
                         tabIndex="-1"
@@ -391,7 +400,7 @@ function PersonalInfo(props){
                             <Label className="text-bold" htmlFor="race-ethnicity">
                                 {raceField.label}{(raceFieldState.required === "1") && <span className='required-text'>*</span>}
                             </Label>
-                            <Dropdown
+                            <Select
                             id="race-ethnicity" 
                             className="radius-md" 
                             name="race-ethnicity"
@@ -403,12 +412,14 @@ function PersonalInfo(props){
                             onBlur={(e) => toggleError(e, checkForErrors(e, 'check value exists'))}
                             onInvalid={(e) => e.target.setCustomValidity(' ')}
                             onInput={(e) => e.target.setCustomValidity('')}>
+                            <React.Fragment key=".0">                        
                                 <option value="">{stringContent.select}</option>
                                 {raceField.options.map((item, index) => (
                                     <option key={index} value={item.value}>{item.key}</option>
                                 ))}
-                            </Dropdown>
-                            <span id="race-ethnicity_error" role="alert" className='error-text'>
+                            </React.Fragment>
+                            </Select>
+                            <span id="race-ethnicity_error" role="alert" className='error-text' data-test="errorText">
                                 {raceField.error_msg}
                             </span>
                         </div>
@@ -424,20 +435,23 @@ function PersonalInfo(props){
             <Label className="text-bold" htmlFor="title-prev">
                 {prevTitleField.label}
             </Label>
-            <Dropdown
+            <Select
                 id="title-prev" className="radius-md" name="title-prev"
                 aria-describedby=""
+                data-test="select"
                 value={props.fieldData.prev_title}
                 onChange={props.saveFieldData('prev_title')}
                 autoComplete="off"
                 onInvalid={(e) => e.target.setCustomValidity(' ')}
                 onInput={(e) => e.target.setCustomValidity('')}
                 >
+            <React.Fragment key=".0"> 
                 <option value={''}>{stringContent.select}</option>
                 {prevTitleField.options.map((item, index) => (
                     <option key={index} value={item.value}>{item.key}</option>
                 ))}
-            </Dropdown>
+            </React.Fragment>
+            </Select>
             </Grid>
 
             <Grid tablet={{ col: 5 }}>
@@ -459,7 +473,7 @@ function PersonalInfo(props){
                     onInvalid={(e) => e.target.setCustomValidity(' ')}
                     onInput={(e) => e.target.setCustomValidity('')}
                 />
-                <span id="first-name-prev_error" role="alert" className='error-text'>
+                <span id="first-name-prev_error" role="alert" className='error-text' data-test="errorText">
                     {prevFirstNameField.error_msg}
                 </span>
             </div>
@@ -502,7 +516,7 @@ function PersonalInfo(props){
                     onInvalid={(e) => e.target.setCustomValidity(' ')}
                     onInput={(e) => e.target.setCustomValidity('')}
                     />
-                    <span id="last-name-prev_error" role="alert" className='error-text'>
+                    <span id="last-name-prev_error" role="alert" className='error-text' data-test="errorText">
                         {prevLastNameField.error_msg}
                     </span>
             </div>
@@ -512,19 +526,22 @@ function PersonalInfo(props){
             <Label className="text-bold" htmlFor="suffix-prev">
                 {prevSuffixField.label}
             </Label>
-            <Dropdown
+            <Select
                 id="suffix-prev" className="radius-md" name="suffix-prev"
                 aria-describedby=""
+                data-test="select"
                 value={props.fieldData.prev_suffix} onChange={props.saveFieldData('prev_suffix')}
                 autoComplete="off"
                 onInvalid={(e) => e.target.setCustomValidity(' ')}
                 onInput={(e) => e.target.setCustomValidity('')}
                 >
+            <React.Fragment key=".0">                           
                 <option value={''}>{stringContent.select}</option>
                 {prevSuffixField.options.map((item, index) => (
                     <option key={index} value={item.value}>{item.key}</option>
                 ))}
-            </Dropdown>
+            </React.Fragment>
+            </Select>
             </Grid>
         </Grid>
         </>

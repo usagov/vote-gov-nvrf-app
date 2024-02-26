@@ -35,7 +35,7 @@ function PathSelection(props) {
                     </CardHeader>
                     <CardBody dangerouslySetInnerHTML= {{__html: cardOneBody}} />
                     <CardFooter className="margin-top-3">
-                        <Button type="submit" onClick={() => {props.getRegPath("update"), props.handleNext()}}>
+                        <Button data-test="pathBtn" type="submit" onClick={() => {props.getRegPath("update"), props.handleNext()}}>
                             <span>{cardOne.button_label}</span>
                             <Icon.ArrowForward aria-label={stringContent.forwardIcon} style={{margin: "-3px -3px -3px 4px"}}/>
                         </Button>
@@ -53,7 +53,7 @@ function PathSelection(props) {
                     </CardHeader>
                     <CardBody dangerouslySetInnerHTML= {{__html: cardTwoBody}}/>
                     <CardFooter className="margin-top-3">
-                        <Button type="submit" onClick={() => {props.getRegPath("new"),  props.handleNext()}}>
+                        <Button data-test="pathBtn" type="submit" onClick={() => {props.getRegPath("new"),  props.handleNext()}}>
                             <span>{cardTwo.button_label}</span>
                             <Icon.ArrowForward aria-label={stringContent.forwardIcon} style={{margin: "-3px -3px -3px 4px"}}/>
                         </Button>

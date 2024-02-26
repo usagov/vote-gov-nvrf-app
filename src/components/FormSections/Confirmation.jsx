@@ -174,6 +174,7 @@ function Confirmation(props) {
 
             <div className="input-parent">
                 <Checkbox
+                    data-test="confirm"
                     id="acknowledge-checkbox"
                     name="acknowledge-check"
                     aria-describedby="acknowledge-check-alert"
@@ -185,7 +186,7 @@ function Confirmation(props) {
                     onInvalid={(e) => e.target.setCustomValidity(' ')}
                     onInput={(e) => e.target.setCustomValidity('')}
                 />
-                <span id="first-name-error" role="alert" className='error-text'>
+                <span id="first-name-error" role="alert" className='error-text' data-test="errorText">
                     {getFieldError("73e74065-fd5a-43c0-907c-268120e34bc3")}
                 </span>
             </div>

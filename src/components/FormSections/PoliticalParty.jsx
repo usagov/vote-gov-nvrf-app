@@ -47,7 +47,7 @@ function PoliticalParty(props){
                     onInvalid={(e) => e.target.setCustomValidity(' ')}
                     onInput={(e) => e.target.setCustomValidity('')} 
                     />
-                <span id="political-party_error" role="alert" className='error-text'>
+                <span id="political-party_error" role="alert" className='error-text' data-test="errorText">
                     {partyField.error_msg}
                 </span>
             </div>

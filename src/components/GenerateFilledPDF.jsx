@@ -1,6 +1,7 @@
 import { PDFDocument} from 'pdf-lib';
+import download from "downloadjs";
 
-const GenerateFilledPDF = async function (formData,pagesKept) {
+const GenerateFilledPDF = async function (btnType,formData,pagesKept) {
     // Fetch the PDF with form fields
     const formUrl = './files/Federal_Voter_Registration_ENG.pdf'
     const formPdfBytes = await fetch(formUrl).then(res => res.arrayBuffer())
@@ -135,7 +136,7 @@ const GenerateFilledPDF = async function (formData,pagesKept) {
     let shift = 0;
     const totalPages = pdfDoc.getPageCount();
     let pageCount = totalPages;
-    const pagesKeptArray = pagesKept.split(',');
+    let pagesKeptArray = pagesKept.split(',');
     for(let i = 0; i < totalPages; i++){
         if(!pagesKeptArray.includes(i.toString())){
             pdfDoc.removePage(i - shift);
@@ -144,12 +145,32 @@ const GenerateFilledPDF = async function (formData,pagesKept) {
         }
     }
 
+    // Rearrange pages
+    const genInstrutPages = pagesKeptArray.splice(0,2);
+    pagesKeptArray.splice(2,0,genInstrutPages[0],genInstrutPages[1]);
+
+    const reorderPages = (pdfDoc, newOrder) => {
+        const pages = pdfDoc.getPages();
+        for (let currentPage = 0; currentPage < newOrder.length; currentPage++) {
+        pdfDoc.removePage(currentPage);
+        pdfDoc.insertPage(currentPage, pages[newOrder[currentPage]]);
+        }
+    };
+
+    reorderPages(pdfDoc, pagesKeptArray);
+
     // Serialize the PDFDocument to bytes (a Uint8Array)
     const pdfBytes = await pdfDoc.save()
 
-    // Trigger the browser to download the PDF document
-    var blobURL = URL.createObjectURL(new Blob([pdfBytes], {type: 'application/pdf'}));
-    window.open(blobURL);
+
+    if (btnType === 'newTab') {
+        // Trigger the browser to open a new tab with the PDF document
+        var blobURL = URL.createObjectURL(new Blob([pdfBytes], {type: 'application/pdf'}));
+        window.open(blobURL);
+    } else if (btnType === 'download') {
+        // Trigger the browser to download the PDF document
+        download(pdfBytes, `national_voter_registration_form_${formData.state}.pdf`, "application/pdf");
+    }
 }
 
 export default GenerateFilledPDF;

@@ -35,15 +35,21 @@ function Delivery(props) {
                 <Grid row>
                     <Grid col={1}>{iconCheckmark}</Grid>
                     <Grid col={11} className={['usa-prose', 'padding-left-2']}>
-                        <h1>{delivery.title.replace("@state_name", props.stateData.name)}</h1>
+                        <h1 data-test="addressConfirm" >{delivery.title.replace("@state_name", props.stateData.name)}</h1>
                     </Grid>
                 </Grid>
-
                 <div className={'usa-prose margin-top-2'} dangerouslySetInnerHTML= {{__html: deliveryBodyParts[0]}}/>
                 <div className={'usa-prose margin-top-2'} dangerouslySetInnerHTML= {{__html: mailingAddress }}/>
+                
+                <p><strong>{stringContent.mailDeadlineLabel}</strong> {state.postmarked_mail_deadline || state.received_mail_deadline}</p>
 
-                <Button onClick={() => GenerateFilledPDF(props.fieldData, props.stateData.nvrf_pages_list)} type="submit">
-                    <span>{stringContent.newWindow}</span>
+                <Button data-test="pdfBtn" onClick={() => GenerateFilledPDF('newTab', props.fieldData, props.stateData.nvrf_pages_list)} type="submit">
+                    <span>{stringContent.newTab}</span>
+                </Button>
+
+                <p className={'margin-top-4'}>{stringContent.downloadText}</p>
+                <Button style={{marginTop: 0}} onClick={() => GenerateFilledPDF('download', props.fieldData, props.stateData.nvrf_pages_list)} type="submit">
+                    <span>{stringContent.download}</span>
                 </Button>
 
                 <div className={'usa-prose margin-top-4'} dangerouslySetInnerHTML= {{__html: deliveryBodyParts[1]}}/>
