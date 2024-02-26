@@ -17,6 +17,7 @@ jobs:
       - run:
           name: Configure git
           command: |
+            ssh-keyscan <github.com> >> ~/.ssh/known_hosts
             git config user.email "circleci@df52e93b2563.(none)"
             git config user.name "Pipeline Commit"
       - run:
