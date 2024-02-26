@@ -21,7 +21,6 @@ function Delivery(props) {
     if (content) {
         const delivery = content.find(item => item.uuid === "229f283c-6a70-43f6-a80f-15cfa158f062");
         const mailingAddress = sanitizeDOM(state.mailing_address_inst);
-        const mailDeadline = sanitizeDOM(state.postmarked_mail_deadline || state.received_mail_deadline);
         const deliveryBody = sanitizeDOM(delivery.body.replace("@state_name", props.stateData.name));
         const deliveryBodyParts = deliveryBody.split('@mailing_address_inst');
 
@@ -42,7 +41,7 @@ function Delivery(props) {
                 <div className={'usa-prose margin-top-2'} dangerouslySetInnerHTML= {{__html: deliveryBodyParts[0]}}/>
                 <div className={'usa-prose margin-top-2'} dangerouslySetInnerHTML= {{__html: mailingAddress }}/>
                 
-                <p><b>{stringContent.mailInDeadline}</b> {mailDeadline} </p>
+                <p><strong>{stringContent.mailDeadlineLabel}</strong> {state.postmarked_mail_deadline || state.received_mail_deadline}</p>
 
                 <Button data-test="pdfBtn" onClick={() => GenerateFilledPDF('newTab', props.fieldData, props.stateData.nvrf_pages_list)} type="submit">
                     <span>{stringContent.newTab}</span>

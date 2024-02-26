@@ -25,5 +25,5 @@
     "select": "- Select -",
     "download": "Download your mail-in form",
     "downloadText": "If form does not open in a new tab you can download using the option below.",
-    "mailInDeadline": "Mail-in registration deadline:"
+    "mailDeadlineLabel": "Mail-in registration deadline:"
 }
