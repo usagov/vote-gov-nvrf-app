@@ -48,7 +48,7 @@ jobs:
             cd vote-gov-nvrf-app
             echo $NVRF_PDF_WRITE | tee /tmp/key.txt
             gh auth login --with-token < /tmp/key.txt
-            gh pr create --title "Update NVRF PDF" --body "Upload the new NVRF PDF from eac.gov. This is an automated job from CircleCI"
+            gh pr create --title "Update NVRF PDF" --body "Upload the new NVRF PDF from eac.gov. This is an automated job from CircleCI" || true
   cypress-testing:
     docker:
       - image: cypress/included:cypress-13.3.0-node-20.6.1-chrome-116.0.5845.187-1-ff-117.0-edge-116.0.1938.76-1
