@@ -73,10 +73,10 @@ workflows:
   update-nvrf-workflow:
     jobs:
       - update-nvrf
-    # triggers:
-    #   - schedule:
-    #       cron: '0 0 * * 5'
-    #       filters:
-    #         branches:
-    #           only:
-    #             - stage
+    triggers:
+      - schedule:
+          cron: '0 0 * * 5'
+          filters:
+            branches:
+              only:
+                - stage
