@@ -15,7 +15,9 @@ jobs:
       - run: 
           name: git stuff
           command: | 
-            GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" git clone -b "update-nvrf-pdf" "$CIRCLE_REPOSITORY_URL"      
+            GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" git clone -b "update-nvrf-pdf" "$CIRCLE_REPOSITORY_URL"
+            pwd 
+            ls -l      
             # gh/install
             git config user.email "circleci@df52e93b2563.(none)"
             git config user.name "Pipeline Commit"
