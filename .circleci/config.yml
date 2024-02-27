@@ -11,7 +11,8 @@ jobs:
       NEW_BRANCH_NAME: upload-nvrf-pdf
     steps:
       #checkout pdf branch and install gh
-      - run: git clone -b "update-nvrf-pdf" "$CIRCLE_REPOSITORY_URL"
+      # - run: git clone -b "update-nvrf-pdf" "$CIRCLE_REPOSITORY_URL"
+      - run: GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" git clone -b "update-nvrf-pdf" "$CIRCLE_REPOSITORY_URL"      
       - gh/install
       #configure git
       - run:
@@ -71,10 +72,10 @@ workflows:
   update-nvrf-workflow:
     jobs:
       - update-nvrf
-    triggers:
-      - schedule:
-          cron: '0 0 * * 5'
-          filters:
-            branches:
-              only:
-                - stage
+    # triggers:
+    #   - schedule:
+    #       cron: '0 0 * * 5'
+    #       filters:
+    #         branches:
+    #           only:
+    #             - stage
