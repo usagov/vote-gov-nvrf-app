@@ -10,28 +10,20 @@ jobs:
       NVRF_FILE_NAME: Federal_Voter_Registration_ENG.pdf
       NEW_BRANCH_NAME: upload-nvrf-pdf
     steps:
-      #checkout pdf branch and install gh
-      # - run: git clone -b "update-nvrf-pdf" "$CIRCLE_REPOSITORY_URL"
+      #Install gh
       - gh/install
       - run: 
-          name: git stuff
+          name: Git Cone and Config
           command: | 
             GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" git clone -b "update-nvrf-pdf" "$CIRCLE_REPOSITORY_URL"
             cd vote-gov-nvrf-app
             git config user.email "circleci@df52e93b2563.(none)"
             git config user.name "Pipeline Commit"
-      #configure git
-      # - run:
-      #     name: Configure git
-      #     command: |
-      #       # ssh-keyscan github.com >> ~/.ssh/known_hosts
-      #       git config user.email "circleci@df52e93b2563.(none)"
-      #       git config user.name "Pipeline Commit"
       - run:
           name: Fetch NVRF from eac.gov
           command: |
             curl -o Federal_Voter_Registration_ENG.pdf $URL
-      #save pdf as an artifact
+      #Save pdf as an artifact
       - store_artifacts:
           path: Federal_Voter_Registration_ENG.pdf
           destination: /pdf-files
