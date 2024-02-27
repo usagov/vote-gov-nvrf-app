@@ -39,6 +39,7 @@ jobs:
       - run:
           name: Replace current NVRF
           command: |
+            cd vote-gov-nvrf-app
             artifacts=$(curl -X GET "https://circleci.com/api/v2/project/github/usagov/vote-gov-nvrf-app/$CIRCLE_BUILD_NUM/artifacts" \
             -H "Accept: application/json" \
             -u "$NVRF_PDF_WRITE:")
