@@ -12,12 +12,12 @@ jobs:
     steps:
       #checkout pdf branch and install gh
       # - run: git clone -b "update-nvrf-pdf" "$CIRCLE_REPOSITORY_URL"
+      - gh/install
       - run: 
           name: git stuff
           command: | 
             GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" git clone -b "update-nvrf-pdf" "$CIRCLE_REPOSITORY_URL"
             cd vote-gov-nvrf-app
-            # gh/install
             git config user.email "circleci@df52e93b2563.(none)"
             git config user.name "Pipeline Commit"
       #configure git
