@@ -12,15 +12,20 @@ jobs:
     steps:
       #checkout pdf branch and install gh
       # - run: git clone -b "update-nvrf-pdf" "$CIRCLE_REPOSITORY_URL"
-      - run: GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" git clone -b "update-nvrf-pdf" "$CIRCLE_REPOSITORY_URL"      
-      - gh/install
-      #configure git
-      - run:
-          name: Configure git
-          command: |
-            # ssh-keyscan github.com >> ~/.ssh/known_hosts
+      - run: 
+          name: git stuff
+          command: | 
+            GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" git clone -b "update-nvrf-pdf" "$CIRCLE_REPOSITORY_URL"      
+            gh/install
             git config user.email "circleci@df52e93b2563.(none)"
             git config user.name "Pipeline Commit"
+      #configure git
+      # - run:
+      #     name: Configure git
+      #     command: |
+      #       # ssh-keyscan github.com >> ~/.ssh/known_hosts
+      #       git config user.email "circleci@df52e93b2563.(none)"
+      #       git config user.name "Pipeline Commit"
       - run:
           name: Fetch NVRF from eac.gov
           command: |
