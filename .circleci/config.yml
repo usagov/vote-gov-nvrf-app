@@ -12,9 +12,9 @@ jobs:
     steps:
       #Install gh
       - gh/install
-      - run: 
+      - run:
           name: Git Cone and Config
-          command: | 
+          command: |
             GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" git clone -b "update-nvrf-pdf" "$CIRCLE_REPOSITORY_URL"
             cd vote-gov-nvrf-app
             git config user.email "circleci@df52e93b2563.(none)"
@@ -43,6 +43,7 @@ jobs:
             echo $STORED_ARTIFACTS > $NVRF_FILE_NAME
       - run:
           name: Create Pull Request
+          shell: /bin/bash
           command: |
             cd vote-gov-nvrf-app
             echo $NVRF_PDF_WRITE | tee /tmp/key.txt
