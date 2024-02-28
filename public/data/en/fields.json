@@ -615,7 +615,7 @@
     "label": "Race or ethnic group",
     "help_text": false,
     "error_msg": "Race or ethnic group must be filled out.",
-    "instructions": "\u003Cp\u003ESelect the choice that best describes you from the list below.\u003C\/p\u003E",
+    "instructions": "\u003Cp\u003ESelect the choice that best describes you from the list.\u003C\/p\u003E",
     "section_description": "",
     "section_alert": "",
     "options": [
