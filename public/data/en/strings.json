@@ -1,6 +1,7 @@
 {
     "notRequired": "Not required for your state",
-    "newWindow": "Open form in a new window",
+    "newWindow": "Go to your state's PDF form in a new tab",
+    "newTab": "Print your mail-in form in a new tab",
     "nameChange": "I have legally changed my name since I last registered in this state.",
     "dob": "Date of Birth",
     "month": "Month",
@@ -21,5 +22,8 @@
     "extlink": "External link opens new window",
     "emailLabel": "Voter Contact",
     "emailHint": "For example: email@address.com",
-    "select": "- Select -"
+    "select": "- Select -",
+    "download": "Download your mail-in form",
+    "downloadText": "If form does not open in a new tab you can download using the option below.",
+    "mailDeadlineLabel": "Mail-in registration deadline:"
 }

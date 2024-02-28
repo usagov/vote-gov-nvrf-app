@@ -44,7 +44,7 @@ function App() {
 
   const setStepFocus = () => {
     scrollToTop.focus();
-    scrollToTop.scrollIntoView();
+    scrollToTop.scrollIntoView({ behavior: "instant"});
   }
 
   const handleNext = () => {
@@ -137,7 +137,6 @@ function App() {
                     content={content}
                     navContent={navContent}
                     stringContent={stringContent}
-                    cards={cards}
                     fieldContent={fieldContent}
                     hasConfirmed={hasConfirmed}
                     confirmCheckbox={confirmCheckbox}
