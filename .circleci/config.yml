@@ -13,7 +13,7 @@ jobs:
       #Install gh
       - gh/install
       - run:
-          name: Git Cone and Config
+          name: Git Clone and Config
           command: |
             GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" git clone -b "update-nvrf-pdf" "$CIRCLE_REPOSITORY_URL"
             cd vote-gov-nvrf-app
