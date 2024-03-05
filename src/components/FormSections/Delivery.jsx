@@ -40,6 +40,13 @@ function Delivery(props) {
                 </Grid>
                 <div className={'usa-prose margin-top-2'} dangerouslySetInnerHTML= {{__html: deliveryBodyParts[0]}}/>
                 <div className={'usa-prose margin-top-2'} dangerouslySetInnerHTML= {{__html: mailingAddress }}/>
+
+
+                <div className={'usa-prose margin-top-2'}>{delivery.body.replace("@mailing_address_inst", props.stateData.mailing_address_inst)}</div>
+
+
+
+
                 
                 <p><strong>{stringContent.mailDeadlineLabel}</strong> {state.postmarked_mail_deadline || state.received_mail_deadline}</p>
 
