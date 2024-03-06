@@ -32,25 +32,24 @@ function Identification(props){
         <h2>{headings.step_label_3}</h2>
 
             {idStateInstructions && (
-                <div className="usa-alert usa-alert--info" role="alert">
+                <div id="id_alert" className="usa-alert usa-alert--info" role="region" aria-live="polite">
                     <div className="usa-alert__body" dangerouslySetInnerHTML={{__html: idStateInstructions}}/>
                 </div>)}
 
-            {(stateData.abbrev === "mo") && (
+            {(stateData.abbrev === "mo") ? (
                 <>
-                <Checkbox id="id-none" name="id-none" checked={props.hasNoID} onChange={props.onChangeHasNoIdCheckbox} label={noIdField.label} />
+                    <Checkbox id="id-none" name="id-none" checked={props.hasNoID} onChange={props.onChangeHasNoIdCheckbox} label={noIdField.label} />
                 </>
-            )}
-
-            {(stateData.abbrev != "mo") && (
+            ) : (
                 <>
                     <h3 className={'margin-top-5'}>{idTypeField.label}<span className='required-text'>*</span></h3>
                     <div dangerouslySetInnerHTML={{__html: idTypeFieldInstructions}}/>
                     <div className="input-parent">
                         <Select
+                            id="id-selection"
+                            name="id-selection"
+                            aria-describedby="id-selection_error"
                             data-test="dropDown"
-                            id="id-num-dropdown"
-                            name="input-dropdown"
                             value={props.idType}
                             required={true}
                             aria-invalid={false}
@@ -68,23 +67,25 @@ function Identification(props){
                             {(noIdFieldReq) && <option key="id-none" value="none">{noIdField.label}</option>}
                         </React.Fragment>
                         </Select>
-                        <span id="id-num-dropdown-error" role="alert" className='error-text' data-test="errorText">
+                        <span id="id-selection_error" role="alert" className='error-text' data-test="errorText">
                             {stateIDField.error_msg}
                         </span>
                     </div>
-                </>)}
+                </>
+            )}
 
             {((props.idType === 'driver-id-num') || (props.idType === 'state-id-num') || ((stateData.abbrev === "mo") && (props.idType != "none"))) &&
-                    <div id="state-id" className="input-parent">
+                    <div id="id-number" className="input-parent">
                         {((props.idType === 'driver-id-num') || (stateData.abbrev === "mo")) &&
                         <>
-                            <Label className="text-bold" htmlFor="state-id-num-error">
+                            <Label className="text-bold" htmlFor="id-driver">
                                 {driverLicenseField.label}{(driverIDFieldReq) && <span className='required-text'>*</span>}
                             </Label>
                             <TextInput
-                                id="driver-id-num"
+                                id="id-driver"
                                 className="radius-md"
-                                name="driver-id-num"
+                                name="id-driver"
+                                aria-describedby="id-driver_error"
                                 type="text"
                                 autoComplete="off"
                                 required={parseInt(driverIDFieldReq.required)}
@@ -94,7 +95,7 @@ function Identification(props){
                                 onInvalid={(e) => e.target.setCustomValidity(' ')}
                                 onInput={(e) => e.target.setCustomValidity('')}
                             />
-                            <span id="state-id-num-error" role="alert" className='error-text' data-test="errorText">
+                            <span id="id-driver_error" role="alert" className='error-text' data-test="errorText">
                                 {driverLicenseField.error_msg}
                             </span>  
                         </>
@@ -102,13 +103,14 @@ function Identification(props){
                         {(props.idType === 'state-id-num') &&
                         <>
                             <Label className="text-bold"
-                                   htmlFor="state-id-num-error">{stateIDField.label}{(stateIDFieldDReq) &&
+                                   htmlFor="id-state">{stateIDField.label}{(stateIDFieldDReq) &&
                                 <span className='required-text'>*</span>}
                             </Label>
                             <TextInput
-                                id="driver-id-num"
+                                id="id-state"
                                 className="radius-md"
-                                name="driver-id-num"
+                                name="id-state"
+                                aria-describedby="id-state_error"
                                 type="text"
                                 autoComplete="off"
                                 required={parseInt(stateIDFieldDReq.required)}
@@ -118,7 +120,7 @@ function Identification(props){
                                 onInvalid={(e) => e.target.setCustomValidity(' ')}
                                 onInput={(e) => e.target.setCustomValidity('')}
                             />
-                            <span id="state-id-num-error" role="alert" className='error-text' data-test="errorText">
+                            <span id="id-state_error" role="alert" className='error-text' data-test="errorText">
                                 {stateIDField.error_msg}
                             </span>
                         </>
@@ -127,14 +129,15 @@ function Identification(props){
 
             {((props.idType === 'ssn') || ((stateData.abbrev === "mo") && (props.idType != "none"))) &&
                 <div className="input-parent">
-                    <Label className="text-bold" htmlFor="ssn-input-error">
+                    <Label className="text-bold" htmlFor="ssn">
                         {ssnField.label}{(ssnFieldReq) && <span className='required-text'>*</span>}
                     </Label>
                     <span className="usa-hint" id="ssn-hint">{ssnField.help_text}</span>
                     <TextInput
-                        id="ssn-input"
+                        id="ssn"
                         className="radius-md"
-                        name="ssn-input"
+                        name="ssn"
+                        aria-describedby="ssn_error"
                         autoComplete="off"
                         required={parseInt(ssnFieldReq.required)}
                         type="text"
@@ -148,21 +151,22 @@ function Identification(props){
                         onInvalid={(e) => e.target.setCustomValidity(' ')}
                         onInput={(e) => e.target.setCustomValidity('')}
                     />
-                    <span id="ssn-input-error" role="alert" className='error-text' data-test="errorText">
+                    <span id="ssn_error" role="alert" className='error-text' data-test="errorText">
                         {ssnField.error_msg}
                     </span>
                 </div>}
 
             {props.idType === 'ssn-full' &&
                 <div className="input-parent">
-                    <Label className="text-bold" htmlFor="ssn-input-error">
+                    <Label className="text-bold" htmlFor="ssn-full">
                         {ssnFullField.label}{(ssnFullFieldReq) && <span className='required-text'>*</span>}
                     </Label>
                     <span className="usa-hint" id="ssn-hint">{ssnFullField.help_text}</span>
                     <TextInput
-                        id="ssn-full-input"
+                        id="ssn-full"
                         className="radius-md"
-                        name="ssn-full-input"
+                        name="ssn-full"
+                        aria-describedby="ssn-full_error"
                         autoComplete="off"
                         required={parseInt(ssnFullFieldReq.required)}
                         type="text"
@@ -176,7 +180,7 @@ function Identification(props){
                         onInvalid={(e) => e.target.setCustomValidity(' ')}
                         onInput={(e) => e.target.setCustomValidity('')}
                     />
-                    <span id="ssn-input-error" role="alert" className='error-text' data-test="errorText">
+                    <span id="ssn-full_error" role="alert" className='error-text' data-test="errorText">
                         {ssnFullField.error_msg}
                     </span>
                 </div>}

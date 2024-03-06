@@ -95,10 +95,10 @@ function PersonalInfo(props){
         <h2>{headings.step_label_1}</h2>
 
         {changeRegistrationVisible && (
-            <Checkbox data-test="checkBox" id="prev-name-change" name="prev-name-change" checked={props.previousName} onChange={props.onChangePreviousName} label={stringContent.nameChange} />
+            <Checkbox id="prev-name-change" aria-describedby="prev-name-change_alert" name="prev-name-change" data-test="checkBox" checked={props.previousName} onChange={props.onChangePreviousName} label={stringContent.nameChange} />
         )}
 
-        <div className="usa-alert usa-alert--info" role="alert">
+        <div id="prev-name-change_alert" className="usa-alert usa-alert--info" role="region" aria-live="polite">
             <div className="usa-alert__body" dangerouslySetInnerHTML={{__html: nameSectionAlert}}/>
         </div>
 
@@ -109,12 +109,13 @@ function PersonalInfo(props){
             <>
                 <Grid row gap>
                     <Grid tablet={{ col: 2 }}>
-                    <Label className="text-bold" htmlFor="title-select">
+                    <Label className="text-bold" htmlFor="title">
                         {titleField.label}
                     </Label>
-                    <Select 
+                    <Select
+                        className="radius-md" id="title" name="title"
+                        aria-describedby=""
                         data-test="select"
-                        className="radius-md" id="title-select" name="title-select"
                         value={props.fieldData.title}
                         onChange={props.saveFieldData('title')}
                         autoComplete="off"
@@ -138,7 +139,7 @@ function PersonalInfo(props){
                         <TextInput
                             id="first-name"
                             className="radius-md text-semibold"
-                            aria-describedby="first-name-error"
+                            aria-describedby="first-name_error"
                             name="first-name"
                             type="text"
                             autoComplete="off"
@@ -149,7 +150,7 @@ function PersonalInfo(props){
                             onInvalid={(e) => e.target.setCustomValidity(' ')}
                             onInput={(e) => e.target.setCustomValidity('')}
                             />
-                        <span data-test="errorText" id="first-name-error" role="alert" className={'error-text'}>
+                        <span id="first-name_error" role="alert" className={'error-text'} data-test="errorText">
                             {firstNameField.error_msg}
                         </span>
                     </div>
@@ -163,6 +164,7 @@ function PersonalInfo(props){
                             id="middle-name"
                             className="radius-md"
                             name="middle-name"
+                            aria-describedby=""
                             value={props.fieldData.middle_name}
                             onChange={props.saveFieldData('middle_name')}
                             type="text" autoComplete="off"
@@ -180,7 +182,7 @@ function PersonalInfo(props){
                         <TextInput
                             id="last-name"
                             className="radius-md"
-                            aria-describedby="last-name-error"
+                            aria-describedby="last-name_error"
                             name="last-name"
                             type="text"
                             autoComplete="off"
@@ -191,19 +193,19 @@ function PersonalInfo(props){
                             onInvalid={(e) => e.target.setCustomValidity(' ')}
                             onInput={(e) => e.target.setCustomValidity('')}
                             />
-                        <span data-test="errorText" id="last-name-error" role="alert" className={'error-text'}>
+                        <span id="last-name_error" role="alert" className={'error-text'} data-test="errorText">
                             {lastNameField.error_msg}
                         </span>
                     </div>
                     </Grid>
 
                     <Grid tablet={{ col: 6 }}>
-                    <Label className="text-bold" htmlFor="suffix-select">
+                    <Label className="text-bold" htmlFor="suffix">
                         {suffixField.label}
                     </Label>
                     <Select 
                     data-test="select"
-                    id="suffix-select" className="radius-md" name="suffix-select"
+                    id="suffix" className="radius-md" name="suffix"
                     value={props.fieldData.suffix}
                     onChange={props.saveFieldData('suffix')}
                     autoComplete="off"
@@ -240,14 +242,14 @@ function PersonalInfo(props){
                             onBlur={e => { if (!e.currentTarget.contains(e.relatedTarget)) toggleError(e, checkDateValues('all')) }}
                             >
                             <div data-testid="formGroup" className="usa-form-group usa-form-group--month">
-                                <label data-testid="label" className="usa-label" htmlFor="date_of_birth_month">
+                                <label data-testid="label" className="usa-label" htmlFor="date-of-birth_month">
                                     {stringContent.month}
                                 </label>
                                 <input
-                                    id="date_of_birth_month"
+                                    id="date-of-birth_month"
                                     className="usa-input radius-md"
-                                    aria-describedby="dob-error"
-                                    name="date_of_birth_month"
+                                    aria-describedby="date-of-birth_error"
+                                    name="date-of-birth_month"
                                     label={stringContent.month}
                                     unit="month"
                                     required={true}
@@ -259,21 +261,21 @@ function PersonalInfo(props){
                                     minLength={2}
                                     value={props.fieldData.date_of_birth_month}
                                     onInput={props.saveFieldData('date_of_birth_month')}
-                                    onKeyUp={(e) => jumpTo(e, 'date_of_birth_day')}
+                                    onKeyUp={(e) => jumpTo(e, 'date-of-birth_day')}
                                     onKeyDown={(e) => {restrictType(e, 'number'), e.target.setCustomValidity('')}}
                                     onBlur={(e) => {props.dateFormat(e, 'date_of_birth_month'), toggleError(e, checkDateValues('month'))}}
                                     onInvalid={(e) => e.target.setCustomValidity(' ')}
                                     />
                             </div>
                             <div data-testid="formGroup" className="usa-form-group usa-form-group--day">
-                                <label data-testid="label" className="usa-label" htmlFor="date_of_birth_day">
+                                <label data-testid="label" className="usa-label" htmlFor="date-of-birth_day">
                                     {stringContent.day}
                                 </label>
                                 <input
-                                    id="date_of_birth_day"
+                                    id="date-of-birth_day"
                                     className="usa-input radius-md"
-                                    aria-describedby="dob-error"
-                                    name="date_of_birth_day"
+                                    aria-describedby="date-of-birth_error"
+                                    name="date-of-birth_day"
                                     label={stringContent.day}
                                     unit="day"
                                     required={true}
@@ -285,21 +287,21 @@ function PersonalInfo(props){
                                     maxLength={2}
                                     value={props.fieldData.date_of_birth_day}
                                     onInput={props.saveFieldData('date_of_birth_day')}
-                                    onKeyUp={(e) => jumpTo(e, 'date_of_birth_year')}
+                                    onKeyUp={(e) => jumpTo(e, 'date-of-birth_year')}
                                     onKeyDown={(e) => {restrictType(e, 'number'), e.target.setCustomValidity('')}}
                                     onBlur={(e) => {props.dateFormat(e, 'date_of_birth_day'), toggleError(e, checkDateValues('day'))}}
                                     onInvalid={(e) => e.target.setCustomValidity(' ')}
                                     />
                             </div>
                             <div data-testid="formGroup" className="usa-form-group usa-form-group--year">
-                                <label data-testid="label" className="usa-label" htmlFor="date_of_birth_year">
+                                <label data-testid="label" className="usa-label" htmlFor="date-of-birth_year">
                                     {stringContent.year}
                                 </label>
                                 <input
-                                    id="date_of_birth_year"
+                                    id="date-of-birth_year"
                                     className="usa-input radius-md"
-                                    aria-describedby="dob-error"
-                                    name="date_of_birth_year"
+                                    aria-describedby="date-of-birth_error"
+                                    name="date-of-birth_year"
                                     label={stringContent.year}
                                     unit="year"
                                     required={true}
@@ -317,7 +319,7 @@ function PersonalInfo(props){
                                 />
                             </div>
                         </div>
-                    <span id="dob-error" role="alert" className='error-text' data-test="errorText">
+                    <span id="date-of-birth_error" role="alert" className='error-text' data-test="errorText">
                         {dobField.error_msg}
                     </span>
                 </Fieldset>
@@ -335,7 +337,7 @@ function PersonalInfo(props){
                         <TextInput
                             id="phone-number"
                             className="radius-md"
-                            aria-describedby="phone-number-error"
+                            aria-describedby="phone-number_error"
                             name="phone-number"
                             type="tel"
                             autoComplete="off"
@@ -349,7 +351,7 @@ function PersonalInfo(props){
                             onInvalid={(e) => e.target.setCustomValidity(' ')}
                             onInput={(e) => e.target.setCustomValidity('')}
                         />
-                        <span id="phone-number-error" role="alert" className='error-text' data-test="errorText">
+                        <span id="phone-number_error" rol="alert" className='error-text' data-test="errorText">
                             {phoneNumberField.error_msg}
                         </span>
                     </div>
@@ -395,13 +397,14 @@ function PersonalInfo(props){
                 <Grid row gap>
                     <Grid tablet={{ col: 4 }}>
                         <div className="input-parent">
-                            <Label className="text-bold" htmlFor="race-ethic-group-select">
+                            <Label className="text-bold" htmlFor="race-ethnicity">
                                 {raceField.label}{(raceFieldState.required === "1") && <span className='required-text'>*</span>}
                             </Label>
                             <Select
-                            id="race-ethic-group-select" 
+                            id="race-ethnicity" 
                             className="radius-md" 
-                            name="race-ethic-group-select"
+                            name="race-ethnicity"
+                            aria-describedby="race-ethnicity_error"
                             value={props.fieldData.race} 
                             onChange={props.saveFieldData('race')} 
                             autoComplete="off"
@@ -416,7 +419,7 @@ function PersonalInfo(props){
                                 ))}
                             </React.Fragment>
                             </Select>
-                            <span id="race-error" role="alert" className='error-text' data-test="errorText">
+                            <span id="race-ethnicity_error" role="alert" className='error-text' data-test="errorText">
                                 {raceField.error_msg}
                             </span>
                         </div>
@@ -429,12 +432,13 @@ function PersonalInfo(props){
         <h3 className='margin-top-8'>{prevNameSectionField.label}</h3>
         <Grid row gap>
             <Grid tablet={{ col: 2 }}>
-            <Label className="text-bold" htmlFor="title-select-2">
+            <Label className="text-bold" htmlFor="title-prev">
                 {prevTitleField.label}
             </Label>
             <Select
+                id="title-prev" className="radius-md" name="title-prev"
+                aria-describedby=""
                 data-test="select"
-                id="title-select-2" className="radius-md" name="title-select-2"
                 value={props.fieldData.prev_title}
                 onChange={props.saveFieldData('prev_title')}
                 autoComplete="off"
@@ -452,14 +456,14 @@ function PersonalInfo(props){
 
             <Grid tablet={{ col: 5 }}>
             <div className="input-parent">
-                <Label className="text-bold" htmlFor="first-name-2">
+                <Label className="text-bold" htmlFor="first-name-prev">
                     {prevFirstNameField.label}{(nameFieldState.required === "1") && <span className='required-text'>*</span>}
                 </Label>
                 <TextInput
-                    id="first-name-2"
+                    id="first-name-prev"
                     className="radius-md"
-                    aria-describedby="prev-first-name-error"
-                    name="first-name-2"
+                    aria-describedby="first-name-prev_error"
+                    name="first-name-prev"
                     type="text"
                     autoComplete="off"
                     required={parseInt(nameFieldState.required)}
@@ -469,20 +473,21 @@ function PersonalInfo(props){
                     onInvalid={(e) => e.target.setCustomValidity(' ')}
                     onInput={(e) => e.target.setCustomValidity('')}
                 />
-                <span id="prev-first-name-error" role="alert" className='error-text' data-test="errorText">
+                <span id="first-name-prev_error" role="alert" className='error-text' data-test="errorText">
                     {prevFirstNameField.error_msg}
                 </span>
             </div>
             </Grid>
 
             <Grid tablet={{ col: 5 }}>
-                <Label className="text-bold" htmlFor="middle-name-2">
+                <Label className="text-bold" htmlFor="middle-name-prev">
                     {prevMiddleNameField.label}
                 </Label>
                 <TextInput
-                    id="middle-name-2"
+                    id="middle-name-prev"
                     className="radius-md"
-                    name="middle-name-2"
+                    name="middle-name-prev"
+                    aria-describedby=""
                     value={props.fieldData.prev_middle_name}
                     onChange={props.saveFieldData('prev_middle_name')}
                     type="text" autoComplete="off"
@@ -494,14 +499,14 @@ function PersonalInfo(props){
         <Grid row gap>
             <Grid tablet={{ col: 6 }}>
             <div className="input-parent">
-                <Label className="text-bold" htmlFor="last-name-2">
+                <Label className="text-bold" htmlFor="last-name-prev">
                     {prevLastNameField.label}{(nameFieldState.required === "1") && <span className='required-text'>*</span>}
                 </Label>
                 <TextInput
-                    id="last-name-2"
+                    id="last-name-prev"
                     className="radius-md"
-                    aria-describedby="prev-last-name-error"
-                    name="last-name-2"
+                    aria-describedby="last-name-prev_error"
+                    name="last-name-prev"
                     type="text"
                     autoComplete="off"
                     required={parseInt(nameFieldState.required)}
@@ -511,19 +516,20 @@ function PersonalInfo(props){
                     onInvalid={(e) => e.target.setCustomValidity(' ')}
                     onInput={(e) => e.target.setCustomValidity('')}
                     />
-                    <span id="prev-last-name-error" role="alert" className='error-text' data-test="errorText">
+                    <span id="last-name-prev_error" role="alert" className='error-text' data-test="errorText">
                         {prevLastNameField.error_msg}
                     </span>
             </div>
             </Grid>
 
             <Grid tablet={{ col: 6 }}>
-            <Label className="text-bold" htmlFor="suffix-select-2">
+            <Label className="text-bold" htmlFor="suffix-prev">
                 {prevSuffixField.label}
             </Label>
             <Select
+                id="suffix-prev" className="radius-md" name="suffix-prev"
+                aria-describedby=""
                 data-test="select"
-                id="suffix-select-2" className="radius-md" name="suffix-select-2"
                 value={props.fieldData.prev_suffix} onChange={props.saveFieldData('prev_suffix')}
                 autoComplete="off"
                 onInvalid={(e) => e.target.setCustomValidity(' ')}
