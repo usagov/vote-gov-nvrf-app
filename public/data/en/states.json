@@ -5099,7 +5099,7 @@
     "mail_reg_url": "https:\/\/www.elections.ny.gov\/NYSBOE\/download\/voting\/voteregform-eng-fillable.pdf",
     "confirm_reg_url": "https:\/\/voterlookup.elections.ny.gov\/",
     "postmarked_mail_deadline": "",
-    "received_mail_deadline": "Must be received 10 days before Election Day",
+    "received_mail_deadline": "Must be postmarked 15 days before and received 10 days before Election Day",
     "nvrf_fields": [
       {
         "uuid": "86a544cd-cfe9-456a-b634-176a37a38d6d",
