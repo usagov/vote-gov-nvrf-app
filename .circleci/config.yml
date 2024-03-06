@@ -10,21 +10,20 @@ jobs:
       NVRF_FILE_NAME: Federal_Voter_Registration_ENG.pdf
       NEW_BRANCH_NAME: upload-nvrf-pdf
     steps:
-      #checkout pdf branch and install gh
-      - run: git clone -b "update-nvrf-pdf" "$CIRCLE_REPOSITORY_URL"
+      #Install gh
       - gh/install
-      #configure git
       - run:
-          name: Configure git
+          name: Git Clone and Config
           command: |
-            ssh-keyscan <github.com> >> ~/.ssh/known_hosts
+            GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" git clone -b "update-nvrf-pdf" "$CIRCLE_REPOSITORY_URL"
+            cd vote-gov-nvrf-app
             git config user.email "circleci@df52e93b2563.(none)"
             git config user.name "Pipeline Commit"
       - run:
           name: Fetch NVRF from eac.gov
           command: |
             curl -o Federal_Voter_Registration_ENG.pdf $URL
-      #save pdf as an artifact
+      #Save pdf as an artifact
       - store_artifacts:
           path: Federal_Voter_Registration_ENG.pdf
           destination: /pdf-files
@@ -32,6 +31,7 @@ jobs:
       - run:
           name: Replace current NVRF
           command: |
+            cd vote-gov-nvrf-app
             artifacts=$(curl -X GET "https://circleci.com/api/v2/project/github/usagov/vote-gov-nvrf-app/$CIRCLE_BUILD_NUM/artifacts" \
             -H "Accept: application/json" \
             -u "$NVRF_PDF_WRITE:")
@@ -43,10 +43,12 @@ jobs:
             echo $STORED_ARTIFACTS > $NVRF_FILE_NAME
       - run:
           name: Create Pull Request
+          shell: /bin/bash
           command: |
+            cd vote-gov-nvrf-app
             echo $NVRF_PDF_WRITE | tee /tmp/key.txt
             gh auth login --with-token < /tmp/key.txt
-            gh pr create --title "Update NVRF PDF" --body "Upload the new NVRF PDF from eac.gov. This is an automated job from CircleCI"
+            gh pr create --title "Update NVRF PDF" --body "Upload the new NVRF PDF from eac.gov. This is an automated job from CircleCI" || true
   cypress-testing:
     docker:
       - image: cypress/included:cypress-13.3.0-node-20.6.1-chrome-116.0.5845.187-1-ff-117.0-edge-116.0.1938.76-1
