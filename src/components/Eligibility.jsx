@@ -35,8 +35,8 @@ function Eligibility(props) {
                     .replace("@reg_eligibility_desc", stateContent.reg_eligibility_desc)}}/>
 
             <Form id="eligibility" autoComplete="off" className={'margin-top-2'} style={{ maxWidth:'none' }} onSubmit={(e) => {e.preventDefault(), props.handleNext()}}>
-                    <div data-test="checkBox" className="input-parent">
-                        <Label htmlFor="eligibility-error" className={'margin-top-1'}>
+                    <div className="input-parent" data-test="checkBox">
+                        <Label htmlFor="eligibility-checkbox" className={'margin-top-1'}>
                             <strong>{eligibility.name}</strong>
                         </Label>
                         <Checkbox
@@ -45,7 +45,7 @@ function Eligibility(props) {
                             value="eligibility-checkbox"
                             label={getFieldLabel(fields, "39fc63ad-ed5a-4ad5-98d3-aa236c96c61c")}
                             aria-required="true"
-                            aria-describedby="eligibility-error"
+                            aria-describedby="eligibility-checkbox_error"
                             required={true}
                             defaultChecked={props.hasConfirmed}
                             onChange={(e) => props.confirmCheckbox(e.target.checked)}
@@ -53,7 +53,7 @@ function Eligibility(props) {
                             onInput={(e) => e.target.setCustomValidity('')}
                             onBlur={(e) => toggleError(e, !props.hasConfirmed)}
                         />
-                        <span id="eligibility-error" role="alert" className='error-text' data-test="errorText">
+                        <span id="eligibility-checkbox_error" role="alert" className='error-text' data-test="errorText">
                             {getFieldError(fields, "39fc63ad-ed5a-4ad5-98d3-aa236c96c61c")}
                         </span>
                     </div>

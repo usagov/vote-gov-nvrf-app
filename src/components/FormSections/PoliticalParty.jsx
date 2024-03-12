@@ -22,7 +22,7 @@ function PoliticalParty(props){
         <h2>{headings.step_label_4}</h2>
 
         {(partyStateInstructions || partyGeneralInstructions) && (
-        <div className="usa-alert usa-alert--info" role="alert">
+        <div className="usa-alert usa-alert--info" role="region" aria-live="polite">
             <div className="usa-alert__body" dangerouslySetInnerHTML= {{__html: partyStateInstructions}}/>
         </div>)}
 
@@ -35,8 +35,8 @@ function PoliticalParty(props){
                 <TextInput
                     id="political-party"
                     className="radius-md"
-                    aria-describedby="party-choice-error"
-                    name="political party"
+                    aria-describedby="political-party_error"
+                    name="political-party"
                     value={props.fieldData.party_choice}
                     type="text"
                     autoComplete="off"
@@ -47,7 +47,7 @@ function PoliticalParty(props){
                     onInvalid={(e) => e.target.setCustomValidity(' ')}
                     onInput={(e) => e.target.setCustomValidity('')} 
                     />
-                <span id="party-choice-error" role="alert" className='error-text' data-test="errorText">
+                <span id="political-party_error" role="alert" className='error-text' data-test="errorText">
                     {partyField.error_msg}
                 </span>
             </div>

@@ -34,6 +34,7 @@ function StateSelection(props) {
                                 id="state-dropdown"
                                 data-test="dropDown"
                                 name="state-dropdown"
+                                aria-describedby="state-dropdown_error"
                                 value={props.state}
                                 required={true}
                                 aria-invalid={false}
@@ -51,7 +52,7 @@ function StateSelection(props) {
                                 )}
                             </React.Fragment>
                             </Select>
-                            <span id="state-dropdown-error" role="alert" className='error-text' data-test="errorText">
+                            <span id="state-dropdown_error" role="alert" className='error-text' data-test="errorText">
                                 {getFieldError(fields, "7231330d-523b-4e22-b282-b9f98ee20ef2")}
                             </span>
                         </div>
