@@ -246,6 +246,7 @@ function PersonalInfo(props){
                                     {stringContent.month}
                                 </label>
                                 <input
+                                    data-test="dobMonth"
                                     id="date-of-birth_month"
                                     className="usa-input radius-md"
                                     aria-describedby="date-of-birth_error"
@@ -272,6 +273,7 @@ function PersonalInfo(props){
                                     {stringContent.day}
                                 </label>
                                 <input
+                                    data-test="dobDay"
                                     id="date-of-birth_day"
                                     className="usa-input radius-md"
                                     aria-describedby="date-of-birth_error"
@@ -298,6 +300,7 @@ function PersonalInfo(props){
                                     {stringContent.year}
                                 </label>
                                 <input
+                                    data-test="dobYear"
                                     id="date-of-birth_year"
                                     className="usa-input radius-md"
                                     aria-describedby="date-of-birth_error"
