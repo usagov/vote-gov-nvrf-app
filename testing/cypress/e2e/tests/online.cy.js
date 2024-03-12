@@ -55,13 +55,13 @@ cy.get('[data-testid="textInput"]').then(textBox => {
   cy.get(textBox[3]).should('contain.value', data.personalInformationNumber2)
 })
 
-cy.get('[id="date_of_birth_month"]').type(data.personalInformationMonth)
-cy.get('[id="date_of_birth_day"]').type(data.personalInformationDay)
-cy.get('[id="date_of_birth_year"]').type(data.personalInformationYear)
+cy.get('[data-test="dobMonth"]').type(data.personalInformationMonth)
+cy.get('[data-test="dobDay"]').type(data.personalInformationDay)
+cy.get('[data-test="dobYear"]').type(data.personalInformationYear)
 // Validate text box has correct text
-cy.get('[id="date_of_birth_month"]').should('have.value', data.personalInformationDay)
-cy.get('[id="date_of_birth_day"]').should('have.value', data.personalInformationDay)
-cy.get('[id="date_of_birth_year"]').should('have.value', data.personalInformationYear)
+cy.get('[data-test="dobMonth"]').should('have.value', data.personalInformationDay)
+cy.get('[data-test="dobDay"]').should('have.value', data.personalInformationDay)
+cy.get('[data-test="dobYear"]').should('have.value', data.personalInformationYear)
 
 cy.get('[data-test="nextBtn"]').click()
 
@@ -241,13 +241,13 @@ cy.get('[data-testid="textInput"]').then(textBox => {
   cy.get(textBox[3]).should('contain.value', data.personalInformationNumber2)
 })
 
-cy.get('[id="date_of_birth_month"]').type(data.personalInformationMonth)
-cy.get('[id="date_of_birth_day"]').type(data.personalInformationDay)
-cy.get('[id="date_of_birth_year"]').type(data.personalInformationYear)
+cy.get('[data-test="dobMonth"]').type(data.personalInformationMonth)
+cy.get('[data-test="dobDay"]').type(data.personalInformationDay)
+cy.get('[data-test="dobYear"]').type(data.personalInformationYear)
 // Validate text box has correct text
-cy.get('[id="date_of_birth_month"]').should('have.value', data.personalInformationDay)
-cy.get('[id="date_of_birth_day"]').should('have.value', data.personalInformationDay)
-cy.get('[id="date_of_birth_year"]').should('have.value', data.personalInformationYear)
+cy.get('[data-test="dobMonth"]').should('have.value', data.personalInformationDay)
+cy.get('[data-test="dobDay"]').should('have.value', data.personalInformationDay)
+cy.get('[data-test="dobYear"]').should('have.value', data.personalInformationYear)
 
 cy.get('[data-test="nextBtn"]').click()
 

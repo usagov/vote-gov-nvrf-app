@@ -33,9 +33,9 @@ cy.get(textBox[2]).type(data.personalInformationLast)
 cy.get('[data-test="nextBtn"]').click().click()
 cy.get('[data-test="errorText"]').should('contain.text', 'Date of birth must follow the format of 01 19 2000.')
 
-cy.get('[id="date_of_birth_month"]').type(data.personalInformationMonth)
-cy.get('[id="date_of_birth_day"]').type(data.personalInformationDay)
-cy.get('[id="date_of_birth_year"]').type(data.personalInformationYear)
+cy.get('[data-test="dobMonth"]').type(data.personalInformationMonth)
+cy.get('[data-test="dobDay"]').type(data.personalInformationDay)
+cy.get('[data-test="dobYear"]').type(data.personalInformationYear)
 
 cy.get('[data-test="nextBtn"]').click()
 

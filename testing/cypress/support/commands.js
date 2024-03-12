@@ -47,9 +47,9 @@ cy.get('[data-testid="textInput"]').then(textBox => {
   cy.get(textBox[3]).type(data.personalInformationNumber)
 })
 
-cy.get('[id="date_of_birth_month"]').type(data.personalInformationMonth)
-cy.get('[id="date_of_birth_day"]').type(data.personalInformationDay)
-cy.get('[id="date_of_birth_year"]').type(data.personalInformationYear)
+cy.get('[data-test="dobMonth"]').type(data.personalInformationMonth)
+cy.get('[data-test="dobDay"]').type(data.personalInformationDay)
+cy.get('[data-test="dobYear"]').type(data.personalInformationYear)
 
 cy.get('[class="usa-checkbox__label"]').click()
 cy.get('[data-test="select"]').then(dropdown => {
