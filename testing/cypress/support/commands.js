@@ -20,8 +20,14 @@ const data = require("../fixtures/data.json");
 cy.get('[data-test="nextBtn"]').click()
 
 // check eligibility page
-cy.get('[class="usa-checkbox__label"]').click()
-// cy.pause()
+// verify that user CANNOT move forward with out checking box
+cy.get('[data-test="nextBtn"]').click()
+cy.get('[data-test="errorText"]').should('contain.text', 'Confirm eligibility to continue.')
+
+// verify user CAN move forward after checking box
+cy.get('[data-test="checkBox"]').click()
+// todo: come back after fix 
+// cy.get('[data-test="errorText"]').should('not.exist')
 
 cy.get('[data-test="nextBtn"]').click()
 
@@ -40,21 +46,19 @@ cy.get('[data-test="select"]').then(dropdown => {
   cy.get(dropdown[1]).should('contain', data.personalInformationSuffix)
 })
 
-cy.get('[data-testid="textInput"]').then(textBox => {
-  cy.get(textBox[0]).type(data.personalInformationName)
-  cy.get(textBox[1]).type(data.personalInformationMiddle)
-  cy.get(textBox[2]).type(data.personalInformationLast)
-  cy.get(textBox[3]).type(data.personalInformationNumber)
-})
+cy.get('[data-test="firstName"]').type(data.personalInformationName)
+cy.get('[data-test="middleName"]').type(data.personalInformationMiddle)
+cy.get('[data-test="lastName"]').type(data.personalInformationLast)
+cy.get('[data-test="phoneNumber"]').type(data.personalInformationNumber)
 
 cy.get('[data-test="dobMonth"]').type(data.personalInformationMonth)
 cy.get('[data-test="dobDay"]').type(data.personalInformationDay)
 cy.get('[data-test="dobYear"]').type(data.personalInformationYear)
 
-cy.get('[class="usa-checkbox__label"]').click()
+cy.get('[data-testid="checkbox"]').click()
+
 cy.get('[data-test="select"]').then(dropdown => {
 
-  // cy.get(dropdown[1])
   // title
   cy.get(dropdown[2]).select(data.personalInformationTitle)
   cy.get(dropdown[2]).should('contain', data.personalInformationTitle)
@@ -63,64 +67,60 @@ cy.get('[data-test="select"]').then(dropdown => {
   cy.get(dropdown[3]).should('contain', data.personalInformationSuffix)
 })
 
-cy.get('[data-testid="textInput"]').then(textBox => {
-  cy.get(textBox[5]).type(data.personalInformationName)
-  cy.get(textBox[6]).type(data.personalInformationMiddle)
-  cy.get(textBox[7]).type(data.personalInformationLast)
-})
+cy.get('[data-test="firstName"]').type(data.personalInformationName)
+cy.get('[data-test="middleName"]').type(data.personalInformationMiddle)
+cy.get('[data-test="lastName"]').type(data.personalInformationLast)
+
+cy.get('[data-test="prevFirstName"]').type(data.personalInformationName)
+cy.get('[data-test="prevMiddleName"]').type(data.personalInformationMiddle)
+cy.get('[data-test="prevLastName"]').type(data.personalInformationLast)
 
 cy.get('[data-test="nextBtn"]').click()
 
 // address and location page
 // * check that current address works
-cy.get('[data-testid="textInput"]').then(textBox => {
-  cy.get(textBox[0]).type(data.addressStreet)
-  cy.get(textBox[1]).type(data.addressApt)
-  cy.get(textBox[2]).type(data.addressTown)
-  cy.get(textBox[3]).type(data.addressZip)
-})
+cy.get('[data-test="street"]').type(data.addressStreet)
+cy.get('[data-test="aptNumber"]').type(data.addressApt)
+cy.get('[data-test="city"]').type(data.addressTown)
+cy.get('[data-test="zip"]').type(data.addressZip)
 
 // * check that mailing address work 
-cy.get('[class="usa-checkbox__label"]').then(checkBox => {
-  cy.get(checkBox[2]).click()
+cy.get('[data-test="checkBox"]').then(checkBox => {
+  cy.get(checkBox[2]).click({force: true})
 })
-cy.get('[data-testid="textInput"]').then(textBox => {
-  cy.get(textBox[4]).type(data.addressStreet)
-  cy.get(textBox[5]).type(data.addressTown)
-  cy.get(textBox[6]).type(data.addressZip)
-})
+
+cy.get('[data-test="mailStreet"]').type(data.addressStreet)
+cy.get('[data-test="mailCity"]').type(data.addressTown)
+cy.get('[data-test="mailZip"]').type(data.addressZip)
+
 // * uncheck mailing address block
-cy.get('[class="usa-checkbox__label"]').then(checkBox => {
-  cy.get(checkBox[2]).click()
+cy.get('[data-test="checkBox"]').then(checkBox => {
+  cy.get(checkBox[2]).click({force: true})
 })
 
 // * check recently moved option 
-cy.get('[class="usa-checkbox__label"]').then(checkBox => {
-  cy.get(checkBox[0]).click()
+cy.get('[data-test="checkBox"]').then(checkBox => {
+  cy.get(checkBox[0]).click({force: true})
 })
 
-cy.get('[data-testid="textInput"]').then(textBox => {
-  cy.get(textBox[4]).type(data.addressStreet)
-  cy.get(textBox[5]).type(data.addressApt)
-  cy.get(textBox[6]).type(data.addressTown)
-  cy.get(textBox[7]).type(data.addressZip)
-})
+cy.get('[data-test="prevStreet"]').type(data.addressStreet)
+cy.get('[data-test="prevAptNumber"]').type(data.addressApt)
+cy.get('[data-test="prevCity"]').type(data.addressTown)
+cy.get('[data-test="prevZip"]').type(data.addressZip)
 // * uncheck recently moved block
-cy.get('[class="usa-checkbox__label"]').then(checkBox => {
-  cy.get(checkBox[0]).click()
+cy.get('[data-test="checkBox"]').then(checkBox => {
+  cy.get(checkBox[0]).click({force: true})
 })
 
 // * check does not have permanent option 
-cy.get('[class="usa-checkbox__label"]').then(checkBox => {
-  cy.get(checkBox[1]).click()
+cy.get('[data-test="checkBox"]').then(checkBox => {
+  cy.get(checkBox[1]).click({force: true})
 })
 
-cy.get('[data-testid="textInput"]').then(textBox => {
-  cy.get(textBox[0]).type(data.addressStreet)
-  cy.get(textBox[1]).type(data.addressTown)
-  cy.get(textBox[2]).type(data.addressZip)
-  cy.get('[data-testid="Select"]').select(data.addressState)
-})
+cy.get('[data-test="mailStreet"]').type(data.addressStreet)
+cy.get('[data-test="mailCity"]').type(data.addressTown)
+cy.get('[data-test="mailZip"]').type(data.addressZip)
+cy.get('[data-testid="Select"]').select(data.addressState)
 
 cy.get('[data-test="nextBtn"]').click()
 
@@ -128,12 +128,12 @@ cy.get('[data-test="nextBtn"]').click()
 // identification
 // * state driver's license number
 cy.get('[data-test="dropDown"]').select("State driver's license number")
-cy.get('[data-testid="textInput"]').type(data.idNumber)
+cy.get('[data-test="driverId"]').type(data.idNumber)
 // * social security number (last 4 digits)
 cy.get('[data-test="dropDown"]').then(dropDown => {
   cy.get(dropDown[0]).select("Social security number (last 4 digits)")
 })
-cy.get('[data-testid="textInput"]').type(data.ssn)
+cy.get('[data-test="ssn"]').type(data.ssn)
 
 // * no id
 cy.get('[data-test="dropDown"]').then(dropDown => {
@@ -145,13 +145,13 @@ cy.get('p').should('contain.text', '"None" will appear on your completed form.')
 cy.get('[data-test="dropDown"]').then(dropDown => {
   cy.get(dropDown[0]).select("State non-driver ID")
 })
-cy.get('[data-testid="textInput"]').type(data.idNumber)
+cy.get('[data-test="stateId"]').type(data.idNumber)
 
 
 cy.get('[data-test="nextBtn"]').click()
 
   // political party
-  cy.get('[data-testid="textInput"]').type(data.politicalParty)
+  cy.get('[data-test="politicalParty"]').type(data.politicalParty)
 
   cy.get('[data-test="nextBtn"]').click()
 
