@@ -82,6 +82,7 @@ function Identification(props){
                                 {driverLicenseField.label}{(driverIDFieldReq) && <span className='required-text'>*</span>}
                             </Label>
                             <TextInput
+                                data-test="driverId"
                                 id="id-driver"
                                 className="radius-md"
                                 name="id-driver"
@@ -107,6 +108,7 @@ function Identification(props){
                                 <span className='required-text'>*</span>}
                             </Label>
                             <TextInput
+                                data-test="stateId"
                                 id="id-state"
                                 className="radius-md"
                                 name="id-state"
@@ -134,6 +136,7 @@ function Identification(props){
                     </Label>
                     <span className="usa-hint" id="ssn-hint">{ssnField.help_text}</span>
                     <TextInput
+                        data-test="ssn"
                         id="ssn"
                         className="radius-md"
                         name="ssn"

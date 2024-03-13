@@ -137,6 +137,7 @@ function PersonalInfo(props){
                             {firstNameField.label}{(nameFieldState.required === "1") && <span className='required-text'>*</span>}
                         </Label>
                         <TextInput
+                            data-test="firstName"
                             id="first-name"
                             className="radius-md text-semibold"
                             aria-describedby="first-name_error"
@@ -161,6 +162,7 @@ function PersonalInfo(props){
                             {middleNameField.label}
                         </Label>
                         <TextInput
+                            data-test="middleName"
                             id="middle-name"
                             className="radius-md"
                             name="middle-name"
@@ -180,6 +182,7 @@ function PersonalInfo(props){
                             {lastNameField.label}{(nameFieldState.required === "1") && <span className='required-text'>*</span>}
                         </Label>
                         <TextInput
+                            data-test="lastName"
                             id="last-name"
                             className="radius-md"
                             aria-describedby="last-name_error"
@@ -338,6 +341,7 @@ function PersonalInfo(props){
                         </Label>
                         <span className="usa-hint" id="date-of-birth-hint">{phoneNumberField.help_text}</span>
                         <TextInput
+                            data-test="phoneNumber"
                             id="phone-number"
                             className="radius-md"
                             aria-describedby="phone-number_error"
@@ -379,6 +383,7 @@ function PersonalInfo(props){
                     </Label>
                     <span className="usa-hint">{stringContent.emailLabel}</span>
                     <TextInput
+                        data-test="email"
                         id="voter-contact"
                         type="email"
                         required={true}
@@ -463,6 +468,7 @@ function PersonalInfo(props){
                     {prevFirstNameField.label}{(nameFieldState.required === "1") && <span className='required-text'>*</span>}
                 </Label>
                 <TextInput
+                    data-test="prevFirstName"
                     id="first-name-prev"
                     className="radius-md"
                     aria-describedby="first-name-prev_error"
@@ -487,6 +493,7 @@ function PersonalInfo(props){
                     {prevMiddleNameField.label}
                 </Label>
                 <TextInput
+                    data-test="prevMiddleName"
                     id="middle-name-prev"
                     className="radius-md"
                     name="middle-name-prev"
@@ -506,6 +513,7 @@ function PersonalInfo(props){
                     {prevLastNameField.label}{(nameFieldState.required === "1") && <span className='required-text'>*</span>}
                 </Label>
                 <TextInput
+                    data-test="prevLastName"
                     id="last-name-prev"
                     className="radius-md"
                     aria-describedby="last-name-prev_error"

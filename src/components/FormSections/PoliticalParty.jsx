@@ -33,6 +33,7 @@ function PoliticalParty(props){
                     {partyField.name}{(partyFieldState.required === "1") && <span className='required-text'>*</span>}
                 </Label>
                 <TextInput
+                    data-test="politicalParty"
                     id="political-party"
                     className="radius-md"
                     aria-describedby="political-party_error"
