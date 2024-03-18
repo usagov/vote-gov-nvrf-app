@@ -15,7 +15,7 @@ function BackButton(props) {
             </>
                 :
             <>
-            <Button className="back-button mobile-width" type={props.type} onClick={props.onClick} outline>
+            <Button className="back-button mobile-width" type={props.type} onClick={props.onClick} outline data-test="backBtn">
                 <Icon.ArrowBack aria-label={props.stringContent.backIcon} style={{margin: "-3px 4px -3px -3px"}}/>
                 <span>{props.text}</span>
             </Button>
