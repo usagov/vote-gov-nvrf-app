@@ -12,67 +12,64 @@ describe('Verify Flow Within Form', () => {
   })
   it('Verify Back Buttons', () => {
     // check that the form back buttons will take user back to the correct page
-cy.pause()
-    cy.get('[class="usa-button usa-button--outline back-button"]').should('contain.text', 'Edit registration information')
+    cy.get('[data-test="backBtn"]').should('contain.text', 'Edit registration information')
 
-    cy.get('[class="usa-button usa-button--outline back-button"]').click()
-    cy.get('[class="usa-button usa-button--outline back-button"]').should('contain.text', 'Back to identification')
+    cy.get('[data-test="backBtn"]').click()
+    cy.get('[data-test="backBtn"]').should('contain.text', 'Back to identification')
 
+    cy.get('[data-test="backBtn"]').click()
+    cy.get('[data-test="backBtn"]').should('contain.text', 'Back to address and location')
 
-    cy.get('[class="usa-button usa-button--outline back-button"]').click()
-    cy.get('[class="usa-button usa-button--outline back-button"]').should('contain.text', 'Back to address and location')
+    cy.get('[data-test="backBtn"]').click()
+    cy.get('[data-test="backBtn"]').should('contain.text', 'Back to personal information')
 
+    cy.get('[data-test="backBtn"]').click()
+    cy.get('[data-test="backBtn"]').should('contain.text', 'Back to registration options')
 
-    cy.get('[class="usa-button usa-button--outline back-button"]').click()
-    cy.get('[class="usa-button usa-button--outline back-button"]').should('contain.text', 'Back to personal information')
+    cy.get('[data-test="backBtn"]').click()
+    cy.get('[data-test="backBtn"]').should('contain.text', 'Back to state eligibility requirements')
 
+    cy.get('[data-test="backBtn"]').click()
+    cy.get('[data-test="backBtn"]').should('contain.text', 'Go back to state registration options')
 
-    cy.get('[class="usa-button usa-button--outline back-button"]').click()
-    cy.get('[class="usa-button usa-button--outline back-button"]').should('contain.text', 'Back to registration options')
-
-    cy.get('[class="usa-button usa-button--outline back-button"]').click()
-    cy.get('[class="usa-button usa-button--outline back-button"]').should('contain.text', 'Back to State Eligibility Requirements')
-
-    cy.get('[class="usa-button usa-button--outline back-button"]').click()
-    cy.get('[class="usa-button usa-button--outline back-button"]').should('contain.text', 'Back to State Registration Options')
-
-    cy.get('[class="usa-button usa-button--outline back-button"]').click()
-    cy.get('[class="usa-button usa-button--outline back-button"]').should('contain.text', 'Go back to select your state')
+    cy.get('[data-test="backBtn"]').click()
+    cy.get('[data-test="backBtn"]').should('contain.text', 'Go back to select your state')
 
   })
 
   it('Verify Edit Buttons', () => {
-
     // personal information
-    cy.get('[class="usa-button usa-button--unstyled"]').then(editBtn => {
+    cy.get('[data-test="editBtn"]').then(editBtn => {
       cy.get(editBtn[0]).click()
-      cy.get('h2').should('contain.text', 'Personal Information')
+      cy.get('[data-testid="form"]').find('h2').should('contain.text', 'Personal information')
       cy.get('[data-test="nextBtn"]').click().click().click().click()
     })
 
     // address
-    cy.get('[class="usa-button usa-button--unstyled"]').then(editBtn => {
+    cy.get('[data-test="editBtn"]').then(editBtn => {
       cy.get(editBtn[1]).click({force: true})
-      cy.get('h3').should('contain.text', 'Address & Location Information')
+      cy.get('[data-testid="form"]').find('h2').should('contain.text', 'Address and location')
       cy.get('[data-test="nextBtn"]').click().click().click()
       
     })
     // identification
-    cy.get('[class="usa-button usa-button--unstyled"]').then(editBtn => {
+    cy.get('[data-test="editBtn"]').then(editBtn => {
       cy.get(editBtn[2]).click({force: true})
+      cy.get('[data-testid="form"]').find('h2').should('contain.text', 'Identification')
       cy.get('h2').should('contain.text', 'Identification')
       cy.get('[data-test="nextBtn"]').click().click()
     })
 
     // political party 
-    cy.get('[class="usa-button usa-button--unstyled"]').then(editBtn => {
+    cy.get('[data-test="editBtn"]').then(editBtn => {
       cy.get(editBtn[3]).click({force: true})
-      cy.get('h2').should('contain.text', 'Choice of Political Party')
+      cy.get('[data-testid="form"]').find('h2').should('contain.text', 'Political party')
+    
       cy.get('[data-test="nextBtn"]').click()
     })
   })
 
-  it.only('Verify Fields are correct', () => {
+  it('Verify Fields are correct', () => {
 
     // verify that fields on confirmation page have the expected information
     cy.get('[class="confirm-info usa-prose"]').find('ul').then(ul => {

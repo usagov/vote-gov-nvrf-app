@@ -68,6 +68,7 @@ function Addresses(props){
                                 {streetAddressField.label}{(addressFieldsState.required === "1") && <span className='required-text'>*</span>}
                             </Label>
                             <TextInput
+                                data-test="street"
                                 id="street"
                                 className="radius-md"
                                 aria-describedby="street_error"
@@ -94,6 +95,7 @@ function Addresses(props){
                             {aptField.label}
                         </Label>
                         <TextInput
+                            data-test="aptNumber"
                             id="apartment-number"
                             className="radius-md"
                             name="apartment-number"
@@ -115,6 +117,7 @@ function Addresses(props){
                                     {cityField.label}{(addressFieldsState.required === "1") && <span className='required-text'>*</span>}
                                 </Label>
                                     <TextInput
+                                        data-test="city"
                                         id="city"
                                         className="radius-md"
                                         aria-describedby="city_error"
@@ -161,6 +164,7 @@ function Addresses(props){
                             </Label>
                             <span className="usa-hint" id="zip-hint">{zipcodeField.help_text}</span>
                             <TextInput
+                                data-test="zip"
                                 id="zip-code"
                                 className="radius-md"
                                 aria-describedby="zip-code_error"
@@ -207,6 +211,7 @@ function Addresses(props){
                                 {mailStreetAddressField.label}{(addressFieldsState.required === "1") && <span className='required-text'>*</span>}
                             </Label>
                                 <TextInput
+                                    data-test="mailStreet"
                                     id="mail-street"
                                     className="radius-md"
                                     aria-describedby="mail-street_error"
@@ -234,6 +239,7 @@ function Addresses(props){
                                         {mailCityField.label}{(addressFieldsState.required === "1") && <span className='required-text'>*</span>}
                                     </Label>
                                         <TextInput
+                                            data-test="mailCity"
                                             id="mail-city"
                                             className="radius-md"
                                             aria-describedby="mail-city_error"
@@ -260,6 +266,7 @@ function Addresses(props){
                                         {mailStateField.label}{(addressFieldsState.required === "1") && <span className='required-text'>*</span>}
                                     </Label>
                                         <StateSelector
+                                            data-test="select"
                                             id="mail-state"
                                             classes="radius-md"
                                             autoComplete="off"
@@ -286,6 +293,7 @@ function Addresses(props){
                                 </Label>
                                 <span className="usa-hint" id="mail-zip-hint">For example: 12345</span>
                                 <TextInput
+                                    data-test="mailZip"
                                     id="mail-zip-code"
                                     className="radius-md"
                                     aria-describedby="mail-zip-code_error"
@@ -331,6 +339,7 @@ function Addresses(props){
                                     {prevStreetAddressField.label}{(addressFieldsState.required === "1") && <span className='required-text'>*</span>}
                                 </Label>
                                 <TextInput
+                                    data-test="prevStreet"
                                     id="prev-street"
                                     className="radius-md"
                                     aria-describedby="prev-street_error"
@@ -357,6 +366,7 @@ function Addresses(props){
                                 {prevAptField.label}
                             </Label>
                             <TextInput
+                                data-test="prevAptNumber"
                                 id="prev-apartment-number"
                                 className="radius-md"
                                 name="prev-apartment-number"
@@ -378,6 +388,7 @@ function Addresses(props){
                                         {prevCityField.label}{(addressFieldsState.required === "1") && <span className='required-text'>*</span>}
                                     </Label>
                                         <TextInput
+                                            data-test="prevCity"
                                             id="prev-city"
                                             className="radius-md"
                                             aria-describedby="prev-city_error"
@@ -404,6 +415,7 @@ function Addresses(props){
                                     {prevStateField.label}{(addressFieldsState.required === "1") && <span className='required-text'>*</span>}
                                 </Label>
                                     <StateSelector
+                                        data-test="select"
                                         id="prev-state"
                                         classes="radius-md"
                                         ariaDescribedby="prev-state_error"
@@ -430,6 +442,7 @@ function Addresses(props){
                                 </Label>
                                 <span className="usa-hint" id="prev-zip-hint">{stringContent.zip}</span>
                                 <TextInput
+                                    data-test="prevZip"
                                     id="prev-zip-code"
                                     className="radius-md"
                                     aria-describedby="prev-zip-code_error"
