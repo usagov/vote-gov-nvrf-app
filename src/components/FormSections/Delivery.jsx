@@ -31,7 +31,7 @@ function Delivery(props) {
         </svg>
 
         const mailinDeadline = () => (
-            <p><strong>{stringContent.mailDeadlineLabel}</strong> {state.postmarked_mail_deadline || state.received_mail_deadline}</p>
+            <p><strong>{stringContent.mailDeadlineLabel}</strong> <span dangerouslySetInnerHTML= {{__html: state.postmarked_mail_deadline || state.received_mail_deadline }}/></p>
         );
 
         return (
