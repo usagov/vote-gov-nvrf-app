@@ -21,7 +21,7 @@ function Eligibility(props) {
 
     const mailDeadline = () => (
         <ul>
-            <li>{stateContent.postmarked_mail_deadline || stateContent.received_mail_deadline}</li>
+            <li dangerouslySetInnerHTML= {{__html: stateContent.postmarked_mail_deadline || stateContent.received_mail_deadline }}/>
         </ul>
     );
 
@@ -59,8 +59,9 @@ function Eligibility(props) {
                     </div>
                 <div dangerouslySetInnerHTML= {{__html: eligibilityInstructions}}/>
 
-                <div className={'usa-prose margin-top-5'} dangerouslySetInnerHTML= {{__html: contentBodyParts[1].replace("@state_name", stateContent.name)
-                        .replace("@mail_deadline", renderToStaticMarkup(mailDeadline()))}}/>
+                
+                <div className={'usa-prose margin-top-5'} dangerouslySetInnerHTML= 
+                    {{__html: contentBodyParts[1].replace("@state_name", stateContent.name).replace("@mail_deadline", renderToStaticMarkup(mailDeadline()))}}/>
 
                 <NextButton stringContent={stringContent} type={'submit'} onClick={(e) => focusError('eligibility')} text={navContent.next.start}/>
             </Form>
