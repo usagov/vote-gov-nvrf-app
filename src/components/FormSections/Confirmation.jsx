@@ -40,6 +40,7 @@ function Confirmation(props) {
                     <h2>{headings.step_label_1}</h2>
                     <div className='edit-btn'>
                         <Button
+                            data-test="editBtn"
                             type="button"
                             class="usa-button--unstyled"
                             onClick={props.handleGoBackSteps(4)}
@@ -83,6 +84,7 @@ function Confirmation(props) {
                     <h2>{headings.step_label_2}</h2>
                     <div className='edit-btn'>
                         <Button
+                            data-test="editBtn"
                             type="button"
                             class="usa-button--unstyled"
                             onClick={props.handleGoBackSteps(3)}
@@ -137,6 +139,7 @@ function Confirmation(props) {
                     <h2>{headings.step_label_3}</h2>
                     <div className='edit-btn'>
                         <Button
+                            data-test="editBtn"
                             type="button"
                             class="usa-button--unstyled"
                             onClick={props.handleGoBackSteps(2)}
@@ -153,6 +156,7 @@ function Confirmation(props) {
                     <h2>{headings.step_label_4}</h2>
                     <div className='edit-btn'>
                         <Button
+                            data-test="editBtn"
                             type="button"
                             class="usa-button--unstyled"
                             onClick={props.handleGoBackSteps(1)}
