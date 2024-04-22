@@ -14,6 +14,7 @@ function RegistrationOptions(props) {
     const content = props.content;
     const navContent = props.navContent;
     const stringContent = props.stringContent
+    const renderContent = props.stateData.abbrev === "wy" || props.stateData.abbrev === "wi" || props.stateData.abbrev === "nh";
 
     if (content && navContent && stringContent) {
         const onlineContent = content.find(item => item.uuid === "086a212d-4f75-47e8-aad6-24eadc4a559f");
@@ -37,6 +38,7 @@ function RegistrationOptions(props) {
                         stateData={props.stateData}
                         handleNext={props.handleNext}
                         stringContent={props.stringContent}
+                        renderContent={renderContent}
                     />}
                 {(regType === 'online' && acceptsNVRF === '1' && props.stateData.mail_reg_url === "") &&
                     <OnlineNoStateMail
@@ -45,6 +47,7 @@ function RegistrationOptions(props) {
                         stateData={props.stateData}
                         handleNext={props.handleNext}
                         stringContent={props.stringContent}
+                        renderContent={renderContent}
                     />}
                 {(regType === 'online' && acceptsNVRF === '0' && props.stateData.name === "Guam") &&
                     <OnlineOnly
@@ -53,6 +56,7 @@ function RegistrationOptions(props) {
                         stateData={props.stateData}
                         handleNext={props.handleNext}
                         stringContent={props.stringContent}
+                        renderContent={renderContent}
                     />}
                 {(regType === 'online' && acceptsNVRF === '0' && props.stateData.name != "Guam") &&
                     <OnlineNoNVRF
@@ -61,6 +65,7 @@ function RegistrationOptions(props) {
                         stateData={props.stateData}
                         handleNext={props.handleNext}
                         stringContent={props.stringContent}
+                        renderContent={renderContent}
                     />}
                 {(regType === 'by-mail' && acceptsNVRF === '1') &&
                     <ByMail
@@ -69,6 +74,7 @@ function RegistrationOptions(props) {
                         stateData={props.stateData}
                         handleNext={props.handleNext}
                         stringContent={props.stringContent}
+                        renderContent={renderContent}
                     />}
                  {(regType === 'by-mail' && acceptsNVRF === '0') &&
                     <ByMailStateOnly
@@ -77,12 +83,14 @@ function RegistrationOptions(props) {
                         stateData={props.stateData}
                         handleNext={props.handleNext}
                         stringContent={props.stringContent}
+                        renderContent={renderContent}
                     />}
                 {regType === 'in-person' &&
                     <InPerson
                         content={inPersonContent}
                         stateData={props.stateData}
                         stringContent={props.stringContent}
+                        renderContent={renderContent}
                     />}
                 {regType === 'not-needed' &&
                     <NotNeeded

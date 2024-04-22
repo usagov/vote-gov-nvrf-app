@@ -50,6 +50,7 @@ function OnlineOnly(props) {
             <h1>{content.title.replace("@state_name", stateContent.name)}</h1>
             <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: contentBodyProcessed}}/>
             <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: inPersonReg}}/>
+            {props.renderContent && <div>{stateContent.name}</div>}
             </>
         );
     }

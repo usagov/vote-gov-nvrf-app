@@ -9,7 +9,6 @@ function Online(props) {
     const stateContent = props.stateData;
     const stringContent = props.stringContent
 
-    console.log(content)
 
     if (content && navContent) {
         const contentBody = sanitizeDOM(content.body).replaceAll("@state_name", stateContent.name);
@@ -66,6 +65,7 @@ function Online(props) {
             <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: contentBodyPartOne}}/>
             <p><NextButton stringContent={stringContent} noMarginTop type={'submit'} onClick={props.handleNext} text={navContent.next.start}/></p>
             <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: inPersonReg}}/>
+            {props.renderContent && <div>{stateContent.name}</div>}
             <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: contentBodyPartTwo}}/>
 
         </>

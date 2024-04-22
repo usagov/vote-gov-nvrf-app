@@ -56,6 +56,7 @@ function ByMail(props) {
                 <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: contentBodyPartOne}}/>
                 <p><NextButton stringContent={stringContent} noMarginTop type={'submit'} onClick={props.handleNext} text={navContent.next.start}/></p>
                 <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: inPersonReg}}/>
+                {props.renderContent && <div>{stateContent.name}</div>}
                 <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: contentBodyPartTwo}}/>
             </>
         );
