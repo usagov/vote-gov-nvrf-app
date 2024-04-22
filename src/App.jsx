@@ -123,6 +123,7 @@ function App() {
                 <RegistrationOptions
                     handleNext={handleNext}
                     handlePrev={handlePrev}
+                    state={selectedState}
                     stateData={stateData}
                     content={content}
                     navContent={navContent}

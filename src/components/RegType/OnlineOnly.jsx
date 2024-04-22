@@ -30,12 +30,26 @@ function OnlineOnly(props) {
             </p>
         );
 
+        const inPersonRegMarkup = () => (
+            <div>
+                <h1>In-person registration</h1>
+
+                <p>You can also register in person. View {stateContent.name}'s election website for details.</p>
+                <a href={stateContent.election_website_url} className="usa-button" target="_blank">
+                        <span>Go to {stateContent.name}'s state website</span>
+                        <Icon.Launch style={{margin: "-3px -3px -3px 4px"}}/>
+                </a>
+            </div>
+        );
+
         const contentBodyProcessed = contentBody.replace("@state_online_link", renderToStaticMarkup(stateOnlineLink())).replace("@state_confirm_link", renderToStaticMarkup(checkRegLink()));
+        let inPersonReg = renderToStaticMarkup(inPersonRegMarkup());
 
         return (
             <>
             <h1>{content.title.replace("@state_name", stateContent.name)}</h1>
             <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: contentBodyProcessed}}/>
+            <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: inPersonReg}}/>
             </>
         );
     }

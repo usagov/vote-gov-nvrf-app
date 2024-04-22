@@ -9,6 +9,8 @@ function Online(props) {
     const stateContent = props.stateData;
     const stringContent = props.stringContent
 
+    console.log(content)
+
     if (content && navContent) {
         const contentBody = sanitizeDOM(content.body).replaceAll("@state_name", stateContent.name);
         const contentBodyParts = contentBody.split("@vote_nvrf_link");
@@ -40,16 +42,32 @@ function Online(props) {
             </p>
         );
 
+        const inPersonRegMarkup = () => (
+            <div>
+                <h1>In-person registration</h1>
+
+                <p>You can also register in person. View {stateContent.name}'s election website for details.</p>
+                <a href={stateContent.election_website_url} className="usa-button" target="_blank">
+                        <span>Go to {stateContent.name}'s state website</span>
+                        <Icon.Launch style={{margin: "-3px -3px -3px 4px"}}/>
+                </a>
+            </div>
+        );
+
         let contentBodyPartOne = contentBodyParts[0].replace("@state_online_link", renderToStaticMarkup(stateOnlineLink()));
         let contentBodyPartTwo = contentBodyParts[1].replace("@state_confirm_link", renderToStaticMarkup(checkRegLink()))
                                                     .replace("@state_mailin_link", renderToStaticMarkup(stateMailinLink()));
+        let inPersonReg = renderToStaticMarkup(inPersonRegMarkup());
+
 
     return (
         <>
             <h1>{content.title.replace("@state_name", stateContent.name)}</h1>
             <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: contentBodyPartOne}}/>
             <p><NextButton stringContent={stringContent} noMarginTop type={'submit'} onClick={props.handleNext} text={navContent.next.start}/></p>
+            <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: inPersonReg}}/>
             <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: contentBodyPartTwo}}/>
+
         </>
         );
     }
