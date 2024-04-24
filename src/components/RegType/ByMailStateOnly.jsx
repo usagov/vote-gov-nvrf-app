@@ -30,29 +30,29 @@ function ByMailStateOnly(props) {
             </p>
         );
 
-        const inPersonRegMarkup = () => (
-            <div>
-                <h1>In-person registration</h1>
-
-                <p>You can also register in person. View {stateContent.name}'s election website for details.</p>
+        const inPersonLink = () => (
+            <p>
                 <a href={stateContent.election_website_url} className="usa-button" target="_blank">
-                        <span>Go to {stateContent.name}'s state website</span>
-                        <Icon.Launch style={{margin: "-3px -3px -3px 4px"}}/>
+                    <span>{stringContent.inPersonBtn.replace("@state_name", stateContent.name)}</span>
+                    <Icon.Launch title={stringContent.extlink} style={{margin: "-3px -3px -3px 4px"}}/>
                 </a>
-            </div>
+            </p>
         );
 
+        const stateSpecificContent = () => (
+            props.renderContent && <h2>{stateContent.name}</h2>
+         );
+
         let contentBodyProcessed = contentBody.replace("@state_mailin_link", renderToStaticMarkup(stateMailinLink()))
-                                              .replace("@state_confirm_link", renderToStaticMarkup(checkRegLink()));
-        let inPersonReg = renderToStaticMarkup(inPersonRegMarkup());
+                                              .replace("@state_confirm_link", renderToStaticMarkup(checkRegLink()))
+                                              .replace("@state_links", renderToStaticMarkup(inPersonLink()))
+                                              .replace("@state_specific_content", renderToStaticMarkup(stateSpecificContent()));
 
         return (
             <>
                 <h1>{content.title.replace("@state_name", stateContent.name)}</h1>
-                <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: inPersonReg}}/>
-                {props.renderContent && <div>{stateContent.name}</div>}
                 <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: contentBodyProcessed}}/>
-            </>
+                </>
         );
     }
 }

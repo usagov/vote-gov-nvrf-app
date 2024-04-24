@@ -15,8 +15,7 @@ function OnlineOnly(props) {
         const stateOnlineLink = () => (
                 <p>
                     <a href={stateContent.registration_url} className="usa-button" target="_blank">
-                        <span>{stringContent.stateOnlineName.replace("@state_name", stateContent.name)}</span>
-                        <Icon.Launch title={stringContent.extlink} style={{margin: "-3px -3px -3px 4px"}}/>
+                        <span>{stringContent.inPersonBtn}</span>                        <Icon.Launch title={stringContent.extlink} style={{margin: "-3px -3px -3px 4px"}}/>
                     </a>
                 </p>
         );
@@ -24,33 +23,33 @@ function OnlineOnly(props) {
         const checkRegLink = () => (
             <p>
                     <a href={stateContent.confirm_reg_url} className="usa-button" target="_blank">
-                        <span>{stringContent.checkReg}</span>
+                        <span>{stringContent.inPersonBtn.replace("@state_name", stateContent.name)}</span>
                         <Icon.Launch title={stringContent.extlink} style={{margin: "-3px -3px -3px 4px"}}/>
                     </a>
             </p>
         );
 
-        const inPersonRegMarkup = () => (
-            <div>
-                <h1>In-person registration</h1>
-
-                <p>You can also register in person. View {stateContent.name}'s election website for details.</p>
+        const inPersonLink = () => (
+            <p>
                 <a href={stateContent.election_website_url} className="usa-button" target="_blank">
-                        <span>Go to {stateContent.name}'s state website</span>
-                        <Icon.Launch style={{margin: "-3px -3px -3px 4px"}}/>
+                    <span>{stringContent.inPersonBtn}</span>                    <Icon.Launch title={stringContent.extlink} style={{margin: "-3px -3px -3px 4px"}}/>
                 </a>
-            </div>
+            </p>
         );
 
-        const contentBodyProcessed = contentBody.replace("@state_online_link", renderToStaticMarkup(stateOnlineLink())).replace("@state_confirm_link", renderToStaticMarkup(checkRegLink()));
-        let inPersonReg = renderToStaticMarkup(inPersonRegMarkup());
+        const stateSpecificContent = () => (
+            props.renderContent && <h2>{stateContent.name}</h2>
+         );
+
+        const contentBodyProcessed = contentBody.replace("@state_online_link", renderToStaticMarkup(stateOnlineLink()))
+                                                .replace("@state_confirm_link", renderToStaticMarkup(checkRegLink()))
+                                                .replace("@state_links", renderToStaticMarkup(inPersonLink()))
+                                                .replace("@state_specific_content", renderToStaticMarkup(stateSpecificContent()));
 
         return (
             <>
             <h1>{content.title.replace("@state_name", stateContent.name)}</h1>
             <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: contentBodyProcessed}}/>
-            <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: inPersonReg}}/>
-            {props.renderContent && <div>{stateContent.name}</div>}
             </>
         );
     }
