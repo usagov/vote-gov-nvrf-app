@@ -37,7 +37,7 @@
             "label": "Other information"
         },
         "current_address": {
-            "label": "Other information",
+            "label": "Home address",
             "alert": "You are not registering with a current address, so these fields are blank."
         },
         "previous_address": {
@@ -46,7 +46,7 @@
         },
         "mailing_address": {
             "label": "Mailing address",
-            "alert": "You do not have an alternate mailing address, so these fields are blank."
+            "alert": "Your mailing address is the same as your home address, so these fields are left blank."
         },
         "id_label": {
             "label": "ID number"
