@@ -39,14 +39,9 @@ function ByMailStateOnly(props) {
             </p>
         );
 
-        const stateSpecificContent = () => (
-            props.renderContent && <h2>{stateContent.name}</h2>
-         );
-
         let contentBodyProcessed = contentBody.replace("@state_mailin_link", renderToStaticMarkup(stateMailinLink()))
                                               .replace("@state_confirm_link", renderToStaticMarkup(checkRegLink()))
                                               .replace("@state_links", renderToStaticMarkup(inPersonLink()))
-                                              .replace("@state_specific_content", renderToStaticMarkup(stateSpecificContent()));
 
         return (
             <>

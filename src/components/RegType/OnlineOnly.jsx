@@ -32,19 +32,15 @@ function OnlineOnly(props) {
         const inPersonLink = () => (
             <p>
                 <a href={stateContent.election_website_url} className="usa-button" target="_blank">
-                    <span>{stringContent.inPersonBtn}</span>                    <Icon.Launch title={stringContent.extlink} style={{margin: "-3px -3px -3px 4px"}}/>
+                    <span>{stringContent.inPersonBtn}</span>
+                    <Icon.Launch title={stringContent.extlink} style={{margin: "-3px -3px -3px 4px"}}/>
                 </a>
             </p>
         );
 
-        const stateSpecificContent = () => (
-            props.renderContent && <h2>{stateContent.name}</h2>
-         );
-
         const contentBodyProcessed = contentBody.replace("@state_online_link", renderToStaticMarkup(stateOnlineLink()))
                                                 .replace("@state_confirm_link", renderToStaticMarkup(checkRegLink()))
                                                 .replace("@state_links", renderToStaticMarkup(inPersonLink()))
-                                                .replace("@state_specific_content", renderToStaticMarkup(stateSpecificContent()));
 
         return (
             <>
