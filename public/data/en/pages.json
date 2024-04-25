@@ -96,6 +96,14 @@
     "omb_number": "OMB Control No. 3265-0015"
   },
   {
+    "uuid": "db6d0e24-1e00-4070-a5c8-5f9de98df871",
+    "lang": "en",
+    "title": "@state_name registration options",
+    "instructions": "",
+    "body": "<h2>Mail-in registration</h2><p>You may register by mail if you cannot apply in person because you're temporarily out of town or have a disability that prevents you from applying in person. Request an absentee ballot from your clerk.</p><body>@state_mailin_link\n</body><h2>In-person registration</h2><p>You may also register in person at your local election office. Learn more about how to register on New Hampshire’s election website.</p><body>@state_links\n</body>",
+    "omb_number": ""
+},
+  {
     "uuid": "e3461b9a-e0b1-4157-ad4a-13f3835a101c",
     "lang": "en",
     "title": "Register to vote",
@@ -103,6 +111,14 @@
     "body": "\u003Cp\u003EAll states except North Dakota require that you register before voting in an election. The process can be a little different for each state. Select your state or territory from the dropdown menu below to see your registration options.\u003C/p\u003E\u003Cp\u003E\u003Cstrong\u003E* Required fields\u003C/strong\u003E\u003C/p\u003E\u003Ch2\u003EGet started by selecting your state\u003C/h2\u003E\u003Cbody\u003E\n\n\u003C!-- THEME DEBUG --\u003E\n\u003C!-- THEME HOOK: 'ec_placeholder' --\u003E\n\u003C!-- FILE NAME SUGGESTIONS:\n   * ec-placeholder--state-selector.html.twig\n   x ec-placeholder.html.twig\n--\u003E\n\u003C!-- BEGIN OUTPUT from 'themes/custom/votegov/templates/embedded-content/ec-placeholder.html.twig' --\u003E\n@state_selector\n\n\u003C!-- END OUTPUT from 'themes/custom/votegov/templates/embedded-content/ec-placeholder.html.twig' --\u003E\n\n\u003C/body\u003E\u003Cp\u003E\u003Cbr\u003E\u003Cstrong\u003EAre you living outside of the United States?\u003C/strong\u003E\u003Cbr\u003EIf you are a U.S. citizen living outside the U.S., a U.S. military service member, and/or family of a military member, visit the \u003Ca class=\"usa-link--external\" href=\"https://www.fvap.gov/\" target=\"_blank\"\u003EFederal Voter Assistance Program\u003C/a\u003E for information on how to register to vote. You will need to complete the \u003Ca class=\"usa-link--external\" href=\"https://www.fvap.gov/fpca-privacy-notice\" target=\"_blank\"\u003EFederal Post Card Application (FPCA)\u003C/a\u003E.\u003C/p\u003E",
     "omb_number": ""
   },
+  {
+    "uuid": "9c7f2350-d74f-457e-beff-34b66e26c761",
+    "lang": "en",
+    "title": "@state_name registration options",
+    "instructions": "",
+    "body": "<p>Register for the first time or report a change of name or address to @state_name election office.</p><h2>In-person registration&nbsp;</h2><p>Wyoming doesn't currently offer online registration. Visit your county clerk's website to find locations in your county where you can register in person. You can register on Election Day. Find in-person registration locations.&nbsp;</p><body>@state_election_site_link\n</body><h2>Mail-in registration</h2><p>You can use the state mail-in registration form. You will need access to a printer and you will need to provide a postage stamp.</p><p><strong>Download a PDF form on your state website.&nbsp;</strong><br>Download the PDF and either fill it out on your computer or print it and fill out by hand, then mail it.&nbsp;</p><body>@state_mailin_link\n</body><h2>Check registration</h2><p>Save time by checking first to see if you’re already registered. You can confirm your registration status by contacting your local registration office.&nbsp;</p><body>@state_confirm_link\n</body>",
+    "omb_number": ""
+},
   {
     "uuid": "229f283c-6a70-43f6-a80f-15cfa158f062",
     "lang": "en",

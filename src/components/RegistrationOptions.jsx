@@ -7,6 +7,8 @@ import OnlineNoNVRF from "./RegType/OnlineNoNvrf";
 import NotNeeded from "./RegType/NotNeeded";
 import BackButton from './BackButton';
 import InPerson from "./RegType/InPerson";
+import NewHampshire from "./RegType/CustomStateTemplates/NewHampshire";
+import Wyoming from "./RegType/CustomStateTemplates/Wyoming";
 
 function RegistrationOptions(props) {
     const regType = props.stateData.reg_type;
@@ -14,7 +16,6 @@ function RegistrationOptions(props) {
     const content = props.content;
     const navContent = props.navContent;
     const stringContent = props.stringContent
-    const renderContent = props.stateData.abbrev === "wy" || props.stateData.abbrev === "wi" || props.stateData.abbrev === "nh";
 
     if (content && navContent && stringContent) {
         const onlineContent = content.find(item => item.uuid === "086a212d-4f75-47e8-aad6-24eadc4a559f");
@@ -25,79 +26,95 @@ function RegistrationOptions(props) {
         const mailStateOnlyContent = content.find(item => item.uuid === "bfe1aeed-72b1-405e-b3e9-a94303611c71");
         const inPersonContent = content.find(item => item.uuid === "c8a3890a-ed6f-4d50-a002-4011ded29e5a");
         const noRegContent = content.find(item => item.uuid === "df8fede3-11ad-4099-b2a8-f6a9bb457842");
+        const newHampshireContent = content.find(item => item.uuid === "db6d0e24-1e00-4070-a5c8-5f9de98df871");
+        const wyomingContent = content.find(item => item.uuid === "9c7f2350-d74f-457e-beff-34b66e26c761");
 
     return (
         <>
-
             <BackButton stringContent={stringContent} type={'button'} onClick={props.handlePrev} text={navContent.back.select_state}/>
             <div className={'usa-prose margin-top-5 maxw-tablet margin-x-auto'}>
-                {(regType === 'online' && acceptsNVRF === '1' && props.stateData.mail_reg_url != "") &&
-                    <Online
-                        content={onlineContent}
-                        navContent={props.navContent}
-                        stateData={props.stateData}
-                        handleNext={props.handleNext}
-                        stringContent={props.stringContent}
-                        renderContent={renderContent}
-                    />}
-                {(regType === 'online' && acceptsNVRF === '1' && props.stateData.mail_reg_url === "") &&
-                    <OnlineNoStateMail
-                        content={onlineNoStateMailContent}
-                        navContent={props.navContent}
-                        stateData={props.stateData}
-                        handleNext={props.handleNext}
-                        stringContent={props.stringContent}
-                        renderContent={renderContent}
-                    />}
-                {(regType === 'online' && acceptsNVRF === '0' && props.stateData.name === "Guam") &&
-                    <OnlineOnly
-                        content={onlineOnlyContent}
-                        navContent={props.navContent}
-                        stateData={props.stateData}
-                        handleNext={props.handleNext}
-                        stringContent={props.stringContent}
-                        renderContent={renderContent}
-                    />}
-                {(regType === 'online' && acceptsNVRF === '0' && props.stateData.name != "Guam") &&
-                    <OnlineNoNVRF
-                        content={onlineNoNvrfContent}
-                        navContent={props.navContent}
-                        stateData={props.stateData}
-                        handleNext={props.handleNext}
-                        stringContent={props.stringContent}
-                        renderContent={renderContent}
-                    />}
-                {(regType === 'by-mail' && acceptsNVRF === '1') &&
-                    <ByMail
-                        content={mailContent}
-                        navContent={props.navContent}
-                        stateData={props.stateData}
-                        handleNext={props.handleNext}
-                        stringContent={props.stringContent}
-                        renderContent={renderContent}
-                    />}
-                 {(regType === 'by-mail' && acceptsNVRF === '0') &&
-                    <ByMailStateOnly
-                        content={mailStateOnlyContent}
-                        navContent={props.navContent}
-                        stateData={props.stateData}
-                        handleNext={props.handleNext}
-                        stringContent={props.stringContent}
-                        renderContent={renderContent}
-                    />}
-                {regType === 'in-person' &&
-                    <InPerson
-                        content={inPersonContent}
-                        stateData={props.stateData}
-                        stringContent={props.stringContent}
-                        renderContent={renderContent}
-                    />}
-                {regType === 'not-needed' &&
-                    <NotNeeded
-                        content={noRegContent}
-                        stateData={props.stateData}
-                        stringContent={props.stringContent}
-                    />}
+                {props.stateData.abbrev != 'nh' && props.stateData.abbrev != 'wy' 
+                    ? 
+                    <div>
+                    {(regType === 'online' && acceptsNVRF === '1' && props.stateData.mail_reg_url != "") &&
+                        <Online
+                            content={onlineContent}
+                            navContent={props.navContent}
+                            stateData={props.stateData}
+                            handleNext={props.handleNext}
+                            stringContent={props.stringContent}
+                        />}
+                    {(regType === 'online' && acceptsNVRF === '1' && props.stateData.mail_reg_url === "") &&
+                        <OnlineNoStateMail
+                            content={onlineNoStateMailContent}
+                            navContent={props.navContent}
+                            stateData={props.stateData}
+                            handleNext={props.handleNext}
+                            stringContent={props.stringContent}
+                        />}
+                    {(regType === 'online' && acceptsNVRF === '0' && props.stateData.name === "Guam") &&
+                        <OnlineOnly
+                            content={onlineOnlyContent}
+                            navContent={props.navContent}
+                            stateData={props.stateData}
+                            handleNext={props.handleNext}
+                            stringContent={props.stringContent}
+                        />}
+                    {(regType === 'online' && acceptsNVRF === '0' && props.stateData.name != "Guam") &&
+                        <OnlineNoNVRF
+                            content={onlineNoNvrfContent}
+                            navContent={props.navContent}
+                            stateData={props.stateData}
+                            handleNext={props.handleNext}
+                            stringContent={props.stringContent}
+                        />}
+                    {(regType === 'by-mail' && acceptsNVRF === '1') &&
+                        <ByMail
+                            content={mailContent}
+                            navContent={props.navContent}
+                            stateData={props.stateData}
+                            handleNext={props.handleNext}
+                            stringContent={props.stringContent}
+                        />}
+                    {(regType === 'by-mail' && acceptsNVRF === '0') &&
+                        <ByMailStateOnly
+                            content={mailStateOnlyContent}
+                            navContent={props.navContent}
+                            stateData={props.stateData}
+                            handleNext={props.handleNext}
+                            stringContent={props.stringContent}
+                        />}
+                    {regType === 'in-person' &&
+                        <InPerson
+                            content={inPersonContent}
+                            stateData={props.stateData}
+                            stringContent={props.stringContent}
+                        />}
+                    {regType === 'not-needed' &&
+                        <NotNeeded
+                            content={noRegContent}
+                            stateData={props.stateData}
+                            stringContent={props.stringContent}
+                        />}
+                    </div> 
+                    : 
+                    <div>
+                    {props.stateData.abbrev === 'nh' &&
+                        <NewHampshire
+                            content={newHampshireContent}
+                            navContent={props.navContent}
+                            stateData={props.stateData}
+                            stringContent={props.stringContent}
+                        />}
+                    {props.stateData.abbrev === 'wy' &&
+                        <Wyoming
+                            content={wyomingContent}
+                            navContent={props.navContent}
+                            stateData={props.stateData}
+                            stringContent={props.stringContent}
+                        />}
+                    </div>
+                }
             </div>
             </>
         );
