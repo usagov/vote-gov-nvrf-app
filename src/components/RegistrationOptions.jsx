@@ -35,7 +35,7 @@ function RegistrationOptions(props) {
             <div className={'usa-prose margin-top-5 maxw-tablet margin-x-auto'}>
                 {props.stateData.abbrev != 'nh' && props.stateData.abbrev != 'wy' 
                     ? 
-                    <div>
+                    <>
                     {(regType === 'online' && acceptsNVRF === '1' && props.stateData.mail_reg_url != "") &&
                         <Online
                             content={onlineContent}
@@ -96,9 +96,9 @@ function RegistrationOptions(props) {
                             stateData={props.stateData}
                             stringContent={props.stringContent}
                         />}
-                    </div> 
+                    </>
                     : 
-                    <div>
+                    <>
                     {props.stateData.abbrev === 'nh' &&
                         <NewHampshire
                             content={newHampshireContent}
@@ -113,7 +113,7 @@ function RegistrationOptions(props) {
                             stateData={props.stateData}
                             stringContent={props.stringContent}
                         />}
-                    </div>
+                    </>
                 }
             </div>
             </>

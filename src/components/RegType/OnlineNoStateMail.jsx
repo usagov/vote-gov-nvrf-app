@@ -35,7 +35,8 @@ function OnlineNoStateMail(props) {
         const inPersonLink = () => (
             <p>
                 <a href={stateContent.election_website_url} className="usa-button" target="_blank">
-                    <span>{stringContent.inPersonBtn}</span>                    <Icon.Launch title={stringContent.extlink} style={{margin: "-3px -3px -3px 4px"}}/>
+                    <span>{stringContent.inPersonBtn.replace("@state_name", stateContent.name)}</span>
+                    <Icon.Launch title={stringContent.extlink} style={{margin: "-3px -3px -3px 4px"}}/>
                 </a>
             </p>
         );

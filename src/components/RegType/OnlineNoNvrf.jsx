@@ -15,7 +15,7 @@ function OnlineNoNVRF(props) {
         const stateOnlineLink = () => (
             <p>
                 <a href={stateContent.registration_url} className="usa-button" target="_blank">
-                    <span>{stringContent.inPersonBtn}</span>
+                    <span>{stringContent.inPersonBtn.replace("@state_name", props.stateData.name)}</span>
                     <Icon.Launch title={stringContent.extlink} style={{margin: "-3px -3px -3px 4px"}}/>
                 </a>
             </p>
@@ -43,7 +43,8 @@ function OnlineNoNVRF(props) {
         const inPersonLink = () => (
             <p>
                 <a href={stateContent.election_website_url} className="usa-button" target="_blank">
-                    <span>{stringContent.inPersonBtn}</span>                    <Icon.Launch title={stringContent.extlink} style={{margin: "-3px -3px -3px 4px"}}/>
+                    <span>{stringContent.inPersonBtn.replace("@state_name", props.stateData.name)}</span>
+                    <Icon.Launch title={stringContent.extlink} style={{margin: "-3px -3px -3px 4px"}}/>
                 </a>
             </p>
         );
