@@ -38,7 +38,7 @@ function Wyoming(props) {
             </p>
         );
 
-        let contentBodyProcessed = contentBody.replace("@state_election_site_link", renderToStaticMarkup(inPersonLink()))
+        let contentBodyProcessed = contentBody.replace("@state_links", renderToStaticMarkup(inPersonLink()))
                                               .replace("@state_mailin_link", renderToStaticMarkup(stateMailinLink()))
                                               .replace("@state_confirm_link", renderToStaticMarkup(checkRegLink()));
 
