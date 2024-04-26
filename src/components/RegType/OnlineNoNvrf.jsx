@@ -9,8 +9,6 @@ function OnlineNoNVRF(props) {
     const stateContent = props.stateData;
     const stringContent = props.stringContent
 
-    console.log('onlinenonvrf', stateContent.name)
-
     if (content && navContent) {
         const contentBody = sanitizeDOM(content.body).replaceAll("@state_name", stateContent.name);
 
