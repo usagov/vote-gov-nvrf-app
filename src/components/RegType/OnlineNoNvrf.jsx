@@ -24,7 +24,7 @@ function OnlineNoNVRF(props) {
         const stateMailinLink = () => (
             <p>
                 <a href={stateContent.mail_reg_url} className="usa-button" target="_blank" title={stringContent.newWindow}>
-                    <span>{stringContent.stateName.replace("%state_name%", props.stateData.name)}</span>
+                    <span>{stringContent.stateName.replace("@state_name", props.stateData.name)}</span>
                     <Icon.Launch title={stringContent.extlink} style={{margin: "-3px -3px -3px 4px"}}/>
                 </a>
             </p>
