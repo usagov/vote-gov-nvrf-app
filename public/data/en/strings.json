@@ -13,7 +13,7 @@
     "backBtn": "Back to Vote.gov",
     "backIcon": "back arrow icon",
     "forwardIcon": "forward arrow icon",
-    "stateOnlineName": "Go to @state_name's online form",
+    "stateOnlineName": "Register on @state_name's website",
     "confirm": "Confirm and continue",
     "selectState": "Select your state or territory",
     "lastUpdated": "@state_name information last updated ",
