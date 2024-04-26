@@ -14,20 +14,20 @@ function OnlineNoStateMail(props) {
         const contentBodyParts = contentBody.split("@vote_nvrf_link");
 
         const stateOnlineLink = () => (
-                <p>
-                    <a href={stateContent.registration_url} className="usa-button" target="_blank">
-                        <span>{stringContent.stateOnlineName.replace("@state_name", stateContent.name)}</span>
-                        <Icon.Launch title={stringContent.extlink} style={{margin: "-3px -3px -3px 4px"}}/>
-                    </a>
-                </p>
+            <p>
+                <a href={stateContent.registration_url} className="usa-button" target="_blank">
+                    <span>{stringContent.stateOnlineName.replace("@state_name", stateContent.name)}</span>
+                    <Icon.Launch title={stringContent.extlink} style={{margin: "-3px -3px -3px 4px"}}/>
+                </a>
+            </p>
         );
 
         const checkRegLink = () => (
             <p>
-                    <a href={stateContent.confirm_reg_url} className="usa-button" target="_blank">
-                        <span>{stringContent.inPersonBtn.replace("@state_name", stateContent.name)}</span>
-                        <Icon.Launch title={stringContent.extlink} style={{margin: "-3px -3px -3px 4px"}}/>
-                    </a>
+                <a href={stateContent.confirm_reg_url} className="usa-button" target="_blank">
+                    <span>{stringContent.inPersonBtn.replace("@state_name", stateContent.name)}</span>
+                    <Icon.Launch title={stringContent.extlink} style={{margin: "-3px -3px -3px 4px"}}/>
+                </a>
             </p>
         );
 
