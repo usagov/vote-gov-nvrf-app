@@ -1,9 +1,8 @@
 import { Icon } from '@trussworks/react-uswds';
-import NextButton from '../NextButton';
 import {renderToStaticMarkup} from "react-dom/server";
-import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
+import {sanitizeDOM} from "../../HelperFunctions/JsonHelper";
 
-function ByMail(props) {
+function NewHampshire(props) {
     const content = props.content;
     const navContent = props.navContent;
     const stateContent = props.stateData;
@@ -11,7 +10,6 @@ function ByMail(props) {
 
     if (content && navContent && stringContent) {
         const contentBody = sanitizeDOM(content.body).replaceAll("@state_name", stateContent.name);
-        const contentBodyParts = contentBody.split("@vote_nvrf_link")
 
         const stateMailinLink = () => (
             <p>
@@ -40,21 +38,17 @@ function ByMail(props) {
             </p>
         );
 
-        let contentBodyPartOne = contentBodyParts[0]
-        let contentBodyPartTwo = contentBodyParts[1].replace("@state_mailin_link", renderToStaticMarkup(stateMailinLink()))
-                                                    .replace("@state_confirm_link", renderToStaticMarkup(checkRegLink()))
-                                                    .replace("@state_links", renderToStaticMarkup(inPersonLink()))
+        let contentBodyProcessed = contentBody.replace("@state_mailin_link", renderToStaticMarkup(stateMailinLink()))
+                                              .replace("@state_confirm_link", renderToStaticMarkup(checkRegLink()))
+                                              .replace("@state_links", renderToStaticMarkup(inPersonLink()))
 
         return (
             <>
                 <h1>{content.title.replace("@state_name", stateContent.name)}</h1>
-
-                <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: contentBodyPartOne}}/>
-                <p><NextButton stringContent={stringContent} noMarginTop type={'submit'} onClick={props.handleNext} text={navContent.next.start}/></p>
-                    <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: contentBodyPartTwo}}/>
-            </>
+                <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: contentBodyProcessed}}/>
+                </>
         );
     }
 }
 
-export default ByMail;
+export default NewHampshire;

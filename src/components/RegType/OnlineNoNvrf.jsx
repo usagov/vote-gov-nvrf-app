@@ -13,12 +13,12 @@ function OnlineNoNVRF(props) {
         const contentBody = sanitizeDOM(content.body).replaceAll("@state_name", stateContent.name);
 
         const stateOnlineLink = () => (
-                <p>
-                    <a href={stateContent.registration_url} className="usa-button" target="_blank">
-                        <span>{stringContent.stateOnlineName.replace("@state_name", stateContent.name)}</span>
-                        <Icon.Launch title={stringContent.extlink} style={{margin: "-3px -3px -3px 4px"}}/>
-                    </a>
-                </p>
+            <p>
+                <a href={stateContent.registration_url} className="usa-button" target="_blank">
+                    <span>{stringContent.inPersonBtn.replace("@state_name", props.stateData.name)}</span>
+                    <Icon.Launch title={stringContent.extlink} style={{margin: "-3px -3px -3px 4px"}}/>
+                </a>
+            </p>
         );
 
         const stateMailinLink = () => (
@@ -33,15 +33,26 @@ function OnlineNoNVRF(props) {
         const checkRegLink = () => (
             <p>
                     <a href={stateContent.confirm_reg_url} className="usa-button" target="_blank">
-                        <span>{stringContent.checkReg}</span>
+                        <span>{stringContent.inPersonBtn.replace("@state_name", stateContent.name)}</span>
                         <Icon.Launch title={stringContent.extlink} style={{margin: "-3px -3px -3px 4px"}}/>
                     </a>
             </p>
         );
 
+
+        const inPersonLink = () => (
+            <p>
+                <a href={stateContent.election_website_url} className="usa-button" target="_blank">
+                    <span>{stringContent.inPersonBtn.replace("@state_name", props.stateData.name)}</span>
+                    <Icon.Launch title={stringContent.extlink} style={{margin: "-3px -3px -3px 4px"}}/>
+                </a>
+            </p>
+        );
+
         let contentBodyProcessed = contentBody.replace("@state_online_link", renderToStaticMarkup(stateOnlineLink()))
                                             .replace("@state_mailin_link", renderToStaticMarkup(stateMailinLink()))
-                                            .replace("@state_confirm_link", renderToStaticMarkup(checkRegLink()));
+                                            .replace("@state_confirm_link", renderToStaticMarkup(checkRegLink()))
+                                            .replace("@state_links", renderToStaticMarkup(inPersonLink()))
 
         return (
             <>

@@ -47,7 +47,7 @@ cy.get('[data-test="nextBtn"]').click()
   cy.get('[data-test="errorText"]').should('contain.text', 'City name must be filled out.')
   cy.get('[data-test="city"]').type(data.addressTown)
   cy.get('[data-test="nextBtn"]').click().click()
-  cy.get('[data-test="errorText"]').should('contain.text', 'Zip code must be 5 digits.')
+  cy.get('[data-test="errorText"]').should('contain.text', 'ZIP code must be 5 digits.')
   cy.get('[data-test="zip"]').type(data.addressZip)
 
 cy.get('[data-test="nextBtn"]').click()
