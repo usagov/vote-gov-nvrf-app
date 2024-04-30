@@ -237,7 +237,7 @@
     "lang": "en",
     "nvrf_id": "id_no_id",
     "name": "ID: No valid ID",
-    "label": "I do not have a valid ID number.",
+    "label": "I do not have a valid ID.",
     "help_text": false,
     "error_msg": false,
     "instructions": "\u003Cp\u003E\u0022None\u0022 will appear on your completed form.\u003C\/p\u003E",
@@ -331,7 +331,7 @@
       },
       {
         "key": "none",
-        "value": "I do not have a valid ID number"
+        "value": "I do not have a valid ID"
       }
     ]
   },
