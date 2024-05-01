@@ -164,7 +164,7 @@ function MultiStepForm(props) {
     }
 
     //Identification
-    const [idType, setIdType] = useState('')
+    const [idType, setIdType] = useState('');
     const saveIdType = (e) => {
         setIdType(e.target.value)
         e.target.value === 'none' ?
@@ -179,9 +179,9 @@ function MultiStepForm(props) {
                 id_number: '',
                 ssn_number: '',
             })
-
         document.getElementById('state-id').className = "";
     }
+
     const [hasNoID, setHasNoID] = useState(false);
     const onChangeHasNoIdCheckbox = (e) => {
         setHasNoID(e.target.checked);
