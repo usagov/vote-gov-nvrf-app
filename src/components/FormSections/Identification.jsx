@@ -74,8 +74,9 @@ function Identification(props){
                 </>
             )}
 
+        <div id="state-id" className="input-parent">
             {((props.idType === 'driver-id-num') || (props.idType === 'state-id-num') || ((stateData.abbrev === "mo") && (props.idType != "none"))) &&
-                    <div id="id-number" className="input-parent">
+                    <>
                         {((props.idType === 'driver-id-num') || (stateData.abbrev === "mo")) &&
                         <>
                             <Label className="text-bold" htmlFor="id-driver">
@@ -127,10 +128,10 @@ function Identification(props){
                             </span>
                         </>
                         }
-                    </div>}
+                    </>}
 
             {((props.idType === 'ssn') || ((stateData.abbrev === "mo") && (props.idType != "none"))) &&
-                <div className="input-parent">
+                <>
                     <Label className="text-bold" htmlFor="ssn">
                         {ssnField.label}{(ssnFieldReq) && <span className='required-text'>*</span>}
                     </Label>
@@ -157,10 +158,10 @@ function Identification(props){
                     <span id="ssn_error" role="alert" className='error-text' data-test="errorText">
                         {ssnField.error_msg}
                     </span>
-                </div>}
+                </>}
 
             {props.idType === 'ssn-full' &&
-                <div className="input-parent">
+                <>
                     <Label className="text-bold" htmlFor="ssn-full">
                         {ssnFullField.label}{(ssnFullFieldReq) && <span className='required-text'>*</span>}
                     </Label>
@@ -186,10 +187,10 @@ function Identification(props){
                     <span id="ssn-full_error" role="alert" className='error-text' data-test="errorText">
                         {ssnFullField.error_msg}
                     </span>
-                </div>}
+                </>}
 
             {props.idType === 'none' && <div dangerouslySetInnerHTML={{__html: noIdFieldInstructions}}/>}
-
+        </div>
         </>
     );
 }

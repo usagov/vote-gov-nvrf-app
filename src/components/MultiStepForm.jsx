@@ -179,6 +179,7 @@ function MultiStepForm(props) {
                 id_number: '',
                 ssn_number: '',
             })
+        document.getElementById('state-id').className = "";
     }
 
     const [hasNoID, setHasNoID] = useState(false);
