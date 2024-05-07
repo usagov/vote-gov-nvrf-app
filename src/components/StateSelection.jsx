@@ -58,10 +58,8 @@ function StateSelection(props) {
                         </div>
                     </div>
                 </div>
-                <div className="usa-prose" dangerouslySetInnerHTML= {{__html: introContentBodyParts[1]}}/>
-
                 <NextButton stringContent={stringContent} type={'submit'} onClick={(e) => focusError('state-selection')} text={navContent.next.reg_options}/>
-
+                <div className="usa-prose" dangerouslySetInnerHTML= {{__html: introContentBodyParts[1]}}/>
             </form>
         </div>
     );

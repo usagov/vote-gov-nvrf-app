@@ -9,11 +9,12 @@
     "year": "Year",
     "stateName": "Go to the PDF form on @state_name's website",
     "checkReg": "Check your registration",
+    "checkRegWY": "Find your local office to check your registration",
     "learnMore": "Learn more about your voting options",
     "backBtn": "Back to Vote.gov",
     "backIcon": "back arrow icon",
     "forwardIcon": "forward arrow icon",
-    "stateOnlineName": "Go to @state_name's online form",
+    "stateOnlineName": "Register on @state_name's website",
     "confirm": "Confirm and continue",
     "selectState": "Select your state or territory",
     "lastUpdated": "@state_name information last updated ",
@@ -25,5 +26,7 @@
     "select": "- Select -",
     "download": "Download your mail-in form",
     "downloadText": "If form does not open in a new tab you can download using the option below.",
-    "mailDeadlineLabel": "Mail-in registration deadline:"
+    "mailDeadlineLabel": "Mail-in registration deadline:",
+    "inPersonBtn": "Learn more on @state_name's election website",
+    "inPersonBtnWY": "Find in-person registration locations"
 }

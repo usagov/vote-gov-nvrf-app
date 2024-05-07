@@ -13,24 +13,35 @@ function OnlineOnly(props) {
         let contentBody = sanitizeDOM(content.body).replaceAll("@state_name", stateContent.name);
 
         const stateOnlineLink = () => (
-                <p>
-                    <a href={stateContent.registration_url} className="usa-button" target="_blank">
-                        <span>{stringContent.stateOnlineName.replace("@state_name", stateContent.name)}</span>
-                        <Icon.Launch title={stringContent.extlink} style={{margin: "-3px -3px -3px 4px"}}/>
-                    </a>
-                </p>
+            <p>
+                <a href={stateContent.registration_url} className="usa-button" target="_blank">
+                    <span>{stringContent.stateOnlineName.replace("@state_name", stateContent.name)}</span>
+                    <Icon.Launch title={stringContent.extlink} style={{margin: "-3px -3px -3px 4px"}}/>
+                </a>
+            </p>
         );
 
         const checkRegLink = () => (
             <p>
-                    <a href={stateContent.confirm_reg_url} className="usa-button" target="_blank">
-                        <span>{stringContent.checkReg}</span>
-                        <Icon.Launch title={stringContent.extlink} style={{margin: "-3px -3px -3px 4px"}}/>
-                    </a>
+                <a href={stateContent.confirm_reg_url} className="usa-button" target="_blank">
+                    <span>{stringContent.checkReg.replace("@state_name", stateContent.name)}</span>
+                    <Icon.Launch title={stringContent.extlink} style={{margin: "-3px -3px -3px 4px"}}/>
+                </a>
             </p>
         );
 
-        const contentBodyProcessed = contentBody.replace("@state_online_link", renderToStaticMarkup(stateOnlineLink())).replace("@state_confirm_link", renderToStaticMarkup(checkRegLink()));
+        const inPersonLink = () => (
+            <p>
+                <a href={stateContent.election_website_url} className="usa-button" target="_blank">
+                    <span>{stringContent.inPersonBtn.replace("@state_name", stateContent.name)}</span>
+                    <Icon.Launch title={stringContent.extlink} style={{margin: "-3px -3px -3px 4px"}}/>
+                </a>
+            </p>
+        );
+
+        const contentBodyProcessed = contentBody.replace("@state_online_link", renderToStaticMarkup(stateOnlineLink()))
+                                                .replace("@state_confirm_link", renderToStaticMarkup(checkRegLink()))
+                                                .replace("@state_links", renderToStaticMarkup(inPersonLink()))
 
         return (
             <>

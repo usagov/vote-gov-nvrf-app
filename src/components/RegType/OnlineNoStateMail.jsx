@@ -14,25 +14,36 @@ function OnlineNoStateMail(props) {
         const contentBodyParts = contentBody.split("@vote_nvrf_link");
 
         const stateOnlineLink = () => (
-                <p>
-                    <a href={stateContent.registration_url} className="usa-button" target="_blank">
-                        <span>{stringContent.stateOnlineName.replace("@state_name", stateContent.name)}</span>
-                        <Icon.Launch title={stringContent.extlink} style={{margin: "-3px -3px -3px 4px"}}/>
-                    </a>
-                </p>
+            <p>
+                <a href={stateContent.registration_url} className="usa-button" target="_blank">
+                    <span>{stringContent.stateOnlineName.replace("@state_name", stateContent.name)}</span>
+                    <Icon.Launch title={stringContent.extlink} style={{margin: "-3px -3px -3px 4px"}}/>
+                </a>
+            </p>
         );
 
         const checkRegLink = () => (
             <p>
-                    <a href={stateContent.confirm_reg_url} className="usa-button" target="_blank">
-                        <span>{stringContent.checkReg}</span>
-                        <Icon.Launch title={stringContent.extlink} style={{margin: "-3px -3px -3px 4px"}}/>
-                    </a>
+                <a href={stateContent.confirm_reg_url} className="usa-button" target="_blank">
+                    <span>{stringContent.checkReg.replace("@state_name", stateContent.name)}</span>
+                    <Icon.Launch title={stringContent.extlink} style={{margin: "-3px -3px -3px 4px"}}/>
+                </a>
+            </p>
+        );
+
+
+        const inPersonLink = () => (
+            <p>
+                <a href={stateContent.election_website_url} className="usa-button" target="_blank">
+                    <span>{stringContent.inPersonBtn.replace("@state_name", stateContent.name)}</span>
+                    <Icon.Launch title={stringContent.extlink} style={{margin: "-3px -3px -3px 4px"}}/>
+                </a>
             </p>
         );
 
         let contentBodyPartOne = contentBodyParts[0].replace("@state_online_link", renderToStaticMarkup(stateOnlineLink()));
-        let contentBodyPartTwo = contentBodyParts[1].replace("@state_confirm_link", renderToStaticMarkup(checkRegLink()));
+        let contentBodyPartTwo = contentBodyParts[1].replace("@state_confirm_link", renderToStaticMarkup(checkRegLink()))
+                                                    .replace("@state_links", renderToStaticMarkup(inPersonLink()))
 
     return (
         <>

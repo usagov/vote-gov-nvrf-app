@@ -30,16 +30,24 @@ function ByMailStateOnly(props) {
             </p>
         );
 
+        const inPersonLink = () => (
+            <p>
+                <a href={stateContent.election_website_url} className="usa-button" target="_blank">
+                    <span>{stringContent.inPersonBtn.replace("@state_name", stateContent.name)}</span>
+                    <Icon.Launch title={stringContent.extlink} style={{margin: "-3px -3px -3px 4px"}}/>
+                </a>
+            </p>
+        );
+
         let contentBodyProcessed = contentBody.replace("@state_mailin_link", renderToStaticMarkup(stateMailinLink()))
-                                              .replace("@state_confirm_link", renderToStaticMarkup(checkRegLink()));
+                                              .replace("@state_confirm_link", renderToStaticMarkup(checkRegLink()))
+                                              .replace("@state_links", renderToStaticMarkup(inPersonLink()))
 
         return (
             <>
                 <h1>{content.title.replace("@state_name", stateContent.name)}</h1>
-
                 <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: contentBodyProcessed}}/>
-
-            </>
+                </>
         );
     }
 }

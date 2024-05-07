@@ -231,7 +231,7 @@ function PersonalInfo(props){
             {dobFieldState && (
             <Grid tablet={{ col: 5 }}>
                 <div className="input-parent">
-                <Fieldset className="fieldset" legend={parseInt(dobFieldState.required) ? [<span className="text-bold">{dobField.label}</span>, <span key={1} className='required-text'>*</span>] : (string.dob)} style={{ marginTop:'30px'}}>
+                <Fieldset className="fieldset" legend={parseInt(dobFieldState.required) ? [<span key={0} className="text-bold">{dobField.label}</span>, <span key={1} className='required-text'>*</span>] : (string.dob)} style={{ marginTop:'30px'}}>
                         <span className="usa-hint" id="date-of-birth-hint">
                         {dobField.help_text}
                         </span>

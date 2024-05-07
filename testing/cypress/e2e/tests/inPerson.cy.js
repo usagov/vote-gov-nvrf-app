@@ -164,7 +164,7 @@ cy.get('[data-test="ssn"]').should('have.value', data.ssn)
 
 // * no id
 cy.get('[data-test="dropDown"]').then(dropDown => {
-  cy.get(dropDown[0]).select("I do not have a valid ID number.")
+  cy.get(dropDown[0]).select("I do not have a valid ID.")
 })
 cy.get('p').should('contain.text', '"None" will appear on your completed form.')
 
@@ -323,7 +323,7 @@ cy.get('[data-test="ssn"]').should('have.value', data.ssn)
 
 // * no id
 cy.get('[data-test="dropDown"]').then(dropDown => {
-  cy.get(dropDown[0]).select("I do not have a valid ID number.")
+  cy.get(dropDown[0]).select("I do not have a valid ID.")
 })
 cy.get('p').should('contain.text', '"None" will appear on your completed form.')
 
