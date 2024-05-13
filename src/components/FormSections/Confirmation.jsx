@@ -42,6 +42,7 @@ function Confirmation(props) {
                         <Button unstyled
                             data-test="editBtn"
                             type="button"
+                            style={{margin: 0}}
                             onClick={props.handleGoBackSteps(4)}
                             title="Return to Personal information, step one of six, to make a change">
                             {headings.confirmation.edit.label}
@@ -86,6 +87,7 @@ function Confirmation(props) {
                         <Button unstyled
                             data-test="editBtn"
                             type="button"
+                            style={{margin: 0}}
                             onClick={props.handleGoBackSteps(3)}
                             title="Return to Address and location, step two of six, to make a change">
                             {headings.confirmation.edit.label}
@@ -140,6 +142,7 @@ function Confirmation(props) {
                         <Button unstyled
                             data-test="editBtn"
                             type="button"
+                            style={{margin: 0}}
                             onClick={props.handleGoBackSteps(2)}
                             title="Return to Identification, step three of six, to make a change">
                             {headings.confirmation.edit.label}
@@ -156,6 +159,7 @@ function Confirmation(props) {
                         <Button unstyled
                             data-test="editBtn"
                             type="button"
+                            style={{margin: 0}}
                             onClick={props.handleGoBackSteps(1)}
                             title="Return to Political party, step four of six, to make a change">
                             {headings.confirmation.edit.label}
