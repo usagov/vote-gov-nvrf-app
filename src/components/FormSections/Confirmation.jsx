@@ -39,14 +39,15 @@ function Confirmation(props) {
                 <div className='grid-row'>
                     <h2>{headings.step_label_1}</h2>
                     <div className='edit-btn'>
-                        <Button
+                        <Button unstyled
                             data-test="editBtn"
                             type="button"
-                            className="usa-button--unstyled"
+                            style={{margin: 0}}
                             onClick={props.handleGoBackSteps(4)}
                             title="Return to Personal information, step one of six, to make a change">
                             {headings.confirmation.edit.label}
                         </Button>
+
                     </div>
                 </div>
                 {/*Jump to Personal Info Section (Step 1) */}
@@ -83,10 +84,10 @@ function Confirmation(props) {
                 <div className='grid-row'>
                     <h2>{headings.step_label_2}</h2>
                     <div className='edit-btn'>
-                        <Button
+                        <Button unstyled
                             data-test="editBtn"
                             type="button"
-                            className="usa-button--unstyled"
+                            style={{margin: 0}}
                             onClick={props.handleGoBackSteps(3)}
                             title="Return to Address and location, step two of six, to make a change">
                             {headings.confirmation.edit.label}
@@ -138,10 +139,10 @@ function Confirmation(props) {
                 <div className='grid-row'>
                     <h2>{headings.step_label_3}</h2>
                     <div className='edit-btn'>
-                        <Button
+                        <Button unstyled
                             data-test="editBtn"
                             type="button"
-                            className="usa-button--unstyled"
+                            style={{margin: 0}}
                             onClick={props.handleGoBackSteps(2)}
                             title="Return to Identification, step three of six, to make a change">
                             {headings.confirmation.edit.label}
@@ -155,10 +156,10 @@ function Confirmation(props) {
                 <div className='grid-row'>
                     <h2>{headings.step_label_4}</h2>
                     <div className='edit-btn'>
-                        <Button
+                        <Button unstyled
                             data-test="editBtn"
                             type="button"
-                            className="usa-button--unstyled"
+                            style={{margin: 0}}
                             onClick={props.handleGoBackSteps(1)}
                             title="Return to Political party, step four of six, to make a change">
                             {headings.confirmation.edit.label}
