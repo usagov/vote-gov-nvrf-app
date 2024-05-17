@@ -28,9 +28,9 @@ function NotNeeded(props) {
             <h1>{content.title.replace("@state_name", stateContent.name)}</h1>
             <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: contentBodyProcessed}}/>
 
-            <div className={'margin-top-5'}>
+            <p className={'margin-top-5'}>
                 <a href={"https://vote.gov"}>{stringContent.backBtn}</a>
-            </div>
+            </p>
         </>
     );
 }

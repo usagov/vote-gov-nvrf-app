@@ -59,10 +59,12 @@ function Addresses(props){
                     </div> )}
 
                     <h3 className='margin-top-5'>{homeAddressSectionField.label}</h3>
-                    <div dangerouslySetInnerHTML= {{__html: homeAddressSectionField.instructions}}/>
+                        {homeAddressSectionField.instructions && (
+                            <div dangerouslySetInnerHTML={{__html: homeAddressSectionField.instructions}}/>
+                        )}
 
-                    <Grid row gap>
-                        <Grid tablet={{ col: 12}}>
+                        <Grid row gap>
+                            <Grid tablet={{col: 12}}>
                         <div className="input-parent">
                             <Label className="text-bold" htmlFor="street">
                                 {streetAddressField.label}{(addressFieldsState.required === "1") && <span className='required-text'>*</span>}
@@ -202,10 +204,12 @@ function Addresses(props){
                         </div>)}
 
                         <h3 className='margin-top-8'>{mailAddressSectionField.label}</h3>
-                        <div dangerouslySetInnerHTML= {{__html: mailAddressSectionField.section_description}}/>
+                        {mailAddressSectionField.section_description && (
+                            <div dangerouslySetInnerHTML={{__html: mailAddressSectionField.section_description}}/>
+                        )}
 
                         <Grid row gap>
-                            <Grid tablet={{ col: 12 }}>
+                            <Grid tablet={{col: 12 }}>
                             <div className="input-parent">
                             <Label className="text-bold" htmlFor="mail-street">
                                 {mailStreetAddressField.label}{(addressFieldsState.required === "1") && <span className='required-text'>*</span>}
@@ -330,7 +334,9 @@ function Addresses(props){
                         </div>)}
 
                         <h3 className='margin-top-8'>{prevAddressSectionField.label}</h3>
-                        <div dangerouslySetInnerHTML= {{__html: prevAddressSectionField.instructions}}/>
+                        {prevAddressSectionField.instructions && (
+                            <div dangerouslySetInnerHTML={{__html: prevAddressSectionField.instructions}}/>
+                        )}
 
                         <Grid row gap>
                             <Grid tablet={{ col: 12 }}>

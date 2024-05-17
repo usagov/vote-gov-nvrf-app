@@ -19,10 +19,6 @@
 .nvrf-app-container .usa-form .usa-input {
     max-width: 480px;
 }
-.nvrf-app-container .edit-btn {
-    margin-left: 8px;
-    margin-top: 37px;
-}
 .nvrf-app-container fieldset + .usa-hint {
     margin-top: 0.5rem;
 }
@@ -42,9 +38,11 @@
     display: none;
 }
 .nvrf-app-container .usa-step-indicator__header {
-    position: absolute;
-    text-indent: -9000px;
-    overflow: hidden;
+    @media (min-width: 640px) {
+        position: absolute;
+        text-indent: -9000px;
+        overflow: hidden;
+    }
 }
 
 #touchpoints-form-embed .fba-modal-dialog {

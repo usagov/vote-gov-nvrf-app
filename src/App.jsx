@@ -170,12 +170,12 @@ function App() {
 
               {step >= 3 &&
                 <div className="text-base usa-prose margin-top-5 maxw-tablet margin-x-auto">
-                  <div>{getFieldValue(content, "2c597df4-53b6-4ef5-8301-7817b04e1099", "omb_number")}</div>
-                  <span className="last-updated">
+                  <p>{getFieldValue(content, "2c597df4-53b6-4ef5-8301-7817b04e1099", "omb_number")}
+                    <br/>
                     {lastUpdatedText.replace("@state_name", stateData.name)}
                     <span dangerouslySetInnerHTML= {{__html: lastUpdatedSanitized}}/>
-                 </span>
-                  <div><a href="privacy" target="_blank">{stringContent.privacyPolicy}</a></div>
+                 </p>
+                  <p><a href="privacy" target="_blank">{stringContent.privacyPolicy}</a></p>
                 </div>
               }
           </section>
