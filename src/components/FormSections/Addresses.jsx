@@ -291,7 +291,7 @@ function Addresses(props){
                                 <Label className="text-bold" htmlFor="mail-zip-code">
                                     {mailZipcodeField.label} {(addressFieldsState.required === "1") && <span className={'required-text'}>*</span>}
                                 </Label>
-                                <span className="usa-hint" id="mail-zip-hint">For example: 12345</span>
+                                <span className="usa-hint" id="mail-zip-hint">{zipcodeField.help_text}</span>
                                 <TextInput
                                     data-test="mailZip"
                                     id="mail-zip-code"
@@ -440,7 +440,7 @@ function Addresses(props){
                                 <Label className="text-bold" htmlFor="prev-zip-code">
                                     {prevZipcodeField.label} {(addressFieldsState.required === "1") && <span className={'required-text'}>*</span>}
                                 </Label>
-                                <span className="usa-hint" id="prev-zip-hint">{stringContent.zip}</span>
+                                <span className="usa-hint" id="prev-zip-hint">{zipcodeField.help_text}</span>
                                 <TextInput
                                     data-test="prevZip"
                                     id="prev-zip-code"
