@@ -367,7 +367,11 @@ function MultiStepForm(props) {
                     />
                 }
 
-                {step != 6 && <NextButton stringContent={stringContent} type={'submit'} onClick={() => {nextStepValidation(), focusError('nvrf')}} text={nextButtonText(step)}/>}
+                {step != 6 && (
+                    <div className={'margin-top-3'}>
+                        <NextButton stringContent={stringContent} type={'submit'} onClick={() => {nextStepValidation(), focusError('nvrf')}} text={nextButtonText(step)}/>
+                    </div>
+                )}
             </Form>
 
             {/* Load Touchpoints feedback form */}

@@ -1,4 +1,4 @@
-import {Alert, Button, Checkbox, Label} from '@trussworks/react-uswds';
+import {Alert, Button, Checkbox, Grid, Label} from '@trussworks/react-uswds';
 import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
 import { toggleError } from '../HelperFunctions/ValidateField';
 
@@ -36,20 +36,21 @@ function Confirmation(props) {
                 <h1>{confirm.title}</h1>
                 <div className={'usa-prose'} dangerouslySetInnerHTML={{__html: confirmBody}}/>
 
-                <div className='grid-row'>
-                    <h2>{headings.step_label_1}</h2>
+                <Grid row gap={2} className={'margin-top-3 flex-align-baseline'}>
+                    <h2 className={'margin-0'}>{headings.step_label_1}</h2>
                     <div className='edit-btn'>
                         <Button unstyled
-                            data-test="editBtn"
-                            type="button"
-                            style={{margin: 0}}
-                            onClick={props.handleGoBackSteps(4)}
-                            title="Return to Personal information, step one of six, to make a change">
+                                data-test="editBtn"
+                                type="button"
+                                style={{margin: 0}}
+                                onClick={props.handleGoBackSteps(4)}
+                                title="Return to Personal information, step one of six, to make a change">
                             {headings.confirmation.edit.label}
                         </Button>
 
                     </div>
-                </div>
+                </Grid>
+
                 {/*Jump to Personal Info Section (Step 1) */}
                 <p><strong>{headings.confirmation.current_name.label}</strong></p>
                 <ul>
@@ -80,23 +81,23 @@ function Confirmation(props) {
                     <li>{getFieldLabel("2d61b54a-e568-410f-825a-0ca82dfd3f63")}: {fieldData.phone_number}</li>
                     <li>{getFieldLabel("2bfff6c6-6782-4b14-ac45-642efd278f6a")}: {fieldDataOverride_race}</li>
                 </ul>
-                <hr />
-                <div className='grid-row'>
-                    <h2>{headings.step_label_2}</h2>
+                <hr/>
+                <Grid row gap={2} className={'margin-top-3 flex-align-baseline'}>
+                    <h2 className={'margin-0'}>{headings.step_label_2}</h2>
                     <div className='edit-btn'>
                         <Button unstyled
-                            data-test="editBtn"
-                            type="button"
-                            style={{margin: 0}}
-                            onClick={props.handleGoBackSteps(3)}
-                            title="Return to Address and location, step two of six, to make a change">
+                                data-test="editBtn"
+                                type="button"
+                                style={{margin: 0}}
+                                onClick={props.handleGoBackSteps(3)}
+                                title="Return to Address and location, step two of six, to make a change">
                             {headings.confirmation.edit.label}
                         </Button>
                     </div>
-                </div>
+                </Grid>
                 <p><strong>{headings.confirmation.current_address.label}</strong></p>
                 {!currentAddress && (
-                    <Alert type="info" headingLevel="h4"role="region" aria-live="polite" noIcon>
+                    <Alert type="info" headingLevel="h4" role="region" aria-live="polite" noIcon>
                         {headings.confirmation.current_address.alert}
                     </Alert>
                 )}
@@ -110,7 +111,7 @@ function Confirmation(props) {
 
                 <p><strong>{headings.confirmation.previous_address.label}</strong></p>
                 {!prevAddress && (
-                    <Alert type="info" headingLevel="h4"role="region" aria-live="polite" noIcon>
+                    <Alert type="info" headingLevel="h4" role="region" aria-live="polite" noIcon>
                         {headings.confirmation.previous_address.alert}
                     </Alert>
                 )}
@@ -124,7 +125,7 @@ function Confirmation(props) {
 
                 <p><strong>{headings.confirmation.mailing_address.label}</strong></p>
                 {!prevMailAddress && (
-                    <Alert type="info" headingLevel="h4"role="region" aria-live="polite" noIcon>
+                    <Alert type="info" headingLevel="h4" role="region" aria-live="polite" noIcon>
                         {headings.confirmation.mailing_address.alert}
                     </Alert>
                 )}
@@ -135,46 +136,51 @@ function Confirmation(props) {
                     <li>{getFieldLabel("b0f80289-6084-4723-8278-110fda210f0d")}: {fieldData.mail_state}</li>
                     <li>{getFieldLabel("c4f9c0cb-2a25-4f1d-a93a-b06a19656cfe")}: {fieldData.mail_zip_code}</li>
                 </ul>
-                <hr />
-                <div className='grid-row'>
-                    <h2>{headings.step_label_3}</h2>
+                <hr/>
+
+                <Grid row gap={2} className={'margin-top-3 flex-align-baseline'}>
+                    <h2 className={'margin-0'}>{headings.step_label_3}</h2>
                     <div className='edit-btn'>
                         <Button unstyled
-                            data-test="editBtn"
-                            type="button"
-                            style={{margin: 0}}
-                            onClick={props.handleGoBackSteps(2)}
-                            title="Return to Identification, step three of six, to make a change">
+                                data-test="editBtn"
+                                type="button"
+                                style={{margin: 0}}
+                                onClick={props.handleGoBackSteps(2)}
+                                title="Return to Identification, step three of six, to make a change">
                             {headings.confirmation.edit.label}
                         </Button>
                     </div>
-                </div>
+                </Grid>
                 <ul>
                     <li>{headings.confirmation.id_label.label}: {fieldDataOverride_id}</li>
                 </ul>
-                <hr />
-                <div className='grid-row'>
-                    <h2>{headings.step_label_4}</h2>
+                <hr/>
+                <Grid row gap={2} className={'margin-top-3 flex-align-baseline'}>
+                    <h2 className={'margin-0'}>{headings.step_label_4}</h2>
                     <div className='edit-btn'>
                         <Button unstyled
-                            data-test="editBtn"
-                            type="button"
-                            style={{margin: 0}}
-                            onClick={props.handleGoBackSteps(1)}
-                            title="Return to Political party, step four of six, to make a change">
+                                data-test="editBtn"
+                                type="button"
+                                style={{margin: 0}}
+                                onClick={props.handleGoBackSteps(1)}
+                                title="Return to Political party, step four of six, to make a change">
                             {headings.confirmation.edit.label}
                         </Button>
                     </div>
-                </div>
+                </Grid>
                 <ul>
                     <li>{headings.confirmation.political_party.label}: {fieldDataOverride_party}</li>
                 </ul>
+                <hr/>
             </div>
-            <hr />
+
 
             {confirmInstructions && (
-                <div id="acknowledge-check-alert" className="usa-alert usa-alert--info margin-top-6" role="region" aria-live="polite">
-                    <div className="usa-alert__body" dangerouslySetInnerHTML={{__html: confirmInstructions}}/>
+                <div id="acknowledge-check-alert" className="usa-alert usa-alert--info margin-top-6" role="region"
+                     aria-live="polite">
+                    <div className="usa-alert__body">
+                        <div className="usa-alert__text" dangerouslySetInnerHTML={{__html: confirmInstructions}}/>
+                    </div>
                 </div>)}
 
             <div className="input-parent">

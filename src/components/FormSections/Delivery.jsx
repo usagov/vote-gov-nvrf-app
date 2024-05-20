@@ -39,7 +39,7 @@ function Delivery(props) {
                 <Grid row>
                     <Grid col={1}>{iconCheckmark}</Grid>
                     <Grid col={11} className={['usa-prose', 'padding-left-2']}>
-                        <h1 data-test="addressConfirm" >{delivery.title.replace("@state_name", props.stateData.name)}</h1>
+                        <h1 style={{fontSize: '2rem'}} data-test="addressConfirm" >{delivery.title.replace("@state_name", props.stateData.name)}</h1>
                     </Grid>
                 </Grid>
 
