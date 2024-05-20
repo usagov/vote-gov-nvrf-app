@@ -99,7 +99,9 @@ function PersonalInfo(props){
         )}
 
         <div id="prev-name-change_alert" className="usa-alert usa-alert--info" role="region" aria-live="polite">
-            <div className="usa-alert__body" dangerouslySetInnerHTML={{__html: nameSectionAlert}}/>
+            <div className="usa-alert__body">
+                <div className="usa-alert__text" dangerouslySetInnerHTML={{__html: nameSectionAlert}}/>
+            </div>
         </div>
 
         <h3 className={'margin-top-5'}>{nameSectionField.label}</h3>

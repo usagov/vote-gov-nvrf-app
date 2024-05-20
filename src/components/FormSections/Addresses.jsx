@@ -54,7 +54,7 @@ function Addresses(props){
                     {homeAddressSectionField.section_alert && (
                     <div id="no-address_alert" className="usa-alert usa-alert--info" role="region" aria-live="polite">
                         <div className="usa-alert__body">
-                            <div dangerouslySetInnerHTML= {{__html: homeAddressSectionField.section_alert}}/>
+                            <div className="usa-alert__text" dangerouslySetInnerHTML= {{__html: homeAddressSectionField.section_alert}}/>
                         </div>
                     </div> )}
 
@@ -200,7 +200,9 @@ function Addresses(props){
                     <>
                         {props.hasNoAddress && (
                         <div className="usa-alert usa-alert--info" role="alert">
-                            <div className="usa-alert__body" dangerouslySetInnerHTML= {{__html: mailAddressSectionField.section_alert}}/>
+                            <div className="usa-alert__body">
+                                <div className="usa-alert__text" dangerouslySetInnerHTML={{__html: mailAddressSectionField.section_alert}}/>
+                            </div>
                         </div>)}
 
                         <h3 className='margin-top-8'>{mailAddressSectionField.label}</h3>
@@ -330,7 +332,9 @@ function Addresses(props){
                     <>
                         { prevAddressSectionField.section_alert && (//section_description
                         <div className="usa-alert usa-alert--info" role="alert">
-                            <div className="usa-alert__body" dangerouslySetInnerHTML= {{__html: prevAddressSectionField.section_alert}}/>
+                            <div className="usa-alert__body">
+                                <div className="usa-alert__text" dangerouslySetInnerHTML={{__html: prevAddressSectionField.section_alert}}/>
+                            </div>
                         </div>)}
 
                         <h3 className='margin-top-8'>{prevAddressSectionField.label}</h3>

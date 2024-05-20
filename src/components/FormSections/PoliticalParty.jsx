@@ -23,7 +23,9 @@ function PoliticalParty(props){
 
         {(partyStateInstructions || partyGeneralInstructions) && (
         <div className="usa-alert usa-alert--info" role="region" aria-live="polite">
-            <div className="usa-alert__body" dangerouslySetInnerHTML= {{__html: partyStateInstructions}}/>
+            <div className="usa-alert__body">
+                <div className="usa-alert__text" dangerouslySetInnerHTML={{__html: partyStateInstructions}}/>
+            </div>
         </div>)}
 
         {partyFieldState && (

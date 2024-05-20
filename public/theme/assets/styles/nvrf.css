@@ -37,11 +37,21 @@
     margin-top: 0.5rem;
     display: none;
 }
+
 .nvrf-app-container .usa-step-indicator__header {
     @media (min-width: 640px) {
         position: absolute;
         text-indent: -9000px;
         overflow: hidden;
+    }
+}
+
+.nvrf-app-container .usa-alert__text {
+    > *:first-child {
+        margin-top: 0;
+    }
+    > *:last-child {
+        margin-bottom: 0;
     }
 }
 
