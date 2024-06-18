@@ -2,7 +2,7 @@ import React from "react";
 import { Label, TextInput } from '@trussworks/react-uswds';
 import TextInputField from './FieldComponents/TextInputField';
 import SelectField from './FieldComponents/SelectField';
-import DateFields from './FieldComponents/DateFields';
+import DateFields from './FieldComponents/DOBFields';
 
 function FieldBuilder({ fieldType, fieldData }) {
   function renderField(fieldType) {
