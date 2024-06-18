@@ -2,20 +2,17 @@ import React from "react";
 import { Label, TextInput } from '@trussworks/react-uswds';
 import TextInputField from './FieldComponents/TextInputField';
 import SelectField from './FieldComponents/SelectField';
-import DateFields from './FieldComponents/DOBFields';
+import DOBFields from './FieldComponents/DOBFields';
 
-function FieldBuilder({ fieldType, fieldData }) {
+function FieldBuilder({ fieldType, inputData, saveFieldData, fieldData }) {
   function renderField(fieldType) {
     switch (fieldType) {
       case 'text':
-        return
-        <TextInputField fieldData={fieldData} />;
+        return <TextInputField inputData={inputData} saveFieldData={saveFieldData} fieldData={fieldData} />;
       case 'select':
-        return
-        <SelectField fieldData={fieldData} />;
+        return <SelectField inputData={inputData} saveFieldData={saveFieldData} fieldData={fieldData} />;
       case 'dates':
-        return
-        <DateFields fieldData={fieldData} />;
+        return <DOBFields inputData={inputData} saveFieldData={saveFieldData} fieldData={fieldData} />;
     }
   };
 
@@ -23,29 +20,29 @@ function FieldBuilder({ fieldType, fieldData }) {
     <>
       {fieldType != 'dates' ?
         <div className="input-parent">
-          <Label className="text-bold" htmlFor={fieldData.id}>
-            {fieldData.label}{(fieldData.required === "1") && <span className='required-text'>*</span>}
+          <Label className="text-bold" htmlFor={inputData.id}>
+            {inputData.label}{(inputData.required === "1") && <span className='required-text'>*</span>}
           </Label>
-          <span className="usa-hint" id={`${fieldData.id} + '-hint'`}>
-            {dobField.help_text}
+          <span className="usa-hint" id={`${inputData.id} + '-hint'`}>
+            {inputData.help_text}
           </span>
           {renderField(fieldType)}
-          <span id={`${fieldData.id}` + '_error'} role="alert" className={'error-text'} data-test="errorText">
-            {fieldData.error_msg}
+          <span id={`${inputData.id}` + '_error'} role="alert" className={'error-text'} data-test="errorText">
+            {inputData.error_msg}
           </span>
         </div>
         :
         <div className="input-parent">
-          <Fieldset className="fieldset" legend={fieldData.required ? [<span key={0} className="text-bold">{fieldData.label}</span>, <span key={1} className='required-text'>*</span>] : (fieldData.stringContent)} style={{ marginTop: '30px' }}>
-            <Label className="text-bold" htmlFor={fieldData.id}>
-              {fieldData.label}{(fieldData.required === "1") && <span className='required-text'>*</span>}
+          <Fieldset className="fieldset" legend={inputData.required ? [<span key={0} className="text-bold">{inputData.label}</span>, <span key={1} className='required-text'>*</span>] : (inputData.stringContent)} style={{ marginTop: '30px' }}>
+            <Label className="text-bold" htmlFor={inputData.id}>
+              {inputData.label}{(inputData.required === "1") && <span className='required-text'>*</span>}
             </Label>
-            <span className="usa-hint" id={`${fieldData.id} + '-hint'`}>
-              {dobField.help_text}
+            <span className="usa-hint" id={`${inputData.id} + '-hint'`}>
+              {inputData.help_text}
             </span>
             {renderField(fieldType)}
-            <span id={`${fieldData.id}` + '_error'} role="alert" className={'error-text'} data-test="errorText">
-              {fieldData.error_msg}
+            <span id={`${inputData.id}` + '_error'} role="alert" className={'error-text'} data-test="errorText">
+              {inputData.error_msg}
             </span>
           </Fieldset>
         </div>

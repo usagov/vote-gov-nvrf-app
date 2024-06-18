@@ -1,7 +1,7 @@
 import React from "react";
 import { restrictType, checkForErrors, jumpTo, toggleError } from '../HelperFunctions/ValidateField';
 
-function DOBFields({ fieldData }) {
+function DOBFields({ inputData, saveFieldData, fieldData }) {
     return (
         <div
         id="date-of-birth"
