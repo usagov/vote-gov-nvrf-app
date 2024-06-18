@@ -33,7 +33,9 @@ function Identification(props){
 
             {idStateInstructions && (
                 <div id="id_alert" className="usa-alert usa-alert--info" role="region" aria-live="polite">
-                    <div className="usa-alert__body" dangerouslySetInnerHTML={{__html: idStateInstructions}}/>
+                    <div className="usa-alert__body">
+                        <div className="usa-alert__text" dangerouslySetInnerHTML={{__html: idStateInstructions}}/>
+                    </div>
                 </div>)}
 
             {(stateData.abbrev === "mo") ? (

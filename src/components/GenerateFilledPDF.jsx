@@ -86,8 +86,14 @@ const GenerateFilledPDF = async function (btnType,formData,pagesKept) {
 
     //Date of Birth, Phone, Race
     dobMonth.setText(formData.date_of_birth_month);
+    // adjusting font size
+    dobMonth.setFontSize(12)
     dobDay.setText(formData.date_of_birth_day);
+    // adjusting font size
+    dobDay.setFontSize(12)
     dobYear.setText(formData.date_of_birth_year);
+    // adjusting font size
+    dobYear.setFontSize(5)
     phoneNumber.setText(formData.phone_number);
     race.setText(formData.race);
 

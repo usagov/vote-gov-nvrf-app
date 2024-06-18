@@ -36,7 +36,7 @@ function Eligibility(props) {
 
             <Form id="eligibility" autoComplete="off" className={'margin-top-2'} style={{ maxWidth:'none' }} onSubmit={(e) => {e.preventDefault(), props.handleNext()}}>
                     <div className="input-parent" data-test="checkBox">
-                        <Label htmlFor="eligibility-checkbox" className={'margin-top-1'}>
+                        <Label className={'margin-top-1'}>
                             <strong>{eligibility.name}</strong>
                         </Label>
                         <Checkbox
@@ -63,7 +63,9 @@ function Eligibility(props) {
                 <div className={'usa-prose margin-top-5'} dangerouslySetInnerHTML= 
                     {{__html: contentBodyParts[1].replace("@state_name", stateContent.name).replace("@mail_deadline", renderToStaticMarkup(mailDeadline()))}}/>
 
-                <NextButton stringContent={stringContent} type={'submit'} onClick={(e) => focusError('eligibility')} text={navContent.next.start}/>
+                <div className={'margin-top-3'}>
+                    <NextButton stringContent={stringContent} type={'submit'} onClick={(e) => focusError('eligibility')} text={navContent.next.start}/>
+                </div>
             </Form>
             </div>
         </>

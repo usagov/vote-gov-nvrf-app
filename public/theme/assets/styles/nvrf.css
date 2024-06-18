@@ -19,10 +19,6 @@
 .nvrf-app-container .usa-form .usa-input {
     max-width: 480px;
 }
-.nvrf-app-container .edit-btn {
-    margin-left: 8px;
-    margin-top: 37px;
-}
 .nvrf-app-container fieldset + .usa-hint {
     margin-top: 0.5rem;
 }
@@ -41,10 +37,22 @@
     margin-top: 0.5rem;
     display: none;
 }
+
 .nvrf-app-container .usa-step-indicator__header {
-    position: absolute;
-    text-indent: -9000px;
-    overflow: hidden;
+    @media (min-width: 640px) {
+        position: absolute;
+        text-indent: -9000px;
+        overflow: hidden;
+    }
+}
+
+.nvrf-app-container .usa-alert__text {
+    > *:first-child {
+        margin-top: 0;
+    }
+    > *:last-child {
+        margin-bottom: 0;
+    }
 }
 
 #touchpoints-form-embed .fba-modal-dialog {

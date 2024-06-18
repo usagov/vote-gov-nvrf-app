@@ -54,15 +54,17 @@ function Addresses(props){
                     {homeAddressSectionField.section_alert && (
                     <div id="no-address_alert" className="usa-alert usa-alert--info" role="region" aria-live="polite">
                         <div className="usa-alert__body">
-                            <div dangerouslySetInnerHTML= {{__html: homeAddressSectionField.section_alert}}/>
+                            <div className="usa-alert__text" dangerouslySetInnerHTML= {{__html: homeAddressSectionField.section_alert}}/>
                         </div>
                     </div> )}
 
                     <h3 className='margin-top-5'>{homeAddressSectionField.label}</h3>
-                    <div dangerouslySetInnerHTML= {{__html: homeAddressSectionField.instructions}}/>
+                        {homeAddressSectionField.instructions && (
+                            <div dangerouslySetInnerHTML={{__html: homeAddressSectionField.instructions}}/>
+                        )}
 
-                    <Grid row gap>
-                        <Grid tablet={{ col: 12}}>
+                        <Grid row gap>
+                            <Grid tablet={{col: 12}}>
                         <div className="input-parent">
                             <Label className="text-bold" htmlFor="street">
                                 {streetAddressField.label}{(addressFieldsState.required === "1") && <span className='required-text'>*</span>}
@@ -198,14 +200,18 @@ function Addresses(props){
                     <>
                         {props.hasNoAddress && (
                         <div className="usa-alert usa-alert--info" role="alert">
-                            <div className="usa-alert__body" dangerouslySetInnerHTML= {{__html: mailAddressSectionField.section_alert}}/>
+                            <div className="usa-alert__body">
+                                <div className="usa-alert__text" dangerouslySetInnerHTML={{__html: mailAddressSectionField.section_alert}}/>
+                            </div>
                         </div>)}
 
                         <h3 className='margin-top-8'>{mailAddressSectionField.label}</h3>
-                        <div dangerouslySetInnerHTML= {{__html: mailAddressSectionField.section_description}}/>
+                        {mailAddressSectionField.section_description && (
+                            <div dangerouslySetInnerHTML={{__html: mailAddressSectionField.section_description}}/>
+                        )}
 
                         <Grid row gap>
-                            <Grid tablet={{ col: 12 }}>
+                            <Grid tablet={{col: 12 }}>
                             <div className="input-parent">
                             <Label className="text-bold" htmlFor="mail-street">
                                 {mailStreetAddressField.label}{(addressFieldsState.required === "1") && <span className='required-text'>*</span>}
@@ -291,7 +297,7 @@ function Addresses(props){
                                 <Label className="text-bold" htmlFor="mail-zip-code">
                                     {mailZipcodeField.label} {(addressFieldsState.required === "1") && <span className={'required-text'}>*</span>}
                                 </Label>
-                                <span className="usa-hint" id="mail-zip-hint">For example: 12345</span>
+                                <span className="usa-hint" id="mail-zip-hint">{zipcodeField.help_text}</span>
                                 <TextInput
                                     data-test="mailZip"
                                     id="mail-zip-code"
@@ -326,11 +332,15 @@ function Addresses(props){
                     <>
                         { prevAddressSectionField.section_alert && (//section_description
                         <div className="usa-alert usa-alert--info" role="alert">
-                            <div className="usa-alert__body" dangerouslySetInnerHTML= {{__html: prevAddressSectionField.section_alert}}/>
+                            <div className="usa-alert__body">
+                                <div className="usa-alert__text" dangerouslySetInnerHTML={{__html: prevAddressSectionField.section_alert}}/>
+                            </div>
                         </div>)}
 
                         <h3 className='margin-top-8'>{prevAddressSectionField.label}</h3>
-                        <div dangerouslySetInnerHTML= {{__html: prevAddressSectionField.instructions}}/>
+                        {prevAddressSectionField.instructions && (
+                            <div dangerouslySetInnerHTML={{__html: prevAddressSectionField.instructions}}/>
+                        )}
 
                         <Grid row gap>
                             <Grid tablet={{ col: 12 }}>
@@ -440,7 +450,7 @@ function Addresses(props){
                                 <Label className="text-bold" htmlFor="prev-zip-code">
                                     {prevZipcodeField.label} {(addressFieldsState.required === "1") && <span className={'required-text'}>*</span>}
                                 </Label>
-                                <span className="usa-hint" id="prev-zip-hint">{stringContent.zip}</span>
+                                <span className="usa-hint" id="prev-zip-hint">{zipcodeField.help_text}</span>
                                 <TextInput
                                     data-test="prevZip"
                                     id="prev-zip-code"
