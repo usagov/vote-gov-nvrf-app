@@ -50,6 +50,7 @@ function Identification(props){
                         <Select
                             id="id-selection"
                             name="id-selection"
+                            aria-label="select-identification-type"
                             aria-describedby="id-selection_error"
                             data-test="dropDown"
                             value={props.idType}
