@@ -17,6 +17,7 @@
     "stateOnlineName": "Register on @state_name's website",
     "confirm": "Confirm and continue",
     "selectState": "Select your state or territory",
+    "selectStateAriaLabel": "State selection dropdown menu",
     "lastUpdated": "@state_name information last updated ",
     "privacyPolicy": "Privacy policy",
     "extlink": "External link opens new window",
