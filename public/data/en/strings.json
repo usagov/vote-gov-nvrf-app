@@ -27,5 +27,6 @@
     "downloadText": "If form does not open in a new tab you can download using the option below.",
     "mailDeadlineLabel": "Mail-in registration deadline:",
     "inPersonBtn": "Learn more on @state_name's election website",
-    "inPersonBtnWY": "Find in-person registration locations"
+    "inPersonBtnWY": "Find in-person registration locations",
+    "idSelectionAriaLabel": "Choose Identification Type"
 }
