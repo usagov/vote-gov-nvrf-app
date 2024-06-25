@@ -1,12 +1,14 @@
 import React from "react";
 import { Select } from '@trussworks/react-uswds';
-import { restrictType, checkForErrors, jumpTo, toggleError } from '../HelperFunctions/ValidateField';
 
 function SelectField({ inputData, saveFieldData, fieldData }){
     return (
         <Select 
-        data-test="select"
-        id="suffix" className="radius-md" name="suffix"
+        data-test={inputData.dataTest}
+        id={inputData.id}
+        className="radius-md" 
+        aria-describedby={`${inputData.id}` + '_error'}
+        name={inputData.id}
         required={parseInt(inputData.required)}
         value={fieldData[inputData.id]}
         onChange={saveFieldData(inputData.id)}
