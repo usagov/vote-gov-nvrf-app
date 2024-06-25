@@ -200,10 +200,7 @@ function Identification(props){
                     </span>
                 </>}
                 
-            {props.idType === 'none' && 
-                <>
-                    <div aria-describedby="no-id-warning" dangerouslySetInnerHTML={{__html: `<p>${noIdFieldInstructions}</p>`}}/>
-                </>}
+            {props.idType === 'none' && <div dangerouslySetInnerHTML={{__html: `<p>${noIdFieldInstructions}</p>`}}/>}
         </div>
         </>
     );
