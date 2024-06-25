@@ -7,7 +7,7 @@ function TextInputField({ inputData, saveFieldData, fieldData }){
         <TextInput
         data-test={inputData.dataTest}
         id={inputData.id}
-        className="radius-md text-semibold"
+        className="radius-md"
         aria-describedby={`${inputData.id}` + '_error'}
         name={inputData.id}
         type="text"
