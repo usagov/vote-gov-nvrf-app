@@ -1,7 +1,7 @@
 import React from "react";
 import { restrictType, checkForErrors, jumpTo, toggleError } from '../HelperFunctions/ValidateField';
 
-function DOBFields({ inputData, saveFieldData, dateFormat, checkDateValues, fieldData }) {
+function DateFields({ inputData, saveFieldData, dateFormat, checkDateValues, fieldData }) {
     return (
         <div
         id={inputData.id}
@@ -96,4 +96,4 @@ function DOBFields({ inputData, saveFieldData, dateFormat, checkDateValues, fiel
     )
 }
 
-export default DOBFields;
+export default DateFields;

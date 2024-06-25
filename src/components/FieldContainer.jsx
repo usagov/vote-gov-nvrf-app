@@ -2,17 +2,20 @@ import React from "react";
 import { Label } from '@trussworks/react-uswds';
 import TextInputField from './FieldComponents/TextInputField';
 import SelectField from './FieldComponents/SelectField';
-import DOBFields from './FieldComponents/DOBFields';
 
 function FieldContainer({ fieldType, inputData, saveFieldData, fieldData }) {
   function renderField(fieldType) {
     switch (fieldType) {
       case 'text':
-        return <TextInputField inputData={inputData} saveFieldData={saveFieldData} fieldData={fieldData} />;
+        return <TextInputField
+          inputData={inputData}
+          saveFieldData={saveFieldData}
+          fieldData={fieldData} />;
       case 'select':
-        return <SelectField inputData={inputData} saveFieldData={saveFieldData} fieldData={fieldData} />;
-      case 'dates':
-        return <DOBFields inputData={inputData} saveFieldData={saveFieldData} fieldData={fieldData} />;
+        return <SelectField
+          inputData={inputData}
+          saveFieldData={saveFieldData}
+          fieldData={fieldData} />;
     }
   };
 

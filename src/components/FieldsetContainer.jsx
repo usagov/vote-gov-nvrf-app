@@ -1,17 +1,17 @@
 import React from "react";
 import { Fieldset } from '@trussworks/react-uswds';
-import DOBFields from './FieldComponents/DOBFields';
+import DateFields from './FieldComponents/DateFields';
 
 function FieldsetContainer({ fieldType, inputData, saveFieldData, dateFormat, checkDateValues, fieldData }) {
     function renderField(fieldType) {
         switch (fieldType) {
-            case 'dates':
-                return <DOBFields 
-                        inputData={inputData} 
-                        saveFieldData={saveFieldData} 
-                        dateFormat={dateFormat} 
-                        checkDateValues={checkDateValues}
-                        fieldData={fieldData} />;
+            case 'date':
+                return <DateFields
+                    inputData={inputData}
+                    saveFieldData={saveFieldData}
+                    dateFormat={dateFormat}
+                    checkDateValues={checkDateValues}
+                    fieldData={fieldData} />;
         }
     };
 
