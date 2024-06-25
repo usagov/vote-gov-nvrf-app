@@ -1,28 +1,28 @@
 import React from "react";
 import { restrictType, checkForErrors, jumpTo, toggleError } from '../HelperFunctions/ValidateField';
 
-function DOBFields({ inputData, saveFieldData, fieldData }) {
+function DOBFields({ inputData, saveFieldData, dateFormat, checkDateValues, fieldData }) {
     return (
         <div
-        id="date-of-birth"
+        id={inputData.id}
         className="usa-memorable-date"
-        name="date-of-birth"
+        name={inputData.id}
         autoComplete="off"
-        required={parseInt(dobFieldState.required)}
+        required={parseInt(inputData.required)}
         data-testid="dateInputGroup"
         onBlur={e => { if (!e.currentTarget.contains(e.relatedTarget)) toggleError(e, checkDateValues('all')) }}
         >
             <div data-testid="formGroup" className="usa-form-group usa-form-group--month">
-                <label data-testid="label" className="usa-label" htmlFor="date-of-birth_month">
-                    {stringContent.month}
+                <label data-testid="label" className="usa-label" htmlFor={`${inputData.id}` + '_month'}>
+                    {inputData.stringContent}
                 </label>
                 <input
-                data-test="dobMonth"
-                id="date-of-birth_month"
+                data-test={`${inputData.id}` + '_month'}
+                id={`${inputData.id}` + '_month'}
                 className="usa-input radius-md"
-                aria-describedby="date-of-birth_error"
-                name="date-of-birth_month"
-                label={stringContent.month}
+                aria-describedby={`${inputData.id}` + '_error'}
+                name={`${inputData.id}` + '_month'}
+                label={fieldData.stringContent}
                 unit="month"
                 required={true}
                 aria-invalid={false}
@@ -31,25 +31,25 @@ function DOBFields({ inputData, saveFieldData, fieldData }) {
                 inputMode="numeric"
                 maxLength={2}
                 minLength={2}
-                value={props.fieldData.date_of_birth_month}
-                onInput={props.saveFieldData('date_of_birth_month')}
-                onKeyUp={(e) => jumpTo(e, 'date-of-birth_day')}
+                value={fieldData[`${inputData.id}` + '_month']}
+                onInput={saveFieldData(`${inputData.id}` + '_month')}
+                onKeyUp={(e) => jumpTo(e, `${inputData.id}` + '_day')}
                 onKeyDown={(e) => { restrictType(e, 'number'), e.target.setCustomValidity('') }}
-                onBlur={(e) => { props.dateFormat(e, 'date_of_birth_month'), toggleError(e, checkDateValues('month')) }}
+                onBlur={(e) => { dateFormat(e, `${inputData.id}` + '_month'), toggleError(e, checkDateValues('month')) }}
                 onInvalid={(e) => e.target.setCustomValidity(' ')}
                 />
             </div>
             <div data-testid="formGroup" className="usa-form-group usa-form-group--day">
-                <label data-testid="label" className="usa-label" htmlFor="date-of-birth_day">
-                    {stringContent.day}
+                <label data-testid="label" className="usa-label" htmlFor={`${inputData.id}` + '_day'}>
+                    {inputData.stringContent}
                 </label>
                 <input
-                data-test="dobDay"
-                id="date-of-birth_day"
+                data-test={`${inputData.id}` + '_day'}
+                id={`${inputData.id}` + '_day'}
                 className="usa-input radius-md"
-                aria-describedby="date-of-birth_error"
-                name="date-of-birth_day"
-                label={stringContent.day}
+                aria-describedby={`${inputData.id}` + '_error'}
+                name={`${inputData.id}` + '_day'}
+                label={fieldData.stringContent}
                 unit="day"
                 required={true}
                 aria-invalid={false}
@@ -58,25 +58,25 @@ function DOBFields({ inputData, saveFieldData, fieldData }) {
                 inputMode="numeric"
                 minLength={2}
                 maxLength={2}
-                value={props.fieldData.date_of_birth_day}
-                onInput={props.saveFieldData('date_of_birth_day')}
-                onKeyUp={(e) => jumpTo(e, 'date-of-birth_year')}
+                value={fieldData[`${inputData.id}` + '_day']}
+                onInput={saveFieldData(`${inputData.id}` + '_day')}
+                onKeyUp={(e) => jumpTo(e, `${inputData.id}` + '_year')}
                 onKeyDown={(e) => { restrictType(e, 'number'), e.target.setCustomValidity('') }}
-                onBlur={(e) => { props.dateFormat(e, 'date_of_birth_day'), toggleError(e, checkDateValues('day')) }}
+                onBlur={(e) => { dateFormat(e, `${inputData.id}` + '_day'), toggleError(e, checkDateValues('day')) }}
                 onInvalid={(e) => e.target.setCustomValidity(' ')}
                 />
             </div>
             <div data-testid="formGroup" className="usa-form-group usa-form-group--year">
-                <label data-testid="label" className="usa-label" htmlFor="date-of-birth_year">
-                    {stringContent.year}
+                <label data-testid="label" className="usa-label" htmlFor={`${inputData.id}` + '_year'}>
+                    {inputData.stringContent}
                 </label>
                 <input
-                data-test="dobYear"
-                id="date-of-birth_year"
+                data-test={`${inputData.id}` + '_year'}
+                id={`${inputData.id}` + '_year'}
                 className="usa-input radius-md"
-                aria-describedby="date-of-birth_error"
-                name="date-of-birth_year"
-                label={stringContent.year}
+                aria-describedby={`${inputData.id}` + '_error'}
+                name={`${inputData.id}` + '_year'}
+                label={fieldData.stringContent}
                 unit="year"
                 required={true}
                 aria-invalid={false}
@@ -85,8 +85,8 @@ function DOBFields({ inputData, saveFieldData, fieldData }) {
                 inputMode="numeric"
                 minLength={4}
                 maxLength={4}
-                value={props.fieldData.date_of_birth_year}
-                onInput={props.saveFieldData('date_of_birth_year')}
+                value={fieldData[`${inputData.id}` + '_year']}
+                onInput={saveFieldData(`${inputData.id}` + '_year')}
                 onKeyDown={(e) => { restrictType(e, 'number'), e.target.setCustomValidity('') }}
                 onBlur={(e) => toggleError(e, checkForErrors(e, 'check value length'))}
                 onInvalid={(e) => e.target.setCustomValidity(' ')}
