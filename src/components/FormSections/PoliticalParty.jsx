@@ -34,6 +34,7 @@ function PoliticalParty(props){
                 <Label className="text-bold" htmlFor="political-party">
                     {partyField.name}{(partyFieldState.required === "1") && <span className='required-text'>*</span>}
                 </Label>
+                <span className="usa-hint" id="political-party_hint">{partyField.help_text}</span>
                 <TextInput
                     data-test="politicalParty"
                     id="political-party"
@@ -54,7 +55,6 @@ function PoliticalParty(props){
                     {partyField.error_msg}
                 </span>
             </div>
-            <div dangerouslySetInnerHTML={{ __html: partyGeneralInstructions }} />
             </>
         )}
         </>

@@ -5,9 +5,9 @@
     "nvrf_id": "choice_of_party",
     "name": "Choice of party",
     "label": "Enter the full name of the political party you wish to join or leave blank.",
-    "help_text": false,
+    "help_text": "If you don\u0027t want to register with any political party, leave this field blank. You can still vote in general elections and open primary elections. But if your state holds a partisan primary election, you\u0027ll need to register with that party to vote in the partisan primary election.",
     "error_msg": "Choice of party must be filled out.",
-    "instructions": "\u003Cp\u003EIf you don\u0027t want to register with any political party, leave this field blank. You can still vote in general elections and open primary elections. But if your state holds a partisan primary election, you\u0027ll need to register with that party to vote in the partisan primary election.\u003C\/p\u003E",
+    "instructions": "",
     "section_description": "",
     "section_alert": "",
     "options": []
