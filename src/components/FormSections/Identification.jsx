@@ -7,6 +7,7 @@ function Identification(props){
     const headings = props.headings;
     const stateData = props.stateData;
     const fields = props.fieldContent;
+    const stringContent = props.stringContent;
     const nvrfStateFields = props.stateData.nvrf_fields;
 
     //Drupal field data
@@ -50,6 +51,7 @@ function Identification(props){
                         <Select
                             id="id-selection"
                             name="id-selection"
+                            aria-label={stringContent.idSelectionAriaLabel}
                             aria-describedby="id-selection_error"
                             data-test="dropDown"
                             value={props.idType}
