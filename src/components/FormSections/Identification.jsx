@@ -192,8 +192,8 @@ function Identification(props){
                         {ssnFullField.error_msg}
                     </span>
                 </>}
-
-            {props.idType === 'none' && <div dangerouslySetInnerHTML={{__html: noIdFieldInstructions}}/>}
+            {props.idType === 'none' && <div aria-describedby="no-id-warning" dangerouslySetInnerHTML={{__html: `<p>${noIdFieldInstructions}</p>`}}/>}
+            <span id="no-id-warning" role="alert" className='error-text'>{noIdFieldInstructions}</span>
         </div>
         </>
     );
