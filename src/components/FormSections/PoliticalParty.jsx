@@ -12,7 +12,6 @@ function PoliticalParty(props){
 
     //Drupal field data
     const partyField = fields.find(item => item.uuid === "fd516f06-11bb-4c39-9080-735ed98100cc");
-    const partyGeneralInstructions = sanitizeDOM(partyField.instructions)
 
     //Field requirements by state data
     const partyFieldState = (nvrfStateFields.find(item => item.uuid === partyField.uuid));
@@ -21,7 +20,7 @@ function PoliticalParty(props){
         <>
         <h2>{headings.step_label_4}</h2>
 
-        {(partyStateInstructions || partyGeneralInstructions) && (
+        {(partyStateInstructions) && (
         <div className="usa-alert usa-alert--info" role="region" aria-live="polite">
             <div className="usa-alert__body">
                 <div className="usa-alert__text" dangerouslySetInnerHTML={{__html: partyStateInstructions}}/>
