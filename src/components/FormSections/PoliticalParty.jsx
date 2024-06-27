@@ -12,6 +12,7 @@ function PoliticalParty(props){
 
     //Drupal field data
     const partyField = fields.find(item => item.uuid === "fd516f06-11bb-4c39-9080-735ed98100cc");
+    const partyGeneralInstructions = sanitizeDOM(partyField.instructions)
 
     //Field requirements by state data
     const partyFieldState = (nvrfStateFields.find(item => item.uuid === partyField.uuid));
@@ -20,7 +21,7 @@ function PoliticalParty(props){
         <>
         <h2>{headings.step_label_4}</h2>
 
-        {(partyStateInstructions) && (
+        {(partyStateInstructions || partyGeneralInstructions) && (
         <div className="usa-alert usa-alert--info" role="region" aria-live="polite">
             <div className="usa-alert__body">
                 <div className="usa-alert__text" dangerouslySetInnerHTML={{__html: partyStateInstructions}}/>
@@ -33,7 +34,7 @@ function PoliticalParty(props){
                 <Label className="text-bold" htmlFor="political-party">
                     {partyField.name}{(partyFieldState.required === "1") && <span className='required-text'>*</span>}
                 </Label>
-                <span className="usa-hint" id="political-party_hint">{partyField.help_text}</span>
+                <span className="usa-hint" id="political-party_hint">{partyGeneralInstructions}</span>
                 <TextInput
                     data-test="politicalParty"
                     id="political-party"
