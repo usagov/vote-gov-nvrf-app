@@ -23,7 +23,7 @@ function FieldContainer({ fieldType, inputData, saveFieldData, fieldData }) {
     <>
       <div className="input-parent">
         <Label className="text-bold" htmlFor={inputData.id}>
-          {inputData.label}{(inputData.required === "1") && <span>*</span>}
+          {inputData.label}{(parseInt(inputData.required) === 1) && <span>*</span>}
         </Label>
         <span className="usa-hint" id={`${inputData.id} + '-hint'`}>
           {inputData.help_text}

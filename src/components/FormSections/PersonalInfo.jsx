@@ -2,6 +2,7 @@ import { Label, TextInput, Select, Checkbox, Grid, Fieldset } from '@trussworks/
 import React from "react";
 import { restrictType, checkForErrors, jumpTo, toggleError } from '../HelperFunctions/ValidateField';
 import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
+import CurrentFirstName from "../Fields/CurrentFirstName";
 
 function PersonalInfo(props){
     const headings = props.headings;
@@ -133,31 +134,9 @@ function PersonalInfo(props){
                     </Select>
                     </Grid>
 
-                    <Grid tablet={{ col: 5 }}>
-                    <div className="input-parent">
-                        <Label className="text-bold" htmlFor="first-name">
-                            {firstNameField.label}{(nameFieldState.required === "1") && <span className='required-text'>*</span>}
-                        </Label>
-                        <TextInput
-                            data-test="firstName"
-                            id="first-name"
-                            className="radius-md text-semibold"
-                            aria-describedby="first-name_error"
-                            name="first-name"
-                            type="text"
-                            autoComplete="off"
-                            required={parseInt(nameFieldState.required)}
-                            value={props.fieldData.first_name}
-                            onChange={props.saveFieldData('first_name')}
-                            onBlur={(e) => toggleError(e, checkForErrors(e, 'check value exists'))}
-                            onInvalid={(e) => e.target.setCustomValidity(' ')}
-                            onInput={(e) => e.target.setCustomValidity('')}
-                            />
-                        <span id="first-name_error" role="alert" className={'error-text'} data-test="errorText">
-                            {firstNameField.error_msg}
-                        </span>
-                    </div>
-                    </Grid>
+                <Grid tablet={{ col: 5 }}>
+                    <CurrentFirstName {...props} />
+                </Grid>
 
                     <Grid tablet={{ col: 5 }}>
                         <Label className="text-bold" htmlFor="middle-name">
