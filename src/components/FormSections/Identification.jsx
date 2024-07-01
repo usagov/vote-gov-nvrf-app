@@ -72,7 +72,14 @@ function Identification(props){
                         </React.Fragment>
                         </Select>
                         <span id="id-selection_error" role="alert" className='error-text' data-test="errorText">
-                            {stateIDField.error_msg}
+                            {props.idType == 'none' ?
+                                <>
+                                    {noIdFieldInstructions}
+                                </>
+                                :
+                                <>
+                                    {stateIDField.error_msg}
+                                </>}
                         </span>
                     </div>
                 </>
@@ -192,8 +199,8 @@ function Identification(props){
                         {ssnFullField.error_msg}
                     </span>
                 </>}
-
-            {props.idType === 'none' && <div dangerouslySetInnerHTML={{__html: noIdFieldInstructions}}/>}
+                
+            {props.idType === 'none' && <div dangerouslySetInnerHTML={{__html: `<p>${noIdFieldInstructions}</p>`}}/>}
         </div>
         </>
     );
