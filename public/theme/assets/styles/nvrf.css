@@ -46,6 +46,10 @@
     }
 }
 
+.nvrf-app-container .usa-step-indicator__segment--complete {
+    cursor: pointer;
+}
+
 .nvrf-app-container .usa-alert__text {
     > *:first-child {
         margin-top: 0;

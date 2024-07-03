@@ -20,16 +20,23 @@ function ProgressBar(props) {
         }
         else null
       }
+    
+    const handleGoBackSteps = props.handleGoBack;
 
     return (
         <>
             <div aria-live="polite" aria-atomic="true" className="usa-sr-only">{currentStepMessage}</div>
             <StepIndicator centered className="margin-top-4" headingLevel="h2">
-                <StepIndicatorStep label={props.content.step_label_1} status={stepProgress(1)}/>
-                <StepIndicatorStep label={props.content.step_label_2} status={stepProgress(2)}/>
-                <StepIndicatorStep label={props.content.step_label_3} status={stepProgress(3)}/>
-                <StepIndicatorStep label={props.content.step_label_4} status={stepProgress(4)}/>
-                <StepIndicatorStep label={props.content.step_label_5} status={stepProgress(5)}/>
+                <StepIndicatorStep label={props.content.step_label_1} status={stepProgress(1)} 
+                onClick={stepProgress(1) === "complete" ? handleGoBackSteps(props.step - 1) : null}/>
+                <StepIndicatorStep label={props.content.step_label_2} status={stepProgress(2)} 
+                onClick={stepProgress(2) === "complete" ? handleGoBackSteps(props.step - 2) : null}/>
+                <StepIndicatorStep label={props.content.step_label_3} status={stepProgress(3)} 
+                onClick={stepProgress(3) === "complete" ? handleGoBackSteps(props.step - 3) : null}/>
+                <StepIndicatorStep label={props.content.step_label_4} status={stepProgress(4)} 
+                onClick={stepProgress(4) === "complete" ? handleGoBackSteps(props.step - 4) : null}/>
+                <StepIndicatorStep label={props.content.step_label_5} status={stepProgress(5)} 
+                onClick={stepProgress(5) === "complete" ? handleGoBackSteps(props.step - 5) : null}/>
                 <StepIndicatorStep label={props.content.step_label_6} status={stepProgress(6)}/>
             </StepIndicator>
         </>
