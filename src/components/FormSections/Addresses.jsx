@@ -2,6 +2,7 @@ import { Label, TextInput, Checkbox, Grid } from '@trussworks/react-uswds';
 import StateSelector from '../StateSelector';
 import React, { useState } from "react";
 import { restrictType, checkForErrors, toggleError } from '../HelperFunctions/ValidateField';
+import { sanitizeDOM } from '../HelperFunctions/JsonHelper';
 
 
 function Addresses(props){
@@ -39,14 +40,24 @@ function Addresses(props){
     //Field requirements by state data
     const addressFieldsState = (nvrfStateFields.find(item => item.uuid === streetAddressField.uuid));
 
+    // Instructions for optional checkboxes (prev address, no address)
+    const addressCheckBoxInstructions = sanitizeDOM(noAddressField.instructions);
+    const addressCheckBoxesInstructions = sanitizeDOM(prevAddressField.instructions);
+
     return (
         <>
         <h2>{headings.step_label_2}</h2>
 
         {addressFieldsState && (
             <>
+            {!changeRegistrationVisible && (
+                <span className='usa-hint' id='addresses-checkbox_hint'>{addressCheckBoxInstructions}</span>
+            )}
             { changeRegistrationVisible && (
+                <>
+                <span className='usa-hint' id='addresses-checkbox_hint'>{addressCheckBoxesInstructions}</span>
                 <Checkbox id="prev-address" name="prev-address" data-test="checkBox" checked={props.hasPreviousAddress} onChange={props.onChangePreviousAddressCheckbox} label={prevAddressField.label} />
+                </>
             )}
                 <Checkbox id="no-address" aria-describedby="no-address_alert" className="margin-bottom-4" name="no-addr" data-test="checkBox" checked={props.hasNoAddress} onChange={props.hasNoAddressCheckbox} label={noAddressField.label} />
                 {/******** Current Address Block *********/}

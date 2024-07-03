@@ -421,7 +421,7 @@
     "label": "I have moved since I last registered in this state.",
     "help_text": false,
     "error_msg": false,
-    "instructions": "",
+    "instructions": "Please only select one of the following checkboxes if it is applicable to you.",
     "section_description": "",
     "section_alert": "",
     "options": []
@@ -537,7 +537,7 @@
     "label": "I do not have a street address.",
     "help_text": false,
     "error_msg": false,
-    "instructions": "",
+    "instructions": "Please only select the checkbox below if it is applicable to you.",
     "section_description": "",
     "section_alert": "",
     "options": []
