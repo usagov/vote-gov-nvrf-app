@@ -297,7 +297,7 @@ function PersonalInfo(props){
                                     required={true}
                                     aria-invalid={false}
                                     type="text"
-                                    pattern="19\d{2}|20\d{2}"
+                                    pattern="19\d{2}|200\d{1}"
                                     inputMode="numeric"
                                     minLength={4}
                                     maxLength={4}
