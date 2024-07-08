@@ -320,12 +320,12 @@ function PersonalInfo(props){
                         <Label className="text-bold" htmlFor="phone-number">
                             {phoneNumberField.label}{(telephoneFieldState.required === "1") && <span className='required-text'>*</span>}
                         </Label>
-                        <span className="usa-hint" id="date-of-birth-hint">{phoneNumberField.help_text}</span>
+                        <span className="usa-hint" id="phone-number-hint">{phoneNumberField.help_text}</span>
                         <TextInput
                             data-test="phoneNumber"
                             id="phone-number"
                             className="radius-md"
-                            aria-describedby="phone-number_error"
+                            aria-describedby="phone-number-hint"
                             name="phone-number"
                             type="tel"
                             autoComplete="off"
