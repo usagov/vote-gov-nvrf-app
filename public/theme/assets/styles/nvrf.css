@@ -46,6 +46,10 @@
     }
 }
 
+.nvrf-app-container .usa-step-indicator__segment {
+    cursor: default;
+}
+
 .nvrf-app-container .usa-step-indicator__segment--complete {
     cursor: pointer;
     &:hover {
