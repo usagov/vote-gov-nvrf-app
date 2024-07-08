@@ -45,7 +45,7 @@ function PersonalInfo(props){
 
         let currentDate = new Date();
         let currentMonth = currentDate.getMonth();
-        let currentDay = currentDate.getDay();
+        let currentDay = currentDate.getDate();
         let currentYear = currentDate.getFullYear();
         let age = currentYear - year - (currentMonth <= month && currentDay < day);
 
