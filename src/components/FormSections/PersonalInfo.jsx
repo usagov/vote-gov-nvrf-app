@@ -61,8 +61,8 @@ function PersonalInfo(props){
             day >= 1,
             yearStart <= 20,
             yearStart >= 19,
-            age <= 110,
-            age >= 17
+            age <= 120,
+            age >= 16
           ];
 
           if (dobValues.includes(false)) {
