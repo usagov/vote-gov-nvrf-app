@@ -48,6 +48,9 @@
 
 .nvrf-app-container .usa-step-indicator__segment--complete {
     cursor: pointer;
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
 .nvrf-app-container .usa-alert__text {
