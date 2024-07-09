@@ -74,7 +74,7 @@ function Identification(props){
                         <span id="id-selection_error" role="alert" className='error-text' data-test="errorText">
                             {props.idType == 'none' ?
                                 <>
-                                    {noIdFieldInstructions}
+                                    {stringContent.noIdInformation}
                                 </>
                                 :
                                 <>
@@ -200,7 +200,7 @@ function Identification(props){
                     </span>
                 </>}
                 
-            {props.idType === 'none' && <div dangerouslySetInnerHTML={{__html: `<p>${noIdFieldInstructions}</p>`}}/>}
+            {props.idType === 'none' && <div dangerouslySetInnerHTML={{__html: noIdFieldInstructions}}/>}
         </div>
         </>
     );

@@ -240,7 +240,7 @@
     "label": "I do not have a valid ID.",
     "help_text": false,
     "error_msg": false,
-    "instructions": "\u0022None\u0022 will appear on your completed form.",
+    "instructions": "\u003Cp\u003E\u0022None\u0022 will appear on your completed form.\u003C\/p\u003E",
     "section_description": "",
     "section_alert": "",
     "options": []
