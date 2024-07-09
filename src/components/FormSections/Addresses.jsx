@@ -51,11 +51,11 @@ function Addresses(props){
         {addressFieldsState && (
             <>
             {!changeRegistrationVisible && (
-                <span className='usa-hint' id='addresses-checkbox_hint'>{addressCheckBoxInstructions}</span>
+                <span className='usa-hint' id='addresses-checkbox-hint'>{addressCheckBoxInstructions}</span>
             )}
             { changeRegistrationVisible && (
                 <>
-                <span className='usa-hint' id='addresses-checkbox_hint'>{addressCheckBoxesInstructions}</span>
+                <span className='usa-hint' id='addresses-checkbox-hint'>{addressCheckBoxesInstructions}</span>
                 <Checkbox id="prev-address" name="prev-address" data-test="checkBox" checked={props.hasPreviousAddress} onChange={props.onChangePreviousAddressCheckbox} label={prevAddressField.label} />
                 </>
             )}
