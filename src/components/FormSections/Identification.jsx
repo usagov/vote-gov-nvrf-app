@@ -223,8 +223,7 @@ function Identification(props){
                     <span id="ssn-full_error" role="alert" className='error-text' data-test="errorText">
                         {ssnFullField.error_msg}
                     </span>
-                </>}
-                
+                </>}   
             {props.idType === 'none' && <div dangerouslySetInnerHTML={{__html: noIdFieldInstructions}}/>}
         </div>
         </>
