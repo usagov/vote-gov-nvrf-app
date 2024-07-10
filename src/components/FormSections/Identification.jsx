@@ -36,6 +36,9 @@ function Identification(props){
             case 'ssn':
                 setTimeout(() => { setHelpText(ssnField.help_text); }, 100);
                 break;
+            case 'ssn-full':
+                setTimeout(() => { setHelpText(ssnFullField.help_text); }, 100);
+                break;
             case 'driver-id-num':
                 setTimeout(() => { setHelpText(driverLicenseField.help_text); }, 100);
                 break;
