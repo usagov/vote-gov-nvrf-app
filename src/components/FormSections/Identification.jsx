@@ -1,5 +1,5 @@
 import { Label, TextInput, Checkbox, Select } from '@trussworks/react-uswds';
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { restrictType, checkForErrors, toggleError } from '../HelperFunctions/ValidateField';
 import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
 
@@ -27,6 +27,28 @@ function Identification(props){
     const ssnFullFieldReq = (nvrfStateFields.find(item => item.uuid === ssnFullField.uuid));
     const ssnFieldReq = (nvrfStateFields.find(item => item.uuid === ssnField.uuid));
     const noIdFieldReq = (nvrfStateFields.find(item => item.uuid === noIdField.uuid));
+
+    // Set the help text for different id selections
+    const [helpText, setHelpText] = useState("");
+    useEffect(() => {
+        setHelpText("");
+        switch (props.idType) {
+            case 'ssn':
+                setTimeout(() => { setHelpText(ssnField.help_text); }, 100);
+                break;
+            case 'driver-id-num':
+                setTimeout(() => { setHelpText(driverLicenseField.help_text); }, 100);
+                break;
+            case 'state-id-num':
+                setTimeout(() => { setHelpText(stateIDField.help_text); }, 100);
+                break;
+            case 'none':
+                setTimeout(() => { setHelpText(stringContent.noIdInformation); }, 100);
+                break;
+            default:
+                break;
+        }
+    }, [props.idType]);
 
     return (
         <>
@@ -71,15 +93,11 @@ function Identification(props){
                             {(noIdFieldReq) && <option key="id-none" value="none">{noIdField.label}</option>}
                         </React.Fragment>
                         </Select>
+                        <div style={{ position:'absolute', width:'1px', height:'1px',overflow:'hidden' }} aria-live="polite">
+                            {helpText}
+                        </div>
                         <span id="id-selection_error" role="alert" className='error-text' data-test="errorText">
-                            {props.idType == 'none' ?
-                                <>
-                                    {stringContent.noIdInformation}
-                                </>
-                                :
-                                <>
-                                    {stateIDField.error_msg}
-                                </>}
+                            {props.idType != 'none' && stateIDField.error_msg}
                         </span>
                     </div>
                 </>
