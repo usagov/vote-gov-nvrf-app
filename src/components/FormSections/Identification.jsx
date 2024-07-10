@@ -1,7 +1,7 @@
 import { Label, TextInput, Checkbox, Select } from '@trussworks/react-uswds';
 import React, {useEffect, useState} from "react";
 import { restrictType, checkForErrors, toggleError } from '../HelperFunctions/ValidateField';
-import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
+import {sanitizeDOM, cleanString} from "../HelperFunctions/JsonHelper";
 
 function Identification(props){
     const headings = props.headings;
@@ -31,8 +31,12 @@ function Identification(props){
     // Set the help text for different id selections
     const [helpText, setHelpText] = useState("");
     useEffect(() => {
-        setHelpText("");
         switch (props.idType) {
+            case '':
+                if (helpText === '') {
+                    setTimeout(() => { setHelpText(cleanString(idStateInstructions)); }, 100);
+                }
+                break;
             case 'ssn':
                 setTimeout(() => { setHelpText(ssnField.help_text); }, 100);
                 break;
@@ -46,7 +50,7 @@ function Identification(props){
                 setTimeout(() => { setHelpText(stateIDField.help_text); }, 100);
                 break;
             case 'none':
-                setTimeout(() => { setHelpText(stringContent.noIdInformation); }, 100);
+                setTimeout(() => { setHelpText(cleanString(noIdField.instructions)); }, 100);
                 break;
             default:
                 break;
@@ -85,7 +89,7 @@ function Identification(props){
                             onChange={(e) => props.saveIdType(e)}
                             onBlur={(e) => toggleError(e, checkForErrors(e, 'check value exists'))}
                             onInvalid={(e) => e.target.setCustomValidity(' ')}
-                            onInput={(e) => e.target.setCustomValidity('')}
+                            onInput={(e) => {e.target.setCustomValidity(''); toggleError(e, false)}}
                         >
                         <React.Fragment key=".0">
                             <option key="default" value="">{"Select Identification"}</option>
@@ -100,7 +104,7 @@ function Identification(props){
                             {helpText}
                         </div>
                         <span id="id-selection_error" role="alert" className='error-text' data-test="errorText">
-                            {props.idType != 'none' && stateIDField.error_msg}
+                            {props.idType === '' && stateIDField.error_msg}
                         </span>
                     </div>
                 </>
