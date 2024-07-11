@@ -1,5 +1,5 @@
 import { Label, TextInput, Select, Checkbox, Grid, Fieldset } from '@trussworks/react-uswds';
-import React from "react";
+import React, { useState } from "react";
 import { restrictType, checkForErrors, jumpTo, toggleError } from '../HelperFunctions/ValidateField';
 import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
 import CurrentFirstName from "../Fields/CurrentFirstName";
@@ -30,6 +30,8 @@ function PersonalInfo(props){
 
     const nameSectionDesc = sanitizeDOM(nameSectionField.section_description);
     const nameSectionAlert = sanitizeDOM(nameSectionField.section_alert);
+
+    const [phoneDescribe, setPhoneDescribe] = useState('phone-number-hint');
 
     //Field requirements by state data
     const nameFieldState = (nvrfStateFields.find(item => item.uuid === firstNameField.uuid));
@@ -325,7 +327,7 @@ function PersonalInfo(props){
                             data-test="phoneNumber"
                             id="phone-number"
                             className="radius-md"
-                            aria-describedby="phone-number-hint"
+                            aria-describedby={phoneDescribe}
                             name="phone-number"
                             type="tel"
                             autoComplete="off"
@@ -336,18 +338,16 @@ function PersonalInfo(props){
                             value={props.fieldData.phone_number}
                             onChange={props.saveFieldData('phone_number')}
                             onBlur={(e) => toggleError(e, checkForErrors(e, 'check value length'))}
-                            onInvalid={(e) => e.target.setCustomValidity(' ')}
-                            onInput={(e) => e.target.setCustomValidity('')}
+                            onInvalid={(e) => {e.target.setCustomValidity(' '), setPhoneDescribe('phone-number_error')}}
+                            onInput={(e) => {e.target.setCustomValidity(''), setPhoneDescribe('phone-number-hint')}}
                         />
                         <span id="phone-number_error" rol="alert" className='error-text' data-test="errorText">
                             {phoneNumberField.error_msg}
                         </span>
                     </div>
                 </Grid>
-
             )}
         </Grid>
-
             {/* Email Address check. */}
             <Grid row className={'email-address-input'} style={{
                 overflow: "hidden",
