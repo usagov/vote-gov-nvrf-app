@@ -1,6 +1,6 @@
 import React from "react";
 import { TextInput } from '@trussworks/react-uswds';
-import { checkForErrors, toggleError } from '../HelperFunctions/ValidateField';
+import { checkForErrors, toggleError } from '../../utils/ValidateField';
 
 function TextInputField({ inputData, saveFieldData, fieldData }){
     return (

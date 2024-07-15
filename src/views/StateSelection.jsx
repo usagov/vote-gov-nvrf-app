@@ -1,10 +1,10 @@
 import React from 'react';
 import { Select, Form } from '@trussworks/react-uswds';
-import { checkForErrors } from './HelperFunctions/ValidateField';
-import NextButton from './NextButton';
-import { getFieldError, getFieldLabel } from './HelperFunctions/fieldParser';
-import { sanitizeDOM } from "./HelperFunctions/JsonHelper";
-import { focusError, toggleError } from './HelperFunctions/ValidateField';
+import { checkForErrors } from '../utils/ValidateField';
+import NextButton from '../components/Buttons/NextButton';
+import { getFieldError, getFieldLabel } from '../utils/fieldParser';
+import { sanitizeDOM } from "../utils/JsonHelper";
+import { focusError, toggleError } from '../utils/ValidateField';
 
 function StateSelection(props) {
     const content = props.content;

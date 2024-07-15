@@ -1,8 +1,8 @@
 import { Label, TextInput, Checkbox, Grid } from '@trussworks/react-uswds';
-import StateSelector from '../StateSelector';
+import StateSelector from '../../components/Fields/StateSelector';
 import React, { useState } from "react";
-import { restrictType, checkForErrors, toggleError } from '../HelperFunctions/ValidateField';
-import { sanitizeDOM } from '../HelperFunctions/JsonHelper';
+import { restrictType, checkForErrors, toggleError } from '../../utils/ValidateField';
+import { sanitizeDOM } from '../../utils/JsonHelper';
 
 
 function Addresses(props){

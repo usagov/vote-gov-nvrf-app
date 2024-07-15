@@ -1,17 +1,17 @@
 import {Form} from '@trussworks/react-uswds';
 import React, { useState, useEffect } from "react";
-import ProgressBar from './ProgressBar';
-import PersonalInfo from "./FormSections/PersonalInfo";
-import Addresses from "./FormSections/Addresses"
-import Identification from './FormSections/Identification';
-import Confirmation from './FormSections/Confirmation';
-import Delivery from "./FormSections/Delivery";
-import PoliticalParty from './FormSections/PoliticalParty';
-import { phoneFormat, focusError } from './HelperFunctions/ValidateField';
-import BackButton from './BackButton'
-import NextButton from './NextButton';
+import ProgressBar from '../components/ProgressBar';
+import PersonalInfo from "./FormPages/PersonalInfo";
+import Addresses from "./FormPages/Addresses"
+import Identification from './FormPages/Identification';
+import Confirmation from './FormPages/Confirmation';
+import Delivery from './FormPages/Delivery';
+import PoliticalParty from './FormPages/PoliticalParty';
+import { phoneFormat, focusError } from '../utils/ValidateField';
+import BackButton from '../components/Buttons/BackButton'
+import NextButton from '../components/Buttons/NextButton';
 import { Helmet } from "react-helmet-async";
-import {sanitizeDOM} from "./HelperFunctions/JsonHelper";
+import {sanitizeDOM} from "../utils/JsonHelper";
 
 function MultiStepForm(props) {
     const content = props.content;

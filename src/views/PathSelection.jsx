@@ -1,6 +1,6 @@
 import {Button, CardGroup, Card, CardHeader, CardBody, CardFooter, Icon} from '@trussworks/react-uswds';
-import BackButton from './BackButton';
-import {sanitizeDOM} from "./HelperFunctions/JsonHelper";
+import BackButton from "../components/Buttons/BackButton"
+import {sanitizeDOM} from "../utils/JsonHelper";
 
 function PathSelection(props) {
     const content = props.content;

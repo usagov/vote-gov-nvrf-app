@@ -1,6 +1,6 @@
 import { Button, Icon, Grid } from '@trussworks/react-uswds';
-import GenerateFilledPDF from '../GenerateFilledPDF';
-import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
+import GenerateFilledPDF from '../../utils/GenerateFilledPDF';
+import { sanitizeDOM } from '../../utils/JsonHelper';
 import {renderToStaticMarkup} from "react-dom/server";
 
 function Delivery(props) {

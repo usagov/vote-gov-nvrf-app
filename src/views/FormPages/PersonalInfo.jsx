@@ -1,8 +1,8 @@
 import { Label, TextInput, Select, Checkbox, Grid, Fieldset } from '@trussworks/react-uswds';
 import React, { useState } from "react";
-import { restrictType, checkForErrors, jumpTo, toggleError } from '../HelperFunctions/ValidateField';
-import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
-import CurrentFirstName from "../Fields/CurrentFirstName";
+import { restrictType, checkForErrors, jumpTo, toggleError } from '../../utils/ValidateField';
+import {sanitizeDOM} from "../../utils/JsonHelper";
+import CurrentFirstName from "../../components/Fields/CurrentFirstName";
 
 function PersonalInfo(props){
     const headings = props.headings;
@@ -130,7 +130,7 @@ function PersonalInfo(props){
                         onInvalid={(e) => e.target.setCustomValidity(' ')}
                         onInput={(e) => e.target.setCustomValidity('')}>
                         <React.Fragment key=".0"
-                    >                        
+                    >
                     <option value={''}>{stringContent.select}</option>
                         {titleField.options.map((item, index) => (
                             <option key={index} value={item.value}>{item.key}</option>
@@ -192,7 +192,7 @@ function PersonalInfo(props){
                     <Label className="text-bold" htmlFor="suffix">
                         {suffixField.label}
                     </Label>
-                    <Select 
+                    <Select
                     data-test="select"
                     id="suffix" className="radius-md" name="suffix"
                     value={props.fieldData.suffix}
@@ -201,7 +201,7 @@ function PersonalInfo(props){
                     onInvalid={(e) => e.target.setCustomValidity(' ')}
                     onInput={(e) => e.target.setCustomValidity('')}
                     >
-                    <React.Fragment key=".0">                        
+                    <React.Fragment key=".0">
                         <option value={''}>{stringContent.select}</option>
                         {suffixField.options.map((item, index) => (
                             <option key={index} value={item.value}>{item.key}</option>
@@ -393,18 +393,18 @@ function PersonalInfo(props){
                                 {raceField.label}{(raceFieldState.required === "1") && <span className='required-text'>*</span>}
                             </Label>
                             <Select
-                            id="race-ethnicity" 
-                            className="radius-md" 
+                            id="race-ethnicity"
+                            className="radius-md"
                             name="race-ethnicity"
                             aria-describedby="race-ethnicity_error"
-                            value={props.fieldData.race} 
-                            onChange={props.saveFieldData('race')} 
+                            value={props.fieldData.race}
+                            onChange={props.saveFieldData('race')}
                             autoComplete="off"
                             required={parseInt(raceFieldState.required)}
                             onBlur={(e) => toggleError(e, checkForErrors(e, 'check value exists'))}
                             onInvalid={(e) => e.target.setCustomValidity(' ')}
                             onInput={(e) => e.target.setCustomValidity('')}>
-                            <React.Fragment key=".0">                        
+                            <React.Fragment key=".0">
                                 <option value="">{stringContent.select}</option>
                                 {raceField.options.map((item, index) => (
                                     <option key={index} value={item.value}>{item.key}</option>
@@ -437,7 +437,7 @@ function PersonalInfo(props){
                 onInvalid={(e) => e.target.setCustomValidity(' ')}
                 onInput={(e) => e.target.setCustomValidity('')}
                 >
-            <React.Fragment key=".0"> 
+            <React.Fragment key=".0">
                 <option value={''}>{stringContent.select}</option>
                 {prevTitleField.options.map((item, index) => (
                     <option key={index} value={item.value}>{item.key}</option>
@@ -530,7 +530,7 @@ function PersonalInfo(props){
                 onInvalid={(e) => e.target.setCustomValidity(' ')}
                 onInput={(e) => e.target.setCustomValidity('')}
                 >
-            <React.Fragment key=".0">                           
+            <React.Fragment key=".0">
                 <option value={''}>{stringContent.select}</option>
                 {prevSuffixField.options.map((item, index) => (
                     <option key={index} value={item.value}>{item.key}</option>

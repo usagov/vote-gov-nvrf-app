@@ -1,7 +1,6 @@
 import { Link, Icon } from '@trussworks/react-uswds';
-import NextButton from '../NextButton';
 import {renderToStaticMarkup} from "react-dom/server";
-import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
+import {sanitizeDOM} from "../../utils/JsonHelper";
 
 function OnlineNoNVRF(props) {
     const content = props.content;

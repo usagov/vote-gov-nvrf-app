@@ -1,6 +1,6 @@
 import {Alert, Button, Checkbox, Grid, Label} from '@trussworks/react-uswds';
-import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
-import { toggleError } from '../HelperFunctions/ValidateField';
+import { sanitizeDOM } from '../../utils/JsonHelper';
+import { toggleError } from '../../utils/ValidateField';
 
 function Confirmation(props) {
     const headings = props.headings;

@@ -1,6 +1,6 @@
 import React from "react";
 import FieldContainer from '../FieldContainer';
-import {getField} from "../HelperFunctions/fieldParser";
+import {getField} from "../../utils/fieldParser";
 
 function CurrentFirstName(props){
     const uuid = "b7bdae35-e4be-4827-ae11-75d9c3e33bf0";

@@ -1,7 +1,7 @@
 import React from "react";
 import { Label, TextInput } from '@trussworks/react-uswds';
-import { restrictType, checkForErrors, toggleError } from '../HelperFunctions/ValidateField';
-import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
+import { restrictType, checkForErrors, toggleError } from '../../utils/ValidateField';
+import { sanitizeDOM } from "../../utils/JsonHelper";
 
 function PoliticalParty(props){
     const headings = props.headings;
@@ -49,7 +49,7 @@ function PoliticalParty(props){
                     onKeyDown={(e) => restrictType(e, 'letters')}
                     onBlur={(e) => toggleError(e, checkForErrors(e, 'check value exists'))}
                     onInvalid={(e) => e.target.setCustomValidity(' ')}
-                    onInput={(e) => e.target.setCustomValidity('')} 
+                    onInput={(e) => e.target.setCustomValidity('')}
                     />
                 <span id="political-party_error" role="alert" className='error-text' data-test="errorText">
                     {partyField.error_msg}

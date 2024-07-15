@@ -1,10 +1,10 @@
 import {Checkbox, Label, Form} from '@trussworks/react-uswds';
-import BackButton from './BackButton';
-import NextButton from "./NextButton";
-import { getFieldLabel, getFieldError } from './HelperFunctions/fieldParser';
+import BackButton from "../components/Buttons/BackButton"
+import NextButton from "../components/Buttons/NextButton";
+import { getFieldLabel, getFieldError } from '../utils/fieldParser';
 import { renderToStaticMarkup } from "react-dom/server";
-import { sanitizeDOM } from "./HelperFunctions/JsonHelper";
-import { focusError, toggleError } from './HelperFunctions/ValidateField';
+import { sanitizeDOM } from "../utils/JsonHelper";
+import { focusError, toggleError } from '../utils/ValidateField';
 
 function Eligibility(props) {
     let content = props.content;
@@ -59,8 +59,8 @@ function Eligibility(props) {
                     </div>
                 <div dangerouslySetInnerHTML= {{__html: eligibilityInstructions}}/>
 
-                
-                <div className={'usa-prose margin-top-5'} dangerouslySetInnerHTML= 
+
+                <div className={'usa-prose margin-top-5'} dangerouslySetInnerHTML=
                     {{__html: contentBodyParts[1].replace("@state_name", stateContent.name).replace("@mail_deadline", renderToStaticMarkup(mailDeadline()))}}/>
 
                 <div className={'margin-top-3'}>

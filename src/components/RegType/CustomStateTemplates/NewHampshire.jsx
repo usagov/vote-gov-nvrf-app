@@ -1,6 +1,6 @@
 import { Icon } from '@trussworks/react-uswds';
 import {renderToStaticMarkup} from "react-dom/server";
-import {sanitizeDOM} from "../../HelperFunctions/JsonHelper";
+import {sanitizeDOM} from "../../../utils/JsonHelper";
 
 function NewHampshire(props) {
     const content = props.content;

@@ -1,7 +1,7 @@
 import { Label, TextInput, Checkbox, Select } from '@trussworks/react-uswds';
 import React from "react";
-import { restrictType, checkForErrors, toggleError } from '../HelperFunctions/ValidateField';
-import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
+import { restrictType, checkForErrors, toggleError } from '../../utils/ValidateField';
+import { sanitizeDOM } from '../../utils/JsonHelper';
 
 function Identification(props){
     const headings = props.headings;
@@ -103,7 +103,7 @@ function Identification(props){
                             />
                             <span id="id-driver_error" role="alert" className='error-text' data-test="errorText">
                                 {driverLicenseField.error_msg}
-                            </span>  
+                            </span>
                         </>
                         }
                         {(props.idType === 'state-id-num') &&

@@ -1,7 +1,7 @@
 import { Link, Icon } from '@trussworks/react-uswds';
-import NextButton from '../NextButton';
+import NextButton from '../Buttons/NextButton';
 import {renderToStaticMarkup} from "react-dom/server";
-import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
+import {sanitizeDOM} from "../../utils/JsonHelper";
 
 function Online(props) {
     const content = props.content;

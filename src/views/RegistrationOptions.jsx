@@ -1,14 +1,14 @@
-import ByMail from "./RegType/ByMail";
-import ByMailStateOnly from "./RegType/ByMailStateOnly";
-import Online from "./RegType/Online";
-import OnlineNoStateMail from "./RegType/OnlineNoStateMail";
-import OnlineOnly from "./RegType/OnlineOnly";
-import OnlineNoNVRF from "./RegType/OnlineNoNvrf";
-import NotNeeded from "./RegType/NotNeeded";
-import BackButton from './BackButton';
-import InPerson from "./RegType/InPerson";
-import NewHampshire from "./RegType/CustomStateTemplates/NewHampshire";
-import Wyoming from "./RegType/CustomStateTemplates/Wyoming";
+import ByMail from "../components/RegType/ByMail";
+import ByMailStateOnly from "../components/RegType/ByMailStateOnly";
+import Online from "../components/RegType/Online";
+import OnlineNoStateMail from "../components/RegType/OnlineNoStateMail";
+import OnlineOnly from "../components/RegType/OnlineOnly";
+import OnlineNoNVRF from "../components/RegType/OnlineNoNvrf";
+import NotNeeded from "../components/RegType/NotNeeded";
+import BackButton from "../components/Buttons/BackButton"
+import InPerson from "../components/RegType/InPerson";
+import NewHampshire from "../components/RegType/CustomStateTemplates/NewHampshire";
+import Wyoming from "../components/RegType/CustomStateTemplates/Wyoming";
 
 function RegistrationOptions(props) {
     const regType = props.stateData.reg_type;
@@ -33,8 +33,8 @@ function RegistrationOptions(props) {
         <>
             <BackButton stringContent={stringContent} type={'button'} onClick={props.handlePrev} text={navContent.back.select_state}/>
             <div className={'usa-prose margin-top-5 maxw-tablet margin-x-auto'}>
-                {props.stateData.abbrev != 'nh' && props.stateData.abbrev != 'wy' 
-                    ? 
+                {props.stateData.abbrev != 'nh' && props.stateData.abbrev != 'wy'
+                    ?
                     <>
                     {(regType === 'online' && acceptsNVRF === '1' && props.stateData.mail_reg_url != "") &&
                         <Online
@@ -97,7 +97,7 @@ function RegistrationOptions(props) {
                             stringContent={props.stringContent}
                         />}
                     </>
-                    : 
+                    :
                     <>
                     {props.stateData.abbrev === 'nh' &&
                         <NewHampshire
