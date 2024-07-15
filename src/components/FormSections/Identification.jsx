@@ -31,29 +31,10 @@ function Identification(props){
     // Set the help text for different id selections
     const [helpText, setHelpText] = useState("");
     useEffect(() => {
-        switch (props.idType) {
-            case '':
-                if (helpText === '') {
-                    setTimeout(() => { setHelpText(cleanString(idStateInstructions)); }, 100);
-                }
-                break;
-            case 'ssn':
-                setTimeout(() => { setHelpText(ssnField.help_text); }, 100);
-                break;
-            case 'ssn-full':
-                setTimeout(() => { setHelpText(ssnFullField.help_text); }, 100);
-                break;
-            case 'driver-id-num':
-                setTimeout(() => { setHelpText(driverLicenseField.help_text); }, 100);
-                break;
-            case 'state-id-num':
-                setTimeout(() => { setHelpText(stateIDField.help_text); }, 100);
-                break;
-            case 'none':
-                setTimeout(() => { setHelpText(cleanString(noIdField.instructions)); }, 100);
-                break;
-            default:
-                break;
+        if (props.idType === 'none') {
+            setTimeout(() => { setHelpText(cleanString(noIdField.instructions)); }, 100);
+        } else {
+            setHelpText("");
         }
     }, [props.idType]);
 
