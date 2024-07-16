@@ -37,10 +37,11 @@ function StateSelection(props) {
                                 id="state-dropdown"
                                 data-test="dropDown"
                                 name="state-dropdown"
+                                role="select"
+                                aria-label={stringContent.selectStateAriaLabel}
                                 aria-describedby="state-dropdown_error"
                                 value={props.state}
                                 required={true}
-                                aria-invalid={false}
                                 onChange={e => {
                                     props.getSelectedState(e.target.value)
                                 }}

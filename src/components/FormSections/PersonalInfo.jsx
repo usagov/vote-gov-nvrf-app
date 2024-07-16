@@ -1,7 +1,8 @@
 import { Label, TextInput, Select, Checkbox, Grid, Fieldset } from '@trussworks/react-uswds';
-import React from "react";
+import React, { useState } from "react";
 import { restrictType, checkForErrors, jumpTo, toggleError } from '../HelperFunctions/ValidateField';
 import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
+import CurrentFirstName from "../Fields/CurrentFirstName";
 
 function PersonalInfo(props){
     const headings = props.headings;
@@ -30,38 +31,44 @@ function PersonalInfo(props){
     const nameSectionDesc = sanitizeDOM(nameSectionField.section_description);
     const nameSectionAlert = sanitizeDOM(nameSectionField.section_alert);
 
+    const [phoneDescribe, setPhoneDescribe] = useState('phone-number-hint');
+
     //Field requirements by state data
     const nameFieldState = (nvrfStateFields.find(item => item.uuid === firstNameField.uuid));
     const dobFieldState = (nvrfStateFields.find(item => item.uuid === dobField.uuid));
     const telephoneFieldState = (nvrfStateFields.find(item => item.uuid === phoneNumberField.uuid));
     const raceFieldState = (nvrfStateFields.find(item => item.uuid === raceField.uuid));
 
-    const checkDateValues = (type) => {
+    const checkDateValues = (e, type) => {
         let month = props.fieldData.date_of_birth_month;
         let day = props.fieldData.date_of_birth_day;
-        /* removing age validation temporarily */
-        // let year = props.fieldData.date_of_birth_year;
-        // let yearStart = year.slice(0, 2);
-        // let birthdate = year + '-' + month + '-' + day;
-        // let age = Math.floor((new Date() - new Date(birthdate).getTime()) / 3.15576e+10)
+        let year = props.fieldData.date_of_birth_year;
+        let yearStart = year.slice(0, 2);
+
+        let currentDate = new Date();
+        let currentMonth = currentDate.getMonth();
+        let currentDay = currentDate.getDate();
+        let currentYear = currentDate.getFullYear();
+        let age = currentYear - year - (currentMonth <= month && currentDay < day);
 
         if (type === "all") {
           let dobValues = [
             month.length === 2,
             day.length === 2,
-            // year.length === 4,
+            year.length === 4,
 
             month <= 12,
             month >= 1,
             day <= 31,
             day >= 1,
-            // yearStart <= 20,
-            // yearStart >= 19,
-            // age <= 110,
-            // age >= 17
+            yearStart <= 20,
+            yearStart >= 19,
+            age <= 120,
+            age >= 16
           ];
 
           if (dobValues.includes(false)) {
+            e.target.setCustomValidity(' ');
             return true
           } else {
             return false
@@ -79,13 +86,12 @@ function PersonalInfo(props){
           } else {
             return false
           }
-        /* removing age validation temporarily */
-        // } else if (type === "year") {
-        //   if (age > 110 || age < 17) {
-        //     return true
-        //   } else {
-        //     return false
-        //   }
+        } else if (type === "year") {
+          if (age > 110 || age < 17) {
+            return true
+          } else {
+            return false
+          }
         }
       };
 
@@ -133,31 +139,9 @@ function PersonalInfo(props){
                     </Select>
                     </Grid>
 
-                    <Grid tablet={{ col: 5 }}>
-                    <div className="input-parent">
-                        <Label className="text-bold" htmlFor="first-name">
-                            {firstNameField.label}{(nameFieldState.required === "1") && <span className='required-text'>*</span>}
-                        </Label>
-                        <TextInput
-                            data-test="firstName"
-                            id="first-name"
-                            className="radius-md text-semibold"
-                            aria-describedby="first-name_error"
-                            name="first-name"
-                            type="text"
-                            autoComplete="off"
-                            required={parseInt(nameFieldState.required)}
-                            value={props.fieldData.first_name}
-                            onChange={props.saveFieldData('first_name')}
-                            onBlur={(e) => toggleError(e, checkForErrors(e, 'check value exists'))}
-                            onInvalid={(e) => e.target.setCustomValidity(' ')}
-                            onInput={(e) => e.target.setCustomValidity('')}
-                            />
-                        <span id="first-name_error" role="alert" className={'error-text'} data-test="errorText">
-                            {firstNameField.error_msg}
-                        </span>
-                    </div>
-                    </Grid>
+                <Grid tablet={{ col: 5 }}>
+                    <CurrentFirstName {...props} />
+                </Grid>
 
                     <Grid tablet={{ col: 5 }}>
                         <Label className="text-bold" htmlFor="middle-name">
@@ -244,7 +228,7 @@ function PersonalInfo(props){
                             autoComplete="off"
                             required={parseInt(dobFieldState.required)}
                             data-testid="dateInputGroup"
-                            onBlur={e => { if (!e.currentTarget.contains(e.relatedTarget)) toggleError(e, checkDateValues('all')) }}
+                            onBlur={e => { if (!e.currentTarget.contains(e.relatedTarget)) toggleError(e, checkDateValues(e, 'all')) }}
                             >
                             <div data-testid="formGroup" className="usa-form-group usa-form-group--month">
                                 <label data-testid="label" className="usa-label" htmlFor="date-of-birth_month">
@@ -269,7 +253,7 @@ function PersonalInfo(props){
                                     onInput={props.saveFieldData('date_of_birth_month')}
                                     onKeyUp={(e) => jumpTo(e, 'date-of-birth_day')}
                                     onKeyDown={(e) => {restrictType(e, 'number'), e.target.setCustomValidity('')}}
-                                    onBlur={(e) => {props.dateFormat(e, 'date_of_birth_month'), toggleError(e, checkDateValues('month'))}}
+                                    onBlur={(e) => {props.dateFormat(e, 'date_of_birth_month'), toggleError(e, checkDateValues(e, 'month'))}}
                                     onInvalid={(e) => e.target.setCustomValidity(' ')}
                                     />
                             </div>
@@ -296,7 +280,7 @@ function PersonalInfo(props){
                                     onInput={props.saveFieldData('date_of_birth_day')}
                                     onKeyUp={(e) => jumpTo(e, 'date-of-birth_year')}
                                     onKeyDown={(e) => {restrictType(e, 'number'), e.target.setCustomValidity('')}}
-                                    onBlur={(e) => {props.dateFormat(e, 'date_of_birth_day'), toggleError(e, checkDateValues('day'))}}
+                                    onBlur={(e) => {props.dateFormat(e, 'date_of_birth_day'), toggleError(e, checkDateValues(e, 'day'))}}
                                     onInvalid={(e) => e.target.setCustomValidity(' ')}
                                     />
                             </div>
@@ -341,12 +325,12 @@ function PersonalInfo(props){
                         <Label className="text-bold" htmlFor="phone-number">
                             {phoneNumberField.label}{(telephoneFieldState.required === "1") && <span className='required-text'>*</span>}
                         </Label>
-                        <span className="usa-hint" id="date-of-birth-hint">{phoneNumberField.help_text}</span>
+                        <span className="usa-hint" id="phone-number-hint">{phoneNumberField.help_text}</span>
                         <TextInput
                             data-test="phoneNumber"
                             id="phone-number"
                             className="radius-md"
-                            aria-describedby="phone-number_error"
+                            aria-describedby={phoneDescribe}
                             name="phone-number"
                             type="tel"
                             autoComplete="off"
@@ -357,18 +341,16 @@ function PersonalInfo(props){
                             value={props.fieldData.phone_number}
                             onChange={props.saveFieldData('phone_number')}
                             onBlur={(e) => toggleError(e, checkForErrors(e, 'check value length'))}
-                            onInvalid={(e) => e.target.setCustomValidity(' ')}
-                            onInput={(e) => e.target.setCustomValidity('')}
+                            onInvalid={(e) => {e.target.setCustomValidity(' '), setPhoneDescribe('phone-number_error')}}
+                            onInput={(e) => {e.target.setCustomValidity(''), setPhoneDescribe('phone-number-hint')}}
                         />
                         <span id="phone-number_error" rol="alert" className='error-text' data-test="errorText">
                             {phoneNumberField.error_msg}
                         </span>
                     </div>
                 </Grid>
-
             )}
         </Grid>
-
             {/* Email Address check. */}
             <Grid row className={'email-address-input'} style={{
                 overflow: "hidden",
