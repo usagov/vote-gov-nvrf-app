@@ -1,5 +1,6 @@
 import { Label, TextInput, Checkbox, Grid } from '@trussworks/react-uswds';
 import StateSelector from '../StateSelector';
+import FieldContainer from '../FieldContainer';
 import React, { useState } from "react";
 import { restrictType, checkForErrors, toggleError } from '../HelperFunctions/ValidateField';
 import { sanitizeDOM } from '../HelperFunctions/JsonHelper';
@@ -125,30 +126,15 @@ function Addresses(props){
 
                     <Grid row gap className={'flex-align-end'}>
                         <Grid tablet={{ col: 4 }}>
-                            <div className="input-parent">
-                                <Label className="text-bold" htmlFor="city">
-                                    {cityField.label}{(addressFieldsState.required === "1") && <span className='required-text'>*</span>}
-                                </Label>
-                                    <TextInput
-                                        data-test="city"
-                                        id="city"
-                                        className="radius-md"
-                                        aria-describedby="city_error"
-                                        name="city"
-                                        value={props.fieldData.city}
-                                        type="text"
-                                        autoComplete="off"
-                                        required={(parseInt(addressFieldsState.required))}
-                                        onChange={props.saveFieldData('city')}
-                                        onKeyDown={(e) => restrictType(e, 'letters')}
-                                        onBlur={(e) => toggleError(e, checkForErrors(e, 'check value exists'))}
-                                        onInvalid={(e) => e.target.setCustomValidity(' ')}
-                                        onInput={(e) => e.target.setCustomValidity('')}
-                                    />
-                                <span id="city_error" role="alert" className='error-text' data-test="errorText">
-                                    {cityField.error_msg}
-                                </span>
-                            </div>
+                            <FieldContainer
+                                fieldType={'text'} inputData={{
+                                id: cityField.nvrf_id,
+                                dataTest: 'city',
+                                required: addressFieldsState.required,
+                                label: cityField.label,
+                                error_msg: cityField.error_msg,
+                                help_text: cityField.help_text,
+                            }} saveFieldData={props.saveFieldData} fieldData={props.fieldData}/>
                         </Grid>
 
                         <Grid tablet={{ col: 4 }}>
