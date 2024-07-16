@@ -1,5 +1,5 @@
 import { Label, TextInput, Checkbox, Select } from '@trussworks/react-uswds';
-import React, {useEffect, useState} from "react";
+import React from "react";
 import { restrictType, checkForErrors, toggleError } from '../HelperFunctions/ValidateField';
 import {sanitizeDOM, cleanString} from "../HelperFunctions/JsonHelper";
 
@@ -27,16 +27,6 @@ function Identification(props){
     const ssnFullFieldReq = (nvrfStateFields.find(item => item.uuid === ssnFullField.uuid));
     const ssnFieldReq = (nvrfStateFields.find(item => item.uuid === ssnField.uuid));
     const noIdFieldReq = (nvrfStateFields.find(item => item.uuid === noIdField.uuid));
-
-    // Set the help text for different id selections
-    const [helpText, setHelpText] = useState("");
-    useEffect(() => {
-        if (props.idType === 'none') {
-            setTimeout(() => { setHelpText(cleanString(noIdField.instructions)); }, 100);
-        } else {
-            setHelpText("");
-        }
-    }, [props.idType]);
 
     return (
         <>
@@ -81,11 +71,9 @@ function Identification(props){
                             {(noIdFieldReq) && <option key="id-none" value="none">{noIdField.label}</option>}
                         </React.Fragment>
                         </Select>
-                        <div style={{ position:'absolute', width:'1px', height:'1px',overflow:'hidden' }} aria-live="polite">
-                            {helpText}
-                        </div>
                         <span id="id-selection_error" role="alert" className='error-text' data-test="errorText">
                             {props.idType === '' && stateIDField.error_msg}
+                            {props.idType === 'none' && cleanString(noIdFieldInstructions)}
                         </span>
                     </div>
                 </>
