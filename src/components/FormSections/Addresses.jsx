@@ -80,7 +80,7 @@ function Addresses(props){
                                 fieldType={'text'} inputData={{
                                 id: streetAddressField.nvrf_id,
                                 dataTest: 'street',
-                                required: stateField.required,
+                                required: addressFieldsState.required,
                                 label: streetAddressField.label,
                                 error_msg: streetAddressField.error_msg,
                                 help_text: streetAddressField.help_text,
