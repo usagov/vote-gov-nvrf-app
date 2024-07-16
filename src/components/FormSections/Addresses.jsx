@@ -1,5 +1,6 @@
 import { Label, TextInput, Checkbox, Grid } from '@trussworks/react-uswds';
 import StateSelector from '../StateSelector';
+import FieldContainer from '../FieldContainer';
 import React, { useState } from "react";
 import { restrictType, checkForErrors, toggleError } from '../HelperFunctions/ValidateField';
 import { sanitizeDOM } from '../HelperFunctions/JsonHelper';
@@ -104,22 +105,14 @@ function Addresses(props){
 
                     <Grid row gap>
                         <Grid tablet={{ col: 5}}>
-                        <Label className="text-bold" htmlFor="apartment-number">
-                            {aptField.label}
-                        </Label>
-                        <TextInput
-                            data-test="aptNumber"
-                            id="apartment-number"
-                            className="radius-md"
-                            name="apartment-number"
-                            aria-describedby=""
-                            type="text"
-                            autoComplete="off"
-                            value={props.fieldData.apt_num}
-                            onChange={props.saveFieldData('apt_num')}
-                            onInvalid={(e) => e.target.setCustomValidity(' ')}
-                            onInput={(e) => e.target.setCustomValidity('')}
-                        />
+                            <FieldContainer
+                                fieldType={'text'} inputData={{
+                                id: aptField.nvrf_id,
+                                dataTest: 'aptNumber',
+                                label: aptField.label,
+                                error_msg: aptField.error_msg,
+                                help_text: aptField.help_text,
+                            }} saveFieldData={props.saveFieldData} fieldData={props.fieldData}/>
                         </Grid>
                     </Grid>
 
