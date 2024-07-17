@@ -1,6 +1,6 @@
 import { Label, TextInput, Checkbox, Grid } from '@trussworks/react-uswds';
 import StateSelector from '../StateSelector';
-import FieldContainer from '../FieldContainer';
+import CurrentCity from '../Fields/CurrentCity';
 import React, { useState } from "react";
 import { restrictType, checkForErrors, toggleError } from '../HelperFunctions/ValidateField';
 import { sanitizeDOM } from '../HelperFunctions/JsonHelper';
@@ -18,7 +18,6 @@ function Addresses(props){
     const homeAddressSectionField = fields.find(item => item.uuid === "63552bb6-6afb-46e1-8148-860242917a22");
     const streetAddressField = fields.find(item => item.uuid === "6dcb9e8c-b40a-4cda-ba5c-06b98c3375f4");
     const aptField = fields.find(item => item.uuid === "deba9b54-68ad-4ef1-8fb5-ee34e4ab8a49");
-    const cityField = fields.find(item => item.uuid === "7e39a528-7518-40cb-b7b6-b635864dc117");
     const stateField = fields.find(item => item.uuid === "fe3a2a1d-34bd-472b-a843-3fa0635c4f40");
     const zipcodeField = fields.find(item => item.uuid === "cdb06542-0cbd-4aa3-897f-83377b8d65e5");
 
@@ -126,15 +125,7 @@ function Addresses(props){
 
                     <Grid row gap className={'flex-align-end'}>
                         <Grid tablet={{ col: 4 }}>
-                            <FieldContainer
-                                fieldType={'text'} inputData={{
-                                id: cityField.nvrf_id,
-                                dataTest: 'city',
-                                required: addressFieldsState.required,
-                                label: cityField.label,
-                                error_msg: cityField.error_msg,
-                                help_text: cityField.help_text,
-                            }} saveFieldData={props.saveFieldData} fieldData={props.fieldData}/>
+                            <CurrentCity {...props} />
                         </Grid>
 
                         <Grid tablet={{ col: 4 }}>
