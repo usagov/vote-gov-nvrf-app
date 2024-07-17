@@ -1,5 +1,6 @@
 import { Label, TextInput, Checkbox, Grid } from '@trussworks/react-uswds';
 import StateSelector from '../StateSelector';
+import CurrentStreetAddress from '../Fields/CurrentStreetAddress';
 import React, { useState } from "react";
 import { restrictType, checkForErrors, toggleError } from '../HelperFunctions/ValidateField';
 import { sanitizeDOM } from '../HelperFunctions/JsonHelper';
@@ -76,15 +77,7 @@ function Addresses(props){
 
                     <Grid row gap>
                         <Grid tablet={{col: 12}}>
-                            <FieldContainer
-                                fieldType={'text'} inputData={{
-                                id: streetAddressField.nvrf_id,
-                                dataTest: 'street',
-                                required: addressFieldsState.required,
-                                label: streetAddressField.label,
-                                error_msg: streetAddressField.error_msg,
-                                help_text: streetAddressField.help_text,
-                            }} saveFieldData={props.saveFieldData} fieldData={props.fieldData}/>
+                            <CurrentStreetAddress {...props} />
                         </Grid>
                     </Grid>
 
