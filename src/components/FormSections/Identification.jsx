@@ -78,7 +78,6 @@ function Identification(props){
                         </Select>
                         <span id="id-selection_error" role="alert" className='error-text' data-test="errorText">
                             {props.idType === '' && stateIDField.error_msg}
-                            {/* {props.idType === 'none' && cleanString(noIdFieldInstructions)} */}
                         </span>
                     </div>
                 </>
