@@ -8,15 +8,4 @@ export const fetchData = async(filename, setContent) => {
     setContent(response);
 }
 
-export const cleanString = (string) => {
-    var output = "";
-    var detected = false;
-    for (var i = 0; i < string.length - 5; i++) {
-        if (string[i] == '<') detected = true;
-        if (!detected) output += string[i]; 
-        if (string[i] == '>') detected = false;
-    }
-    return output;
-}
-
 export const sanitizeDOM = (data) => DOMPurify.sanitize(data);

@@ -1,7 +1,7 @@
 import { Label, TextInput, Checkbox, Select } from '@trussworks/react-uswds';
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { restrictType, checkForErrors, toggleError } from '../HelperFunctions/ValidateField';
-import {sanitizeDOM, cleanString} from "../HelperFunctions/JsonHelper";
+import {sanitizeDOM} from "../HelperFunctions/JsonHelper";
 
 function Identification(props){
     const headings = props.headings;
@@ -27,6 +27,11 @@ function Identification(props){
     const ssnFullFieldReq = (nvrfStateFields.find(item => item.uuid === ssnFullField.uuid));
     const ssnFieldReq = (nvrfStateFields.find(item => item.uuid === ssnField.uuid));
     const noIdFieldReq = (nvrfStateFields.find(item => item.uuid === noIdField.uuid));
+
+    const [delayedId, setDelayedId] = useState(props.idType);
+    useEffect(() => {
+        setTimeout(() => setDelayedId(props.idType), 100);
+    }, [props.idType]);
 
     return (
         <>
@@ -73,7 +78,7 @@ function Identification(props){
                         </Select>
                         <span id="id-selection_error" role="alert" className='error-text' data-test="errorText">
                             {props.idType === '' && stateIDField.error_msg}
-                            {props.idType === 'none' && cleanString(noIdFieldInstructions)}
+                            {/* {props.idType === 'none' && cleanString(noIdFieldInstructions)} */}
                         </span>
                     </div>
                 </>
@@ -192,8 +197,10 @@ function Identification(props){
                     <span id="ssn-full_error" role="alert" className='error-text' data-test="errorText">
                         {ssnFullField.error_msg}
                     </span>
-                </>}   
-            {props.idType === 'none' && <div dangerouslySetInnerHTML={{__html: noIdFieldInstructions}}/>}
+                </>}
+            <div aria-live='polite'>
+                {delayedId === 'none' && <div dangerouslySetInnerHTML={{__html: noIdFieldInstructions}}/>}
+            </div>
         </div>
         </>
     );
