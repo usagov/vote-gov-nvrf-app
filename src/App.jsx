@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react'
-import StateSelection from './views/StateSelection.jsx';
-import Eligibility from './views/Eligibility.jsx';
-import RegistrationOptions from './views/RegistrationOptions.jsx';
-import PathSelection from './views/PathSelection.jsx';
-import MultiStepForm from './views/MultiStepForm.jsx';
-import {fetchData, sanitizeDOM} from './utils/JsonHelper.jsx';
+import StateSelection from 'Views/StateSelection.jsx';
+import Eligibility from 'Views/Eligibility.jsx';
+import RegistrationOptions from 'Views/RegistrationOptions.jsx';
+import PathSelection from 'Views/PathSelection.jsx';
+import MultiStepForm from 'Views/MultiStepForm.jsx';
+import {fetchData, sanitizeDOM} from 'Utils/JsonHelper.jsx';
 import { HelmetProvider } from "react-helmet-async";
-import {getFieldValue} from "./utils/fieldParser.jsx";
+import {getFieldValue} from "Utils/fieldParser.jsx";
 
 function App() {
 
