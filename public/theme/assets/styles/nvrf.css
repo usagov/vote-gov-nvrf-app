@@ -59,7 +59,7 @@
 }
 
 .nvrf-app-container .usa-step-indicator__segments {
-    @media (max-width: 638px) {
+    @media (max-width: 640px) {
         display: none;
     }
 }
