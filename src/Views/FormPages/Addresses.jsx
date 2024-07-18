@@ -1,11 +1,6 @@
 import { Label, TextInput, Checkbox, Grid } from '@trussworks/react-uswds';
-<<<<<<< HEAD:src/Views/FormPages/Addresses.jsx
 import StateSelector from 'Components/StateSelector';
 import CurrentCity from 'Components/Fields/CurrentCity';
-=======
-import StateSelector from '../StateSelector';
-import CurrentCity from '../Fields/CurrentCity';
->>>>>>> d306dfba551f0d0d0df83c110024d5306585c51e:src/components/FormSections/Addresses.jsx
 import React, { useState } from "react";
 import { restrictType, checkForErrors, toggleError } from 'Utils/ValidateField';
 import { sanitizeDOM } from 'Utils/JsonHelper';
