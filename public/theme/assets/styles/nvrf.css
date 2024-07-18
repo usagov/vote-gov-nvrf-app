@@ -39,7 +39,7 @@
 }
 
 .nvrf-app-container .usa-step-indicator__header {
-    @media (min-width: 640px) {
+    @media (min-width: 641px) {
         position: absolute;
         text-indent: -9000px;
         overflow: hidden;
