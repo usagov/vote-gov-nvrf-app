@@ -1,6 +1,7 @@
 import { Label, TextInput, Checkbox, Grid } from '@trussworks/react-uswds';
 import StateSelector from 'Components/StateSelector';
 import CurrentApartmentNumber from 'Components/Fields/CurrentApartmentNumber';
+import PreviousCity from 'Components/Fields/PreviousCity';
 import React, { useState } from "react";
 import { restrictType, checkForErrors, toggleError } from 'Utils/ValidateField';
 import { sanitizeDOM } from 'Utils/JsonHelper';
@@ -389,7 +390,7 @@ function Addresses(props){
 
                         <Grid row gap className={'flex-align-end'}>
                             <Grid tablet={{ col: 4 }}>
-                                <div className="input-parent">
+                                {/* <div className="input-parent">
                                     <Label className="text-bold" htmlFor="prev-city">
                                         {prevCityField.label}{(addressFieldsState.required === "1") && <span className='required-text'>*</span>}
                                     </Label>
@@ -412,7 +413,8 @@ function Addresses(props){
                                     <span id="prev-city_error" role="alert" className='error-text' data-test="errorText">
                                         {prevCityField.error_msg}
                                     </span>
-                                </div>
+                                </div> */}
+                                <PreviousCity {...props} />
                             </Grid>
 
                         <Grid tablet={{ col: 4 }}>
