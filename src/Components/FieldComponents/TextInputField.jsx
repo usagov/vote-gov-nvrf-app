@@ -1,6 +1,6 @@
 import React from "react";
 import { TextInput } from '@trussworks/react-uswds';
-import { checkForErrors, toggleError } from 'Utils/ValidateField';
+import { restrictType, checkForErrors, toggleError } from 'Utils/ValidateField';
 
 function TextInputField({ inputData, saveFieldData, fieldData }){
     return (
@@ -12,9 +12,12 @@ function TextInputField({ inputData, saveFieldData, fieldData }){
         name={inputData.id}
         type="text"
         autoComplete="off"
+        minLength={inputData.minLength}
+        maxLength={inputData.maxLength}
         required={parseInt(inputData.required)}
         value={fieldData[inputData.id]}
         onChange={saveFieldData(inputData.id)}
+        onKeyDown={(e) => restrictType(e, inputData.inputType)}
         onBlur={(e) => toggleError(e, checkForErrors(e, 'check value exists'))}
         onInvalid={(e) => e.target.setCustomValidity(' ')}
         onInput={(e) => e.target.setCustomValidity('')}
