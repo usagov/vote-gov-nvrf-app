@@ -1,6 +1,7 @@
 import { Label, TextInput, Checkbox, Grid } from '@trussworks/react-uswds';
 import StateSelector from 'Components/StateSelector';
 import CurrentApartmentNumber from 'Components/Fields/CurrentApartmentNumber';
+import PreviousAddressState from 'Components/Fields/PreviousAddressState';
 import React, { useState } from "react";
 import { restrictType, checkForErrors, toggleError } from 'Utils/ValidateField';
 import { sanitizeDOM } from 'Utils/JsonHelper';
@@ -416,7 +417,7 @@ function Addresses(props){
                             </Grid>
 
                         <Grid tablet={{ col: 4 }}>
-                            <div className="input-parent">
+                            {/* <div className="input-parent">
                                 <Label className="text-bold" htmlFor="prev-state">
                                     {prevStateField.label}{(addressFieldsState.required === "1") && <span className='required-text'>*</span>}
                                 </Label>
@@ -438,7 +439,8 @@ function Addresses(props){
                                 <span id="prev-state_error" role="alert" className='error-text' data-test="errorText">
                                     {prevStateField.error_msg}
                                 </span>
-                            </div>
+                            </div> */}
+                            <PreviousAddressState {...props} />
                         </Grid>
 
                             <Grid tablet={{ col: 4 }}>
