@@ -1,6 +1,7 @@
 import { Label, TextInput, Checkbox, Grid } from '@trussworks/react-uswds';
 import StateSelector from 'Components/StateSelector';
 import CurrentApartmentNumber from 'Components/Fields/CurrentApartmentNumber';
+import PreviousStreetAddress from 'Components/Fields/PreviousStreetAddress';
 import React, { useState } from "react";
 import { restrictType, checkForErrors, toggleError } from 'Utils/ValidateField';
 import { sanitizeDOM } from 'Utils/JsonHelper';
@@ -23,7 +24,6 @@ function Addresses(props){
 
     const prevAddressSectionField = fields.find(item => item.uuid === "023fda0f-e8bd-4654-ab5c-46f44a0b7bd6");
     const prevAddressField = fields.find(item => item.uuid === "c3011c62-d174-420c-817a-bffbcd45687a");
-    const prevStreetAddressField = fields.find(item => item.uuid === "c037a3ea-86b7-4661-ad28-c7228f1e682b");
     const prevAptField = fields.find(item => item.uuid === "c8e2ff17-fb1f-4971-a664-ffbb557b305a");
     const prevCityField = fields.find(item => item.uuid === "44bf0a5c-adba-4b47-bc99-cc46cede5e80");
     const prevStateField = fields.find(item => item.uuid === "5a8a4b6d-c0f1-42f2-b991-8ea49a32e997");
@@ -340,29 +340,7 @@ function Addresses(props){
 
                         <Grid row gap>
                             <Grid tablet={{ col: 12 }}>
-                            <div className="input-parent">
-                                <Label className="text-bold" htmlFor="prev-street">
-                                    {prevStreetAddressField.label}{(addressFieldsState.required === "1") && <span className='required-text'>*</span>}
-                                </Label>
-                                <TextInput
-                                    data-test="prevStreet"
-                                    id="prev-street"
-                                    className="radius-md"
-                                    aria-describedby="prev-street_error"
-                                    name="prev-street"
-                                    type="text"
-                                    autoComplete="off"
-                                    required={(parseInt(addressFieldsState.required))}
-                                    value={props.fieldData.prev_street_address}
-                                    onChange={props.saveFieldData('prev_street_address')}
-                                    onBlur={(e) => toggleError(e, checkForErrors(e, 'check value exists'))}
-                                    onInvalid={(e) => e.target.setCustomValidity(' ')}
-                                    onInput={(e) => e.target.setCustomValidity('')}
-                                />
-                                <span id="prev-street_error" role="alert" className='error-text' data-test="errorText">
-                                    {prevStreetAddressField.error_msg}
-                                </span>
-                            </div>
+                                <PreviousStreetAddress {...props} />
                             </Grid>
                         </Grid>
 
