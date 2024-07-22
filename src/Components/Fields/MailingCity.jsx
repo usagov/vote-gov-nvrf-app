@@ -10,7 +10,7 @@ function MailingCity(props){
     return (
         <FieldContainer
             fieldType={'text'} inputData={{
-            id: field.nvrf_id,
+            id: 'mail_city',
             dataTest: 'mailCity',
             required: stateField.required,
             label: field.label,
