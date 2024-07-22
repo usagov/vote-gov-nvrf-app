@@ -9,7 +9,7 @@ function PreviousApartmentNumber(props){
     return (
         <FieldContainer
             fieldType={'text'} inputData={{
-            id: field.nvrf_id,
+            id: 'prev_apt_num',
             dataTest: 'prevAptNumber',
             label: field.label,
             error_msg: field.error_msg,
