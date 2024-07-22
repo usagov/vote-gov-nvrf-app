@@ -1,0 +1,25 @@
+import React from "react";
+import FieldContainer from 'Components/FieldContainer';
+import {getField} from "Utils/fieldParser";
+
+function MailingAddressState(props){
+    const uuid = "b0f80289-6084-4723-8278-110fda210f0d";
+    const field = getField(props.fieldContent, uuid);
+    const stateField = getField(props.stateData.nvrf_fields, field.uuid);
+
+    return (
+        <FieldContainer
+            fieldType={'select'} inputData={{
+            id: 'mail_state',
+            dataTest: 'select',
+            required: stateField.required,
+            label: field.label,
+            options: props.statesList,
+            stringContent: props.stringContent.selectState,
+            error_msg: field.error_msg,
+            help_text: field.help_text,
+        }} saveFieldData={props.saveFieldData} fieldData={props.fieldData}/>
+    )
+}
+
+export default MailingAddressState;

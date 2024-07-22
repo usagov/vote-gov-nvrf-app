@@ -10,7 +10,7 @@ function SelectField({ inputData, saveFieldData, fieldData }){
         aria-describedby={`${inputData.id}` + '_error'}
         name={inputData.id}
         required={parseInt(inputData.required)}
-        value={fieldData[inputData.id]}
+        value={inputData.value}
         onChange={saveFieldData(inputData.id)}
         autoComplete="off"
         onInvalid={(e) => e.target.setCustomValidity(' ')}
@@ -19,7 +19,7 @@ function SelectField({ inputData, saveFieldData, fieldData }){
         <React.Fragment key=".0">                        
             <option value={''}>{inputData.stringContent}</option>
             {inputData.options.map((item, index) => (
-                <option key={index} value={item.value}>{item.key}</option>
+                <option key={item} value={item}>{item}</option>
             ))}
         </React.Fragment>
         </Select>

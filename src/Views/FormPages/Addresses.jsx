@@ -1,6 +1,7 @@
 import { Label, TextInput, Checkbox, Grid } from '@trussworks/react-uswds';
 import StateSelector from 'Components/StateSelector';
 import CurrentApartmentNumber from 'Components/Fields/CurrentApartmentNumber';
+import MailingAddressState from 'Components/Fields/MailingAddressState';
 import React, { useState } from "react";
 import { restrictType, checkForErrors, toggleError } from 'Utils/ValidateField';
 import { sanitizeDOM } from 'Utils/JsonHelper';
@@ -34,7 +35,6 @@ function Addresses(props){
     const differentMailAddressField = fields.find(item => item.uuid === "e7340274-ee3f-4d73-a967-c9d7c249be7b");
     const mailStreetAddressField = fields.find(item => item.uuid === "db9b1f7a-565b-4aad-8d7c-56a553c18326");
     const mailCityField = fields.find(item => item.uuid === "9a5baee7-357b-4e59-b4f2-fe2525c0fd6c");
-    const mailStateField = fields.find(item => item.uuid === "b0f80289-6084-4723-8278-110fda210f0d");
     const mailZipcodeField = fields.find(item => item.uuid === "c4f9c0cb-2a25-4f1d-a93a-b06a19656cfe");
 
     //Field requirements by state data
@@ -263,29 +263,7 @@ function Addresses(props){
                             </Grid>
 
                             <Grid tablet={{ col: true }}>
-                                <div className="input-parent">
-                                    <Label className="text-bold" htmlFor="mail-state">
-                                        {mailStateField.label}{(addressFieldsState.required === "1") && <span className='required-text'>*</span>}
-                                    </Label>
-                                        <StateSelector
-                                            data-test="select"
-                                            id="mail-state"
-                                            classes="radius-md"
-                                            autoComplete="off"
-                                            ariaDescribedBy="mail-state_error"
-                                            required={(parseInt(addressFieldsState.required))}
-                                            statesList={props.statesList}
-                                            stringContent={props.stringContent}
-                                            state={props.fieldData.mail_state}
-                                            saveState={props.saveFieldData('mail_state')}
-                                            onBlur={(e) => {toggleError(e, checkForErrors(e, 'check value exists'))} }
-                                            onInvalid={(e) => e.target.setCustomValidity(' ')}
-                                            onInput={(e) => e.target.setCustomValidity('')}
-                                        />
-                                    <span id="mail-state_error" role="alert" className='error-text' data-test="errorText">
-                                        {mailStateField.error_msg}
-                                    </span>
-                                </div>
+                                <MailingAddressState {...props} />
                             </Grid>
 
                             <Grid tablet={{ col: true }}>
