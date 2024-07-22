@@ -10,8 +10,8 @@ function PreviousStreetAddress(props){
     return (
         <FieldContainer
             fieldType={'text'} inputData={{
-            id: field.nvrf_id,
-            dataTest: 'prev-street',
+            id: 'prev_street_address',
+            dataTest: 'prevStreet',
             required: stateField.required,
             label: field.label,
             error_msg: field.error_msg,
