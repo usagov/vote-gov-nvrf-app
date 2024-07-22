@@ -10,7 +10,7 @@ function PreviousCity(props){
     return (
         <FieldContainer
             fieldType={'text'} inputData={{
-            id: field.nvrf_id,
+            id: 'prev_city',
             dataTest: 'city',
             required: stateField.required,
             label: field.label,
