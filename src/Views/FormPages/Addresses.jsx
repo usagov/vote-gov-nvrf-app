@@ -1,5 +1,6 @@
 import { Label, TextInput, Checkbox, Grid } from '@trussworks/react-uswds';
 import StateSelector from 'Components/StateSelector';
+import CurrentStreetAddress from 'Components/Fields/CurrentStreetAddress';
 import CurrentApartmentNumber from 'Components/Fields/CurrentApartmentNumber';
 import React, { useState } from "react";
 import { restrictType, checkForErrors, toggleError } from 'Utils/ValidateField';
@@ -74,31 +75,9 @@ function Addresses(props){
                             <div dangerouslySetInnerHTML={{__html: homeAddressSectionField.instructions}}/>
                         )}
 
-                        <Grid row gap>
-                            <Grid tablet={{col: 12}}>
-                        <div className="input-parent">
-                            <Label className="text-bold" htmlFor="street">
-                                {streetAddressField.label}{(addressFieldsState.required === "1") && <span className='required-text'>*</span>}
-                            </Label>
-                            <TextInput
-                                data-test="street"
-                                id="street"
-                                className="radius-md"
-                                aria-describedby="street_error"
-                                name="street"
-                                type="text"
-                                autoComplete="off"
-                                required={(parseInt(addressFieldsState.required))}
-                                value={props.fieldData.street_address}
-                                onChange={props.saveFieldData('street_address')}
-                                onBlur={(e) => toggleError(e, checkForErrors(e, 'check value exists'))}
-                                onInvalid={(e) => e.target.setCustomValidity(' ')}
-                                onInput={(e) => e.target.setCustomValidity('')}
-                                />
-                            <span id="street_error" role="alert" className='error-text' data-test="errorText">
-                                {streetAddressField.error_msg}
-                            </span>
-                        </div>
+                    <Grid row gap>
+                        <Grid tablet={{col: 12}}>
+                            <CurrentStreetAddress {...props} />
                         </Grid>
                     </Grid>
 
