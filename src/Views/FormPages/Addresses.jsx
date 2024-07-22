@@ -1,6 +1,7 @@
 import { Label, TextInput, Checkbox, Grid } from '@trussworks/react-uswds';
 import StateSelector from 'Components/StateSelector';
 import CurrentApartmentNumber from 'Components/Fields/CurrentApartmentNumber';
+import MailingZipCode from 'Components/Fields/MailingZipCode';
 import React, { useState } from "react";
 import { restrictType, checkForErrors, toggleError } from 'Utils/ValidateField';
 import { sanitizeDOM } from 'Utils/JsonHelper';
@@ -35,7 +36,6 @@ function Addresses(props){
     const mailStreetAddressField = fields.find(item => item.uuid === "db9b1f7a-565b-4aad-8d7c-56a553c18326");
     const mailCityField = fields.find(item => item.uuid === "9a5baee7-357b-4e59-b4f2-fe2525c0fd6c");
     const mailStateField = fields.find(item => item.uuid === "b0f80289-6084-4723-8278-110fda210f0d");
-    const mailZipcodeField = fields.find(item => item.uuid === "c4f9c0cb-2a25-4f1d-a93a-b06a19656cfe");
 
     //Field requirements by state data
     const addressFieldsState = (nvrfStateFields.find(item => item.uuid === streetAddressField.uuid));
@@ -289,34 +289,7 @@ function Addresses(props){
                             </Grid>
 
                             <Grid tablet={{ col: true }}>
-                            <div className="input-parent">
-                                <Label className="text-bold" htmlFor="mail-zip-code">
-                                    {mailZipcodeField.label} {(addressFieldsState.required === "1") && <span className={'required-text'}>*</span>}
-                                </Label>
-                                <span className="usa-hint" id="mail-zip-hint">{zipcodeField.help_text}</span>
-                                <TextInput
-                                    data-test="mailZip"
-                                    id="mail-zip-code"
-                                    className="radius-md"
-                                    aria-describedby="mail-zip-code_error"
-                                    name="mail-zip"
-                                    value={props.fieldData.mail_zip_code}
-                                    type="text"
-                                    inputMode="numeric"
-                                    autoComplete="off"
-                                    required={(parseInt(addressFieldsState.required))}
-                                    minLength={5}
-                                    maxLength={5}
-                                    onChange={props.saveFieldData('mail_zip_code')}
-                                    onKeyDown={(e) => restrictType(e, 'number')}
-                                    onBlur={(e) => toggleError(e, checkForErrors(e, 'check value length'))}
-                                    onInvalid={(e) => e.target.setCustomValidity(' ')}
-                                    onInput={(e) => e.target.setCustomValidity('')}
-                                />
-                                <span id="mail-zip-code_error" role="alert" className='error-text' data-test="errorText">
-                                    {mailZipcodeField.error_msg}
-                                </span>
-                            </div>
+                                <MailingZipCode {...props} />
                             </Grid>
                         </Grid>
                     </>
