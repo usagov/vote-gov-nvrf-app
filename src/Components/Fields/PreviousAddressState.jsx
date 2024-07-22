@@ -10,7 +10,7 @@ function PreviousAddressState(props){
     return (
         <FieldContainer
             fieldType={'select'} inputData={{
-            id: field.nvrf_id,
+            id: 'prev_state',
             dataTest: 'state',
             required: stateField.required,
             label: field.label,
