@@ -1,6 +1,7 @@
 import { Label, TextInput, Checkbox, Grid } from '@trussworks/react-uswds';
 import StateSelector from 'Components/StateSelector';
 import CurrentApartmentNumber from 'Components/Fields/CurrentApartmentNumber';
+import MailingStreetAddress from 'Components/Fields/MailingStreetAddress';
 import React, { useState } from "react";
 import { restrictType, checkForErrors, toggleError } from 'Utils/ValidateField';
 import { sanitizeDOM } from 'Utils/JsonHelper';
@@ -32,7 +33,6 @@ function Addresses(props){
     const mailAddressSectionField = fields.find(item => item.uuid === "1a856408-6fb2-4b09-b05a-8d8ee9eb9bb5");
     const noAddressField = fields.find(item => item.uuid === "35c2b98d-477c-45f3-9f93-f720406080f1");
     const differentMailAddressField = fields.find(item => item.uuid === "e7340274-ee3f-4d73-a967-c9d7c249be7b");
-    const mailStreetAddressField = fields.find(item => item.uuid === "db9b1f7a-565b-4aad-8d7c-56a553c18326");
     const mailCityField = fields.find(item => item.uuid === "9a5baee7-357b-4e59-b4f2-fe2525c0fd6c");
     const mailStateField = fields.find(item => item.uuid === "b0f80289-6084-4723-8278-110fda210f0d");
     const mailZipcodeField = fields.find(item => item.uuid === "c4f9c0cb-2a25-4f1d-a93a-b06a19656cfe");
@@ -208,29 +208,7 @@ function Addresses(props){
 
                         <Grid row gap>
                             <Grid tablet={{col: 12 }}>
-                            <div className="input-parent">
-                            <Label className="text-bold" htmlFor="mail-street">
-                                {mailStreetAddressField.label}{(addressFieldsState.required === "1") && <span className='required-text'>*</span>}
-                            </Label>
-                                <TextInput
-                                    data-test="mailStreet"
-                                    id="mail-street"
-                                    className="radius-md"
-                                    aria-describedby="mail-street_error"
-                                    name="mail-street"
-                                    type="text"
-                                    autoComplete="off"
-                                    required={(parseInt(addressFieldsState.required))}
-                                    value={props.fieldData.mail_street_address}
-                                    onChange={props.saveFieldData('mail_street_address')}
-                                    onBlur={(e) => toggleError(e, checkForErrors(e, 'check value exists'))}
-                                    onInvalid={(e) => e.target.setCustomValidity(' ')}
-                                    onInput={(e) => e.target.setCustomValidity('')}
-                                />
-                            <span id="mail-street_error" role="alert" className='error-text' data-test="errorText">
-                                {mailStreetAddressField.error_msg}
-                            </span>
-                            </div>
+                                <MailingStreetAddress {...props} />
                             </Grid>
                         </Grid>
 
