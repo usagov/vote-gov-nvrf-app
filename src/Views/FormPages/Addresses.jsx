@@ -1,6 +1,7 @@
 import { Label, TextInput, Checkbox, Grid } from '@trussworks/react-uswds';
 import StateSelector from 'Components/StateSelector';
 import CurrentApartmentNumber from 'Components/Fields/CurrentApartmentNumber';
+import MailingCity from 'Components/Fields/MailingCity';
 import React, { useState } from "react";
 import { restrictType, checkForErrors, toggleError } from 'Utils/ValidateField';
 import { sanitizeDOM } from 'Utils/JsonHelper';
@@ -236,30 +237,7 @@ function Addresses(props){
 
                         <Grid row gap className={'flex-align-end'}>
                             <Grid tablet={{ col: true }}>
-                                <div className="input-parent">
-                                    <Label className="text-bold" htmlFor="mail-city">
-                                        {mailCityField.label}{(addressFieldsState.required === "1") && <span className='required-text'>*</span>}
-                                    </Label>
-                                        <TextInput
-                                            data-test="mailCity"
-                                            id="mail-city"
-                                            className="radius-md"
-                                            aria-describedby="mail-city_error"
-                                            name="mail-city"
-                                            type="text"
-                                            autoComplete="off"
-                                            required={(parseInt(addressFieldsState.required))}
-                                            value={props.fieldData.mail_city}
-                                            onChange={props.saveFieldData('mail_city')}
-                                            onKeyDown={(e) => restrictType(e, 'letters')}
-                                            onBlur={(e) => toggleError(e, checkForErrors(e, 'check value exists'))}
-                                            onInvalid={(e) => e.target.setCustomValidity(' ')}
-                                            onInput={(e) => e.target.setCustomValidity('')}
-                                        />
-                                    <span id="mail-city_error" role="alert" className='error-text' data-test="errorText">
-                                       {mailCityField.error_msg}
-                                    </span>
-                                </div>
+                                <MailingCity {...props} />
                             </Grid>
 
                             <Grid tablet={{ col: true }}>
