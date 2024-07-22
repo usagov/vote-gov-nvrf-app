@@ -10,8 +10,8 @@ function CurrentAddressState(props){
     return (
         <FieldContainer
             fieldType={'select'} inputData={{
-            id: field.nvrf_id,
-            dataTest: 'state',
+            id: 'state',
+            dataTest: 'select',
             required: stateField.required,
             label: field.label,
             disabled: true,
