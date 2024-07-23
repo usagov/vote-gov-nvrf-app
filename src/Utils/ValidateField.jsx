@@ -9,9 +9,9 @@ export const focusError = (formId) => {
 
 export const toggleError = (e, error) => {
   let input = e.currentTarget;
-  let dateOfBirthInputs = input.id === "date-of-birth_month" || input.id === "date-of-birth_day" || input.id === "date-of-birth_year";
+  let dateOfBirthInputs = input.id === "date_of_birth_month" || input.id === "date_of_birth_day" || input.id === "date_of_birth_year";
   let errorContainer;
-  errorContainer = input.id === "eligibility-checkbox" || input.id === "date-of-birth" || input.id === "acknowledge-checkbox" ? input.parentNode.parentNode : input.parentNode;
+  errorContainer = input.id === "eligibility-checkbox" || input.id === "date_of_birth" || input.id === "acknowledge-checkbox" ? input.parentNode.parentNode : input.parentNode;
   errorContainer = dateOfBirthInputs ? input.parentNode.parentNode.parentNode.parentNode : errorContainer;
 
   if (error) {

@@ -10,11 +10,11 @@ function DateFields({ inputData, saveFieldData, dateFormat, checkDateValues, fie
         autoComplete="off"
         required={parseInt(inputData.required)}
         data-testid="dateInputGroup"
-        onBlur={e => { if (!e.currentTarget.contains(e.relatedTarget)) toggleError(e, checkDateValues('all')) }}
+        onBlur={e => { if (!e.currentTarget.contains(e.relatedTarget)) toggleError(e, checkDateValues(e, 'all')) }}
         >
             <div data-testid="formGroup" className="usa-form-group usa-form-group--month">
                 <label data-testid="label" className="usa-label" htmlFor={`${inputData.id}` + '_month'}>
-                    {inputData.stringContent}
+                    {inputData.stringContent.month}
                 </label>
                 <input
                 data-test={`${inputData.id}` + '_month'}
@@ -22,7 +22,7 @@ function DateFields({ inputData, saveFieldData, dateFormat, checkDateValues, fie
                 className="usa-input radius-md"
                 aria-describedby={`${inputData.id}` + '_error'}
                 name={`${inputData.id}` + '_month'}
-                label={fieldData.stringContent}
+                label={inputData.stringContent.month}
                 unit="month"
                 required={true}
                 aria-invalid={false}
@@ -35,13 +35,13 @@ function DateFields({ inputData, saveFieldData, dateFormat, checkDateValues, fie
                 onInput={saveFieldData(`${inputData.id}` + '_month')}
                 onKeyUp={(e) => jumpTo(e, `${inputData.id}` + '_day')}
                 onKeyDown={(e) => { restrictType(e, 'number'), e.target.setCustomValidity('') }}
-                onBlur={(e) => { dateFormat(e, `${inputData.id}` + '_month'), toggleError(e, checkDateValues('month')) }}
+                onBlur={(e) => { dateFormat(e, `${inputData.id}` + '_month'), toggleError(e, checkDateValues(e, 'month')) }}
                 onInvalid={(e) => e.target.setCustomValidity(' ')}
                 />
             </div>
             <div data-testid="formGroup" className="usa-form-group usa-form-group--day">
                 <label data-testid="label" className="usa-label" htmlFor={`${inputData.id}` + '_day'}>
-                    {inputData.stringContent}
+                    {inputData.stringContent.day}
                 </label>
                 <input
                 data-test={`${inputData.id}` + '_day'}
@@ -49,7 +49,7 @@ function DateFields({ inputData, saveFieldData, dateFormat, checkDateValues, fie
                 className="usa-input radius-md"
                 aria-describedby={`${inputData.id}` + '_error'}
                 name={`${inputData.id}` + '_day'}
-                label={fieldData.stringContent}
+                label={inputData.stringContent.day}
                 unit="day"
                 required={true}
                 aria-invalid={false}
@@ -62,13 +62,13 @@ function DateFields({ inputData, saveFieldData, dateFormat, checkDateValues, fie
                 onInput={saveFieldData(`${inputData.id}` + '_day')}
                 onKeyUp={(e) => jumpTo(e, `${inputData.id}` + '_year')}
                 onKeyDown={(e) => { restrictType(e, 'number'), e.target.setCustomValidity('') }}
-                onBlur={(e) => { dateFormat(e, `${inputData.id}` + '_day'), toggleError(e, checkDateValues('day')) }}
+                onBlur={(e) => { dateFormat(e, `${inputData.id}` + '_day'), toggleError(e, checkDateValues(e, 'day')) }}
                 onInvalid={(e) => e.target.setCustomValidity(' ')}
                 />
             </div>
             <div data-testid="formGroup" className="usa-form-group usa-form-group--year">
                 <label data-testid="label" className="usa-label" htmlFor={`${inputData.id}` + '_year'}>
-                    {inputData.stringContent}
+                    {inputData.stringContent.year}
                 </label>
                 <input
                 data-test={`${inputData.id}` + '_year'}
@@ -76,7 +76,7 @@ function DateFields({ inputData, saveFieldData, dateFormat, checkDateValues, fie
                 className="usa-input radius-md"
                 aria-describedby={`${inputData.id}` + '_error'}
                 name={`${inputData.id}` + '_year'}
-                label={fieldData.stringContent}
+                label={inputData.stringContent.year}
                 unit="year"
                 required={true}
                 aria-invalid={false}
