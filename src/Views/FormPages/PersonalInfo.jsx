@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { restrictType, checkForErrors, jumpTo, toggleError } from 'Utils/ValidateField';
 import {sanitizeDOM} from "Utils/JsonHelper";
 import CurrentFirstName from "Components/Fields/CurrentFirstName";
+import CurrentTitle from 'Components/Fields/CurrentTitle';
 
 function PersonalInfo(props){
     const headings = props.headings;
@@ -117,26 +118,7 @@ function PersonalInfo(props){
             <>
                 <Grid row gap>
                     <Grid tablet={{ col: 2 }}>
-                    <Label className="text-bold" htmlFor="title">
-                        {titleField.label}
-                    </Label>
-                    <Select
-                        className="radius-md" id="title" name="title"
-                        aria-describedby=""
-                        data-test="select"
-                        value={props.fieldData.title}
-                        onChange={props.saveFieldData('title')}
-                        autoComplete="off"
-                        onInvalid={(e) => e.target.setCustomValidity(' ')}
-                        onInput={(e) => e.target.setCustomValidity('')}>
-                        <React.Fragment key=".0"
-                    >
-                    <option value={''}>{stringContent.select}</option>
-                        {titleField.options.map((item, index) => (
-                            <option key={index} value={item.value}>{item.key}</option>
-                        ))}
-                    </React.Fragment>
-                    </Select>
+                    <CurrentTitle {...props} />
                     </Grid>
 
                 <Grid tablet={{ col: 5 }}>
