@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { restrictType, checkForErrors, jumpTo, toggleError } from 'Utils/ValidateField';
 import {sanitizeDOM} from "Utils/JsonHelper";
 import CurrentFirstName from "Components/Fields/CurrentFirstName";
+import CurrentSuffix from 'Components/Fields/CurrentSuffix';
 
 function PersonalInfo(props){
     const headings = props.headings;
@@ -189,25 +190,7 @@ function PersonalInfo(props){
                     </Grid>
 
                     <Grid tablet={{ col: 6 }}>
-                    <Label className="text-bold" htmlFor="suffix">
-                        {suffixField.label}
-                    </Label>
-                    <Select
-                    data-test="select"
-                    id="suffix" className="radius-md" name="suffix"
-                    value={props.fieldData.suffix}
-                    onChange={props.saveFieldData('suffix')}
-                    autoComplete="off"
-                    onInvalid={(e) => e.target.setCustomValidity(' ')}
-                    onInput={(e) => e.target.setCustomValidity('')}
-                    >
-                    <React.Fragment key=".0">
-                        <option value={''}>{stringContent.select}</option>
-                        {suffixField.options.map((item, index) => (
-                            <option key={index} value={item.value}>{item.key}</option>
-                        ))}
-                    </React.Fragment>
-                    </Select>
+                    <CurrentSuffix {...props} />
                     </Grid>
                 </Grid>
             </>
