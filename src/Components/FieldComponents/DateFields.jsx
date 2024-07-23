@@ -2,6 +2,7 @@ import React from "react";
 import { restrictType, checkForErrors, jumpTo, toggleError } from 'Utils/ValidateField';
 
 function DateFields({ inputData, saveFieldData, dateFormat, checkDateValues, fieldData }) {
+    console.log(fieldData);
     return (
         <div
         id={inputData.id}
@@ -17,7 +18,7 @@ function DateFields({ inputData, saveFieldData, dateFormat, checkDateValues, fie
                     {inputData.stringContent.month}
                 </label>
                 <input
-                data-test={`${inputData.id}` + '_month'}
+                data-test={`${inputData.dataTest}` + 'Month'}
                 id={`${inputData.id}` + '_month'}
                 className="usa-input radius-md"
                 aria-describedby={`${inputData.id}` + '_error'}
@@ -44,7 +45,7 @@ function DateFields({ inputData, saveFieldData, dateFormat, checkDateValues, fie
                     {inputData.stringContent.day}
                 </label>
                 <input
-                data-test={`${inputData.id}` + '_day'}
+                data-test={`${inputData.dataTest}` + 'Day'}
                 id={`${inputData.id}` + '_day'}
                 className="usa-input radius-md"
                 aria-describedby={`${inputData.id}` + '_error'}
@@ -71,7 +72,7 @@ function DateFields({ inputData, saveFieldData, dateFormat, checkDateValues, fie
                     {inputData.stringContent.year}
                 </label>
                 <input
-                data-test={`${inputData.id}` + '_year'}
+                data-test={`${inputData.dataTest}` + 'Year'}
                 id={`${inputData.id}` + '_year'}
                 className="usa-input radius-md"
                 aria-describedby={`${inputData.id}` + '_error'}

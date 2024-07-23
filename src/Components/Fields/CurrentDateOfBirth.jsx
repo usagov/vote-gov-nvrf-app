@@ -8,9 +8,10 @@ function CurrentDateOfBirth(props){
     const stateField = getField(props.stateData.nvrf_fields, field.uuid);
 
     return (
-        <FieldsetContainer
+        stateField && <FieldsetContainer
             fieldType={'date'} inputData={{
             id: 'date_of_birth',
+            dataTest: 'dob',
             required: stateField.required,
             label: field.label,
             stringContent: props.stringContent,

@@ -53,6 +53,7 @@ function MultiStepForm(props) {
         } else if (e.target.value.length === 1 ) {
           let newValue = 0 + e.target.value;
           setFieldData({ ...fieldData, [name]: newValue })
+          e.target.setCustomValidity('');
         } else if (e.target.value.length === 2 ) {
         setFieldData({ ...fieldData, [name]: e.target.value })
         }
