@@ -29,10 +29,10 @@ function Identification(props){
     const noIdFieldReq = (nvrfStateFields.find(item => item.uuid === noIdField.uuid));
 
     // Used for no-id selection message
-    const [delayedId, setDelayedId] = useState(props.idType);
-    useEffect(() => {
-        setTimeout(() => setDelayedId(props.idType), 10);
-    }, [props.idType]);
+    // const [delayedId, setDelayedId] = useState(props.idType);
+    // useEffect(() => {
+    //     setTimeout(() => setDelayedId(props.idType), 10);
+    // }, [props.idType]);
 
     return (
         <>
@@ -199,7 +199,7 @@ function Identification(props){
                     </span>
                 </>}
             <div aria-live='polite'>
-                {delayedId === 'none' && <div dangerouslySetInnerHTML={{__html: noIdFieldInstructions}}/>}
+                {props.idType === 'none' && <div dangerouslySetInnerHTML={{__html: noIdFieldInstructions}}/>}
             </div>
         </div>
         </>
