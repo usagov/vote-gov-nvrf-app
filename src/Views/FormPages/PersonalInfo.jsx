@@ -20,7 +20,6 @@ function PersonalInfo(props){
     const middleNameField = fields.find(item => item.uuid === "38020ec6-1b53-4227-99e5-feea5f60af07");
     const lastNameField = fields.find(item => item.uuid === "b306238a-a0f6-4bb8-b8ea-b3216ca75e0b");
     const suffixField = fields.find(item => item.uuid === "eeff4fa1-00f2-474b-a791-1a4146dab11a");
-    const dobField = fields.find(item => item.uuid === "d31b2a64-36a9-4bc6-a9d1-e68d2be8c211");
     const phoneNumberField = fields.find(item => item.uuid === "2d61b54a-e568-410f-825a-0ca82dfd3f63");
     const raceField = fields.find(item => item.uuid === "2bfff6c6-6782-4b14-ac45-642efd278f6a");
     const prevTitleField = fields.find(item => item.uuid === "34d2669a-d30b-4001-b897-280fe71b3cb0");
@@ -36,7 +35,6 @@ function PersonalInfo(props){
 
     //Field requirements by state data
     const nameFieldState = (nvrfStateFields.find(item => item.uuid === firstNameField.uuid));
-    const dobFieldState = (nvrfStateFields.find(item => item.uuid === dobField.uuid));
     const telephoneFieldState = (nvrfStateFields.find(item => item.uuid === phoneNumberField.uuid));
     const raceFieldState = (nvrfStateFields.find(item => item.uuid === raceField.uuid));
 
@@ -215,11 +213,9 @@ function PersonalInfo(props){
         )}
 
         <Grid row gap className={'flex-align-end'}>
-            {dobFieldState && (
             <Grid tablet={{ col: 5 }}>
                 <CurrentDateOfBirth {...props} checkDateValues={checkDateValues} dateFormat={props.dateFormat} />
             </Grid>
-            )}
 
             {telephoneFieldState && (
                 <Grid tablet={{ col: 5 }}>
