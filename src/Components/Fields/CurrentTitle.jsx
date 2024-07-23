@@ -17,7 +17,7 @@ function CurrentTitle(props){
             options: field.options,
             error_msg: field.error_msg,
             help_text: field.help_text,
-        }} saveFieldData={props.saveFieldData} fieldData={props.fieldData}/>
+        }} saveFieldData={props.saveFieldData} fieldData={props.fieldData} stringContent={props.stringContent}/>
     )
 }
 
