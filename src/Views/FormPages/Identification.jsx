@@ -1,5 +1,5 @@
 import { Label, TextInput, Checkbox, Select } from '@trussworks/react-uswds';
-import React, {useState, useEffect} from "react";
+import React from "react";
 import { restrictType, checkForErrors, toggleError } from 'Utils/ValidateField';
 import { sanitizeDOM } from 'Utils/JsonHelper';
 
