@@ -1,7 +1,10 @@
 import { Label, TextInput, Checkbox, Grid } from '@trussworks/react-uswds';
 import StateSelector from 'Components/StateSelector';
+import CurrentStreetAddress from 'Components/Fields/CurrentStreetAddress';
 import CurrentApartmentNumber from 'Components/Fields/CurrentApartmentNumber';
 import MailingStreetAddress from 'Components/Fields/MailingStreetAddress';
+import PreviousApartmentNumber from 'Components/Fields/PreviousApartmentNumber';
+import PreviousStreetAddress from 'Components/Fields/PreviousStreetAddress';
 import React, { useState } from "react";
 import { restrictType, checkForErrors, toggleError } from 'Utils/ValidateField';
 import { sanitizeDOM } from 'Utils/JsonHelper';
@@ -74,31 +77,9 @@ function Addresses(props){
                             <div dangerouslySetInnerHTML={{__html: homeAddressSectionField.instructions}}/>
                         )}
 
-                        <Grid row gap>
-                            <Grid tablet={{col: 12}}>
-                        <div className="input-parent">
-                            <Label className="text-bold" htmlFor="street">
-                                {streetAddressField.label}{(addressFieldsState.required === "1") && <span className='required-text'>*</span>}
-                            </Label>
-                            <TextInput
-                                data-test="street"
-                                id="street"
-                                className="radius-md"
-                                aria-describedby="street_error"
-                                name="street"
-                                type="text"
-                                autoComplete="off"
-                                required={(parseInt(addressFieldsState.required))}
-                                value={props.fieldData.street_address}
-                                onChange={props.saveFieldData('street_address')}
-                                onBlur={(e) => toggleError(e, checkForErrors(e, 'check value exists'))}
-                                onInvalid={(e) => e.target.setCustomValidity(' ')}
-                                onInput={(e) => e.target.setCustomValidity('')}
-                                />
-                            <span id="street_error" role="alert" className='error-text' data-test="errorText">
-                                {streetAddressField.error_msg}
-                            </span>
-                        </div>
+                    <Grid row gap>
+                        <Grid tablet={{col: 12}}>
+                            <CurrentStreetAddress {...props} />
                         </Grid>
                     </Grid>
 
@@ -318,50 +299,13 @@ function Addresses(props){
 
                         <Grid row gap>
                             <Grid tablet={{ col: 12 }}>
-                            <div className="input-parent">
-                                <Label className="text-bold" htmlFor="prev-street">
-                                    {prevStreetAddressField.label}{(addressFieldsState.required === "1") && <span className='required-text'>*</span>}
-                                </Label>
-                                <TextInput
-                                    data-test="prevStreet"
-                                    id="prev-street"
-                                    className="radius-md"
-                                    aria-describedby="prev-street_error"
-                                    name="prev-street"
-                                    type="text"
-                                    autoComplete="off"
-                                    required={(parseInt(addressFieldsState.required))}
-                                    value={props.fieldData.prev_street_address}
-                                    onChange={props.saveFieldData('prev_street_address')}
-                                    onBlur={(e) => toggleError(e, checkForErrors(e, 'check value exists'))}
-                                    onInvalid={(e) => e.target.setCustomValidity(' ')}
-                                    onInput={(e) => e.target.setCustomValidity('')}
-                                />
-                                <span id="prev-street_error" role="alert" className='error-text' data-test="errorText">
-                                    {prevStreetAddressField.error_msg}
-                                </span>
-                            </div>
+                                <PreviousStreetAddress {...props} />
                             </Grid>
                         </Grid>
 
                         <Grid row gap className={'flex-align-end'}>
                             <Grid tablet={{ col: 5 }}>
-                            <Label className="text-bold" htmlFor="prev-apartment-number">
-                                {prevAptField.label}
-                            </Label>
-                            <TextInput
-                                data-test="prevAptNumber"
-                                id="prev-apartment-number"
-                                className="radius-md"
-                                name="prev-apartment-number"
-                                aria-describedby=""
-                                type="text"
-                                autoComplete="off"
-                                value={props.fieldData.prev_apt_num}
-                                onChange={props.saveFieldData('prev_apt_num')}
-                                onInvalid={(e) => e.target.setCustomValidity(' ')}
-                                onInput={(e) => e.target.setCustomValidity('')}
-                                />
+                                <PreviousApartmentNumber {...props} />
                             </Grid>
                         </Grid>
 
