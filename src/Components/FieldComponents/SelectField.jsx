@@ -20,7 +20,7 @@ function SelectField({ inputData, saveFieldData, fieldData, stringContent }){
         <React.Fragment key=".0">                        
             <option value={''}>{stringContent.select}</option>
             {inputData.options.map((item, index) => (
-                <option key={item} value={item}>{item}</option>
+                <option key={index} value={item.value}>{item.key}</option>
             ))}
         </React.Fragment>
         </Select>
