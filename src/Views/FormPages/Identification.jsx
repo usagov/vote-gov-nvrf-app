@@ -28,12 +28,6 @@ function Identification(props){
     const ssnFieldReq = (nvrfStateFields.find(item => item.uuid === ssnField.uuid));
     const noIdFieldReq = (nvrfStateFields.find(item => item.uuid === noIdField.uuid));
 
-    // Used for no-id selection message
-    // const [delayedId, setDelayedId] = useState(props.idType);
-    // useEffect(() => {
-    //     setTimeout(() => setDelayedId(props.idType), 10);
-    // }, [props.idType]);
-
     return (
         <>
         <h2>{headings.step_label_3}</h2>
