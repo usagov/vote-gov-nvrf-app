@@ -2,6 +2,7 @@ import { Label, TextInput, Checkbox, Grid } from '@trussworks/react-uswds';
 import StateSelector from 'Components/StateSelector';
 import CurrentStreetAddress from 'Components/Fields/CurrentStreetAddress';
 import CurrentApartmentNumber from 'Components/Fields/CurrentApartmentNumber';
+import PreviousApartmentNumber from 'Components/Fields/PreviousApartmentNumber';
 import PreviousStreetAddress from 'Components/Fields/PreviousStreetAddress';
 import React, { useState } from "react";
 import { restrictType, checkForErrors, toggleError } from 'Utils/ValidateField';
@@ -25,6 +26,7 @@ function Addresses(props){
 
     const prevAddressSectionField = fields.find(item => item.uuid === "023fda0f-e8bd-4654-ab5c-46f44a0b7bd6");
     const prevAddressField = fields.find(item => item.uuid === "c3011c62-d174-420c-817a-bffbcd45687a");
+    const prevStreetAddressField = fields.find(item => item.uuid === "c037a3ea-86b7-4661-ad28-c7228f1e682b");
     const prevAptField = fields.find(item => item.uuid === "c8e2ff17-fb1f-4971-a664-ffbb557b305a");
     const prevCityField = fields.find(item => item.uuid === "44bf0a5c-adba-4b47-bc99-cc46cede5e80");
     const prevStateField = fields.find(item => item.uuid === "5a8a4b6d-c0f1-42f2-b991-8ea49a32e997");
@@ -325,22 +327,7 @@ function Addresses(props){
 
                         <Grid row gap className={'flex-align-end'}>
                             <Grid tablet={{ col: 5 }}>
-                            <Label className="text-bold" htmlFor="prev-apartment-number">
-                                {prevAptField.label}
-                            </Label>
-                            <TextInput
-                                data-test="prevAptNumber"
-                                id="prev-apartment-number"
-                                className="radius-md"
-                                name="prev-apartment-number"
-                                aria-describedby=""
-                                type="text"
-                                autoComplete="off"
-                                value={props.fieldData.prev_apt_num}
-                                onChange={props.saveFieldData('prev_apt_num')}
-                                onInvalid={(e) => e.target.setCustomValidity(' ')}
-                                onInput={(e) => e.target.setCustomValidity('')}
-                                />
+                                <PreviousApartmentNumber {...props} />
                             </Grid>
                         </Grid>
 
