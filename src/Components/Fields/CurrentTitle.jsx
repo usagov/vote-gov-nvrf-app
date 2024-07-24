@@ -11,7 +11,7 @@ function CurrentTitle(props){
         <FieldContainer
             fieldType={'select'} inputData={{
             id: 'title',
-            dataTest: 'title',
+            dataTest: 'select',
             required: false,
             label: field.label,
             options: field.options,
