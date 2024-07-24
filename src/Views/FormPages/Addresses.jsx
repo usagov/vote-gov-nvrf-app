@@ -1,7 +1,12 @@
 import { Label, TextInput, Checkbox, Grid } from '@trussworks/react-uswds';
 import StateSelector from 'Components/StateSelector';
+import CurrentAddressState from 'Components/Fields/CurrentAddressState';
+import CurrentStreetAddress from 'Components/Fields/CurrentStreetAddress';
 import CurrentCity from 'Components/Fields/CurrentCity';
 import CurrentApartmentNumber from 'Components/Fields/CurrentApartmentNumber';
+import MailingStreetAddress from 'Components/Fields/MailingStreetAddress';
+import PreviousApartmentNumber from 'Components/Fields/PreviousApartmentNumber';
+import PreviousStreetAddress from 'Components/Fields/PreviousStreetAddress';
 import React, { useState } from "react";
 import { restrictType, checkForErrors, toggleError } from 'Utils/ValidateField';
 import { sanitizeDOM } from 'Utils/JsonHelper';
@@ -18,6 +23,7 @@ function Addresses(props){
     //Drupal field data
     const homeAddressSectionField = fields.find(item => item.uuid === "63552bb6-6afb-46e1-8148-860242917a22");
     const streetAddressField = fields.find(item => item.uuid === "6dcb9e8c-b40a-4cda-ba5c-06b98c3375f4");
+    const cityField = fields.find(item => item.uuid === "7e39a528-7518-40cb-b7b6-b635864dc117");
     const stateField = fields.find(item => item.uuid === "fe3a2a1d-34bd-472b-a843-3fa0635c4f40");
     const zipcodeField = fields.find(item => item.uuid === "cdb06542-0cbd-4aa3-897f-83377b8d65e5");
 
@@ -32,7 +38,6 @@ function Addresses(props){
     const mailAddressSectionField = fields.find(item => item.uuid === "1a856408-6fb2-4b09-b05a-8d8ee9eb9bb5");
     const noAddressField = fields.find(item => item.uuid === "35c2b98d-477c-45f3-9f93-f720406080f1");
     const differentMailAddressField = fields.find(item => item.uuid === "e7340274-ee3f-4d73-a967-c9d7c249be7b");
-    const mailStreetAddressField = fields.find(item => item.uuid === "db9b1f7a-565b-4aad-8d7c-56a553c18326");
     const mailCityField = fields.find(item => item.uuid === "9a5baee7-357b-4e59-b4f2-fe2525c0fd6c");
     const mailStateField = fields.find(item => item.uuid === "b0f80289-6084-4723-8278-110fda210f0d");
     const mailZipcodeField = fields.find(item => item.uuid === "c4f9c0cb-2a25-4f1d-a93a-b06a19656cfe");
@@ -74,31 +79,9 @@ function Addresses(props){
                             <div dangerouslySetInnerHTML={{__html: homeAddressSectionField.instructions}}/>
                         )}
 
-                        <Grid row gap>
-                            <Grid tablet={{col: 12}}>
-                        <div className="input-parent">
-                            <Label className="text-bold" htmlFor="street">
-                                {streetAddressField.label}{(addressFieldsState.required === "1") && <span className='required-text'>*</span>}
-                            </Label>
-                            <TextInput
-                                data-test="street"
-                                id="street"
-                                className="radius-md"
-                                aria-describedby="street_error"
-                                name="street"
-                                type="text"
-                                autoComplete="off"
-                                required={(parseInt(addressFieldsState.required))}
-                                value={props.fieldData.street_address}
-                                onChange={props.saveFieldData('street_address')}
-                                onBlur={(e) => toggleError(e, checkForErrors(e, 'check value exists'))}
-                                onInvalid={(e) => e.target.setCustomValidity(' ')}
-                                onInput={(e) => e.target.setCustomValidity('')}
-                                />
-                            <span id="street_error" role="alert" className='error-text' data-test="errorText">
-                                {streetAddressField.error_msg}
-                            </span>
-                        </div>
+                    <Grid row gap>
+                        <Grid tablet={{col: 12}}>
+                            <CurrentStreetAddress {...props} />
                         </Grid>
                     </Grid>
 
@@ -114,22 +97,7 @@ function Addresses(props){
                         </Grid>
 
                         <Grid tablet={{ col: 4 }}>
-                        <Label htmlFor="state" className="text-bold">
-                            {stateField.label}
-                        </Label>
-                        <StateSelector
-                            classes="radius-md"
-                            data-test="select"
-                            statesList={props.statesList}
-                            stringContent={props.stringContent}
-                            state={props.stateData.name}
-                            saveState={props.saveFieldData('state')}
-                            autoComplete="off"
-                            disabled={true}
-                            required={(parseInt(addressFieldsState.required))}
-                            onInvalid={(e) => e.target.setCustomValidity(' ')}
-                            onInput={(e) => e.target.setCustomValidity('')}
-                        />
+                            <CurrentAddressState {...props} />
                         </Grid>
 
                         <Grid tablet={{ col: 3 }}>
@@ -185,29 +153,7 @@ function Addresses(props){
 
                         <Grid row gap>
                             <Grid tablet={{col: 12 }}>
-                            <div className="input-parent">
-                            <Label className="text-bold" htmlFor="mail-street">
-                                {mailStreetAddressField.label}{(addressFieldsState.required === "1") && <span className='required-text'>*</span>}
-                            </Label>
-                                <TextInput
-                                    data-test="mailStreet"
-                                    id="mail-street"
-                                    className="radius-md"
-                                    aria-describedby="mail-street_error"
-                                    name="mail-street"
-                                    type="text"
-                                    autoComplete="off"
-                                    required={(parseInt(addressFieldsState.required))}
-                                    value={props.fieldData.mail_street_address}
-                                    onChange={props.saveFieldData('mail_street_address')}
-                                    onBlur={(e) => toggleError(e, checkForErrors(e, 'check value exists'))}
-                                    onInvalid={(e) => e.target.setCustomValidity(' ')}
-                                    onInput={(e) => e.target.setCustomValidity('')}
-                                />
-                            <span id="mail-street_error" role="alert" className='error-text' data-test="errorText">
-                                {mailStreetAddressField.error_msg}
-                            </span>
-                            </div>
+                                <MailingStreetAddress {...props} />
                             </Grid>
                         </Grid>
 
@@ -317,50 +263,13 @@ function Addresses(props){
 
                         <Grid row gap>
                             <Grid tablet={{ col: 12 }}>
-                            <div className="input-parent">
-                                <Label className="text-bold" htmlFor="prev-street">
-                                    {prevStreetAddressField.label}{(addressFieldsState.required === "1") && <span className='required-text'>*</span>}
-                                </Label>
-                                <TextInput
-                                    data-test="prevStreet"
-                                    id="prev-street"
-                                    className="radius-md"
-                                    aria-describedby="prev-street_error"
-                                    name="prev-street"
-                                    type="text"
-                                    autoComplete="off"
-                                    required={(parseInt(addressFieldsState.required))}
-                                    value={props.fieldData.prev_street_address}
-                                    onChange={props.saveFieldData('prev_street_address')}
-                                    onBlur={(e) => toggleError(e, checkForErrors(e, 'check value exists'))}
-                                    onInvalid={(e) => e.target.setCustomValidity(' ')}
-                                    onInput={(e) => e.target.setCustomValidity('')}
-                                />
-                                <span id="prev-street_error" role="alert" className='error-text' data-test="errorText">
-                                    {prevStreetAddressField.error_msg}
-                                </span>
-                            </div>
+                                <PreviousStreetAddress {...props} />
                             </Grid>
                         </Grid>
 
                         <Grid row gap className={'flex-align-end'}>
                             <Grid tablet={{ col: 5 }}>
-                            <Label className="text-bold" htmlFor="prev-apartment-number">
-                                {prevAptField.label}
-                            </Label>
-                            <TextInput
-                                data-test="prevAptNumber"
-                                id="prev-apartment-number"
-                                className="radius-md"
-                                name="prev-apartment-number"
-                                aria-describedby=""
-                                type="text"
-                                autoComplete="off"
-                                value={props.fieldData.prev_apt_num}
-                                onChange={props.saveFieldData('prev_apt_num')}
-                                onInvalid={(e) => e.target.setCustomValidity(' ')}
-                                onInput={(e) => e.target.setCustomValidity('')}
-                                />
+                                <PreviousApartmentNumber {...props} />
                             </Grid>
                         </Grid>
 
