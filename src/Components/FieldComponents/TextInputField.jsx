@@ -8,7 +8,7 @@ function TextInputField({ inputData, saveFieldData, fieldData }){
         data-test={inputData.dataTest}
         id={inputData.id}
         className="radius-md"
-        aria-describedby={inputData.describedby || `${inputData.id}` + '_error'}
+        aria-describedby={`${inputData.id}` + '_error'}
         name={inputData.id}
         type="text"
         autoComplete="off"
@@ -18,8 +18,8 @@ function TextInputField({ inputData, saveFieldData, fieldData }){
         value={fieldData[inputData.id]}
         onChange={saveFieldData(inputData.id)}
         onBlur={(e) => toggleError(e, checkForErrors(e, inputData.check || 'check value exists'))}
-        onInvalid={(e) => {e.target.setCustomValidity(' '), inputData.pointToError && inputData.pointToError()}}
-        onInput={(e) => {e.target.setCustomValidity(''), inputData.pointToHint && inputData.pointToHint()}}
+        onInvalid={(e) => e.target.setCustomValidity(' ')}
+        onInput={(e) => e.target.setCustomValidity('')}
         />
     )
 }
