@@ -2,6 +2,7 @@ import { Label, TextInput, Checkbox, Grid } from '@trussworks/react-uswds';
 import StateSelector from 'Components/StateSelector';
 import CurrentAddressState from 'Components/Fields/CurrentAddressState';
 import CurrentStreetAddress from 'Components/Fields/CurrentStreetAddress';
+import CurrentCity from 'Components/Fields/CurrentCity';
 import CurrentApartmentNumber from 'Components/Fields/CurrentApartmentNumber';
 import MailingStreetAddress from 'Components/Fields/MailingStreetAddress';
 import PreviousApartmentNumber from 'Components/Fields/PreviousApartmentNumber';
@@ -22,7 +23,6 @@ function Addresses(props){
     //Drupal field data
     const homeAddressSectionField = fields.find(item => item.uuid === "63552bb6-6afb-46e1-8148-860242917a22");
     const streetAddressField = fields.find(item => item.uuid === "6dcb9e8c-b40a-4cda-ba5c-06b98c3375f4");
-    const cityField = fields.find(item => item.uuid === "7e39a528-7518-40cb-b7b6-b635864dc117");
     const zipcodeField = fields.find(item => item.uuid === "cdb06542-0cbd-4aa3-897f-83377b8d65e5");
 
     const prevAddressSectionField = fields.find(item => item.uuid === "023fda0f-e8bd-4654-ab5c-46f44a0b7bd6");
@@ -91,30 +91,7 @@ function Addresses(props){
 
                     <Grid row gap className={'flex-align-end'}>
                         <Grid tablet={{ col: 4 }}>
-                            <div className="input-parent">
-                                <Label className="text-bold" htmlFor="city">
-                                    {cityField.label}{(addressFieldsState.required === "1") && <span className='required-text'>*</span>}
-                                </Label>
-                                    <TextInput
-                                        data-test="city"
-                                        id="city"
-                                        className="radius-md"
-                                        aria-describedby="city_error"
-                                        name="city"
-                                        value={props.fieldData.city}
-                                        type="text"
-                                        autoComplete="off"
-                                        required={(parseInt(addressFieldsState.required))}
-                                        onChange={props.saveFieldData('city')}
-                                        onKeyDown={(e) => restrictType(e, 'letters')}
-                                        onBlur={(e) => toggleError(e, checkForErrors(e, 'check value exists'))}
-                                        onInvalid={(e) => e.target.setCustomValidity(' ')}
-                                        onInput={(e) => e.target.setCustomValidity('')}
-                                    />
-                                <span id="city_error" role="alert" className='error-text' data-test="errorText">
-                                    {cityField.error_msg}
-                                </span>
-                            </div>
+                            <CurrentCity {...props} />
                         </Grid>
 
                         <Grid tablet={{ col: 4 }}>
