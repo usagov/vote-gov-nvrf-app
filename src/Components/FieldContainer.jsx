@@ -3,7 +3,7 @@ import { Label } from '@trussworks/react-uswds';
 import TextInputField from 'Components/FieldComponents/TextInputField';
 import SelectField from 'Components/FieldComponents/SelectField';
 
-function FieldContainer({ fieldType, inputData, saveFieldData, fieldData }) {
+function FieldContainer({ fieldType, inputData, saveFieldData, fieldData, stringContent }) {
   function renderField(fieldType) {
     switch (fieldType) {
       case 'text':
@@ -15,7 +15,8 @@ function FieldContainer({ fieldType, inputData, saveFieldData, fieldData }) {
         return <SelectField
           inputData={inputData}
           saveFieldData={saveFieldData}
-          fieldData={fieldData} />;
+          fieldData={fieldData} 
+          stringContent={stringContent} />;
     }
   };
 

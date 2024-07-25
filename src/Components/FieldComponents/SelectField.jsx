@@ -1,7 +1,7 @@
 import React from "react";
 import { Select } from '@trussworks/react-uswds';
 
-function SelectField({ inputData, saveFieldData, fieldData }){
+function SelectField({ inputData, saveFieldData, fieldData, stringContent }){
     return (
         <Select 
         data-test={inputData.dataTest}
@@ -18,7 +18,7 @@ function SelectField({ inputData, saveFieldData, fieldData }){
         onInput={(e) => e.target.setCustomValidity('')}
         >
         <React.Fragment key=".0">                        
-            <option value={''}>{inputData.stringContent}</option>
+            <option value={''}>{stringContent.select}</option>
             {inputData.options.map((item, index) => (
                 <option key={item} value={item}>{item}</option>
             ))}
