@@ -2,6 +2,7 @@ import { Label, TextInput, Checkbox, Grid } from '@trussworks/react-uswds';
 import StateSelector from 'Components/StateSelector';
 import CurrentAddressState from 'Components/Fields/CurrentAddressState';
 import CurrentStreetAddress from 'Components/Fields/CurrentStreetAddress';
+import CurrentZipCode from 'Components/Fields/CurrentZipCode';
 import CurrentCity from 'Components/Fields/CurrentCity';
 import CurrentApartmentNumber from 'Components/Fields/CurrentApartmentNumber';
 import MailingStreetAddress from 'Components/Fields/MailingStreetAddress';
@@ -99,34 +100,7 @@ function Addresses(props){
                         </Grid>
 
                         <Grid tablet={{ col: 3 }}>
-                        <div className="input-parent">
-                            <Label className="text-bold" htmlFor="zip-code">
-                                {zipcodeField.label} {(addressFieldsState.required === "1") && <span className={'required-text'}>*</span>}
-                            </Label>
-                            <span className="usa-hint" id="zip-hint">{zipcodeField.help_text}</span>
-                            <TextInput
-                                data-test="zip"
-                                id="zip-code"
-                                className="radius-md"
-                                aria-describedby="zip-code_error"
-                                name="zip-code"
-                                type="text"
-                                inputMode="numeric"
-                                autoComplete="off"
-                                required={(parseInt(addressFieldsState.required))}
-                                minLength={5}
-                                maxLength={5}
-                                value={props.fieldData.zip_code}
-                                onChange={props.saveFieldData('zip_code')}
-                                onKeyDown={(e) => restrictType(e, 'number')}
-                                onBlur={(e) => toggleError(e, checkForErrors(e, 'check value length'))}
-                                onInvalid={(e) => e.target.setCustomValidity(' ')}
-                                onInput={(e) => e.target.setCustomValidity('')}
-                            />
-                            <span id="zip-code_error" role="alert" className='error-text' data-test="errorText">
-                                {zipcodeField.error_msg}
-                            </span>
-                        </div>
+                            <CurrentZipCode {...props} />
                         </Grid>
                     </Grid>
                     <Checkbox data-test="checkBox" className="margin-top-3" id="alt-mail-addr" name="alt-mail-addr" checked={props.hasMailAddress} onChange={props.onChangeMailAddressCheckbox} label={differentMailAddressField.label} />
