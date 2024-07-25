@@ -271,30 +271,6 @@ function Addresses(props){
 
                         <Grid row gap className={'flex-align-end'}>
                             <Grid tablet={{ col: 4 }}>
-                                {/* <div className="input-parent">
-                                    <Label className="text-bold" htmlFor="prev-city">
-                                        {prevCityField.label}{(addressFieldsState.required === "1") && <span className='required-text'>*</span>}
-                                    </Label>
-                                        <TextInput
-                                            data-test="prevCity"
-                                            id="prev-city"
-                                            className="radius-md"
-                                            aria-describedby="prev-city_error"
-                                            name="prev-city"
-                                            type="text"
-                                            autoComplete="off"
-                                            required={(parseInt(addressFieldsState.required))}
-                                            value={props.fieldData.prev_city}
-                                            onChange={props.saveFieldData('prev_city')}
-                                            onKeyDown={(e) => restrictType(e, 'letters')}
-                                            onBlur={(e) => toggleError(e, checkForErrors(e, 'check value exists'))}
-                                            onInvalid={(e) => e.target.setCustomValidity(' ')}
-                                            onInput={(e) => e.target.setCustomValidity('')}
-                                        />
-                                    <span id="prev-city_error" role="alert" className='error-text' data-test="errorText">
-                                        {prevCityField.error_msg}
-                                    </span>
-                                </div> */}
                                 <PreviousCity {...props} />
                             </Grid>
 
