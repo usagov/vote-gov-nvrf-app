@@ -3,7 +3,6 @@ import { TextInput } from '@trussworks/react-uswds';
 import { checkForErrors, toggleError } from 'Utils/ValidateField';
 
 function TextInputField({ inputData, saveFieldData, fieldData }){
-    console.log(inputData.describedby);
     return (
         <TextInput
         data-test={inputData.dataTest}
