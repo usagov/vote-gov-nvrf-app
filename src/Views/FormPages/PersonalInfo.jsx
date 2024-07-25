@@ -4,6 +4,8 @@ import { restrictType, checkForErrors, jumpTo, toggleError } from 'Utils/Validat
 import {sanitizeDOM} from "Utils/JsonHelper";
 import CurrentFirstName from "Components/Fields/CurrentFirstName";
 import CurrentSuffix from 'Components/Fields/CurrentSuffix';
+import CurrentTitle from 'Components/Fields/CurrentTitle';
+import CurrentMiddleName from 'Components/Fields/CurrentMiddleName';
 
 function PersonalInfo(props){
     const headings = props.headings;
@@ -118,26 +120,7 @@ function PersonalInfo(props){
             <>
                 <Grid row gap>
                     <Grid tablet={{ col: 2 }}>
-                    <Label className="text-bold" htmlFor="title">
-                        {titleField.label}
-                    </Label>
-                    <Select
-                        className="radius-md" id="title" name="title"
-                        aria-describedby=""
-                        data-test="select"
-                        value={props.fieldData.title}
-                        onChange={props.saveFieldData('title')}
-                        autoComplete="off"
-                        onInvalid={(e) => e.target.setCustomValidity(' ')}
-                        onInput={(e) => e.target.setCustomValidity('')}>
-                        <React.Fragment key=".0"
-                    >
-                    <option value={''}>{stringContent.select}</option>
-                        {titleField.options.map((item, index) => (
-                            <option key={index} value={item.value}>{item.key}</option>
-                        ))}
-                    </React.Fragment>
-                    </Select>
+                    <CurrentTitle {...props} />
                     </Grid>
 
                 <Grid tablet={{ col: 5 }}>
@@ -145,20 +128,7 @@ function PersonalInfo(props){
                 </Grid>
 
                     <Grid tablet={{ col: 5 }}>
-                        <Label className="text-bold" htmlFor="middle-name">
-                            {middleNameField.label}
-                        </Label>
-                        <TextInput
-                            data-test="middleName"
-                            id="middle-name"
-                            className="radius-md"
-                            name="middle-name"
-                            aria-describedby=""
-                            value={props.fieldData.middle_name}
-                            onChange={props.saveFieldData('middle_name')}
-                            type="text" autoComplete="off"
-                            onInvalid={(e) => e.target.setCustomValidity(' ')}
-                            onInput={(e) => e.target.setCustomValidity('')}/>
+                    <CurrentMiddleName {...props} />
                     </Grid>
                 </Grid>
 
