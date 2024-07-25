@@ -84,10 +84,15 @@ export const checkForErrors=(e, requirement)=> {
         return true
       }
     case 'check value length':
-      let valueIsLength = e.target.value.length === e.target.maxLength;
+      let minLength = e.target.minLength;
+      let maxLength = e.target.maxLength > -1 ? e.target.maxLength : Number.MAX_SAFE_INTEGER;
+
+      let valueIsLength = e.target.value.length >= minLength && e.target.value.length <= maxLength;
       if (valueIsLength) {
+        e.target.setCustomValidity('');
         return false
       } else {
+        e.target.setCustomValidity(' ');
         return true
       }
 

@@ -26,7 +26,7 @@ function FieldContainer({ fieldType, inputData, saveFieldData, fieldData, string
         <Label className="text-bold" htmlFor={inputData.id}>
           {inputData.label}{(parseInt(inputData.required) === 1) && <span>*</span>}
         </Label>
-        <span className="usa-hint" id={`${inputData.id} + '-hint'`}>
+        <span className="usa-hint" id={`${inputData.id}` + '-hint'}>
           {inputData.help_text}
         </span>
         {renderField(fieldType)}
