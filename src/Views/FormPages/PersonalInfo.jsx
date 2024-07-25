@@ -117,7 +117,7 @@ function PersonalInfo(props){
 
         {nameFieldState && (
             <>
-                <Grid row gap>
+                <Grid row gap className={'flex-align-end'}>
                     <Grid tablet={{ col: 2 }}>
                     <CurrentTitle {...props} />
                     </Grid>
@@ -131,7 +131,7 @@ function PersonalInfo(props){
                     </Grid>
                 </Grid>
 
-                <Grid row gap>
+                <Grid row gap className={'flex-align-end'}>
                     <Grid tablet={{ col: 6 }}>
                     <div className="input-parent">
                         <Label className="text-bold" htmlFor="last-name">
@@ -356,7 +356,7 @@ function PersonalInfo(props){
             </Grid>
 
             {raceFieldState && (
-                <Grid row gap>
+                <Grid row gap className={'flex-align-end'}>
                     <Grid tablet={{ col: 4 }}>
                         <div className="input-parent">
                             <Label className="text-bold" htmlFor="race-ethnicity">
@@ -392,7 +392,7 @@ function PersonalInfo(props){
         {(props.previousName && changeRegistrationVisible) && (
         <>
         <h3 className='margin-top-8'>{prevNameSectionField.label}</h3>
-        <Grid row gap>
+        <Grid row gap className={'flex-align-end'}>
             <Grid tablet={{ col: 2 }}>
             <Label className="text-bold" htmlFor="title-prev">
                 {prevTitleField.label}
@@ -460,7 +460,7 @@ function PersonalInfo(props){
             </Grid>
         </Grid>
 
-        <Grid row gap>
+        <Grid row gap className={'flex-align-end'}>
             <Grid tablet={{ col: 6 }}>
             <div className="input-parent">
                 <Label className="text-bold" htmlFor="last-name-prev">

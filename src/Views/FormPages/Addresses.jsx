@@ -78,13 +78,13 @@ function Addresses(props){
                             <div dangerouslySetInnerHTML={{__html: homeAddressSectionField.instructions}}/>
                         )}
 
-                    <Grid row gap>
+                    <Grid row gap className={'flex-align-end'}>
                         <Grid tablet={{col: 12}}>
                             <CurrentStreetAddress {...props} />
                         </Grid>
                     </Grid>
 
-                    <Grid row gap>
+                    <Grid row gap className={'flex-align-end'}>
                         <Grid tablet={{ col: 5}}>
                             <CurrentApartmentNumber {...props} />
                         </Grid>
@@ -123,7 +123,7 @@ function Addresses(props){
                             <div dangerouslySetInnerHTML={{__html: mailAddressSectionField.section_description}}/>
                         )}
 
-                        <Grid row gap>
+                        <Grid row gap className={'flex-align-end'}>
                             <Grid tablet={{col: 12 }}>
                                 <MailingStreetAddress {...props} />
                             </Grid>
@@ -233,7 +233,7 @@ function Addresses(props){
                             <div dangerouslySetInnerHTML={{__html: prevAddressSectionField.instructions}}/>
                         )}
 
-                        <Grid row gap>
+                        <Grid row gap className={'flex-align-end'}>
                             <Grid tablet={{ col: 12 }}>
                                 <PreviousStreetAddress {...props} />
                             </Grid>
