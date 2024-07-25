@@ -58,6 +58,34 @@
     }
 }
 
+/* Color for future segments */
+.nvrf-app-container .usa-step-indicator__segment-label {
+    /* color: #b50909; */
+}
+
+.nvrf-app-container .usa-step-indicator__segment::after {
+    /* background-color: #b50909; */
+}
+
+/* Color for current segment */
+.nvrf-app-container .usa-step-indicator__segment--current::after {
+    /* background-color: #09b57f; */
+}
+
+.nvrf-app-container .usa-step-indicator__segment--current .usa-step-indicator__segment-label {
+    /* color: #09b57f; */
+}
+
+/* Color for completed segments */
+.nvrf-app-container .usa-step-indicator__segment--complete::after {
+    /* background-color: #ff19c2; */
+}
+
+.nvrf-app-container .usa-step-indicator__segment--complete .usa-step-indicator__segment-label {
+    /* color: #ff19c2; */
+}
+
+
 .nvrf-app-container .usa-alert__text {
     > *:first-child {
         margin-top: 0;
