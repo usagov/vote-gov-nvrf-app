@@ -13,6 +13,9 @@ function TextInputField({ inputData, saveFieldData, fieldData }){
         type="text"
         autoComplete="off"
         required={parseInt(inputData.required)}
+        minLength={inputData.minLength}
+        maxLength={inputData.maxLength}
+        inputMode="numeric"
         value={fieldData[inputData.id]}
         onChange={saveFieldData(inputData.id)}
         onKeyDown={(e) => restrictType(e, inputData.inputType)}
