@@ -11,7 +11,7 @@ function CurrentSuffix(props){
     <FieldContainer
       fieldType={'select'} inputData={{
       id: 'suffix',
-      dataTest: 'suffix',
+      dataTest: 'select',
       required: false,
       label: field.label,
       options: field.options,
