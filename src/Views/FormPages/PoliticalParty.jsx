@@ -2,6 +2,7 @@ import React from "react";
 import { Label, TextInput } from '@trussworks/react-uswds';
 import { restrictType, checkForErrors, toggleError } from 'Utils/ValidateField';
 import { sanitizeDOM } from "Utils/JsonHelper";
+import PoliticalPartyInput from 'Components/Fields/PoliticalPartyInput';
 
 function PoliticalParty(props){
     const headings = props.headings;
@@ -34,26 +35,10 @@ function PoliticalParty(props){
                 <Label className="text-bold" htmlFor="political-party">
                     {partyField.name}{(partyFieldState.required === "1") && <span className='required-text'>*</span>}
                 </Label>
+                
                 <div className="usa-hint" id="political-party_hint" dangerouslySetInnerHTML={{__html: partyGeneralInstructions}}/>
-                <TextInput
-                    data-test="politicalParty"
-                    id="political-party"
-                    className="radius-md"
-                    aria-describedby="political-party_error"
-                    name="political-party"
-                    value={props.fieldData.party_choice}
-                    type="text"
-                    autoComplete="off"
-                    required={parseInt(partyFieldState.required)}
-                    onChange={props.saveFieldData('party_choice')}
-                    onKeyDown={(e) => restrictType(e, 'letters')}
-                    onBlur={(e) => toggleError(e, checkForErrors(e, 'check value exists'))}
-                    onInvalid={(e) => e.target.setCustomValidity(' ')}
-                    onInput={(e) => e.target.setCustomValidity('')}
-                    />
-                <span id="political-party_error" role="alert" className='error-text' data-test="errorText">
-                    {partyField.error_msg}
-                </span>
+
+                <PoliticalPartyInput {...props} />
             </div>
             </>
         )}
