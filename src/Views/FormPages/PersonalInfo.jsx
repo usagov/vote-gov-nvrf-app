@@ -3,6 +3,7 @@ import React from "react";
 import { restrictType, checkForErrors, jumpTo, toggleError } from 'Utils/ValidateField';
 import {sanitizeDOM} from "Utils/JsonHelper";
 import CurrentFirstName from "Components/Fields/CurrentFirstName";
+import CurrentLastName from "Components/Fields/CurrentLastName";
 import CurrentTitle from 'Components/Fields/CurrentTitle';
 import CurrentMiddleName from 'Components/Fields/CurrentMiddleName';
 import CurrentPhoneNumber from 'Components/Fields/CurrentPhoneNumber';
@@ -116,7 +117,7 @@ function PersonalInfo(props){
 
         {nameFieldState && (
             <>
-                <Grid row gap>
+                <Grid row gap className={'flex-align-end'}>
                     <Grid tablet={{ col: 2 }}>
                     <CurrentTitle {...props} />
                     </Grid>
@@ -130,31 +131,9 @@ function PersonalInfo(props){
                     </Grid>
                 </Grid>
 
-                <Grid row gap>
+                <Grid row gap className={'flex-align-end'}>
                     <Grid tablet={{ col: 6 }}>
-                    <div className="input-parent">
-                        <Label className="text-bold" htmlFor="last-name">
-                            {lastNameField.label}{(nameFieldState.required === "1") && <span className='required-text'>*</span>}
-                        </Label>
-                        <TextInput
-                            data-test="lastName"
-                            id="last-name"
-                            className="radius-md"
-                            aria-describedby="last-name_error"
-                            name="last-name"
-                            type="text"
-                            autoComplete="off"
-                            required={parseInt(nameFieldState.required)}
-                            value={props.fieldData.last_name}
-                            onChange={props.saveFieldData('last_name')}
-                            onBlur={(e) => toggleError(e, checkForErrors(e, 'check value exists'))}
-                            onInvalid={(e) => e.target.setCustomValidity(' ')}
-                            onInput={(e) => e.target.setCustomValidity('')}
-                            />
-                        <span id="last-name_error" role="alert" className={'error-text'} data-test="errorText">
-                            {lastNameField.error_msg}
-                        </span>
-                    </div>
+                        <CurrentLastName {...props} />
                     </Grid>
 
                     <Grid tablet={{ col: 6 }}>
@@ -329,7 +308,7 @@ function PersonalInfo(props){
             </Grid>
 
             {raceFieldState && (
-                <Grid row gap>
+                <Grid row gap className={'flex-align-end'}>
                     <Grid tablet={{ col: 4 }}>
                         <div className="input-parent">
                             <Label className="text-bold" htmlFor="race-ethnicity">
@@ -365,7 +344,7 @@ function PersonalInfo(props){
         {(props.previousName && changeRegistrationVisible) && (
         <>
         <h3 className='margin-top-8'>{prevNameSectionField.label}</h3>
-        <Grid row gap>
+        <Grid row gap className={'flex-align-end'}>
             <Grid tablet={{ col: 2 }}>
             <Label className="text-bold" htmlFor="title-prev">
                 {prevTitleField.label}
@@ -433,7 +412,7 @@ function PersonalInfo(props){
             </Grid>
         </Grid>
 
-        <Grid row gap>
+        <Grid row gap className={'flex-align-end'}>
             <Grid tablet={{ col: 6 }}>
             <div className="input-parent">
                 <Label className="text-bold" htmlFor="last-name-prev">
