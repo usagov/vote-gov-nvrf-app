@@ -41,12 +41,15 @@ function Addresses(props){
     const mailStateField = fields.find(item => item.uuid === "b0f80289-6084-4723-8278-110fda210f0d");
     const mailZipcodeField = fields.find(item => item.uuid === "c4f9c0cb-2a25-4f1d-a93a-b06a19656cfe");
 
+    const noAddressSection = fields.find(item => item.uuid === "3724c7cd-5ec7-4e3e-85cd-db0cab63e99b");
+    const movedAndNoAddressSection = fields.find(item => item.uuid === "6dd20906-654e-427e-bb82-1e62aee9ed72");
+
     //Field requirements by state data
     const addressFieldsState = (nvrfStateFields.find(item => item.uuid === streetAddressField.uuid));
 
-    // Instructions for optional checkboxes (prev address, no address)
-    const addressCheckBoxInstructions = sanitizeDOM(noAddressField.instructions);
-    const addressCheckBoxesInstructions = sanitizeDOM(prevAddressField.instructions);
+    // Instructions for optional checkboxes
+    const noAddressCheckboxInstructions = sanitizeDOM(noAddressSection.label);
+    const movedAndNoAddressCheckboxInstructions = sanitizeDOM(movedAndNoAddressSection.label);
 
     return (
         <>
@@ -55,11 +58,11 @@ function Addresses(props){
         {addressFieldsState && (
             <>
             {!changeRegistrationVisible && (
-                <span className='usa-hint' id='addresses-checkbox-hint'>{addressCheckBoxInstructions}</span>
+                <span className='usa-hint' id='addresses-checkbox-hint'>{noAddressCheckboxInstructions}</span>
             )}
             { changeRegistrationVisible && (
                 <>
-                <span className='usa-hint' id='addresses-checkbox-hint'>{addressCheckBoxesInstructions}</span>
+                <span className='usa-hint' id='addresses-checkbox-hint'>{movedAndNoAddressCheckboxInstructions}</span>
                 <Checkbox id="prev-address" name="prev-address" data-test="checkBox" checked={props.hasPreviousAddress} onChange={props.onChangePreviousAddressCheckbox} label={prevAddressField.label} />
                 </>
             )}
