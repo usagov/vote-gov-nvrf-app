@@ -15,7 +15,7 @@ function CurrentSuffix(props){
       required: false,
       label: field.label,
       options: field.options,
-    }} saveFieldData={props.saveFieldData} fieldData={props.fieldData}/>
+    }} saveFieldData={props.saveFieldData} fieldData={props.fieldData} stringContent={props.stringContent} />
   )
 }
 
