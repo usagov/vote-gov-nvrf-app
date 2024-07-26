@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { TextInput } from '@trussworks/react-uswds';
 import { restrictType, checkForErrors, toggleError } from 'Utils/ValidateField';
 
 function TextInputField({ inputData, saveFieldData, fieldData }){
+    
+    const hintId = inputData.id + '-hint';
+    const errorId = inputData.id + '_error';
+    const [scAnnounce, setScAnnounce] = useState(inputData.help_text ? hintId : errorId);
+
     return (
         <TextInput
         data-test={inputData.dataTest}
         id={inputData.id}
         className="radius-md"
-        aria-describedby={`${inputData.id}` + '_error'}
+        aria-describedby={scAnnounce}
         name={inputData.id}
         type="text"
         autoComplete="off"
@@ -20,8 +25,8 @@ function TextInputField({ inputData, saveFieldData, fieldData }){
         onChange={saveFieldData(inputData.id)}
         onKeyDown={(e) => restrictType(e, inputData.inputType)}
         onBlur={(e) => toggleError(e, checkForErrors(e, 'check value exists'))}
-        onInvalid={(e) => e.target.setCustomValidity(' ')}
-        onInput={(e) => e.target.setCustomValidity('')}
+        onInvalid={(e) => {e.target.setCustomValidity(' '), setScAnnounce(errorId)}}
+        onInput={(e) => {e.target.setCustomValidity(''), setScAnnounce(hintId)}}
         />
     )
 }
