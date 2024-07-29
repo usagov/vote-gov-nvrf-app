@@ -3,7 +3,7 @@ import FieldContainer from 'Components/FieldContainer';
 import {getField} from "Utils/fieldParser";
 
 function PreviousTitle(props){
-    const uuid = "86a544cd-cfe9-456a-b634-176a37a38d6d";
+    const uuid = "34d2669a-d30b-4001-b897-280fe71b3cb0";
     const field = getField(props.fieldContent, uuid);
 
     return (
