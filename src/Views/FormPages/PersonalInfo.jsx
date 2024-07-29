@@ -7,6 +7,7 @@ import CurrentSuffix from 'Components/Fields/CurrentSuffix';
 import CurrentLastName from "Components/Fields/CurrentLastName";
 import CurrentTitle from 'Components/Fields/CurrentTitle';
 import CurrentMiddleName from 'Components/Fields/CurrentMiddleName';
+import PreviousFirstName from 'Components/Fields/PreviousFirstName';
 
 function PersonalInfo(props){
     const headings = props.headings;
@@ -18,11 +19,7 @@ function PersonalInfo(props){
     //Drupal field data
     const nameSectionField = fields.find(item => item.uuid === "8dda085c-edf3-4678-b30a-0a457699be46");
     const prevNameSectionField = fields.find(item => item.uuid === "af4e6259-5b07-4955-9d28-254504ec9df8");
-    const titleField = fields.find(item => item.uuid === "86a544cd-cfe9-456a-b634-176a37a38d6d");
     const firstNameField = fields.find(item => item.uuid === "b7bdae35-e4be-4827-ae11-75d9c3e33bf0");
-    const middleNameField = fields.find(item => item.uuid === "38020ec6-1b53-4227-99e5-feea5f60af07");
-    const lastNameField = fields.find(item => item.uuid === "b306238a-a0f6-4bb8-b8ea-b3216ca75e0b");
-    const suffixField = fields.find(item => item.uuid === "eeff4fa1-00f2-474b-a791-1a4146dab11a");
     const dobField = fields.find(item => item.uuid === "d31b2a64-36a9-4bc6-a9d1-e68d2be8c211");
     const phoneNumberField = fields.find(item => item.uuid === "2d61b54a-e568-410f-825a-0ca82dfd3f63");
     const raceField = fields.find(item => item.uuid === "2bfff6c6-6782-4b14-ac45-642efd278f6a");
@@ -379,29 +376,7 @@ function PersonalInfo(props){
             </Grid>
 
             <Grid tablet={{ col: 5 }}>
-            <div className="input-parent">
-                <Label className="text-bold" htmlFor="first-name-prev">
-                    {prevFirstNameField.label}{(nameFieldState.required === "1") && <span className='required-text'>*</span>}
-                </Label>
-                <TextInput
-                    data-test="prevFirstName"
-                    id="first-name-prev"
-                    className="radius-md"
-                    aria-describedby="first-name-prev_error"
-                    name="first-name-prev"
-                    type="text"
-                    autoComplete="off"
-                    required={parseInt(nameFieldState.required)}
-                    value={props.fieldData.prev_first_name}
-                    onChange={props.saveFieldData('prev_first_name')}
-                    onBlur={(e) => toggleError(e, checkForErrors(e, 'check value exists'))}
-                    onInvalid={(e) => e.target.setCustomValidity(' ')}
-                    onInput={(e) => e.target.setCustomValidity('')}
-                />
-                <span id="first-name-prev_error" role="alert" className='error-text' data-test="errorText">
-                    {prevFirstNameField.error_msg}
-                </span>
-            </div>
+                <PreviousFirstName {...props} />
             </Grid>
 
             <Grid tablet={{ col: 5 }}>
