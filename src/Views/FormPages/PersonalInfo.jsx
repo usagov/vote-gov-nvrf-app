@@ -7,6 +7,7 @@ import CurrentSuffix from 'Components/Fields/CurrentSuffix';
 import CurrentLastName from "Components/Fields/CurrentLastName";
 import CurrentTitle from 'Components/Fields/CurrentTitle';
 import CurrentMiddleName from 'Components/Fields/CurrentMiddleName';
+import PreviousTitle from 'Components/Fields/PreviousTitle';
 
 function PersonalInfo(props){
     const headings = props.headings;
@@ -356,26 +357,7 @@ function PersonalInfo(props){
         <h3 className='margin-top-8'>{prevNameSectionField.label}</h3>
         <Grid row gap className={'flex-align-end'}>
             <Grid tablet={{ col: 2 }}>
-            <Label className="text-bold" htmlFor="title-prev">
-                {prevTitleField.label}
-            </Label>
-            <Select
-                id="title-prev" className="radius-md" name="title-prev"
-                aria-describedby=""
-                data-test="select"
-                value={props.fieldData.prev_title}
-                onChange={props.saveFieldData('prev_title')}
-                autoComplete="off"
-                onInvalid={(e) => e.target.setCustomValidity(' ')}
-                onInput={(e) => e.target.setCustomValidity('')}
-                >
-            <React.Fragment key=".0">
-                <option value={''}>{stringContent.select}</option>
-                {prevTitleField.options.map((item, index) => (
-                    <option key={index} value={item.value}>{item.key}</option>
-                ))}
-            </React.Fragment>
-            </Select>
+                <PreviousTitle {...props} />
             </Grid>
 
             <Grid tablet={{ col: 5 }}>
