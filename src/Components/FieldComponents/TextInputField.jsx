@@ -20,11 +20,10 @@ function TextInputField({ inputData, saveFieldData, fieldData }){
         required={parseInt(inputData.required)}
         minLength={inputData.minLength}
         maxLength={inputData.maxLength}
-        inputMode="numeric"
         value={fieldData[inputData.id]}
         onChange={saveFieldData(inputData.id)}
+        onBlur={(e) => toggleError(e, checkForErrors(e, inputData.check || 'check value exists'))}
         onKeyDown={(e) => restrictType(e, inputData.inputType)}
-        onBlur={(e) => toggleError(e, checkForErrors(e, 'check value exists'))}
         onInvalid={(e) => {e.target.setCustomValidity(' '), setScAnnounce(errorId)}}
         onInput={(e) => {e.target.setCustomValidity(''), setScAnnounce(hintId)}}
         />
