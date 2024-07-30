@@ -5,6 +5,7 @@ import CurrentStreetAddress from 'Components/Fields/CurrentStreetAddress';
 import CurrentZipCode from 'Components/Fields/CurrentZipCode';
 import CurrentCity from 'Components/Fields/CurrentCity';
 import CurrentApartmentNumber from 'Components/Fields/CurrentApartmentNumber';
+import PreviousCity from 'Components/Fields/PreviousCity';
 import MailingStreetAddress from 'Components/Fields/MailingStreetAddress';
 import PreviousApartmentNumber from 'Components/Fields/PreviousApartmentNumber';
 import PreviousStreetAddress from 'Components/Fields/PreviousStreetAddress';
@@ -29,7 +30,6 @@ function Addresses(props){
 
     const prevAddressSectionField = fields.find(item => item.uuid === "023fda0f-e8bd-4654-ab5c-46f44a0b7bd6");
     const prevAddressField = fields.find(item => item.uuid === "c3011c62-d174-420c-817a-bffbcd45687a");
-    const prevCityField = fields.find(item => item.uuid === "44bf0a5c-adba-4b47-bc99-cc46cede5e80");
     const prevZipcodeField = fields.find(item => item.uuid === "49a90983-1925-438f-8271-88f39bf19bf1");
 
     const mailAddressSectionField = fields.find(item => item.uuid === "1a856408-6fb2-4b09-b05a-8d8ee9eb9bb5");
@@ -39,12 +39,15 @@ function Addresses(props){
     const mailStateField = fields.find(item => item.uuid === "b0f80289-6084-4723-8278-110fda210f0d");
     const mailZipcodeField = fields.find(item => item.uuid === "c4f9c0cb-2a25-4f1d-a93a-b06a19656cfe");
 
+    const noAddressSection = fields.find(item => item.uuid === "3724c7cd-5ec7-4e3e-85cd-db0cab63e99b");
+    const movedAndNoAddressSection = fields.find(item => item.uuid === "6dd20906-654e-427e-bb82-1e62aee9ed72");
+
     //Field requirements by state data
     const addressFieldsState = (nvrfStateFields.find(item => item.uuid === streetAddressField.uuid));
 
-    // Instructions for optional checkboxes (prev address, no address)
-    const addressCheckBoxInstructions = sanitizeDOM(noAddressField.instructions);
-    const addressCheckBoxesInstructions = sanitizeDOM(prevAddressField.instructions);
+    // Instructions for optional checkboxes
+    const noAddressCheckboxInstructions = sanitizeDOM(noAddressSection.label);
+    const movedAndNoAddressCheckboxInstructions = sanitizeDOM(movedAndNoAddressSection.label);
 
     return (
         <>
@@ -53,11 +56,11 @@ function Addresses(props){
         {addressFieldsState && (
             <>
             {!changeRegistrationVisible && (
-                <span className='usa-hint' id='addresses-checkbox-hint'>{addressCheckBoxInstructions}</span>
+                <span className='usa-hint' id='addresses-checkbox-hint'>{noAddressCheckboxInstructions}</span>
             )}
             { changeRegistrationVisible && (
                 <>
-                <span className='usa-hint' id='addresses-checkbox-hint'>{addressCheckBoxesInstructions}</span>
+                <span className='usa-hint' id='addresses-checkbox-hint'>{movedAndNoAddressCheckboxInstructions}</span>
                 <Checkbox id="prev-address" name="prev-address" data-test="checkBox" checked={props.hasPreviousAddress} onChange={props.onChangePreviousAddressCheckbox} label={prevAddressField.label} />
                 </>
             )}
@@ -76,13 +79,13 @@ function Addresses(props){
                             <div dangerouslySetInnerHTML={{__html: homeAddressSectionField.instructions}}/>
                         )}
 
-                    <Grid row gap>
+                    <Grid row gap className={'flex-align-end'}>
                         <Grid tablet={{col: 12}}>
                             <CurrentStreetAddress {...props} />
                         </Grid>
                     </Grid>
 
-                    <Grid row gap>
+                    <Grid row gap className={'flex-align-end'}>
                         <Grid tablet={{ col: 5}}>
                             <CurrentApartmentNumber {...props} />
                         </Grid>
@@ -121,7 +124,7 @@ function Addresses(props){
                             <div dangerouslySetInnerHTML={{__html: mailAddressSectionField.section_description}}/>
                         )}
 
-                        <Grid row gap>
+                        <Grid row gap className={'flex-align-end'}>
                             <Grid tablet={{col: 12 }}>
                                 <MailingStreetAddress {...props} />
                             </Grid>
@@ -231,7 +234,7 @@ function Addresses(props){
                             <div dangerouslySetInnerHTML={{__html: prevAddressSectionField.instructions}}/>
                         )}
 
-                        <Grid row gap>
+                        <Grid row gap className={'flex-align-end'}>
                             <Grid tablet={{ col: 12 }}>
                                 <PreviousStreetAddress {...props} />
                             </Grid>
@@ -245,30 +248,7 @@ function Addresses(props){
 
                         <Grid row gap className={'flex-align-end'}>
                             <Grid tablet={{ col: 4 }}>
-                                <div className="input-parent">
-                                    <Label className="text-bold" htmlFor="prev-city">
-                                        {prevCityField.label}{(addressFieldsState.required === "1") && <span className='required-text'>*</span>}
-                                    </Label>
-                                        <TextInput
-                                            data-test="prevCity"
-                                            id="prev-city"
-                                            className="radius-md"
-                                            aria-describedby="prev-city_error"
-                                            name="prev-city"
-                                            type="text"
-                                            autoComplete="off"
-                                            required={(parseInt(addressFieldsState.required))}
-                                            value={props.fieldData.prev_city}
-                                            onChange={props.saveFieldData('prev_city')}
-                                            onKeyDown={(e) => restrictType(e, 'letters')}
-                                            onBlur={(e) => toggleError(e, checkForErrors(e, 'check value exists'))}
-                                            onInvalid={(e) => e.target.setCustomValidity(' ')}
-                                            onInput={(e) => e.target.setCustomValidity('')}
-                                        />
-                                    <span id="prev-city_error" role="alert" className='error-text' data-test="errorText">
-                                        {prevCityField.error_msg}
-                                    </span>
-                                </div>
+                                <PreviousCity {...props} />
                             </Grid>
 
                         <Grid tablet={{ col: 4 }}>
