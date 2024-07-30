@@ -2,6 +2,7 @@ import { Label, TextInput, Checkbox, Select } from '@trussworks/react-uswds';
 import React from "react";
 import { restrictType, checkForErrors, toggleError } from 'Utils/ValidateField';
 import { sanitizeDOM } from 'Utils/JsonHelper';
+import DriversLicenseNumber from 'Components/Fields/DriversLicenseNumber';
 
 function Identification(props){
     const headings = props.headings;
@@ -60,7 +61,7 @@ function Identification(props){
                             onChange={(e) => props.saveIdType(e)}
                             onBlur={(e) => toggleError(e, checkForErrors(e, 'check value exists'))}
                             onInvalid={(e) => e.target.setCustomValidity(' ')}
-                            onInput={(e) => e.target.setCustomValidity('')}
+                            onInput={(e) => {e.target.setCustomValidity(''); toggleError(e, false)}}
                         >
                         <React.Fragment key=".0">
                             <option key="default" value="">{"Select Identification"}</option>
@@ -72,7 +73,7 @@ function Identification(props){
                         </React.Fragment>
                         </Select>
                         <span id="id-selection_error" role="alert" className='error-text' data-test="errorText">
-                            {stateIDField.error_msg}
+                            {props.idType === '' && stateIDField.error_msg}
                         </span>
                     </div>
                 </>
@@ -83,27 +84,7 @@ function Identification(props){
                     <>
                         {((props.idType === 'driver-id-num') || (stateData.abbrev === "mo")) &&
                         <>
-                            <Label className="text-bold" htmlFor="id-driver">
-                                {driverLicenseField.label}{(driverIDFieldReq) && <span className='required-text'>*</span>}
-                            </Label>
-                            <TextInput
-                                data-test="driverId"
-                                id="id-driver"
-                                className="radius-md"
-                                name="id-driver"
-                                aria-describedby="id-driver_error"
-                                type="text"
-                                autoComplete="off"
-                                required={parseInt(driverIDFieldReq.required)}
-                                value={props.fieldData.id_number}
-                                onChange={props.saveFieldData('id_number')}
-                                onBlur={(e) => toggleError(e, checkForErrors(e, 'check value exists'))}
-                                onInvalid={(e) => e.target.setCustomValidity(' ')}
-                                onInput={(e) => e.target.setCustomValidity('')}
-                            />
-                            <span id="id-driver_error" role="alert" className='error-text' data-test="errorText">
-                                {driverLicenseField.error_msg}
-                            </span>
+                            <DriversLicenseNumber {...props} />
                         </>
                         }
                         {(props.idType === 'state-id-num') &&
@@ -192,8 +173,9 @@ function Identification(props){
                         {ssnFullField.error_msg}
                     </span>
                 </>}
-
-            {props.idType === 'none' && <div dangerouslySetInnerHTML={{__html: noIdFieldInstructions}}/>}
+            <div aria-live='polite'>
+                {props.idType === 'none' && <div dangerouslySetInnerHTML={{__html: noIdFieldInstructions}}/>}
+            </div>
         </div>
         </>
     );
