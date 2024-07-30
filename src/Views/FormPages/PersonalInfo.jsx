@@ -7,6 +7,7 @@ import CurrentSuffix from 'Components/Fields/CurrentSuffix';
 import CurrentLastName from "Components/Fields/CurrentLastName";
 import CurrentTitle from 'Components/Fields/CurrentTitle';
 import CurrentMiddleName from 'Components/Fields/CurrentMiddleName';
+import PreviousFirstName from 'Components/Fields/PreviousFirstName';
 import PreviousTitle from 'Components/Fields/PreviousTitle';
 import PreviousLastName from 'Components/Fields/PreviousLastName';
 import CurrentPhoneNumber from 'Components/Fields/CurrentPhoneNumber';
@@ -329,29 +330,7 @@ function PersonalInfo(props){
             </Grid>
 
             <Grid tablet={{ col: 5 }}>
-            <div className="input-parent">
-                <Label className="text-bold" htmlFor="first-name-prev">
-                    {prevFirstNameField.label}{(nameFieldState.required === "1") && <span className='required-text'>*</span>}
-                </Label>
-                <TextInput
-                    data-test="prevFirstName"
-                    id="first-name-prev"
-                    className="radius-md"
-                    aria-describedby="first-name-prev_error"
-                    name="first-name-prev"
-                    type="text"
-                    autoComplete="off"
-                    required={parseInt(nameFieldState.required)}
-                    value={props.fieldData.prev_first_name}
-                    onChange={props.saveFieldData('prev_first_name')}
-                    onBlur={(e) => toggleError(e, checkForErrors(e, 'check value exists'))}
-                    onInvalid={(e) => e.target.setCustomValidity(' ')}
-                    onInput={(e) => e.target.setCustomValidity('')}
-                />
-                <span id="first-name-prev_error" role="alert" className='error-text' data-test="errorText">
-                    {prevFirstNameField.error_msg}
-                </span>
-            </div>
+                <PreviousFirstName {...props} />
             </Grid>
 
             <Grid tablet={{ col: 5 }}>
