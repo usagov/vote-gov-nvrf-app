@@ -443,34 +443,6 @@ function Addresses(props){
                         </Grid>
 
                             <Grid tablet={{ col: 4 }}>
-                            {/* <div className="input-parent">
-                                <Label className="text-bold" htmlFor="prev-zip-code">
-                                    {prevZipcodeField.label} {(addressFieldsState.required === "1") && <span className={'required-text'}>*</span>}
-                                </Label>
-                                <span className="usa-hint" id="prev-zip-hint">{zipcodeField.help_text}</span>
-                                <TextInput
-                                    data-test="prevZip"
-                                    id="prev-zip-code"
-                                    className="radius-md"
-                                    aria-describedby="prev-zip-code_error"
-                                    name="prev-zip-code"
-                                    value={props.fieldData.prev_zip_code}
-                                    type="text"
-                                    inputMode="numeric"
-                                    autoComplete="off"
-                                    required={(parseInt(addressFieldsState.required))}
-                                    minLength={5}
-                                    maxLength={5}
-                                    onChange={props.saveFieldData('prev_zip_code')}
-                                    onKeyDown={(e) => restrictType(e, 'number')}
-                                    onBlur={(e) => toggleError(e, checkForErrors(e, 'check value length'))}
-                                    onInvalid={(e) => e.target.setCustomValidity(' ')}
-                                    onInput={(e) => e.target.setCustomValidity('')}
-                                />
-                                <span id="prev-zip-code_error" role="alert" className='error-text' data-test="errorText">
-                                    {prevZipcodeField.error_msg}
-                                </span>
-                            </div> */}
                                 <PreviousZipCode {...props} />
                             </Grid>
                         </Grid>
