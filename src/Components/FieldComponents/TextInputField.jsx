@@ -17,15 +17,15 @@ function TextInputField({ inputData, saveFieldData, fieldData }){
         name={inputData.id}
         type="text"
         autoComplete="off"
-        required={parseInt(inputData.required)}
         minLength={inputData.minLength}
         maxLength={inputData.maxLength}
+        required={parseInt(inputData.required)}
         value={fieldData[inputData.id]}
         onChange={saveFieldData(inputData.id)}
-        onBlur={(e) => toggleError(e, checkForErrors(e, inputData.check || 'check value exists'))}
         onKeyDown={(e) => restrictType(e, inputData.inputType)}
-        onInvalid={(e) => {e.target.setCustomValidity(' '), setScAnnounce(errorId)}}
-        onInput={(e) => {e.target.setCustomValidity(''), setScAnnounce(hintId)}}
+        onBlur={(e) => toggleError(e, checkForErrors(e, inputData.check || 'check value exists'))}
+        onInvalid={(e) => e.target.setCustomValidity(' ')}
+        onInput={(e) => e.target.setCustomValidity('')}
         />
     )
 }
