@@ -9,6 +9,7 @@ import PreviousCity from 'Components/Fields/PreviousCity';
 import MailingStreetAddress from 'Components/Fields/MailingStreetAddress';
 import PreviousApartmentNumber from 'Components/Fields/PreviousApartmentNumber';
 import PreviousStreetAddress from 'Components/Fields/PreviousStreetAddress';
+import PreviousAddressState from 'Components/Fields/PreviousAddressState';
 import React, { useState } from "react";
 import { restrictType, checkForErrors, toggleError } from 'Utils/ValidateField';
 import { sanitizeDOM } from 'Utils/JsonHelper';
@@ -29,7 +30,6 @@ function Addresses(props){
 
     const prevAddressSectionField = fields.find(item => item.uuid === "023fda0f-e8bd-4654-ab5c-46f44a0b7bd6");
     const prevAddressField = fields.find(item => item.uuid === "c3011c62-d174-420c-817a-bffbcd45687a");
-    const prevStateField = fields.find(item => item.uuid === "5a8a4b6d-c0f1-42f2-b991-8ea49a32e997");
     const prevZipcodeField = fields.find(item => item.uuid === "49a90983-1925-438f-8271-88f39bf19bf1");
 
     const mailAddressSectionField = fields.find(item => item.uuid === "1a856408-6fb2-4b09-b05a-8d8ee9eb9bb5");
@@ -252,29 +252,7 @@ function Addresses(props){
                             </Grid>
 
                         <Grid tablet={{ col: 4 }}>
-                            <div className="input-parent">
-                                <Label className="text-bold" htmlFor="prev-state">
-                                    {prevStateField.label}{(addressFieldsState.required === "1") && <span className='required-text'>*</span>}
-                                </Label>
-                                    <StateSelector
-                                        data-test="select"
-                                        id="prev-state"
-                                        classes="radius-md"
-                                        ariaDescribedby="prev-state_error"
-                                        autoComplete="off"
-                                        required={(parseInt(addressFieldsState.required))}
-                                        statesList={props.statesList}
-                                        stringContent={props.stringContent}
-                                        state={props.fieldData.prev_state}
-                                        saveState={props.saveFieldData('prev_state')}
-                                        onBlur={(e) => toggleError(e, checkForErrors(e, 'check value exists'))}
-                                        onInvalid={(e) => e.target.setCustomValidity(' ')}
-                                        onInput={(e) => e.target.setCustomValidity('')}
-                                    />
-                                <span id="prev-state_error" role="alert" className='error-text' data-test="errorText">
-                                    {prevStateField.error_msg}
-                                </span>
-                            </div>
+                            <PreviousAddressState {...props} />
                         </Grid>
 
                             <Grid tablet={{ col: 4 }}>
