@@ -3,6 +3,7 @@ import React from "react";
 import { restrictType, checkForErrors, toggleError } from 'Utils/ValidateField';
 import { sanitizeDOM } from 'Utils/JsonHelper';
 import DriversLicenseNumber from 'Components/Fields/DriversLicenseNumber';
+import SSNPartial from 'Components/Fields/SSNPartial';
 import StateIDNum from 'Components/Fields/StateIDNum';
 
 function Identification(props){
@@ -97,32 +98,7 @@ function Identification(props){
 
             {((props.idType === 'ssn') || ((stateData.abbrev === "mo") && (props.idType != "none"))) &&
                 <>
-                    <Label className="text-bold" htmlFor="ssn">
-                        {ssnField.label}{(ssnFieldReq) && <span className='required-text'>*</span>}
-                    </Label>
-                    <span className="usa-hint" id="ssn-hint">{ssnField.help_text}</span>
-                    <TextInput
-                        data-test="ssn"
-                        id="ssn"
-                        className="radius-md"
-                        name="ssn"
-                        aria-describedby="ssn_error"
-                        autoComplete="off"
-                        required={parseInt(ssnFieldReq.required)}
-                        type="text"
-                        inputMode="numeric"
-                        minLength={4}
-                        maxLength={4}
-                        value={props.fieldData.ssn_number}
-                        onChange={props.saveFieldData('ssn_number')}
-                        onKeyDown={(e) => restrictType(e, 'number')}
-                        onBlur={(e) => toggleError(e, checkForErrors(e, 'check value length'))}
-                        onInvalid={(e) => e.target.setCustomValidity(' ')}
-                        onInput={(e) => e.target.setCustomValidity('')}
-                    />
-                    <span id="ssn_error" role="alert" className='error-text' data-test="errorText">
-                        {ssnField.error_msg}
-                    </span>
+                    <SSNPartial {...props} />
                 </>}
 
             {props.idType === 'ssn-full' &&
