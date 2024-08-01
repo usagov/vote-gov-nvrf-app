@@ -144,7 +144,7 @@ function App() {
                     stringContent={stringContent}
                 />}
 
-              {step >= 4 &&
+              {step >= 1 &&
                 <div className="text-base usa-prose margin-top-5 maxw-tablet margin-x-auto">
                   <p>{getFieldValue(content, "2c597df4-53b6-4ef5-8301-7817b04e1099", "omb_number")}
                     <br/>
