@@ -12,14 +12,13 @@ function TextInputField({ inputData, saveFieldData, fieldData }){
         name={inputData.id}
         type="text"
         autoComplete="off"
-        required={parseInt(inputData.required)}
         minLength={inputData.minLength}
         maxLength={inputData.maxLength}
-        inputMode="numeric"
+        required={parseInt(inputData.required)}
         value={fieldData[inputData.id]}
         onChange={saveFieldData(inputData.id)}
         onKeyDown={(e) => restrictType(e, inputData.inputType)}
-        onBlur={(e) => toggleError(e, checkForErrors(e, 'check value exists'))}
+        onBlur={(e) => toggleError(e, checkForErrors(e, inputData.check || 'check value exists'))}
         onInvalid={(e) => e.target.setCustomValidity(' ')}
         onInput={(e) => e.target.setCustomValidity('')}
         />
