@@ -8,6 +8,8 @@ import {fetchData, sanitizeDOM} from 'Utils/JsonHelper.jsx';
 import { HelmetProvider } from "react-helmet-async";
 import {getFieldValue} from "Utils/fieldParser.jsx";
 
+const currentStateName = document.getElementById('root').getAttribute('state-id');
+
 function App() {
 
   const [states, setStates] = useState('');
@@ -25,6 +27,10 @@ function App() {
     fetchData("fields.json", setFieldContent);
     fetchData("strings.json", setStringContent)
   }, []);
+
+  useEffect(() => {
+    getSelectedState(currentStateName);
+  }, [states]);
 
   const [step, setStep] = useState(1);
   const [selectedState, setSelectedState] = useState('');
