@@ -4,6 +4,7 @@ import { restrictType, checkForErrors, toggleError } from 'Utils/ValidateField';
 import { sanitizeDOM } from 'Utils/JsonHelper';
 import DriversLicenseNumber from 'Components/Fields/DriversLicenseNumber';
 import SSNPartial from 'Components/Fields/SSNPartial';
+import StateIDNum from 'Components/Fields/StateIDNum';
 
 function Identification(props){
     const headings = props.headings;
@@ -90,28 +91,7 @@ function Identification(props){
                         }
                         {(props.idType === 'state-id-num') &&
                         <>
-                            <Label className="text-bold"
-                                   htmlFor="id-state">{stateIDField.label}{(stateIDFieldDReq) &&
-                                <span className='required-text'>*</span>}
-                            </Label>
-                            <TextInput
-                                data-test="stateId"
-                                id="id-state"
-                                className="radius-md"
-                                name="id-state"
-                                aria-describedby="id-state_error"
-                                type="text"
-                                autoComplete="off"
-                                required={parseInt(stateIDFieldDReq.required)}
-                                value={props.fieldData.id_number}
-                                onChange={props.saveFieldData('id_number')}
-                                onBlur={(e) => toggleError(e, checkForErrors(e, 'check value exists'))}
-                                onInvalid={(e) => e.target.setCustomValidity(' ')}
-                                onInput={(e) => e.target.setCustomValidity('')}
-                            />
-                            <span id="id-state_error" role="alert" className='error-text' data-test="errorText">
-                                {stateIDField.error_msg}
-                            </span>
+                            <StateIDNum {...props} />
                         </>
                         }
                     </>}
