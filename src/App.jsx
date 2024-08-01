@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react'
-import StateSelection from 'Views/StateSelection.jsx';
 import Eligibility from 'Views/Eligibility.jsx';
-import RegistrationOptions from 'Views/RegistrationOptions.jsx';
 import PathSelection from 'Views/PathSelection.jsx';
 import MultiStepForm from 'Views/MultiStepForm.jsx';
 import {fetchData, sanitizeDOM} from 'Utils/JsonHelper.jsx';
@@ -26,6 +24,11 @@ function App() {
     fetchData("strings.json", setStringContent)
   }, []);
 
+  // STATE VALUE TEMPORARILY HARDCODED IN
+  useEffect(() => {
+    getSelectedState('Alabama');
+  }, [states]);
+
   const [step, setStep] = useState(1);
   const [selectedState, setSelectedState] = useState('');
   const [stateData, setStateData] = useState('');
@@ -48,7 +51,7 @@ function App() {
   }
 
   const handleNext = () => {
-    step != 5 && setStep(step + 1);
+    step != 3 && setStep(step + 1);
     setStepFocus();
   }
 
@@ -56,10 +59,6 @@ function App() {
     step != 1 && setStep(step - 1);
     setStepFocus();
   }
-
-  const handleSubmit = (e) => {
-    e.preventDefault(e);
-}
 
   const getSelectedState = (selectedState) => {
     setSelectedState(selectedState);
@@ -106,29 +105,6 @@ function App() {
                }}
             ></a>
             {step === 1 &&
-                <StateSelection
-                    handleNext={handleNext}
-                    handleSubmit={handleSubmit}
-                    states={states}
-                    statesList={statesList}
-                    getSelectedState={getSelectedState}
-                    state={selectedState}
-                    stateData={stateData}
-                    content={content}
-                    navContent={navContent}
-                    fieldContent={fieldContent}
-                    stringContent={stringContent}
-                />}
-            {step === 2 &&
-                <RegistrationOptions
-                    handleNext={handleNext}
-                    handlePrev={handlePrev}
-                    stateData={stateData}
-                    content={content}
-                    navContent={navContent}
-                    stringContent={stringContent}
-                />}
-            {step === 3 &&
                 <Eligibility
                     handleNext={handleNext}
                     handlePrev={handlePrev}
@@ -141,7 +117,7 @@ function App() {
                     hasConfirmed={hasConfirmed}
                     confirmCheckbox={confirmCheckbox}
                 />}
-            {step === 4 &&
+            {step === 2 &&
                 <PathSelection
                     handleNext={handleNext}
                     handlePrev={handlePrev}
@@ -154,7 +130,7 @@ function App() {
                     stringContent={stringContent}
                     getFormStep={getFormStep}
                 />}
-            {step === 5 &&
+            {step === 3 &&
                 <MultiStepForm
                     handlePrev={handlePrev}
                     statesList={statesList}
@@ -168,7 +144,7 @@ function App() {
                     stringContent={stringContent}
                 />}
 
-              {step >= 3 &&
+              {step >= 4 &&
                 <div className="text-base usa-prose margin-top-5 maxw-tablet margin-x-auto">
                   <p>{getFieldValue(content, "2c597df4-53b6-4ef5-8301-7817b04e1099", "omb_number")}
                     <br/>
