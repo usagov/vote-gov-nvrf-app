@@ -68,12 +68,13 @@ function App() {
 }
 
   const getSelectedState = (selectedState) => {
-    setSelectedState(selectedState);
     if (selectedState != "") {
       for (var i = 0; i < states.length; i++){
-        if (states[i].name.toLowerCase() == selectedState.toLowerCase()){
-        setStateData(states[i]);
-      }}
+        if (states[i].name.toLowerCase() == selectedState.toLowerCase() || states[i].abbrev == selectedState){
+          setSelectedState(states[i].name);
+          setStateData(states[i]);
+        }
+      }
     } else {
       setStateData('')
     }
