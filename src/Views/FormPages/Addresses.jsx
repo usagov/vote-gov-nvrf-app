@@ -5,11 +5,13 @@ import CurrentStreetAddress from 'Components/Fields/CurrentStreetAddress';
 import CurrentZipCode from 'Components/Fields/CurrentZipCode';
 import CurrentCity from 'Components/Fields/CurrentCity';
 import CurrentApartmentNumber from 'Components/Fields/CurrentApartmentNumber';
+import MailingZipCode from 'Components/Fields/MailingZipCode';
 import PreviousZipCode from 'Components/Fields/PreviousZipCode';
 import PreviousCity from 'Components/Fields/PreviousCity';
 import MailingStreetAddress from 'Components/Fields/MailingStreetAddress';
 import PreviousApartmentNumber from 'Components/Fields/PreviousApartmentNumber';
 import PreviousStreetAddress from 'Components/Fields/PreviousStreetAddress';
+import MailingCity from 'Components/Fields/MailingCity';
 import PreviousAddressState from 'Components/Fields/PreviousAddressState';
 import React, { useState } from "react";
 import { restrictType, checkForErrors, toggleError } from 'Utils/ValidateField';
@@ -36,9 +38,7 @@ function Addresses(props){
     const mailAddressSectionField = fields.find(item => item.uuid === "1a856408-6fb2-4b09-b05a-8d8ee9eb9bb5");
     const noAddressField = fields.find(item => item.uuid === "35c2b98d-477c-45f3-9f93-f720406080f1");
     const differentMailAddressField = fields.find(item => item.uuid === "e7340274-ee3f-4d73-a967-c9d7c249be7b");
-    const mailCityField = fields.find(item => item.uuid === "9a5baee7-357b-4e59-b4f2-fe2525c0fd6c");
     const mailStateField = fields.find(item => item.uuid === "b0f80289-6084-4723-8278-110fda210f0d");
-    const mailZipcodeField = fields.find(item => item.uuid === "c4f9c0cb-2a25-4f1d-a93a-b06a19656cfe");
 
     const noAddressSection = fields.find(item => item.uuid === "3724c7cd-5ec7-4e3e-85cd-db0cab63e99b");
     const movedAndNoAddressSection = fields.find(item => item.uuid === "6dd20906-654e-427e-bb82-1e62aee9ed72");
@@ -133,30 +133,7 @@ function Addresses(props){
 
                         <Grid row gap className={'flex-align-end'}>
                             <Grid tablet={{ col: true }}>
-                                <div className="input-parent">
-                                    <Label className="text-bold" htmlFor="mail-city">
-                                        {mailCityField.label}{(addressFieldsState.required === "1") && <span className='required-text'>*</span>}
-                                    </Label>
-                                        <TextInput
-                                            data-test="mailCity"
-                                            id="mail-city"
-                                            className="radius-md"
-                                            aria-describedby="mail-city_error"
-                                            name="mail-city"
-                                            type="text"
-                                            autoComplete="off"
-                                            required={(parseInt(addressFieldsState.required))}
-                                            value={props.fieldData.mail_city}
-                                            onChange={props.saveFieldData('mail_city')}
-                                            onKeyDown={(e) => restrictType(e, 'letters')}
-                                            onBlur={(e) => toggleError(e, checkForErrors(e, 'check value exists'))}
-                                            onInvalid={(e) => e.target.setCustomValidity(' ')}
-                                            onInput={(e) => e.target.setCustomValidity('')}
-                                        />
-                                    <span id="mail-city_error" role="alert" className='error-text' data-test="errorText">
-                                       {mailCityField.error_msg}
-                                    </span>
-                                </div>
+                                <MailingCity {...props} />
                             </Grid>
 
                             <Grid tablet={{ col: true }}>
@@ -186,34 +163,7 @@ function Addresses(props){
                             </Grid>
 
                             <Grid tablet={{ col: true }}>
-                            <div className="input-parent">
-                                <Label className="text-bold" htmlFor="mail-zip-code">
-                                    {mailZipcodeField.label} {(addressFieldsState.required === "1") && <span className={'required-text'}>*</span>}
-                                </Label>
-                                <span className="usa-hint" id="mail-zip-hint">{zipcodeField.help_text}</span>
-                                <TextInput
-                                    data-test="mailZip"
-                                    id="mail-zip-code"
-                                    className="radius-md"
-                                    aria-describedby="mail-zip-code_error"
-                                    name="mail-zip"
-                                    value={props.fieldData.mail_zip_code}
-                                    type="text"
-                                    inputMode="numeric"
-                                    autoComplete="off"
-                                    required={(parseInt(addressFieldsState.required))}
-                                    minLength={5}
-                                    maxLength={5}
-                                    onChange={props.saveFieldData('mail_zip_code')}
-                                    onKeyDown={(e) => restrictType(e, 'number')}
-                                    onBlur={(e) => toggleError(e, checkForErrors(e, 'check value length'))}
-                                    onInvalid={(e) => e.target.setCustomValidity(' ')}
-                                    onInput={(e) => e.target.setCustomValidity('')}
-                                />
-                                <span id="mail-zip-code_error" role="alert" className='error-text' data-test="errorText">
-                                    {mailZipcodeField.error_msg}
-                                </span>
-                            </div>
+                                <MailingZipCode {...props} />
                             </Grid>
                         </Grid>
                     </>
