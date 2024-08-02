@@ -2,7 +2,6 @@ import React from "react";
 import { restrictType, checkForErrors, jumpTo, toggleError } from 'Utils/ValidateField';
 
 function DateFields({ inputData, saveFieldData, dateFormat, checkDateValues, fieldData }) {
-    console.log(fieldData);
     return (
         <div
         id={inputData.id}
