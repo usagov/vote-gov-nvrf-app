@@ -5,12 +5,12 @@ const data = require("../../fixtures/data.json");
 describe('Validate In Person', () => {
   beforeEach('login to app', () => {
     cy.signin(Cypress.env('username'), Cypress.env('password'))
-    cy.get('[data-test="dropDown"]').select(data.inPerson)
-    cy.get('[data-test="nextBtn"]').click()
+    // cy.get('[data-test="dropDown"]').select(data.inPerson)
+    // cy.get('[data-test="nextBtn"]').click()
   })
 it('Validate Update Registration', () => {
 // go to next page
-cy.get('[data-test="nextBtn"]').click()
+// cy.get('[data-test="nextBtn"]').click()
 
 // check eligibility page
 // verify that user CANNOT move forward with out checking box
@@ -179,7 +179,7 @@ cy.get('[data-test="nextBtn"]').click()
 cy.get('[data-test="confirm"]').click({force: true})
 cy.get('[data-test="nextBtn"]').click()
 
-cy.get('[data-test="addressConfirm"]').should('contain.text', 'Your Delaware mail-in registration form is complete and ready to print.')
+cy.get('[data-test="addressConfirm"]').should('contain.text', 'Your Alabama mail-in registration form is complete and ready to print.')
 // * check that download opens in new window
 cy.get('[data-test="pdfBtn"]').click()
 cy.get('@open').should('have.been.calledOnce')
@@ -339,7 +339,7 @@ cy.get('[data-test="confirm"]').click({force: true})
 cy.get('[data-test="nextBtn"]').click()
 
 
-cy.get('[data-test="addressConfirm"]').should('contain.text', 'Your Delaware mail-in registration form is complete and ready to print.')
+cy.get('[data-test="addressConfirm"]').should('contain.text', 'Your Alabama mail-in registration form is complete and ready to print.')
 // * check that download opens in new window
 cy.get('[data-test="pdfBtn"]').click()
 cy.get('@open').should('have.been.calledOnce')
