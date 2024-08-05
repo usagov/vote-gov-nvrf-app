@@ -6,7 +6,7 @@ function TextInputField({ inputData, saveFieldData, fieldData }){
     
     const hintId = inputData.id + '-hint';
     const errorId = inputData.id + '_error';
-    const [scAnnounce, setScAnnounce] = useState(inputData.help_text ? hintId : errorId);
+    const scAnnounce = inputData.help_text ? hintId : errorId;
 
     return (
         <TextInput
