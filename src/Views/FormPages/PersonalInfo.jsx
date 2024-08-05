@@ -7,6 +7,7 @@ import CurrentSuffix from 'Components/Fields/CurrentSuffix';
 import CurrentLastName from "Components/Fields/CurrentLastName";
 import CurrentTitle from 'Components/Fields/CurrentTitle';
 import CurrentMiddleName from 'Components/Fields/CurrentMiddleName';
+import CurrentDateOfBirth from 'Components/Fields/CurrentDateOfBirth';
 import PreviousMiddleName from 'Components/Fields/PreviousMiddleName';
 import PreviousFirstName from 'Components/Fields/PreviousFirstName';
 import PreviousTitle from 'Components/Fields/PreviousTitle';
@@ -24,7 +25,6 @@ function PersonalInfo(props){
     const nameSectionField = fields.find(item => item.uuid === "8dda085c-edf3-4678-b30a-0a457699be46");
     const prevNameSectionField = fields.find(item => item.uuid === "af4e6259-5b07-4955-9d28-254504ec9df8");
     const firstNameField = fields.find(item => item.uuid === "b7bdae35-e4be-4827-ae11-75d9c3e33bf0");
-    const dobField = fields.find(item => item.uuid === "d31b2a64-36a9-4bc6-a9d1-e68d2be8c211");
     const phoneNumberField = fields.find(item => item.uuid === "2d61b54a-e568-410f-825a-0ca82dfd3f63");
     const raceField = fields.find(item => item.uuid === "2bfff6c6-6782-4b14-ac45-642efd278f6a");
     const prevSuffixField = fields.find(item => item.uuid === "09cb2989-d302-4a01-bb3a-33173adcffb2");
@@ -34,7 +34,6 @@ function PersonalInfo(props){
 
     //Field requirements by state data
     const nameFieldState = (nvrfStateFields.find(item => item.uuid === firstNameField.uuid));
-    const dobFieldState = (nvrfStateFields.find(item => item.uuid === dobField.uuid));
     const telephoneFieldState = (nvrfStateFields.find(item => item.uuid === phoneNumberField.uuid));
     const raceFieldState = (nvrfStateFields.find(item => item.uuid === raceField.uuid));
 
@@ -49,7 +48,7 @@ function PersonalInfo(props){
         let currentDay = currentDate.getDate();
         let currentYear = currentDate.getFullYear();
         let age = currentYear - year - (currentMonth <= month && currentDay < day);
-
+        
         if (type === "all") {
           let dobValues = [
             month.length === 2,
@@ -141,110 +140,9 @@ function PersonalInfo(props){
         )}
 
         <Grid row gap className={'flex-align-end'}>
-            {dobFieldState && (
             <Grid tablet={{ col: 5 }}>
-                <div className="input-parent">
-                <Fieldset className="fieldset" legend={parseInt(dobFieldState.required) ? [<span key={0} className="text-bold">{dobField.label}</span>, <span key={1} className='required-text'>*</span>] : (string.dob)} style={{ marginTop:'30px'}}>
-                        <span className="usa-hint" id="date-of-birth-hint">
-                        {dobField.help_text}
-                        </span>
-                        <div
-                            id="date-of-birth"
-                            className="usa-memorable-date"
-                            name="date-of-birth"
-                            autoComplete="off"
-                            required={parseInt(dobFieldState.required)}
-                            data-testid="dateInputGroup"
-                            onBlur={e => { if (!e.currentTarget.contains(e.relatedTarget)) toggleError(e, checkDateValues(e, 'all')) }}
-                            >
-                            <div data-testid="formGroup" className="usa-form-group usa-form-group--month">
-                                <label data-testid="label" className="usa-label" htmlFor="date-of-birth_month">
-                                    {stringContent.month}
-                                </label>
-                                <input
-                                    data-test="dobMonth"
-                                    id="date-of-birth_month"
-                                    className="usa-input radius-md"
-                                    aria-describedby="date-of-birth_error"
-                                    name="date-of-birth_month"
-                                    label={stringContent.month}
-                                    unit="month"
-                                    required={true}
-                                    aria-invalid={false}
-                                    type="text"
-                                    pattern="0[1-9]|1[0,1,2]"
-                                    inputMode="numeric"
-                                    maxLength={2}
-                                    minLength={2}
-                                    value={props.fieldData.date_of_birth_month}
-                                    onInput={props.saveFieldData('date_of_birth_month')}
-                                    onKeyUp={(e) => jumpTo(e, 'date-of-birth_day')}
-                                    onKeyDown={(e) => {restrictType(e, 'number'), e.target.setCustomValidity('')}}
-                                    onBlur={(e) => {props.dateFormat(e, 'date_of_birth_month'), toggleError(e, checkDateValues(e, 'month'))}}
-                                    onInvalid={(e) => e.target.setCustomValidity(' ')}
-                                    />
-                            </div>
-                            <div data-testid="formGroup" className="usa-form-group usa-form-group--day">
-                                <label data-testid="label" className="usa-label" htmlFor="date-of-birth_day">
-                                    {stringContent.day}
-                                </label>
-                                <input
-                                    data-test="dobDay"
-                                    id="date-of-birth_day"
-                                    className="usa-input radius-md"
-                                    aria-describedby="date-of-birth_error"
-                                    name="date-of-birth_day"
-                                    label={stringContent.day}
-                                    unit="day"
-                                    required={true}
-                                    aria-invalid={false}
-                                    type="text"
-                                    pattern="0[1-9]|[12][0-9]|3[01]"
-                                    inputMode="numeric"
-                                    minLength={2}
-                                    maxLength={2}
-                                    value={props.fieldData.date_of_birth_day}
-                                    onInput={props.saveFieldData('date_of_birth_day')}
-                                    onKeyUp={(e) => jumpTo(e, 'date-of-birth_year')}
-                                    onKeyDown={(e) => {restrictType(e, 'number'), e.target.setCustomValidity('')}}
-                                    onBlur={(e) => {props.dateFormat(e, 'date_of_birth_day'), toggleError(e, checkDateValues(e, 'day'))}}
-                                    onInvalid={(e) => e.target.setCustomValidity(' ')}
-                                    />
-                            </div>
-                            <div data-testid="formGroup" className="usa-form-group usa-form-group--year">
-                                <label data-testid="label" className="usa-label" htmlFor="date-of-birth_year">
-                                    {stringContent.year}
-                                </label>
-                                <input
-                                    data-test="dobYear"
-                                    id="date-of-birth_year"
-                                    className="usa-input radius-md"
-                                    aria-describedby="date-of-birth_error"
-                                    name="date-of-birth_year"
-                                    label={stringContent.year}
-                                    unit="year"
-                                    required={true}
-                                    aria-invalid={false}
-                                    type="text"
-                                    pattern="19\d{2}|200\d{1}"
-                                    inputMode="numeric"
-                                    minLength={4}
-                                    maxLength={4}
-                                    value={props.fieldData.date_of_birth_year}
-                                    onInput={props.saveFieldData('date_of_birth_year')}
-                                    onKeyDown={(e) => {restrictType(e, 'number'), e.target.setCustomValidity('')}}
-                                    onBlur={(e) => toggleError(e, checkForErrors(e, 'check value length'))}
-                                    onInvalid={(e) => e.target.setCustomValidity(' ')}
-                                />
-                            </div>
-                        </div>
-                    <span id="date-of-birth_error" role="alert" className='error-text' data-test="errorText">
-                        {dobField.error_msg}
-                    </span>
-                </Fieldset>
-                </div>
+                <CurrentDateOfBirth {...props} checkDateValues={checkDateValues} dateFormat={props.dateFormat} />
             </Grid>
-            )}
 
             {telephoneFieldState && (
                 <Grid tablet={{ col: 5 }}>
