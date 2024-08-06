@@ -2,23 +2,22 @@ import React from "react";
 import FieldContainer from 'Components/FieldContainer';
 import {getField} from "Utils/fieldParser";
 
-function CurrentCity(props){
-    const uuid = "7e39a528-7518-40cb-b7b6-b635864dc117";
+function StateIDNum(props){
+    const uuid = "acd7f272-7a37-43f0-b51a-c78daf31e5fd";
     const field = getField(props.fieldContent, uuid);
     const stateField = getField(props.stateData.nvrf_fields, field.uuid);
 
     return (
         <FieldContainer
             fieldType={'text'} inputData={{
-            id: 'city',
-            dataTest: 'city',
-            required: stateField.required,
+            id: 'id_number',
+            dataTest: 'stateId',
             label: field.label,
-            inputMode: 'letters',
+            required: stateField.required,
             error_msg: field.error_msg,
             help_text: field.help_text,
         }} saveFieldData={props.saveFieldData} fieldData={props.fieldData}/>
     )
 }
 
-export default CurrentCity;
+export default StateIDNum;

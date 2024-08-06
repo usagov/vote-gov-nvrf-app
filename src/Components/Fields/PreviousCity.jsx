@@ -2,16 +2,16 @@ import React from "react";
 import FieldContainer from 'Components/FieldContainer';
 import {getField} from "Utils/fieldParser";
 
-function CurrentCity(props){
-    const uuid = "7e39a528-7518-40cb-b7b6-b635864dc117";
+function PreviousCity(props){
+    const uuid = "44bf0a5c-adba-4b47-bc99-cc46cede5e80";
     const field = getField(props.fieldContent, uuid);
     const stateField = getField(props.stateData.nvrf_fields, field.uuid);
 
     return (
         <FieldContainer
             fieldType={'text'} inputData={{
-            id: 'city',
-            dataTest: 'city',
+            id: 'prev_city',
+            dataTest: 'prevCity',
             required: stateField.required,
             label: field.label,
             inputMode: 'letters',
@@ -21,4 +21,4 @@ function CurrentCity(props){
     )
 }
 
-export default CurrentCity;
+export default PreviousCity;

@@ -3,6 +3,9 @@ import { TextInput } from '@trussworks/react-uswds';
 import { restrictType, checkForErrors, toggleError } from 'Utils/ValidateField';
 
 function TextInputField({ inputData, saveFieldData, fieldData }){
+    const textType = inputData.type || 'text';
+    const errorCheckType = inputData.check || 'check value exists';
+
     
     const hintId = inputData.id + '-hint';
     const errorId = inputData.id + '_error';
@@ -15,16 +18,16 @@ function TextInputField({ inputData, saveFieldData, fieldData }){
         className="radius-md"
         aria-describedby={a11yAnnounce}
         name={inputData.id}
-        type="text"
+        type={textType}
         autoComplete="off"
         required={parseInt(inputData.required)}
         minLength={inputData.minLength}
         maxLength={inputData.maxLength}
-        inputMode="numeric"
+        inputMode={inputData.inputMode}
         value={fieldData[inputData.id]}
         onChange={saveFieldData(inputData.id)}
-        onKeyDown={(e) => restrictType(e, inputData.inputType)}
-        onBlur={(e) => toggleError(e, checkForErrors(e, 'check value exists'))}
+        onBlur={(e) => toggleError(e, checkForErrors(e, errorCheckType))}
+        onKeyDown={(e) => restrictType(e, inputData.inputMode)}
         onInvalid={(e) => {e.target.setCustomValidity(' '), setA11yAnnounce(errorId)}}
         onInput={(e) => {e.target.setCustomValidity(''), setA11yAnnounce(hintId)}}
         />
