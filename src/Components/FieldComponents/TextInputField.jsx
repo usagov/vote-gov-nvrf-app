@@ -6,14 +6,14 @@ function TextInputField({ inputData, saveFieldData, fieldData }){
     
     const hintId = inputData.id + '-hint';
     const errorId = inputData.id + '_error';
-    const [scAnnounce, setScAnnounce] = useState(inputData.help_text ? hintId : errorId);
+    const [a11yAnnounce, setA11yAnnounce] = useState(inputData.help_text ? hintId : errorId);
 
     return (
         <TextInput
         data-test={inputData.dataTest}
         id={inputData.id}
         className="radius-md"
-        aria-describedby={scAnnounce}
+        aria-describedby={a11yAnnounce}
         name={inputData.id}
         type="text"
         autoComplete="off"
@@ -25,8 +25,8 @@ function TextInputField({ inputData, saveFieldData, fieldData }){
         onChange={saveFieldData(inputData.id)}
         onKeyDown={(e) => restrictType(e, inputData.inputType)}
         onBlur={(e) => toggleError(e, checkForErrors(e, 'check value exists'))}
-        onInvalid={(e) => {e.target.setCustomValidity(' '), setScAnnounce(errorId)}}
-        onInput={(e) => {e.target.setCustomValidity(''), setScAnnounce(hintId)}}
+        onInvalid={(e) => {e.target.setCustomValidity(' '), setA11yAnnounce(errorId)}}
+        onInput={(e) => {e.target.setCustomValidity(''), setA11yAnnounce(hintId)}}
         />
     )
 }
