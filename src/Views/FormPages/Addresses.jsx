@@ -9,6 +9,7 @@ import MailingZipCode from 'Components/Fields/MailingZipCode';
 import PreviousZipCode from 'Components/Fields/PreviousZipCode';
 import PreviousCity from 'Components/Fields/PreviousCity';
 import MailingStreetAddress from 'Components/Fields/MailingStreetAddress';
+import MailingAddressState from 'Components/Fields/MailingAddressState';
 import PreviousApartmentNumber from 'Components/Fields/PreviousApartmentNumber';
 import PreviousStreetAddress from 'Components/Fields/PreviousStreetAddress';
 import MailingCity from 'Components/Fields/MailingCity';
@@ -29,16 +30,13 @@ function Addresses(props){
     //Drupal field data
     const homeAddressSectionField = fields.find(item => item.uuid === "63552bb6-6afb-46e1-8148-860242917a22");
     const streetAddressField = fields.find(item => item.uuid === "6dcb9e8c-b40a-4cda-ba5c-06b98c3375f4");
-    const zipcodeField = fields.find(item => item.uuid === "cdb06542-0cbd-4aa3-897f-83377b8d65e5");
 
     const prevAddressSectionField = fields.find(item => item.uuid === "023fda0f-e8bd-4654-ab5c-46f44a0b7bd6");
     const prevAddressField = fields.find(item => item.uuid === "c3011c62-d174-420c-817a-bffbcd45687a");
-    const prevZipcodeField = fields.find(item => item.uuid === "49a90983-1925-438f-8271-88f39bf19bf1");
 
     const mailAddressSectionField = fields.find(item => item.uuid === "1a856408-6fb2-4b09-b05a-8d8ee9eb9bb5");
     const noAddressField = fields.find(item => item.uuid === "35c2b98d-477c-45f3-9f93-f720406080f1");
     const differentMailAddressField = fields.find(item => item.uuid === "e7340274-ee3f-4d73-a967-c9d7c249be7b");
-    const mailStateField = fields.find(item => item.uuid === "b0f80289-6084-4723-8278-110fda210f0d");
 
     const noAddressSection = fields.find(item => item.uuid === "3724c7cd-5ec7-4e3e-85cd-db0cab63e99b");
     const movedAndNoAddressSection = fields.find(item => item.uuid === "6dd20906-654e-427e-bb82-1e62aee9ed72");
@@ -137,29 +135,7 @@ function Addresses(props){
                             </Grid>
 
                             <Grid tablet={{ col: true }}>
-                                <div className="input-parent">
-                                    <Label className="text-bold" htmlFor="mail-state">
-                                        {mailStateField.label}{(addressFieldsState.required === "1") && <span className='required-text'>*</span>}
-                                    </Label>
-                                        <StateSelector
-                                            data-test="select"
-                                            id="mail-state"
-                                            classes="radius-md"
-                                            autoComplete="off"
-                                            ariaDescribedBy="mail-state_error"
-                                            required={(parseInt(addressFieldsState.required))}
-                                            statesList={props.statesList}
-                                            stringContent={props.stringContent}
-                                            state={props.fieldData.mail_state}
-                                            saveState={props.saveFieldData('mail_state')}
-                                            onBlur={(e) => {toggleError(e, checkForErrors(e, 'check value exists'))} }
-                                            onInvalid={(e) => e.target.setCustomValidity(' ')}
-                                            onInput={(e) => e.target.setCustomValidity('')}
-                                        />
-                                    <span id="mail-state_error" role="alert" className='error-text' data-test="errorText">
-                                        {mailStateField.error_msg}
-                                    </span>
-                                </div>
+                                <MailingAddressState {...props} />
                             </Grid>
 
                             <Grid tablet={{ col: true }}>

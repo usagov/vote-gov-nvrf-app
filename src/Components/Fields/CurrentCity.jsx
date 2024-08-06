@@ -14,7 +14,7 @@ function CurrentCity(props){
             dataTest: 'city',
             required: stateField.required,
             label: field.label,
-            inputType: 'letters',
+            inputMode: 'letters',
             error_msg: field.error_msg,
             help_text: field.help_text,
         }} saveFieldData={props.saveFieldData} fieldData={props.fieldData}/>

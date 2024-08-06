@@ -16,7 +16,7 @@ function CurrentZipCode(props){
             label: field.label,
             minLength: 5,
             maxLength: 5,
-            inputType: 'number',
+            inputMode: 'number',
             error_msg: field.error_msg,
             help_text: field.help_text,
         }} saveFieldData={props.saveFieldData} fieldData={props.fieldData}/>
