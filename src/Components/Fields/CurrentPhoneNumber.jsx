@@ -16,6 +16,7 @@ function CurrentPhoneNumber(props){
             label: field.label,
             error_msg: field.error_msg,
             help_text: field.help_text,
+            type: 'tel',
             maxLength: 14,
             minLength: 14,
             check: 'check value length',

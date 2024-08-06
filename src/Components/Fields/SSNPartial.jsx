@@ -16,6 +16,8 @@ function SSNPartial(props){
             required: stateField.required,
             error_msg: field.error_msg,
             help_text: field.help_text,
+            type: 'numeric',
+            inputMode: 'number',
             maxLength: 4,
             minLength: 4,
             check: 'check value length',
