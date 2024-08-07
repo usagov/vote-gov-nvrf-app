@@ -6,10 +6,9 @@ import {fetchData, sanitizeDOM} from 'Utils/JsonHelper.jsx';
 import { HelmetProvider } from "react-helmet-async";
 import {getFieldValue} from "Utils/fieldParser.jsx";
 
-const currentStateId = document.getElementById('root').getAttribute('state-id');
+const currentStateId = document.getElementById('root').getAttribute('data-stateId');
 
 function App() {
-
   const [states, setStates] = useState('');
   const [content, setContent] = useState('');
   const [navContent, setNavContent] = useState('');
@@ -64,7 +63,7 @@ function App() {
   const getSelectedState = (selectedState) => {
     if (selectedState != "") {
       for (var i = 0; i < states.length; i++){
-        if (states[i].name.toLowerCase() == selectedState.toLowerCase() || states[i].abbrev == selectedState.toLowerCase()){
+        if (states[i].abbrev == selectedState.toLowerCase()){
           setSelectedState(states[i].name);
           setStateData(states[i]);
         }
