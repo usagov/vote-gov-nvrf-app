@@ -9,9 +9,9 @@ export const focusError = (formId) => {
 
 export const toggleError = (e, error) => {
   let input = e.currentTarget;
-  let dateOfBirthInputs = input.id === "date-of-birth_month" || input.id === "date-of-birth_day" || input.id === "date-of-birth_year";
+  let dateOfBirthInputs = input.id === "date_of_birth_month" || input.id === "date_of_birth_day" || input.id === "date_of_birth_year";
   let errorContainer;
-  errorContainer = input.id === "eligibility-checkbox" || input.id === "date-of-birth" || input.id === "acknowledge-checkbox" ? input.parentNode.parentNode : input.parentNode;
+  errorContainer = input.id === "eligibility-checkbox" || input.id === "date_of_birth" || input.id === "acknowledge-checkbox" ? input.parentNode.parentNode : input.parentNode;
   errorContainer = dateOfBirthInputs ? input.parentNode.parentNode.parentNode.parentNode : errorContainer;
 
   if (error) {
@@ -84,10 +84,15 @@ export const checkForErrors=(e, requirement)=> {
         return true
       }
     case 'check value length':
-      let valueIsLength = e.target.value.length === e.target.maxLength;
+      let minLength = e.target.minLength;
+      let maxLength = e.target.maxLength > -1 ? e.target.maxLength : Number.MAX_SAFE_INTEGER;
+
+      let valueIsLength = e.target.value.length >= minLength && e.target.value.length <= maxLength;
       if (valueIsLength) {
+        e.target.setCustomValidity('');
         return false
       } else {
+        e.target.setCustomValidity(' ');
         return true
       }
 

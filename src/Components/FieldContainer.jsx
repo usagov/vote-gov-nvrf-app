@@ -3,7 +3,7 @@ import { Label } from '@trussworks/react-uswds';
 import TextInputField from 'Components/FieldComponents/TextInputField';
 import SelectField from 'Components/FieldComponents/SelectField';
 
-function FieldContainer({ fieldType, inputData, saveFieldData, fieldData }) {
+function FieldContainer({ fieldType, inputData, saveFieldData, fieldData, stringContent }) {
   function renderField(fieldType) {
     switch (fieldType) {
       case 'text':
@@ -15,7 +15,8 @@ function FieldContainer({ fieldType, inputData, saveFieldData, fieldData }) {
         return <SelectField
           inputData={inputData}
           saveFieldData={saveFieldData}
-          fieldData={fieldData} />;
+          fieldData={fieldData} 
+          stringContent={stringContent} />;
     }
   };
 
@@ -25,7 +26,7 @@ function FieldContainer({ fieldType, inputData, saveFieldData, fieldData }) {
         <Label className="text-bold" htmlFor={inputData.id}>
           {inputData.label}{(parseInt(inputData.required) === 1) && <span>*</span>}
         </Label>
-        <span className="usa-hint" id={`${inputData.id} + '-hint'`}>
+        <span className="usa-hint" id={`${inputData.id}` + '-hint'}>
           {inputData.help_text}
         </span>
         {renderField(fieldType)}
