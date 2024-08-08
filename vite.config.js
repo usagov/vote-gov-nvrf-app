@@ -13,5 +13,12 @@ export default defineConfig({
         assetFileNames: `assets/[name].[ext]`
       }
     }
+  },
+  resolve: {
+    alias: {
+      Components: '/src/Components',
+      Utils: '/src/Utils',
+      Views: '/src/Views',
+    }
   }
 })

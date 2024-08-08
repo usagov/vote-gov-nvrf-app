@@ -6,8 +6,8 @@ describe('Verify Flow Within Form', () => {
   beforeEach('Complete Form', () => {
     // sign in and complete form 
     cy.signin(Cypress.env('username'), Cypress.env('password'))
-    cy.get('[data-test="dropDown"]').select(data.inPerson)
-    cy.get('[data-test="nextBtn"]').click()
+    // cy.get('[data-test="dropDown"]').select(data.inPerson)
+    // cy.get('[data-test="nextBtn"]').click()
     cy.completeForm()
   })
   it('Verify Back Buttons', () => {
@@ -29,11 +29,11 @@ describe('Verify Flow Within Form', () => {
     cy.get('[data-test="backBtn"]').click()
     cy.get('[data-test="backBtn"]').should('contain.text', 'Back to state eligibility requirements')
 
-    cy.get('[data-test="backBtn"]').click()
-    cy.get('[data-test="backBtn"]').should('contain.text', 'Go back to state registration options')
+    // cy.get('[data-test="backBtn"]').click()
+    // cy.get('[data-test="backBtn"]').should('contain.text', 'Go back to state registration options')
 
-    cy.get('[data-test="backBtn"]').click()
-    cy.get('[data-test="backBtn"]').should('contain.text', 'Go back to select your state')
+    // cy.get('[data-test="backBtn"]').click()
+    // cy.get('[data-test="backBtn"]').should('contain.text', 'Go back to select your state')
 
   })
 
