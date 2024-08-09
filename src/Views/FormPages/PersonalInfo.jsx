@@ -102,15 +102,15 @@ function PersonalInfo(props){
             <Checkbox id="prev-name-change" aria-describedby="prev-name-change_alert" name="prev-name-change" data-test="checkBox" checked={props.previousName} onChange={props.onChangePreviousName} label={stringContent.nameChange} />
         )}
 
-        <div id="prev-name-change_alert" className="usa-alert usa-alert--info" role="region" aria-live="polite">
+        <div id="prev-name-change_alert" className="usa-alert usa-alert--info" role="region" aria-live="polite" aria-label="informative alert">
             <div className="usa-alert__body">
                 <div className="usa-alert__text" dangerouslySetInnerHTML={{__html: nameSectionAlert}}/>
             </div>
         </div>
 
-        <h3 className={'margin-top-5'}>{nameSectionField.label}</h3>
+        <Fieldset legend={<h3 className={'margin-top-5 margin-bottom-0'}>{nameSectionField.label}</h3>} className="fieldset">
         <div dangerouslySetInnerHTML= {{__html: nameSectionDesc}}/>
-
+        <div role="group" aria-label="Legal Name">
         {nameFieldState && (
             <>
                 <Grid row gap className={'flex-align-end'}>
@@ -138,6 +138,8 @@ function PersonalInfo(props){
                 </Grid>
             </>
         )}
+        </div>
+        </Fieldset>
 
         <Grid row gap className={'flex-align-end'}>
             <Grid tablet={{ col: 5 }}>
