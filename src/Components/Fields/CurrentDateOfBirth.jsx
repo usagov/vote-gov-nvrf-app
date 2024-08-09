@@ -17,7 +17,7 @@ function CurrentDateOfBirth(props){
             stringContent: props.stringContent,
             error_msg: field.error_msg,
             help_text: field.help_text,
-        }} saveFieldData={props.saveFieldData} fieldData={props.fieldData} checkDateValues={props.checkDateValues} dateFormat={props.dateFormat} />
+        }} saveFieldData={props.saveFieldData} fieldData={props.fieldData} dateFormat={props.dateFormat} />
     )
 }
 
