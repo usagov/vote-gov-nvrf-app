@@ -11,6 +11,7 @@ function CurrentApartmentNumber(props){
             fieldType={'text'} inputData={{
             id: field.nvrf_id,
             dataTest: 'aptNumber',
+            required: "0",
             label: field.label,
             error_msg: field.error_msg,
             help_text: field.help_text,

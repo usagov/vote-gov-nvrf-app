@@ -12,7 +12,7 @@ function CurrentTitle(props){
             fieldType={'select'} inputData={{
             id: 'title',
             dataTest: 'select',
-            required: false,
+            required: "0",
             label: field.label,
             options: field.options,
             error_msg: field.error_msg,

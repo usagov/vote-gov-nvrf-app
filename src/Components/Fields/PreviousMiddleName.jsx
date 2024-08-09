@@ -12,7 +12,7 @@ function PreviousMiddleName(props){
             fieldType={'text'} inputData={{
             id: 'prev_middle_name',
             dataTest: 'prevMiddleName',
-            required: false,
+            required: "0",
             label: field.label,
             error_msg: field.error_msg,
             help_text: field.help_text,

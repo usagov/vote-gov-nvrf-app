@@ -12,7 +12,7 @@ function CurrentSuffix(props){
       fieldType={'select'} inputData={{
       id: 'suffix',
       dataTest: 'select',
-      required: false,
+      required: "0",
       label: field.label,
       options: field.options,
       value: stateField.value,
