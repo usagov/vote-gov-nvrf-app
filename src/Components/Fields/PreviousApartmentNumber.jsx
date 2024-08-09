@@ -11,6 +11,7 @@ function PreviousApartmentNumber(props){
             fieldType={'text'} inputData={{
             id: 'prev_apt_num',
             dataTest: 'prevAptNumber',
+            required: "0",
             label: field.label,
             error_msg: field.error_msg,
             help_text: field.help_text,
