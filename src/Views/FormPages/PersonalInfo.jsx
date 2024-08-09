@@ -110,7 +110,7 @@ function PersonalInfo(props){
 
         <Fieldset legend={<h3 className={'margin-top-5 margin-bottom-0'}>{nameSectionField.label}</h3>} className="fieldset">
         <div dangerouslySetInnerHTML= {{__html: nameSectionDesc}}/>
-
+        <div role="group" aria-label="Legal Name">
         {nameFieldState && (
             <>
                 <Grid row gap className={'flex-align-end'}>
@@ -138,6 +138,7 @@ function PersonalInfo(props){
                 </Grid>
             </>
         )}
+        </div>
         </Fieldset>
 
         <Grid row gap className={'flex-align-end'}>
