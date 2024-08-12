@@ -108,7 +108,7 @@ function PersonalInfo(props){
             </div>
         </div>
 
-        <Fieldset legend={<h3 className={'margin-top-5 margin-bottom-0'}>{nameSectionField.label}</h3>} className="fieldset">
+        <Fieldset legend={<h3 className={'margin-top-5 margin-bottom-0'}>{nameSectionField.label}</h3>}>
         <div dangerouslySetInnerHTML= {{__html: nameSectionDesc}}/>
         <div role="group" aria-label="Legal Name">
         {nameFieldState && (
