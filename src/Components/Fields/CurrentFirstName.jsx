@@ -10,7 +10,7 @@ function CurrentFirstName(props){
     return (
         <FieldContainer
             fieldType={'text'} inputData={{
-            id: field.nvrf_id,
+            id: 'first_name',
             dataTest: 'firstName',
             required: stateField.required,
             label: field.label,

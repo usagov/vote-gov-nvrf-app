@@ -10,7 +10,7 @@ function DriversLicenseNumber(props){
     return (
         <FieldContainer
             fieldType={'text'} inputData={{
-            id: field.nvrf_id,
+            id: 'id_number',
             dataTest: 'driverId',
             label: field.label,
             required: stateField.required,
