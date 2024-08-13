@@ -37,63 +37,6 @@ function PersonalInfo(props){
     const telephoneFieldState = (nvrfStateFields.find(item => item.uuid === phoneNumberField.uuid));
     const raceFieldState = (nvrfStateFields.find(item => item.uuid === raceField.uuid));
 
-    const checkDateValues = (e, type) => {
-        let month = props.fieldData.date_of_birth_month;
-        let day = props.fieldData.date_of_birth_day;
-        let year = props.fieldData.date_of_birth_year;
-        let yearStart = year.slice(0, 2);
-
-        let currentDate = new Date();
-        let currentMonth = currentDate.getMonth();
-        let currentDay = currentDate.getDate();
-        let currentYear = currentDate.getFullYear();
-        let age = currentYear - year - (currentMonth <= month && currentDay < day);
-        
-        if (type === "all") {
-          let dobValues = [
-            month.length === 2,
-            day.length === 2,
-            year.length === 4,
-
-            month <= 12,
-            month >= 1,
-            day <= 31,
-            day >= 1,
-            yearStart <= 20,
-            yearStart >= 19,
-            age <= 120,
-            age >= 16
-          ];
-
-          if (dobValues.includes(false)) {
-            e.target.setCustomValidity(' ');
-            return true
-          } else {
-            return false
-          }
-
-        } else if (type === "month") {
-          if (month > 12 || month < 1) {
-            return true
-          } else {
-            return false
-          }
-        } else if (type === "day") {
-          if (day > 31 || day < 1) {
-            return true
-          } else {
-            return false
-          }
-        } else if (type === "year") {
-          if (age > 110 || age < 17) {
-            return true
-          } else {
-            return false
-          }
-        }
-      };
-
-
     return (
         <>
         <h2>{headings.step_label_1}</h2>
@@ -141,7 +84,7 @@ function PersonalInfo(props){
 
         <Grid row gap className={'flex-align-end'}>
             <Grid tablet={{ col: 5 }}>
-                <CurrentDateOfBirth {...props} checkDateValues={checkDateValues} dateFormat={props.dateFormat} />
+                <CurrentDateOfBirth {...props} dateFormat={props.dateFormat} />
             </Grid>
 
             {telephoneFieldState && (

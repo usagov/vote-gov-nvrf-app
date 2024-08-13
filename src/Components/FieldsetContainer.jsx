@@ -2,7 +2,7 @@ import React from "react";
 import { Fieldset } from '@trussworks/react-uswds';
 import DateFields from 'Components/FieldComponents/DateFields';
 
-function FieldsetContainer({ fieldType, inputData, saveFieldData, dateFormat, checkDateValues, fieldData }) {
+function FieldsetContainer({ fieldType, inputData, saveFieldData, dateFormat, fieldData }) {
     function renderField(fieldType) {
         switch (fieldType) {
             case 'date':
@@ -10,7 +10,6 @@ function FieldsetContainer({ fieldType, inputData, saveFieldData, dateFormat, ch
                     inputData={inputData}
                     saveFieldData={saveFieldData}
                     dateFormat={dateFormat}
-                    checkDateValues={checkDateValues}
                     fieldData={fieldData} />;
         }
     };
