@@ -27,6 +27,7 @@ function Eligibility(props) {
 
     return (
         <>
+            <BackButton stringContent={stringContent} type={'button'} onClick={props.handlePrev} text={navContent.back.state_reg_options}/>
             <div className={'usa-prose margin-top-5 maxw-tablet margin-x-auto'}>
             <h1>{content.title.replace("@state_name", stateContent.name)}</h1>
 
