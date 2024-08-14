@@ -25,9 +25,23 @@ function Eligibility(props) {
         </ul>
     );
 
+    const formatStateNameToURL = (stateName) => {
+    return stateName
+        .toLowerCase()
+        .replace(/[\s]+/g, '-') // replace spaces with hyphens
+        .replace(/[^\w-]+/g, ''); // remove all non-word characters except hyphens
+    };
+
+    const stateNameURL = stateContent.name ? formatStateNameToURL(stateContent.name) : '';
+
     return (
         <>
-            <BackButton stringContent={stringContent} type={'button'} onClick={props.handlePrev} text={navContent.back.state_reg_options}/>
+            <BackButton 
+                stringContent={stringContent} 
+                type={'button'} 
+                onClick={() => window.location.href = `https://vote.gov/register/${stateNameURL}/`} 
+                text={navContent.back.state_reg_options}
+            />
             <div className={'usa-prose margin-top-5 maxw-tablet margin-x-auto'}>
             <h1>{content.title.replace("@state_name", stateContent.name)}</h1>
 
