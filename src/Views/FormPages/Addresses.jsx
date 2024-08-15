@@ -1,4 +1,4 @@
-import { Label, TextInput, Checkbox, Grid } from '@trussworks/react-uswds';
+import { Label, TextInput, Checkbox, Grid, Fieldset } from '@trussworks/react-uswds';
 import StateSelector from 'Components/StateSelector';
 import CurrentAddressState from 'Components/Fields/CurrentAddressState';
 import CurrentStreetAddress from 'Components/Fields/CurrentStreetAddress';
@@ -73,36 +73,39 @@ function Addresses(props){
                         </div>
                     </div> )}
 
-                    <h3 className='margin-top-5'>{homeAddressSectionField.label}</h3>
-                        {homeAddressSectionField.instructions && (
-                            <div dangerouslySetInnerHTML={{__html: homeAddressSectionField.instructions}}/>
-                        )}
+                    <Fieldset legend={<h3 className='margin-top-5'>{homeAddressSectionField.label}</h3>}>
+                        <div role="group" aria-label="Current Address">
+                            {homeAddressSectionField.instructions && (
+                                <div dangerouslySetInnerHTML={{__html: homeAddressSectionField.instructions}}/>
+                            )}
 
-                    <Grid row gap className={'flex-align-end'}>
-                        <Grid tablet={{col: 12}}>
-                            <CurrentStreetAddress {...props} />
-                        </Grid>
-                    </Grid>
+                            <Grid row gap className={'flex-align-end'}>
+                                <Grid tablet={{col: 12}}>
+                                    <CurrentStreetAddress {...props} />
+                                </Grid>
+                            </Grid>
 
-                    <Grid row gap className={'flex-align-end'}>
-                        <Grid tablet={{ col: 5}}>
-                            <CurrentApartmentNumber {...props} />
-                        </Grid>
-                    </Grid>
+                            <Grid row gap className={'flex-align-end'}>
+                                <Grid tablet={{ col: 5}}>
+                                    <CurrentApartmentNumber {...props} />
+                                </Grid>
+                            </Grid>
 
-                    <Grid row gap className={'flex-align-end'}>
-                        <Grid tablet={{ col: 4 }}>
-                            <CurrentCity {...props} />
-                        </Grid>
+                            <Grid row gap className={'flex-align-end'}>
+                                <Grid tablet={{ col: 4 }}>
+                                    <CurrentCity {...props} />
+                                </Grid>
 
-                        <Grid tablet={{ col: 4 }}>
-                            <CurrentAddressState {...props} />
-                        </Grid>
+                                <Grid tablet={{ col: 4 }}>
+                                    <CurrentAddressState {...props} />
+                                </Grid>
 
-                        <Grid tablet={{ col: 3 }}>
-                            <CurrentZipCode {...props} />
-                        </Grid>
-                    </Grid>
+                                <Grid tablet={{ col: 3 }}>
+                                    <CurrentZipCode {...props} />
+                                </Grid>
+                            </Grid>
+                        </div>
+                    </Fieldset>
                     <Checkbox data-test="checkBox" className="margin-top-3" id="alt-mail-addr" name="alt-mail-addr" checked={props.hasMailAddress} onChange={props.onChangeMailAddressCheckbox} label={differentMailAddressField.label} />
                 </>
                 )}
