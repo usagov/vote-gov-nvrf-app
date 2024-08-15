@@ -23,7 +23,7 @@ function PoliticalParty(props){
         <h2>{headings.step_label_4}</h2>
 
         {(partyStateInstructions || partyGeneralInstructions) && (
-        <div className="usa-alert usa-alert--info" role="region" aria-live="polite">
+        <div className="usa-alert usa-alert--info" role="region" aria-live="polite" aria-label="informative alert">
             <div className="usa-alert__body">
                 <div className="usa-alert__text" dangerouslySetInnerHTML={{__html: partyStateInstructions}}/>
             </div>

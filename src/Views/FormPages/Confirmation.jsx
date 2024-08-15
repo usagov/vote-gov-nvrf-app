@@ -177,7 +177,7 @@ function Confirmation(props) {
 
             {confirmInstructions && (
                 <div id="acknowledge-check-alert" className="usa-alert usa-alert--info margin-top-6" role="region"
-                     aria-live="polite">
+                     aria-live="polite" aria-label="informative alert">
                     <div className="usa-alert__body">
                         <div className="usa-alert__text" dangerouslySetInnerHTML={{__html: confirmInstructions}}/>
                     </div>
