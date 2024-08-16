@@ -25,7 +25,7 @@ function ProgressBar(props) {
 
     const setStep = props.setStep;
 
-    const finalStep = 6;
+    const finalStep = Object.keys(stepMessage).length;
 
     const styles = (step) => {
       if (props.step < finalStep && stepProgress(step) === "complete") {
