@@ -26,13 +26,17 @@ function FieldContainer({ fieldType, inputData, saveFieldData, fieldData, string
         <Label className="text-bold" htmlFor={inputData.id}>
           {inputData.label}{(parseInt(inputData.required) === 1) && <span>*</span>}
         </Label>
-        <span className="usa-hint" id={`${inputData.id}` + '-hint'}>
-          {inputData.help_text}
-        </span>
+        {inputData.help_text && (
+          <span className="usa-hint" id={`${inputData.id}-hint`}>
+            {inputData.help_text}
+          </span>
+        )}
         {renderField(fieldType)}
-        <span id={`${inputData.id}` + '_error'} role="alert" className={'error-text'} data-test="errorText">
-          {inputData.error_msg}
-        </span>
+        {inputData.error_msg && (
+          <span id={`${inputData.id}` + '_error'} role="alert" className={'error-text'} data-test="errorText">
+            {inputData.error_msg}
+          </span>
+        )}
       </div>
     </>
   )
