@@ -11,7 +11,6 @@ function ProgressBar(props) {
     };
     let currentStepMessage = stepMessage[props.step];
 
-
     const stepProgress = (count) => {
         if (props.step === count) {
           return "current"
