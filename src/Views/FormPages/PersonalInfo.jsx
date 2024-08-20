@@ -183,7 +183,7 @@ function PersonalInfo(props){
             </Grid>
 
             <Grid tablet={{ col: 6 }}>
-            <PreviousSuffix {...props} />
+                <PreviousSuffix {...props} />
             </Grid>
         </Grid>
         </>
