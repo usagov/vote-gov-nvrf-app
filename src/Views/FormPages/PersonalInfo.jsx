@@ -13,7 +13,7 @@ import PreviousFirstName from 'Components/Fields/PreviousFirstName';
 import PreviousTitle from 'Components/Fields/PreviousTitle';
 import PreviousLastName from 'Components/Fields/PreviousLastName';
 import CurrentPhoneNumber from 'Components/Fields/CurrentPhoneNumber';
-import PreviousSuffix from 'Components/Fields/PreviousSiffix';
+import PreviousSuffix from 'Components/Fields/PreviousSuffix';
 
 function PersonalInfo(props){
     const headings = props.headings;
