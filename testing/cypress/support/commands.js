@@ -60,11 +60,11 @@ cy.get('[data-testid="checkbox"]').click()
 cy.get('[data-test="select"]').then(dropdown => {
 
   // title
-  cy.get(dropdown[2]).select(data.personalInformationTitle)
-  cy.get(dropdown[2]).should('contain', data.personalInformationTitle)
+  cy.get(dropdown[3]).select(data.personalInformationTitle)
+  cy.get(dropdown[3]).should('contain', data.personalInformationTitle)
   // suffix
-  cy.get(dropdown[3]).select(data.personalInformationSuffix)
-  cy.get(dropdown[3]).should('contain', data.personalInformationSuffix)
+  cy.get(dropdown[4]).select(data.personalInformationSuffix)
+  cy.get(dropdown[4]).should('contain', data.personalInformationSuffix)
 })
 
 cy.get('[data-test="firstName"]').type(data.personalInformationName)
