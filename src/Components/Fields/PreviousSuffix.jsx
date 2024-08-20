@@ -14,8 +14,7 @@ function PreviousSuffix(props){
       required: "0",
       label: field.label,
       options: field.options,
-      // value: stateField.value,
-      value: props.fieldData['prev_suffix'],
+      value: stateField.value,
     }} saveFieldData={props.saveFieldData} fieldData={props.fieldData} stringContent={props.stringContent}/>
   )
 }
