@@ -7,7 +7,7 @@
     "install": "vite build",
     "start": "vite",
     "dev": "vite",
-    "pages": "vite build --base=$SITE_PREFIX --outDir _site",
+    "pages": "vite build --base=https://federalist-aef5b597-8e18-44b6-aeba-3fc3f17cdac1.sites.pages.cloud.gov/preview/usagov/vote-gov-nvrf-app/feature/VOTE-2363/replace-json-api-endpoints-test/ --outDir _site",
     "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
