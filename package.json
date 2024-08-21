@@ -7,7 +7,7 @@
     "install": "vite build",
     "start": "vite",
     "dev": "vite",
-    "pages": "vite build --base=$BASEURL/$BRANCH --outDir _site",
+    "pages": "vite build --base=/$BASEURL/$BRANCH --outDir _site",
     "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
