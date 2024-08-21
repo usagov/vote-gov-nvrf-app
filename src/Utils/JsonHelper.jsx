@@ -9,4 +9,12 @@ export const fetchData = async(filename, setContent) => {
     setContent(response);
 }
 
+export const fetchStaticData = async(filename, setContent) => {
+    const lang = document.documentElement.lang;
+    const locale = lang !== "en" ? `/${lang}` : "";
+    const path = `data${locale}/${filename}`;
+    const response = await fetch(path).then(response => response.json());
+    setContent(response);
+}
+
 export const sanitizeDOM = (data) => DOMPurify.sanitize(data);
