@@ -132,13 +132,7 @@ function PersonalInfo(props){
                 <Grid row gap className={'flex-align-end'}>
                     <Grid tablet={{ col: 4 }}>
                         <div className="input-parent">
-                            <Label className="text-bold" htmlFor="race-ethnicity">
-                                {raceField.label}{(raceFieldState.required === "1") && <span className='required-text'>*</span>}
-                            </Label>
                             <RaceEthnicity {...props} />
-                            <span id="race-ethnicity_error" role="alert" className='error-text' data-test="errorText">
-                                {raceField.error_msg}
-                            </span>
                         </div>
                     </Grid>
                 </Grid>

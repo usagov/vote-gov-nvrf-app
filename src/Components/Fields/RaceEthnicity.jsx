@@ -11,10 +11,11 @@ function RaceEthnicity(props){
       fieldType={'select'} inputData={{
       id: 'race',
       dataTest: 'select',
-      required: "0",
+      required: stateField.required,
       label: field.label,
       options: field.options,
       value: stateField.value,
+      error_msg: field.error_msg,
     }} saveFieldData={props.saveFieldData} fieldData={props.fieldData} stringContent={props.stringContent}/>
   )
 }
