@@ -13,6 +13,7 @@ import PreviousFirstName from 'Components/Fields/PreviousFirstName';
 import PreviousTitle from 'Components/Fields/PreviousTitle';
 import PreviousLastName from 'Components/Fields/PreviousLastName';
 import CurrentPhoneNumber from 'Components/Fields/CurrentPhoneNumber';
+import RaceEthnicity from 'Components/Fields/RaceEthnicity';
 
 function PersonalInfo(props){
     const headings = props.headings;
@@ -131,31 +132,7 @@ function PersonalInfo(props){
                 <Grid row gap className={'flex-align-end'}>
                     <Grid tablet={{ col: 4 }}>
                         <div className="input-parent">
-                            <Label className="text-bold" htmlFor="race-ethnicity">
-                                {raceField.label}{(raceFieldState.required === "1") && <span className='required-text'>*</span>}
-                            </Label>
-                            <Select
-                            id="race-ethnicity"
-                            className="radius-md"
-                            name="race-ethnicity"
-                            aria-describedby="race-ethnicity_error"
-                            value={props.fieldData.race}
-                            onChange={props.saveFieldData('race')}
-                            autoComplete="off"
-                            required={parseInt(raceFieldState.required)}
-                            onBlur={(e) => toggleError(e, checkForErrors(e, 'check value exists'))}
-                            onInvalid={(e) => e.target.setCustomValidity(' ')}
-                            onInput={(e) => e.target.setCustomValidity('')}>
-                            <React.Fragment key=".0">
-                                <option value="">{stringContent.select}</option>
-                                {raceField.options.map((item, index) => (
-                                    <option key={index} value={item.value}>{item.key}</option>
-                                ))}
-                            </React.Fragment>
-                            </Select>
-                            <span id="race-ethnicity_error" role="alert" className='error-text' data-test="errorText">
-                                {raceField.error_msg}
-                            </span>
+                            <RaceEthnicity {...props} />
                         </div>
                     </Grid>
                 </Grid>
