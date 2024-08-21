@@ -3,7 +3,8 @@ DOMPurify.setConfig({ADD_ATTR: ['target']});
 
 export const fetchData = async(filename, setContent) => {
     const locale = document.documentElement.lang;
-    const path = (locale == 'en') ? `api/nvrf/${filename}`: `${locale}/api/nvrf/${filename}`;
+    const assetsPath = "/nvrf/assets/"
+    const path = (locale == 'en') ? `${assetsPath}${filename}`: `${locale}${assetsPath}${filename}`;
     const response = await fetch(path).then(response => response.json());
     setContent(response);
 }
