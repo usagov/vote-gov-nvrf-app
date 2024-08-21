@@ -5,7 +5,6 @@ import {getField} from "Utils/fieldParser";
 function PreviousSuffix(props){
   const uuid = "09cb2989-d302-4a01-bb3a-33173adcffb2";
   const field = getField(props.fieldContent, uuid);
-  const stateField = getField(props.stateData.nvrf_fields, field.uuid);
   return (
     <FieldContainer
       fieldType={'select'} inputData={{
@@ -14,7 +13,7 @@ function PreviousSuffix(props){
       required: "0",
       label: field.label,
       options: field.options,
-      value: stateField.value,
+      value:props.fieldData['prev_suffix'],
     }} saveFieldData={props.saveFieldData} fieldData={props.fieldData} stringContent={props.stringContent}/>
   )
 }
