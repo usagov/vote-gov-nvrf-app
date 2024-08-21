@@ -7,7 +7,7 @@
     "install": "vite build",
     "start": "vite",
     "dev": "vite",
-    "pages": "vite build --base=/preview/usagov/vote-gov-nvrf-app/ --outDir _site",
+    "pages": "vite build --base=$BASE_URL --outDir _site",
     "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
