@@ -14,7 +14,7 @@ function RaceEthnicity(props){
       required: stateField.required,
       label: field.label,
       options: field.options,
-      value: stateField.value,
+      value:props.fieldData['race'],
       error_msg: field.error_msg,
     }} saveFieldData={props.saveFieldData} fieldData={props.fieldData} stringContent={props.stringContent}/>
   )
