@@ -12,6 +12,7 @@ function Eligibility(props) {
     const stateContent = props.stateData;
     const stringContent = props.stringContent;
     const fields = props.fieldContent;
+    const returnPath = props.returnPath;
 
     content = content.find(item => item.uuid === "94eab1c9-8343-4747-94b4-08732a175614");
     const eligibility = fields.find(item => item.uuid === "39fc63ad-ed5a-4ad5-98d3-aa236c96c61c");
@@ -25,28 +26,20 @@ function Eligibility(props) {
         </ul>
     );
 
-    const formatStateNameToURL = (stateName) => {
-    return stateName
-        .toLowerCase()
-        .replace(/[\s]+/g, '-') // replace spaces with hyphens
-        .replace(/[^\w-]+/g, ''); // remove all non-word characters except hyphens
-    };
-
-    const stateNameURL = stateContent.name ? formatStateNameToURL(stateContent.name) : '';
-
     return (
         <>
-            <BackButton 
-                stringContent={stringContent} 
-                type={'button'} 
-                onClick={() => window.location.href = `https://vote.gov/register/${stateNameURL}/`} 
-                text={navContent.back.state_reg_options}
-            />
-            <div className={'usa-prose margin-top-5 maxw-tablet margin-x-auto'}>
-            <h1>{content.title.replace("@state_name", stateContent.name)}</h1>
+            {returnPath && (
+                <a href={returnPath} className="usa-button">
+                    <span>{navContent.back.state_reg_options}</span>
+                </a>
+              )
+            }
+    <div className={'usa-prose margin-top-5 maxw-tablet margin-x-auto'}>
+        <h1>{content.title.replace("@state_name", stateContent.name)}</h1>
 
-            <div className={'usa-prose margin-top-5'} dangerouslySetInnerHTML= {{__html: contentBodyParts[0].replace("@state_name", stateContent.name)
-                    .replace("@reg_eligibility_desc", stateContent.reg_eligibility_desc)}}/>
+        <div className={'usa-prose margin-top-5'} dangerouslySetInnerHTML={{
+            __html: contentBodyParts[0].replace("@state_name", stateContent.name)
+                .replace("@reg_eligibility_desc", stateContent.reg_eligibility_desc)}}/>
 
             <Form id="eligibility" autoComplete="off" className={'margin-top-2'} style={{ maxWidth:'none' }} onSubmit={(e) => {e.preventDefault(), props.handleNext()}}>
                     <div className="input-parent" data-test="checkBox">
