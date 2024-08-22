@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import Eligibility from 'Views/Eligibility.jsx';
 import PathSelection from 'Views/PathSelection.jsx';
 import MultiStepForm from 'Views/MultiStepForm.jsx';
-import {fetchData, sanitizeDOM} from 'Utils/JsonHelper.jsx';
+import {fetchData, fetchStaticData, sanitizeDOM} from 'Utils/JsonHelper.jsx';
 import { HelmetProvider } from "react-helmet-async";
 import {getFieldValue} from "Utils/fieldParser.jsx";
 
@@ -19,10 +19,10 @@ function App() {
   useEffect(() => {
     fetchData("states.json", setStates);
     fetchData("pages.json", setContent);
-    fetchData("navigation.json", setNavContent);
     fetchData("cards.json", setCards);
     fetchData("fields.json", setFieldContent);
-    fetchData("strings.json", setStringContent)
+    fetchStaticData("navigation.json", setNavContent);
+    fetchStaticData("strings.json", setStringContent)
   }, []);
 
   useEffect(() => {
