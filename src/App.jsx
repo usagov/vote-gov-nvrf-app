@@ -7,6 +7,7 @@ import { HelmetProvider } from "react-helmet-async";
 import {getFieldValue} from "Utils/fieldParser.jsx";
 
 const currentStateId = document.getElementById('root').getAttribute('data-stateId');
+const returnPath = document.getElementById('root').getAttribute('data-returnPath');
 
 function App() {
   const [states, setStates] = useState('');
@@ -117,6 +118,7 @@ function App() {
                     fieldContent={fieldContent}
                     hasConfirmed={hasConfirmed}
                     confirmCheckbox={confirmCheckbox}
+                    returnPath={returnPath}
                 />}
             {step === 2 &&
                 <PathSelection
