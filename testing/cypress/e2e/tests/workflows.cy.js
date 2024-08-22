@@ -72,7 +72,7 @@ describe('Verify Flow Within Form', () => {
   it('Verify Fields are correct', () => {
 
     // verify that fields on confirmation page have the expected information
-    cy.get('[class="confirm-info usa-prose"]').find('ul').then(ul => {
+    cy.get('[class="confirm-info"]').find('ul').then(ul => {
       // current name
       cy.get(ul[0]).find('li').then(li => {
         cy.get(li[0]).should('contain.text', data.personalInformationTitle)
