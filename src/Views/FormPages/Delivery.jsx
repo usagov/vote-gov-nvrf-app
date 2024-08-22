@@ -38,24 +38,24 @@ function Delivery(props) {
             <>
                 <Grid row>
                     <Grid col={1}>{iconCheckmark}</Grid>
-                    <Grid col={11} className={['usa-prose', 'padding-left-2']}>
+                    <Grid col={11} className={'padding-left-2'}>
                         <h1 style={{fontSize: '2rem'}} data-test="addressConfirm" >{delivery.title.replace("@state_name", props.stateData.name)}</h1>
                     </Grid>
                 </Grid>
 
-                <div className={'usa-prose margin-top-2'} dangerouslySetInnerHTML= {{__html: deliveryBodyPartsSplit[0] }}/>
+                <div className={'margin-top-2'} dangerouslySetInnerHTML= {{__html: deliveryBodyPartsSplit[0] }}/>
 
                 <Button data-test="pdfBtn" onClick={() => GenerateFilledPDF('newTab', props.fieldData, props.stateData.nvrf_pages_list)} type="submit">
                     <span>{stringContent.newTab}</span>
                 </Button>
 
-                <div className={'usa-prose margin-top-2'} dangerouslySetInnerHTML= {{__html: deliveryBodyPartsSplit[1] }}/>
+                <div className={'margin-top-2'} dangerouslySetInnerHTML= {{__html: deliveryBodyPartsSplit[1] }}/>
 
                 <Button style={{marginTop: 0}} onClick={() => GenerateFilledPDF('download', props.fieldData, props.stateData.nvrf_pages_list)} type="submit">
                     <span>{stringContent.download}</span>
                 </Button>
 
-                <div className={'usa-prose margin-top-6'} dangerouslySetInnerHTML= {{__html: deliveryBodyParts[1].replace('@mail_deadline', renderToStaticMarkup(mailinDeadline()))}}/>
+                <div className={'margin-top-6'} dangerouslySetInnerHTML= {{__html: deliveryBodyParts[1].replace('@mail_deadline', renderToStaticMarkup(mailinDeadline()))}}/>
             </>
         );
     }

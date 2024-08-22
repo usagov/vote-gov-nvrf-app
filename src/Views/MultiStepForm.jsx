@@ -255,11 +255,11 @@ function MultiStepForm(props) {
             {step != 6 && <BackButton stringContent={stringContent} type={'button'} onClick={handlePrev} text={backButtonText(step)}/>}
 
             <ProgressBar step={step} content={navContent} handleGoBack={handleGoBackSteps} setStep={setStep} />
-            <div className={'usa-prose margin-top-8 maxw-tablet margin-x-auto'}>
+            <div className={'margin-top-8 maxw-tablet margin-x-auto'}>
             {step < 5 &&
                 <>
                     <h1>{mainContentTitle.replace("@state_name", props.stateData.name)}</h1>
-                    <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: mainContentBody}}/>
+                    <div dangerouslySetInnerHTML= {{__html: mainContentBody}}/>
                 </>
             }
 

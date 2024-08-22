@@ -28,10 +28,10 @@ function Eligibility(props) {
     return (
         <>
             <BackButton stringContent={stringContent} type={'button'} onClick={props.handlePrev} text={navContent.back.state_reg_options}/>
-            <div className={'usa-prose margin-top-5 maxw-tablet margin-x-auto'}>
+            <div className={'margin-top-5 maxw-tablet margin-x-auto'}>
             <h1>{content.title.replace("@state_name", stateContent.name)}</h1>
 
-            <div className={'usa-prose margin-top-5'} dangerouslySetInnerHTML= {{__html: contentBodyParts[0].replace("@state_name", stateContent.name)
+            <div className={'margin-top-5'} dangerouslySetInnerHTML= {{__html: contentBodyParts[0].replace("@state_name", stateContent.name)
                     .replace("@reg_eligibility_desc", stateContent.reg_eligibility_desc)}}/>
 
             <Form id="eligibility" autoComplete="off" className={'margin-top-2'} style={{ maxWidth:'none' }} onSubmit={(e) => {e.preventDefault(), props.handleNext()}}>
@@ -60,7 +60,7 @@ function Eligibility(props) {
                 <div dangerouslySetInnerHTML= {{__html: eligibilityInstructions}}/>
 
 
-                <div className={'usa-prose margin-top-5'} dangerouslySetInnerHTML=
+                <div className={'margin-top-5'} dangerouslySetInnerHTML=
                     {{__html: contentBodyParts[1].replace("@state_name", stateContent.name).replace("@mail_deadline", renderToStaticMarkup(mailDeadline()))}}/>
 
                 <div>
