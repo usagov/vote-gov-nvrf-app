@@ -96,7 +96,7 @@ function App() {
 
     return (
         <HelmetProvider>
-          <section className="usa-prose">
+          <section>
             <a name="scroll-to-top"
                id="scroll-to-top"
                tabIndex={-1}
@@ -148,7 +148,7 @@ function App() {
                 />}
 
               {step >= 1 &&
-                <div className="text-base usa-prose margin-top-5 maxw-tablet margin-x-auto">
+                <div className="text-base margin-top-5 maxw-tablet margin-x-auto">
                   <p>{getFieldValue(content, "2c597df4-53b6-4ef5-8301-7817b04e1099", "omb_number")}
                     <br/>
                     {lastUpdatedText.replace("@state_name", stateData.name)}
