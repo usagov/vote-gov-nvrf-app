@@ -8,6 +8,7 @@ import {getFieldValue} from "Utils/fieldParser.jsx";
 
 const currentStateId = document.getElementById('root').getAttribute('data-stateId');
 const returnPath = document.getElementById('root').getAttribute('data-returnPath');
+const privacyPath = document.getElementById('root').getAttribute('data-privacyPath');
 
 function App() {
   const [states, setStates] = useState('');
@@ -154,7 +155,9 @@ function App() {
                     {lastUpdatedText.replace("@state_name", stateData.name)}
                     <span dangerouslySetInnerHTML= {{__html: lastUpdatedSanitized}}/>
                  </p>
-                  <p><a href="privacy" target="_blank">{stringContent.privacyPolicy}</a></p>
+                  {privacyPath && (
+                      <p><a href={privacyPath} target="_blank">{stringContent.privacyPolicy}</a></p>
+                  )}
                 </div>
               }
           </section>
