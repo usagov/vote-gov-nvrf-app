@@ -34,7 +34,7 @@ function Eligibility(props) {
                 </a>
               )
             }
-    <div className={'usa-prose margin-top-5 maxw-tablet margin-x-auto'}>
+    <div className={'margin-top-5 maxw-tablet margin-x-auto'}>
         <h1>{content.title.replace("@state_name", stateContent.name)}</h1>
 
             <div className={'margin-top-5'} dangerouslySetInnerHTML= {{__html: contentBodyParts[0].replace("@state_name", stateContent.name)
