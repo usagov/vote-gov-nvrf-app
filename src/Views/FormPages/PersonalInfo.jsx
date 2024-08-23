@@ -45,7 +45,7 @@ function PersonalInfo(props){
             <Checkbox id="prev-name-change" aria-describedby="prev-name-change_alert" name="prev-name-change" data-test="checkBox" checked={props.previousName} onChange={props.onChangePreviousName} label={stringContent.nameChange} />
         )}
 
-        <div id="prev-name-change_alert" className="usa-alert usa-alert--info" role="region" aria-live="polite">
+        <div id="help-text" className="usa-alert usa-alert--info" role="alert" aria-live="assertive">
             <div className="usa-alert__body">
                 <div className="usa-alert__text" dangerouslySetInnerHTML={{__html: nameSectionAlert}}/>
             </div>
@@ -56,7 +56,7 @@ function PersonalInfo(props){
 
         {nameFieldState && (
             <>
-                <Grid row gap className={'flex-align-end'}>
+                <Grid row gap className={'flex-align-end'} >
                     <Grid tablet={{ col: 2 }}>
                     <CurrentTitle {...props} />
                     </Grid>

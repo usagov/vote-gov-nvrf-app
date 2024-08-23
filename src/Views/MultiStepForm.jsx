@@ -262,8 +262,8 @@ function MultiStepForm(props) {
                     <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: mainContentBody}}/>
                 </>
             }
-
-            <Form autoComplete="off" id="nvrf" className={'margin-top-5'} style={{ maxWidth:'none' }} onSubmit={(e) => {handleSubmit(e), handleNext()}}>
+            
+            <Form aria-labelledby="help-text" autoComplete="off" id="nvrf" className={'margin-top-5'} style={{ maxWidth:'none' }} onSubmit={(e) => {handleSubmit(e), handleNext()}}>
                 {step === 1 &&
                     <PersonalInfo
                         state={props.state}
