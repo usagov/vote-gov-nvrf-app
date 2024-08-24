@@ -40,38 +40,42 @@ function Eligibility(props) {
             <div className={'margin-top-5'} dangerouslySetInnerHTML= {{__html: contentBodyParts[0].replace("@state_name", stateContent.name)
                     .replace("@reg_eligibility_desc", stateContent.reg_eligibility_desc)}}/>
 
-            <Form id="eligibility" autoComplete="off" className={'margin-top-2'} style={{ maxWidth:'none' }} onSubmit={(e) => {e.preventDefault(), props.handleNext()}}>
-                    <div className="input-parent" data-test="checkBox">
-                        <Label className={'margin-top-1'}>
-                            <strong>{eligibility.name}</strong>
-                        </Label>
-                        <Checkbox
-                            id="eligibility-checkbox"
-                            name="eligibility-checkbox"
-                            value="eligibility-checkbox"
-                            label={getFieldLabel(fields, "39fc63ad-ed5a-4ad5-98d3-aa236c96c61c")}
-                            aria-required="true"
-                            aria-describedby="eligibility-checkbox_error"
-                            required={true}
-                            defaultChecked={props.hasConfirmed}
-                            onChange={(e) => props.confirmCheckbox(e.target.checked)}
-                            onInvalid={(e) => e.target.setCustomValidity(' ')}
-                            onInput={(e) => e.target.setCustomValidity('')}
-                            onBlur={(e) => toggleError(e, !props.hasConfirmed)}
-                        />
-                        <span id="eligibility-checkbox_error" role="alert" className='error-text' data-test="errorText">
+        <Form id="eligibility" autoComplete="off" className={'margin-top-2'} style={{maxWidth: 'none'}}
+              onSubmit={(e) => {
+                  e.preventDefault(), props.handleNext()
+              }}>
+            <div className="input-parent" data-test="checkBox">
+                <Label className={'margin-top-1'}>
+                    <strong>{eligibility.name}</strong>
+                </Label>
+                <Checkbox
+                    id="eligibility-checkbox"
+                    name="eligibility-checkbox"
+                    value="eligibility-checkbox"
+                    label={getFieldLabel(fields, "39fc63ad-ed5a-4ad5-98d3-aa236c96c61c")}
+                    aria-required="true"
+                    aria-describedby="eligibility-checkbox_error"
+                    required={true}
+                    defaultChecked={props.hasConfirmed}
+                    onChange={(e) => props.confirmCheckbox(e.target.checked)}
+                    onInvalid={(e) => e.target.setCustomValidity(' ')}
+                    onInput={(e) => e.target.setCustomValidity('')}
+                    onBlur={(e) => toggleError(e, !props.hasConfirmed)}
+                />
+                <span id="eligibility-checkbox_error" role="alert" className='error-text' data-test="errorText">
                             {getFieldError(fields, "39fc63ad-ed5a-4ad5-98d3-aa236c96c61c")}
                         </span>
-                    <div className={'margin-top-2'} dangerouslySetInnerHTML={{__html: eligibilityInstructions}}/>
-                    </div>
-
-
-                <div className={'margin-top-5'} dangerouslySetInnerHTML=
-                    {{__html: contentBodyParts[1].replace("@state_name", stateContent.name).replace("@mail_deadline", renderToStaticMarkup(mailDeadline()))}}/>
-
-                <NextButton stringContent={stringContent} type={'submit'} onClick={(e) => focusError('eligibility')} text={navContent.next.start}/>
-            </Form>
             </div>
+            <div className={'margin-top-2'} dangerouslySetInnerHTML={{__html: eligibilityInstructions}}/>
+
+
+            <div className={'margin-top-5'} dangerouslySetInnerHTML=
+                {{__html: contentBodyParts[1].replace("@state_name", stateContent.name).replace("@mail_deadline", renderToStaticMarkup(mailDeadline()))}}/>
+
+            <NextButton stringContent={stringContent} type={'submit'} onClick={(e) => focusError('eligibility')}
+                        text={navContent.next.start}/>
+        </Form>
+    </div>
         </>
     );
 }
