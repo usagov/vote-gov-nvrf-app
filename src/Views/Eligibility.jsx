@@ -29,7 +29,7 @@ function Eligibility(props) {
     return (
         <>
             {returnPath && (
-                <a href={returnPath} className="usa-button">
+                <a href={returnPath} className={'usa-button usa-button--outline'}>
                     <span>{navContent.back.state_reg_options}</span>
                 </a>
               )
@@ -62,16 +62,14 @@ function Eligibility(props) {
                         <span id="eligibility-checkbox_error" role="alert" className='error-text' data-test="errorText">
                             {getFieldError(fields, "39fc63ad-ed5a-4ad5-98d3-aa236c96c61c")}
                         </span>
+                    <div className={'margin-top-2'} dangerouslySetInnerHTML={{__html: eligibilityInstructions}}/>
                     </div>
-                <div dangerouslySetInnerHTML= {{__html: eligibilityInstructions}}/>
 
 
                 <div className={'margin-top-5'} dangerouslySetInnerHTML=
                     {{__html: contentBodyParts[1].replace("@state_name", stateContent.name).replace("@mail_deadline", renderToStaticMarkup(mailDeadline()))}}/>
 
-                <div>
-                    <NextButton stringContent={stringContent} type={'submit'} onClick={(e) => focusError('eligibility')} text={navContent.next.start}/>
-                </div>
+                <NextButton stringContent={stringContent} type={'submit'} onClick={(e) => focusError('eligibility')} text={navContent.next.start}/>
             </Form>
             </div>
         </>

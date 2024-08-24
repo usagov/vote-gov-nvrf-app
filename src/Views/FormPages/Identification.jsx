@@ -106,10 +106,10 @@ function Identification(props){
                 <>
                     <SSNFull {...props} />
                 </>}
-                
-            <div aria-live='polite'>
-                {props.idType === 'none' && <div dangerouslySetInnerHTML={{__html: noIdFieldInstructions}}/>}
-            </div>
+
+            {props.idType === 'none' && (
+                <div aria-live='polite' className={'margin-top-2'} dangerouslySetInnerHTML={{__html: noIdFieldInstructions}} />
+            )}
         </div>
         </>
     );

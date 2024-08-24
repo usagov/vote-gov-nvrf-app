@@ -51,7 +51,7 @@ function Delivery(props) {
 
                 <div className={'margin-top-2'} dangerouslySetInnerHTML= {{__html: deliveryBodyPartsSplit[1] }}/>
 
-                <Button style={{marginTop: 0}} onClick={() => GenerateFilledPDF('download', props.fieldData, props.stateData.nvrf_pages_list)} type="submit">
+                <Button onClick={() => GenerateFilledPDF('download', props.fieldData, props.stateData.nvrf_pages_list)} type="submit">
                     <span>{stringContent.download}</span>
                 </Button>
 

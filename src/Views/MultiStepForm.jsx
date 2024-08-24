@@ -369,9 +369,7 @@ function MultiStepForm(props) {
                 }
 
                 {step != 6 && (
-                    <div>
-                        <NextButton stringContent={stringContent} type={'submit'} onClick={() => {nextStepValidation(), focusError('nvrf')}} text={nextButtonText(step)}/>
-                    </div>
+                    <NextButton stringContent={stringContent} type={'submit'} onClick={() => {nextStepValidation(), focusError('nvrf')}} text={nextButtonText(step)}/>
                 )}
             </Form>
 
