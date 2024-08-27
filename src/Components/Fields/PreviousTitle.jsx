@@ -16,6 +16,7 @@ function PreviousTitle(props){
             options: field.options,
             error_msg: field.error_msg,
             help_text: field.help_text,
+            value:props.fieldData['prev_title'],
         }} saveFieldData={props.saveFieldData} fieldData={props.fieldData} stringContent={props.stringContent}/>
     )
 }

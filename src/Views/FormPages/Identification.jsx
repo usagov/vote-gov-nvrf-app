@@ -4,6 +4,7 @@ import { restrictType, checkForErrors, toggleError } from 'Utils/ValidateField';
 import { sanitizeDOM } from 'Utils/JsonHelper';
 import DriversLicenseNumber from 'Components/Fields/DriversLicenseNumber';
 import SSNPartial from 'Components/Fields/SSNPartial';
+import SSNFull from 'Components/Fields/SSNFull';
 import StateIDNum from 'Components/Fields/StateIDNum';
 
 function Identification(props){
@@ -103,35 +104,12 @@ function Identification(props){
 
             {props.idType === 'ssn-full' &&
                 <>
-                    <Label className="text-bold" htmlFor="ssn-full">
-                        {ssnFullField.label}{(ssnFullFieldReq) && <span className='required-text'>*</span>}
-                    </Label>
-                    <span className="usa-hint" id="ssn-hint">{ssnFullField.help_text}</span>
-                    <TextInput
-                        id="ssn-full"
-                        className="radius-md"
-                        name="ssn-full"
-                        aria-describedby="ssn-full_error"
-                        autoComplete="off"
-                        required={parseInt(ssnFullFieldReq.required)}
-                        type="text"
-                        inputMode="numeric"
-                        minLength={9}
-                        maxLength={9}
-                        value={props.fieldData.ssn_number}
-                        onChange={props.saveFieldData('ssn_number')}
-                        onKeyDown={(e) => restrictType(e, 'number')}
-                        onBlur={(e) => toggleError(e, checkForErrors(e, 'check value length'))}
-                        onInvalid={(e) => e.target.setCustomValidity(' ')}
-                        onInput={(e) => e.target.setCustomValidity('')}
-                    />
-                    <span id="ssn-full_error" role="alert" className='error-text' data-test="errorText">
-                        {ssnFullField.error_msg}
-                    </span>
+                    <SSNFull {...props} />
                 </>}
-            <div aria-live='polite'>
-                {props.idType === 'none' && <div dangerouslySetInnerHTML={{__html: noIdFieldInstructions}}/>}
-            </div>
+
+            {props.idType === 'none' && (
+                <div aria-live='polite' className={'margin-top-2'} dangerouslySetInnerHTML={{__html: noIdFieldInstructions}} />
+            )}
         </div>
         </>
     );

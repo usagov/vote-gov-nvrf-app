@@ -2,11 +2,13 @@ import { useState, useEffect } from 'react'
 import Eligibility from 'Views/Eligibility.jsx';
 import PathSelection from 'Views/PathSelection.jsx';
 import MultiStepForm from 'Views/MultiStepForm.jsx';
-import {fetchData, sanitizeDOM} from 'Utils/JsonHelper.jsx';
+import {fetchData, fetchStaticData, sanitizeDOM} from 'Utils/JsonHelper.jsx';
 import { HelmetProvider } from "react-helmet-async";
 import {getFieldValue} from "Utils/fieldParser.jsx";
 
 const currentStateId = document.getElementById('root').getAttribute('data-stateId');
+const returnPath = document.getElementById('root').getAttribute('data-returnPath');
+const privacyPath = document.getElementById('root').getAttribute('data-privacyPath');
 
 function App() {
   const [states, setStates] = useState('');
@@ -19,10 +21,10 @@ function App() {
   useEffect(() => {
     fetchData("states.json", setStates);
     fetchData("pages.json", setContent);
-    fetchData("navigation.json", setNavContent);
     fetchData("cards.json", setCards);
     fetchData("fields.json", setFieldContent);
-    fetchData("strings.json", setStringContent)
+    fetchStaticData("navigation.json", setNavContent);
+    fetchStaticData("strings.json", setStringContent)
   }, []);
 
   useEffect(() => {
@@ -95,7 +97,7 @@ function App() {
 
     return (
         <HelmetProvider>
-          <section className="usa-prose">
+          <section>
             <a name="scroll-to-top"
                id="scroll-to-top"
                tabIndex={-1}
@@ -117,6 +119,7 @@ function App() {
                     fieldContent={fieldContent}
                     hasConfirmed={hasConfirmed}
                     confirmCheckbox={confirmCheckbox}
+                    returnPath={returnPath}
                 />}
             {step === 2 &&
                 <PathSelection
@@ -146,13 +149,15 @@ function App() {
                 />}
 
               {step >= 1 &&
-                <div className="text-base usa-prose margin-top-5 maxw-tablet margin-x-auto">
+                <div className="text-base margin-top-5 maxw-tablet margin-x-auto">
                   <p>{getFieldValue(content, "2c597df4-53b6-4ef5-8301-7817b04e1099", "omb_number")}
                     <br/>
                     {lastUpdatedText.replace("@state_name", stateData.name)}
                     <span dangerouslySetInnerHTML= {{__html: lastUpdatedSanitized}}/>
                  </p>
-                  <p><a href="privacy" target="_blank">{stringContent.privacyPolicy}</a></p>
+                  {privacyPath && (
+                      <p><a href={privacyPath} target="_blank">{stringContent.privacyPolicy}</a></p>
+                  )}
                 </div>
               }
           </section>

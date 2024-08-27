@@ -18,10 +18,10 @@ function PathSelection(props) {
     return (
         <>
             <BackButton stringContent={stringContent} type={'button'} onClick={props.handlePrev} text={navContent.back.eligibility_req}/>
-            <div className={'usa-prose margin-top-5 maxw-tablet margin-x-auto'}>
+            <div className={'margin-top-5 maxw-tablet margin-x-auto'}>
             <h1>{introContent.title.replace("@state_name", props.stateData.name)}</h1>
 
-            <div className={'usa-prose'} dangerouslySetInnerHTML= {{__html: introContentBody}}/>
+            <div dangerouslySetInnerHTML= {{__html: introContentBody}}/>
 
             <CardGroup className="padding-top-4">
                 <Card className="card-info"

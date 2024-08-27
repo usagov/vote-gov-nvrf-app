@@ -32,9 +32,9 @@ function Confirmation(props) {
 
     return (
         <>
-            <div className={"confirm-info usa-prose"}>
+            <div className={"confirm-info"}>
                 <h1>{confirm.title}</h1>
-                <div className={'usa-prose'} dangerouslySetInnerHTML={{__html: confirmBody}}/>
+                <div dangerouslySetInnerHTML={{__html: confirmBody}}/>
 
                 <Grid row gap={2} className={'margin-top-3 flex-align-baseline'}>
                     <h2 className={'margin-0'}>{headings.step_label_1}</h2>
