@@ -87,7 +87,9 @@ function App() {
   };
 
   // Only render the markup if the data is loaded.
-  if (states && content && navContent && fieldContent && stringContent) {
+  if (states && cards && content && navContent && fieldContent && stringContent) {
+    // Get NVRF footer card
+    const cardFooter = cards.find(item => item.uuid === "5922e06c-ac2f-475d-ab10-abfdeb65de43");
 
     const statesList = []
     for (let i = 0; i < states.length; i++) {
@@ -150,13 +152,12 @@ function App() {
 
               {step >= 1 &&
                 <div className="text-base margin-top-5 maxw-tablet margin-x-auto">
-                  <p>{getFieldValue(content, "2c597df4-53b6-4ef5-8301-7817b04e1099", "omb_number")}
-                    <br/>
+                  <p>
                     {lastUpdatedText.replace("@state_name", stateData.name)}
-                    <span dangerouslySetInnerHTML= {{__html: lastUpdatedSanitized}}/>
-                 </p>
-                  {privacyPath && (
-                      <p><a href={privacyPath} target="_blank">{stringContent.privacyPolicy}</a></p>
+                    <span dangerouslySetInnerHTML={{__html: lastUpdatedSanitized}}/>
+                  </p>
+                  {cardFooter && (
+                      <div dangerouslySetInnerHTML={{__html: sanitizeDOM(cardFooter.body)}}></div>
                   )}
                 </div>
               }
