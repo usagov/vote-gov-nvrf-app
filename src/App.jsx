@@ -4,11 +4,9 @@ import PathSelection from 'Views/PathSelection.jsx';
 import MultiStepForm from 'Views/MultiStepForm.jsx';
 import {fetchData, fetchStaticData, sanitizeDOM} from 'Utils/JsonHelper.jsx';
 import { HelmetProvider } from "react-helmet-async";
-import {getFieldValue} from "Utils/fieldParser.jsx";
 
 const currentStateId = document.getElementById('root').getAttribute('data-stateId');
 const returnPath = document.getElementById('root').getAttribute('data-returnPath');
-const privacyPath = document.getElementById('root').getAttribute('data-privacyPath');
 
 function App() {
   const [states, setStates] = useState('');
