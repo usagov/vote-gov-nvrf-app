@@ -14,19 +14,19 @@ const GenerateFilledPDF = async function (btnType,formData,pagesKept) {
     const form = pdfDoc.getForm()
 
     //-------- Get PDF Fields by machine name ------------------
-    const citizen = form.getRadioGroup('citizen'); //TEMP spanish condition field type
-    const eighteenYearsOld = form.getRadioGroup('eighteen_years'); //TEMP spanish condition field type
-    const title = form.getRadioGroup('salutation'); //TEMP spanish condition field type
+    const citizen = form.getRadioGroup('citizen');
+    const eighteenYearsOld = form.getRadioGroup('eighteen_years');
+    const title = form.getRadioGroup('salutation');
     const firstName = form.getTextField('first_name');
     const middleNames = form.getTextField('middle_names');
     const lastName = form.getTextField('last_name');
-    const suffix = form.getRadioGroup('suffix'); //TEMP spanish condition field type
+    const suffix = form.getRadioGroup('suffix');
 
-    const title2 =  form.getRadioGroup('salutation_2');//TEMP spanish condition field type
+    const title2 =  form.getRadioGroup('salutation_2');
     const firstName2 = form.getTextField('first_name_2');
     const middleNames2 = form.getTextField('middle_names_2');
     const lastName2 = form.getTextField('last_name_2');
-    const suffix2 = form.getRadioGroup('suffix_2');//TEMP spanish condition field type
+    const suffix2 = form.getRadioGroup('suffix_2');
 
     const dobMonth = form.getTextField('dob_month');
     const dobDay = form.getTextField('dob_day');
