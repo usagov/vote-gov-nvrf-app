@@ -141,7 +141,7 @@ function DateFields({ inputData, saveFieldData, dateFormat, fieldData }) {
                 required={true}
                 aria-invalid={false}
                 type="text"
-                pattern="19\d{2}|200\d{1}"
+                pattern="19\d{2}|20\d{2}"
                 inputMode="numeric"
                 minLength={4}
                 maxLength={4}
