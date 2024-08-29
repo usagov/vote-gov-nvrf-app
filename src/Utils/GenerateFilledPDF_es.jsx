@@ -4,6 +4,7 @@ import download from "downloadjs";
 const GenerateFilledPDF = async function (btnType,formData,pagesKept) {
     // Fetch the PDF with form fields
     const lang = document.documentElement.lang;
+    //TEST SPANISH const lang = "es";
     const locale = lang !== "en" ? `/${lang}` : "";
     const formUrl = `/data${locale}/Federal_Voter_Registration_${lang}.pdf`;
     const formPdfBytes = await fetch(formUrl).then(res => res.arrayBuffer())
@@ -14,19 +15,19 @@ const GenerateFilledPDF = async function (btnType,formData,pagesKept) {
     const form = pdfDoc.getForm()
 
     //-------- Get PDF Fields by machine name ------------------
-    const citizen = form.getRadioGroup('citizen');
-    const eighteenYearsOld = form.getRadioGroup('eighteen_years');
-    const title =  form.getRadioGroup('salutation');
+    const citizen = form.getDropdown('citizen'); //TEMP spanish condition field type
+    const eighteenYearsOld = form.getDropdown('eighteen_years'); //TEMP spanish condition field type
+    const title = form.getDropdown('salutation'); //TEMP spanish condition field type
     const firstName = form.getTextField('first_name');
     const middleNames = form.getTextField('middle_names');
     const lastName = form.getTextField('last_name');
-    const suffix = form.getRadioGroup('suffix');
+    const suffix = form.getDropdown('suffix'); //TEMP spanish condition field type
 
-    const title2 =  form.getRadioGroup('salutation_2');
+    const title2 =  form.getDropdown('salutation_2');//TEMP spanish condition field type
     const firstName2 = form.getTextField('first_name_2');
     const middleNames2 = form.getTextField('middle_names_2');
     const lastName2 = form.getTextField('last_name_2');
-    const suffix2 = form.getRadioGroup('suffix_2');
+    const suffix2 = form.getDropdown('suffix_2');//TEMP spanish condition field type
 
     const dobMonth = form.getTextField('dob_month');
     const dobDay = form.getTextField('dob_day');
@@ -57,10 +58,10 @@ const GenerateFilledPDF = async function (btnType,formData,pagesKept) {
     // -----------Fill in the pdf fields--------------------------
     // (1) Personal Information
     //Citizen and age
-    citizen.select('yes');
-    eighteenYearsOld.select('yes');
+    citizen.select('Yes/si');
+    eighteenYearsOld.select('Yes/si');
 
-    //Current Name
+    //Current Name - TODO: spanish field data needs to match the PDF
     if(formData.title) {
         title.select(formData.title);
     }
@@ -68,7 +69,7 @@ const GenerateFilledPDF = async function (btnType,formData,pagesKept) {
     middleNames.setText(formData.middle_name);
     lastName.setText(formData.last_name);
 
-    //Dropdown to checkbox/radio logic for suffix
+    //Current suffix - TODO: spanish field data needs to match the PDF
     if(formData.suffix){
         suffix.select(formData.suffix);
     }
@@ -81,7 +82,7 @@ const GenerateFilledPDF = async function (btnType,formData,pagesKept) {
     middleNames2.setText(formData.prev_middle_name);
     lastName2.setText(formData.prev_last_name);
 
-    //Dropdown to checkbox/radio logic for suffix
+    //Previous suffix
     if(formData.prev_suffix){
         suffix2.select(formData.prev_suffix);
     }
