@@ -246,7 +246,7 @@ function MultiStepForm(props) {
             case 4:
                 return navContent.next.confirm_info;
             case 5:
-                return (stringContent.confirm);//TODO replace
+                return navContent.next.delivery;
         }
     }
 
