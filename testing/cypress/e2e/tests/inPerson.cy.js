@@ -19,7 +19,7 @@ cy.get('[data-test="errorText"]').should('contain.text', 'Confirm eligibility to
 
 // verify user CAN move forward after checking box
 cy.get('[data-test="checkBox"]').click()
-// todo: come back after fix 
+// todo: come back after fix
 // cy.get('[data-test="errorText"]').should('not.exist')
 
 cy.get('[data-test="nextBtn"]').click()
@@ -29,7 +29,7 @@ cy.get('[data-test="pathBtn"]').then(btn => {
   cy.get(btn[0]).click({force: true})
 })
 
-// fill out personal information 
+// fill out personal information
 // * check that user can not move forward without filling out fields
 cy.get('[data-test="nextBtn"]').click().click()
 cy.get('[data-test="errorText"]').should('exist')
@@ -49,7 +49,7 @@ cy.get('[data-test="lastName"]').type(data.personalInformationLast)
 cy.get('[data-test="phoneNumber"]').type(data.personalInformationNumber)
 // Validate text box has correct text
 cy.get('[data-test="firstName"]').should('have.value', data.personalInformationName)
-cy.get('[data-test="middleName"]').should('have.value', data.personalInformationMiddle)  
+cy.get('[data-test="middleName"]').should('have.value', data.personalInformationMiddle)
 cy.get('[data-test="lastName"]').should('have.value', data.personalInformationLast)
 cy.get('[data-test="phoneNumber"]').should('contain.value', data.personalInformationNumber2)
 
@@ -60,7 +60,7 @@ cy.get('[data-test="prevMiddleName"]').type(data.personalInformationMiddle)
 cy.get('[data-test="prevLastName"]').type(data.personalInformationLast)
 // Validate text box has correct text
 cy.get('[data-test="prevFirstName"]').should('have.value', data.personalInformationName)
-cy.get('[data-test="prevMiddleName"]').should('have.value', data.personalInformationMiddle)  
+cy.get('[data-test="prevMiddleName"]').should('have.value', data.personalInformationMiddle)
 cy.get('[data-test="prevLastName"]').should('have.value', data.personalInformationLast)
 
 // * check date of birth fields
@@ -85,12 +85,12 @@ cy.get('[data-test="aptNumber"]').type(data.addressApt)
 cy.get('[data-test="city"]').type(data.addressTown)
 cy.get('[data-test="zip"]').type(data.addressZip)
   // Validate text box has correct text
-cy.get('[data-test="street"]').should('have.value', data.addressStreet) 
+cy.get('[data-test="street"]').should('have.value', data.addressStreet)
 cy.get('[data-test="aptNumber"]').should('have.value', data.addressApt)
 cy.get('[data-test="city"]').should('have.value', data.addressTown)
 cy.get('[data-test="zip"]').should('have.value', data.addressZip)
 
-// * check that mailing address work 
+// * check that mailing address work
 cy.get('[data-test="checkBox"]').then(checkBox => {
   cy.get(checkBox[1]).click({force: true})
 })
@@ -99,7 +99,7 @@ cy.get('[data-test="mailStreet"]').type(data.addressStreet)
 cy.get('[data-test="mailCity"]').type(data.addressTown)
 cy.get('[data-test="mailZip"]').type(data.addressZip)
   // Validate text box has correct text
-cy.get('[data-test="mailStreet"]').should('have.value', data.addressStreet) 
+cy.get('[data-test="mailStreet"]').should('have.value', data.addressStreet)
 cy.get('[data-test="mailCity"]').should('have.value', data.addressTown)
 cy.get('[data-test="mailZip"]').should('have.value', data.addressZip)
 
@@ -108,7 +108,7 @@ cy.get('[data-test="checkBox"]').then(checkBox => {
   cy.get(checkBox[1]).click({force: true})
 })
 
-// * check recently moved option 
+// * check recently moved option
 cy.get('[data-test="checkBox"]').then(checkBox => {
   cy.get(checkBox[0]).click({force: true})
 })
@@ -118,7 +118,7 @@ cy.get('[data-test="prevAptNumber"]').type(data.addressApt)
 cy.get('[data-test="prevCity"]').type(data.addressTown)
 cy.get('[data-test="prevZip"]').type(data.addressZip)
   // Validate text box has correct text
-cy.get('[data-test="prevStreet"]').should('have.value', data.addressStreet) 
+cy.get('[data-test="prevStreet"]').should('have.value', data.addressStreet)
 cy.get('[data-test="prevAptNumber"]').should('have.value', data.addressApt)
 cy.get('[data-test="prevCity"]').should('have.value', data.addressTown)
 cy.get('[data-test="prevZip"]').should('have.value', data.addressZip)
@@ -127,15 +127,15 @@ cy.get('[data-test="prevZip"]').should('have.value', data.addressZip)
   cy.get('[data-test="checkBox"]').then(checkBox => {
     cy.get(checkBox[0]).click({force: true})
   })
-  
-  // * check does not have permanent option 
+
+  // * check does not have permanent option
   cy.get('[data-test="checkBox"]').then(checkBox => {
     cy.get(checkBox[1]).click({force: true})
   })
-  
+
     cy.get('[data-testid="Select"]').select(data.addressState)
     // Validate text box has correct text for mailing address
-    cy.get('[data-test="mailStreet"]').should('have.value', data.addressStreet) 
+    cy.get('[data-test="mailStreet"]').should('have.value', data.addressStreet)
     cy.get('[data-test="mailCity"]').should('have.value', data.addressTown)
     cy.get('[data-test="mailZip"]').should('have.value', data.addressZip)
 
@@ -158,7 +158,7 @@ cy.get('[data-test="dropDown"]').then(dropDown => {
   cy.get(dropDown[0]).select("Social security number (last 4 digits)")
 })
 cy.get('[data-test="ssn"]').type(data.ssn)
-// Validate fields have correct data 
+// Validate fields have correct data
 cy.get('[data-test="dropDown"]').should('have.value', data.ssnValue)
 cy.get('[data-test="ssn"]').should('have.value', data.ssn)
 
@@ -170,7 +170,7 @@ cy.get('p').should('contain.text', '"None" will appear on your completed form.')
 
 cy.get('[data-test="nextBtn"]').click()
 
-  // political party 
+  // political party
   cy.get('[data-test="politicalParty"]').type(data.politicalParty)
 
 cy.get('[data-test="nextBtn"]').click()
@@ -181,7 +181,7 @@ cy.get('[data-test="nextBtn"]').click()
 
 cy.get('[data-test="addressConfirm"]').should('contain.text', 'Your Alabama mail-in registration form is complete and ready to print.')
 // * check that download opens in new window
-cy.get('[data-test="pdfBtn"]').click()
+cy.get('[data-test="pdfBtn_tab"]').click()
 cy.get('@open').should('have.been.calledOnce')
 
 })
@@ -208,7 +208,7 @@ cy.get('[data-test="pathBtn"]').then(btn => {
   cy.get(btn[1]).click({force: true})
 })
 
-// fill out personal information 
+// fill out personal information
 // * check that user can not move forward without filling out fields
 cy.get('[data-test="nextBtn"]').click().click()
 cy.get('[data-test="errorText"]').should('exist')
@@ -228,7 +228,7 @@ cy.get('[data-test="lastName"]').type(data.personalInformationLast)
 cy.get('[data-test="phoneNumber"]').type(data.personalInformationNumber)
 // Validate text box has correct text
 cy.get('[data-test="firstName"]').should('have.value', data.personalInformationName)
-cy.get('[data-test="middleName"]').should('have.value', data.personalInformationMiddle)  
+cy.get('[data-test="middleName"]').should('have.value', data.personalInformationMiddle)
 cy.get('[data-test="lastName"]').should('have.value', data.personalInformationLast)
 cy.get('[data-test="phoneNumber"]').should('contain.value', data.personalInformationNumber2)
 
@@ -254,12 +254,12 @@ cy.get('[data-test="aptNumber"]').type(data.addressApt)
 cy.get('[data-test="city"]').type(data.addressTown)
 cy.get('[data-test="zip"]').type(data.addressZip)
   // Validate text box has correct text
-cy.get('[data-test="street"]').should('have.value', data.addressStreet) 
+cy.get('[data-test="street"]').should('have.value', data.addressStreet)
 cy.get('[data-test="aptNumber"]').should('have.value', data.addressApt)
 cy.get('[data-test="city"]').should('have.value', data.addressTown)
 cy.get('[data-test="zip"]').should('have.value', data.addressZip)
 
-// * check that mailing address work 
+// * check that mailing address work
 cy.get('[data-test="checkBox"]').then(checkBox => {
   cy.get(checkBox[1]).click({force: true})
 })
@@ -267,7 +267,7 @@ cy.get('[data-test="mailStreet"]').type(data.addressStreet)
 cy.get('[data-test="mailCity"]').type(data.addressTown)
 cy.get('[data-test="mailZip"]').type(data.addressZip)
   // Validate text box has correct text
-cy.get('[data-test="mailStreet"]').should('have.value', data.addressStreet) 
+cy.get('[data-test="mailStreet"]').should('have.value', data.addressStreet)
 cy.get('[data-test="mailCity"]').should('have.value', data.addressTown)
 cy.get('[data-test="mailZip"]').should('have.value', data.addressZip)
 
@@ -276,7 +276,7 @@ cy.get('[data-test="checkBox"]').then(checkBox => {
   cy.get(checkBox[1]).click({force: true})
 })
 
-// * check does not have permanent option 
+// * check does not have permanent option
 cy.get('[data-test="checkBox"]').then(checkBox => {
   cy.get(checkBox[0]).click({force: true})
 })
@@ -287,7 +287,7 @@ cy.get('[data-test="mailZip"]').type(data.addressZip)
   cy.get('[class="usa-select radius-md"]').select(data.addressState)
 
   // Validate text box has correct text
-cy.get('[data-test="mailStreet"]').should('have.value', data.addressStreet) 
+cy.get('[data-test="mailStreet"]').should('have.value', data.addressStreet)
 cy.get('[data-test="mailCity"]').should('have.value', data.addressTown)
 cy.get('[data-test="mailZip"]').should('have.value', data.addressZip)
 
@@ -317,7 +317,7 @@ cy.get('[data-test="dropDown"]').then(dropDown => {
   cy.get(dropDown[0]).select("Social security number (last 4 digits)")
 })
 cy.get('[data-test="ssn"]').type(data.ssn)
-// Validate fields have correct data 
+// Validate fields have correct data
 cy.get('[data-test="dropDown"]').should('have.value', data.ssnValue)
 cy.get('[data-test="ssn"]').should('have.value', data.ssn)
 
@@ -341,7 +341,7 @@ cy.get('[data-test="nextBtn"]').click()
 
 cy.get('[data-test="addressConfirm"]').should('contain.text', 'Your Alabama mail-in registration form is complete and ready to print.')
 // * check that download opens in new window
-cy.get('[data-test="pdfBtn"]').click()
+cy.get('[data-test="pdfBtn_tab"]').click()
 cy.get('@open').should('have.been.calledOnce')
 
   })
