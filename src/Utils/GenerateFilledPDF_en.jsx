@@ -16,7 +16,7 @@ const GenerateFilledPDF = async function (btnType,formData,pagesKept) {
     //-------- Get PDF Fields by machine name ------------------
     const citizen = form.getRadioGroup('citizen');
     const eighteenYearsOld = form.getRadioGroup('eighteen_years');
-    const title =  form.getRadioGroup('salutation');
+    const title = form.getRadioGroup('salutation');
     const firstName = form.getTextField('first_name');
     const middleNames = form.getTextField('middle_names');
     const lastName = form.getTextField('last_name');
@@ -68,7 +68,7 @@ const GenerateFilledPDF = async function (btnType,formData,pagesKept) {
     middleNames.setText(formData.middle_name);
     lastName.setText(formData.last_name);
 
-    //Dropdown to checkbox/radio logic for suffix
+    //Current suffix
     if(formData.suffix){
         suffix.select(formData.suffix);
     }
@@ -81,7 +81,7 @@ const GenerateFilledPDF = async function (btnType,formData,pagesKept) {
     middleNames2.setText(formData.prev_middle_name);
     lastName2.setText(formData.prev_last_name);
 
-    //Dropdown to checkbox/radio logic for suffix
+    //Previous suffix
     if(formData.prev_suffix){
         suffix2.select(formData.prev_suffix);
     }
