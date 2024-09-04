@@ -185,7 +185,7 @@ cy.get('[data-test="nextBtn"]').click()
 
 cy.get('[data-test="addressConfirm"]').should('contain.text', 'Your Alabama mail-in registration form is complete and ready to print.')
 // * check that download opens in new window
-cy.get('[data-test="pdfBtn_tab"]').click()
+cy.get('[data-test="pdfBtnNewTab"]').click()
 
 cy.get('@open').should('have.been.calledOnce')
 
@@ -363,7 +363,7 @@ cy.get('[data-test="nextBtn"]').click()
 cy.get('[data-test="addressConfirm"]').should('contain.text', 'Your Alabama mail-in registration form is complete and ready to print.')
 
 // * check that download opens in new window
-cy.get('[data-test="pdfBtn_tab"]').click()
+cy.get('[data-test="pdfBtnNewTab"]').click()
 
 cy.get('@open').should('have.been.calledOnce')
 

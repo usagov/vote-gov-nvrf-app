@@ -45,7 +45,7 @@ function Delivery(props) {
 
                 <div className={'margin-top-2'} dangerouslySetInnerHTML= {{__html: deliveryBodyPartsSplit[0] }}/>
 
-                <Button data-test="pdfBtn_tab"
+                <Button data-test="pdfBtnNewTab"
                     onClick={() => {
                         GenerateFilledPDF('newTab', props.fieldData, props.stateData.nvrf_pages_list);
                         dataLayer.push({'NVRF_button_click': 'NVRF_button_pdf_tab'});
@@ -56,7 +56,7 @@ function Delivery(props) {
 
                 <div className={'margin-top-2'} dangerouslySetInnerHTML= {{__html: deliveryBodyPartsSplit[1] }}/>
 
-                <Button data-test="pdfBtn_download"
+                <Button data-test="pdfBtnDownload"
                     onClick={() => {
                         GenerateFilledPDF('download', props.fieldData, props.stateData.nvrf_pages_list);
                         dataLayer.push({'NVRF_button_click': 'NVRF_button_download'});
