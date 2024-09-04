@@ -9,12 +9,14 @@ function DateFields({ inputData, saveFieldData, dateFormat, fieldData }) {
         let year = fieldData.date_of_birth_year;
         let yearStart = year.slice(0, 2);
 
+        /* Comment out age validation for now
         let currentDate = new Date();
         let currentMonth = currentDate.getMonth();
         let currentDay = currentDate.getDate();
         let currentYear = currentDate.getFullYear();
         let age = currentYear - year - (currentMonth <= month && currentDay < day);
-        
+        */
+
         if (type === "all") {
           let dobValues = [
             month.length === 2,
@@ -27,8 +29,8 @@ function DateFields({ inputData, saveFieldData, dateFormat, fieldData }) {
             day >= 1,
             yearStart <= 20,
             yearStart >= 19,
-            age <= 120,
-            age >= 16
+            //age <= 120,
+            //age >= 16
           ];
 
           if (dobValues.includes(false)) {
@@ -50,13 +52,14 @@ function DateFields({ inputData, saveFieldData, dateFormat, fieldData }) {
           } else {
             return false
           }
-        } else if (type === "year") {
+        } //Removing age validation for now
+          /* else if (type === "year") {
           if (age > 110 || age < 17) {
             return true
           } else {
             return false
           }
-        }
+        } */
     };
 
     return (
@@ -138,7 +141,7 @@ function DateFields({ inputData, saveFieldData, dateFormat, fieldData }) {
                 required={true}
                 aria-invalid={false}
                 type="text"
-                pattern="19\d{2}|200\d{1}"
+                pattern="19\d{2}|20\d{2}"
                 inputMode="numeric"
                 minLength={4}
                 maxLength={4}
