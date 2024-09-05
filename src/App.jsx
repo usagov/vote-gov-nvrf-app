@@ -4,6 +4,8 @@ import PathSelection from 'Views/PathSelection.jsx';
 import MultiStepForm from 'Views/MultiStepForm.jsx';
 import {fetchData, fetchStaticData, sanitizeDOM} from 'Utils/JsonHelper.jsx';
 import { HelmetProvider } from "react-helmet-async";
+import loadPdf from './Utils/pdfLoader';
+
 
 const currentStateId = document.getElementById('root').getAttribute('data-stateId');
 const returnPath = document.getElementById('root').getAttribute('data-returnPath');
@@ -15,6 +17,16 @@ function App() {
   const [cards, setCards] = useState('');
   const [fieldContent, setFieldContent] = useState('')
   const [stringContent, setStringContent] = useState('')
+
+  const [pdfDoc, setPdfDoc] = useState(null);
+  const [form, setForm] = useState(null);
+
+  useEffect(() => {
+    loadPdf().then(({ pdfDoc, form }) => {
+      setPdfDoc(pdfDoc);
+      setForm(form);
+    });
+  }, []);
 
   useEffect(() => {
     fetchData("states.json", setStates);
@@ -146,6 +158,8 @@ function App() {
                     registrationPath={registrationPath}
                     getFormStep={getFormStep}
                     stringContent={stringContent}
+                    pdfDoc={pdfDoc}
+                    form={form}
                 />}
 
               {step >= 1 &&
