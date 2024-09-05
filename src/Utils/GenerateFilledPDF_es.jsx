@@ -1,18 +1,9 @@
-import { PDFDocument} from 'pdf-lib';
 import download from "downloadjs";
+import loadPdf from './pdfLoader';
 
 const GenerateFilledPDF = async function (btnType,formData,pagesKept) {
-    // Fetch the PDF with form fields
-    const lang = document.documentElement.lang;
-    //TEST SPANISH const lang = "es";
-    const locale = lang !== "en" ? `/${lang}` : "";
-    const formUrl = `/data${locale}/Federal_Voter_Registration_${lang}.pdf`;
-    const formPdfBytes = await fetch(formUrl).then(res => res.arrayBuffer())
-    // Load a PDF with form fields
-    const pdfDoc = await PDFDocument.load(formPdfBytes)
-
-    // Get the form containing all the fields
-    const form = pdfDoc.getForm()
+   // Fetch the PDF with form field
+   const { pdfDoc, form } = await loadPdf();
 
     //-------- Get PDF Fields by machine name ------------------
     const citizen = form.getDropdown('citizen'); //TEMP spanish condition field type
