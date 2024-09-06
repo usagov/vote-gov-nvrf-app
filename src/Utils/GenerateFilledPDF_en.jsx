@@ -1,22 +1,14 @@
-import { PDFDocument} from 'pdf-lib';
 import download from "downloadjs";
+import loadPdf from './pdfLoader';
 
 const GenerateFilledPDF = async function (btnType,formData,pagesKept) {
-    // Fetch the PDF with form fields
-    const lang = document.documentElement.lang;
-    const locale = lang !== "en" ? `/${lang}` : "";
-    const formUrl = `/data${locale}/Federal_Voter_Registration_${lang}.pdf`;
-    const formPdfBytes = await fetch(formUrl).then(res => res.arrayBuffer())
-    // Load a PDF with form fields
-    const pdfDoc = await PDFDocument.load(formPdfBytes)
-
-    // Get the form containing all the fields
-    const form = pdfDoc.getForm()
+    // Fetch the PDF with form field
+    const { pdfDoc, form } = await loadPdf();
 
     //-------- Get PDF Fields by machine name ------------------
     const citizen = form.getRadioGroup('citizen');
     const eighteenYearsOld = form.getRadioGroup('eighteen_years');
-    const title =  form.getRadioGroup('salutation');
+    const title = form.getRadioGroup('salutation');
     const firstName = form.getTextField('first_name');
     const middleNames = form.getTextField('middle_names');
     const lastName = form.getTextField('last_name');
@@ -68,7 +60,7 @@ const GenerateFilledPDF = async function (btnType,formData,pagesKept) {
     middleNames.setText(formData.middle_name);
     lastName.setText(formData.last_name);
 
-    //Dropdown to checkbox/radio logic for suffix
+    //Current suffix
     if(formData.suffix){
         suffix.select(formData.suffix);
     }
@@ -81,7 +73,7 @@ const GenerateFilledPDF = async function (btnType,formData,pagesKept) {
     middleNames2.setText(formData.prev_middle_name);
     lastName2.setText(formData.prev_last_name);
 
-    //Dropdown to checkbox/radio logic for suffix
+    //Previous suffix
     if(formData.prev_suffix){
         suffix2.select(formData.prev_suffix);
     }

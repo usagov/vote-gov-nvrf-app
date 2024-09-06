@@ -4,11 +4,11 @@ import PathSelection from 'Views/PathSelection.jsx';
 import MultiStepForm from 'Views/MultiStepForm.jsx';
 import {fetchData, fetchStaticData, sanitizeDOM} from 'Utils/JsonHelper.jsx';
 import { HelmetProvider } from "react-helmet-async";
-import {getFieldValue} from "Utils/fieldParser.jsx";
+import loadPdf from './Utils/pdfLoader';
+
 
 const currentStateId = document.getElementById('root').getAttribute('data-stateId');
 const returnPath = document.getElementById('root').getAttribute('data-returnPath');
-const privacyPath = document.getElementById('root').getAttribute('data-privacyPath');
 
 function App() {
   const [states, setStates] = useState('');
@@ -17,6 +17,16 @@ function App() {
   const [cards, setCards] = useState('');
   const [fieldContent, setFieldContent] = useState('')
   const [stringContent, setStringContent] = useState('')
+
+  const [pdfDoc, setPdfDoc] = useState(null);
+  const [form, setForm] = useState(null);
+
+  useEffect(() => {
+    loadPdf().then(({ pdfDoc, form }) => {
+      setPdfDoc(pdfDoc);
+      setForm(form);
+    });
+  }, []);
 
   useEffect(() => {
     fetchData("states.json", setStates);
@@ -87,7 +97,9 @@ function App() {
   };
 
   // Only render the markup if the data is loaded.
-  if (states && content && navContent && fieldContent && stringContent) {
+  if (states && cards && content && navContent && fieldContent && stringContent) {
+    // Get NVRF footer card
+    const cardFooter = cards.find(item => item.uuid === "5922e06c-ac2f-475d-ab10-abfdeb65de43");
 
     const statesList = []
     for (let i = 0; i < states.length; i++) {
@@ -146,17 +158,18 @@ function App() {
                     registrationPath={registrationPath}
                     getFormStep={getFormStep}
                     stringContent={stringContent}
+                    pdfDoc={pdfDoc}
+                    form={form}
                 />}
 
               {step >= 1 &&
                 <div className="text-base margin-top-5 maxw-tablet margin-x-auto">
-                  <p>{getFieldValue(content, "2c597df4-53b6-4ef5-8301-7817b04e1099", "omb_number")}
-                    <br/>
+                  <p>
                     {lastUpdatedText.replace("@state_name", stateData.name)}
-                    <span dangerouslySetInnerHTML= {{__html: lastUpdatedSanitized}}/>
-                 </p>
-                  {privacyPath && (
-                      <p><a href={privacyPath} target="_blank">{stringContent.privacyPolicy}</a></p>
+                    <span dangerouslySetInnerHTML={{__html: lastUpdatedSanitized}}/>
+                  </p>
+                  {cardFooter && (
+                      <div dangerouslySetInnerHTML={{__html: sanitizeDOM(cardFooter.body)}}></div>
                   )}
                 </div>
               }

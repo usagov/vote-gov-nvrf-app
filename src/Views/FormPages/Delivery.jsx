@@ -1,5 +1,6 @@
 import { Button, Icon, Grid } from '@trussworks/react-uswds';
-import GenerateFilledPDF from 'Utils/GenerateFilledPDF';
+import GenerateFilledPDF_en from 'Utils/GenerateFilledPDF_en';
+import GenerateFilledPDF_es from 'Utils/GenerateFilledPDF_es';
 import { sanitizeDOM } from 'Utils/JsonHelper';
 import {renderToStaticMarkup} from "react-dom/server";
 
@@ -7,6 +8,8 @@ function Delivery(props) {
     const content = props.content;
     const state = props.stateData;
     const stringContent = props.stringContent
+    const lang = document.documentElement.lang;
+    const GenerateFilledPDF = (lang == "es") ? GenerateFilledPDF_es : GenerateFilledPDF_en;
 
     // Add A/B Message randomization.
     // example: const reminderMessage = randomProperty(content.reminder_messages);
@@ -45,13 +48,22 @@ function Delivery(props) {
 
                 <div className={'margin-top-2'} dangerouslySetInnerHTML= {{__html: deliveryBodyPartsSplit[0] }}/>
 
-                <Button data-test="pdfBtn" onClick={() => GenerateFilledPDF('newTab', props.fieldData, props.stateData.nvrf_pages_list)} type="submit">
+                <Button data-test="pdfBtnNewTab"
+                    onClick={() => {
+                        GenerateFilledPDF('newTab', props.fieldData, props.stateData.nvrf_pages_list);
+                        dataLayer.push({'NVRF_button_click': 'NVRF_button_pdf_tab'});
+                    }}
+                type="submit">
                     <span>{stringContent.newTab}</span>
                 </Button>
 
                 <div className={'margin-top-2'} dangerouslySetInnerHTML= {{__html: deliveryBodyPartsSplit[1] }}/>
 
-                <Button onClick={() => GenerateFilledPDF('download', props.fieldData, props.stateData.nvrf_pages_list)} type="submit">
+                <Button data-test="pdfBtnDownload"
+                    onClick={() => {
+                        GenerateFilledPDF('download', props.fieldData, props.stateData.nvrf_pages_list);
+                        dataLayer.push({'NVRF_button_click': 'NVRF_button_download'});
+                    }} type="submit">
                     <span>{stringContent.download}</span>
                 </Button>
 
