@@ -34,7 +34,10 @@ function Eligibility(props) {
     },[]);
 
     useEffect(() => {
-        dataLayer.push({'NVRF_page_title': title});
+        //only push if the title is set
+        if (title != ''){
+            dataLayer.push({'NVRF_page_title': title});
+        }
     },[title]);
     // End Analytics
 
