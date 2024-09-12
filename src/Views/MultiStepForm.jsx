@@ -22,7 +22,9 @@ function MultiStepForm(props) {
     const mainContent = content.find(item => item.uuid ==="2c597df4-53b6-4ef5-8301-7817b04e1099");
     const mainContentTitle = sanitizeDOM(mainContent.title);
     const mainContentBody = sanitizeDOM(mainContent.body);
+
     const scrollToTop = document.getElementById('scroll-to-top');
+    const lang = document.documentElement.lang;
 
     //Field data controls
     const [fieldData, setFieldData] = useState({
@@ -374,7 +376,7 @@ function MultiStepForm(props) {
             </Form>
 
             {/* Load Touchpoints feedback form */}
-            {step === 6 &&
+            {step === 6 && lang === 'en' &&
                 <>
                     <div id="touchpoints-form-embed" className={'margin-top-6'}></div>
                     <Helmet>

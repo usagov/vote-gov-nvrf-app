@@ -43,7 +43,7 @@
             "alert": "No se está registrando con un cambio de dirección, por lo que estos campos están en blanco."
         },
         "mailing_address": {
-            "label": "Mailing address",
+            "label": "dirección postal",
             "alert": "Su dirección de correo postal es la misma que su domicilio, por lo que estos campos se han dejado en blanco."
         },
         "id_label": {
