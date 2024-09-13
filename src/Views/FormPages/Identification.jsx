@@ -67,7 +67,7 @@ function Identification(props){
                             onInput={(e) => {e.target.setCustomValidity(''); toggleError(e, false)}}
                         >
                         <React.Fragment key=".0">
-                            <option key="default" value="">{"Select Identification"}</option>
+                            <option key="default" value="">{idTypeField.options[0].key}</option>
                             {(driverIDFieldReq) && <option key="driver-id-num" value="driver-id-num">{driverLicenseField.label}</option>}
                             {(stateIDFieldDReq) && <option key="state-id-num" value="state-id-num">{stateIDField.label}</option>}
                             {(ssnFullFieldReq) && <option key="ssn-full" value="ssn-full">{ssnFullField.label}</option>}
