@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import {Button, CardGroup, Card, CardHeader, CardBody, CardFooter, Icon} from '@trussworks/react-uswds';
 import BackButton from "Components/Buttons/BackButton"
 import {sanitizeDOM} from "Utils/JsonHelper";
@@ -14,6 +15,17 @@ function PathSelection(props) {
     const introContentBody = sanitizeDOM(introContent.body);
     const cardOneBody = sanitizeDOM(cardOne.body);
     const cardTwoBody = sanitizeDOM(cardTwo.body);
+
+    //Start Analytics
+    const [title, setTitle] = useState('');
+    useEffect(() => {
+        setTitle(stringContent.analyticsPathSelectionTitle);
+    },[]);
+
+    useEffect(() => {
+        dataLayer.push({'NVRF_page_title': title});
+    },[title]);
+    // End Analytics
 
     return (
         <>

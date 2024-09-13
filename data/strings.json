@@ -15,5 +15,6 @@
     "download": "Download your mail-in form",
     "mailDeadlineLabel": "Mail-in registration deadline:",
     "idSelectionAriaLabel": "Choose identification type",
-    "analyticsEligibilityTitle": "Before you get started"
+    "analyticsEligibilityTitle": "Before you get started",
+    "analyticsPathSelectionTitle": "Path Selection"
 }
