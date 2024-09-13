@@ -165,8 +165,7 @@ function App() {
               {step >= 1 &&
                 <div className="text-base margin-top-5 maxw-tablet margin-x-auto">
                   <p>
-                    {lastUpdatedText.replace("@state_name", stateData.name)}
-                    <span dangerouslySetInnerHTML={{__html: lastUpdatedSanitized}}/>
+                    {lastUpdatedText.replace("@state_name", stateData.name)} <span dangerouslySetInnerHTML={{__html: lastUpdatedSanitized}}/>
                   </p>
                   {cardFooter && (
                       <div dangerouslySetInnerHTML={{__html: sanitizeDOM(cardFooter.body)}}></div>
