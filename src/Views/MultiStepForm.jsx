@@ -379,7 +379,7 @@ function MultiStepForm(props) {
                         onClick={() => {
                             nextStepValidation(),
                             focusError('nvrf'),
-                            pushPageTitleDataLayer('test title') }}
+                            pushPageTitleDataLayer(navContent["step_label_"+step]) }}
                     text={nextButtonText(step)}/>
                 )}
             </Form>
