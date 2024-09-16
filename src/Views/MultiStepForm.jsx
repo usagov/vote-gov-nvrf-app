@@ -102,6 +102,10 @@ function MultiStepForm(props) {
         }
     }
 
+    const pushPageTitleDataLayer = (title) => {
+        dataLayer.push({'NVRF_page_title': title });
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault(e);
     }
@@ -371,10 +375,14 @@ function MultiStepForm(props) {
                 }
 
                 {step != 6 && (
-                    <NextButton stringContent={stringContent} type={'submit'} onClick={() => {nextStepValidation(), focusError('nvrf')}} text={nextButtonText(step)}/>
+                    <NextButton stringContent={stringContent} type={'submit'}
+                        onClick={() => {
+                            nextStepValidation(),
+                            focusError('nvrf'),
+                            pushPageTitleDataLayer('test title') }}
+                    text={nextButtonText(step)}/>
                 )}
             </Form>
-
             {/* Load Touchpoints feedback form */}
             {step === 6 && lang === 'en' &&
                 <>
