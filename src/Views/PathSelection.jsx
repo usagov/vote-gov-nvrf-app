@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import {Button, CardGroup, Card, CardHeader, CardBody, CardFooter, Icon} from '@trussworks/react-uswds';
 import BackButton from "Components/Buttons/BackButton"
 import {sanitizeDOM} from "Utils/JsonHelper";
@@ -14,6 +15,17 @@ function PathSelection(props) {
     const introContentBody = sanitizeDOM(introContent.body);
     const cardOneBody = sanitizeDOM(cardOne.body);
     const cardTwoBody = sanitizeDOM(cardTwo.body);
+
+    //Start Analytics
+    const [title, setTitle] = useState('');
+    useEffect(() => {
+        setTitle(stringContent.analyticsPathSelectionTitle);
+    },[]);
+
+    useEffect(() => {
+        dataLayer.push({'NVRF_page_title': title});
+    },[title]);
+    // End Analytics
 
     return (
         <>
@@ -35,7 +47,12 @@ function PathSelection(props) {
                     </CardHeader>
                     <CardBody dangerouslySetInnerHTML= {{__html: cardOneBody}} />
                     <CardFooter className="margin-top-3">
-                        <Button data-test="pathBtn" type="submit" onClick={() => {props.getRegPath("update"), props.handleNext()}}>
+                        <Button data-test="pathBtn" type="submit"
+                            onClick={() => {
+                                props.getRegPath("update"),
+                                props.handleNext(),
+                                dataLayer.push({'NVRF_path': 'update_registration_path'})
+                            }}>
                             <span>{cardOne.button_label}</span>
                             <Icon.ArrowForward aria-label={stringContent.forwardIcon} style={{margin: "-3px -3px -3px 4px"}}/>
                         </Button>
@@ -53,7 +70,12 @@ function PathSelection(props) {
                     </CardHeader>
                     <CardBody dangerouslySetInnerHTML= {{__html: cardTwoBody}}/>
                     <CardFooter className="margin-top-3">
-                        <Button data-test="pathBtn" type="submit" onClick={() => {props.getRegPath("new"),  props.handleNext()}}>
+                        <Button data-test="pathBtn" type="submit"
+                            onClick={() => {
+                                props.getRegPath("new"),
+                                props.handleNext(),
+                                dataLayer.push({'NVRF_path': 'new_registration_path'})
+                            }}>
                             <span>{cardTwo.button_label}</span>
                             <Icon.ArrowForward aria-label={stringContent.forwardIcon} style={{margin: "-3px -3px -3px 4px"}}/>
                         </Button>

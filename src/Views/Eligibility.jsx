@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import {Checkbox, Label, Form} from '@trussworks/react-uswds';
 import BackButton from "Components/Buttons/BackButton"
 import NextButton from "Components/Buttons/NextButton";
@@ -25,6 +26,20 @@ function Eligibility(props) {
             <li dangerouslySetInnerHTML= {{__html: stateContent.postmarked_mail_deadline || stateContent.received_mail_deadline }}/>
         </ul>
     );
+
+    //Start Analytics
+    const [title, setTitle] = useState('');
+    useEffect(() => {
+        setTitle(stringContent.analyticsEligibilityTitle);
+    },[]);
+
+    useEffect(() => {
+        //only push if the title is set
+        if (title != ''){
+            dataLayer.push({'NVRF_page_title': title});
+        }
+    },[title]);
+    // End Analytics
 
     return (
         <>

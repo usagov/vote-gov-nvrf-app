@@ -14,5 +14,7 @@
     "select": "-Elija-",
     "download": "Descargue el formulario",
     "mailDeadlineLabel": "Plazo de registro por correo:",
-    "idSelectionAriaLabel": "Choose identification type"
+    "idSelectionAriaLabel": "Choose identification type",
+    "analyticsEligibilityTitle": "Before you get started",
+    "analyticsPathSelectionTitle": "Path Selection"
 }
