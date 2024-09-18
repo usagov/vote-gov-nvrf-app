@@ -14,5 +14,11 @@
     "select": "-Elija-",
     "download": "Descargue el formulario",
     "mailDeadlineLabel": "Plazo de registro por correo:",
-    "idSelectionAriaLabel": "Choose identification type"
+    "idSelectionAriaLabel": "Choose identification type",
+    "analyticsStepLabel1": "Personal information page",
+    "analyticsStepLabel2": "Address and location page",
+    "analyticsStepLabel3": "Identification page",
+    "analyticsStepLabel4": "Political party page",
+    "analyticsStepLabel5": "Confirmation page",
+    "analyticsStepLabel6": "PDF Delivery page"
 }

@@ -103,7 +103,7 @@ function MultiStepForm(props) {
     }
 
     const pushPageTitleDataLayer = (title) => {
-        dataLayer.push({'NVRF_page_title': title });
+        dataLayer.push({'NVRF_page_title': title, 'event': 'NVRF_STEP_SUBMIT' });
     }
 
     const handleSubmit = (e) => {
@@ -269,7 +269,12 @@ function MultiStepForm(props) {
                 </>
             }
 
-            <Form autoComplete="off" id="nvrf" className={'margin-top-5'} style={{ maxWidth:'none' }} onSubmit={(e) => {handleSubmit(e), handleNext()}}>
+            <Form autoComplete="off" id="nvrf" className={'margin-top-5'} style={{ maxWidth:'none' }}
+                onSubmit={(e) => {
+                    handleSubmit(e), handleNext(),
+                    pushPageTitleDataLayer(stringContent["analyticsStepLabel"+step])
+                }}
+            >
                 {step === 1 &&
                     <PersonalInfo
                         state={props.state}
@@ -378,8 +383,7 @@ function MultiStepForm(props) {
                     <NextButton stringContent={stringContent} type={'submit'}
                         onClick={() => {
                             nextStepValidation(),
-                            focusError('nvrf'),
-                            pushPageTitleDataLayer(navContent["step_label_"+step]) }}
+                            focusError('nvrf') }}
                     text={nextButtonText(step)}/>
                 )}
             </Form>
