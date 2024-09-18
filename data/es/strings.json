@@ -20,5 +20,7 @@
     "analyticsStepLabel3": "Identification page",
     "analyticsStepLabel4": "Political party page",
     "analyticsStepLabel5": "Confirmation page",
-    "analyticsStepLabel6": "PDF Delivery page"
+    "analyticsStepLabel6": "PDF Delivery page",
+    "analyticsEligibilityTitle": "Before you get started",
+    "analyticsPathSelectionTitle": "Path Selection"
 }
