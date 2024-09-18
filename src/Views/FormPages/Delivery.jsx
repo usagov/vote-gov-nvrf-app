@@ -51,7 +51,7 @@ function Delivery(props) {
                 <Button data-test="pdfBtnNewTab"
                     onClick={() => {
                         GenerateFilledPDF('newTab', props.fieldData, props.stateData.nvrf_pages_list);
-                        dataLayer.push({'NVRF_button_click': 'NVRF_button_pdf_tab'});
+                        dataLayer.push({'NVRF_button': stringContent.analyticsPDFTabButton, 'event': "NVRF_PDF_DElIVERY"});
                     }}
                 type="submit">
                     <span>{stringContent.newTab}</span>
@@ -62,7 +62,7 @@ function Delivery(props) {
                 <Button data-test="pdfBtnDownload"
                     onClick={() => {
                         GenerateFilledPDF('download', props.fieldData, props.stateData.nvrf_pages_list);
-                        dataLayer.push({'NVRF_button_click': 'NVRF_button_download'});
+                        dataLayer.push({'NVRF_button': stringContent.analyticsPDFDownloadButton, 'event': "NVRF_PDF_DElIVERY"});
                     }} type="submit">
                     <span>{stringContent.download}</span>
                 </Button>

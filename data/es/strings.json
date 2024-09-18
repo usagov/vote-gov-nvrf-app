@@ -22,5 +22,7 @@
     "analyticsStepLabel5": "Confirmation page",
     "analyticsStepLabel6": "PDF Delivery page",
     "analyticsEligibilityTitle": "Before you get started page",
-    "analyticsPathSelectionTitle": "Path Selection page"
+    "analyticsPathSelectionTitle": "Path Selection page",
+    "analyticsPDFTabButton": "NVRF_button_pdf_tab",
+    "analyticsPDFDownloadButton": "NVRF_button_download"
 }
