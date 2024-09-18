@@ -27,20 +27,6 @@ function Eligibility(props) {
         </ul>
     );
 
-    //Start Analytics
-    const [title, setTitle] = useState('');
-    useEffect(() => {
-        setTitle(stringContent.analyticsEligibilityTitle);
-    },[]);
-
-    useEffect(() => {
-        //only push if the title is set
-        if (title != ''){
-            dataLayer.push({'NVRF_page_title': title});
-        }
-    },[title]);
-    // End Analytics
-
     return (
         <>
             {returnPath && (
@@ -57,7 +43,8 @@ function Eligibility(props) {
 
         <Form id="eligibility" autoComplete="off" className={'margin-top-2'} style={{maxWidth: 'none'}}
               onSubmit={(e) => {
-                  e.preventDefault(), props.handleNext()
+                  e.preventDefault(), props.handleNext(),
+                  dataLayer.push({'NVRF_page_title': stringContent.analyticsEligibilityTitle, 'event': 'NVRF_STEP_SUBMIT' })
               }}>
             <div className="input-parent" data-test="checkBox">
                 <Label className={'margin-top-1'}>
