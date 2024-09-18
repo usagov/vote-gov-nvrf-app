@@ -26,6 +26,15 @@ function MultiStepForm(props) {
     const scrollToTop = document.getElementById('scroll-to-top');
     const lang = document.documentElement.lang;
 
+    //Analytics values - do not change or translate
+    const analyticsLabels = {
+        stepLabel1 : "Personal information page",
+        stepLabel2 : "Address and location page",
+        stepLabel3 : "Identification page",
+        stepLabel4 : "Political party page",
+        stepLabel5 : "Confirmation page",
+        stepLabel6 : "PDF Delivery page",
+    }
     //Field data controls
     const [fieldData, setFieldData] = useState({
         title:'', first_name: '', middle_name: '', last_name: '', suffix:'',
@@ -272,7 +281,7 @@ function MultiStepForm(props) {
             <Form autoComplete="off" id="nvrf" className={'margin-top-5'} style={{ maxWidth:'none' }}
                 onSubmit={(e) => {
                     handleSubmit(e), handleNext(),
-                    pushPageTitleDataLayer(stringContent["analyticsStepLabel"+step])
+                    pushPageTitleDataLayer(analyticsLabels["stepLabel"+step])
                 }}
             >
                 {step === 1 &&

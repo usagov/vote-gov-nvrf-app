@@ -16,6 +16,11 @@ function PathSelection(props) {
     const cardOneBody = sanitizeDOM(cardOne.body);
     const cardTwoBody = sanitizeDOM(cardTwo.body);
 
+    //Analytics values - do not change or translate
+    const analyticsLabels = {
+        pathSelectionTitle: "Path Selection page",
+    }
+
     return (
         <>
             <BackButton stringContent={stringContent} type={'button'} onClick={props.handlePrev} text={navContent.back.eligibility_req}/>
@@ -40,7 +45,7 @@ function PathSelection(props) {
                             onClick={() => {
                                 props.getRegPath("update"),
                                 props.handleNext(),
-                                dataLayer.push({'NVRF_path': 'update_registration_path', 'NVRF_page_title': stringContent.analyticsPathSelectionTitle, 'event': 'NVRF_STEP_SUBMIT'})
+                                dataLayer.push({'NVRF_path': 'update_registration_path', 'NVRF_page_title': analyticsLabels.pathSelectionTitle, 'event': 'NVRF_STEP_SUBMIT'})
                             }}>
                             <span>{cardOne.button_label}</span>
                             <Icon.ArrowForward aria-label={stringContent.forwardIcon} style={{margin: "-3px -3px -3px 4px"}}/>
@@ -63,7 +68,7 @@ function PathSelection(props) {
                             onClick={() => {
                                 props.getRegPath("new"),
                                 props.handleNext(),
-                                dataLayer.push({'NVRF_path': 'new_registration_path', 'NVRF_page_title': stringContent.analyticsPathSelectionTitle, 'event': 'NVRF_STEP_SUBMIT'})
+                                dataLayer.push({'NVRF_path': 'new_registration_path', 'NVRF_page_title': analyticsLabels.pathSelectionTitle, 'event': 'NVRF_STEP_SUBMIT'})
                             }}>
                             <span>{cardTwo.button_label}</span>
                             <Icon.ArrowForward aria-label={stringContent.forwardIcon} style={{margin: "-3px -3px -3px 4px"}}/>

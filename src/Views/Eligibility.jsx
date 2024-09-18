@@ -21,6 +21,11 @@ function Eligibility(props) {
     const contentBodyParts = contentBody.split("@reg_confirm_eligibility");
     const eligibilityInstructions = sanitizeDOM(eligibility.instructions);
 
+    //Analytics values - do not change or translate
+    const analyticsLabels = {
+        eligibilityTitle: "Before you get started page",
+    }
+
     const mailDeadline = () => (
         <ul>
             <li dangerouslySetInnerHTML= {{__html: stateContent.postmarked_mail_deadline || stateContent.received_mail_deadline }}/>
@@ -44,7 +49,7 @@ function Eligibility(props) {
         <Form id="eligibility" autoComplete="off" className={'margin-top-2'} style={{maxWidth: 'none'}}
               onSubmit={(e) => {
                   e.preventDefault(), props.handleNext(),
-                  dataLayer.push({'NVRF_page_title': stringContent.analyticsEligibilityTitle, 'event': 'NVRF_STEP_SUBMIT' })
+                  dataLayer.push({'NVRF_page_title': analyticsLabels.eligibilityTitle, 'event': 'NVRF_STEP_SUBMIT' })
               }}>
             <div className="input-parent" data-test="checkBox">
                 <Label className={'margin-top-1'}>
