@@ -3,11 +3,17 @@
   "private": true,
   "version": "0.1.0",
   "type": "commonjs",
+  "config": {
+    "pages": {
+      "baseurl": "BASEURL"
+    }
+    
+  },
   "scripts": {
     "install": "vite build",
     "start": "vite",
     "dev": "vite",
-    "pages": "vite build --base=/${BASEURL}",
+    "pages": "vite build --base=/$npm_package_config_pages_baseurl",
     "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
