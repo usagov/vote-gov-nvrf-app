@@ -6,6 +6,7 @@ import {fetchData, fetchStaticData, sanitizeDOM} from 'Utils/JsonHelper.jsx';
 import { HelmetProvider } from "react-helmet-async";
 import loadPdf from './Utils/pdfLoader';
 
+console.log(BASEURL);
 
 const currentStateId = document.getElementById('root').getAttribute('data-stateId');
 const returnPath = document.getElementById('root').getAttribute('data-returnPath');
