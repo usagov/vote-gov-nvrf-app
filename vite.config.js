@@ -25,7 +25,7 @@ export default defineConfig(({ mode }) => {
       }
     },
     define: {
-      BASEURL: JSON.stringify(env),
+      BASEURL: JSON.stringify(env.BASEURL),
     },
   }
 })
