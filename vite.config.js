@@ -7,7 +7,7 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [react()],
-    base: env.BASEURL,
+    base: './',
     build: {
       rollupOptions: {
         output: {
@@ -25,7 +25,7 @@ export default defineConfig(({ mode }) => {
       }
     },
     define: {
-      BASEURL: JSON.stringify(env.BASEURL),
+      BASEURL: JSON.stringify(env.BASEURL) || [],
     },
   }
 })
