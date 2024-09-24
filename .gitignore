@@ -27,3 +27,6 @@ _site
 # Ignore Cypress Reports
 /testing/cypress/reports
 /testing/cypress/screenshots
+
+# Ignore env file
+.env
