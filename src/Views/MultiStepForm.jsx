@@ -268,7 +268,7 @@ function MultiStepForm(props) {
 
     return (
         <>
-            {step != 6 && <BackButton stringContent={stringContent} type={'button'} onClick={handlePrev} text={backButtonText(step)}/>}
+            {step != 6 && <BackButton stringContent={stringContent} type={'button'} data-test="backBtn" onClick={handlePrev} text={backButtonText(step)}/>}
 
             <ProgressBar step={step} content={navContent} handleGoBack={handleGoBackSteps} setStep={setStep} />
             <div className={'margin-top-8 maxw-tablet margin-x-auto'}>
