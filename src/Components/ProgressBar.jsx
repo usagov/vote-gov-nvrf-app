@@ -40,10 +40,10 @@ function ProgressBar(props) {
             <StepIndicator centered className="margin-top-4" headingLevel="h2">
 
                 {Object.keys(stepMessage)
-                  .map((step) => parseInt(step)) // step is originally a string, so convert to int 
+                  .map((step) => parseInt(step)) // step is originally a string, so convert to int
                   .map((step) => (
 
-                  <StepIndicatorStep key={step} className={styles(step)} label={props.content[`step_label_${step}`]} status={stepProgress(step)}
+                  <StepIndicatorStep key={step} className={styles(step)} label={props.content[`step_label_${step}`]} data-analytics={"Step indicator "+ props.content[`step_label_${step}`]} status={stepProgress(step)}
                   tabIndex={stepProgress(step) === "complete" ? 0 : null}
                   onKeyDown={(e) => {if (e.key === "Enter" && stepProgress(step) === "complete") {setStep(step)}}}
                   onClick={stepProgress(step) === "complete" && props.step !== finalStep ? handleGoBackSteps(props.step - step) : null}/>
