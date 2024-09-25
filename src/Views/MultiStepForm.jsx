@@ -385,6 +385,8 @@ function MultiStepForm(props) {
                         deliveryButtonSelected = {deliveryButtonSelected}
                         handleClickDeliveryButton = {handleClickDeliveryButton}
                         stringContent={stringContent}
+                        pdfDoc={props.pdfDoc}
+                        form={props.form}
                     />
                 }
 
