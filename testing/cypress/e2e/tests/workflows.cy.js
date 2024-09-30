@@ -3,11 +3,8 @@
 const data = require("../../fixtures/data.json");
 
 describe('Verify Flow Within Form', () => {
-  beforeEach('Complete Form', () => {
-    // sign in and complete form 
-    cy.signin(Cypress.env('username'), Cypress.env('password'))
-    // cy.get('[data-test="dropDown"]').select(data.inPerson)
-    // cy.get('[data-test="nextBtn"]').click()
+  beforeEach('login to app', () => {
+    cy.visit('/')
     cy.completeForm()
   })
   it('Verify Back Buttons', () => {

@@ -2,11 +2,9 @@
 /// <reference types="cypress" />
 const data = require("../../fixtures/data.json");
 
-describe('Validate In Person', () => {
+describe('Validate Online', () => {
   beforeEach('login to app', () => {
-    cy.signin(Cypress.env('username'), Cypress.env('password'))
-    // cy.get('[data-test="dropDown"]').select(data.inPerson)
-    // cy.get('[data-test="nextBtn"]').click()
+    cy.visit('/')
   })
 it('Validate Update Registration', () => {
 // go to next page
@@ -63,7 +61,6 @@ cy.get('[data-test="prevFirstName"]').should('have.value', data.personalInformat
 cy.get('[data-test="prevMiddleName"]').should('have.value', data.personalInformationMiddle)
 cy.get('[data-test="prevLastName"]').should('have.value', data.personalInformationLast)
 
-// * check date of birth fields
 cy.get('[data-test="dobMonth"]').type(data.personalInformationMonth)
 cy.get('[data-test="dobDay"]').type(data.personalInformationDay)
 cy.get('[data-test="dobYear"]').type(data.personalInformationYear)
@@ -73,6 +70,7 @@ cy.get('[data-test="dobDay"]').should('have.value', data.personalInformationDay)
 cy.get('[data-test="dobYear"]').should('have.value', data.personalInformationYear)
 
 cy.get('[data-test="nextBtn"]').click()
+
 
 // address and location page
 // * check that user can not move forward without filling out fields
@@ -114,30 +112,27 @@ cy.get('[data-test="checkBox"]').then(checkBox => {
 })
 
 cy.get('[data-test="prevStreet"]').type(data.addressStreet)
-cy.get('[data-test="prevAptNumber"]').type(data.addressApt)
 cy.get('[data-test="prevCity"]').type(data.addressTown)
 cy.get('[data-test="prevZip"]').type(data.addressZip)
   // Validate text box has correct text
 cy.get('[data-test="prevStreet"]').should('have.value', data.addressStreet)
-cy.get('[data-test="prevAptNumber"]').should('have.value', data.addressApt)
 cy.get('[data-test="prevCity"]').should('have.value', data.addressTown)
 cy.get('[data-test="prevZip"]').should('have.value', data.addressZip)
+// * uncheck recently moved block
+cy.get('[data-test="checkBox"]').then(checkBox => {
+  cy.get(checkBox[0]).click({force: true})
+})
 
-  // * uncheck recently moved block
-  cy.get('[data-test="checkBox"]').then(checkBox => {
-    cy.get(checkBox[0]).click({force: true})
-  })
+// * check does not have permanent option
+cy.get('[data-test="checkBox"]').then(checkBox => {
+  cy.get(checkBox[1]).click({force: true})
+})
 
-  // * check does not have permanent option
-  cy.get('[data-test="checkBox"]').then(checkBox => {
-    cy.get(checkBox[1]).click({force: true})
-  })
-
-    cy.get('[data-testid="Select"]').select(data.addressState)
-    // Validate text box has correct text for mailing address
-    cy.get('[data-test="mailStreet"]').should('have.value', data.addressStreet)
-    cy.get('[data-test="mailCity"]').should('have.value', data.addressTown)
-    cy.get('[data-test="mailZip"]').should('have.value', data.addressZip)
+  cy.get('[data-testid="Select"]').select(data.addressState)
+  // Validate text box has correct text for mailing address
+cy.get('[data-test="mailStreet"]').should('have.value', data.addressStreet)
+cy.get('[data-test="mailCity"]').should('have.value', data.addressTown)
+cy.get('[data-test="mailZip"]').should('have.value', data.addressZip)
 
 cy.get('[data-test="nextBtn"]').click()
 
@@ -151,8 +146,15 @@ cy.get('[data-test="dropDown"]').select("State driver's license number")
 cy.get('[data-test="driverId"]').type(data.idNumber)
 
 // Validate that fields have correct data
-cy.get('[data-test="driverId"]').should('have.value', data.idNumber)
+  cy.get('[data-test="driverId"]').should('have.value', data.idNumber)
+// * state id number
+cy.get('[data-test="dropDown"]').then(dropDown => {
+  cy.get(dropDown[0]).select("State non-driver ID")
+})
+cy.get('[data-test="stateId"]').type(data.idNumber)
 
+// Validate that fields have correct data
+  cy.get('[data-test="stateId"]').should('have.value', data.idNumber)
 // * social security number (last 4 digits)
 cy.get('[data-test="dropDown"]').then(dropDown => {
   cy.get(dropDown[0]).select("Social security number (last 4 digits)")
@@ -173,7 +175,7 @@ cy.get('[data-test="nextBtn"]').click()
   // political party
   cy.get('[data-test="politicalParty"]').type(data.politicalParty)
 
-cy.get('[data-test="nextBtn"]').click()
+  cy.get('[data-test="nextBtn"]').click()
 
 // confirmation page
 cy.get('[data-test="confirm"]').click({force: true})
@@ -182,11 +184,16 @@ cy.get('[data-test="nextBtn"]').click()
 cy.get('[data-test="addressConfirm"]').should('contain.text', 'Your Alabama mail-in registration form is complete and ready to print.')
 // * check that download opens in new window
 cy.get('[data-test="pdfBtnNewTab"]').click()
+
 cy.get('@open').should('have.been.calledOnce')
 
 })
 
 it('Validate New Registration', () => {
+      // check that state link opens in new tab
+  // * will need to add this back in when links are updated
+  // cy.get('[class="usa-link usa-link--external"]').should('have.attr','target','_blank')
+
 // go to next page
 cy.get('[data-test="nextBtn"]').click()
 
@@ -197,9 +204,8 @@ cy.get('[data-test="errorText"]').should('contain.text', 'Confirm eligibility to
 
 // verify user CAN move forward after checking box
 cy.get('[data-test="checkBox"]').click()
-// todo: come back when fixed
+// todo: come back after fixed
 // cy.get('[data-test="errorText"]').should('not.exist')
-
 
 cy.get('[data-test="nextBtn"]').click()
 
@@ -270,13 +276,12 @@ cy.get('[data-test="mailZip"]').type(data.addressZip)
 cy.get('[data-test="mailStreet"]').should('have.value', data.addressStreet)
 cy.get('[data-test="mailCity"]').should('have.value', data.addressTown)
 cy.get('[data-test="mailZip"]').should('have.value', data.addressZip)
-
 // * uncheck mailing address block
 cy.get('[data-test="checkBox"]').then(checkBox => {
   cy.get(checkBox[1]).click({force: true})
 })
 
-// * check does not have permanent option
+// * check recently moved option
 cy.get('[data-test="checkBox"]').then(checkBox => {
   cy.get(checkBox[0]).click({force: true})
 })
@@ -284,6 +289,21 @@ cy.get('[data-test="checkBox"]').then(checkBox => {
 cy.get('[data-test="mailStreet"]').type(data.addressStreet)
 cy.get('[data-test="mailCity"]').type(data.addressTown)
 cy.get('[data-test="mailZip"]').type(data.addressZip)
+  // Validate text box has correct text
+cy.get('[data-test="mailStreet"]').should('have.value', data.addressStreet)
+cy.get('[data-test="mailCity"]').should('have.value', data.addressTown)
+cy.get('[data-test="mailZip"]').should('have.value', data.addressZip)
+
+// * uncheck recently moved block
+cy.get('[data-test="checkBox"]').then(checkBox => {
+  cy.get(checkBox[0]).click({force: true})
+})
+
+// * check does not have permanent option
+cy.get('[data-test="checkBox"]').then(checkBox => {
+  cy.get(checkBox[0]).click({force: true})
+})
+
   cy.get('[class="usa-select radius-md"]').select(data.addressState)
 
   // Validate text box has correct text
@@ -338,10 +358,11 @@ cy.get('[data-test="nextBtn"]').click()
 cy.get('[data-test="confirm"]').click({force: true})
 cy.get('[data-test="nextBtn"]').click()
 
-
 cy.get('[data-test="addressConfirm"]').should('contain.text', 'Your Alabama mail-in registration form is complete and ready to print.')
+
 // * check that download opens in new window
 cy.get('[data-test="pdfBtnNewTab"]').click()
+
 cy.get('@open').should('have.been.calledOnce')
 
   })
