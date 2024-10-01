@@ -4,9 +4,7 @@ const data = require("../../fixtures/data.json");
 
 describe('Validate Errors', () => {
   beforeEach('login to app', () => {
-    cy.signin(Cypress.env('username'), Cypress.env('password'))
-    // cy.get('[data-test="dropDown"]').select(data.inPerson)
-    // cy.get('[data-test="nextBtn"]').click()
+    cy.visit('/')
   })
 it('Check Error Functions', () => {
 // Move forward in test
