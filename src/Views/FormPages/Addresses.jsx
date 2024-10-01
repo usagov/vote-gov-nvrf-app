@@ -22,10 +22,9 @@ import { sanitizeDOM } from 'Utils/JsonHelper';
 function Addresses(props){
     const headings = props.headings;
     const fields = props.fieldContent;
-    const changeRegistrationVisible = (props.registrationPath === 'update') ? true : false;
+    const changeRegistrationVisible = ((props.registrationPath === 'update') || (props.stateData.name == 'Maine')) ? true : false;
     const nvrfStateFields = props.stateData.nvrf_fields;
     const stringContent = props.stringContent
-
 
     //Drupal field data
     const homeAddressSectionField = fields.find(item => item.uuid === "63552bb6-6afb-46e1-8148-860242917a22");
