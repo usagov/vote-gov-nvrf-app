@@ -22,6 +22,12 @@ function Delivery(props) {
         };
     };
 
+     //Analytics values - do not change or translate
+     const analyticsLabels = {
+        pdfTabButton: "NVRF_button_pdf_tab",
+        pdfDownloadButton: "NVRF_button_download"
+    }
+
     if (content) {
         const delivery = content.find(item => item.uuid === "229f283c-6a70-43f6-a80f-15cfa158f062");
         const deliveryBody = sanitizeDOM(delivery.body.replace("@state_name", props.stateData.name).replace("@mailing_address_inst", state.mailing_address_inst));
@@ -50,8 +56,8 @@ function Delivery(props) {
 
                 <Button data-test="pdfBtnNewTab"
                     onClick={() => {
-                        GenerateFilledPDF('newTab', props.fieldData, props.stateData.nvrf_pages_list);
-                        dataLayer.push({'NVRF_button_click': 'NVRF_button_pdf_tab'});
+                        GenerateFilledPDF('newTab', props.fieldData, props.stateData.nvrf_pages_list, props.pdfDoc, props.form);
+                        dataLayer.push({'NVRF_PDF_button': analyticsLabels.pdfTabButton, 'event': "NVRF_PDF_BUTTON_CLICK"});
                     }}
                 type="submit">
                     <span>{stringContent.newTab}</span>
@@ -61,8 +67,8 @@ function Delivery(props) {
 
                 <Button data-test="pdfBtnDownload"
                     onClick={() => {
-                        GenerateFilledPDF('download', props.fieldData, props.stateData.nvrf_pages_list);
-                        dataLayer.push({'NVRF_button_click': 'NVRF_button_download'});
+                        GenerateFilledPDF('download', props.fieldData, props.stateData.nvrf_pages_list, props.pdfDoc, props.form);
+                        dataLayer.push({'NVRF_PDF_button': analyticsLabels.pdfDownloadButton, 'event': "NVRF_PDF_BUTTON_CLICK"});
                     }} type="submit">
                     <span>{stringContent.download}</span>
                 </Button>

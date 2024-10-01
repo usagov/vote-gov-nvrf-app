@@ -1,10 +1,6 @@
 import download from "downloadjs";
-import loadPdf from './pdfLoader';
 
-const GenerateFilledPDF = async function (btnType,formData,pagesKept) {
-   // Fetch the PDF with form field
-   const { pdfDoc, form } = await loadPdf();
-
+const GenerateFilledPDF = async function (btnType, formData, pagesKept, pdfDoc, form) {
     //-------- Get PDF Fields by machine name ------------------
     const citizen = form.getDropdown('citizen'); //TEMP spanish condition field type
     const eighteenYearsOld = form.getDropdown('eighteen_years'); //TEMP spanish condition field type
@@ -132,18 +128,25 @@ const GenerateFilledPDF = async function (btnType,formData,pagesKept) {
 
     //-------------End PDF Fill---------------
 
-    //Remove unneccessary pages
-    let shift = 0;
-    const totalPages = pdfDoc.getPageCount();
-    let pageCount = totalPages;
-    let pagesKeptArray = pagesKept.split(',');
-    for(let i = 0; i < totalPages; i++){
-        if(!pagesKeptArray.includes(i.toString())){
-            pdfDoc.removePage(i - shift);
-            shift++;
-            pageCount--;
-        }
-    }
+// Remove unneccessary pages
+let shift = 0;
+const totalPages = pdfDoc.getPageCount();
+let pageCount = totalPages;
+let pagesKeptArray = pagesKept.split(',');
+
+// Check if pagesKept is empty or undefined
+if (!pagesKept || pagesKept.trim() === '') {
+  // If pagesKept is empty, render the full PDF
+pagesKeptArray = Array.from({ length: totalPages }, (_, i) => i.toString());
+}
+
+for (let i = 0; i < totalPages; i++) {
+if (!pagesKeptArray.includes(i.toString())) {
+    pdfDoc.removePage(i - shift);
+    shift++;
+    pageCount--;
+}
+}
 
     // Rearrange pages
     const genInstrutPages = pagesKeptArray.splice(0,2);

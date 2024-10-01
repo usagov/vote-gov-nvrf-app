@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import {Checkbox, Label, Form} from '@trussworks/react-uswds';
 import BackButton from "Components/Buttons/BackButton"
 import NextButton from "Components/Buttons/NextButton";
@@ -19,6 +20,11 @@ function Eligibility(props) {
     const contentBody = sanitizeDOM(content.body);
     const contentBodyParts = contentBody.split("@reg_confirm_eligibility");
     const eligibilityInstructions = sanitizeDOM(eligibility.instructions);
+
+    //Analytics values - do not change or translate
+    const analyticsLabels = {
+        eligibilityTitle: "Before you get started page",
+    }
 
     const mailDeadline = () => (
         <ul>
@@ -42,7 +48,8 @@ function Eligibility(props) {
 
         <Form id="eligibility" autoComplete="off" className={'margin-top-2'} style={{maxWidth: 'none'}}
               onSubmit={(e) => {
-                  e.preventDefault(), props.handleNext()
+                  e.preventDefault(), props.handleNext(),
+                  dataLayer.push({'NVRF_page_title': analyticsLabels.eligibilityTitle, 'event': 'NVRF_STEP_SUBMIT' })
               }}>
             <div className="input-parent" data-test="checkBox">
                 <Label className={'margin-top-1'}>

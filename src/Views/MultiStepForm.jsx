@@ -26,6 +26,15 @@ function MultiStepForm(props) {
     const scrollToTop = document.getElementById('scroll-to-top');
     const lang = document.documentElement.lang;
 
+    //Analytics values - do not change or translate
+    const analyticsLabels = {
+        stepLabel1 : "Personal information page",
+        stepLabel2 : "Address and location page",
+        stepLabel3 : "Identification page",
+        stepLabel4 : "Political party page",
+        stepLabel5 : "Confirmation page",
+        stepLabel6 : "PDF Delivery page",
+    }
     //Field data controls
     const [fieldData, setFieldData] = useState({
         title:'', first_name: '', middle_name: '', last_name: '', suffix:'',
@@ -100,6 +109,10 @@ function MultiStepForm(props) {
             step !== 1 && setStep(step - numSteps);
             setStepFocus();
         }
+    }
+
+    const pushPageTitleDataLayer = (title) => {
+        dataLayer.push({'NVRF_page_title': title, 'event': 'NVRF_STEP_SUBMIT' });
     }
 
     const handleSubmit = (e) => {
@@ -265,7 +278,12 @@ function MultiStepForm(props) {
                 </>
             }
 
-            <Form autoComplete="off" id="nvrf" className={'margin-top-5'} style={{ maxWidth:'none' }} onSubmit={(e) => {handleSubmit(e), handleNext()}}>
+            <Form autoComplete="off" id="nvrf" className={'margin-top-5'} style={{ maxWidth:'none' }}
+                onSubmit={(e) => {
+                    handleSubmit(e), handleNext(),
+                    pushPageTitleDataLayer(analyticsLabels["stepLabel"+step])
+                }}
+            >
                 {step === 1 &&
                     <PersonalInfo
                         state={props.state}
@@ -367,14 +385,19 @@ function MultiStepForm(props) {
                         deliveryButtonSelected = {deliveryButtonSelected}
                         handleClickDeliveryButton = {handleClickDeliveryButton}
                         stringContent={stringContent}
+                        pdfDoc={props.pdfDoc}
+                        form={props.form}
                     />
                 }
 
                 {step != 6 && (
-                    <NextButton stringContent={stringContent} type={'submit'} onClick={() => {nextStepValidation(), focusError('nvrf')}} text={nextButtonText(step)}/>
+                    <NextButton stringContent={stringContent} type={'submit'}
+                        onClick={() => {
+                            nextStepValidation(),
+                            focusError('nvrf') }}
+                    text={nextButtonText(step)}/>
                 )}
             </Form>
-
             {/* Load Touchpoints feedback form */}
             {step === 6 && lang === 'en' &&
                 <>

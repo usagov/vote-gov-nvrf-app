@@ -1,10 +1,6 @@
 import download from "downloadjs";
-import loadPdf from './pdfLoader';
 
-const GenerateFilledPDF = async function (btnType,formData,pagesKept) {
-    // Fetch the PDF with form field
-    const { pdfDoc, form } = await loadPdf();
-
+const GenerateFilledPDF = async function (btnType, formData, pagesKept, pdfDoc, form) {
     //-------- Get PDF Fields by machine name ------------------
     const citizen = form.getRadioGroup('citizen');
     const eighteenYearsOld = form.getRadioGroup('eighteen_years');
@@ -109,7 +105,13 @@ const GenerateFilledPDF = async function (btnType,formData,pagesKept) {
     mailState.setText(formData.mail_state);
     mailZipcode.setText(formData.mail_zip_code);
     //Previous
-    prevAddress.setText(formData.prev_street_address);
+    //Maine override
+    if ((formData.state == 'Maine') && (formData.prev_street_address == '')){
+        prevAddress.setText('N/A');
+    }
+    else {
+        prevAddress.setText(formData.prev_street_address);
+    }
     prevAptNumber.setText(formData.prev_apt_num);
     prevCity.setText(formData.prev_city);
     prevState.setText(formData.prev_state);
@@ -132,18 +134,25 @@ const GenerateFilledPDF = async function (btnType,formData,pagesKept) {
 
     //-------------End PDF Fill---------------
 
-    //Remove unneccessary pages
-    let shift = 0;
-    const totalPages = pdfDoc.getPageCount();
-    let pageCount = totalPages;
-    let pagesKeptArray = pagesKept.split(',');
-    for(let i = 0; i < totalPages; i++){
-        if(!pagesKeptArray.includes(i.toString())){
-            pdfDoc.removePage(i - shift);
-            shift++;
-            pageCount--;
-        }
-    }
+// Remove unneccessary pages
+let shift = 0;
+const totalPages = pdfDoc.getPageCount();
+let pageCount = totalPages;
+let pagesKeptArray = pagesKept.split(',');
+
+// Check if pagesKept is empty or undefined
+if (!pagesKept || pagesKept.trim() === '') {
+  // If pagesKept is empty, render the full PDF
+pagesKeptArray = Array.from({ length: totalPages }, (_, i) => i.toString());
+}
+
+for (let i = 0; i < totalPages; i++) {
+if (!pagesKeptArray.includes(i.toString())) {
+    pdfDoc.removePage(i - shift);
+    shift++;
+    pageCount--;
+}
+}
 
     // Rearrange pages
     const genInstrutPages = pagesKeptArray.splice(0,2);
