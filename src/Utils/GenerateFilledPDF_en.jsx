@@ -1,10 +1,6 @@
 import download from "downloadjs";
-import loadPdf from './pdfLoader';
 
-const GenerateFilledPDF = async function (btnType,formData,pagesKept) {
-    // Fetch the PDF with form field
-    const { pdfDoc, form } = await loadPdf();
-
+const GenerateFilledPDF = async function (btnType, formData, pagesKept, pdfDoc, form) {
     //-------- Get PDF Fields by machine name ------------------
     const citizen = form.getRadioGroup('citizen');
     const eighteenYearsOld = form.getRadioGroup('eighteen_years');
@@ -109,7 +105,13 @@ const GenerateFilledPDF = async function (btnType,formData,pagesKept) {
     mailState.setText(formData.mail_state);
     mailZipcode.setText(formData.mail_zip_code);
     //Previous
-    prevAddress.setText(formData.prev_street_address);
+    //Maine override
+    if ((formData.state == 'Maine') && (formData.prev_street_address == '')){
+        prevAddress.setText('N/A');
+    }
+    else {
+        prevAddress.setText(formData.prev_street_address);
+    }
     prevAptNumber.setText(formData.prev_apt_num);
     prevCity.setText(formData.prev_city);
     prevState.setText(formData.prev_state);

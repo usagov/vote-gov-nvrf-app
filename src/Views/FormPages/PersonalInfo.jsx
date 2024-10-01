@@ -105,9 +105,9 @@ function PersonalInfo(props){
             }}>
                 <div className="input-parent">
                     <Label className="text-bold" htmlFor="voter-contact" aria-hidden="true">
-                    {stringContent.emailLabel}<span className='required-text'>*</span>
+                    Voter Contact<span className='required-text'>*</span>
                     </Label>
-                    <span className="usa-hint">{stringContent.emailLabel}</span>
+                    <span className="usa-hint">Voter Contact</span>
                     <TextInput
                         data-test="email"
                         id="voter-contact"
