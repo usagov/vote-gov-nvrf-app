@@ -35,7 +35,7 @@ function Eligibility(props) {
     return (
         <>
             {returnPath && (
-                <a href={returnPath} className={'usa-button usa-button--outline'}>
+                <a href={returnPath} className={'usa-button usa-button--outline maxw-mobile-lg width-full tablet:width-auto'}>
                     <span>{navContent.back.state_reg_options}</span>
                 </a>
               )
@@ -70,7 +70,7 @@ function Eligibility(props) {
                     onInput={(e) => e.target.setCustomValidity('')}
                     onBlur={(e) => toggleError(e, !props.hasConfirmed)}
                 />
-                <span id="eligibility-checkbox_error" role="alert" className='error-text' data-test="errorText">
+                <span id="eligibility-checkbox_error" role="alert" className='vote-error-text' data-test="errorText">
                             {getFieldError(fields, "39fc63ad-ed5a-4ad5-98d3-aa236c96c61c")}
                         </span>
             </div>
