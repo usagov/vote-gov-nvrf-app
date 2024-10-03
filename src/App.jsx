@@ -6,6 +6,7 @@ import {fetchData, fetchStaticData, sanitizeDOM} from 'Utils/JsonHelper.jsx';
 import { HelmetProvider } from "react-helmet-async";
 import loadPdf from './Utils/pdfLoader';
 import {Alert} from "@trussworks/react-uswds";
+import './VoteError.css';
 
 
 const currentStateId = document.getElementById('root').getAttribute('data-stateId');

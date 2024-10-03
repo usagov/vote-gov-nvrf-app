@@ -22,7 +22,7 @@ function FieldsetContainer({ fieldType, inputData, saveFieldData, dateFormat, fi
                         {inputData.help_text}
                     </span>
                     {renderField(fieldType)}
-                    <span id={`${inputData.id}` + '_error'} role="alert" className={'error-text'} data-test="errorText">
+                    <span id={`${inputData.id}` + '_error'} role="alert" className={'vote-error-text'} data-test="errorText">
                         {inputData.error_msg}
                     </span>
                 </Fieldset>
