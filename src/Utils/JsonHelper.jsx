@@ -1,22 +1,19 @@
 import DOMPurify from "dompurify";
 DOMPurify.setConfig({ADD_ATTR: ['target']});
 
-const lang = document.documentElement.lang;
-const locale = lang !== "en" ? `/${lang}` : '';
-
-export const fetchData = async(filename, setContent, setError) => {
-    const path = `${BASEURL}${locale}/nvrf/assets/${filename}`;
-    const response = await fetch(path)
-        .then(response => response.json())
-        .catch(() => setError(true));
+export const fetchData = async(filename, setContent) => {
+    const lang = document.documentElement.lang;
+    const locale = lang !== "en" ? `${BASEURL}/${lang}` : BASEURL;
+    const path = `${locale}/nvrf/assets/${filename}`;
+    const response = await fetch(path).then(response => response.json());
     setContent(response);
 }
 
-export const fetchStaticData = async(filename, setContent, setError) => {
-    const path = `${BASEURL}${locale}/nvrf/data/${filename}`;
-    const response = await fetch(path)
-        .then(response => response.json())
-        .catch(() => setError(true));
+export const fetchStaticData = async(filename, setContent) => {
+    const lang = document.documentElement.lang;
+    const locale = lang !== "en" ? `/${lang}` : "";
+    const path = `${BASEURL}/data${locale}/${filename}`;
+    const response = await fetch(path).then(response => response.json());
     setContent(response);
 }
 

@@ -20,7 +20,6 @@ function App() {
   const [fieldContent, setFieldContent] = useState('')
   const [stringContent, setStringContent] = useState('')
 
-  const [error, setError] = useState(null);
   const [pdfDoc, setPdfDoc] = useState(null);
   const [form, setForm] = useState(null);
 
@@ -28,17 +27,21 @@ function App() {
     loadPdf().then(({ pdfDoc, form }) => {
       setPdfDoc(pdfDoc);
       setForm(form);
-    }).catch(() => setError(true));
+    });
   }, []);
 
   useEffect(() => {
-    fetchData("states.json", setStates, setError);
-    fetchData("pages.json", setContent, setError);
-    fetchData("cards.json", setCards, setError);
-    fetchData("fields.json", setFieldContent, setError);
-    fetchStaticData("navigation.json", setNavContent, setError);
-    fetchStaticData("strings.json", setStringContent, setError);
+    fetchData("states.json", setStates);
+    fetchData("pages.json", setContent);
+    fetchData("cards.json", setCards);
+    fetchData("fields.json", setFieldContent);
+    fetchStaticData("navigation.json", setNavContent);
+    fetchStaticData("strings.json", setStringContent)
   }, []);
+
+  useEffect(() => {
+    getSelectedState(currentStateId);
+  }, [states]);
 
   const [step, setStep] = useState(1);
   const [selectedState, setSelectedState] = useState('');
@@ -47,7 +50,7 @@ function App() {
   const [formStep, setFormStep] = useState(1);
 
   const lastUpdatedSanitized = sanitizeDOM(stateData.nvrf_last_updated_date);
-  const lastUpdatedText = stringContent ? stringContent.lastUpdated : null;
+  const lastUpdatedText = (stringContent.lastUpdated);
   const scrollToTop = document.getElementById('scroll-to-top');
 
   //Confirm eligibility checkbox controls
@@ -72,8 +75,8 @@ function App() {
   }
 
   const getSelectedState = (selectedState) => {
-    if (selectedState !== "" && states) {
-      for (let i = 0; i < states.length; i++){
+    if (selectedState != "") {
+      for (var i = 0; i < states.length; i++){
         if (states[i].abbrev == selectedState.toLowerCase()){
           setSelectedState(states[i].name);
           setStateData(states[i]);
@@ -86,10 +89,6 @@ function App() {
     setHasConfirmed(null)
   }
 
-  useEffect(() => {
-    getSelectedState(currentStateId);
-  }, [getSelectedState, states]);
-
 
   const getRegPath = (pathSelection) => {
     setRegistrationPath(pathSelection)
@@ -98,20 +97,6 @@ function App() {
   const getFormStep = (step) => {
     formStep === 4 ? null : setFormStep(step + 1);
   };
-
-  // If the fetch for content or pdf fails display an error message.
-  if (error) {
-    return <div>
-      <Alert type="error" heading="Error" headingLevel="h1">
-        <p>The form filler tool failed to load.</p>
-      </Alert>
-      <p>
-        <button className={'usa-button'} onClick={() => window.location.reload()}>Try loading the tool again</button>
-      </p>
-      <p>If you were unable to use our form filler tool, <a
-          href="https://touchpoints.app.cloud.gov/touchpoints/c169d3b2/submit" target="_blank">submit feedback</a>.</p>
-    </div>;
-  }
 
   // Only render the markup if the data is loaded.
   if (states && cards && content && navContent && fieldContent && stringContent) {
