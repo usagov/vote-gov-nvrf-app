@@ -52,7 +52,7 @@ function Eligibility(props) {
                   dataLayer.push({'NVRF_page_title': analyticsLabels.eligibilityTitle, 'event': 'NVRF_STEP_SUBMIT' })
               }}>
             <div className="input-parent" data-test="checkBox">
-                <Label for="eligibility-checkbox" className={'margin-top-1'}>
+                <Label id="confirm-eligibility" for="eligibility-checkbox" className={'margin-top-1'}>
                     <strong>{eligibility.name}</strong>
                 </Label>
                 <Checkbox
