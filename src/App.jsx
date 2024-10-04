@@ -77,7 +77,6 @@ function App() {
 
   const getSelectedState = (selectedState) => {
     if (!stateData && selectedState !== "" && states) {
-      console.log('run');
       for (let i = 0; i < states.length; i++) {
         if (states[i].abbrev == selectedState.toLowerCase()) {
           setSelectedState(states[i].name);
