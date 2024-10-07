@@ -52,7 +52,7 @@ function Eligibility(props) {
                   dataLayer.push({'NVRF_page_title': analyticsLabels.eligibilityTitle, 'event': 'NVRF_STEP_SUBMIT' })
               }}>
             <div className="input-parent" data-test="checkBox">
-                <Label className={'margin-top-1'}>
+                <Label id="confirm-eligibility" for="eligibility-checkbox" className={'margin-top-1'}>
                     <strong>{eligibility.name}</strong>
                 </Label>
                 <Checkbox
@@ -61,6 +61,7 @@ function Eligibility(props) {
                     value="eligibility-checkbox"
                     label={getFieldLabel(fields, "39fc63ad-ed5a-4ad5-98d3-aa236c96c61c")}
                     aria-required="true"
+                    aria-labelledby="confirm-eligibility"
                     aria-describedby="eligibility-checkbox_error"
                     required={true}
                     defaultChecked={props.hasConfirmed}
