@@ -1,6 +1,9 @@
 import download from "downloadjs";
+import loadPdf from './pdfLoader';
 
-const GenerateFilledPDF = async function (btnType, formData, pagesKept, pdfDoc, form) {
+const GenerateFilledPDF = async function (btnType,formData,pagesKept) {
+    // Fetch the PDF with form field
+    const { pdfDoc, form } = await loadPdf();
     //-------- Get PDF Fields by machine name ------------------
     const citizen = form.getRadioGroup('citizen');
     const eighteenYearsOld = form.getRadioGroup('eighteen_years');
