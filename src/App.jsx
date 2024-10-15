@@ -6,6 +6,7 @@ import {fetchData, fetchStaticData, sanitizeDOM} from 'Utils/JsonHelper.jsx';
 import { HelmetProvider } from "react-helmet-async";
 import loadPdf from './Utils/pdfLoader';
 import {Alert} from "@trussworks/react-uswds";
+import './VoteError.css';
 
 
 const currentStateId = document.getElementById('root').getAttribute('data-stateId');
@@ -68,21 +69,21 @@ function App() {
   const handlePrev = () => {
     step != 1 && setStep(step - 1);
     setStepFocus();
+    if (step === 2) {
+      // reset eligibility requirement selections for when user has gone back after completing it and changed state selection
+      setHasConfirmed(null)
+    }
   }
 
   const getSelectedState = (selectedState) => {
-    if (selectedState !== "" && states) {
-      for (let i = 0; i < states.length; i++){
-        if (states[i].abbrev == selectedState.toLowerCase()){
+    if (!stateData && selectedState !== "" && states) {
+      for (let i = 0; i < states.length; i++) {
+        if (states[i].abbrev == selectedState.toLowerCase()) {
           setSelectedState(states[i].name);
           setStateData(states[i]);
         }
       }
-    } else {
-      setStateData('')
     }
-    // reset eligibility requirement selections for when user has gone back after completing it and changed state selection
-    setHasConfirmed(null)
   }
 
   useEffect(() => {

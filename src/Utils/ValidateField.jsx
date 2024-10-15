@@ -3,7 +3,7 @@ export const focusError = (formId) => {
       const firstInvalidChild = document.getElementById(formId).querySelectorAll(':invalid')[0];
       let errorContainer;
       errorContainer = firstInvalidChild.id === "eligibility-checkbox" || firstInvalidChild.id === "acknowledge-checkbox" ? firstInvalidChild.parentNode.parentNode : firstInvalidChild.parentNode;
-      errorContainer.className = "error-container";
+      errorContainer.className = "vote-error-container";
   }
 }
 
@@ -15,7 +15,7 @@ export const toggleError = (e, error) => {
   errorContainer = dateOfBirthInputs ? input.parentNode.parentNode.parentNode.parentNode : errorContainer;
 
   if (error) {
-    errorContainer.className = "error-container";
+    errorContainer.className = "vote-error-container";
   } else {
     errorContainer.className = "";
   }

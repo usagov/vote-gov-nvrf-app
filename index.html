@@ -22,8 +22,6 @@
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>National Voter Registration Form | Vote.gov</title>
-  <link rel="stylesheet" href="theme/assets/styles/main.css">
-  <link rel="stylesheet" href="theme/assets/styles/nvrf.css">
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -31,30 +29,7 @@
     sandbox height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-<dialog id="loginDialog" data-enabled="true" style="width: 480px; border: 0; border-radius: 0.5rem; padding: 1.5rem;">
-  <form class="usa-form" style="max-width: none;">
-    <h2>Sign in</h2>
-    <p>This prototype is restricted to authenticated users.</p>
-    <div id="loginError" class="usa-alert usa-alert--error usa-alert--slim" role="alert" style="border-left-color: #d54309;" hidden>
-      <div class="usa-alert__body">
-        <p class="usa-alert__text">
-          <strong>Error</strong>: Please enter valid username and password.
-        </p>
-      </div>
-    </div>
-    <p>
-      <label for="loginUser" class="usa-label">Username*</label><input class="usa-input" id="loginUser" name="loginUser" required="true" type="text"/>
-    </p>
-    <p>
-      <label for="loginPass" class="usa-label">Password*</label><input class="usa-input" id="loginPass" name="loginPass" required="true" type="password"/>
-    </p>
-    <div>
-      <button id="loginConfirm" value="default" class="usa-button">Confirm</button>
-    </div>
-  </form>
-</dialog>
-
-<div id="protoContainer" hidden>
+<div id="protoContainer">
   <section class="usa-section grid-container">
     <!-- Embedded REACT app -->
     <div class="nvrf-app-container" data-returnPath='https://vote.gov/register/alabama' data-stateId="al" id="root"></div>
@@ -62,9 +37,6 @@
 
   </section>
 </div>
-
-<script src="theme/assets/scripts/login.js"></script>
-
 </body>
 </html>
 

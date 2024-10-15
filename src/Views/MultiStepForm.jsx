@@ -196,6 +196,7 @@ function MultiStepForm(props) {
                 ssn_number: '',
             })
         document.getElementById('state-id').className = "";
+        dataLayer.push({'NVRF_id_type': e.target.value , 'event': "NVRF_SELECT_ID"});
     }
 
     const [hasNoID, setHasNoID] = useState(false);
@@ -267,7 +268,7 @@ function MultiStepForm(props) {
 
     return (
         <>
-            {step != 6 && <BackButton stringContent={stringContent} type={'button'} onClick={handlePrev} text={backButtonText(step)}/>}
+            {step != 6 && <BackButton stringContent={stringContent} type={'button'} data-analytics="backBtn" onClick={handlePrev} text={backButtonText(step)}/>}
 
             <ProgressBar step={step} content={navContent} handleGoBack={handleGoBackSteps} setStep={setStep} />
             <div className={'margin-top-8 maxw-tablet margin-x-auto'}>
