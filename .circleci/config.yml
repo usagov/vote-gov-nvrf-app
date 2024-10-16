@@ -64,6 +64,7 @@ jobs:
       - run:
           name: Frontend Testing
           command: |
+            curl -v https://ssg-test.vote.gov/nvrf/assets/fields.json
             npm start &
             cd testing
             npm run cy:test
