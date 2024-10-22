@@ -12,7 +12,7 @@ export default defineConfig(({ mode }) => {
     build: {
       rollupOptions: {
         input: {
-          main: resolve(__dirname, 'index.html'),
+          index: resolve(__dirname, 'index.html'),
           nested: resolve(__dirname,'es/index.html'),
         },
         output: {
