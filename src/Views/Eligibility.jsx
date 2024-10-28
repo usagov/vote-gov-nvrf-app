@@ -50,7 +50,7 @@ function Eligibility(props) {
                   dataLayer.push({'NVRF_page_title': analyticsLabels.eligibilityTitle, 'event': 'NVRF_STEP_SUBMIT' })
               }}>
             <div className="input-parent" data-test="checkBox">
-                <Fieldset className="fieldset">
+                <Fieldset className="fieldset" onBlur={(e) => toggleError(e, !props.hasConfirmed)}>
                     <legend className={'margin-top-1'}>
                         <strong>{eligibility.name}</strong>
                     </legend>
@@ -66,7 +66,6 @@ function Eligibility(props) {
                         onChange={(e) => props.confirmCheckbox(e.target.checked)}
                         onInvalid={(e) => e.target.setCustomValidity(' ')}
                         onInput={(e) => e.target.setCustomValidity('')}
-                        onBlur={(e) => toggleError(e, !props.hasConfirmed)}
                     />
                     <span id="eligibility-checkbox_error" role="alert" className='vote-error-text' data-test="errorText">
                         {getFieldError(fields, "39fc63ad-ed5a-4ad5-98d3-aa236c96c61c")}
