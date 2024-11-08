@@ -128,13 +128,13 @@ function App() {
         <HelmetProvider>
           <section>
             <a name="scroll-to-top"
-               id="scroll-to-top"
-               tabIndex={-1}
-               style={{
-                 outline: "0 none",
-                 display: "block",
-                 scrollMargin: "20px"
-               }}
+              id="scroll-to-top"
+              tabIndex={-1}
+              style={{
+                outline: "0 none",
+                display: "block",
+                scrollMargin: "20px"
+              }}
             ></a>
             {step === 1 &&
                 <Eligibility
