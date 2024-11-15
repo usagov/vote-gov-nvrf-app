@@ -1,5 +1,5 @@
 import {Form} from '@trussworks/react-uswds';
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import ProgressBar from 'Components/ProgressBar';
 import PersonalInfo from "Views/FormPages/PersonalInfo";
 import Addresses from "Views/FormPages/Addresses"
@@ -12,6 +12,7 @@ import BackButton from 'Components/Buttons/BackButton'
 import NextButton from 'Components/Buttons/NextButton';
 import { Helmet } from "react-helmet-async";
 import {sanitizeDOM} from "Utils/JsonHelper";
+import ErrorList from 'Utils/ErrorList';
 
 function MultiStepForm(props) {
     const content = props.content;
@@ -266,6 +267,19 @@ function MultiStepForm(props) {
         }
     }
 
+    // function checkError() {
+    //     const errorMessage = document.querySelector('.vote-error-container');
+    //     if (errorMessage) {
+    //     console.log("Error is present");
+    // } else {
+    //     console.log("Error is not present");
+    // }
+    // }
+    
+    // // Call the function
+    // checkError();
+
+
     return (
         <>
             {step != 6 && <BackButton stringContent={stringContent} type={'button'} data-analytics="backBtn" onClick={handlePrev} text={backButtonText(step)}/>}
@@ -285,6 +299,8 @@ function MultiStepForm(props) {
                     pushPageTitleDataLayer(analyticsLabels["stepLabel"+step])
                 }}
             >
+                {/* render a UL of all errors that appear on each page */}
+                <ErrorList />
                 {step === 1 &&
                     <PersonalInfo
                         state={props.state}
