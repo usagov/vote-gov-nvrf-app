@@ -37,7 +37,7 @@ function ErrorList() {
     if (hasError) {
       const errorListContainer = document.querySelector('.usa-alert--error');
       if (errorListContainer) {
-        errorListContainer.scrollIntoView({ behavior: 'smooth' });
+        errorListContainer.focus();
       }
     }
   }, [hasError]);
@@ -51,7 +51,7 @@ function ErrorList() {
           aria-labelledby="error-list-title"
           aria-live="assertive"
           aria-atomic="true"
-          tabIndex={0}
+          tabIndex={-1}
         >
           <div className="usa-alert__body">
           <h4 className="usa-alert__heading" id="error-list-title">
