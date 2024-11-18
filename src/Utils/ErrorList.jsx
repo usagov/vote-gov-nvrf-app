@@ -11,7 +11,7 @@ function ErrorList({ formSubmitted }) {
         if (errorContainers.length > 0) {
           const errorMessages = Array.from(errorContainers).map((container) => {
             const errorTexts = Array.from(container.querySelectorAll('span.vote-error-text'));
-            const inputElement = container.querySelector('input');
+            const inputElement = container.querySelector(':is(input, select)');
             return errorTexts.map((errorText) => ({
               id: inputElement.id,
               text: errorText.textContent,

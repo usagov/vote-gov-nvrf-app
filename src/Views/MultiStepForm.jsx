@@ -15,7 +15,7 @@ import {sanitizeDOM} from "Utils/JsonHelper";
 import ErrorList from 'Utils/ErrorList';
 
 function MultiStepForm(props) {
-
+    // setting state for error list to track when the form is submitted to render on an error
     const [formSubmitted, setFormSubmitted] = useState(false);
 
     const content = props.content;
@@ -290,8 +290,11 @@ function MultiStepForm(props) {
                     pushPageTitleDataLayer(analyticsLabels["stepLabel"+step])
                 }}
             >
-                {/* render a UL of all errors that appear on each page */}
+
+                {/* setting error list to only render on from pages */}
+                {[1, 2, 3, 4].includes(step) && (
                 <ErrorList formSubmitted={formSubmitted} />
+                )}
                 {step === 1 &&
                     <PersonalInfo
                         state={props.state}
