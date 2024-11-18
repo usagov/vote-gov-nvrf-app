@@ -15,6 +15,9 @@ import {sanitizeDOM} from "Utils/JsonHelper";
 import ErrorList from 'Utils/ErrorList';
 
 function MultiStepForm(props) {
+
+    const [formSubmitted, setFormSubmitted] = useState(false);
+
     const content = props.content;
     const navContent = props.navContent;
     const fieldContent = props.fieldContent;
@@ -230,6 +233,7 @@ function MultiStepForm(props) {
     }
 
     const nextStepValidation = () => {
+        setFormSubmitted(true);
         switch (step) {
             case 1:
                 emailValid();
@@ -267,19 +271,6 @@ function MultiStepForm(props) {
         }
     }
 
-    // function checkError() {
-    //     const errorMessage = document.querySelector('.vote-error-container');
-    //     if (errorMessage) {
-    //     console.log("Error is present");
-    // } else {
-    //     console.log("Error is not present");
-    // }
-    // }
-    
-    // // Call the function
-    // checkError();
-
-
     return (
         <>
             {step != 6 && <BackButton stringContent={stringContent} type={'button'} data-analytics="backBtn" onClick={handlePrev} text={backButtonText(step)}/>}
@@ -300,7 +291,7 @@ function MultiStepForm(props) {
                 }}
             >
                 {/* render a UL of all errors that appear on each page */}
-                <ErrorList />
+                <ErrorList formSubmitted={formSubmitted} />
                 {step === 1 &&
                     <PersonalInfo
                         state={props.state}
