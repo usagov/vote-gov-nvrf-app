@@ -1,6 +1,5 @@
 import { Button, Icon, Grid } from '@trussworks/react-uswds';
-import GenerateFilledPDF_en from 'Utils/GenerateFilledPDF_en';
-import GenerateFilledPDF_es from 'Utils/GenerateFilledPDF_es';
+import GenerateFilledPDF from 'Utils/GenerateFilledPDF';
 import { sanitizeDOM } from 'Utils/JsonHelper';
 import {renderToStaticMarkup} from "react-dom/server";
 
@@ -9,7 +8,6 @@ function Delivery(props) {
     const state = props.stateData;
     const stringContent = props.stringContent
     const lang = document.documentElement.lang;
-    const GenerateFilledPDF = (lang == "es") ? GenerateFilledPDF_es : GenerateFilledPDF_en;
 
     // Add A/B Message randomization.
     // example: const reminderMessage = randomProperty(content.reminder_messages);

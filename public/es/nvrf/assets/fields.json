@@ -112,7 +112,7 @@
     "options": [
     {
     "key": "Sr. / Mr.",
-    "value": "Mr."
+    "value": "Mr"
     },
     {
     "key": "Sta. / Miss",
@@ -120,11 +120,11 @@
     },
     {
     "key": "Sra. /Ms.",
-    "value": "Ms."
+    "value": "Ms"
     },
     {
     "key": "Sra. / Mrs.",
-    "value": "Mrs."
+    "value": "Mrs"
     }
     ]
     },
@@ -500,7 +500,7 @@
     "options": [
     {
     "key": "Sr. / Mr.",
-    "value": "Mr."
+    "value": "Mr"
     },
     {
     "key": "Sta. / Miss",
@@ -508,11 +508,11 @@
     },
     {
     "key": "Sra. / Ms.",
-    "value": "Ms."
+    "value": "Ms"
     },
     {
     "key": "Sra. / Mrs.",
-    "value": "Mrs."
+    "value": "Mrs"
     }
     ]
     },
