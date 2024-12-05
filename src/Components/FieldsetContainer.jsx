@@ -7,7 +7,7 @@ function FieldsetContainer({ fieldType, inputData, saveFieldData, dateFormat, fi
         switch (fieldType) {
             case 'date':
                 return <DateFields
-                    inputData={inputData}
+                    inputData={inputData}//includues month, day, year field data
                     saveFieldData={saveFieldData}
                     dateFormat={dateFormat}
                     fieldData={fieldData} />;
@@ -22,8 +22,14 @@ function FieldsetContainer({ fieldType, inputData, saveFieldData, dateFormat, fi
                         {inputData.help_text}
                     </span>
                     {renderField(fieldType)}
-                    <span id={`${inputData.id}` + '_error'} role="alert" className={'vote-error-text'} data-test="errorText">
-                        {inputData.error_msg}
+                    <span id={`${inputData.field_month.nvrf_id}` + '_error'} role="alert" className={'vote-error-text'} data-test="errorText">
+                        {inputData.field_month.error_msg}
+                    </span>
+                    <span id={`${inputData.field_day.nvrf_id}` + '_error'} role="alert" className={'vote-error-text'} data-test="errorText">
+                        {inputData.field_day.error_msg}
+                    </span>
+                    <span id={`${inputData.field_year.nvrf_id}` + '_error'} role="alert" className={'vote-error-text'} data-test="errorText">
+                        {inputData.field_year.error_msg}
                     </span>
                 </Fieldset>
             </div>
