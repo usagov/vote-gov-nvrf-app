@@ -8,17 +8,17 @@
     "reg_type": "online",
     "accepts_nvrf": "1",
     "mailing_address_inst": "<p>Office of the Secretary of State &nbsp;<br>P.O. Box 5616&nbsp;<br>Montgomery, AL 36103-5616</p>",
-    "reg_eligibility_desc": "<p>Para inscribirse en Alabama, usted tiene que reunir los siguientes requisitos:</p><ul><li>Ser ciudadano de los Estados Unidos.</li><li>Ser residente de Alabama y de su condado en el momento de la<br>inscripción.</li><li>Tener 18 años antes de cualquier elección.</li><li>No haber sido condenado por un delito grave de naturaleza inmoral (o haberle sido restituidos sus derechos políticos y civiles). La lista de delitos de naturaleza inmoral se encuentra disponible en el sitio web del Secretario de Estado en: sos.alabama.gov/mtfelonies</li><li>No haber sido declarado mentalmente incompetente mediante una audiencia de competencia.<br>Jurar o afirmar “apoyar y defender la Constitución de los EE. UU. y del Estado de Alabama y, además, negar toda creencia o afiliación a un grupo que abogue por el derrocamiento de los gobiernos de los EE. UU. o del Estado de Alabama por medios ilegítimos y que la información contenida aquí es verídica, con la ayuda de Dios”.</li></ul>",
-    "id_inst": "<p>Si posee un número de identificación, deberá presentar el número de licencia de conducir o del carnet de no conductor de Alabama. En caso de no poseer licencia de conducir o carnet de no conductor del estado de Alabama, deberá presentar los últimos 4 números de su Seguro Social. Si no tiene ninguno de estos números de identificación, escriba la palabra “NONE” (ninguno) y se le asignará un número exclusivo.</p>",
+    "reg_eligibility_desc": "<p>Para inscribirse en Alabama, usted tiene que reunir los siguientes requisitos:</p><ul><li dir=\"ltr\">Ser ciudadano de los Estados Unidos.</li><li dir=\"ltr\">Ser residente de Alabama y de su condado en el momento de la inscripción.</li><li dir=\"ltr\">Tener 18 años antes de cualquier elección.</li><li dir=\"ltr\">No haber sido condenado por un delito grave de naturaleza inmoral (o haberle sido restituidos sus derechos políticos y civiles). La lista de delitos de naturaleza inmoral se encuentra disponible en <a href=\"https://www.sos.alabama.gov/mtfelonies\" target=\"_blank\">el sitio web del Secretario de Estado</a>.</li><li dir=\"ltr\">No haber sido declarado mentalmente incompetente mediante una audiencia de competencia.</li><li dir=\"ltr\">Jurar o afirmar apoyar y defender la Constitución de los EE. UU. y del Estado de Alabama y, además, negar toda creencia o afiliación a un grupo que abogue por el derrocamiento.</li><li dir=\"ltr\">De los gobiernos de los EE. UU. o del Estado de Alabama por medios ilegítimos y que la información contenida aquí es verídica, con la ayuda de Dios.</li></ul>",
+    "id_inst": "<p>Número de licencia de conducir o del carnet de no conductor de Alabama. En caso de no poseer licencia de conducir o carnet de no conductor del estado de Alabama, deberá presentar los últimos 4 números de su Seguro Social.</p>",
     "address_inst": "",
     "personal_info_inst": "",
-    "political_party_inst": "<p>No tiene obligación de inscribirse en un partido político si desea participar en las elecciones primarias, en la asamblea local (caucus) o en la convención de ese partido político.</p>",
+    "political_party_inst": "<p>No complete este campo. Los votantes de Alabama no se inscriben por filiación a un partido político.</p>",
     "registration_url": "https://www.alabamainteractive.org/sos/voter_registration/voterRegistrationWelcome.action",
     "election_website_url": "https://www.sos.alabama.gov/alabama-votes",
     "more_info_url": "https://www.sos.alabama.gov/alabama-votes/voter/register-to-vote",
     "mail_reg_url": "https://sos.alabama.gov/sites/default/files/voter-pdfs/nvra-2.pdf?_ga=2.31423352.617260843.1699554949-1581979923.1699554949",
     "confirm_reg_url": "https://myinfo.alabamavotes.gov/voterview",
-    "postmarked_mail_deadline": "<time datetime=\"2024-10-21T12:00:00Z\">lunes, 21 de octubre de 2024</time>",
+    "postmarked_mail_deadline": "debe tener el sello del correo 15 días antes del día de las elecciones",
     "received_mail_deadline": "",
     "nvrf_fields": [
     {
@@ -172,7 +172,7 @@
     "more_info_url": "https://www.elections.alaska.gov/Core/spanishinformation.php",
     "mail_reg_url": "https://www.elections.alaska.gov/doc/forms/C03.pdf",
     "confirm_reg_url": "https://myvoterportal.alaska.gov/",
-    "postmarked_mail_deadline": "<time datetime=\"2024-10-06T12:00:00Z\">domingo, 6 de octubre de 2024</time>",
+    "postmarked_mail_deadline": "debe tener el sello del correo 30 días antes del día de las elecciones",
     "received_mail_deadline": "",
     "nvrf_fields": [
     {
@@ -327,7 +327,7 @@
     "mail_reg_url": "",
     "confirm_reg_url": "https://aselectionoffice.gov/status.php",
     "postmarked_mail_deadline": "",
-    "received_mail_deadline": "<time datetime=\"2024-10-07T12:00:00Z\">lunes, 7 de octubre de 2024</time>",
+    "received_mail_deadline": "a más tardar debe ser recibida 29 días antes del día de las elecciones",
     "nvrf_fields": [
     {
     "uuid": "86a544cd-cfe9-456a-b634-176a37a38d6d",
@@ -478,9 +478,9 @@
     "registration_url": "https://servicearizona.com/VoterRegistration/selectLanguage",
     "election_website_url": "https://azsos.gov/elections",
     "more_info_url": "https://azsos.gov/elections/voting-election/register-vote-or-update-your-current-voter-information-sp",
-    "mail_reg_url": "https://azsos.gov/sites/default/files/2023-11/voter_registration_form_092222-standard.pdf",
+    "mail_reg_url": "https://azsos.gov/sites/default/files/docs/az_voter_registration_form_standard_20240613.pdf",
     "confirm_reg_url": "https://my.arizona.vote/WhereToVote.aspx?s=individual",
-    "postmarked_mail_deadline": "<time datetime=\"2024-10-07T12:00:00Z\">lunes, 7 de octubre de 2024</time>",
+    "postmarked_mail_deadline": "debe tener el sello del correo 29 días antes del día de las elecciones",
     "received_mail_deadline": "",
     "nvrf_fields": [
     {
@@ -630,7 +630,7 @@
     "more_info_url": "https://www.sos.arkansas.gov/elections/voter-information/",
     "mail_reg_url": "https://www.sos.arkansas.gov/uploads/elections/ArkansasVoterRegistrationApplication.pdf",
     "confirm_reg_url": "https://www.voterview.ar-nova.org/voterview/?culture=es-MX",
-    "postmarked_mail_deadline": "<time datetime=\"2024-10-07T12:00:00Z\">lunes, 7 de octubre de 2024</time>",
+    "postmarked_mail_deadline": "debe tener el sello del correo 30 días antes del día de las elecciones",
     "received_mail_deadline": "",
     "nvrf_fields": [
     {
@@ -780,7 +780,7 @@
     "more_info_url": "https://www.sos.ca.gov/elections/voting-resources/voting-california/spanish/registering-vote",
     "mail_reg_url": "",
     "confirm_reg_url": "https://registertovote.ca.gov/es-mx",
-    "postmarked_mail_deadline": "<time datetime=\"2024-10-21T12:00:00Z\">lunes, 21 de octubre de 2024</time>",
+    "postmarked_mail_deadline": "debe tener el sello del correo 15 días antes del día de las elecciones",
     "received_mail_deadline": "",
     "nvrf_fields": [
     {
@@ -930,7 +930,7 @@
     "more_info_url": "https://www.coloradosos.gov/voter/pages/pub/home.xhtml",
     "mail_reg_url": "https://www.sos.state.co.us/pubs/elections/vote/VoterRegFormEnglish.pdf",
     "confirm_reg_url": "https://www.sos.state.co.us/voter/pages/pub/olvr/findVoterReg.xhtml",
-    "postmarked_mail_deadline": "<time datetime=\"2024-10-28T12:00:00Z\">lunes, 28 de octubre de 2024</time>",
+    "postmarked_mail_deadline": "debe tener el sello del correo 8 días antes del día de las elecciones",
     "received_mail_deadline": "",
     "nvrf_fields": [
     {
@@ -1080,7 +1080,7 @@
     "more_info_url": "https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Voter-Fact-Sheet",
     "mail_reg_url": "https://portal.ct.gov/-/media/SOTS/ElectionServices/ElectForms/electforms/ED-671-En-8x10-No-code.pdf",
     "confirm_reg_url": "https://portaldir.ct.gov/sots/LookUp.aspx",
-    "postmarked_mail_deadline": "<time datetime=\"2024-10-18T12:00:00Z\">viernes, 18 de octubre de 2024</time>",
+    "postmarked_mail_deadline": "debe tener el sello del correo 18 días antes del día de las elecciones",
     "received_mail_deadline": "",
     "nvrf_fields": [
     {
@@ -1226,7 +1226,7 @@
     "more_info_url": "https://elections.delaware.gov/voter/votereg.shtml",
     "mail_reg_url": "https://elections.delaware.gov/voter/pdfs/VoterRegApplication.pdf",
     "confirm_reg_url": "https://ivote.de.gov/VoterView/?culture=es-MX",
-    "postmarked_mail_deadline": "<time datetime=\"2024-10-12T12:00:00Z\">sábado, 12 de octubre de 2024</time>",
+    "postmarked_mail_deadline": "debe tener el sello del correo 24 días antes del día de las elecciones",
     "received_mail_deadline": "",
     "nvrf_fields": [
     {
@@ -1366,7 +1366,7 @@
     "reg_type": "online",
     "accepts_nvrf": "1",
     "mailing_address_inst": "<p>District of Columbia Board of Elections<br>1015 Half Street, SE, Suite 750<br>Washington, DC 20003</p>",
-    "reg_eligibility_desc": "<p>Para votar en District of Columbia, debe cumplir los siguientes requisitos:</p><ul><li>Ser ciudadano de Estados Unidos</li><li>Ser residente de District of Columbia<br>Mantener su residencia en District of Columbia durante al menos 30 antes de la elección en la cual tiene intención de votar</li><li>No reclamar residencia electoral o el derecho a votar en otro territorio o estado de EE. UU.</li><li>Tener al menos 17 años de edad (puede inscribirse para votar si tiene 16 años como mínimo. Puede votar en una elección primaria si tiene al menos 17 años de edad y tendrá al menos 18 años para las próximas elecciones generales. Puede votar en una elección general o especial si tiene al menos 18 años).</li><li>No haber sido declarado por un tribunal legalmente incompetente para votar</li></ul>",
+    "reg_eligibility_desc": "<p>Para votar en District of Columbia, debe cumplir los siguientes requisitos:</p><ul><li>Ser ciudadano de Estados Unidos</li><li>Ser residente de District of Columbia</li><li>Mantener su residencia en el District of Columbia durante al menos 30 antes de la elección en la cual tiene intención de votar</li><li>No reclamar residencia electoral o el derecho a votar en otro territorio o estado de EE. UU.</li><li>Tener al menos 17 años de edad (puede inscribirse para votar si tiene 16 años como mínimo. Puede votar en una elección primaria si tiene al menos 17 años de edad y tendrá al menos 18 años para las próximas elecciones generales. Puede votar en una elección general o especial si tiene al menos 18 años).</li><li>No haber sido declarado por un tribunal legalmente incompetente para votar</li></ul>",
     "id_inst": "<p>Bajo ley federal actual se requiere que toda solicitud de inscripción de votante incluya el número de la licencia de conducir del solicitante o las últimas cuatro cifras del número de Seguro Social para poder ser procesada.<br>&nbsp;</p>",
     "address_inst": "",
     "personal_info_inst": "",
@@ -1377,7 +1377,7 @@
     "mail_reg_url": "https://dcboe.org/getmedia/d1d54a92-bdb1-4401-8218-6261776b5f4b/VRF-English-01122024.pdf",
     "confirm_reg_url": "https://apps.dcboe.org/vrs",
     "postmarked_mail_deadline": "",
-    "received_mail_deadline": "<time datetime=\"2024-10-15T12:00:00Z\">martes, 15 de octubre de 2024</time>",
+    "received_mail_deadline": "a más tardar debe ser recibida 21 días antes del día de las elecciones",
     "nvrf_fields": [
     {
     "uuid": "86a544cd-cfe9-456a-b634-176a37a38d6d",
@@ -1522,11 +1522,11 @@
     "personal_info_inst": "",
     "political_party_inst": "<p>Se tiene que inscribir en un partido político si desea participar en las elecciones primarias, en la asamblea local (caucus) o en la convención de ese partido político.</p>",
     "registration_url": "https://registertovoteflorida.gov/eligibilityreactive",
-    "election_website_url": "https://dos.myflorida.com/elections/",
+    "election_website_url": "https://dos.fl.gov/elections/for-voters/voter-registration/register-to-vote-or-update-your-information/",
     "more_info_url": "https://registertovoteflorida.gov/home",
     "mail_reg_url": "https://files.floridados.gov/media/707200/dsde39-english-pre-7066-20230209.pdf",
     "confirm_reg_url": "https://registration.elections.myflorida.com/es/CheckVoterStatus/Index",
-    "postmarked_mail_deadline": "<time datetime=\"2024-10-07T12:00:00Z\">lunes, 7 de octubre de 2024</time>",
+    "postmarked_mail_deadline": "debe tener el sello del correo 29 días antes del día de las elecciones",
     "received_mail_deadline": "",
     "nvrf_fields": [
     {
@@ -1680,7 +1680,7 @@
     "more_info_url": "https://sos.ga.gov/elections-division-georgia-secretary-states-office",
     "mail_reg_url": "https://sos.ga.gov/sites/default/files/forms/GA_VR_APP_2019.pdf",
     "confirm_reg_url": "https://mvp.sos.ga.gov/s/",
-    "postmarked_mail_deadline": "<time datetime=\"2024-10-07T12:00:00Z\">lunes, 7 de octubre de 2024</time>",
+    "postmarked_mail_deadline": "debe tener el sello del correo 29 días antes del día de las elecciones",
     "received_mail_deadline": "",
     "nvrf_fields": [
     {
@@ -1821,7 +1821,7 @@
     "name": "Guam",
     "abbrev": "gu",
     "is_state": "0",
-    "reg_type": "in-person",
+    "reg_type": "online",
     "accepts_nvrf": "0",
     "mailing_address_inst": "",
     "reg_eligibility_desc": "",
@@ -1982,13 +1982,13 @@
     "id_inst": "<p>Cuando se inscribe para votar, tiene que proporcionar el número de su licencia de conducir de Hawái o el número de identificación de Hawái, si tiene uno. Si no tiene ni licencia de conducir, ni número de identificación, tiene que dar las últimas cuatro cifras de su número del Seguro Social (SSN). Si no tiene esta información, la Oficina del secretario le emitirá un número de identificación único, que lo identificará para fines de inscripción de votantes.</p>",
     "address_inst": "",
     "personal_info_inst": "",
-    "political_party_inst": "<p>Office of Elections State of Hawaii&nbsp;<br>802 Lehua Avenue&nbsp;<br>Pearl City, HI 96782</p>",
+    "political_party_inst": "<p>No se requiere que elija un partido político para inscribirse para votar.&nbsp;</p>",
     "registration_url": "https://olvr.hawaii.gov/",
     "election_website_url": "https://elections.hawaii.gov/",
     "more_info_url": "https://elections.hawaii.gov/voters/registration/",
     "mail_reg_url": "https://elections.hawaii.gov/wp-content/uploads/1436986-01-Hawaii-Votes_application_final.pdf",
     "confirm_reg_url": "https://olvr.hawaii.gov/",
-    "postmarked_mail_deadline": "<time datetime=\"2024-10-28T12:00:00Z\">lunes, 28 de octubre de 2024</time>",
+    "postmarked_mail_deadline": "debe tener el sello del correo 10 días antes del día de las elecciones",
     "received_mail_deadline": "",
     "nvrf_fields": [
     {
@@ -2131,18 +2131,18 @@
     "is_state": "1",
     "reg_type": "online",
     "accepts_nvrf": "1",
-    "mailing_address_inst": "<p>Secretary of State<br>P.O. Box 83720 State Capitol Bldg.&nbsp;<br>Boise, ID 83720-0080</p>",
-    "reg_eligibility_desc": "<p>Para inscribirse en Idaho tiene que:</p><ul><li>Ser ciudadano de los Estados Unidos</li><li>Haber vivido en Idaho y en el condado al menos 30 días antes del día de las elecciones</li><li>Tener al menos 18 años de edad</li><li>No haber sido condenado por un delito grave, y sin haber sido restituido a los derechos de ciudadanía, ni haber sido confinado en prisión por haber sido condenado por un delito penal</li></ul>",
-    "id_inst": "<p>Ingrese el número de su licencia de conducir. Si no tiene licencia de conducir, ingrese los últimos 4 dígitos de su número de seguro social.</p>",
+    "mailing_address_inst": "<p>Secretary of State<br>P.O. Box 83720&nbsp;<br>State Capitol Bldg.&nbsp;<br>Boise, ID 83720-0080</p>",
+    "reg_eligibility_desc": "<p>Para inscribirse en Idaho tiene que:</p><ul><li>Ser ciudadano de los Estados Unidos</li><li>Haber vivido en Idaho y en el condado al menos 30 días antes del día de las elecciones</li><li>Tener al menos 18 años de edad</li><li>No haber sido condenado de un delito grave, sin que le hayan restituido los derechos de ciudadanía o estar encarcelado por haber sido convicto por un delito penal</li></ul>",
+    "id_inst": "<p>Ingrese el número de su licencia de conducir de Idaho o la tarjeta de identificación estatal emitida por el Departamento de Transporte de Idaho. Si no tiene dicha tarjeta, ingrese las 4 últimas cifras de su número de seguridad social.</p>",
     "address_inst": "",
     "personal_info_inst": "",
-    "political_party_inst": "<p>No tiene que inscribirse en un partido politico si quiere participar en las elecciones primarias, en el caucus o en la convención de ese partido.</p>",
+    "political_party_inst": "<p>A menos que el partido político opte por celebrar unas elecciones primarias abiertas, es necesario afiliarse a un partido político si desea participar en las elecciones primarias de un partido.</p>",
     "registration_url": "https://elections.sos.idaho.gov/ElectionLink/ElectionLink/ApplicationInstructions.aspx",
     "election_website_url": "https://idahovotes.gov/",
     "more_info_url": "https://voteidaho.gov/voter-registration/",
     "mail_reg_url": "https://sos.idaho.gov/elections/forms/voter_registration.pdf",
     "confirm_reg_url": "https://elections.sos.idaho.gov/ElectionLink/ElectionLink/VoterSearch.aspx",
-    "postmarked_mail_deadline": "<time datetime=\"2024-10-11T12:00:00Z\">viernes, 11 de octubre de 2024</time>",
+    "postmarked_mail_deadline": "debe tener el sello del correo a más tardar 25 días antes del día de las elecciones",
     "received_mail_deadline": "",
     "nvrf_fields": [
     {
@@ -2290,9 +2290,9 @@
     "registration_url": "https://ova.elections.il.gov/",
     "election_website_url": "https://www.elections.il.gov/",
     "more_info_url": "https://www.elections.il.gov/Default.aspx",
-    "mail_reg_url": "https://www.elections.il.gov/NewDocDisplay.aspx?%2fM0cs48zOKVZyk9eAbpEoxjoGz9b5YaGOZJlr8CbkngFbsRPV%2f1ATx4aQkxzja565ESGno4fDfetZNJEnD3jlKUsS4RoI55UaaHzJzO%2bW22z%2bFdnOD0t%2f9pfEFOppxmWN9FTGwiaU9tDHyRuCznbqw%3d%3d",
+    "mail_reg_url": "https://www.elections.il.gov/ElectionOperations/VotingByMailAgreement.aspx",
     "confirm_reg_url": "https://spanish-ova.elections.il.gov/",
-    "postmarked_mail_deadline": "<time datetime=\"2024-10-08T12:00:00Z\">martes, 8 de octubre de 2024</time>",
+    "postmarked_mail_deadline": "debe tener el sello del correo 28 días antes del día de las elecciones",
     "received_mail_deadline": "",
     "nvrf_fields": [
     {
@@ -2442,7 +2442,7 @@
     "more_info_url": "https://www.in.gov/sos/elections/2403.htm",
     "mail_reg_url": "https://forms.in.gov/Download.aspx?id=9341",
     "confirm_reg_url": "https://indianavoters.in.gov/",
-    "postmarked_mail_deadline": "<time datetime=\"2024-10-07T12:00:00Z\">lunes, 7 de octubre de 2024</time>",
+    "postmarked_mail_deadline": "debe tener el sello del correo 29 días antes del día de las elecciones",
     "received_mail_deadline": "",
     "nvrf_fields": [
     {
@@ -2584,7 +2584,7 @@
     "more_info_url": "https://sos.iowa.gov/elections/voterinformation/voterregistration.html",
     "mail_reg_url": "https://sos.iowa.gov/elections/pdf/voteapp.pdf",
     "confirm_reg_url": "https://sos.iowa.gov/elections/voterreg/regtovote/search.aspx",
-    "postmarked_mail_deadline": "<time datetime=\"2024-10-21T12:00:00Z\">lunes, 21 de octubre de 2024</time>",
+    "postmarked_mail_deadline": "debe tener el sello del correo 15 días antes del día de las elecciones",
     "received_mail_deadline": "",
     "nvrf_fields": [
     {
@@ -2734,7 +2734,7 @@
     "more_info_url": "https://sos.ks.gov/elections/voter-information.html",
     "mail_reg_url": "https://www.kssos.org/forms/elections/voterregistration.pdf",
     "confirm_reg_url": "https://myvoteinfo.voteks.org/voterview/?culture=es-MX",
-    "postmarked_mail_deadline": "<time datetime=\"2024-10-15T12:00:00Z\">martes, 15 de octubre de 2024</time>",
+    "postmarked_mail_deadline": "debe tener el sello del correo 21 días antes del día de las elecciones",
     "received_mail_deadline": "",
     "nvrf_fields": [
     {
@@ -2882,9 +2882,9 @@
     "registration_url": "https://vrsws.sos.ky.gov/ovrweb/",
     "election_website_url": "https://elect.ky.gov/Pages/default.aspx",
     "more_info_url": "https://elect.ky.gov/Resources/Pages/Registration.aspx",
-    "mail_reg_url": "https://elect.ky.gov/registertovote/Documents/SBE%2001%20406%20Mail%20In%20Voter%20Registration%20Application.pdf",
+    "mail_reg_url": "https://elect.ky.gov/Resources/Documents/SBE%2001%20-%20KY%20Voter%20Registration%20Application%20FILLABLE%20406.pdf",
     "confirm_reg_url": "https://vrsws.sos.ky.gov/VIC/",
-    "postmarked_mail_deadline": "<time datetime=\"2024-10-07T12:00:00Z\">lunes, 7 de octubre de 2024</time>",
+    "postmarked_mail_deadline": "debe tener el sello del correo 29 días antes del día de las elecciones",
     "received_mail_deadline": "",
     "nvrf_fields": [
     {
@@ -3026,7 +3026,7 @@
     "more_info_url": "https://www.sos.la.gov/ElectionsAndVoting/RegisterToVote/Pages/default.aspx",
     "mail_reg_url": "https://www.sos.la.gov/ElectionsAndVoting/PublishedDocuments/ApplicationToRegisterToVote.pdf",
     "confirm_reg_url": "https://voterportal.sos.la.gov/",
-    "postmarked_mail_deadline": "<time datetime=\"2024-10-07T12:00:00Z\">lunes, 7 de octubre de 2024</time>",
+    "postmarked_mail_deadline": "debe tener el sello del correo 30 días antes del día de las elecciones",
     "received_mail_deadline": "",
     "nvrf_fields": [
     {
@@ -3169,19 +3169,19 @@
     "is_state": "1",
     "reg_type": "online",
     "accepts_nvrf": "1",
-    "mailing_address_inst": "<p>Elections Division<br>Bureau of Corporations<br>Elections and Commissions<br>101 State House Station<br>Augusta, ME 04333-0101</p><p>Direcciones municipales: Para cumplir los plazos de registro, especialmente en las dos semanas anteriores a que se cierre el periodo de registro (tres semanas antes de las elecciones), debe devolver la solicitud de registro completada directamente al secretario municipal. La lista completa de secretarios municipales está disponible en https://www. maine.gov/sos/cec/elec/.</p>",
-    "reg_eligibility_desc": "<p><strong>Para inscribirse en Maine tiene que:</strong></p><ul><li>Ser ciudadano de Estados Unidos</li><li>Ser residente de Maine y del municipio en el que desea votar</li><li>Tener al menos 17 años de edad (tiene que tener 18 años de edad para poder votar)</li></ul><p><strong>Antes de empezar, por favor tenga en cuenta lo siguiente:</strong> La dirección anterior es una sección obligatoria para el registro electoral de Maine. Si ya estaba inscrito para votar, en Maine o fuera de Maine, se requiere la dirección del registro anterior para inscribirse para votar. Cuando llegue al póximo paso seleccione \"Cambio de datos de registro\". Al entrar su direccion, seleccione \"Cambié mi domicilio después de la última vez que me regirstré\" y entre su dirección anterior.</p>",
-    "id_inst": "<p>Tiene que indicar el número de su licencia de conducir válida de Maine. Si no tiene una licencia de conducir válida de Maine debe proporcionar los últimos cuatro números de su Seguro Social. Los votantes que no tienen ninguna de esas formas de identificación tienen que seleccionar \"yo no tengo una identificación válida\" en este espacio.</p>",
+    "mailing_address_inst": "<p dir=\"ltr\">Elections Division&nbsp;<br>Bureau of Corporations<br>Elections and Commissions&nbsp;<br>184 State House Station&nbsp;<br>Augusta, ME 04333-0184</p><p>Direcciones municipales: Para cumplir los plazos de registro, especialmente en las dos semanas anteriores a que se cierre el periodo de registro (tres semanas antes de las elecciones), debe devolver la solicitud de registro completada directamente al secretario municipal. Encontrar la lista completa de&nbsp;<a href=\"https://www.maine.gov/sos/cec/elec/munic.html\" target=\"_blank\">secretarios municipales</a>.&nbsp;</p>",
+    "reg_eligibility_desc": "<p>Para inscribirse en Maine tiene que:</p><ul><li dir=\"ltr\">Ser ciudadano de Estados Unidos</li><li dir=\"ltr\">Ser residente de Maine y del municipio en el que desea votar</li><li dir=\"ltr\">Tener al menos 17 años de edad (tiene que tener 18 años de edad para poder votar)</li></ul><p>La dirección anterior es una sección obligatoria para el registro electoral de Maine. Si ya estaba inscrito para votar, en Maine o fuera de Maine, se requiere la dirección del registro anterior para inscribirse para votar. Si no se ha registrado anteriormente, escriba N/A.</p>",
+    "id_inst": "<p>Tiene que indicar el número de su licencia de conducir válida de Maine. Si no tiene una licencia de conducir válida de Maine debe proporcionar las cuatro últimas cifras de su número del Seguro Social. Los votantes que no tienen ninguna de esas formas de identificación tienen que escribir “NONE” (NINGUNA) en este espacio.</p>",
     "address_inst": "",
     "personal_info_inst": "",
     "political_party_inst": "<p>Los votantes no inscritos pueden optar por participar en las elecciones primarias, asambleas electorales o convenciones de un partido sin inscribirse en ese partido.</p>",
     "registration_url": "https://maine.gov/vote",
     "election_website_url": "https://www.maine.gov/sos/cec/elec/",
     "more_info_url": "https://maine.gov/sos/cec/elec/voter-info/voterguide.html",
-    "mail_reg_url": "https://www.maine.gov/sos/cec/elec/upcoming/pdf/voterregcard20.pdf",
+    "mail_reg_url": "https://www.maine.gov/sos/cec/elec/data/data-pdf/2024/vrrev124.pdf",
     "confirm_reg_url": "https://maine.gov/sos/cec/elec/munic.html",
     "postmarked_mail_deadline": "",
-    "received_mail_deadline": "<time datetime=\"2024-10-15T12:00:00Z\">martes, 15 de octubre de 2024</time>",
+    "received_mail_deadline": "a más tardar debe ser recibida 21 días antes del día de las elecciones",
     "nvrf_fields": [
     {
     "uuid": "86a544cd-cfe9-456a-b634-176a37a38d6d",
@@ -3326,7 +3326,7 @@
     "more_info_url": "https://www.elections.maryland.gov/voter_registration/application.html",
     "mail_reg_url": "https://elections.maryland.gov/voter_registration/documents/English_Internet_VRA.pdf",
     "confirm_reg_url": "https://voterservices.elections.maryland.gov/VoterSearch",
-    "postmarked_mail_deadline": "<time datetime=\"2024-10-15T12:00:00Z\">martes, 15 de octubre de 2024</time>",
+    "postmarked_mail_deadline": "debe tener el sello del correo 21 días antes del día de las elecciones",
     "received_mail_deadline": "",
     "nvrf_fields": [
     {
@@ -3476,7 +3476,7 @@
     "more_info_url": "https://www.sec.state.ma.us/divisions/elections/voter-resources/registering-to-vote.htm",
     "mail_reg_url": "https://www.sec.state.ma.us/divisions/elections/languages/register-by-mail-forms.htm",
     "confirm_reg_url": "https://www.sec.state.ma.us/VoterRegistrationSearch/MyVoterRegStatus.aspx",
-    "postmarked_mail_deadline": "<time datetime=\"2024-10-26T12:00:00Z\">sábado, 26 de octubre de 2024</time>",
+    "postmarked_mail_deadline": "debe tener el sello del correo 10 días antes del día de las elecciones",
     "received_mail_deadline": "",
     "nvrf_fields": [
     {
@@ -3611,18 +3611,18 @@
     "is_state": "1",
     "reg_type": "online",
     "accepts_nvrf": "1",
-    "mailing_address_inst": "<p>Envíe por correo o entregue esta solicitud completa directamente a su secretario municipal o de ayuntamiento. Encuentre la dirección de su secretario municipal o de ayuntamiento en Michigan.gov/Vote. Si no puede encontrarla, envíe la solicitud por correo a:<br><br>Michigan Department of State Bureau of Elections<br>P.O. Box 20126<br>Lansing, MI 48901-0726</p>",
-    "reg_eligibility_desc": "<p>Para inscribirse en Michigan, usted tiene que reunir los siguientes requisitos:</p><ul><li>Ser ciudadano de Estados Unidos</li><li>Tener 18 años para las próximas elecciones</li><li>Ser residente de Michigan y al menos ser residente durante 30 días de su ciudad o ayuntamiento para el día de las elecciones</li><li>No estar en prisión después de ser declarado culpable y sentenciado</li></ul><p>Aviso: Si un votante tiene identificación personal (PID) o una licencia de conducir (DL) de Michigan, la ley de Michigan exige que se use la misma dirección con fines de identificación personal/licencia de conducir e inscripción de votantes. El uso de este formulario también modificará su dirección de DL/PID. El Secretario de estado le enviará por correo una etiqueta de dirección nueva para su DL/PID.</p>",
-    "id_inst": "<p>Su formulario de inscripción de votante debe contener el número de su licencia de conducir del estado o el número de identificación de los no conductores emitido por el estado. Si no tiene una licencia de conducir ni identificación de no conductor, tiene que incluir los últimos cuatro números de su Seguro Social. Si no tiene una licencia de conducir, ni una licencia de identificación de no conductor, ni un número del Seguro Social, seleccione \"yo no tengo una identificación válida\" en el formulario. El estado le asignará un número de identificación exclusivo.</p>",
+    "mailing_address_inst": "<p dir=\"ltr\">Envíe por correo o entregue esta solicitud completa directamente a su secretario municipal o de ayuntamiento. Encuentre la dirección de su secretario municipal o de ayuntamiento en&nbsp;<a href=\"http://michigan.gov/Vote\">Michigan.gov/Vote</a>. Si no puede encontrarla, envíe la solicitud por correo a:</p><p dir=\"ltr\">Michigan Department of State Bureau of Elections<br>P.O. Box 20126<br>Lansing, MI 48901-0726</p>",
+    "reg_eligibility_desc": "<p>Para inscribirse en Michigan, usted tiene que reunir los siguientes requisitos:</p><ul><li dir=\"ltr\">Ser ciudadano de Estados Unidos</li><li dir=\"ltr\">Tener 18 años para las próximas elecciones</li><li dir=\"ltr\">Ser residente de Michigan y al menos ser residente durante 30 días de su ciudad o ayuntamiento para el día de las elecciones</li><li dir=\"ltr\">No estar en prisión después de ser declarado culpable y sentenciado</li></ul><p dir=\"ltr\">Preinscripción para jóvenes de 16 años — Para preinscribirse en Michigan debe:</p><ul><li dir=\"ltr\">Ser ciudadano de Estados Unidos</li><li dir=\"ltr\">Tener al menos 16&nbsp;años, pero menos de 17 años y medio</li><li dir=\"ltr\">Ser residente de Michigan y residente de la ciudad o municipio en el que solicita la preinscripción.</li></ul><p dir=\"ltr\">Una persona que se preinscribe para votar se convierte de forma automática en votante inscrito al cumplir 18&nbsp;años. Si está utilizando este formulario para preinscribirse para votar, responda “sí” a la pregunta “¿Tendrá 18&nbsp;años el día de las elecciones o antes?” si tendrá 18 años en la primera elección en la que votará.</p><p>Aviso: Si un votante tiene identificación personal (PID) o una licencia de conducir (DL) de Michigan, la ley de Michigan exige que&nbsp;se use la misma dirección con fines de identificación personal/ licencia de conducir e inscripción de votantes.<strong>&nbsp;</strong>El uso de este formulario también modificará su dirección de DL/PID. El Secretario de estado le enviará por correo una etiqueta de dirección nueva para su DL/PID.</p>",
+    "id_inst": "<p>Su formulario de inscripción de votante debe contener el número de su licencia de conducir del estado o el número de identificación de los no conductores emitido por el estado. Si no tiene una licencia de conducir ni identificación de no conductor, tiene que incluir las últimas cuatro cifras de su número del Seguro Social. Si no tiene una licencia de conducir, ni una licencia de identificación de no conductor, ni un número del Seguro Social, escriba “NONE” (NINGUNO) en el formulario. El estado le asignará un número de identificación exclusivo.</p>",
     "address_inst": "",
     "personal_info_inst": "",
-    "political_party_inst": "<p>No se requiere “seleccionar un partido político” para inscribirse para votar.</p>",
+    "political_party_inst": "<p>No se requiere seleccionar un partido político para inscribirse para votar.</p>",
     "registration_url": "https://mvic.sos.state.mi.us/registervoter",
     "election_website_url": "https://www.michigan.gov/sos/elections",
     "more_info_url": "https://mvic.sos.state.mi.us/",
     "mail_reg_url": "https://www.michigan.gov/sos/-/media/Project/Websites/sos/Elections/Election-Forms/Voter-Registration-Form-English.pdf?rev=9b0ee49b142047b7a88ef32987c3f1b4&amp;hash=13246777B383C5B7939663504EF6472D",
     "confirm_reg_url": "https://mvic.sos.state.mi.us/Voter/Index",
-    "postmarked_mail_deadline": "<time datetime=\"2024-10-21T12:00:00Z\">lunes, 21 de octubre de 2024</time>",
+    "postmarked_mail_deadline": "debe tener el sello del correo 15 días antes del día de las elecciones",
     "received_mail_deadline": "",
     "nvrf_fields": [
     {
@@ -3750,7 +3750,7 @@
     "required": "0"
     }
     ],
-    "nvrf_last_updated_date": "<time datetime=\"2019-11-07T12:00:00Z\">07 de noviembre de 2019</time>",
+    "nvrf_last_updated_date": "<time datetime=\"2024-09-17T12:00:00Z\">17 de septiembre de 2024</time>",
     "nvrf_pages_list": "1,2,3,4,15,16"
     },
     {
@@ -3770,10 +3770,10 @@
     "registration_url": "https://mnvotes.sos.state.mn.us/VoterRegistration/VoterRegistrationMain.aspx",
     "election_website_url": "https://www.sos.state.mn.us/elections-voting/",
     "more_info_url": "https://www.sos.state.mn.us/elections-voting/spanish",
-    "mail_reg_url": "https://www.sos.state.mn.us/media/1587/minnesota-voter-registration-application.pdf",
+    "mail_reg_url": "https://www.sos.state.mn.us/media/5975/minnesota-voter-registration-application.pdf",
     "confirm_reg_url": "https://www.sos.state.mn.us/elections-voting/spanish",
     "postmarked_mail_deadline": "",
-    "received_mail_deadline": "<time datetime=\"2024-10-15T12:00:00Z\">martes, 15 de octubre de 2024</time>",
+    "received_mail_deadline": "a más tardar debe ser recibida 21 días antes del día de las elecciones",
     "nvrf_fields": [
     {
     "uuid": "86a544cd-cfe9-456a-b634-176a37a38d6d",
@@ -3918,7 +3918,7 @@
     "more_info_url": "https://www.sos.ms.gov/elections-voting/voter-registration-information",
     "mail_reg_url": "https://www.sos.ms.gov/content/documents/elections/Mail-in%20Voter%20Registration%20Application.pdf",
     "confirm_reg_url": "https://www.msegov.com/sos/voter_registration/amiregistered/Search",
-    "postmarked_mail_deadline": "<time datetime=\"2024-10-07T12:00:00Z\">lunes, 7 de octubre de 2024</time>",
+    "postmarked_mail_deadline": "debe tener el sello del correo 30 días antes del día de las elecciones",
     "received_mail_deadline": "",
     "nvrf_fields": [
     {
@@ -4034,10 +4034,6 @@
     "required": "1"
     },
     {
-    "uuid": "eb0ce8c5-b4f7-4aae-a0b9-84f0434d2edb",
-    "required": "1"
-    },
-    {
     "uuid": "fd516f06-11bb-4c39-9080-735ed98100cc",
     "required": "0"
     }
@@ -4064,7 +4060,7 @@
     "more_info_url": "https://www.sos.mo.gov/elections/goVoteMissouri/register",
     "mail_reg_url": "https://s1.sos.mo.gov/Elections/VoterRegistration/Home/Print",
     "confirm_reg_url": "https://voteroutreach.sos.mo.gov/portal/",
-    "postmarked_mail_deadline": "<time datetime=\"2024-10-09T12:00:00Z\">miércoles, 9 de octubre de 2024</time>",
+    "postmarked_mail_deadline": "debe tener el sello del correo 27 días antes del día de las elecciones",
     "received_mail_deadline": "",
     "nvrf_fields": [
     {
@@ -4214,7 +4210,7 @@
     "more_info_url": "https://votemt.gov/",
     "mail_reg_url": "https://sosmt.gov/docs/46/for-montana-voters/59393/voter-registration-application",
     "confirm_reg_url": "https://prodvoterportal.mt.gov/WhereToVote.aspx",
-    "postmarked_mail_deadline": "<time datetime=\"2024-10-07T12:00:00Z\">lunes, 7 de octubre de 2024</time>",
+    "postmarked_mail_deadline": "debe tener el sello del correo 30 días antes del día de las elecciones",
     "received_mail_deadline": "",
     "nvrf_fields": [
     {
@@ -4360,11 +4356,11 @@
     "personal_info_inst": "",
     "political_party_inst": "<p>Tiene que inscribirse en un partido si desea participar en las elecciones primarias, en la asamblea local (caucus) o en la convención de ese partido político.</p>",
     "registration_url": "https://www.nebraska.gov/apps-sos-voter-registration/",
-    "election_website_url": "https://sos.nebraska.gov/elections/2020-elections",
+    "election_website_url": "https://sos.nebraska.gov/elections/general-voter-information",
     "more_info_url": "https://sos.nebraska.gov/elections/voter-forms",
     "mail_reg_url": "https://sos.nebraska.gov/sites/sos.nebraska.gov/files/doc/elections/vr-fillable.pdf",
     "confirm_reg_url": "https://www.votercheck.necvr.ne.gov/voterview/?culture=es-MX",
-    "postmarked_mail_deadline": "<time datetime=\"2024-10-18T12:00:00Z\">viernes, 18 de octubre de 2024</time>",
+    "postmarked_mail_deadline": "debe tener el sello del correo 18 días antes del día de las elecciones",
     "received_mail_deadline": "",
     "nvrf_fields": [
     {
@@ -4510,7 +4506,7 @@
     "more_info_url": "https://www.nvsos.gov/sos/elections/voters/registering-to-vote",
     "mail_reg_url": "https://www.nvsos.gov/sosvoterregform/",
     "confirm_reg_url": "https://www.nvsos.gov/votersearch/",
-    "postmarked_mail_deadline": "<time datetime=\"2024-10-08T12:00:00Z\">martes, 8 de octubre de 2024</time>",
+    "postmarked_mail_deadline": "debe tener el sello del correo 28 días antes del día de las elecciones",
     "received_mail_deadline": "",
     "nvrf_fields": [
     {
@@ -4647,7 +4643,7 @@
     "name": "New Hampshire",
     "abbrev": "nh",
     "is_state": "1",
-    "reg_type": "in-person",
+    "reg_type": "by-mail",
     "accepts_nvrf": "0",
     "mailing_address_inst": "",
     "reg_eligibility_desc": "",
@@ -4661,7 +4657,7 @@
     "mail_reg_url": "https://www.sos.nh.gov/elections/register-vote/absentee",
     "confirm_reg_url": "https://app.sos.nh.gov/voterinformation",
     "postmarked_mail_deadline": "",
-    "received_mail_deadline": "<time datetime=\"2024-11-05T12:00:00Z\">martes, 5 de noviembre de 2024</time>",
+    "received_mail_deadline": "a más tardar debe ser recibida 13 días antes del día de las elecciones",
     "nvrf_fields": [
     {
     "uuid": "86a544cd-cfe9-456a-b634-176a37a38d6d",
@@ -4814,8 +4810,8 @@
     "more_info_url": "https://nj.gov/state/elections/voter-registration.shtml",
     "mail_reg_url": "https://www.nj.gov/state/elections/assets/pdf/forms-voter-registration/68-voter-registration-english.pdf",
     "confirm_reg_url": "https://voter.svrs.nj.gov/registration-check",
-    "postmarked_mail_deadline": "<time datetime=\"2024-10-15T12:00:00Z\">martes, 15 de octubre de 2024</time>",
-    "received_mail_deadline": "<time datetime=\"2024-10-15T12:00:00Z\">martes, 15 de octubre de 2024</time>",
+    "postmarked_mail_deadline": "debe tener el sello del correo 21 días antes del día de las elecciones",
+    "received_mail_deadline": "",
     "nvrf_fields": [
     {
     "uuid": "86a544cd-cfe9-456a-b634-176a37a38d6d",
@@ -4946,17 +4942,17 @@
     "reg_type": "online",
     "accepts_nvrf": "1",
     "mailing_address_inst": "<p>Bureau of Elections<br>325 Don Gaspar, Suite 300<br>Santa Fe, NM 87503</p>",
-    "reg_eligibility_desc": "<p>Para inscribirse en New Mexico tiene que:</p><ul><li>Ser ciudadano de Estados Unidos</li><li>Ser residente del estado de New Mexico</li><li>Tener al menos 18 años de edad el día de las próximas elecciones</li><li>No haberle sido denegado el derecho al voto por un tribunal de justicia por motivo de incapacidad mental y el votante deberá afirmar que si le condenaron por un delito grave, ha completado todas las condiciones de libertad condicional o supervisada, ha cumplido toda la sentencia o ha recibido perdón del gobernador</li></ul>",
-    "id_inst": "<p>Se requiere su número completo del Seguro Social. Esta tarjeta de inscripción con su número del Seguro Social pasará a formar parte de los datos permanentes de inscripción de votantes de su localidad, que se hallan disponibles para inspección del público en la oficina del secretario de condado. Sin embargo, su número del Seguro Social y su fecha de nacimiento permanecerán confidenciales y no se revelarán al público. Las listas computarizadas de información limitada de inscripción de votantes (sin el número del Seguro Social o la fecha de nacimiento) se hallan a disposición del público en general y si las solicitan, se entregan a titulares de cargos sujetos a elección, a candidatos, partidos políticos, tribunales y organizaciones sin fines de lucro que promueven la participación e inscripción de votantes, sólo para fines políticos (§1-5-19B, NMSA 1978).</p>",
+    "reg_eligibility_desc": "<p>Para inscribirse en New Mexico tiene que:</p><ul><li dir=\"ltr\">Ser ciudadano de Estados Unidos</li><li dir=\"ltr\">Ser residente del estado de New Mexico</li><li dir=\"ltr\">Tener al menos 18 años de edad el día de las próximas elecciones</li><li dir=\"ltr\">No estar actualmente encarcelado debido a una condena por delito grave</li></ul>",
+    "id_inst": "<p>Debe presentar una licencia de conducir o un número de identificación estatal emitido por la división de vehículos motorizados del departamento de impuestos y rentas o las cuatro últimas cifras de su número del Seguro Social.<strong>&nbsp;</strong>Las listas computarizadas de información limitada de inscripción de votantes (sin números del Seguro Social, códigos utilizados para identificar las agencias en las que se han inscrito los votantes, el día y el mes de nacimiento del votante o, si lo prohíben los votantes, los números de teléfono de los votantes) se hallan a disposición del público en general y si las solicitan, se entregan a titulares de cargos electorales, candidatos, partidos políticos, tribunales y organizaciones sin fines de lucro que promueven la participación e inscripción de votantes, sólo para fines políticos.</p>",
     "address_inst": "",
     "personal_info_inst": "",
     "political_party_inst": "<p>Se tiene que inscribir en un partido político si desea participar en las elecciones primarias, en la asamblea local (caucus) o en la convención de ese partido.</p>",
     "registration_url": "https://portal.sos.state.nm.us/OVR/WebPages/InstructionsStep1.aspx",
     "election_website_url": "https://www.sos.state.nm.us/voting-and-elections/",
     "more_info_url": "https://www.sos.nm.gov/voting-and-elections/voting-faqs/voter-registration/",
-    "mail_reg_url": "https://portal.sos.state.nm.us/ovr/VRForms/VRFormEnglishFinal.pdf",
+    "mail_reg_url": "https://www.sos.nm.gov/wp-content/uploads/2024/11/VoterReg_SHELL_2023_ENG.pdf",
     "confirm_reg_url": "https://voterportal.servis.sos.state.nm.us/WhereToVote.aspx",
-    "postmarked_mail_deadline": "<time datetime=\"2024-10-08T12:00:00Z\">martes, 8 de octubre de 2024</time>",
+    "postmarked_mail_deadline": "debe tener el sello del correo 28 días antes del día de las elecciones",
     "received_mail_deadline": "",
     "nvrf_fields": [
     {
@@ -5076,7 +5072,7 @@
     "required": "0"
     }
     ],
-    "nvrf_last_updated_date": "<time datetime=\"2006-03-01T12:00:00Z\">01 de marzo de 2006</time>",
+    "nvrf_last_updated_date": "<time datetime=\"2024-10-02T12:00:00Z\">02 de octubre de 2024</time>",
     "nvrf_pages_list": "1,2,3,4,19,20"
     },
     {
@@ -5093,13 +5089,13 @@
     "address_inst": "",
     "personal_info_inst": "",
     "political_party_inst": "<p>Se tiene que inscribir en un partido político si desea participar en las elecciones primarias o en la asamblea local (caucus) de ese partido.</p>",
-    "registration_url": "https://dmv.ny.gov/more-info/electronic-voter-registration-application",
+    "registration_url": "https://elections.ny.gov/voter-registration-process",
     "election_website_url": "https://www.elections.ny.gov/",
     "more_info_url": "https://www.elections.ny.gov/votingregister.html",
-    "mail_reg_url": "https://www.elections.ny.gov/NYSBOE/download/voting/voteregform-eng-fillable.pdf",
+    "mail_reg_url": "https://elections.ny.gov/system/files/documents/2024/06/2023-vr-form-enligh-fillable_deadline-correction.pdf",
     "confirm_reg_url": "https://voterlookup.elections.ny.gov/",
     "postmarked_mail_deadline": "",
-    "received_mail_deadline": "<time datetime=\"2024-10-26T12:00:00Z\">sábado, 26 de octubre de 2024</time>",
+    "received_mail_deadline": "Deberá tener el sello postal 15 días antes y deberá ser recibido 10 días antes del día de las elecciones",
     "nvrf_fields": [
     {
     "uuid": "86a544cd-cfe9-456a-b634-176a37a38d6d",
@@ -5233,18 +5229,18 @@
     "is_state": "1",
     "reg_type": "online",
     "accepts_nvrf": "1",
-    "mailing_address_inst": "<p>State Board of Elections<br>P.O. Box 27255<br>Raleigh, NC 27611-7255</p>",
-    "reg_eligibility_desc": "<p>Para inscribirse en North Carolina tiene que:</p><ul><li>Ser ciudadano de Estados Unidos</li><li>Ser residente de North Carolina y del condado en que vive por al menos 30 días antes de las elecciones</li><li>Tener al menos 18 años de edad para el día de las próximas elecciones generales</li><li>Tener sus derechos de ciudadanía restituidos si lo condenaron de un delito grave</li><li>No estar inscrito ni votar en ningún otro condado o estado</li></ul>",
-    "id_inst": "<p>Proporcione el número de su licencia de conducir de North Carolina o el número de identificación del Departamento de Vehículos de Motor de North Carolina. Si no tiene licencia de conducir, escriba las últimas cuatro cifras de su número del Seguro Social.</p>",
+    "mailing_address_inst": "<p>State Board of Elections<br>P.O. Box 27255<br>Raleigh, NC 27611-725</p>",
+    "reg_eligibility_desc": "<p>Para inscribirse en North Carolina tiene que:</p><ul><li dir=\"ltr\">Ser ciudadano de Estados Unidos</li><li dir=\"ltr\">Ser residente de North Carolina y del condado en que vive por al menos 30 días antes de las elecciones</li><li dir=\"ltr\">Tener al menos 16&nbsp;años de edad y tener 18 años de edad para el día de las próximas elecciones generales</li><li dir=\"ltr\">No estar cumpliendo actualmente una condena por delito grave (lo que incluye libertad condicional, supervisión posterior a la liberación o libertad bajo vigilancia)</li></ul>",
+    "id_inst": "<p>Proporcione el número de su licencia de conducir de North Carolina o el número de identificación del Departamento de Vehículos de Motor de North Carolina. Si no tiene licencia de conducir, escriba las últimas cuatro cifras de su número del Seguro Social. Si no tiene ninguno de estos números de identificación, escriba “NINGUNO” en el formulario. Se le asignará un número de identificación único para los fines del registro de votantes.</p>",
     "address_inst": "",
     "personal_info_inst": "",
-    "political_party_inst": "<p>Se tiene que inscribir en un partido político para votar en las elecciones primarias de dicho partido, a menos que ese partido permita que votantes no afiliados voten en sus elecciones primarias. Si indica un partido político que no es un partido político calificado, o si no indica ningún partido político, figurará como “No afiliado”.</p>",
+    "political_party_inst": "<p>Puede elegir afiliarse a cualquier partido político reconocido en North Carolina. Si indica un partido político que no es un partido político calificado, o si no indica ningún partido político, figurará como “No afiliado”. Si no está afiliado, puede elegir votar en las elecciones primarias de cualquier partido.</p>",
     "registration_url": "https://www.ncdot.gov/dmv/offices-services/online/Pages/voter-registration-application.aspx",
     "election_website_url": "https://www.ncsbe.gov/voting",
     "more_info_url": "https://www.ncsbe.gov/registering/how-register",
     "mail_reg_url": "https://s3.amazonaws.com/dl.ncsbe.gov/Voter_Registration/NCVoterRegForm_06W.pdf",
     "confirm_reg_url": "https://vt.ncsbe.gov/RegLkup/",
-    "postmarked_mail_deadline": "<time datetime=\"2024-10-11T12:00:00Z\">viernes, 11 de octubre de 2024</time>",
+    "postmarked_mail_deadline": "debe tener el sello del correo 25 días antes del día de las elecciones",
     "received_mail_deadline": "",
     "nvrf_fields": [
     {
@@ -5376,7 +5372,7 @@
     "required": "0"
     }
     ],
-    "nvrf_last_updated_date": "<time datetime=\"2006-03-01T12:00:00Z\">01 de marzo de 2006</time>",
+    "nvrf_last_updated_date": "<time datetime=\"2024-08-22T12:00:00Z\">22 de agosto de 2024</time>",
     "nvrf_pages_list": "1,2,3,4,20"
     },
     {
@@ -5539,7 +5535,7 @@
     "name": "Northern Mariana Islands",
     "abbrev": "mp",
     "is_state": "0",
-    "reg_type": "in-person",
+    "reg_type": "by-mail",
     "accepts_nvrf": "0",
     "mailing_address_inst": "",
     "reg_eligibility_desc": "",
@@ -5550,7 +5546,7 @@
     "registration_url": "",
     "election_website_url": "https://www.votecnmi.gov.mp/",
     "more_info_url": "https://www.votecnmi.gov.mp/",
-    "mail_reg_url": "",
+    "mail_reg_url": "https://www.votecnmi.gov.mp/downloads/registration_package-f.pdf",
     "confirm_reg_url": "https://www.votecnmi.gov.mp/voter/are-you-registered-to-vote",
     "postmarked_mail_deadline": "",
     "received_mail_deadline": "",
@@ -5695,9 +5691,9 @@
     "is_state": "1",
     "reg_type": "online",
     "accepts_nvrf": "1",
-    "mailing_address_inst": "<p>Secretary of State of Ohio Elections Division<br>180 E. Broad Street -- 15th Floor<br>Columbus, OH 43215</p>",
-    "reg_eligibility_desc": "<p>Para inscribirse en Ohio tiene que:</p><ul><li>Ser ciudadano de Estados Unidos</li><li>Ser residente de Ohio</li><li>Tener al menos 18 años de edad para el día de las elecciones. Si tendrá 18 años para el día de las elecciones generales, podrá votar en las elecciones primarias únicamente por candidatos.</li><li>No haber sido convicto por un delito grave y en la actualidad estar encarcelado</li><li>No haber sido declarado mentalmente incompetente por ningún tribunal para los fines de votación</li></ul>",
-    "id_inst": "<p>Se le solicita su número del Seguro Social. Proporcionar este número es voluntario. Esta información permite que la Junta de Elecciones verifique su inscripción si es necesario (ley O.R.C. 3503.14). [La ley federal requiere que proporcione el número de su licencia de conducir para votar. Si no tiene una licencia de conducir, tiene que proporcionar al menos las últimos cuatro números de su Seguro Social. Si no tiene ninguno de los dos números, tendrá que seleccionar \"yo no tengo una identificación válida\" en el formulario y el estado le asignará un número].</p>",
+    "mailing_address_inst": "<p dir=\"ltr\">Secretary of State of Ohio&nbsp;<br>180 S. Civic Center Dr.<br>Columbus, Ohio 43215&nbsp;</p>",
+    "reg_eligibility_desc": "<p>Para inscribirse en Ohio tiene que:</p><ul><li dir=\"ltr\">Ser ciudadano de Estados Unidos</li><li dir=\"ltr\">Ser residente de Ohio</li><li dir=\"ltr\">Tener al menos 18 años de edad para el día de las elecciones. Si tendrá 18 años para el día de las elecciones generales, podrá votar en las elecciones primarias únicamente por candidatos.</li><li dir=\"ltr\">No haber sido convicto por un delito grave y en la actualidad estar encarcelado</li><li dir=\"ltr\">No haber sido declarado mentalmente incompetente por ningún tribunal para los fines de votación</li></ul>",
+    "id_inst": "<p>Se le solicita su número del Seguro Social. Proporcionar este número es voluntario. Esta información permite que la Junta de Elecciones verifique su inscripción si es necesario (O.R.C. 3503.14). [La ley federal requiere que proporcione el número de su licencia de conducir para votar. Si no tiene una licencia de conducir, tiene que proporcionar al menos las últimas cuatro cifras de su número del Seguro Social. Si no tiene ninguno de los dos números, tendrá que escribir “NONE” (NINGUNO) en el formulario y el estado le asignará un número].</p>",
     "address_inst": "",
     "personal_info_inst": "",
     "political_party_inst": "<p>No tiene que inscribirse en un partido político si desea participar en las elecciones primarias de ese partido. La afiliación a un partido político se establece votando en elecciones primarias.</p>",
@@ -5706,7 +5702,7 @@
     "more_info_url": "https://olvr.ohiosos.gov/",
     "mail_reg_url": "https://www.ohiosos.gov/globalassets/elections/forms/vr_form_04-2015.pdf",
     "confirm_reg_url": "https://voterlookup.ohiosos.gov/voterlookup.aspx",
-    "postmarked_mail_deadline": "<time datetime=\"2024-10-07T12:00:00Z\">lunes, 7 de octubre de 2024</time>",
+    "postmarked_mail_deadline": "debe tener el sello del correo 30 días antes del día de las elecciones",
     "received_mail_deadline": "",
     "nvrf_fields": [
     {
@@ -5830,7 +5826,7 @@
     "required": "0"
     }
     ],
-    "nvrf_last_updated_date": "<time datetime=\"2006-03-01T12:00:00Z\">01 de marzo de 2006</time>",
+    "nvrf_last_updated_date": "<time datetime=\"2024-09-16T12:00:00Z\">16 de septiembre de 2024</time>",
     "nvrf_pages_list": "1,2,3,4,21"
     },
     {
@@ -5847,12 +5843,12 @@
     "address_inst": "",
     "personal_info_inst": "",
     "political_party_inst": "<p>Debe inscribirse en un partido si desea participar en las elecciones primarias de ese partido. En el sitio web de la Junta electoral del estado de Oklahoma se encuentra disponible una lista actualizada de los partidos políticos reconocidos. Los partidos reconocidos pueden permitir que los votantes inscritos sin afiliación a un partido político participen en las elecciones primarias a criterio del partido. Puede encontrar una lista de los partidos políticos reconocidos y una lista de los partidos que permiten a los votantes sin afiliación a un partido político votar en las elecciones primarias en: https://oklahoma.gov/elections/voterregistration/political-party-info.html.&nbsp;</p>",
-    "registration_url": "",
+    "registration_url": "https://cms-test.vote.gov/register/oklahoma",
     "election_website_url": "https://www.ok.gov/elections/",
     "more_info_url": "https://oklahoma.gov/elections/voter-registration/register-to-vote.html",
     "mail_reg_url": "https://oklahoma.gov/content/dam/ok/en/elections/forms/voter-registration-application.pdf",
     "confirm_reg_url": "https://okvoterportal.okelections.us/",
-    "postmarked_mail_deadline": "<time datetime=\"2024-10-11T12:00:00Z\">viernes, 11 de octubre de 2024</time>",
+    "postmarked_mail_deadline": "debe tener el sello del correo 25 días antes del día de las elecciones",
     "received_mail_deadline": "",
     "nvrf_fields": [
     {
@@ -5991,9 +5987,9 @@
     "is_state": "1",
     "reg_type": "online",
     "accepts_nvrf": "1",
-    "mailing_address_inst": "<p>Oregon Elections Division<br>Public Service Building, Suite 501&nbsp;<br>255 Capital St. NE<br>Salem, OR 97310&nbsp;</p>",
-    "reg_eligibility_desc": "<p>Para inscribirse en Oregón, usted tiene que reunir los siguientes requisitos:</p><ul><li>Ser ciudadano de los Estados Unidos.</li><li>Ser residente de Oregón.</li><li>Tener al menos 16 años de edad al momento de inscribirse. Si aún no tiene 18 años, no recibirá una papeleta de votación hasta que se celebren unas elecciones en el momento de cumplir los 18 años o después.</li></ul>",
-    "id_inst": "<p>A fin de reunir los requisitos para votar en las elecciones de Oregón, debe proporcionar un número de licencia de conducir, permiso o identificación válidos de Oregón. Si no tiene una identificación emitida por el estado de Oregón, tendrá que proporcionar al menos los últimos cuatro números de su Seguro Social. Si no tiene ninguno de los dos, tendrá que seleccionar \"yo no tengo una identificación válida\" en el formulario.</p>",
+    "mailing_address_inst": "<p dir=\"ltr\">Oregon Elections Division<br>Public Service Building<br>Suite 126&nbsp;<br>255 Capital St. NE<br>Salem, OR 97310</p>",
+    "reg_eligibility_desc": "<p>Para inscribirse en Oregon, usted tiene que reunir los siguientes requisitos:</p><ul><li dir=\"ltr\">Ser ciudadano de los Estados Unidos</li><li dir=\"ltr\">Ser residente de Oregon</li><li dir=\"ltr\">Tener al menos 16 años de edad al momento de inscribirse. Si aún no tiene 18 años, no recibirá una papeleta de votación hasta que se</li><li dir=\"ltr\">Celebren unas elecciones en el momento de cumplir los 18 años o después</li></ul>",
+    "id_inst": "<p>A fin de reunir los requisitos para votar en las elecciones de Oregon, debe proporcionar un número de licencia de conducir, permiso o identificación válidos de Oregon. Si no tiene una identificación emitida por el estado de Oregon, tendrá que proporcionar al menos los últimos cuatro dígitos de su número de seguro social. Si no tiene ninguno de los dos, tendrá que escribir “NINGUNO” en el formulario.</p>",
     "address_inst": "",
     "personal_info_inst": "",
     "political_party_inst": "<p>En muchos casos, debe inscribirse en un partido si desea participar en las elecciones primarias de ese partido. Si no es miembro de un partido o si deja este espacio en blanco, será inscrito como votante no afiliado.</p>",
@@ -6002,7 +5998,7 @@
     "more_info_url": "https://sos.oregon.gov/voting/Pages/registration.aspx",
     "mail_reg_url": "https://sos.oregon.gov/elections/Documents/SEL500.pdf",
     "confirm_reg_url": "https://secure.sos.state.or.us/orestar/vr/showVoterSearch.do?lang=eng&amp;source=SOS",
-    "postmarked_mail_deadline": "<time datetime=\"2024-10-15T12:00:00Z\">martes, 15 de octubre de 2024</time>",
+    "postmarked_mail_deadline": "debe tener el sello del correo 21 días antes del día de las elecciones",
     "received_mail_deadline": "",
     "nvrf_fields": [
     {
@@ -6153,7 +6149,7 @@
     "mail_reg_url": "https://www.vote.pa.gov/Resources/Documents/Voter_Registration_Application_English.pdf",
     "confirm_reg_url": "https://www.pavoterservices.pa.gov/pages/voterregistrationstatus.aspx",
     "postmarked_mail_deadline": "",
-    "received_mail_deadline": "<time datetime=\"2024-10-21T12:00:00Z\">lunes, 21 de octubre de 2024</time>",
+    "received_mail_deadline": "a más tardar debe ser recibida 15 días antes del día de las elecciones",
     "nvrf_fields": [
     {
     "uuid": "86a544cd-cfe9-456a-b634-176a37a38d6d",
@@ -6456,7 +6452,7 @@
     "more_info_url": "https://vote.sos.ri.gov/VoterSpanish/RegisterToVote",
     "mail_reg_url": "https://vote.sos.ri.gov/Content/Pdfs/voter_registration_form.pdf",
     "confirm_reg_url": "https://vote.sos.ri.gov/HomeSpanish/UpdateVoterRecord?ActiveFlag=0",
-    "postmarked_mail_deadline": "<time datetime=\"2024-10-06T12:00:00Z\">domingo, 6 de octubre de 2024</time>",
+    "postmarked_mail_deadline": "debe tener el sello del correo 30 días antes del día de las elecciones",
     "received_mail_deadline": "",
     "nvrf_fields": [
     {
@@ -6606,7 +6602,7 @@
     "more_info_url": "https://scvotes.gov/voters/register-to-vote/",
     "mail_reg_url": "https://scvotes.gov/wp-content/uploads/2023/08/SEC-FRM-1301-202305-VR-by-Mail-web-1.pdf",
     "confirm_reg_url": "https://info.scvotes.sc.gov/eng/voterinquiry/VoterInformationRequest.aspx?PageMode=VoterInfo",
-    "postmarked_mail_deadline": "<time datetime=\"2024-10-07T12:00:00Z\">lunes, 7 de octubre de 2024</time>",
+    "postmarked_mail_deadline": "debe tener el sello del correo 30 días antes del día de las elecciones",
     "received_mail_deadline": "",
     "nvrf_fields": [
     {
@@ -6753,7 +6749,7 @@
     "mail_reg_url": "https://sdsos.gov/elections-voting/assets/VoterRegistrationFormFillable.pdf",
     "confirm_reg_url": "https://vip.sdsos.gov/VIPLogin.aspx",
     "postmarked_mail_deadline": "",
-    "received_mail_deadline": "<time datetime=\"2024-10-21T12:00:00Z\">lunes, 21 de octubre de 2024</time>",
+    "received_mail_deadline": "a más tardar debe ser recibida 15 días antes del día de las elecciones",
     "nvrf_fields": [
     {
     "uuid": "86a544cd-cfe9-456a-b634-176a37a38d6d",
@@ -6896,9 +6892,9 @@
     "registration_url": "https://ovr.govote.tn.gov/",
     "election_website_url": "https://sos.tn.gov/elections",
     "more_info_url": "https://sos.tn.gov/products/elections/register-vote",
-    "mail_reg_url": "https://sos-prod.tnsosgovfiles.com/s3fs-public/document/ss-3010_1.pdf?VersionId=NASWbVvb2dRNg4ZUe2unnbFwusHjA6Mn",
+    "mail_reg_url": "https://sos-prod.tnsosgovfiles.com/s3fs-public/document/ss-3010_4.pdf",
     "confirm_reg_url": "https://tnmap.tn.gov/voterlookup/",
-    "postmarked_mail_deadline": "<time datetime=\"2024-10-07T12:00:00Z\">lunes, 7 de octubre de 2024</time>",
+    "postmarked_mail_deadline": "debe tener el sello del correo 30 días antes del día de las elecciones",
     "received_mail_deadline": "",
     "nvrf_fields": [
     {
@@ -7044,7 +7040,7 @@
     "more_info_url": "https://www.votetexas.gov/es/registrese-para-votar/index.html",
     "mail_reg_url": "https://www.sos.state.tx.us/elections/forms/vr-with-receipt.pdf",
     "confirm_reg_url": "https://teamrv-mvp.sos.texas.gov/MVP/mvp.do",
-    "postmarked_mail_deadline": "<time datetime=\"2024-10-07T12:00:00Z\">lunes, 7 de octubre de 2024</time>",
+    "postmarked_mail_deadline": "debe tener el sello del correo 30 días antes del día de las elecciones",
     "received_mail_deadline": "",
     "nvrf_fields": [
     {
@@ -7345,7 +7341,7 @@
     "mail_reg_url": "https://voteinfo.utah.gov/wp-content/uploads/sites/42/2020/05/Voter-Registration-Form5-20.pdf",
     "confirm_reg_url": "https://votesearch.utah.gov/voter-search/search/search-by-voter/voter-info",
     "postmarked_mail_deadline": "",
-    "received_mail_deadline": "<time datetime=\"2024-10-25T12:00:00Z\">viernes, 25 de octubre de 2024</time>",
+    "received_mail_deadline": "a más tardar debe ser recibida 11 días antes del día de las elecciones",
     "nvrf_fields": [
     {
     "uuid": "86a544cd-cfe9-456a-b634-176a37a38d6d",
@@ -7484,7 +7480,7 @@
     "reg_type": "online",
     "accepts_nvrf": "1",
     "mailing_address_inst": "<p>Office of the Secretary of State Elections Division&nbsp;<br>128 State Street&nbsp;<br>Montpelier, VT 05633-1101</p>",
-    "reg_eligibility_desc": "<p>Para inscribirse en Vermont tiene que:</p><ul><li>Ser ciudadano de Estados Unidos</li><li>Ser residente de Vermont</li><li>Tener 18 años de edad para el día de las elecciones</li><li>Haber afirmado el siguiente juramento: Jura (o afirma) solemnemente que cuando emita su voto o sufragio sobre cualquier tema que concierna al estado de Vermont, lo hará de manera tal que en su conciencia juzgará que será lo más conducente al mayor bien del mismo, según se halla establecido en la Constitución, sin temor a ni favor hacia ninguna persona [Juramento de votante, Constitución de Vermont, Capítulo II, Sección 42] Usted atesta que has jurado o afirmado el juramento de votante de Vermont firmando el número 9</li></ul>",
+    "reg_eligibility_desc": "<p>Para inscribirse en Vermont tiene que:</p><ul><li>Ser ciudadano de Estados Unidos</li><li>Ser residente de Vermont</li><li>Tener 18 años de edad para el día de las elecciones</li><li>Haber afirmado el siguiente juramento: Jura (o afirma) solemnemente que cuando emita su voto o sufragio sobre cualquier tema que concierna al estado de Vermont, lo hará de manera tal que en su conciencia juzgará que será lo más conducente al mayor bien del mismo, según se halla establecido en la Constitución, sin temor a ni favor hacia ninguna persona [Juramento de votante, Constitución de Vermont, Capítulo II, Sección 42] Usted atesta que ha jurado o afirmado el juramento de votante de Vermont firmando el número 9</li></ul>",
     "id_inst": "<p>Debe proporcionar el número de su licencia de conducir de Vermont y si no tiene una licencia de conducir, deberá proporcionar los últimos cuatro números de su Seguro Social. Si no tiene ni una licencia de conducir de Vermont ni un número del Seguro Social, seleccione \"yo no tengo una identificación válida\" en el formulario. La oficina del Scretario de Estado le asignará un número de identificación exclusivo.</p>",
     "address_inst": "",
     "personal_info_inst": "",
@@ -7495,7 +7491,7 @@
     "mail_reg_url": "https://outside.vermont.gov/dept/sos/Elections%20Division/voters/voterapplication.pdf",
     "confirm_reg_url": "https://mvp.vermont.gov/",
     "postmarked_mail_deadline": "",
-    "received_mail_deadline": "<time datetime=\"2024-11-05T12:00:00Z\">martes, 5 de noviembre de 2024</time>",
+    "received_mail_deadline": "Debe recibirse antes del día de las elecciones; o a más tardar, el día de las elecciones",
     "nvrf_fields": [
     {
     "uuid": "86a544cd-cfe9-456a-b634-176a37a38d6d",
@@ -7623,7 +7619,7 @@
     }
     ],
     "nvrf_last_updated_date": "<time datetime=\"2019-09-19T12:00:00Z\">19 de septiembre de 2019</time>",
-    "nvrf_pages_list": "1,2,3,4,25"
+    "nvrf_pages_list": "1,2,3,4,24,25"
     },
     {
     "uuid": "eb04a278-18aa-4a75-81ce-f6747f86db7a",
@@ -7639,12 +7635,12 @@
     "address_inst": "",
     "personal_info_inst": "",
     "political_party_inst": "<p>No tiene que inscribirse en un partido político si desea participar en las elecciones primarias, en la asamblea local (caucus) o en la convención de ese partido político.</p>",
-    "registration_url": "https://www.elections.virginia.gov/citizen-portal/",
+    "registration_url": "https://vote.elections.virginia.gov/Registration/DmvLookup",
     "election_website_url": "https://www.elections.virginia.gov/",
     "more_info_url": "https://www.elections.virginia.gov/registration/how-to-register/",
-    "mail_reg_url": "https://www.elections.virginia.gov/media/formswarehouse/veris-voter-registration/applications/VA-NVRA-1-Voter-Registration-Application-rev-4-2023.-(3).pdf",
-    "confirm_reg_url": "https://www.elections.virginia.gov/registration/view-your-info/",
-    "postmarked_mail_deadline": "<time datetime=\"2024-10-15T12:00:00Z\">martes, 15 de octubre de 2024</time>",
+    "mail_reg_url": "https://www.elections.virginia.gov/media/formswarehouse/veris-voter-registration/applications/VA-NVRA-1-Voter-Registration-Application-rev-5-2024-2.pdf",
+    "confirm_reg_url": "https://vote.elections.virginia.gov/VoterInformation/Lookup/status",
+    "postmarked_mail_deadline": "debe tener el sello del correo 22 días antes del día de las elecciones",
     "received_mail_deadline": "",
     "nvrf_fields": [
     {
@@ -7783,7 +7779,7 @@
     "mail_reg_url": "https://www.sos.wa.gov/elections/voters/voter-registration/print-voter-registration-form",
     "confirm_reg_url": "https://voter.votewa.gov/WhereToVote.aspx",
     "postmarked_mail_deadline": "",
-    "received_mail_deadline": "<time datetime=\"2024-10-28T12:00:00Z\">lunes, 28 de octubre de 2024</time>",
+    "received_mail_deadline": "a más tardar debe ser recibida 8 días antes del día de las elecciones",
     "nvrf_fields": [
     {
     "uuid": "86a544cd-cfe9-456a-b634-176a37a38d6d",
@@ -7921,18 +7917,18 @@
     "is_state": "1",
     "reg_type": "online",
     "accepts_nvrf": "1",
-    "mailing_address_inst": "<p>Secretary of State<br>Building 1, Suite 157-K<br>1900 Kanawha Blvd.&nbsp;<br>East Charleston, WV 25305-0770</p>",
-    "reg_eligibility_desc": "<p>Para inscribirse en West Virginia tiene que:</p><ul><li>Ser ciudadano de Estados Unidos</li><li>Residir en West Virginia en la dirección provista en la solicitud</li><li>Tener 18 años de edad o para votar en las elecciones primarias, tener 17 años de edad y cumplir los 18 años antes de las elecciones generales</li><li>No estar bajo condena, libertad condicional o libertad supervisada por haber cometido un delito grave, traición o soborno electoral</li><li>No haber sido declarado “mentalmente incompetente” por ningún tribunal con jurisdicción competente</li></ul>",
-    "id_inst": "<p>West Virginia requiere el número de su licencia de conducir para inscribirse para votar. Si no tiene licencia de conducir, se requiere al menos los últimos cuatro números de su Seguro Social. Si no tiene ninguno de los dos, seleccione \"yo no tengo una identificación válida\" en el formulario. El estado le asignará un número de identificación exclusivo.</p>",
+    "mailing_address_inst": "<p>Secretary of State<br>Building 1, Suite 157-K<br>1900 Kanawha Blvd.&nbsp;East<br>Charleston, WV 25305-0770</p>",
+    "reg_eligibility_desc": "<p>Para inscribirse en West Virginia tiene que:</p><ul><li dir=\"ltr\">Ser ciudadano de Estados Unidos</li><li dir=\"ltr\">Residir en West Virginia en la dirección provista en la solicitud</li><li dir=\"ltr\">Tener 18 años de edad (o tener 17 años de edad y cumplir los 18 años antes de las elecciones generales)</li><li dir=\"ltr\">No estar bajo condena, libertad condicional o libertad supervisada por haber cometido un delito grave, traición o soborno electoral</li><li dir=\"ltr\">No haber sido declarado “mentalmente incompetente” por ningún tribunal con jurisdicción competente</li><li dir=\"ltr\">Dar fe de que el solicitante cumple cada uno de los requisitos de elegibilidad</li></ul>",
+    "id_inst": "<p>Se requiere el número de su licencia de conducir para inscribirse para votar. Si no tiene licencia de conducir, se requiere al menos las últimas cuatro cifras de su número del Seguro Social. Si no tiene ninguno de los dos, escriba “NONE” (NINGUNO) en el formulario. El estado le asignará un número de identificación exclusivo.</p>",
     "address_inst": "",
     "personal_info_inst": "",
-    "political_party_inst": "<p>Tiene que inscribirse en un partido político si desea participar en las elecciones primarias, en la asamblea local (caucus) o en la convención de ese partido político (a menos que solicite la papeleta de un partido que permite el voto de los que se inscribieron para votar como independientes)</p>",
+    "political_party_inst": "<p>Tiene que inscribirse en un partido político si desea participar en las elecciones primarias, en la asamblea local (caucus) o en la convención de ese partido político (a menos que solicite la papeleta de un partido que permite el voto de los que se inscribieron para votar como independientes).&nbsp;</p>",
     "registration_url": "https://ovr.sos.wv.gov/Register/Landing",
     "election_website_url": "https://sos.wv.gov/elections/Pages/default.aspx",
     "more_info_url": "https://ovr.sos.wv.gov/Register/Landing",
     "mail_reg_url": "https://sos.wv.gov/FormSearch/Elections/Voter/mail%20in%20voter%20registration%20application.pdf",
     "confirm_reg_url": "https://apps.sos.wv.gov/Elections/voter/amiregisteredtovote",
-    "postmarked_mail_deadline": "<time datetime=\"2024-10-15T12:00:00Z\">martes, 15 de octubre de 2024</time>",
+    "postmarked_mail_deadline": "debe tener el sello del correo 21 días antes del día de las elecciones",
     "received_mail_deadline": "",
     "nvrf_fields": [
     {
@@ -8078,7 +8074,7 @@
     "more_info_url": "https://elections.wi.gov/Register",
     "mail_reg_url": "https://elections.wi.gov/sites/default/files/legacy/2020-06/El-131%2520Voter%2520Registration%2520App_Fillable-%2520%2528REV%25202020-06%2529_0.pdf",
     "confirm_reg_url": "https://myvote.wi.gov/en-us/MyVoterInfo",
-    "postmarked_mail_deadline": "<time datetime=\"2024-10-16T12:00:00Z\">miércoles, 16 de octubre de 2024</time>",
+    "postmarked_mail_deadline": "debe tener el sello del correo 20 días antes del día de las elecciones",
     "received_mail_deadline": "",
     "nvrf_fields": [
     {
@@ -8233,7 +8229,7 @@
     "mail_reg_url": "https://sos.wyo.gov/Forms/Elections/General/VoterRegistrationForm.pdf",
     "confirm_reg_url": "https://sos.wyo.gov/Elections/Docs/2022/2022_Spanish_Voter_Guide.pdf",
     "postmarked_mail_deadline": "",
-    "received_mail_deadline": "<time datetime=\"2024-10-21T12:00:00Z\">lunes, 21 de octubre de 2024</time>",
+    "received_mail_deadline": "a más tardar debe ser recibida 14 días antes del día de las elecciones",
     "nvrf_fields": [
     {
     "uuid": "86a544cd-cfe9-456a-b634-176a37a38d6d",
