@@ -33,7 +33,7 @@ function ErrorList({ formSubmitted }) {
     return () => {
       clearInterval(intervalId);
     };
-  }, [formSubmitted]); // update the dependency to include formSubmitted
+  }, [formSubmitted]);
 
   useEffect(() => {
     if (hasError) {

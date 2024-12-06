@@ -291,7 +291,7 @@ function MultiStepForm(props) {
                 }}
             >
 
-                {/* setting error list to only render on from pages */}
+                {/* setting error list to only render on form pages */}
                 {[1, 2, 3, 4].includes(step) && (
                 <ErrorList formSubmitted={formSubmitted} />
                 )}
