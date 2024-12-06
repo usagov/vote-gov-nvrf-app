@@ -3,7 +3,7 @@
     "uuid": "0ac52b5d-4381-4b4e-830e-38319f3a3757",
     "lang": "es",
     "heading": "Ya estoy registrado en @state_name y necesito cambiar mis datos.",
-    "body": "<p>Comuníquenos sobre algún cambio en los datos de su registro: nombre, domicilio o afiliación a un partido político.</p>",
+    "body": "<p>Comuníquenos algún cambio en los datos de su registro: nombre, domicilio o afiliación a un partido político.</p>",
     "button_label": "Cambio de datos en registro"
     },
     {
@@ -17,7 +17,7 @@
     "uuid": "3abd804c-2787-44f9-a06b-ad6d63ca797f",
     "lang": "es",
     "heading": "Me estoy registrando en @state_name por primera vez.",
-    "body": "<p>Regístrese por primera vez en este estado. Le recomendamos que tenga a la mano su permiso de conducir o su tarjeta de identificación para no conductores.</p>",
+    "body": "<p>Regístrese por primera vez o indíquenos algún cambio en su registro. Le recomendamos que tenga a la mano su permiso de conducir o su tarjeta de identificación para no conductores.</p>",
     "button_label": "Inicio de nuevo registro"
     }
 ]
