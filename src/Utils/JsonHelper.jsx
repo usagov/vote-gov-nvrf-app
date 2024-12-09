@@ -13,7 +13,7 @@ export const fetchData = async(filename, setContent, setError) => {
 }
 
 export const fetchStaticData = async(filename, setContent, setError) => {
-    const path = `${BASEURL}${locale}/nvrf/data/${filename}`;
+    const path = `${BASEURL}/data${locale}/nvrf/${filename}`;
     const response = await fetch(path)
         .then(response => response.json())
         .catch(() => setError(true));

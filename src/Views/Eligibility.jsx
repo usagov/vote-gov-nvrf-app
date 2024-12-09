@@ -1,6 +1,4 @@
-import { useState, useEffect } from 'react'
-import {Checkbox, Label, Form} from '@trussworks/react-uswds';
-import BackButton from "Components/Buttons/BackButton"
+import {Checkbox, Form, Fieldset} from '@trussworks/react-uswds';
 import NextButton from "Components/Buttons/NextButton";
 import { getFieldLabel, getFieldError } from 'Utils/fieldParser';
 import { renderToStaticMarkup } from "react-dom/server";
@@ -35,7 +33,7 @@ function Eligibility(props) {
     return (
         <>
             {returnPath && (
-                <a href={returnPath} className={'usa-button usa-button--outline'}>
+                <a href={returnPath} className={'usa-button usa-button--outline maxw-mobile-lg width-full tablet:width-auto'}>
                     <span>{navContent.back.state_reg_options}</span>
                 </a>
               )
@@ -52,26 +50,27 @@ function Eligibility(props) {
                   dataLayer.push({'NVRF_page_title': analyticsLabels.eligibilityTitle, 'event': 'NVRF_STEP_SUBMIT' })
               }}>
             <div className="input-parent" data-test="checkBox">
-                <Label className={'margin-top-1'}>
-                    <strong>{eligibility.name}</strong>
-                </Label>
-                <Checkbox
-                    id="eligibility-checkbox"
-                    name="eligibility-checkbox"
-                    value="eligibility-checkbox"
-                    label={getFieldLabel(fields, "39fc63ad-ed5a-4ad5-98d3-aa236c96c61c")}
-                    aria-required="true"
-                    aria-describedby="eligibility-checkbox_error"
-                    required={true}
-                    defaultChecked={props.hasConfirmed}
-                    onChange={(e) => props.confirmCheckbox(e.target.checked)}
-                    onInvalid={(e) => e.target.setCustomValidity(' ')}
-                    onInput={(e) => e.target.setCustomValidity('')}
-                    onBlur={(e) => toggleError(e, !props.hasConfirmed)}
-                />
-                <span id="eligibility-checkbox_error" role="alert" className='error-text' data-test="errorText">
-                            {getFieldError(fields, "39fc63ad-ed5a-4ad5-98d3-aa236c96c61c")}
-                        </span>
+                <Fieldset className="fieldset" onBlur={(e) => toggleError(e, !props.hasConfirmed)}>
+                    <legend className={'margin-top-1'}>
+                        <strong>{eligibility.name}</strong>
+                    </legend>
+                    <Checkbox
+                        id="eligibility-checkbox"
+                        name="eligibility-checkbox"
+                        value="eligibility-checkbox"
+                        label={getFieldLabel(fields, "39fc63ad-ed5a-4ad5-98d3-aa236c96c61c")}
+                        aria-required="true"
+                        aria-describedby="eligibility-checkbox_error"
+                        required={true}
+                        defaultChecked={props.hasConfirmed}
+                        onChange={(e) => props.confirmCheckbox(e.target.checked)}
+                        onInvalid={(e) => e.target.setCustomValidity(' ')}
+                        onInput={(e) => e.target.setCustomValidity('')}
+                    />
+                    <span id="eligibility-checkbox_error" role="alert" className='vote-error-text' data-test="errorText">
+                        {getFieldError(fields, "39fc63ad-ed5a-4ad5-98d3-aa236c96c61c")}
+                    </span>
+                </Fieldset>
             </div>
             <div className={'margin-top-2'} dangerouslySetInnerHTML={{__html: eligibilityInstructions}}/>
 

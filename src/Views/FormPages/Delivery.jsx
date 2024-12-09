@@ -1,6 +1,5 @@
 import { Button, Icon, Grid } from '@trussworks/react-uswds';
-import GenerateFilledPDF_en from 'Utils/GenerateFilledPDF_en';
-import GenerateFilledPDF_es from 'Utils/GenerateFilledPDF_es';
+import GenerateFilledPDF from 'Utils/GenerateFilledPDF';
 import { sanitizeDOM } from 'Utils/JsonHelper';
 import {renderToStaticMarkup} from "react-dom/server";
 
@@ -9,7 +8,6 @@ function Delivery(props) {
     const state = props.stateData;
     const stringContent = props.stringContent
     const lang = document.documentElement.lang;
-    const GenerateFilledPDF = (lang == "es") ? GenerateFilledPDF_es : GenerateFilledPDF_en;
 
     // Add A/B Message randomization.
     // example: const reminderMessage = randomProperty(content.reminder_messages);
@@ -57,7 +55,7 @@ function Delivery(props) {
                 <Button data-test="pdfBtnNewTab"
                     onClick={() => {
                         GenerateFilledPDF('newTab', props.fieldData, props.stateData.nvrf_pages_list, props.pdfDoc, props.form);
-                        dataLayer.push({'NVRF_PDF_button': analyticsLabels.pdfTabButton, 'event': "NVRF_PDF_BUTTON_CLICK"});
+                        dataLayer.push({'NVRF_button_click': analyticsLabels.pdfTabButton, 'event': "NVRF_PDF_BUTTON_CLICK"});
                     }}
                 type="submit">
                     <span>{stringContent.newTab}</span>
@@ -68,7 +66,7 @@ function Delivery(props) {
                 <Button data-test="pdfBtnDownload"
                     onClick={() => {
                         GenerateFilledPDF('download', props.fieldData, props.stateData.nvrf_pages_list, props.pdfDoc, props.form);
-                        dataLayer.push({'NVRF_PDF_button': analyticsLabels.pdfDownloadButton, 'event': "NVRF_PDF_BUTTON_CLICK"});
+                        dataLayer.push({'NVRF_button_click': analyticsLabels.pdfDownloadButton, 'event': "NVRF_PDF_BUTTON_CLICK"});
                     }} type="submit">
                     <span>{stringContent.download}</span>
                 </Button>
