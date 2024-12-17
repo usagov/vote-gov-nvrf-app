@@ -6,13 +6,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "cy:open": "cypress open",
-    "cy:axe": "cypress run --spec 'cypress/e2e/accessibility/**/*'", 
+    "cy:axe": "cypress run --spec 'cypress/e2e/accessibility/**/*'",
     "cy:test": "cypress run --spec 'cypress/e2e/tests/**/*'"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^13.3.0",
+    "axe-core": "^4.10.2",
+    "cypress": "^13.16.0",
     "cypress-axe": "^1.5.0",
     "cypress-mochawesome-reporter": "^3.6.1"
   }
