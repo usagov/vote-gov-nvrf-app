@@ -95,7 +95,7 @@ function DateFields({ inputData, saveFieldData, dateFormat, fieldData }) {
                 onInput={saveFieldData(inputData.field_month.nvrf_id)}
                 onKeyUp={(e) => jumpTo(e, inputData.field_day.nvrf_id)}
                 onKeyDown={(e) => { restrictType(e, 'number'), e.target.setCustomValidity('') }}
-                onBlur={(e) => { dateFormat(e, inputData.field_month.nvrf_id), toggleError(e, checkDateValues(e, 'month')) }}
+                onBlur={(e) => { dateFormat(e, inputData.field_month.nvrf_id) }}
                 onInvalid={(e) => e.target.setCustomValidity(' ')}
                 />
             </div>
@@ -122,7 +122,7 @@ function DateFields({ inputData, saveFieldData, dateFormat, fieldData }) {
                 onInput={saveFieldData(inputData.field_day.nvrf_id)}
                 onKeyUp={(e) => jumpTo(e, inputData.field_year.nvrf_id)}
                 onKeyDown={(e) => { restrictType(e, 'number'), e.target.setCustomValidity('') }}
-                onBlur={(e) => { dateFormat(e, inputData.field_day.nvrf_id), toggleError(e, checkDateValues(e, 'day')) }}
+                onBlur={(e) => { dateFormat(e, inputData.field_day.nvrf_id) }}
                 onInvalid={(e) => e.target.setCustomValidity(' ')}
                 />
             </div>
@@ -148,7 +148,6 @@ function DateFields({ inputData, saveFieldData, dateFormat, fieldData }) {
                 value={fieldData[inputData.field_year.nvrf_id]}
                 onInput={saveFieldData(inputData.field_year.nvrf_id)}
                 onKeyDown={(e) => { restrictType(e, 'number'), e.target.setCustomValidity('') }}
-                onBlur={(e) => toggleError(e, checkForErrors(e, 'check value length'))}
                 onInvalid={(e) => e.target.setCustomValidity(' ')}
                 />
             </div>
