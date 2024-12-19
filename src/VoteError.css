@@ -1,6 +1,6 @@
 .vote-error-container {
-    border-left: 3px solid #b50909 !important;
-    padding-left: 1rem !important;
+    border-left: 3px solid #b50909;
+    padding-left: 1rem;
 }
 
 .vote-error-container .vote-error-text {
