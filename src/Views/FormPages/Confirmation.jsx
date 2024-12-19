@@ -197,7 +197,7 @@ function Confirmation(props) {
                     onInvalid={(e) => e.target.setCustomValidity(' ')}
                     onInput={(e) => e.target.setCustomValidity('')}
                 />
-                <span id="first-name-error" role="alert" className={'vote-error-text'} data-test="errorText">
+                <span id="first-name-error" role="alert" aria-live="assertive" className={'vote-error-text'} data-test="errorText">
                     {getFieldError("73e74065-fd5a-43c0-907c-268120e34bc3")}
                 </span>
             </div>
