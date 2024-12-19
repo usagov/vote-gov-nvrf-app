@@ -64,8 +64,6 @@ jobs:
       - run:
           name: Frontend Testing
           command: |
-            apt-get update && apt-get install curl -y
-            curl -v https://ssg-test.vote.gov/nvrf/assets/fields.json
             npm start &
             cd testing
             npm run cy:test
