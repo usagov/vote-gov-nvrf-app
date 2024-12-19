@@ -75,7 +75,7 @@ function Identification(props){
                             {(noIdFieldReq) && <option key="id-none" value="none">{noIdField.label}</option>}
                         </React.Fragment>
                         </Select>
-                        <span id="id-selection_error" role="alert" className={'vote-error-text'} data-test="errorText">
+                        <span id="id-selection_error" role="alert" aria-live="assertive" className={'vote-error-text'} data-test="errorText">
                             {props.idType === '' && stateIDField.error_msg}
                         </span>
                     </div>
