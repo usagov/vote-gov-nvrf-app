@@ -24,20 +24,20 @@ function FieldsetContainer({ fieldType, inputData, saveFieldData, dateFormat, fi
                     <span className="usa-hint" id={`${inputData.id} + '-hint'`}>
                         {inputData.help_text}
                     </span>
+
                     {renderField(fieldType)}
 
                     {fieldError.map((error, index) => (
-                        <span id={`${error.id}` + '_error'} role="alert" key={index} className={'vote-error-text'}
+                        <span id={`${error.id}` + '_error'} role="alert" aria-live="assertive" key={index} className={'vote-error-text'}
                               data-test="errorText">
                             {error.message}
                         </span>
                     ))}
 
                     {fieldError.length === 0 && (
-                        <span id={`${inputData.id}` + '_error'} role="alert" className={'vote-error-text'}
-                              data-test="errorText">
-                        {inputData.error_msg}
-                    </span>
+                        <span id={inputData.id + '_error'} role="alert" aria-live="assertive" className={'vote-error-text'} data-test="errorText">
+                            {inputData.error_msg}
+                        </span>
                     )}
                 </Fieldset>
             </div>
