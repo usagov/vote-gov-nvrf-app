@@ -45,10 +45,10 @@ function Eligibility(props) {
                     .replace("@reg_eligibility_desc", stateContent.reg_eligibility_desc)}}/>
 
         <Form id="eligibility" autoComplete="off" className={'margin-top-2'} style={{maxWidth: 'none'}}
-            onSubmit={(e) => {
-                e.preventDefault(), props.handleNext(),
-                dataLayer.push({'NVRF_page_title': analyticsLabels.eligibilityTitle, 'event': 'NVRF_STEP_SUBMIT' })
-            }}>
+              onSubmit={(e) => {
+                  e.preventDefault(), props.handleNext(),
+                  dataLayer.push({'NVRF_page_title': analyticsLabels.eligibilityTitle, 'event': 'NVRF_STEP_SUBMIT' })
+              }}>
             <div className="input-parent" data-test="checkBox">
                 <Fieldset className="fieldset" onBlur={(e) => toggleError(e, !props.hasConfirmed)}>
                     <legend className={'margin-top-1'}>
