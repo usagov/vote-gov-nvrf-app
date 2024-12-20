@@ -42,7 +42,7 @@ describe('Validate Errors', () => {
     pageObjects
       .nextBtn().click().click()
     pageObjects
-      .errorText().should('contain.text', 'Date of birth should be typed in the format mm/dd/yyyy (as in 01/19/2000).')
+      .errorText().should('contain.text', 'Error: This field is required.')
 
     pageObjects
       .dobMonth().type(data.personalInformationMonth)
