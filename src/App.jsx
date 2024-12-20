@@ -7,6 +7,7 @@ import { HelmetProvider } from "react-helmet-async";
 import loadPdf from './Utils/pdfLoader';
 import {Alert} from "@trussworks/react-uswds";
 import './VoteError.css';
+import './VoteTouchpoints.css';
 
 
 const currentStateId = document.getElementById('root').getAttribute('data-stateId');
