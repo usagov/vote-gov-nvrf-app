@@ -1,30 +1,30 @@
 @media (min-width: 641px) {
-    .usa-step-indicator .usa-step-indicator__header {
-        position: absolute;
-        text-indent: -9000px;
-        overflow: hidden;
-    }
+  .usa-step-indicator .usa-step-indicator__header {
+    position: absolute;
+    text-indent: -9000px;
+    overflow: hidden;
+  }
 }
 
 @media (max-width: 640px) {
-    .usa-step-indicator .usa-step-indicator__segments {
-        display: none;
-    }
+  .usa-step-indicator .usa-step-indicator__segments {
+    display: none;
+  }
 }
 
 .usa-step-indicator .step-indicator-select {
-    cursor: pointer;
+  cursor: pointer;
 
-    &:hover,
-    &:focus {
-        .usa-step-indicator__segment-label {
-            text-decoration: underline;
-            background-color: #e7eff3;
-            color: #005ea2;
-        }
+  &:hover,
+  &:focus {
+    .usa-step-indicator__segment-label {
+      text-decoration: underline;
+      background-color: #e7eff3;
+      color: #005ea2;
     }
+  }
 }
 
 .usa-step-indicator .usa-step-indicator__segment-label {
-    padding: .5rem;
+  padding: .5rem;
 }

@@ -1,9 +1,9 @@
 export const focusError = (formId) => {
-  if(!document.getElementById(formId).checkValidity()){
-      const firstInvalidChild = document.getElementById(formId).querySelectorAll(':invalid')[0];
-      let errorContainer;
-      errorContainer = firstInvalidChild.id === "eligibility-checkbox" || firstInvalidChild.id === "acknowledge-checkbox" ? firstInvalidChild.parentNode.parentNode : firstInvalidChild.parentNode;
-      errorContainer.className = "vote-error-container";
+  if (!document.getElementById(formId).checkValidity()) {
+    const firstInvalidChild = document.getElementById(formId).querySelectorAll(':invalid')[0];
+    let errorContainer;
+    errorContainer = firstInvalidChild.id === "eligibility-checkbox" || firstInvalidChild.id === "acknowledge-checkbox" ? firstInvalidChild.parentNode.parentNode : firstInvalidChild.parentNode;
+    errorContainer.className = "vote-error-container";
   }
 }
 
@@ -36,7 +36,7 @@ export const restrictType = (e, requiredType) => {
 
   if (allowKeys.includes(e.key)) {
     return;
-  } else if (requiredType === 'letters' && !e.key.match(letters) ) {
+  } else if (requiredType === 'letters' && !e.key.match(letters)) {
     e.preventDefault();
     return;
   } else if (requiredType === 'number' && isNaN(e.key)) {
@@ -46,23 +46,29 @@ export const restrictType = (e, requiredType) => {
 }
 
 export const dateFormat = (e, name, setFieldData, fieldData) => {
-  if (e.target.value.length === 1 ) {
+  if (e.target.value.length === 1) {
     let newValue = 0 + e.target.value;
-  setFieldData({ ...fieldData, [name]: newValue })
-  } else if (e.target.value.length === 0 ) {
-  setFieldData({ ...fieldData, [name]: '' })
+    setFieldData({...fieldData, [name]: newValue})
+  } else if (e.target.value.length === 0) {
+    setFieldData({...fieldData, [name]: ''})
   } else {
-      return
+    return
   }
 }
 
-export const phoneFormat=(input)=>{//returns (###) ###-####
-    input = input.replace(/\D/g,'');
-    var size = input.length;
-    if (size>0) {input="("+input}
-    if (size>3) {input=input.slice(0,4)+") "+input.slice(4,11)}
-    if (size>6) {input=input.slice(0,9)+"-" +input.slice(9)}
-    return input;
+export const phoneFormat = (input) => {//returns (###) ###-####
+  input = input.replace(/\D/g, '');
+  var size = input.length;
+  if (size > 0) {
+    input = "(" + input
+  }
+  if (size > 3) {
+    input = input.slice(0, 4) + ") " + input.slice(4, 11)
+  }
+  if (size > 6) {
+    input = input.slice(0, 9) + "-" + input.slice(9)
+  }
+  return input;
 }
 
 export const dayFormat = (input) => {
@@ -71,40 +77,40 @@ export const dayFormat = (input) => {
   return dateDoubleDigit;
 }
 
-export const checkForErrors=(e, requirement)=> {
+export const checkForErrors = (e, requirement) => {
   const value = e.target.value;
-  const valueRequired = e.target.required; 
+  const valueRequired = e.target.required;
 
   if (value || valueRequired) {
-  switch (requirement) {
-    case 'check value exists':
-      if (value) {
-        return false
-      } else {
-        return true
-      }
-    case 'check value length':
-      let minLength = e.target.minLength;
-      let maxLength = e.target.maxLength > -1 ? e.target.maxLength : Number.MAX_SAFE_INTEGER;
+    switch (requirement) {
+      case 'check value exists':
+        if (value) {
+          return false
+        } else {
+          return true
+        }
+      case 'check value length':
+        let minLength = e.target.minLength;
+        let maxLength = e.target.maxLength > -1 ? e.target.maxLength : Number.MAX_SAFE_INTEGER;
 
-      let valueIsLength = e.target.value.length >= minLength && e.target.value.length <= maxLength;
-      if (valueIsLength) {
-        e.target.setCustomValidity('');
-        return false
-      } else {
-        e.target.setCustomValidity(' ');
-        return true
-      }
+        let valueIsLength = e.target.value.length >= minLength && e.target.value.length <= maxLength;
+        if (valueIsLength) {
+          e.target.setCustomValidity('');
+          return false
+        } else {
+          e.target.setCustomValidity(' ');
+          return true
+        }
 
-    case 'check state selection':
-      if (value === '') {
-        return true
-      } else {
-        return false
-      }
+      case 'check state selection':
+        if (value === '') {
+          return true
+        } else {
+          return false
+        }
 
-    default:
-      return
-  }    
+      default:
+        return
+    }
   }
 }

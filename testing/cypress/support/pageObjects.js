@@ -1,9 +1,9 @@
-class PageObjects { 
+class PageObjects {
 
   nextBtn() {
     return cy.get('[data-test="nextBtn"]')
   }
-  
+
   errorText() {
     return cy.get('[data-test="errorText"]')
   }
@@ -39,7 +39,7 @@ class PageObjects {
   checkBox() {
     return cy.get('[data-test="checkBox"]')
   }
-  
+
   prevFirstName() {
     return cy.get('[data-test="prevFirstName"]')
   }
@@ -147,7 +147,7 @@ class PageObjects {
   editBtn() {
     return cy.get('[data-test="editBtn"]')
   }
-  
+
 }
 
 export const pageObjects = new PageObjects()
