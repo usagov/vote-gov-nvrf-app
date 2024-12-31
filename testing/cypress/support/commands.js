@@ -1,10 +1,10 @@
-import { pageObjects } from './pageObjects'
+import {pageObjects} from './pageObjects'
 
 /* eslint-disable no-undef */
 Cypress.Commands.add('signin', (username, password) => {
 
   cy.visit('/', {
-    onBeforeLoad (win) {
+    onBeforeLoad(win) {
       cy.stub(win, 'open').as('open')
     }
   })
@@ -16,201 +16,199 @@ Cypress.Commands.add('signin', (username, password) => {
 });
 
 Cypress.Commands.add('completeForm', () => {
-const data = require("../fixtures/data.json");
+  const data = require("../fixtures/data.json");
 
 // go to next page
-pageObjects
-.nextBtn().click()
+  pageObjects
+    .nextBtn().click()
 
 // check eligibility page
 // verify that user CANNOT move forward with out checking box
-pageObjects
-.nextBtn().click()
-pageObjects
-.errorText().should('contain.text', 'Confirm eligibility to continue.')
+  pageObjects
+    .nextBtn().click()
+  pageObjects
+    .errorText().should('contain.text', 'Confirm eligibility to continue.')
 
 // verify user CAN move forward after checking box
-pageObjects
-.checkBox().click()
+  pageObjects
+    .checkBox().click()
 // todo: come back after fix 
 // pageObjects
 // .errorText().should('not.exist')
 
-pageObjects
-.nextBtn().click()
+  pageObjects
+    .nextBtn().click()
 
 // select registration option
-pageObjects
-.pathBtn().then(btn => {
-  cy.get(btn[0]).click({force: true})
-})
+  pageObjects
+    .pathBtn().then(btn => {
+    cy.get(btn[0]).click({force: true})
+  })
 
 // fill out personal information 
-pageObjects
-.select().then(dropdown => {
-  // title
-  cy.get(dropdown[0]).select(data.personalInformationTitle)
-  cy.get(dropdown[0]).should('contain', data.personalInformationTitle)
-  // suffix
-  cy.get(dropdown[1]).select(data.personalInformationSuffix)
-  cy.get(dropdown[1]).should('contain', data.personalInformationSuffix)
-})
+  pageObjects
+    .select().then(dropdown => {
+    // title
+    cy.get(dropdown[0]).select(data.personalInformationTitle)
+    cy.get(dropdown[0]).should('contain', data.personalInformationTitle)
+    // suffix
+    cy.get(dropdown[1]).select(data.personalInformationSuffix)
+    cy.get(dropdown[1]).should('contain', data.personalInformationSuffix)
+  })
 
-pageObjects
-.firstName().type(data.personalInformationName)
-pageObjects
-.middleName().type(data.personalInformationMiddle)
-pageObjects
-.lastName().type(data.personalInformationLast)
-pageObjects
-.phoneNumber().type(data.personalInformationNumber)
+  pageObjects
+    .firstName().type(data.personalInformationName)
+  pageObjects
+    .middleName().type(data.personalInformationMiddle)
+  pageObjects
+    .lastName().type(data.personalInformationLast)
+  pageObjects
+    .phoneNumber().type(data.personalInformationNumber)
 
-pageObjects
-.dobMonth().type(data.personalInformationMonth)
-pageObjects
-.dobDay().type(data.personalInformationDay)
-pageObjects
-.dobYear().type(data.personalInformationYear)
+  pageObjects
+    .dobMonth().type(data.personalInformationMonth)
+  pageObjects
+    .dobDay().type(data.personalInformationDay)
+  pageObjects
+    .dobYear().type(data.personalInformationYear)
 
-pageObjects
-.checkBox().click({force: true})
+  pageObjects
+    .checkBox().click({force: true})
 
-pageObjects
-.select().then(dropdown => {
+  pageObjects
+    .select().then(dropdown => {
 
-  // title
-  cy.get(dropdown[3]).select(data.personalInformationTitle)
-  cy.get(dropdown[3]).should('contain', data.personalInformationTitle)
-  // suffix
-  cy.get(dropdown[4]).select(data.personalInformationSuffix)
-  cy.get(dropdown[4]).should('contain', data.personalInformationSuffix)
-})
+    // title
+    cy.get(dropdown[3]).select(data.personalInformationTitle)
+    cy.get(dropdown[3]).should('contain', data.personalInformationTitle)
+    // suffix
+    cy.get(dropdown[4]).select(data.personalInformationSuffix)
+    cy.get(dropdown[4]).should('contain', data.personalInformationSuffix)
+  })
 
-pageObjects
-.firstName().type(data.personalInformationName)
-pageObjects
-.middleName().type(data.personalInformationMiddle)
-pageObjects
-.lastName().type(data.personalInformationLast)
+  pageObjects
+    .firstName().type(data.personalInformationName)
+  pageObjects
+    .middleName().type(data.personalInformationMiddle)
+  pageObjects
+    .lastName().type(data.personalInformationLast)
 
-pageObjects
-.prevFirstName().type(data.personalInformationName)
-pageObjects
-.prevMiddleName().type(data.personalInformationMiddle)
-pageObjects
-.prevLastName().type(data.personalInformationLast)
+  pageObjects
+    .prevFirstName().type(data.personalInformationName)
+  pageObjects
+    .prevMiddleName().type(data.personalInformationMiddle)
+  pageObjects
+    .prevLastName().type(data.personalInformationLast)
 
-pageObjects
-.nextBtn().click()
+  pageObjects
+    .nextBtn().click()
 
 // address and location page
 // * check that current address works
-pageObjects
-.street().type(data.addressStreet)
-pageObjects
-.aptNumber().type(data.addressApt)
-pageObjects
-.city().type(data.addressTown)
-pageObjects
-.zip().type(data.addressZip)
+  pageObjects
+    .street().type(data.addressStreet)
+  pageObjects
+    .aptNumber().type(data.addressApt)
+  pageObjects
+    .city().type(data.addressTown)
+  pageObjects
+    .zip().type(data.addressZip)
 
 // * check that mailing address work 
-pageObjects
-.checkBox().then(checkBox => {
-  cy.get(checkBox[2]).click({force: true})
-})
+  pageObjects
+    .checkBox().then(checkBox => {
+    cy.get(checkBox[2]).click({force: true})
+  })
 
-pageObjects
-.mailStreet().type(data.addressStreet)
-pageObjects
-.mailCity().type(data.addressTown)
-pageObjects
-.mailZip().type(data.addressZip)
+  pageObjects
+    .mailStreet().type(data.addressStreet)
+  pageObjects
+    .mailCity().type(data.addressTown)
+  pageObjects
+    .mailZip().type(data.addressZip)
 
 // * uncheck mailing address block
-pageObjects
-.checkBox().then(checkBox => {
-  cy.get(checkBox[2]).click({force: true})
-})
+  pageObjects
+    .checkBox().then(checkBox => {
+    cy.get(checkBox[2]).click({force: true})
+  })
 
 // * check recently moved option 
-pageObjects
-.checkBox().then(checkBox => {
-  cy.get(checkBox[0]).click({force: true})
-})
+  pageObjects
+    .checkBox().then(checkBox => {
+    cy.get(checkBox[0]).click({force: true})
+  })
 
-pageObjects
-.prevStreet().type(data.addressStreet)
-pageObjects
-.prevAptNumber().type(data.addressApt)
-pageObjects
-.prevCity().type(data.addressTown)
-pageObjects
-.prevZip().type(data.addressZip)
+  pageObjects
+    .prevStreet().type(data.addressStreet)
+  pageObjects
+    .prevAptNumber().type(data.addressApt)
+  pageObjects
+    .prevCity().type(data.addressTown)
+  pageObjects
+    .prevZip().type(data.addressZip)
 // * uncheck recently moved block
-pageObjects
-.checkBox().then(checkBox => {
-  cy.get(checkBox[0]).click({force: true})
-})
+  pageObjects
+    .checkBox().then(checkBox => {
+    cy.get(checkBox[0]).click({force: true})
+  })
 
 // * check does not have permanent option 
-pageObjects
-.checkBox().then(checkBox => {
-  cy.get(checkBox[1]).click({force: true})
-})
+  pageObjects
+    .checkBox().then(checkBox => {
+    cy.get(checkBox[1]).click({force: true})
+  })
 
-pageObjects
-.mailStreet().type(data.addressStreet)
-pageObjects
-.mailCity().type(data.addressTown)
-pageObjects
-.mailZip().type(data.addressZip)
-pageObjects
-.select().select(data.addressState)
+  pageObjects
+    .mailStreet().type(data.addressStreet)
+  pageObjects
+    .mailCity().type(data.addressTown)
+  pageObjects
+    .mailZip().type(data.addressZip)
+  pageObjects
+    .select().select(data.addressState)
 
-pageObjects
-.nextBtn().click()
+  pageObjects
+    .nextBtn().click()
 
 
 // identification
 // * state driver's license number
-pageObjects
-.dropDown().select("State driver's license number")
-pageObjects
-.driverId().type(data.idNumber)
+  pageObjects
+    .dropDown().select("State driver's license number")
+  pageObjects
+    .driverId().type(data.idNumber)
 // * social security number (last 4 digits)
-pageObjects
-.dropDown().then(dropDown => {
-  cy.get(dropDown[0]).select("Social security number (last 4 digits)")
-})
-pageObjects
-.ssn().type(data.ssn)
+  pageObjects
+    .dropDown().then(dropDown => {
+    cy.get(dropDown[0]).select("Social security number (last 4 digits)")
+  })
+  pageObjects
+    .ssn().type(data.ssn)
 
 // * no id
-pageObjects
-.dropDown().then(dropDown => {
-  cy.get(dropDown[0]).select("I do not have a valid ID.")
-})
-cy.get('p').should('contain.text', '"None" will appear on your completed form.')
+  pageObjects
+    .dropDown().then(dropDown => {
+    cy.get(dropDown[0]).select("I do not have a valid ID.")
+  })
+  cy.get('p').should('contain.text', '"None" will appear on your completed form.')
 
 // * state id number
-pageObjects
-.dropDown().then(dropDown => {
-  cy.get(dropDown[0]).select("State non-driver ID")
-})
-pageObjects
-.stateId().type(data.idNumber)
+  pageObjects
+    .dropDown().then(dropDown => {
+    cy.get(dropDown[0]).select("State non-driver ID")
+  })
+  pageObjects
+    .stateId().type(data.idNumber)
 
-
-pageObjects
-.nextBtn().click()
+  pageObjects
+    .nextBtn().click()
 
   // political party
   pageObjects
-.politicalParty().type(data.politicalParty)
+    .politicalParty().type(data.politicalParty)
 
   pageObjects
-.nextBtn().click()
+    .nextBtn().click()
 
-
-  })
+})

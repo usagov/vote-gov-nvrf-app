@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 /// <reference types="cypress" />
 const data = require("../../fixtures/data.json");
-import { pageObjects } from '../../support/pageObjects.js'
+import {pageObjects} from '../../support/pageObjects.js'
 
 
 describe('Validate In Person', () => {
@@ -33,8 +33,8 @@ describe('Validate In Person', () => {
     // select registration option
     pageObjects
       .pathBtn().then(btn => {
-        cy.get(btn[0]).click({ force: true })
-      })
+      cy.get(btn[0]).click({force: true})
+    })
 
     // fill out personal information
     // * check that user can not move forward without filling out fields
@@ -45,13 +45,13 @@ describe('Validate In Person', () => {
 
     pageObjects
       .select().then(dropdown => {
-        // title
-        cy.get(dropdown[0]).select(data.personalInformationTitle)
-        cy.get(dropdown[0]).should('contain', data.personalInformationTitle)
-        // suffix
-        cy.get(dropdown[1]).select(data.personalInformationSuffix)
-        cy.get(dropdown[1]).should('contain', data.personalInformationSuffix)
-      })
+      // title
+      cy.get(dropdown[0]).select(data.personalInformationTitle)
+      cy.get(dropdown[0]).should('contain', data.personalInformationTitle)
+      // suffix
+      cy.get(dropdown[1]).select(data.personalInformationSuffix)
+      cy.get(dropdown[1]).should('contain', data.personalInformationSuffix)
+    })
 
     pageObjects
       .firstName().type(data.personalInformationName)
@@ -73,7 +73,7 @@ describe('Validate In Person', () => {
 
     // * check previous name fields
     pageObjects
-      .checkBox().click({ force: true })
+      .checkBox().click({force: true})
     pageObjects
       .prevFirstName().type(data.personalInformationName)
     pageObjects
@@ -135,8 +135,8 @@ describe('Validate In Person', () => {
     // * check that mailing address work
     pageObjects
       .checkBox().then(checkBox => {
-        cy.get(checkBox[1]).click({ force: true })
-      })
+      cy.get(checkBox[1]).click({force: true})
+    })
 
     pageObjects
       .mailStreet().type(data.addressStreet)
@@ -155,14 +155,14 @@ describe('Validate In Person', () => {
     // * uncheck mailing address block
     pageObjects
       .checkBox().then(checkBox => {
-        cy.get(checkBox[1]).click({ force: true })
-      })
+      cy.get(checkBox[1]).click({force: true})
+    })
 
     // * check recently moved option
     pageObjects
       .checkBox().then(checkBox => {
-        cy.get(checkBox[0]).click({ force: true })
-      })
+      cy.get(checkBox[0]).click({force: true})
+    })
 
     pageObjects
       .prevStreet().type(data.addressStreet)
@@ -185,14 +185,14 @@ describe('Validate In Person', () => {
     // * uncheck recently moved block
     pageObjects
       .checkBox().then(checkBox => {
-        cy.get(checkBox[0]).click({ force: true })
-      })
+      cy.get(checkBox[0]).click({force: true})
+    })
 
     // * check does not have permanent option
     pageObjects
       .checkBox().then(checkBox => {
-        cy.get(checkBox[1]).click({ force: true })
-      })
+      cy.get(checkBox[1]).click({force: true})
+    })
     pageObjects
       .select().select(data.addressState)
     // Validate text box has correct text for mailing address
@@ -226,8 +226,8 @@ describe('Validate In Person', () => {
     // * social security number (last 4 digits)
     pageObjects
       .dropDown().then(dropDown => {
-        cy.get(dropDown[0]).select("Social security number (last 4 digits)")
-      })
+      cy.get(dropDown[0]).select("Social security number (last 4 digits)")
+    })
     pageObjects
       .ssn().type(data.ssn)
     // Validate fields have correct data
@@ -239,8 +239,8 @@ describe('Validate In Person', () => {
     // * no id
     pageObjects
       .dropDown().then(dropDown => {
-        cy.get(dropDown[0]).select("I do not have a valid ID.")
-      })
+      cy.get(dropDown[0]).select("I do not have a valid ID.")
+    })
     cy.get('p').should('contain.text', '"None" will appear on your completed form.')
 
     pageObjects
@@ -255,7 +255,7 @@ describe('Validate In Person', () => {
 
     // confirmation page
     pageObjects
-      .confirm().click({ force: true })
+      .confirm().click({force: true})
     pageObjects
       .nextBtn().click()
 
@@ -290,8 +290,8 @@ describe('Validate In Person', () => {
     // select registration option
     pageObjects
       .pathBtn().then(btn => {
-        cy.get(btn[1]).click({ force: true })
-      })
+      cy.get(btn[1]).click({force: true})
+    })
 
     // fill out personal information
     // * check that user can not move forward without filling out fields
@@ -302,13 +302,13 @@ describe('Validate In Person', () => {
 
     pageObjects
       .select().then(dropdown => {
-        // title
-        cy.get(dropdown[0]).select(data.personalInformationTitle)
-        cy.get(dropdown[0]).should('contain', data.personalInformationTitle)
-        // suffix
-        cy.get(dropdown[1]).select(data.personalInformationSuffix)
-        cy.get(dropdown[1]).should('contain', data.personalInformationSuffix)
-      })
+      // title
+      cy.get(dropdown[0]).select(data.personalInformationTitle)
+      cy.get(dropdown[0]).should('contain', data.personalInformationTitle)
+      // suffix
+      cy.get(dropdown[1]).select(data.personalInformationSuffix)
+      cy.get(dropdown[1]).should('contain', data.personalInformationSuffix)
+    })
 
     pageObjects
       .firstName().type(data.personalInformationName)
@@ -375,8 +375,8 @@ describe('Validate In Person', () => {
     // * check that mailing address work
     pageObjects
       .checkBox().then(checkBox => {
-        cy.get(checkBox[1]).click({ force: true })
-      })
+      cy.get(checkBox[1]).click({force: true})
+    })
     pageObjects
       .mailStreet().type(data.addressStreet)
     pageObjects
@@ -394,14 +394,14 @@ describe('Validate In Person', () => {
     // * uncheck mailing address block
     pageObjects
       .checkBox().then(checkBox => {
-        cy.get(checkBox[1]).click({ force: true })
-      })
+      cy.get(checkBox[1]).click({force: true})
+    })
 
     // * check does not have permanent option
     pageObjects
       .checkBox().then(checkBox => {
-        cy.get(checkBox[0]).click({ force: true })
-      })
+      cy.get(checkBox[0]).click({force: true})
+    })
 
     pageObjects
       .mailStreet().type(data.addressStreet)
@@ -441,8 +441,8 @@ describe('Validate In Person', () => {
     // * state id number
     pageObjects
       .dropDown().then(dropDown => {
-        cy.get(dropDown[0]).select("State non-driver ID")
-      })
+      cy.get(dropDown[0]).select("State non-driver ID")
+    })
 
     pageObjects
       .stateId().type(data.idNumber)
@@ -453,8 +453,8 @@ describe('Validate In Person', () => {
     // * social security number (last 4 digits)
     pageObjects
       .dropDown().then(dropDown => {
-        cy.get(dropDown[0]).select("Social security number (last 4 digits)")
-      })
+      cy.get(dropDown[0]).select("Social security number (last 4 digits)")
+    })
     pageObjects
       .ssn().type(data.ssn)
     // Validate fields have correct data
@@ -466,8 +466,8 @@ describe('Validate In Person', () => {
     // * no id
     pageObjects
       .dropDown().then(dropDown => {
-        cy.get(dropDown[0]).select("I do not have a valid ID.")
-      })
+      cy.get(dropDown[0]).select("I do not have a valid ID.")
+    })
     cy.get('p').should('contain.text', '"None" will appear on your completed form.')
 
     pageObjects
@@ -482,7 +482,7 @@ describe('Validate In Person', () => {
 
     // confirmation page
     pageObjects
-      .confirm().click({ force: true })
+      .confirm().click({force: true})
     pageObjects
       .nextBtn().click()
 

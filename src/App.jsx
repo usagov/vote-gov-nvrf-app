@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react'
+import {useState, useEffect} from 'react'
 import Eligibility from 'Views/Eligibility.jsx';
 import PathSelection from 'Views/PathSelection.jsx';
 import MultiStepForm from 'Views/MultiStepForm.jsx';
-import { fetchData, fetchStaticData, sanitizeDOM } from 'Utils/JsonHelper.jsx';
-import { HelmetProvider } from "react-helmet-async";
+import {fetchData, fetchStaticData, sanitizeDOM} from 'Utils/JsonHelper.jsx';
+import {HelmetProvider} from "react-helmet-async";
 import loadPdf from './Utils/pdfLoader';
-import { Alert } from "@trussworks/react-uswds";
+import {Alert} from "@trussworks/react-uswds";
 import './VoteError.css';
 import './VoteTouchpoints.css';
 
@@ -26,7 +26,7 @@ function App() {
   const [form, setForm] = useState(null);
 
   useEffect(() => {
-    loadPdf().then(({ pdfDoc, form }) => {
+    loadPdf().then(({pdfDoc, form}) => {
       setPdfDoc(pdfDoc);
       setForm(form);
     }).catch(() => setError(true));
@@ -59,7 +59,7 @@ function App() {
 
   const setStepFocus = () => {
     scrollToTop.focus();
-    scrollToTop.scrollIntoView({ behavior: "instant" });
+    scrollToTop.scrollIntoView({behavior: "instant"});
   }
 
   const handleNext = () => {
@@ -107,10 +107,14 @@ function App() {
         <p>The form filler tool failed to load.</p>
       </Alert>
       <p>
-        <button className={'usa-button'} onClick={() => window.location.reload()}>Try loading the tool again</button>
+        <button className={'usa-button'}
+                onClick={() => window.location.reload()}>Try loading the tool
+          again
+        </button>
       </p>
       <p>If you were unable to use our form filler tool, <a
-        href="https://touchpoints.app.cloud.gov/touchpoints/c169d3b2/submit" target="_blank">submit feedback</a>.</p>
+        href="https://touchpoints.app.cloud.gov/touchpoints/c169d3b2/submit"
+        target="_blank">submit feedback</a>.</p>
     </div>;
   }
 
@@ -130,13 +134,13 @@ function App() {
         <HelmetProvider>
           <section>
             <a name="scroll-to-top"
-              id="scroll-to-top"
-              tabIndex={-1}
-              style={{
-                outline: "0 none",
-                display: "block",
-                scrollMargin: "20px"
-              }}
+               id="scroll-to-top"
+               tabIndex={-1}
+               style={{
+                 outline: "0 none",
+                 display: "block",
+                 scrollMargin: "20px"
+               }}
             ></a>
             {step === 1 &&
               <Eligibility
@@ -184,10 +188,12 @@ function App() {
             {step >= 1 &&
               <div className="text-base margin-top-5 maxw-tablet margin-x-auto">
                 <p>
-                  {lastUpdatedText.replace("@state_name", stateData.name)} <span dangerouslySetInnerHTML={{ __html: lastUpdatedSanitized }} />
+                  {lastUpdatedText.replace("@state_name", stateData.name)} <span
+                  dangerouslySetInnerHTML={{__html: lastUpdatedSanitized}}/>
                 </p>
                 {cardFooter && (
-                  <div dangerouslySetInnerHTML={{ __html: sanitizeDOM(cardFooter.body) }}></div>
+                  <div
+                    dangerouslySetInnerHTML={{__html: sanitizeDOM(cardFooter.body)}}></div>
                 )}
               </div>
             }

@@ -1,15 +1,15 @@
 .vote-error-container {
-    border-left: 3px solid #b50909;
-    padding-left: 1rem;
+  border-left: 3px solid #b50909;
+  padding-left: 1rem;
 }
 
 .vote-error-container .vote-error-text {
-    display: block;
+  display: block;
 }
 
 .vote-error-text {
-    color: #b50909;
-    font-size: 1rem;
-    margin-top: 0.5rem;
-    display: none;
+  color: #b50909;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  display: none;
 }
