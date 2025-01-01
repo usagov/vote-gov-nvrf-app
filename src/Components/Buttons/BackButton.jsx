@@ -9,8 +9,7 @@ function BackButton(props) {
           <a href="https://vote.gov">
             <Button className={"maxw-mobile-lg width-full tablet:width-auto"}
                     type="button" onClick={props.onClick} outline>
-              <Icon.ArrowBack aria-hidden="true"
-                              aria-label={props.stringContent.backIcon}
+              <Icon.ArrowBack role="none" aria-hidden="true" alt=""
                               style={{margin: "-3px 4px -3px -3px"}}/>
               <span>{props.text}</span>
             </Button>
@@ -21,8 +20,7 @@ function BackButton(props) {
           <Button className={"maxw-mobile-lg width-full tablet:width-auto"}
                   type={props.type} onClick={props.onClick} outline
                   data-test="backBtn">
-            <Icon.ArrowBack aria-hidden="true"
-                            aria-label={props.stringContent.backIcon}
+            <Icon.ArrowBack role="none" aria-hidden="true" alt=""
                             style={{margin: "-3px 4px -3px -3px"}}/>
             <span>{props.text}</span>
           </Button>

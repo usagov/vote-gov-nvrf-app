@@ -5,13 +5,6 @@
   "month": "Month",
   "day": "Day",
   "year": "Year",
-  "backIcon": "back arrow icon",
-  "forwardIcon": "forward arrow icon",
-  "selectState": "Select your state or territory",
-  "selectStateAriaLabel": "State selection dropdown menu",
-  "lastUpdated": "@state_name information last updated ",
-  "select": "- Select -",
   "download": "Download your mail-in form",
-  "mailDeadlineLabel": "Mail-in registration deadline:",
-  "idSelectionAriaLabel": "Choose identification type"
+  "mailDeadlineLabel": "Mail-in registration deadline:"
 }

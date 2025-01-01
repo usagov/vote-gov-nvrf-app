@@ -61,7 +61,7 @@ function PathSelection(props) {
                           })
                       }}>
                 <span>{cardOne.button_label}</span>
-                <Icon.ArrowForward aria-label={stringContent.forwardIcon}
+                <Icon.ArrowForward role="none" aria-hidden=""
                                    style={{margin: "-3px -3px -3px 4px"}}/>
               </Button>
             </CardFooter>
@@ -89,7 +89,7 @@ function PathSelection(props) {
                           })
                       }}>
                 <span>{cardTwo.button_label}</span>
-                <Icon.ArrowForward aria-label={stringContent.forwardIcon}
+                <Icon.ArrowForward role="none" aria-hidden=""
                                    style={{margin: "-3px -3px -3px 4px"}}/>
               </Button>
             </CardFooter>
