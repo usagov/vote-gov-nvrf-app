@@ -22,9 +22,8 @@ function SelectField({inputData, saveFieldData, fieldData, stringContent}) {
       onInput={(e) => e.target.setCustomValidity('')}
     >
       <React.Fragment key=".0">
-        <option value={''}>{stringContent.select}</option>
         {inputData.options.map((item, index) => (
-          <option key={index} value={item.value}>{item.key}</option>
+          <option key={index} value={item.value !== 'default' ? item.value : ''}>{item.key}</option>
         ))}
       </React.Fragment>
     </Select>
