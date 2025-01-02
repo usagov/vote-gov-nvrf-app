@@ -1,5 +1,5 @@
 import {Form} from '@trussworks/react-uswds';
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import ProgressBar from 'Components/ProgressBar';
 import PersonalInfo from "Views/FormPages/PersonalInfo";
 import Addresses from "Views/FormPages/Addresses"
@@ -12,8 +12,12 @@ import BackButton from 'Components/Buttons/BackButton'
 import NextButton from 'Components/Buttons/NextButton';
 import { Helmet } from "react-helmet-async";
 import {sanitizeDOM} from "Utils/JsonHelper";
+import ErrorList from 'Utils/ErrorList';
 
 function MultiStepForm(props) {
+    // setting state for error list to track when the form is submitted to render on an error
+    const [formSubmitted, setFormSubmitted] = useState(false);
+
     const content = props.content;
     const navContent = props.navContent;
     const fieldContent = props.fieldContent;
@@ -229,6 +233,7 @@ function MultiStepForm(props) {
     }
 
     const nextStepValidation = () => {
+        setFormSubmitted(true);
         switch (step) {
             case 1:
                 emailValid();
@@ -285,6 +290,11 @@ function MultiStepForm(props) {
                     pushPageTitleDataLayer(analyticsLabels["stepLabel"+step])
                 }}
             >
+
+                {/* setting error list to only render on form pages */}
+                {[1, 2, 3, 4].includes(step) && (
+                <ErrorList formSubmitted={formSubmitted} />
+                )}
                 {step === 1 &&
                     <PersonalInfo
                         state={props.state}
