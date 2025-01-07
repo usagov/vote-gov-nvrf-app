@@ -4,7 +4,7 @@ import { pageObjects } from './pageObjects'
 Cypress.Commands.add('signin', (username, password) => {
 
   cy.visit('/', {
-    onBeforeLoad (win) {
+    onBeforeLoad(win) {
       cy.stub(win, 'open').as('open')
     }
   })
@@ -16,7 +16,7 @@ Cypress.Commands.add('signin', (username, password) => {
 });
 
 Cypress.Commands.add('completeForm', () => {
-const data = require("../fixtures/data.json");
+  const data = require("../fixtures/data.json");
 
 // go to next page
 pageObjects
@@ -32,7 +32,7 @@ pageObjects
 // verify user CAN move forward after checking box
 pageObjects
 .checkBox().click()
-// todo: come back after fix 
+// todo: come back after fix
 // pageObjects
 // .errorText().should('not.exist')
 
@@ -45,7 +45,7 @@ pageObjects
   cy.get(btn[0]).click({force: true})
 })
 
-// fill out personal information 
+// fill out personal information
 pageObjects
 .select().then(dropdown => {
   // title
@@ -78,13 +78,13 @@ pageObjects
 pageObjects
 .select().then(dropdown => {
 
-  // title
-  cy.get(dropdown[3]).select(data.personalInformationTitle)
-  cy.get(dropdown[3]).should('contain', data.personalInformationTitle)
-  // suffix
-  cy.get(dropdown[4]).select(data.personalInformationSuffix)
-  cy.get(dropdown[4]).should('contain', data.personalInformationSuffix)
-})
+    // title
+    cy.get(dropdown[3]).select(data.personalInformationTitle)
+    cy.get(dropdown[3]).should('contain', data.personalInformationTitle)
+    // suffix
+    cy.get(dropdown[4]).select(data.personalInformationSuffix)
+    cy.get(dropdown[4]).should('contain', data.personalInformationSuffix)
+  })
 
 pageObjects
 .firstName().type(data.personalInformationName)
@@ -114,7 +114,7 @@ pageObjects
 pageObjects
 .zip().type(data.addressZip)
 
-// * check that mailing address work 
+// * check that mailing address work
 pageObjects
 .checkBox().then(checkBox => {
   cy.get(checkBox[2]).click({force: true})
@@ -133,7 +133,7 @@ pageObjects
   cy.get(checkBox[2]).click({force: true})
 })
 
-// * check recently moved option 
+// * check recently moved option
 pageObjects
 .checkBox().then(checkBox => {
   cy.get(checkBox[0]).click({force: true})
@@ -153,7 +153,7 @@ pageObjects
   cy.get(checkBox[0]).click({force: true})
 })
 
-// * check does not have permanent option 
+// * check does not have permanent option
 pageObjects
 .checkBox().then(checkBox => {
   cy.get(checkBox[1]).click({force: true})
@@ -212,5 +212,4 @@ pageObjects
   pageObjects
 .nextBtn().click()
 
-
-  })
+})

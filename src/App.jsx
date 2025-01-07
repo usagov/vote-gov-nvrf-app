@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react'
+import {useState, useEffect} from 'react'
 import Eligibility from 'Views/Eligibility.jsx';
 import PathSelection from 'Views/PathSelection.jsx';
 import MultiStepForm from 'Views/MultiStepForm.jsx';
 import {fetchData, fetchStaticData, sanitizeDOM} from 'Utils/JsonHelper.jsx';
-import { HelmetProvider } from "react-helmet-async";
+import {HelmetProvider} from "react-helmet-async";
 import loadPdf from './Utils/pdfLoader';
 import {Alert} from "@trussworks/react-uswds";
 import './VoteError.css';
@@ -26,7 +26,7 @@ function App() {
   const [form, setForm] = useState(null);
 
   useEffect(() => {
-    loadPdf().then(({ pdfDoc, form }) => {
+    loadPdf().then(({pdfDoc, form}) => {
       setPdfDoc(pdfDoc);
       setForm(form);
     }).catch(() => setError(true));
@@ -54,12 +54,12 @@ function App() {
   //Confirm eligibility checkbox controls
   const [hasConfirmed, setHasConfirmed] = useState(null);
   const confirmCheckbox = (checkStatus) => {
-      setHasConfirmed(checkStatus);
+    setHasConfirmed(checkStatus);
   }
 
   const setStepFocus = () => {
     scrollToTop.focus();
-    scrollToTop.scrollIntoView({ behavior: "instant"});
+    scrollToTop.scrollIntoView({behavior: "instant"});
   }
 
   const handleNext = () => {
@@ -107,10 +107,14 @@ function App() {
         <p>The form filler tool failed to load.</p>
       </Alert>
       <p>
-        <button className={'usa-button'} onClick={() => window.location.reload()}>Try loading the tool again</button>
+        <button className={'usa-button'}
+                onClick={() => window.location.reload()}>Try loading the tool
+          again
+        </button>
       </p>
       <p>If you were unable to use our form filler tool, <a
-          href="https://touchpoints.app.cloud.gov/touchpoints/c169d3b2/submit" target="_blank">submit feedback</a>.</p>
+        href="https://touchpoints.app.cloud.gov/touchpoints/c169d3b2/submit"
+        target="_blank">submit feedback</a>.</p>
     </div>;
   }
 
@@ -126,6 +130,7 @@ function App() {
     }
 
     return (
+      <main>
         <HelmetProvider>
           <section>
             <a name="scroll-to-top"
@@ -138,60 +143,63 @@ function App() {
                }}
             ></a>
             {step === 1 &&
-                <Eligibility
-                    handleNext={handleNext}
-                    handlePrev={handlePrev}
-                    state={selectedState}
-                    stateData={stateData}
-                    content={content}
-                    navContent={navContent}
-                    stringContent={stringContent}
-                    fieldContent={fieldContent}
-                    hasConfirmed={hasConfirmed}
-                    confirmCheckbox={confirmCheckbox}
-                    returnPath={returnPath}
-                />}
+              <Eligibility
+                handleNext={handleNext}
+                handlePrev={handlePrev}
+                state={selectedState}
+                stateData={stateData}
+                content={content}
+                navContent={navContent}
+                stringContent={stringContent}
+                fieldContent={fieldContent}
+                hasConfirmed={hasConfirmed}
+                confirmCheckbox={confirmCheckbox}
+                returnPath={returnPath}
+              />}
             {step === 2 &&
-                <PathSelection
-                    handleNext={handleNext}
-                    handlePrev={handlePrev}
-                    stateData={stateData}
-                    content={content}
-                    navContent={navContent}
-                    cards={cards}
-                    registrationPath={registrationPath}
-                    getRegPath={getRegPath}
-                    stringContent={stringContent}
-                    getFormStep={getFormStep}
-                />}
+              <PathSelection
+                handleNext={handleNext}
+                handlePrev={handlePrev}
+                stateData={stateData}
+                content={content}
+                navContent={navContent}
+                cards={cards}
+                registrationPath={registrationPath}
+                getRegPath={getRegPath}
+                stringContent={stringContent}
+                getFormStep={getFormStep}
+              />}
             {step === 3 &&
-                <MultiStepForm
-                    handlePrev={handlePrev}
-                    statesList={statesList}
-                    state={selectedState}
-                    stateData={stateData}
-                    content={content}
-                    navContent={navContent}
-                    fieldContent={fieldContent}
-                    registrationPath={registrationPath}
-                    getFormStep={getFormStep}
-                    stringContent={stringContent}
-                    pdfDoc={pdfDoc}
-                    form={form}
-                />}
+              <MultiStepForm
+                handlePrev={handlePrev}
+                statesList={statesList}
+                state={selectedState}
+                stateData={stateData}
+                content={content}
+                navContent={navContent}
+                fieldContent={fieldContent}
+                registrationPath={registrationPath}
+                getFormStep={getFormStep}
+                stringContent={stringContent}
+                pdfDoc={pdfDoc}
+                form={form}
+              />}
 
-              {step >= 1 &&
-                <div className="text-base margin-top-5 maxw-tablet margin-x-auto">
-                  <p>
-                    {lastUpdatedText.replace("@state_name", stateData.name)} <span dangerouslySetInnerHTML={{__html: lastUpdatedSanitized}}/>
-                  </p>
-                  {cardFooter && (
-                      <div dangerouslySetInnerHTML={{__html: sanitizeDOM(cardFooter.body)}}></div>
-                  )}
-                </div>
-              }
+            {step >= 1 &&
+              <div className="text-base margin-top-5 maxw-tablet margin-x-auto">
+                <p>
+                  {lastUpdatedText.replace("@state_name", stateData.name)} <span
+                  dangerouslySetInnerHTML={{__html: lastUpdatedSanitized}}/>
+                </p>
+                {cardFooter && (
+                  <div
+                    dangerouslySetInnerHTML={{__html: sanitizeDOM(cardFooter.body)}}></div>
+                )}
+              </div>
+            }
           </section>
         </HelmetProvider>
+      </main>
     )
   }
 }

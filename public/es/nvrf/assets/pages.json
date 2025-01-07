@@ -1,12 +1,12 @@
 [
-    {
+  {
     "uuid": "560cd01c-42d1-4f58-a702-372c2ff6bbd9",
     "lang": "es",
     "title": "Confirmar su información",
     "instructions": "<p>Cuando imprima y firme su nombre completo o rellene el formulario que imprimió, asegúrese de que pueda jurar/afirmar las siguientes declaraciones:&nbsp;</p><ul><li>Soy ciudadano de Estados Unidos.&nbsp;</li><li>Cumplo con los requisitos de mi estado y presto cualquier juramento requerido.&nbsp;</li><li>La información que proporcioné es verdadera según mis mejores conocimientos, bajo pena de perjurio. Si proporcioné información falsa, se me puede multar, encarcelar o (si no soy ciudadano de EE. UU.), deportar de Estados Unidos o denegar la entrada a este país.</li></ul><p>Si usted no puede firmar el formulario que imprimió, escriba el nombre, la dirección y el número de teléfono (optativo) de la persona que lo ayudó a firmar.</p>",
     "body": "<p>Asegúrese de revisar de manera cuidadosa su información antes de continuar. Una vez que usted realice la confirmación, podrá imprimir, firmar y enviar por correo postal su formulario lleno.</p><p><strong>* Campos obligatorios</strong></p>"
-    },
-    {
+  },
+  {
     "uuid": "94eab1c9-8343-4747-94b4-08732a175614",
     "lang": "es",
     "title": "Antes de iniciar su registración en @state_name",
@@ -19,22 +19,22 @@
     "title": "Comience su registración de votante en el estado de @state_name",
     "instructions": "",
     "body": "<p>Regístrese por primera vez o indíquenos sobre algún cambio en su registro. Complete su registro de votante respondiendo las preguntas. Le tomará de 5 a 10 minutos.</p><h2>Elija una de las siguientes opciones para continuar.</h2>"
-    },
-    {
+  },
+  {
     "uuid": "2c597df4-53b6-4ef5-8301-7817b04e1099",
     "lang": "es",
     "title": "Formulario nacional de inscripción de votantes: @state_name",
     "instructions": "",
     "body": "<p><strong>Recordatorio:</strong> si usted cierra esta ventana, su información se perderá y tendrá que volver a iniciar el proceso. Podrá verificar sus respuestas antes de imprimir su formulario lleno.</p><p><strong>Proporcione sus respuestas en inglés.</strong><br><br><strong>* Campos obligatorios</strong></p>"
-    },
-    {
+  },
+  {
     "uuid": "e3461b9a-e0b1-4157-ad4a-13f3835a101c",
     "lang": "es",
     "title": "Register to vote",
     "instructions": "",
     "body": "<p>You must register before you can vote in an election, except in North Dakota. The process can be a little different for each state. Select your state or territory from the dropdown menu to find out your registration options.</p><p><strong>* Required fields</strong></p><h2>Get started by selecting your state</h2><body>@state_selector\n</body><p><br><strong>Are you living outside of the United States?</strong><br>You will need to complete the <a class=\"usa-link--external\" href=\"https://www.fvap.gov/fpca-privacy-notice\" target=\"_blank\">Federal Post Card Application (FPCA)</a> if you are a:&nbsp;</p><ul><li>U.S. citizen living outside the United States without a home (legal) address in the United States&nbsp;</li><li>U.S. military service member stationed away from home or their family</li></ul><p>Learn more about how to register to vote through the <a href=\"https://www.fvap.gov/fpca-privacy-notice\">Federal Post Card Application</a>. You can also find information at military bases, American embassies, and consular offices.</p>"
-    },
-    {
+  },
+  {
     "uuid": "229f283c-6a70-43f6-a80f-15cfa158f062",
     "lang": "es",
     "title": "Su formulario de registro por correo postal para el estado de @state_name está completo y listo para imprimir.",

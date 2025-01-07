@@ -68,7 +68,7 @@ describe('Verify Flow Within Form', () => {
           .nextBtn().click().click()
       })
 
-    // political party 
+    // political party
     pageObjects
       .editBtn().then(editBtn => {
         cy.get(editBtn[3]).click({ force: true })
@@ -113,7 +113,7 @@ describe('Verify Flow Within Form', () => {
         cy.get(li[2]).should('contain.text', data.addressState)
         cy.get(li[3]).should('contain.text', data.addressZip)
       })
-      // political party 
+      // political party
       cy.get(ul[7]).find('li').then(li => {
         cy.get(li[0]).should('contain.text', data.politicalParty)
 

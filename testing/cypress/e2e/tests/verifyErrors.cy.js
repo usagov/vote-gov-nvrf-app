@@ -115,7 +115,7 @@ describe('Validate Errors', () => {
     pageObjects
       .nextBtn().click()
 
-    // political party 
+    // political party
     pageObjects
       .nextBtn().click()
 
