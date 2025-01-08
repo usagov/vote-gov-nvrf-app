@@ -52,7 +52,7 @@ function MultiStepForm(props) {
     date_of_birth_year: '',
     phone_number: '',
     race: '',
-    street_address: '',
+    current_street_address: '',
     apt_num: '',
     city: '',
     state: '',
@@ -192,7 +192,7 @@ function MultiStepForm(props) {
     setHasNoAddress(e.target.checked);
     setFieldData({
       ...fieldData,
-      street_address: '', apt_num: '', city: '', state: '', zip_code: ''
+      current_street_address: '', apt_num: '', city: '', state: '', zip_code: ''
     })
 
     if (!e.target.checked && document.getElementById("alt-mail-addr")) {

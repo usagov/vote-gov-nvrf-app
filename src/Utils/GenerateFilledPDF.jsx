@@ -92,10 +92,10 @@ const GenerateFilledPDF = async function (btnType, formData, pagesKept) {
 
   //(2) Addresses
   //Home
-  const currentAddress = formData.street_address + formData.apt_num + formData.city + formData.zip_code;
+  const currentAddress = formData.current_street_address + formData.apt_num + formData.city + formData.zip_code;
   //check if anything other than default state selection is filled out
   if (currentAddress) {
-    homeAddress.setText(formData.street_address);
+    homeAddress.setText(formData.current_street_address);
     aptNumber.setText(formData.apt_num);
     city.setText(formData.city);
     state.setText(formData.state);

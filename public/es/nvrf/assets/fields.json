@@ -196,7 +196,7 @@
   {
     "uuid": "6dcb9e8c-b40a-4cda-ba5c-06b98c3375f4",
     "lang": "es",
-    "nvrf_id": "home_address",
+    "nvrf_id": "current_street_address",
     "name": "Home Address: Street Address (Spanish)",
     "label": "Dirección",
     "help_text": "1234 Main St.",

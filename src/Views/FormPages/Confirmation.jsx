@@ -9,7 +9,7 @@ function Confirmation(props) {
   const fields = props.fieldContent;
   const stringContent = props.stringContent
 
-  const currentAddress = fieldData.street_address + fieldData.apt_num + fieldData.city + fieldData.zip_code;
+  const currentAddress = fieldData.current_street_address + fieldData.apt_num + fieldData.city + fieldData.zip_code;
   const prevName = fieldData.prev_title + fieldData.prev_first_name + fieldData.prev_middle_name + fieldData.prev_last_name + fieldData.prev_suffix;
   const prevAddress = fieldData.prev_street_address + fieldData.prev_apt_num + fieldData.prev_city + fieldData.prev_state + fieldData.prev_zip_code;
   const prevMailAddress = fieldData.mail_street_address + fieldData.mail_apt_num + fieldData.mail_city + fieldData.mail_state + fieldData.mail_zip_code;
@@ -104,7 +104,7 @@ function Confirmation(props) {
           </Alert>
         )}
         <ul>
-          <li>{getFieldLabel("6dcb9e8c-b40a-4cda-ba5c-06b98c3375f4")}: {fieldData.street_address}</li>
+          <li>{getFieldLabel("6dcb9e8c-b40a-4cda-ba5c-06b98c3375f4")}: {fieldData.current_street_address}</li>
           <li>{getFieldLabel("deba9b54-68ad-4ef1-8fb5-ee34e4ab8a49")}: {fieldData.apt_num}</li>
           <li>{getFieldLabel("7e39a528-7518-40cb-b7b6-b635864dc117")}: {fieldData.city}</li>
           <li>{getFieldLabel("fe3a2a1d-34bd-472b-a843-3fa0635c4f40")}: {fieldDataOverride_state}</li>
