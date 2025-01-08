@@ -6,7 +6,10 @@ function MailingAddressState(props) {
   const uuid = "b0f80289-6084-4723-8278-110fda210f0d";
   const field = getField(props.fieldContent, uuid);
   const stateField = getField(props.stateData.nvrf_fields, field.uuid);
-  const options = props.statesList.map(state => ({key: state, value: state}));
+  const options = [
+    {key: field.options[0].key, value: field.options[0].value},
+    ...props.statesList.map(state => ({key: state, value: state}))
+  ]
 
   return (
     <FieldContainer

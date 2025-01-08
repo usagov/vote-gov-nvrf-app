@@ -6,7 +6,10 @@ function PreviousAddressState(props) {
   const uuid = "5a8a4b6d-c0f1-42f2-b991-8ea49a32e997";
   const field = getField(props.fieldContent, uuid);
   const stateField = getField(props.stateData.nvrf_fields, field.uuid);
-  const options = props.statesList.map(state => ({key: state, value: state}));
+  const options = [
+    {key: field.options[0].key, value: field.options[0].value},
+    ...props.statesList.map(state => ({key: state, value: state}))
+  ]
 
   return (
     <FieldContainer

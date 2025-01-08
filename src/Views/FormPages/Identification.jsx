@@ -60,7 +60,7 @@ function Identification(props) {
             <Select
               id="id-selection"
               name="id-selection"
-              aria-label={stringContent.idSelectionAriaLabel}
+              aria-label={idTypeField.label}
               aria-describedby="id-selection_error"
               data-test="dropDown"
               value={props.idType}
