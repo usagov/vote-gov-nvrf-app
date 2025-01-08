@@ -12,7 +12,7 @@ function CurrentMiddleName(props) {
       fieldType={'text'} inputData={{
       id: 'middle_name',
       dataTest: 'middleName',
-      required: "0",
+      required: stateField.required,
       label: field.label,
       error_msg: field.error_msg,
       help_text: field.help_text,
