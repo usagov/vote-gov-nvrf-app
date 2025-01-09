@@ -1,5 +1,5 @@
 import React from "react";
-import {restrictType, jumpTo} from 'Utils/ValidateField';
+import {toggleError, restrictType, jumpTo} from 'Utils/ValidateField';
 
 function DateFields({
                       inputData,
@@ -9,7 +9,7 @@ function DateFields({
                       setFieldError
                     }) {
 
-  const checkDateValues = (e,) => {
+  const checkDateValues = (e) => {
     let month = fieldData.date_of_birth_month;
     let day = fieldData.date_of_birth_day;
     let year = fieldData.date_of_birth_year;
@@ -21,7 +21,7 @@ function DateFields({
     setFieldError([]);
 
     // Check if month is a valid month.
-    if (month.length !== 2 || month > 12 || month < 1) {
+    if (month.length !== 2 || !(month >= 1 && month <= 12)) {
       errorArray.push({
         'message': inputData.field_month.error_msg,
         'id': inputData.field_month.nvrf_id
@@ -29,7 +29,7 @@ function DateFields({
     }
 
     // Check if day is a valid day.
-    if (day.length !== 2 || day > 31 || day < 1) {
+    if (day.length !== 2 || !(day >= 1 && day <= 31)) {
       errorArray.push({
         'message': inputData.field_day.error_msg,
         'id': inputData.field_day.nvrf_id
@@ -37,7 +37,7 @@ function DateFields({
     }
 
     // Check if year is not in the future.
-    if (year.length !== 4 || year >= currentYear) {
+    if (year.length !== 4 || !(year >= 1900 && year < currentYear)) {
       errorArray.push({
         'message': inputData.field_year.error_msg,
         'id': inputData.field_year.nvrf_id
@@ -46,6 +46,7 @@ function DateFields({
 
     // Set field errors.
     setFieldError(errorArray);
+    return errorArray.length > 0;
   };
 
   return (
@@ -57,7 +58,7 @@ function DateFields({
       required={parseInt(inputData.required)}
       data-testid="dateInputGroup"
       onBlur={e => {
-        if (!e.currentTarget.contains(e.relatedTarget)) checkDateValues(e)
+        if (!e.currentTarget.contains(e.relatedTarget)) toggleError(e, checkDateValues(e))
       }}
     >
       <div data-testid="formGroup"
@@ -143,7 +144,7 @@ function DateFields({
           required={true}
           aria-invalid={false}
           type="text"
-          pattern="[12]\d{3}"
+          pattern="19[0-9][0-9]|20[0-1][0-9]|202[0-4]"
           inputMode="numeric"
           minLength={4}
           maxLength={4}
