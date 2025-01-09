@@ -32,7 +32,7 @@ Cypress.Commands.add('completeForm', () => {
 // verify user CAN move forward after checking box
   pageObjects
     .checkBox().click()
-// todo: come back after fix 
+// todo: come back after fix
 // pageObjects
 // .errorText().should('not.exist')
 
@@ -45,7 +45,7 @@ Cypress.Commands.add('completeForm', () => {
     cy.get(btn[0]).click({force: true})
   })
 
-// fill out personal information 
+// fill out personal information
   pageObjects
     .select().then(dropdown => {
     // title
@@ -114,7 +114,7 @@ Cypress.Commands.add('completeForm', () => {
   pageObjects
     .zip().type(data.addressZip)
 
-// * check that mailing address work 
+// * check that mailing address work
   pageObjects
     .checkBox().then(checkBox => {
     cy.get(checkBox[2]).click({force: true})
@@ -133,7 +133,7 @@ Cypress.Commands.add('completeForm', () => {
     cy.get(checkBox[2]).click({force: true})
   })
 
-// * check recently moved option 
+// * check recently moved option
   pageObjects
     .checkBox().then(checkBox => {
     cy.get(checkBox[0]).click({force: true})
@@ -153,7 +153,7 @@ Cypress.Commands.add('completeForm', () => {
     cy.get(checkBox[0]).click({force: true})
   })
 
-// * check does not have permanent option 
+// * check does not have permanent option
   pageObjects
     .checkBox().then(checkBox => {
     cy.get(checkBox[1]).click({force: true})
@@ -200,6 +200,7 @@ Cypress.Commands.add('completeForm', () => {
   })
   pageObjects
     .stateId().type(data.idNumber)
+
 
   pageObjects
     .nextBtn().click()

@@ -1,70 +1,52 @@
 import React from "react";
-import {
-  restrictType,
-  checkForErrors,
-  jumpTo,
-  toggleError
-} from 'Utils/ValidateField';
+import {toggleError, restrictType, jumpTo} from 'Utils/ValidateField';
 
-function DateFields({inputData, saveFieldData, dateFormat, fieldData}) {
+function DateFields({
+                      inputData,
+                      saveFieldData,
+                      dateFormat,
+                      fieldData,
+                      setFieldError
+                    }) {
 
-  const checkDateValues = (e, type) => {
+  const checkDateValues = (e) => {
     let month = fieldData.date_of_birth_month;
     let day = fieldData.date_of_birth_day;
     let year = fieldData.date_of_birth_year;
-    let yearStart = year.slice(0, 2);
-
-    /* Comment out age validation for now
     let currentDate = new Date();
-    let currentMonth = currentDate.getMonth();
-    let currentDay = currentDate.getDate();
     let currentYear = currentDate.getFullYear();
-    let age = currentYear - year - (currentMonth <= month && currentDay < day);
-    */
+    let errorArray = [];
 
-    if (type === "all") {
-      let dobValues = [
-        month.length === 2,
-        day.length === 2,
-        year.length === 4,
+    // Clear errors before validating field values.
+    setFieldError([]);
 
-        month <= 12,
-        month >= 1,
-        day <= 31,
-        day >= 1,
-        yearStart <= 20,
-        yearStart >= 19,
-        //age <= 120,
-        //age >= 16
-      ];
-
-      if (dobValues.includes(false)) {
-        e.target.setCustomValidity(' ');
-        return true
-      } else {
-        return false
-      }
-
-    } else if (type === "month") {
-      if (month > 12 || month < 1) {
-        return true
-      } else {
-        return false
-      }
-    } else if (type === "day") {
-      if (day > 31 || day < 1) {
-        return true
-      } else {
-        return false
-      }
-    } //Removing age validation for now
-    /* else if (type === "year") {
-    if (age > 110 || age < 17) {
-      return true
-    } else {
-      return false
+    // Check if month is a valid month.
+    if (month.length !== 2 || !(month >= 1 && month <= 12)) {
+      errorArray.push({
+        'message': inputData.field_month.error_msg,
+        'id': inputData.field_month.nvrf_id
+      });
     }
-  } */
+
+    // Check if day is a valid day.
+    if (day.length !== 2 || !(day >= 1 && day <= 31)) {
+      errorArray.push({
+        'message': inputData.field_day.error_msg,
+        'id': inputData.field_day.nvrf_id
+      });
+    }
+
+    // Check if year is not in the future.
+    if (year.length !== 4 || !(year >= 1900 && year < currentYear)) {
+      errorArray.push({
+        'message': inputData.field_year.error_msg,
+        'id': inputData.field_year.nvrf_id
+      });
+    }
+
+    // Set field errors.
+    setFieldError(errorArray);
+    return errorArray.length > 0;
   };
 
   return (
@@ -76,22 +58,22 @@ function DateFields({inputData, saveFieldData, dateFormat, fieldData}) {
       required={parseInt(inputData.required)}
       data-testid="dateInputGroup"
       onBlur={e => {
-        if (!e.currentTarget.contains(e.relatedTarget)) toggleError(e, checkDateValues(e, 'all'))
+        if (!e.currentTarget.contains(e.relatedTarget)) toggleError(e, checkDateValues(e))
       }}
     >
       <div data-testid="formGroup"
            className="usa-form-group usa-form-group--month">
         <label data-testid="label" className="usa-label"
                htmlFor={`${inputData.id}` + '_month'}>
-          {inputData.stringContent.month}
+          {inputData.field_month.label}
         </label>
         <input
-          data-test={`${inputData.dataTest}` + 'Month'}
-          id={`${inputData.id}` + '_month'}
+          data-test={inputData.dataTest + 'Month'}
+          id={inputData.field_month.nvrf_id}
           className="usa-input radius-md"
-          aria-describedby={`${inputData.id}` + '_error'}
-          name={`${inputData.id}` + '_month'}
-          label={inputData.stringContent.month}
+          aria-describedby={inputData.field_month.nvrf_id + '_error'}
+          name={inputData.field_month.nvrf_id}
+          label={inputData.field_month.label}
           unit="month"
           required={true}
           aria-invalid={false}
@@ -100,14 +82,14 @@ function DateFields({inputData, saveFieldData, dateFormat, fieldData}) {
           inputMode="numeric"
           maxLength={2}
           minLength={2}
-          value={fieldData[`${inputData.id}` + '_month']}
-          onInput={saveFieldData(`${inputData.id}` + '_month')}
-          onKeyUp={(e) => jumpTo(e, `${inputData.id}` + '_day')}
+          value={fieldData[inputData.field_month.nvrf_id]}
+          onInput={saveFieldData(inputData.field_month.nvrf_id)}
+          onKeyUp={(e) => jumpTo(e, inputData.field_day.nvrf_id)}
           onKeyDown={(e) => {
             restrictType(e, 'number'), e.target.setCustomValidity('')
           }}
           onBlur={(e) => {
-            dateFormat(e, `${inputData.id}` + '_month'), toggleError(e, checkDateValues(e, 'month'))
+            dateFormat(e, inputData.field_month.nvrf_id)
           }}
           onInvalid={(e) => e.target.setCustomValidity(' ')}
         />
@@ -116,15 +98,15 @@ function DateFields({inputData, saveFieldData, dateFormat, fieldData}) {
            className="usa-form-group usa-form-group--day">
         <label data-testid="label" className="usa-label"
                htmlFor={`${inputData.id}` + '_day'}>
-          {inputData.stringContent.day}
+          {inputData.field_day.label}
         </label>
         <input
-          data-test={`${inputData.dataTest}` + 'Day'}
-          id={`${inputData.id}` + '_day'}
+          data-test={inputData.dataTest + 'Day'}
+          id={inputData.field_day.nvrf_id}
           className="usa-input radius-md"
-          aria-describedby={`${inputData.id}` + '_error'}
-          name={`${inputData.id}` + '_day'}
-          label={inputData.stringContent.day}
+          aria-describedby={inputData.field_day.nvrf_id + '_error'}
+          name={inputData.field_day.nvrf_id}
+          label={inputData.field_day.label}
           unit="day"
           required={true}
           aria-invalid={false}
@@ -133,14 +115,14 @@ function DateFields({inputData, saveFieldData, dateFormat, fieldData}) {
           inputMode="numeric"
           minLength={2}
           maxLength={2}
-          value={fieldData[`${inputData.id}` + '_day']}
-          onInput={saveFieldData(`${inputData.id}` + '_day')}
-          onKeyUp={(e) => jumpTo(e, `${inputData.id}` + '_year')}
+          value={fieldData[inputData.field_day.nvrf_id]}
+          onInput={saveFieldData(inputData.field_day.nvrf_id)}
+          onKeyUp={(e) => jumpTo(e, inputData.field_year.nvrf_id)}
           onKeyDown={(e) => {
             restrictType(e, 'number'), e.target.setCustomValidity('')
           }}
           onBlur={(e) => {
-            dateFormat(e, `${inputData.id}` + '_day'), toggleError(e, checkDateValues(e, 'day'))
+            dateFormat(e, inputData.field_day.nvrf_id)
           }}
           onInvalid={(e) => e.target.setCustomValidity(' ')}
         />
@@ -149,29 +131,28 @@ function DateFields({inputData, saveFieldData, dateFormat, fieldData}) {
            className="usa-form-group usa-form-group--year">
         <label data-testid="label" className="usa-label"
                htmlFor={`${inputData.id}` + '_year'}>
-          {inputData.stringContent.year}
+          {inputData.field_year.label}
         </label>
         <input
-          data-test={`${inputData.dataTest}` + 'Year'}
-          id={`${inputData.id}` + '_year'}
+          data-test={inputData.dataTest + 'Year'}
+          id={inputData.field_year.nvrf_id}
           className="usa-input radius-md"
-          aria-describedby={`${inputData.id}` + '_error'}
-          name={`${inputData.id}` + '_year'}
-          label={inputData.stringContent.year}
+          aria-describedby={inputData.field_year.nvrf_id + '_error'}
+          name={inputData.field_year.nvrf_id}
+          label={inputData.field_year.label}
           unit="year"
           required={true}
           aria-invalid={false}
           type="text"
-          pattern="19\d{2}|20\d{2}"
+          pattern="19[0-9][0-9]|20[0-1][0-9]|202[0-4]"
           inputMode="numeric"
           minLength={4}
           maxLength={4}
-          value={fieldData[`${inputData.id}` + '_year']}
-          onInput={saveFieldData(`${inputData.id}` + '_year')}
+          value={fieldData[inputData.field_year.nvrf_id]}
+          onInput={saveFieldData(inputData.field_year.nvrf_id)}
           onKeyDown={(e) => {
             restrictType(e, 'number'), e.target.setCustomValidity('')
           }}
-          onBlur={(e) => toggleError(e, checkForErrors(e, 'check value length'))}
           onInvalid={(e) => e.target.setCustomValidity(' ')}
         />
       </div>

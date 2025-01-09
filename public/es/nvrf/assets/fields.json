@@ -142,6 +142,45 @@
     "options": []
   },
   {
+    "uuid": "40d2cc5b-24ca-4193-8b8f-f11d80e9cbe9",
+    "lang": "es",
+    "nvrf_id": "date_of_birth_day",
+    "name": "Date of Birth: Day",
+    "label": "Día",
+    "help_text": false,
+    "error_msg": "Error: este campo es obligatorio. Ingrese su día de nacimiento en forma de número entre 1 y 31.",
+    "instructions": "",
+    "section_description": "",
+    "section_alert": "",
+    "options": []
+  },
+  {
+    "uuid": "48149e7a-d049-4ab6-b7ed-4b3708016015",
+    "lang": "es",
+    "nvrf_id": "date_of_birth_month",
+    "name": "Date of Birth: Month",
+    "label": "Mes",
+    "help_text": false,
+    "error_msg": "Error: este campo es obligatorio. Ingrese su mes de nacimiento en forma de un número entre 1 y 12.",
+    "instructions": "",
+    "section_description": "",
+    "section_alert": "",
+    "options": []
+  },
+  {
+    "uuid": "b632e45d-6317-4d2d-94c5-b130ad50e027",
+    "lang": "es",
+    "nvrf_id": "date_of_birth_year",
+    "name": "Date of Birth: Year",
+    "label": "Año",
+    "help_text": false,
+    "error_msg": "Error: este campo es obligatorio. Ingrese su año de nacimiento en forma de un número de cuatro dígitos en el pasado.",
+    "instructions": "",
+    "section_description": "",
+    "section_alert": "",
+    "options": []
+  },
+  {
     "uuid": "e7340274-ee3f-4d73-a967-c9d7c249be7b",
     "lang": "es",
     "nvrf_id": "diff_mailing_address",

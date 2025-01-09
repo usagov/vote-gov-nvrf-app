@@ -147,7 +147,6 @@ class PageObjects {
   editBtn() {
     return cy.get('[data-test="editBtn"]')
   }
-
 }
 
 export const pageObjects = new PageObjects()
