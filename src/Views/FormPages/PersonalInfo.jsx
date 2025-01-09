@@ -131,16 +131,16 @@ function PersonalInfo(props) {
 
       <Grid row gap className={'flex-align-end'}>
         {telephoneFieldState && (
-        <Grid tablet={{ col: 5 }}>
+          <Grid tablet={{col: 5}}>
             <CurrentPhoneNumber {...props} />
-        </Grid>
+          </Grid>
         )}
         {raceFieldState && (
-        <Grid tablet={{ col: 4 }}>
+          <Grid tablet={{col: 4}}>
             <div className="input-parent">
-                <RaceEthnicity {...props} />
+              <RaceEthnicity {...props} />
             </div>
-        </Grid>
+          </Grid>
         )}
       </Grid>
 

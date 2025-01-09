@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 /// <reference types="cypress" />
 const data = require("../../fixtures/data.json");
-import { pageObjects } from '../../support/pageObjects.js'
+import {pageObjects} from '../../support/pageObjects.js'
 
 describe('Validate Errors', () => {
   beforeEach('login to app', () => {
@@ -21,8 +21,8 @@ describe('Validate Errors', () => {
     // select registration option
     pageObjects
       .pathBtn().then(btn => {
-        cy.get(btn[1]).click()
-      })
+      cy.get(btn[1]).click()
+    })
 
     // check errors on personal information are working
     //  * testing required fields are filled out before user can move forward
@@ -91,8 +91,8 @@ describe('Validate Errors', () => {
     // * state id number
     pageObjects
       .dropDown().then(dropDown => {
-        cy.get(dropDown[0]).select("State non-driver ID")
-      })
+      cy.get(dropDown[0]).select("State non-driver ID")
+    })
     pageObjects
       .nextBtn().click().click()
     pageObjects
@@ -103,8 +103,8 @@ describe('Validate Errors', () => {
     // * social security number (last 4 digits)
     pageObjects
       .dropDown().then(dropDown => {
-        cy.get(dropDown[0]).select("Social security number (last 4 digits)")
-      })
+      cy.get(dropDown[0]).select("Social security number (last 4 digits)")
+    })
 
     pageObjects
       .nextBtn().click().click()
@@ -125,6 +125,6 @@ describe('Validate Errors', () => {
     pageObjects
       .errorText().should('contain.text', 'Checkbox must be checked to continue.')
     pageObjects
-      .confirm().click({ force: true })
+      .confirm().click({force: true})
   })
 })

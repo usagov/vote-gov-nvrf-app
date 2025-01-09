@@ -40,7 +40,9 @@ function FieldContainer({
         )}
         {renderField(fieldType)}
         {inputData.error_msg && (
-          <span id={`${inputData.id}` + '_error'} role="alert" aria-live="assertive" className={'vote-error-text'} data-test="errorText">
+          <span id={`${inputData.id}` + '_error'} role="alert"
+                aria-live="assertive" className={'vote-error-text'}
+                data-test="errorText">
             {inputData.error_msg}
           </span>
         )}
