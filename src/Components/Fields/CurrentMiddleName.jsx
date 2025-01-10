@@ -10,7 +10,7 @@ function CurrentMiddleName(props) {
   return (
     <FieldContainer
       fieldType={'text'} inputData={{
-      id: 'middle_name',
+      id: field.nvrf_id,
       dataTest: 'middleName',
       required: "0",
       label: field.label,

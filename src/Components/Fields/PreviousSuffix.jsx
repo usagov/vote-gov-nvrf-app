@@ -8,12 +8,12 @@ function PreviousSuffix(props) {
   return (
     <FieldContainer
       fieldType={'select'} inputData={{
-      id: 'prev_suffix',
+      id: field.nvrf_id,
       dataTest: 'select',
       required: "0",
       label: field.label,
       options: field.options,
-      value: props.fieldData['prev_suffix'],
+      value: props.fieldData[field.nvrf_id],
     }} saveFieldData={props.saveFieldData} fieldData={props.fieldData}
       stringContent={props.stringContent}/>
   )

@@ -9,12 +9,12 @@ function CurrentSuffix(props) {
   return (
     <FieldContainer
       fieldType={'select'} inputData={{
-      id: 'suffix',
+      id: field.nvrf_id,
       dataTest: 'select',
       required: "0",
       label: field.label,
       options: field.options,
-      value: props.fieldData['suffix'],
+      value: props.fieldData[field.nvrf_id],
     }} saveFieldData={props.saveFieldData} fieldData={props.fieldData}
       stringContent={props.stringContent}/>
   )
