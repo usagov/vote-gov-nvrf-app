@@ -89,10 +89,10 @@ function Identification(props) {
                   <option key="id-none" value="none">{noIdField.label}</option>}
               </React.Fragment>
             </Select>
-            <span id="id-selection_error" role="alert"
+            <span id="id-selection_error" role="alert" aria-live="assertive"
                   className={'vote-error-text'} data-test="errorText">
-                            {props.idType === '' && stateIDField.error_msg}
-                        </span>
+              {props.idType === '' && stateIDField.error_msg}
+            </span>
           </div>
         </>
       )}

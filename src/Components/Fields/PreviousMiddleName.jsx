@@ -12,7 +12,7 @@ function PreviousMiddleName(props) {
       fieldType={'text'} inputData={{
       id: field.nvrf_id,
       dataTest: 'prevMiddleName',
-      required: "0",
+      required: stateField.required,
       label: field.label,
       error_msg: field.error_msg,
       help_text: field.help_text,

@@ -90,15 +90,9 @@ function PersonalInfo(props) {
       )}
 
       <Grid row gap className={'flex-align-end'}>
-        <Grid tablet={{col: 5}}>
+        <Grid tablet={{col: 12}}>
           <CurrentDateOfBirth {...props} dateFormat={props.dateFormat}/>
         </Grid>
-
-        {telephoneFieldState && (
-          <Grid tablet={{col: 5}}>
-            <CurrentPhoneNumber {...props} />
-          </Grid>
-        )}
       </Grid>
       {/* Email Address check. */}
       <Grid row className={'email-address-input'} style={{
@@ -135,15 +129,20 @@ function PersonalInfo(props) {
         </div>
       </Grid>
 
-      {raceFieldState && (
-        <Grid row gap className={'flex-align-end'}>
+      <Grid row gap className={'flex-align-end'}>
+        {telephoneFieldState && (
+          <Grid tablet={{col: 5}}>
+            <CurrentPhoneNumber {...props} />
+          </Grid>
+        )}
+        {raceFieldState && (
           <Grid tablet={{col: 4}}>
             <div className="input-parent">
               <RaceEthnicity {...props} />
             </div>
           </Grid>
-        </Grid>
-      )}
+        )}
+      </Grid>
 
       {(props.previousName && changeRegistrationVisible) && (
         <>
