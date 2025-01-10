@@ -9,16 +9,16 @@ function Confirmation(props) {
   const fields = props.fieldContent;
   const stringContent = props.stringContent
 
-  const currentAddress = fieldData.current_street_address + fieldData.current_apt_num + fieldData.current_city + fieldData.current_zip_code;
+  const currentAddress = fieldData.current_street_address + fieldData.current_apt_number + fieldData.current_city + fieldData.current_zip_code;
   const prevName = fieldData.prev_title + fieldData.prev_first_name + fieldData.prev_middle_names + fieldData.prev_last_name + fieldData.prev_suffix;
   const prevAddress = fieldData.prev_street_address + fieldData.prev_apt_number + fieldData.prev_city + fieldData.prev_state + fieldData.prev_zip_code;
   const prevMailAddress = fieldData.mail_street_address + fieldData.mail_apt_number + fieldData.mail_city + fieldData.mail_state + fieldData.mail_zip_code;
 
   //field data overrides for confirm page printing only
-  const fieldDataOverride_race = (fieldData.race === '') ? (stringContent.notRequired) : fieldData.race;
+  const fieldDataOverride_race = (fieldData.race_ethnic_group === '') ? (stringContent.notRequired) : fieldData.race_ethnic_group;
   const fieldDataOverride_party = (fieldData.party_choice === '') ? (stringContent.notRequired) : fieldData.party_choice;
   const fieldDataOverride_state = props.stateData.name;
-  fieldData.state = fieldDataOverride_state;
+  fieldData.current_state = fieldDataOverride_state;
 
   //id override
   const fieldDataOverride_id = ((fieldData.id_number === '') && (fieldData.ssn_number === '')) ? "none" : fieldData.id_number + " " + fieldData.ssn_number;

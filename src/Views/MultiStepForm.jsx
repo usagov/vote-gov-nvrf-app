@@ -51,9 +51,9 @@ function MultiStepForm(props) {
     date_of_birth_day: '',
     date_of_birth_year: '',
     phone_number: '',
-    race: '',
+    race_ethnic_group: '',
     current_street_address: '',
-    current_apt_num: '',
+    current_apt_number: '',
     current_city: '',
     current_state: '',
     current_zip_code: '',
@@ -192,7 +192,7 @@ function MultiStepForm(props) {
     setHasNoAddress(e.target.checked);
     setFieldData({
       ...fieldData,
-      current_street_address: '', current_apt_num: '', current_city: '', current_state: '', current_zip_code: ''
+      current_street_address: '', current_apt_number: '', current_city: '', current_state: '', current_zip_code: ''
     })
 
     if (!e.target.checked && document.getElementById("alt-mail-addr")) {
