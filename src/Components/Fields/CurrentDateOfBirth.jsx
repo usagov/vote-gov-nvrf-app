@@ -8,11 +8,11 @@ function CurrentDateOfBirth(props) {
   const stateField = getField(props.stateData.nvrf_fields, field.uuid);
 
   //Get month, day, year field data
-  const uuid2 = "48149e7a-d049-4ab6-b7ed-4b3708016015";
+  const uuid2 = "2913e847-6d27-48f7-9281-e91f20a9f33d";
   const field_month = getField(props.fieldContent, uuid2);
-  const uuid3 = "40d2cc5b-24ca-4193-8b8f-f11d80e9cbe9";
+  const uuid3 = "4297d470-4977-4c7b-a550-940f23d93f20";
   const field_day = getField(props.fieldContent, uuid3);
-  const uuid4 = "b632e45d-6317-4d2d-94c5-b130ad50e027";
+  const uuid4 = "b7205945-bb5f-4109-a825-810bedf02b4b";
   const field_year = getField(props.fieldContent, uuid4);
 
   return (

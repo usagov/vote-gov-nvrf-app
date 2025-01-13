@@ -168,7 +168,7 @@
     "options": []
   },
   {
-    "uuid": "40d2cc5b-24ca-4193-8b8f-f11d80e9cbe9",
+    "uuid": "4297d470-4977-4c7b-a550-940f23d93f20",
     "lang": "en",
     "nvrf_id": "date_of_birth_day",
     "name": "Date of Birth: Day",
@@ -181,7 +181,7 @@
     "options": []
   },
   {
-    "uuid": "48149e7a-d049-4ab6-b7ed-4b3708016015",
+    "uuid": "2913e847-6d27-48f7-9281-e91f20a9f33d",
     "lang": "en",
     "nvrf_id": "date_of_birth_month",
     "name": "Date of Birth: Month",
@@ -194,7 +194,7 @@
     "options": []
   },
   {
-    "uuid": "b632e45d-6317-4d2d-94c5-b130ad50e027",
+    "uuid": "b7205945-bb5f-4109-a825-810bedf02b4b",
     "lang": "en",
     "nvrf_id": "date_of_birth_year",
     "name": "Date of Birth: Year",
