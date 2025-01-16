@@ -9,7 +9,7 @@ function TextInputField({inputData, saveFieldData, fieldData}) {
 
   const hintId = inputData.id + '-hint';
   const errorId = inputData.id + '_error';
-  const [a11yAnnounce, setA11yAnnounce] = useState(inputData.help_text ? hintId : errorId);
+  const [a11yAnnounce, setA11yAnnounce] = useState(hintId);
 
   return (
     <TextInput
