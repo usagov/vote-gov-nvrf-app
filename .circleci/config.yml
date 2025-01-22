@@ -2,54 +2,6 @@ version: 2.1
 orbs:
   gh: circleci/github-cli@2.2.0
 jobs:
-# turning off job until review of pdf can be done
-  # update-nvrf:
-  #   docker:
-  #     - image: cimg/base:stable
-  #   environment:
-  #     URL: https://www.eac.gov/sites/default/files/eac_assets/1/6/Federal_Voter_Registration_ENG.pdf
-  #     NVRF_FILE_NAME: Federal_Voter_Registration_ENG.pdf
-  #     NEW_BRANCH_NAME: upload-nvrf-pdf
-  #   steps:
-  #     #Install gh
-  #     - gh/install
-  #     - run:
-  #         name: Git Clone and Config
-  #         command: |
-  #           GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" git clone -b "update-nvrf-pdf" "$CIRCLE_REPOSITORY_URL"
-  #           cd vote-gov-nvrf-app
-  #           git config user.email "circleci@df52e93b2563.(none)"
-  #           git config user.name "Pipeline Commit"
-  #     - run:
-  #         name: Fetch NVRF from eac.gov
-  #         command: |
-  #           curl -o Federal_Voter_Registration_ENG.pdf $URL
-  #     #Save pdf as an artifact
-  #     - store_artifacts:
-  #         path: Federal_Voter_Registration_ENG.pdf
-  #         destination: /pdf-files
-  #     # Create a variable to store the PDF artifact
-  #     - run:
-  #         name: Replace current NVRF
-  #         command: |
-  #           cd vote-gov-nvrf-app
-  #           artifacts=$(curl -X GET "https://circleci.com/api/v2/project/github/usagov/vote-gov-nvrf-app/$CIRCLE_BUILD_NUM/artifacts" \
-  #           -H "Accept: application/json" \
-  #           -u "$NVRF_PDF_WRITE:")
-  #           echo "read -r -d '' STORED_ARTIFACTS \<< 'EOF_ARTIFACTS'" >> $BASH_ENV
-  #           echo "$artifacts" >> $BASH_ENV
-  #           echo "EOF_ARTIFACTS" >> $BASH_ENV
-  #           cd public/files
-  #           rm $NVRF_FILE_NAME
-  #           echo $STORED_ARTIFACTS > $NVRF_FILE_NAME
-  #     - run:
-  #         name: Create Pull Request
-  #         shell: /bin/bash
-  #         command: |
-  #           cd vote-gov-nvrf-app
-  #           echo $NVRF_PDF_WRITE | tee /tmp/key.txt
-  #           gh auth login --with-token < /tmp/key.txt
-  #           gh pr create --title "Update NVRF PDF" --body "Upload the new NVRF PDF from eac.gov. This is an automated job from CircleCI" || true
   cypress-testing:
     docker:
       - image: cypress/included:cypress-13.16.0-node-22.12.0-chrome-131.0.6778.108-1-ff-133.0-edge-131.0.2903.70-1
@@ -72,19 +24,8 @@ jobs:
           command: |
             npm start &
             cd testing
-            npm run cy:axe            
+            npm run cy:axe
 workflows:
   main-workflow:
     jobs:
       - cypress-testing
-# turning off job until review of pdf can be done
-  # update-nvrf-workflow:
-  #   jobs:
-  #     - update-nvrf
-  #   triggers:
-  #     - schedule:
-  #         cron: '0 0 * * 5'
-  #         filters:
-  #           branches:
-  #             only:
-  #               - stage

@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 /// <reference types="cypress" />
 const data = require("../../fixtures/data.json");
-import { pageObjects } from '../../support/pageObjects.js'
+import {pageObjects} from '../../support/pageObjects.js'
 
 describe('Verify Flow Within Form', () => {
   beforeEach('login to app', () => {
@@ -43,40 +43,40 @@ describe('Verify Flow Within Form', () => {
     // personal information
     pageObjects
       .editBtn().then(editBtn => {
-        cy.get(editBtn[0]).click()
-        cy.get('[data-testid="form"]').find('h2').should('contain.text', 'Personal information')
-        pageObjects
-          .nextBtn().click().click().click().click()
-      })
+      cy.get(editBtn[0]).click()
+      cy.get('[data-testid="form"]').find('h2').should('contain.text', 'Personal information')
+      pageObjects
+        .nextBtn().click().click().click().click()
+    })
 
     // address
     pageObjects
       .editBtn().then(editBtn => {
-        cy.get(editBtn[1]).click({ force: true })
-        cy.get('[data-testid="form"]').find('h2').should('contain.text', 'Address and location')
-        pageObjects
-          .nextBtn().click().click().click()
+      cy.get(editBtn[1]).click({force: true})
+      cy.get('[data-testid="form"]').find('h2').should('contain.text', 'Address and location')
+      pageObjects
+        .nextBtn().click().click().click()
 
-      })
+    })
     // identification
     pageObjects
       .editBtn().then(editBtn => {
-        cy.get(editBtn[2]).click({ force: true })
-        cy.get('[data-testid="form"]').find('h2').should('contain.text', 'Identification')
-        cy.get('h2').should('contain.text', 'Identification')
-        pageObjects
-          .nextBtn().click().click()
-      })
+      cy.get(editBtn[2]).click({force: true})
+      cy.get('[data-testid="form"]').find('h2').should('contain.text', 'Identification')
+      cy.get('h2').should('contain.text', 'Identification')
+      pageObjects
+        .nextBtn().click().click()
+    })
 
-    // political party 
+    // political party
     pageObjects
       .editBtn().then(editBtn => {
-        cy.get(editBtn[3]).click({ force: true })
-        cy.get('[data-testid="form"]').find('h2').should('contain.text', 'Political party')
+      cy.get(editBtn[3]).click({force: true})
+      cy.get('[data-testid="form"]').find('h2').should('contain.text', 'Political party')
 
-        pageObjects
-          .nextBtn().click()
-      })
+      pageObjects
+        .nextBtn().click()
+    })
   })
 
   it('Verify Fields are correct', () => {
@@ -113,7 +113,7 @@ describe('Verify Flow Within Form', () => {
         cy.get(li[2]).should('contain.text', data.addressState)
         cy.get(li[3]).should('contain.text', data.addressZip)
       })
-      // political party 
+      // political party
       cy.get(ul[7]).find('li').then(li => {
         cy.get(li[0]).should('contain.text', data.politicalParty)
 

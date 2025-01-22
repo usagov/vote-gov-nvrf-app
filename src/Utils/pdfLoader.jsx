@@ -1,4 +1,4 @@
-import { PDFDocument } from 'pdf-lib';
+import {PDFDocument} from 'pdf-lib';
 
 const loadPdf = async () => {
   const lang = document.documentElement.lang;
@@ -7,7 +7,7 @@ const loadPdf = async () => {
   const formPdfBytes = await fetch(formUrl).then(res => res.arrayBuffer())
   const pdfDoc = await PDFDocument.load(formPdfBytes)
   const form = pdfDoc.getForm()
-  return { pdfDoc, form };
+  return {pdfDoc, form};
 };
 
 export default loadPdf;

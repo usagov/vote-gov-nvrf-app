@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 /// <reference types="cypress" />
-import { pageObjects } from '../../support/pageObjects.js'
+import {pageObjects} from '../../support/pageObjects.js'
 
 function terminalLog(violations) {
   cy.task(
@@ -10,7 +10,7 @@ function terminalLog(violations) {
   )
   // pluck specific keys to keep the table readable
   const violationData = violations.map(
-    ({ id, impact, description, nodes }) => ({
+    ({id, impact, description, nodes}) => ({
       id,
       impact,
       description,
@@ -29,7 +29,7 @@ describe('Run Axe on form pages', () => {
   it('Check A11y', () => {
     pageObjects
       .backBtn().click().click().click().click()
-      
+
     // Personal Info
     cy.injectAxe()
     cy.configureAxe({
