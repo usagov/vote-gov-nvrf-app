@@ -18,7 +18,7 @@ function App() {
   const [content, setContent] = useState('');
   const [cards, setCards] = useState('');
   const [fieldContent, setFieldContent] = useState('')
-  const [stringContent, setstringContent] = useState('')
+  const [stringContent, setStringContent] = useState('')
 
   const [error, setError] = useState(null);
   const [pdfDoc, setPdfDoc] = useState(null);
@@ -36,7 +36,7 @@ function App() {
     fetchData("pages.json", setContent, setError);
     fetchData("cards.json", setCards, setError);
     fetchData("fields.json", setFieldContent, setError);
-    fetchData("strings.json", setstringContent, setError);
+    fetchData("strings.json", setStringContent, setError);
   }, []);
 
   const [step, setStep] = useState(1);
