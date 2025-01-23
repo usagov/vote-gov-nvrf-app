@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react'
 import Eligibility from 'Views/Eligibility.jsx';
 import PathSelection from 'Views/PathSelection.jsx';
 import MultiStepForm from 'Views/MultiStepForm.jsx';
-import {fetchData, fetchStaticData, sanitizeDOM} from 'Utils/JsonHelper.jsx';
+import {fetchData, fetchStateData, fetchStaticData, sanitizeDOM} from 'Utils/JsonHelper.jsx';
 import {HelmetProvider} from "react-helmet-async";
 import loadPdf from './Utils/pdfLoader';
 import {Alert} from "@trussworks/react-uswds";
@@ -14,7 +14,7 @@ const currentStateId = document.getElementById('root').getAttribute('data-stateI
 const returnPath = document.getElementById('root').getAttribute('data-returnPath');
 
 function App() {
-  const [states, setStates] = useState('');
+  const [stateData, setStateData] = useState('');
   const [content, setContent] = useState('');
   const [navContent, setNavContent] = useState('');
   const [cards, setCards] = useState('');
@@ -33,7 +33,8 @@ function App() {
   }, []);
 
   useEffect(() => {
-    fetchData("states.json", setStates, setError);
+    //hard coded state
+    fetchStateData("al", setStateData, setError);
     fetchData("pages.json", setContent, setError);
     fetchData("cards.json", setCards, setError);
     fetchData("fields.json", setFieldContent, setError);
@@ -42,11 +43,11 @@ function App() {
   }, []);
 
   const [step, setStep] = useState(1);
-  const [selectedState, setSelectedState] = useState('');
-  const [stateData, setStateData] = useState('');
+  //const [selectedState, setSelectedState] = useState('');
+  //const [stateData, setStateData] = useState('');
   const [registrationPath, setRegistrationPath] = useState('');
   const [formStep, setFormStep] = useState(1);
-
+  //console.log(stateData);
   const lastUpdatedSanitized = sanitizeDOM(stateData.nvrf_last_updated_date);
   const lastUpdatedText = stringContent ? stringContent.lastUpdated : null;
   const scrollToTop = document.getElementById('scroll-to-top');
@@ -76,7 +77,7 @@ function App() {
     }
   }
 
-  const getSelectedState = (selectedState) => {
+  /*const getSelectedState = (selectedState) => {
     if (!stateData && selectedState !== "" && states) {
       for (let i = 0; i < states.length; i++) {
         if (states[i].abbrev == selectedState.toLowerCase()) {
@@ -89,7 +90,7 @@ function App() {
 
   useEffect(() => {
     getSelectedState(currentStateId);
-  }, [getSelectedState, states]);
+  }, [getSelectedState, states]);*/
 
 
   const getRegPath = (pathSelection) => {
@@ -119,7 +120,7 @@ function App() {
   }
 
   // Only render the markup if the data is loaded.
-  if (states && cards && content && navContent && fieldContent && stringContent) {
+  if (stateData && cards && content && navContent && fieldContent && stringContent) {
     // Get NVRF footer card
     const cardFooter = cards.find(item => item.uuid === "5922e06c-ac2f-475d-ab10-abfdeb65de43");
 
