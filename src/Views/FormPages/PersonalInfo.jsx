@@ -15,15 +15,16 @@ import PreviousLastName from 'Components/Fields/PreviousLastName';
 import CurrentPhoneNumber from 'Components/Fields/CurrentPhoneNumber';
 import PreviousSuffix from 'Components/Fields/PreviousSuffix';
 import RaceEthnicity from 'Components/Fields/RaceEthnicity';
+import {getFieldLabel} from "Utils/fieldParser";
 
 function PersonalInfo(props) {
-  const headings = props.headings;
   const fields = props.fieldContent;
+  const step = props.step;
   const changeRegistrationVisible = (props.registrationPath === 'update') ? true : false;
   const nvrfStateFields = props.stateData.nvrf_fields;
-  const stringContent = props.stringContent
 
   //Drupal field data
+  const nameChangeLabel = getFieldLabel(fields, "e87ca867-c5a5-4e42-98d5-d742edd03de3");
   const nameSectionField = fields.find(item => item.uuid === "8dda085c-edf3-4678-b30a-0a457699be46");
   const prevNameSectionField = fields.find(item => item.uuid === "af4e6259-5b07-4955-9d28-254504ec9df8");
   const firstNameField = fields.find(item => item.uuid === "b7bdae35-e4be-4827-ae11-75d9c3e33bf0");
@@ -39,7 +40,7 @@ function PersonalInfo(props) {
 
   return (
     <>
-      <h2>{headings.step_label_1}</h2>
+      <h2>{step.step_label}</h2>
 
       {changeRegistrationVisible && (
         <Checkbox id="prev-name-change"
@@ -47,7 +48,7 @@ function PersonalInfo(props) {
                   name="prev-name-change" data-test="checkBox"
                   checked={props.previousName}
                   onChange={props.onChangePreviousName}
-                  label={stringContent.nameChange}/>
+                  label={nameChangeLabel}/>
       )}
 
       <div id="prev-name-change_alert" className="usa-alert usa-alert--info"

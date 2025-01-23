@@ -18,11 +18,10 @@ import {sanitizeDOM} from 'Utils/JsonHelper';
 
 
 function Addresses(props) {
-  const headings = props.headings;
   const fields = props.fieldContent;
+  const step = props.step;
   const changeRegistrationVisible = ((props.registrationPath === 'update') || (props.stateData.name == 'Maine')) ? true : false;
   const nvrfStateFields = props.stateData.nvrf_fields;
-  const stringContent = props.stringContent
 
   //Drupal field data
   const homeAddressSectionField = fields.find(item => item.uuid === "63552bb6-6afb-46e1-8148-860242917a22");
@@ -47,7 +46,7 @@ function Addresses(props) {
 
   return (
     <>
-      <h2>{headings.step_label_2}</h2>
+      <h2>{step.step_label}</h2>
 
       {addressFieldsState && (
         <>

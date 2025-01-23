@@ -15,9 +15,9 @@ import {sanitizeDOM} from "Utils/JsonHelper";
 
 function MultiStepForm(props) {
   const content = props.content;
-  const navContent = props.navContent;
   const fieldContent = props.fieldContent;
-  const stringContent = props.stringContent
+  const strings = props.strings;
+  const steps = props.steps;
 
   const mainContent = content.find(item => item.uuid === "2c597df4-53b6-4ef5-8301-7817b04e1099");
   const mainContentTitle = sanitizeDOM(mainContent.title);
@@ -282,40 +282,40 @@ function MultiStepForm(props) {
   const backButtonText = (step) => {
     switch (step) {
       case 1:
-        return navContent.back.reg_options;
+        return steps.personal.back_button_label;
       case 2:
-        return navContent.back.personal_info;
+        return steps.address.back_button_label;
       case 3:
-        return navContent.back.address_location;
+        return steps.identification.back_button_label;
       case 4:
-        return navContent.back.identification;
+        return steps.party.back_button_label;
       case 5:
-        return navContent.back.edit_info;
+        return steps.confirmation.back_button_label;
     }
   }
 
   const nextButtonText = (step) => {
     switch (step) {
       case 1:
-        return navContent.next.address_location;
+        return steps.personal.next_button_label;
       case 2:
-        return navContent.next.identification;
+        return steps.address.next_button_label;
       case 3:
-        return navContent.next.political_party;
+        return steps.identification.next_button_label;
       case 4:
-        return navContent.next.confirm_info;
+        return steps.party.next_button_label;
       case 5:
-        return navContent.next.delivery;
+        return steps.confirmation.next_button_label;
     }
   }
 
   return (
     <>
-      {step != 6 && <BackButton stringContent={stringContent} type={'button'}
+      {step != 6 && <BackButton type={'button'}
                                 data-analytics="backBtn" onClick={handlePrev}
                                 text={backButtonText(step)}/>}
 
-      <ProgressBar step={step} content={navContent}
+      <ProgressBar step={step} steps={steps}
                    handleGoBack={handleGoBackSteps} setStep={setStep}/>
       <div className={'margin-top-8 maxw-tablet margin-x-auto'}>
         {step < 5 &&
@@ -343,10 +343,9 @@ function MultiStepForm(props) {
               previousName={hasPreviousName}
               onChangePreviousName={onChangePreviousName}
               handlePrev={props.handlePrev}
-              headings={navContent}
               content={content}
               fieldContent={fieldContent}
-              stringContent={stringContent}
+              step={strings.step.find(item => item.step_id === 'personal')}
             />
           }
           {step === 2 &&
@@ -364,10 +363,9 @@ function MultiStepForm(props) {
               onChangePreviousAddressCheckbox={onChangePreviousAddressCheckbox}
               hasMailAddress={hasMailAddress}
               onChangeMailAddressCheckbox={onChangeMailAddressCheckbox}
-              headings={navContent}
               content={content}
               fieldContent={fieldContent}
-              stringContent={stringContent}
+              step={strings.step.find(item => item.step_id === 'address')}
             />
           }
           {step === 3 &&
@@ -383,10 +381,9 @@ function MultiStepForm(props) {
               onChangeHasNoIdCheckbox={onChangeHasNoIdCheckbox}
               hasNoID={hasNoID}
               idType={idType}
-              headings={navContent}
               content={content}
               fieldContent={fieldContent}
-              stringContent={stringContent}
+              step={strings.step.find(item => item.step_id === 'identification')}
             />
           }
           {step === 4 &&
@@ -397,17 +394,15 @@ function MultiStepForm(props) {
               saveFieldData={saveFieldData}
               registrationPath={props.registrationPath}
               handlePrev={handlePrev}
-              headings={navContent}
               content={content}
               fieldContent={fieldContent}
-              stringContent={stringContent}
+              step={strings.step.find(item => item.step_id === 'party')}
             />
           }
           {step === 5 &&
             <Confirmation
               state={props.state}
               stateData={props.stateData}
-              headings={navContent}
               content={props.content}
               fieldData={fieldData}
               saveFieldData={saveFieldData}
@@ -417,14 +412,14 @@ function MultiStepForm(props) {
               hasAcknowledged={hasAcknowledged}
               acknowledgeCheckbox={acknowledgeCheckbox}
               fieldContent={fieldContent}
-              stringContent={stringContent}
+              strings={strings}
+              steps={steps}
             />
           }
           {step === 6 &&
             <Delivery
               state={props.state}
               stateData={props.stateData}
-              headings={navContent}
               content={props.content}
               fieldData={fieldData}
               saveFieldData={saveFieldData}
@@ -432,14 +427,14 @@ function MultiStepForm(props) {
               handlePrev={handlePrev}
               deliveryButtonSelected={deliveryButtonSelected}
               handleClickDeliveryButton={handleClickDeliveryButton}
-              stringContent={stringContent}
               pdfDoc={props.pdfDoc}
               form={props.form}
+              strings={strings}
             />
           }
 
           {step != 6 && (
-            <NextButton stringContent={stringContent} type={'submit'}
+            <NextButton type={'submit'}
                         onClick={() => {
                           nextStepValidation(),
                             focusError('nvrf')
