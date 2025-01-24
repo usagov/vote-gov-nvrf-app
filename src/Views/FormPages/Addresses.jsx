@@ -1,4 +1,4 @@
-import {Checkbox, Grid} from '@trussworks/react-uswds';
+import {Checkbox, Grid, Fieldset} from '@trussworks/react-uswds';
 import CurrentAddressState from 'Components/Fields/CurrentAddressState';
 import CurrentStreetAddress from 'Components/Fields/CurrentStreetAddress';
 import CurrentZipCode from 'Components/Fields/CurrentZipCode';
@@ -51,25 +51,27 @@ function Addresses(props) {
 
       {addressFieldsState && (
         <>
-          {!changeRegistrationVisible && (
-            <span className='usa-hint'
-                  id='addresses-checkbox-hint'>{noAddressCheckboxInstructions}</span>
-          )}
-          {changeRegistrationVisible && (
-            <>
-              <span className='usa-hint'
-                    id='addresses-checkbox-hint'>{movedAndNoAddressCheckboxInstructions}</span>
-              <Checkbox id="prev-address" name="prev-address"
-                        data-test="checkBox" checked={props.hasPreviousAddress}
-                        onChange={props.onChangePreviousAddressCheckbox}
-                        label={prevAddressField.label}/>
-            </>
-          )}
-          <Checkbox id="no-address" aria-describedby="no-address_alert"
-                    className="margin-bottom-4" name="no-addr"
-                    data-test="checkBox" checked={props.hasNoAddress}
-                    onChange={props.hasNoAddressCheckbox}
-                    label={noAddressField.label}/>
+          <Fieldset>
+            {!changeRegistrationVisible && (
+              <legend className='usa-hint'
+                    id='addresses-checkbox-hint'>{noAddressCheckboxInstructions}</legend>
+            )}
+            {changeRegistrationVisible && (
+              <>
+                <legend className='usa-hint'
+                      id='addresses-checkbox-hint'>{movedAndNoAddressCheckboxInstructions}</legend>
+                <Checkbox id="prev-address" name="prev-address"
+                          data-test="checkBox" checked={props.hasPreviousAddress}
+                          onChange={props.onChangePreviousAddressCheckbox}
+                          label={prevAddressField.label}/>
+              </>
+            )}
+            <Checkbox id="no-address" aria-describedby="no-address_alert"
+                      className="margin-bottom-4" name="no-addr"
+                      data-test="checkBox" checked={props.hasNoAddress}
+                      onChange={props.hasNoAddressCheckbox}
+                      label={noAddressField.label}/>
+          </Fieldset>
           {/******** Current Address Block *********/}
           {!props.hasNoAddress && (<>
               {homeAddressSectionField.section_alert && (
