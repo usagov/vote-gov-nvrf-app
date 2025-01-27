@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react'
 import Eligibility from 'Views/Eligibility.jsx';
 import PathSelection from 'Views/PathSelection.jsx';
 import MultiStepForm from 'Views/MultiStepForm.jsx';
-import {fetchData, fetchStaticData, sanitizeDOM} from 'Utils/JsonHelper.jsx';
+import {fetchData, fetchStateData, fetchStaticData, sanitizeDOM} from 'Utils/JsonHelper.jsx';
 import {HelmetProvider} from "react-helmet-async";
 import loadPdf from './Utils/pdfLoader';
 import {Alert} from "@trussworks/react-uswds";
@@ -15,6 +15,7 @@ const returnPath = document.getElementById('root').getAttribute('data-returnPath
 
 function App() {
   const [states, setStates] = useState('');
+  const [stateData, setStateData] = useState('');
   const [content, setContent] = useState('');
   const [navContent, setNavContent] = useState('');
   const [cards, setCards] = useState('');
@@ -34,6 +35,7 @@ function App() {
 
   useEffect(() => {
     fetchData("states.json", setStates, setError);
+    fetchStateData(currentStateId, setStateData, setError);
     fetchData("pages.json", setContent, setError);
     fetchData("cards.json", setCards, setError);
     fetchData("fields.json", setFieldContent, setError);
@@ -42,11 +44,9 @@ function App() {
   }, []);
 
   const [step, setStep] = useState(1);
-  const [selectedState, setSelectedState] = useState('');
-  const [stateData, setStateData] = useState('');
   const [registrationPath, setRegistrationPath] = useState('');
   const [formStep, setFormStep] = useState(1);
-
+  //console.log(stateData);
   const lastUpdatedSanitized = sanitizeDOM(stateData.nvrf_last_updated_date);
   const lastUpdatedText = stringContent ? stringContent.lastUpdated : null;
   const scrollToTop = document.getElementById('scroll-to-top');
@@ -76,22 +76,6 @@ function App() {
     }
   }
 
-  const getSelectedState = (selectedState) => {
-    if (!stateData && selectedState !== "" && states) {
-      for (let i = 0; i < states.length; i++) {
-        if (states[i].abbrev == selectedState.toLowerCase()) {
-          setSelectedState(states[i].name);
-          setStateData(states[i]);
-        }
-      }
-    }
-  }
-
-  useEffect(() => {
-    getSelectedState(currentStateId);
-  }, [getSelectedState, states]);
-
-
   const getRegPath = (pathSelection) => {
     setRegistrationPath(pathSelection)
   };
@@ -119,7 +103,7 @@ function App() {
   }
 
   // Only render the markup if the data is loaded.
-  if (states && cards && content && navContent && fieldContent && stringContent) {
+  if (stateData && cards && content && navContent && fieldContent && stringContent) {
     // Get NVRF footer card
     const cardFooter = cards.find(item => item.uuid === "5922e06c-ac2f-475d-ab10-abfdeb65de43");
 
@@ -146,8 +130,7 @@ function App() {
               <Eligibility
                 handleNext={handleNext}
                 handlePrev={handlePrev}
-                state={selectedState}
-                stateData={stateData}
+                stateData={stateData[0]}
                 content={content}
                 navContent={navContent}
                 stringContent={stringContent}
@@ -160,7 +143,7 @@ function App() {
               <PathSelection
                 handleNext={handleNext}
                 handlePrev={handlePrev}
-                stateData={stateData}
+                stateData={stateData[0]}
                 content={content}
                 navContent={navContent}
                 cards={cards}
@@ -173,8 +156,7 @@ function App() {
               <MultiStepForm
                 handlePrev={handlePrev}
                 statesList={statesList}
-                state={selectedState}
-                stateData={stateData}
+                stateData={stateData[0]}
                 content={content}
                 navContent={navContent}
                 fieldContent={fieldContent}
@@ -189,7 +171,7 @@ function App() {
               <div className="text-base margin-top-5 maxw-tablet margin-x-auto">
                 {cardFooter && (
                   <div
-                    dangerouslySetInnerHTML={{__html: sanitizeDOM(cardFooter.body.replace("@state_name", stateData.name).replace("@date", lastUpdatedSanitized))}}></div>
+                    dangerouslySetInnerHTML={{__html: sanitizeDOM(cardFooter.body.replace("@state_name", stateData[0].name).replace("@date", lastUpdatedSanitized))}}></div>
                 )}
               </div>
             }
