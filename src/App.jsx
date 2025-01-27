@@ -14,6 +14,7 @@ const currentStateId = document.getElementById('root').getAttribute('data-stateI
 const returnPath = document.getElementById('root').getAttribute('data-returnPath');
 
 function App() {
+  const [states, setStates] = useState('');
   const [stateData, setStateData] = useState('');
   const [content, setContent] = useState('');
   const [navContent, setNavContent] = useState('');
@@ -33,8 +34,8 @@ function App() {
   }, []);
 
   useEffect(() => {
-    //hard coded state
-    fetchStateData("al", setStateData, setError);
+    fetchData("states.json", setStates, setError);
+    fetchStateData(currentStateId, setStateData, setError);
     fetchData("pages.json", setContent, setError);
     fetchData("cards.json", setCards, setError);
     fetchData("fields.json", setFieldContent, setError);
@@ -43,8 +44,6 @@ function App() {
   }, []);
 
   const [step, setStep] = useState(1);
-  //const [selectedState, setSelectedState] = useState('');
-  //const [stateData, setStateData] = useState('');
   const [registrationPath, setRegistrationPath] = useState('');
   const [formStep, setFormStep] = useState(1);
   //console.log(stateData);
@@ -76,22 +75,6 @@ function App() {
       setHasConfirmed(null)
     }
   }
-
-  /*const getSelectedState = (selectedState) => {
-    if (!stateData && selectedState !== "" && states) {
-      for (let i = 0; i < states.length; i++) {
-        if (states[i].abbrev == selectedState.toLowerCase()) {
-          setSelectedState(states[i].name);
-          setStateData(states[i]);
-        }
-      }
-    }
-  }
-
-  useEffect(() => {
-    getSelectedState(currentStateId);
-  }, [getSelectedState, states]);*/
-
 
   const getRegPath = (pathSelection) => {
     setRegistrationPath(pathSelection)
@@ -147,8 +130,7 @@ function App() {
               <Eligibility
                 handleNext={handleNext}
                 handlePrev={handlePrev}
-                state={selectedState}
-                stateData={stateData}
+                stateData={stateData[0]}
                 content={content}
                 navContent={navContent}
                 stringContent={stringContent}
@@ -161,7 +143,7 @@ function App() {
               <PathSelection
                 handleNext={handleNext}
                 handlePrev={handlePrev}
-                stateData={stateData}
+                stateData={stateData[0]}
                 content={content}
                 navContent={navContent}
                 cards={cards}
@@ -174,8 +156,7 @@ function App() {
               <MultiStepForm
                 handlePrev={handlePrev}
                 statesList={statesList}
-                state={selectedState}
-                stateData={stateData}
+                stateData={stateData[0]}
                 content={content}
                 navContent={navContent}
                 fieldContent={fieldContent}
@@ -190,7 +171,7 @@ function App() {
               <div className="text-base margin-top-5 maxw-tablet margin-x-auto">
                 {cardFooter && (
                   <div
-                    dangerouslySetInnerHTML={{__html: sanitizeDOM(cardFooter.body.replace("@state_name", stateData.name).replace("@date", lastUpdatedSanitized))}}></div>
+                    dangerouslySetInnerHTML={{__html: sanitizeDOM(cardFooter.body.replace("@state_name", stateData[0].name).replace("@date", lastUpdatedSanitized))}}></div>
                 )}
               </div>
             }

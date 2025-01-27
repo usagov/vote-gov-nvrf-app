@@ -25,7 +25,7 @@ function MultiStepForm(props) {
 
   const scrollToTop = document.getElementById('scroll-to-top');
   const lang = document.documentElement.lang;
-
+  
   //Analytics values - do not change or translate
   const analyticsLabels = {
     stepLabel1: "Personal information page",
