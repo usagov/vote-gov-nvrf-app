@@ -2,20 +2,31 @@ import {StepIndicator, StepIndicatorStep} from '@trussworks/react-uswds';
 import './ProgressBar.css';
 
 function ProgressBar(props) {
+  const steps = props.steps;
+  const currentStep = props.step;
   const stepMessage = {
-    1: `Step one of six: ${props.content.step_label_1}`,
-    2: `Step two of six: ${props.content.step_label_2}`,
-    3: `Step three of six: ${props.content.step_label_3}`,
-    4: `Step four of six: ${props.content.step_label_4}`,
-    5: `Step five of six: ${props.content.step_label_5}`,
-    6: `Step six of six: ${props.content.step_label_6}`,
+    1: `Step one of six: ${steps.personal.label}`,
+    2: `Step two of six: ${steps.address.label}`,
+    3: `Step three of six: ${steps.identification.label}`,
+    4: `Step four of six: ${steps.party.label}`,
+    5: `Step five of six: ${steps.confirmation.label}`,
+    6: `Step six of six: ${steps.complete.label}`,
   };
-  let currentStepMessage = stepMessage[props.step];
+  let currentStepMessage = stepMessage[currentStep];
+
+  const stepList = {
+    1: 'personal',
+    2: 'address',
+    3: 'identification',
+    4: 'party',
+    5: 'confirmation',
+    6: 'complete',
+  }
 
   const stepProgress = (count) => {
-    if (props.step === count) {
+    if (currentStep === count) {
       return "current"
-    } else if (props.step > count) {
+    } else if (currentStep > count) {
       return "complete"
     } else null
   }
@@ -27,7 +38,7 @@ function ProgressBar(props) {
   const finalStep = Object.keys(stepMessage).length;
 
   const styles = (step) => {
-    if (props.step < finalStep && stepProgress(step) === "complete") {
+    if (currentStep < finalStep && stepProgress(step) === "complete") {
       return "step-indicator-select"
     }
     return "step-indicator-no-select";
@@ -44,8 +55,8 @@ function ProgressBar(props) {
           .map((step) => (
 
             <StepIndicatorStep key={step} className={styles(step)}
-                               label={props.content[`step_label_${step}`]}
-                               data-analytics={"Step indicator " + props.content[`step_label_${step}`]}
+                               label={steps[stepList[step]].label}
+                               data-analytics={"Step indicator " + steps[stepList[step]].label}
                                status={stepProgress(step)}
                                tabIndex={stepProgress(step) === "complete" ? 0 : null}
                                onKeyDown={(e) => {
@@ -53,7 +64,7 @@ function ProgressBar(props) {
                                    setStep(step)
                                  }
                                }}
-                               onClick={stepProgress(step) === "complete" && props.step !== finalStep ? handleGoBackSteps(props.step - step) : null}/>
+                               onClick={stepProgress(step) === "complete" && currentStep !== finalStep ? handleGoBackSteps(currentStep - step) : null}/>
 
           ))}
 

@@ -4,9 +4,9 @@ import {sanitizeDOM} from "Utils/JsonHelper";
 import PoliticalPartyInput from 'Components/Fields/PoliticalPartyInput';
 
 function PoliticalParty(props) {
-  const headings = props.headings;
   const state = props.stateData;
   const fields = props.fieldContent;
+  const step = props.step;
   const nvrfStateFields = props.stateData.nvrf_fields;
   const partyStateInstructions = sanitizeDOM(state.political_party_inst);
 
@@ -19,7 +19,7 @@ function PoliticalParty(props) {
 
   return (
     <>
-      <h2>{headings.step_label_4}</h2>
+      <h2>{step.step_label}</h2>
 
       {(partyStateInstructions || partyGeneralInstructions) && (
         <div className="usa-alert usa-alert--info" role="region"

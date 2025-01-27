@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react'
 import Eligibility from 'Views/Eligibility.jsx';
 import PathSelection from 'Views/PathSelection.jsx';
 import MultiStepForm from 'Views/MultiStepForm.jsx';
-import {fetchData, fetchStaticData, sanitizeDOM} from 'Utils/JsonHelper.jsx';
+import {fetchData, sanitizeDOM} from 'Utils/JsonHelper.jsx';
 import {HelmetProvider} from "react-helmet-async";
 import loadPdf from './Utils/pdfLoader';
 import {Alert} from "@trussworks/react-uswds";
@@ -16,7 +16,6 @@ const returnPath = document.getElementById('root').getAttribute('data-returnPath
 function App() {
   const [states, setStates] = useState('');
   const [content, setContent] = useState('');
-  const [navContent, setNavContent] = useState('');
   const [cards, setCards] = useState('');
   const [fieldContent, setFieldContent] = useState('')
   const [stringContent, setStringContent] = useState('')
@@ -37,8 +36,7 @@ function App() {
     fetchData("pages.json", setContent, setError);
     fetchData("cards.json", setCards, setError);
     fetchData("fields.json", setFieldContent, setError);
-    fetchStaticData("navigation.json", setNavContent, setError);
-    fetchStaticData("strings.json", setStringContent, setError);
+    fetchData("strings.json", setStringContent, setError);
   }, []);
 
   const [step, setStep] = useState(1);
@@ -48,7 +46,6 @@ function App() {
   const [formStep, setFormStep] = useState(1);
 
   const lastUpdatedSanitized = sanitizeDOM(stateData.nvrf_last_updated_date);
-  const lastUpdatedText = stringContent ? stringContent.lastUpdated : null;
   const scrollToTop = document.getElementById('scroll-to-top');
 
   //Confirm eligibility checkbox controls
@@ -119,7 +116,19 @@ function App() {
   }
 
   // Only render the markup if the data is loaded.
-  if (states && cards && content && navContent && fieldContent && stringContent) {
+  if (states && cards && content && fieldContent && stringContent) {
+    // Get string content
+    const strings = stringContent.find(item => item.uuid === "6f8bb721-f017-4fcc-a826-dfc93c6759b7");
+
+    const steps = strings.step.reduce((acc, item) => {
+      acc[item.step_id] = {
+        label: item.step_label,
+        back_button_label: item.back_button_label,
+        next_button_label: item.next_button_label
+      }
+      return acc;
+    }, {});
+
     // Get NVRF footer card
     const cardFooter = cards.find(item => item.uuid === "5922e06c-ac2f-475d-ab10-abfdeb65de43");
 
@@ -149,8 +158,7 @@ function App() {
                 state={selectedState}
                 stateData={stateData}
                 content={content}
-                navContent={navContent}
-                stringContent={stringContent}
+                step={steps.eligibility}
                 fieldContent={fieldContent}
                 hasConfirmed={hasConfirmed}
                 confirmCheckbox={confirmCheckbox}
@@ -162,11 +170,10 @@ function App() {
                 handlePrev={handlePrev}
                 stateData={stateData}
                 content={content}
-                navContent={navContent}
                 cards={cards}
                 registrationPath={registrationPath}
                 getRegPath={getRegPath}
-                stringContent={stringContent}
+                step={steps.reg_options}
                 getFormStep={getFormStep}
               />}
             {step === 3 &&
@@ -176,11 +183,11 @@ function App() {
                 state={selectedState}
                 stateData={stateData}
                 content={content}
-                navContent={navContent}
                 fieldContent={fieldContent}
                 registrationPath={registrationPath}
                 getFormStep={getFormStep}
-                stringContent={stringContent}
+                strings={strings}
+                steps={steps}
                 pdfDoc={pdfDoc}
                 form={form}
               />}
