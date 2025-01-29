@@ -6,8 +6,7 @@ const lang = document.documentElement.lang;
 const locale = lang !== "en" ? `/${lang}` : '';
 
 export const fetchData = async (filename, setContent, setError) => {
-  //harcoded ssg-test link
-  const path = `https://ssg-test.vote.gov${locale}/nvrf/assets/${filename}`;
+  const path = `https://vote.gov${locale}/nvrf/assets/${filename}`;
   const response = await fetch(path)
     .then(response => response.json())
     .catch(() => setError(true));
@@ -15,8 +14,7 @@ export const fetchData = async (filename, setContent, setError) => {
 }
 
 export const fetchStateData = async (state, setContent, setError) => {
-  //harcoded ssg-test link
-  const path = `https://ssg-test.vote.gov${locale}/nvrf/assets/state/${state}/data.json`;
+  const path = `https://vote.gov${locale}/nvrf/assets/state/${state}/data.json`;
   const response = await fetch(path)
     .then(response => response.json())
     .catch(() => setError(true));
