@@ -69,8 +69,7 @@ function MultiStepForm(props) {
     mail_zip_code: '',
     id_number: '',
     ssn_number: '',
-    party_choice: '',
-    email_address: ''
+    party_choice: ''
   });
   const [hasData, setHasData] = useState(false)
 
@@ -262,23 +261,6 @@ function MultiStepForm(props) {
     setHasAcknowledged(checkStatus);
   }
 
-  const emailValid = () => {
-    const emailField = document.getElementById('voter-contact');
-    if (!fieldData.email_address) {
-      emailField.removeAttribute('required');
-    } else {
-      emailField.value = "";
-    }
-  }
-
-  const nextStepValidation = () => {
-    switch (step) {
-      case 1:
-        emailValid();
-        break;
-    }
-  }
-
   const backButtonText = (step) => {
     switch (step) {
       case 1:
@@ -436,8 +418,7 @@ function MultiStepForm(props) {
           {step != 6 && (
             <NextButton type={'submit'}
                         onClick={() => {
-                          nextStepValidation(),
-                            focusError('nvrf')
+                          focusError('nvrf')
                         }}
                         text={nextButtonText(step)}/>
           )}
