@@ -1,6 +1,5 @@
-import {Label, TextInput, Checkbox, Grid} from '@trussworks/react-uswds';
+import {Checkbox, Grid} from '@trussworks/react-uswds';
 import React from "react";
-import {checkForErrors, toggleError} from 'Utils/ValidateField';
 import {sanitizeDOM} from "Utils/JsonHelper";
 import CurrentFirstName from "Components/Fields/CurrentFirstName";
 import CurrentSuffix from 'Components/Fields/CurrentSuffix';
@@ -94,40 +93,6 @@ function PersonalInfo(props) {
         <Grid tablet={{col: 12}}>
           <CurrentDateOfBirth {...props} dateFormat={props.dateFormat}/>
         </Grid>
-      </Grid>
-      {/* Email Address check. */}
-      <Grid row className={'email-address-input'} style={{
-        overflow: "hidden",
-        position: "absolute",
-        top: "0",
-        left: "0",
-        height: "0",
-        width: "0",
-        zIndex: "-1"
-      }}>
-        <div className="input-parent">
-          <Label className="text-bold" htmlFor="voter-contact"
-                 aria-hidden="true">
-            Voter Contact<span className='required-text'>*</span>
-          </Label>
-          <span className="usa-hint">Voter Contact</span>
-          <TextInput
-            data-test="email"
-            id="voter-contact"
-            type="email"
-            required={true}
-            aria-invalid={false}
-            className="radius-md"
-            autoComplete="off"
-            tabIndex="-1"
-            aria-hidden="true"
-            value={props.fieldData.email_address}
-            onChange={props.saveFieldData('email_address')}
-            onBlur={(e) => toggleError(e, checkForErrors(e, 'check value length'))}
-            onInvalid={(e) => e.target.setCustomValidity(' ')}
-            onInput={(e) => e.target.setCustomValidity('')}
-          />
-        </div>
       </Grid>
 
       <Grid row gap className={'flex-align-end'}>
