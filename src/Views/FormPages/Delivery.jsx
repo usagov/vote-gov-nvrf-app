@@ -6,8 +6,7 @@ import {renderToStaticMarkup} from "react-dom/server";
 function Delivery(props) {
   const content = props.content;
   const state = props.stateData;
-  const stringContent = props.stringContent
-  const lang = document.documentElement.lang;
+  const strings = props.strings;
 
   // Add A/B Message randomization.
   // example: const reminderMessage = randomProperty(content.reminder_messages);
@@ -42,7 +41,7 @@ function Delivery(props) {
     </svg>
 
     const mailinDeadline = () => (
-      <p><strong>{stringContent.mailDeadlineLabel}</strong> <span
+      <p><strong>{strings.mail_deadline_label}</strong> <span
         dangerouslySetInnerHTML={{__html: state.postmarked_mail_deadline || state.received_mail_deadline}}/>
       </p>
     );
@@ -69,7 +68,7 @@ function Delivery(props) {
                   });
                 }}
                 type="submit">
-          <span>{stringContent.newTab}</span>
+          <span>{strings.print_button_label}</span>
         </Button>
 
         <div className={'margin-top-2'}
@@ -83,7 +82,7 @@ function Delivery(props) {
                     'event': "NVRF_PDF_BUTTON_CLICK"
                   });
                 }} type="submit">
-          <span>{stringContent.download}</span>
+          <span>{strings.download_button_label}</span>
         </Button>
 
         <div className={'margin-top-6'}

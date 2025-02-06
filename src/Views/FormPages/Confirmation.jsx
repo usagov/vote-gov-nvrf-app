@@ -3,11 +3,19 @@ import {sanitizeDOM} from 'Utils/JsonHelper';
 import {toggleError} from 'Utils/ValidateField';
 
 function Confirmation(props) {
-  const headings = props.headings;
   const content = props.content;
   const fieldData = props.fieldData;
   const fields = props.fieldContent;
-  const stringContent = props.stringContent
+  const strings = props.strings;
+  const steps = props.steps;
+
+  const confirm_group = strings.confirm_group.reduce((acc, item) => {
+    acc[item.confirm_group_id] = {
+      label: item.confirm_group_label,
+      message: item.confirm_group_message
+    };
+    return acc;
+  }, {});
 
   const currentAddress = fieldData.current_street_address + fieldData.current_apt_number + fieldData.current_city + fieldData.current_zip_code;
   const prevName = fieldData.prev_title + fieldData.prev_first_name + fieldData.prev_middle_names + fieldData.prev_last_name + fieldData.prev_suffix;
@@ -15,8 +23,8 @@ function Confirmation(props) {
   const prevMailAddress = fieldData.mail_street_address + fieldData.mail_apt_number + fieldData.mail_city + fieldData.mail_state + fieldData.mail_zip_code;
 
   //field data overrides for confirm page printing only
-  const fieldDataOverride_race = (fieldData.race_ethnic_group === '') ? (stringContent.notRequired) : fieldData.race_ethnic_group;
-  const fieldDataOverride_party = (fieldData.party_choice === '') ? (stringContent.notRequired) : fieldData.party_choice;
+  const fieldDataOverride_race = (fieldData.race_ethnic_group === '') ? (strings.not_required_label) : fieldData.race_ethnic_group;
+  const fieldDataOverride_party = (fieldData.party_choice === '') ? (strings.not_required_label) : fieldData.party_choice;
   const fieldDataOverride_state = props.stateData.name;
   fieldData.current_state = fieldDataOverride_state;
 
@@ -37,7 +45,7 @@ function Confirmation(props) {
         <div dangerouslySetInnerHTML={{__html: confirmBody}}/>
 
         <Grid row gap={2} className={'margin-top-3 flex-align-baseline'}>
-          <h2 className={'margin-0'}>{headings.step_label_1}</h2>
+          <h2 className={'margin-0'}>{steps.personal.label}</h2>
           <div className='edit-btn'>
             <Button unstyled
                     data-test="editBtn"
@@ -45,14 +53,14 @@ function Confirmation(props) {
                     style={{margin: 0}}
                     onClick={props.handleGoBackSteps(4)}
                     title="Return to Personal information, step one of six, to make a change">
-              {headings.confirmation.edit.label}
+              {strings.edit_button_label}
             </Button>
 
           </div>
         </Grid>
 
         {/*Jump to Personal Info Section (Step 1) */}
-        <p><strong>{headings.confirmation.current_name.label}</strong></p>
+        <p><strong>{confirm_group.current_name.label}</strong></p>
         <ul>
           <li>{getFieldLabel("86a544cd-cfe9-456a-b634-176a37a38d6d")}: {fieldData.current_title}</li>
           <li>{getFieldLabel("b7bdae35-e4be-4827-ae11-75d9c3e33bf0")}: {fieldData.current_first_name}</li>
@@ -61,11 +69,11 @@ function Confirmation(props) {
           <li>{getFieldLabel("eeff4fa1-00f2-474b-a791-1a4146dab11a")}: {fieldData.current_suffix}</li>
         </ul>
 
-        <p><strong>{headings.confirmation.previous_name.label}</strong></p>
+        <p><strong>{confirm_group.previous_name.label}</strong></p>
         {!prevName && (
           <Alert type="info" headingLevel="h4" role="alert" aria-live="polite"
                  noIcon>
-            {headings.confirmation.previous_name.alert}
+            {confirm_group.previous_name.message}
           </Alert>
         )}
         <ul>
@@ -76,7 +84,7 @@ function Confirmation(props) {
           <li>{getFieldLabel("09cb2989-d302-4a01-bb3a-33173adcffb2")}: {fieldData.prev_suffix}</li>
         </ul>
 
-        <p><strong>{headings.confirmation.other_info.label}</strong></p>
+        <p><strong>{confirm_group.other.label}</strong></p>
         <ul>
           <li>{getFieldLabel("d31b2a64-36a9-4bc6-a9d1-e68d2be8c211")}: {fieldData.date_of_birth_month}/{fieldData.date_of_birth_day}/{fieldData.date_of_birth_year}</li>
           <li>{getFieldLabel("2d61b54a-e568-410f-825a-0ca82dfd3f63")}: {fieldData.phone_number}</li>
@@ -84,7 +92,7 @@ function Confirmation(props) {
         </ul>
         <hr/>
         <Grid row gap={2} className={'margin-top-3 flex-align-baseline'}>
-          <h2 className={'margin-0'}>{headings.step_label_2}</h2>
+          <h2 className={'margin-0'}>{steps.address.label}</h2>
           <div className='edit-btn'>
             <Button unstyled
                     data-test="editBtn"
@@ -92,15 +100,15 @@ function Confirmation(props) {
                     style={{margin: 0}}
                     onClick={props.handleGoBackSteps(3)}
                     title="Return to Address and location, step two of six, to make a change">
-              {headings.confirmation.edit.label}
+              {strings.edit_button_label}
             </Button>
           </div>
         </Grid>
-        <p><strong>{headings.confirmation.current_address.label}</strong></p>
+        <p><strong>{confirm_group.current_address.label}</strong></p>
         {!currentAddress && (
           <Alert type="info" headingLevel="h4" role="alert" aria-live="polite"
                  noIcon>
-            {headings.confirmation.current_address.alert}
+            {confirm_group.current_address.message}
           </Alert>
         )}
         <ul>
@@ -111,11 +119,11 @@ function Confirmation(props) {
           <li>{getFieldLabel("cdb06542-0cbd-4aa3-897f-83377b8d65e5")}: {fieldData.current_zip_code}</li>
         </ul>
 
-        <p><strong>{headings.confirmation.previous_address.label}</strong></p>
+        <p><strong>{confirm_group.previous_address.label}</strong></p>
         {!prevAddress && (
           <Alert type="info" headingLevel="h4" role="alert" aria-live="polite"
                  noIcon>
-            {headings.confirmation.previous_address.alert}
+            {confirm_group.previous_address.message}
           </Alert>
         )}
         <ul>
@@ -126,11 +134,11 @@ function Confirmation(props) {
           <li>{getFieldLabel("49a90983-1925-438f-8271-88f39bf19bf1")}: {fieldData.prev_zip_code}</li>
         </ul>
 
-        <p><strong>{headings.confirmation.mailing_address.label}</strong></p>
+        <p><strong>{confirm_group.mailing_address.label}</strong></p>
         {!prevMailAddress && (
           <Alert type="info" headingLevel="h4" role="alert" aria-live="polite"
                  noIcon>
-            {headings.confirmation.mailing_address.alert}
+            {confirm_group.mailing_address.message}
           </Alert>
         )}
         <ul>
@@ -143,7 +151,7 @@ function Confirmation(props) {
         <hr/>
 
         <Grid row gap={2} className={'margin-top-3 flex-align-baseline'}>
-          <h2 className={'margin-0'}>{headings.step_label_3}</h2>
+          <h2 className={'margin-0'}>{steps.identification.label}</h2>
           <div className='edit-btn'>
             <Button unstyled
                     data-test="editBtn"
@@ -151,16 +159,16 @@ function Confirmation(props) {
                     style={{margin: 0}}
                     onClick={props.handleGoBackSteps(2)}
                     title="Return to Identification, step three of six, to make a change">
-              {headings.confirmation.edit.label}
+              {strings.edit_button_label}
             </Button>
           </div>
         </Grid>
         <ul>
-          <li>{headings.confirmation.id_label.label}: {fieldDataOverride_id}</li>
+          <li>{confirm_group.id_number.label}: {fieldDataOverride_id}</li>
         </ul>
         <hr/>
         <Grid row gap={2} className={'margin-top-3 flex-align-baseline'}>
-          <h2 className={'margin-0'}>{headings.step_label_4}</h2>
+          <h2 className={'margin-0'}>{steps.party.label}</h2>
           <div className='edit-btn'>
             <Button unstyled
                     data-test="editBtn"
@@ -168,12 +176,12 @@ function Confirmation(props) {
                     style={{margin: 0}}
                     onClick={props.handleGoBackSteps(1)}
                     title="Return to Political party, step four of six, to make a change">
-              {headings.confirmation.edit.label}
+              {strings.edit_button_label}
             </Button>
           </div>
         </Grid>
         <ul>
-          <li>{headings.confirmation.political_party.label}: {fieldDataOverride_party}</li>
+          <li>{confirm_group.party.label}: {fieldDataOverride_party}</li>
         </ul>
         <hr/>
       </div>

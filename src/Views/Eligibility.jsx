@@ -7,9 +7,8 @@ import {focusError, toggleError} from 'Utils/ValidateField';
 
 function Eligibility(props) {
   let content = props.content;
-  const navContent = props.navContent;
   const stateContent = props.stateData;
-  const stringContent = props.stringContent;
+  const step = props.step;
   const fields = props.fieldContent;
   const returnPath = props.returnPath;
   //console.log(stateContent);
@@ -37,7 +36,7 @@ function Eligibility(props) {
       {returnPath && (
         <a href={returnPath}
            className={'usa-button usa-button--outline maxw-mobile-lg width-full tablet:width-auto'}>
-          <span>{navContent.back.state_reg_options}</span>
+          <span>{step.back_button_label}</span>
         </a>
       )
       }
@@ -90,9 +89,9 @@ function Eligibility(props) {
           <div className={'margin-top-5'} dangerouslySetInnerHTML=
             {{__html: contentBodyParts[1].replace("@state_name", stateContent.name).replace("@mail_deadline", renderToStaticMarkup(mailDeadline()))}}/>
 
-          <NextButton stringContent={stringContent} type={'submit'}
+          <NextButton type={'submit'}
                       onClick={(e) => focusError('eligibility')}
-                      text={navContent.next.start}/>
+                      text={step.next_button_label}/>
         </Form>
       </div>
     </>

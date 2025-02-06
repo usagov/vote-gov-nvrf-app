@@ -21,12 +21,4 @@ export const fetchStateData = async (state, setContent, setError) => {
   setContent(response);
 }
 
-export const fetchStaticData = async (filename, setContent, setError) => {
-  const path = `${BASEURL}/data${locale}/nvrf/${filename}`;
-  const response = await fetch(path)
-    .then(response => response.json())
-    .catch(() => setError(true));
-  setContent(response);
-}
-
 export const sanitizeDOM = (data) => DOMPurify.sanitize(data);

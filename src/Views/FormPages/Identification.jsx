@@ -8,10 +8,9 @@ import SSNFull from 'Components/Fields/SSNFull';
 import StateIDNum from 'Components/Fields/StateIDNum';
 
 function Identification(props) {
-  const headings = props.headings;
   const stateData = props.stateData;
   const fields = props.fieldContent;
-  const stringContent = props.stringContent;
+  const step = props.step;
   const nvrfStateFields = props.stateData.nvrf_fields;
 
   //Drupal field data
@@ -34,7 +33,7 @@ function Identification(props) {
 
   return (
     <>
-      <h2>{headings.step_label_3}</h2>
+      <h2>{step.step_label}</h2>
 
       {idStateInstructions && (
         <div id="id_alert" className="usa-alert usa-alert--info" role="region"
