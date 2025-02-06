@@ -98,7 +98,7 @@ function App() {
   }
 
   // Only render the markup if the data is loaded.
-  if (states && cards && content && fieldContent && stringContent) {
+  if (stateData && cards && content && fieldContent && stringContent) {
     // Get string content
     const strings = stringContent.find(item => item.uuid === "6f8bb721-f017-4fcc-a826-dfc93c6759b7");
 
