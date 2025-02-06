@@ -6,7 +6,7 @@ const lang = document.documentElement.lang;
 const locale = lang !== "en" ? `/${lang}` : '';
 
 export const fetchData = async (filename, setContent, setError) => {
-  const path = `${locale}/nvrf/assets/${filename}`;
+  const path = `https://vote.gov${locale}/nvrf/assets/${filename}`;
   const response = await fetch(path)
     .then(response => response.json())
     .catch(() => setError(true));
