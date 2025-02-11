@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react'
 import Eligibility from 'Views/Eligibility.jsx';
 import PathSelection from 'Views/PathSelection.jsx';
 import MultiStepForm from 'Views/MultiStepForm.jsx';
-import {fetchData, fetchStateData, fetchStringData, sanitizeDOM} from 'Utils/JsonHelper.jsx';
+import {fetchData, fetchStateData, sanitizeDOM} from 'Utils/JsonHelper.jsx';
 import {HelmetProvider} from "react-helmet-async";
 import loadPdf from './Utils/pdfLoader';
 import {Alert} from "@trussworks/react-uswds";
@@ -38,7 +38,7 @@ function App() {
     fetchData("pages.json", setContent, setError);
     fetchData("cards.json", setCards, setError);
     fetchData("fields.json", setFieldContent, setError);
-    fetchStringData("strings.json", setStringContent, setError);
+    fetchData("strings.json", setStringContent, setError);
   }, []);
 
   const [step, setStep] = useState(1);
