@@ -45,7 +45,6 @@ function App() {
   const [registrationPath, setRegistrationPath] = useState('');
   const [formStep, setFormStep] = useState(1);
 
-  const lastUpdatedSanitized = sanitizeDOM(stateData.nvrf_last_updated_date);
   const scrollToTop = document.getElementById('scroll-to-top');
 
   //Confirm eligibility checkbox controls
@@ -102,6 +101,7 @@ function App() {
   if (stateData && cards && content && fieldContent && stringContent) {
     // Get string content
     const strings = stringContent.find(item => item.uuid === "6f8bb721-f017-4fcc-a826-dfc93c6759b7");
+    const lastUpdatedSanitized = sanitizeDOM(stateData[0].nvrf_last_updated_date);
 
     const steps = strings.step.reduce((acc, item) => {
       acc[item.step_id] = {
