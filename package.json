@@ -17,7 +17,7 @@
     "@types/react": "^18.2.36",
     "@types/react-dom": "^18.2.14",
     "@vitejs/plugin-react": "^4.3.4",
-    "dompurify": "^3.2.3",
+    "dompurify": "^3.2.4",
     "downloadjs": "^1.4.7",
     "pdf-lib": "^1.17.1",
     "react": "^18.2.0",
