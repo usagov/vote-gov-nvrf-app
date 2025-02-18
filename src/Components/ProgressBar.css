@@ -23,6 +23,10 @@
       color: #005ea2;
     }
   }
+  
+  .usa-step-indicator__segment-label {
+    text-decoration: underline;
+  }
 }
 
 .usa-step-indicator .usa-step-indicator__segment-label {
