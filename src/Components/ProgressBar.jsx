@@ -58,7 +58,7 @@ function ProgressBar(props) {
                                label={steps[stepList[step]].label}
                                data-analytics={"Step indicator " + steps[stepList[step]].label}
                                status={stepProgress(step)}
-                               tabIndex={stepProgress(step) === "complete" ? 0 : null}
+                               tabIndex={stepProgress(step) === "complete" && currentStep !== finalStep ? 0 : null}
                                onKeyDown={(e) => {
                                  if (e.key === "Enter" && stepProgress(step) === "complete") {
                                    setStep(step)
