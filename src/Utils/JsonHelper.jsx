@@ -1,5 +1,4 @@
 import DOMPurify from "dompurify";
-import { useState, useEffect } from "react";
 
 DOMPurify.setConfig({ADD_ATTR: ['target']});
 
