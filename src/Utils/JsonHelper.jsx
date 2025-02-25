@@ -12,11 +12,9 @@ export function fetchData(filename, setContent, setError) {
 
   // set state from cache
   if (cache) {
-    console.log("fetch from cache");
     setContent(JSON.parse(cache));
   } else {
   // set state from api fetch
-  console.log("fetch from url");
     fetch(url)
     .then(response => response.json())
     .then(json => {
