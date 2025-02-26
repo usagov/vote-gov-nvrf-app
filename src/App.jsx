@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react'
 import Eligibility from 'Views/Eligibility.jsx';
 import PathSelection from 'Views/PathSelection.jsx';
 import MultiStepForm from 'Views/MultiStepForm.jsx';
-import {fetchData, fetchStateData, sanitizeDOM} from 'Utils/JsonHelper.jsx';
+import {fetchData, sanitizeDOM} from 'Utils/JsonHelper.jsx';
 import {HelmetProvider} from "react-helmet-async";
 import loadPdf from './Utils/pdfLoader';
 import {Alert} from "@trussworks/react-uswds";
@@ -12,6 +12,8 @@ import './VoteTouchpoints.css';
 
 const currentStateId = document.getElementById('root').getAttribute('data-stateId');
 const returnPath = document.getElementById('root').getAttribute('data-returnPath');
+const lang = document.documentElement.lang;
+const locale = lang !== "en" ? `/${lang}` : '';
 
 function App() {
   const [states, setStates] = useState('');
@@ -33,12 +35,12 @@ function App() {
   }, []);
 
   useEffect(() => {
-    fetchStateData(currentStateId, setStateData, setError);
-    fetchData("states.json", setStates, setError);
-    fetchData("pages.json", setContent, setError);
-    fetchData("cards.json", setCards, setError);
-    fetchData("fields.json", setFieldContent, setError);
-    fetchData("strings.json", setStringContent, setError);
+    fetchData(`https://vote.gov${locale}/nvrf/assets/state/${currentStateId}/data.json`, setStateData, setError);
+    fetchData(`https://vote.gov${locale}/nvrf/assets/states.json`, setStates, setError);
+    fetchData(`https://vote.gov${locale}/nvrf/assets/pages.json`, setContent, setError);
+    fetchData(`https://vote.gov${locale}/nvrf/assets/cards.json`, setCards, setError);
+    fetchData(`https://vote.gov${locale}/nvrf/assets/fields.json`, setFieldContent, setError);
+    fetchData(`https://vote.gov${locale}/nvrf/assets/strings.json`, setStringContent, setError);
   }, []);
 
   const [step, setStep] = useState(1);
