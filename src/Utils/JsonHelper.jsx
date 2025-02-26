@@ -2,11 +2,7 @@ import DOMPurify from "dompurify";
 
 DOMPurify.setConfig({ADD_ATTR: ['target']});
 
-const lang = document.documentElement.lang;
-const locale = lang !== "en" ? `/${lang}` : '';
-
-export function fetchData(filename, setContent, setError) {
-  const url = `${BASEURL}${locale}/nvrf/assets/${filename}`;
+export function fetchData(url, setContent, setError) {
   const cache = localStorage.getItem(url);
 
   // set state from cache
