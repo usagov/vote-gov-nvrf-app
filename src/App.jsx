@@ -100,7 +100,7 @@ function App() {
     </div>;
   }
   // Only render the markup if the data is loaded.
-  if (stateData && cards && content && fieldContent && stringContent) {
+  if (states && stateData && cards && content && fieldContent && stringContent) {
     // Get string content
     const strings = stringContent.find(item => item.uuid === "6f8bb721-f017-4fcc-a826-dfc93c6759b7");
     const lastUpdatedSanitized = sanitizeDOM(stateData[0].nvrf_last_updated_date);
