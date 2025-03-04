@@ -52,7 +52,7 @@ function Confirmation(props) {
                     type="button"
                     style={{margin: 0}}
                     onClick={props.handleGoBackSteps(4)}
-                    title="Return to Personal information, step one of six, to make a change">
+                    title={steps.personal.edit_button_aria_label}>
               {strings.edit_button_label}
             </Button>
 
@@ -99,7 +99,7 @@ function Confirmation(props) {
                     type="button"
                     style={{margin: 0}}
                     onClick={props.handleGoBackSteps(3)}
-                    title="Return to Address and location, step two of six, to make a change">
+                    title={steps.address.edit_button_aria_label}>
               {strings.edit_button_label}
             </Button>
           </div>
@@ -158,7 +158,7 @@ function Confirmation(props) {
                     type="button"
                     style={{margin: 0}}
                     onClick={props.handleGoBackSteps(2)}
-                    title="Return to Identification, step three of six, to make a change">
+                    title={steps.identification.edit_button_aria_label}>
               {strings.edit_button_label}
             </Button>
           </div>
@@ -175,7 +175,7 @@ function Confirmation(props) {
                     type="button"
                     style={{margin: 0}}
                     onClick={props.handleGoBackSteps(1)}
-                    title="Return to Political party, step four of six, to make a change">
+                    title={steps.party.edit_button_aria_label}>
               {strings.edit_button_label}
             </Button>
           </div>
