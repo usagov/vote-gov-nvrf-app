@@ -21,7 +21,7 @@ export async function fetchData(url, setContent, setError) {
     else {
       let json = await response.json();
       localStorage.setItem(url, JSON.stringify(json));
-      localStorage.setItem(lastUpdatedKey, date);
+      localStorage.setItem(lastUpdatedKey, lastModified);
       setContent(json);
       console.log('api fetch');
     }
