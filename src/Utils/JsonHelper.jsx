@@ -2,22 +2,32 @@ import DOMPurify from "dompurify";
 
 DOMPurify.setConfig({ADD_ATTR: ['target']});
 
-export function fetchData(url, setContent, setError) {
+export async function fetchData(url, setContent, setError) {
   const cache = localStorage.getItem(url);
+  const lastUpdatedKey = `last_updated_date_${url}`;
+  const lastUpdatedDate = localStorage.getItem(lastUpdatedKey);
+  
+  try {
+    // get last updated date of json endpoint
+    let response = await fetch(url);
+    let lastModified = response.headers.get('last-modified');
 
-  // set state from cache
-  if (cache) {
-    setContent(JSON.parse(cache));
-  } else {
-  // set state from api fetch
-    fetch(url)
-    .then(response => response.json())
-    .then(json => {
-      // set the json result in localStorage
+    // set content from cache
+    if (cache && (lastUpdatedDate === lastModified)) {
+      setContent(JSON.parse(cache));
+      console.log('cache');
+    }
+    // set content and localStorage from api fetch
+    else {
+      let json = await response.json();
       localStorage.setItem(url, JSON.stringify(json));
+      localStorage.setItem(lastUpdatedKey, date);
       setContent(json);
-    })
-    .catch(() => setError(true));
+      console.log('api fetch');
+    }
+  }
+  catch(e){
+    setError(true);
   }
 }
 
