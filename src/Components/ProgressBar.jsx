@@ -4,16 +4,7 @@ import './ProgressBar.css';
 function ProgressBar(props) {
   const steps = props.steps;
   const currentStep = props.step;
-  const stepMessage = {
-    1: `Step one of six: ${steps.personal.label}`,
-    2: `Step two of six: ${steps.address.label}`,
-    3: `Step three of six: ${steps.identification.label}`,
-    4: `Step four of six: ${steps.party.label}`,
-    5: `Step five of six: ${steps.confirmation.label}`,
-    6: `Step six of six: ${steps.complete.label}`,
-  };
-  let currentStepMessage = stepMessage[currentStep];
-
+  // Set progress bar array by machine name.
   const stepList = {
     1: 'personal',
     2: 'address',
@@ -22,6 +13,8 @@ function ProgressBar(props) {
     5: 'confirmation',
     6: 'complete',
   }
+  // Set current step message and replace placeholder "@label".
+  let currentStepMessage = steps[stepList[currentStep]].aria_label.replace("@label", steps[stepList[currentStep]].label);
 
   const stepProgress = (count) => {
     if (currentStep === count) {
@@ -35,7 +28,7 @@ function ProgressBar(props) {
 
   const setStep = props.setStep;
 
-  const finalStep = Object.keys(stepMessage).length;
+  const finalStep = Object.keys(stepList).length;
 
   const styles = (step) => {
     if (currentStep < finalStep && stepProgress(step) === "complete") {
@@ -50,21 +43,24 @@ function ProgressBar(props) {
            className="usa-sr-only">{currentStepMessage}</div>
       <StepIndicator centered className="margin-top-4" headingLevel="h2">
 
-        {Object.keys(stepMessage)
+        {Object.keys(stepList)
           .map((step) => parseInt(step)) // step is originally a string, so convert to int
           .map((step) => (
 
-            <StepIndicatorStep key={step} className={styles(step)}
-                               label={steps[stepList[step]].label}
-                               data-analytics={"Step indicator " + steps[stepList[step]].label}
-                               status={stepProgress(step)}
-                               tabIndex={stepProgress(step) === "complete" ? 0 : null}
-                               onKeyDown={(e) => {
-                                 if (e.key === "Enter" && stepProgress(step) === "complete") {
-                                   setStep(step)
-                                 }
-                               }}
-                               onClick={stepProgress(step) === "complete" && currentStep !== finalStep ? handleGoBackSteps(currentStep - step) : null}/>
+            <StepIndicatorStep
+              key={step}
+              className={styles(step)}
+              label={steps[stepList[step]].label}
+              data-analytics={'Step indicator ' + steps[stepList[step]].label}
+              status={stepProgress(step)}
+              tabIndex={stepProgress(step) === 'complete' && currentStep !== finalStep ? 0 : null}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && stepProgress(step) === 'complete') {
+                  setStep(step);
+                }
+              }}
+              onClick={stepProgress(step) === 'complete' && currentStep !== finalStep ? handleGoBackSteps(currentStep - step) : null}
+            />
 
           ))}
 

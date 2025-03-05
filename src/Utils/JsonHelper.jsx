@@ -2,11 +2,7 @@ import DOMPurify from "dompurify";
 
 DOMPurify.setConfig({ADD_ATTR: ['target']});
 
-const lang = document.documentElement.lang;
-const locale = lang !== "en" ? `/${lang}` : '';
-
-export const fetchData = async (filename, setContent, setError) => {
-  const path = `${BASEURL}${locale}/nvrf/assets/${filename}`;
+export const fetchData = async (path, setContent, setError) => {
   const response = await fetch(path)
     .then(response => response.json())
     .catch(() => setError(true));
