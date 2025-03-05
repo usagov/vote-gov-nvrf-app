@@ -109,7 +109,9 @@ function App() {
       acc[item.step_id] = {
         label: item.step_label,
         back_button_label: item.back_button_label,
-        next_button_label: item.next_button_label
+        next_button_label: item.next_button_label,
+        aria_label: item.step_aria_label,
+        edit_button_aria_label: item.edit_aria_label,
       }
       return acc;
     }, {});
