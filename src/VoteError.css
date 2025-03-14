@@ -13,3 +13,7 @@
   margin-top: 0.5rem;
   display: none;
 }
+
+.usa-button.usa-button--small {
+  padding: 0.6rem 0.8rem;
+}
