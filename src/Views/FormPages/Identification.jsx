@@ -1,4 +1,4 @@
-import {Checkbox, Select} from '@trussworks/react-uswds';
+import {Checkbox, Select, Fieldset} from '@trussworks/react-uswds';
 import React from "react";
 import {checkForErrors, toggleError} from 'Utils/ValidateField';
 import {sanitizeDOM} from 'Utils/JsonHelper';
@@ -46,9 +46,11 @@ function Identification(props) {
 
       {(stateData.abbrev === "mo") ? (
         <>
-          <Checkbox id="id-none" name="id-none" checked={props.hasNoID}
-                    onChange={props.onChangeHasNoIdCheckbox}
-                    label={noIdField.label}/>
+          <Fieldset>
+            <Checkbox id="id-none" name="id-none" checked={props.hasNoID}
+                      onChange={props.onChangeHasNoIdCheckbox}
+                      label={noIdField.label}/>
+          </Fieldset>
         </>
       ) : (
         <>
