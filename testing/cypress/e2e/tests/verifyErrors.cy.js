@@ -14,7 +14,7 @@ describe('Validate Errors', () => {
     pageObjects
       .nextBtn().click()
     pageObjects
-      .checkBox().click()
+      .checkBoxEligibility().click({force: true})
     pageObjects
       .nextBtn().click()
 
@@ -125,6 +125,6 @@ describe('Validate Errors', () => {
     pageObjects
       .errorText().should('contain.text', 'Checkbox must be checked to continue.')
     pageObjects
-      .confirm().click({force: true})
+      .checkBoxConfirm().click({force: true})
   })
 })

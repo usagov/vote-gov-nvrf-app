@@ -23,7 +23,7 @@ describe('Validate In Person', () => {
 
     // verify user CAN move forward after checking box
     pageObjects
-      .checkBox().click()
+      .checkBoxEligibility().click({force: true})
     // todo: come back after fix
     // pageObjects
     // .errorText().should('not.exist')
@@ -73,7 +73,7 @@ describe('Validate In Person', () => {
 
     // * check previous name fields
     pageObjects
-      .checkBox().click({force: true})
+      .checkBoxPrevName().click({force: true})
     pageObjects
       .prevFirstName().type(data.personalInformationName)
     pageObjects
@@ -134,9 +134,7 @@ describe('Validate In Person', () => {
 
     // * check that mailing address work
     pageObjects
-      .checkBox().then(checkBox => {
-      cy.get(checkBox[1]).click({force: true})
-    })
+      .checkBoxMailAddress().click({force: true})
 
     pageObjects
       .mailStreet().type(data.addressStreet)
@@ -152,17 +150,9 @@ describe('Validate In Person', () => {
     pageObjects
       .mailZip().should('have.value', data.addressZip)
 
-    // * uncheck mailing address block
-    pageObjects
-      .checkBox().then(checkBox => {
-      cy.get(checkBox[1]).click({force: true})
-    })
-
     // * check recently moved option
     pageObjects
-      .checkBox().then(checkBox => {
-      cy.get(checkBox[0]).click({force: true})
-    })
+      .checkBoxPrevAddress().click({force: true})
 
     pageObjects
       .prevStreet().type(data.addressStreet)
@@ -184,15 +174,11 @@ describe('Validate In Person', () => {
 
     // * uncheck recently moved block
     pageObjects
-      .checkBox().then(checkBox => {
-      cy.get(checkBox[0]).click({force: true})
-    })
+      .checkBoxPrevAddress().click({force: true})
 
     // * check does not have permanent option
     pageObjects
-      .checkBox().then(checkBox => {
-      cy.get(checkBox[1]).click({force: true})
-    })
+      .checkBoxNoAddress().click({force: true})
     pageObjects
       .select().select(data.addressState)
     // Validate text box has correct text for mailing address
@@ -255,7 +241,7 @@ describe('Validate In Person', () => {
 
     // confirmation page
     pageObjects
-      .confirm().click({force: true})
+      .checkBoxConfirm().click({force: true})
     pageObjects
       .nextBtn().click()
 
@@ -282,7 +268,7 @@ describe('Validate In Person', () => {
 
     // verify user CAN move forward after checking box
     pageObjects
-      .checkBox().click()
+      .checkBoxEligibility().click({force: true})
 
     pageObjects
       .nextBtn().click()
@@ -374,9 +360,7 @@ describe('Validate In Person', () => {
 
     // * check that mailing address work
     pageObjects
-      .checkBox().then(checkBox => {
-      cy.get(checkBox[1]).click({force: true})
-    })
+      .checkBoxMailAddress().click({force: true})
     pageObjects
       .mailStreet().type(data.addressStreet)
     pageObjects
@@ -393,15 +377,11 @@ describe('Validate In Person', () => {
 
     // * uncheck mailing address block
     pageObjects
-      .checkBox().then(checkBox => {
-      cy.get(checkBox[1]).click({force: true})
-    })
+      .checkBoxMailAddress().click({force: true})
 
     // * check does not have permanent option
     pageObjects
-      .checkBox().then(checkBox => {
-      cy.get(checkBox[0]).click({force: true})
-    })
+      .checkBoxNoAddress().click({force: true})
 
     pageObjects
       .mailStreet().type(data.addressStreet)
@@ -482,10 +462,9 @@ describe('Validate In Person', () => {
 
     // confirmation page
     pageObjects
-      .confirm().click({force: true})
+      .checkBoxConfirm().click({force: true})
     pageObjects
       .nextBtn().click()
-
 
     pageObjects
       .addressConfirm().should('contain.text', 'Your Alabama mail-in registration form is complete and ready to print.')
@@ -510,7 +489,7 @@ describe('Validate In Person', () => {
 
     // verify user CAN move forward after checking box
     pageObjects
-      .checkBox().click()
+      .checkBoxEligibility().click({force: true})
 
     pageObjects
       .nextBtn().click()
@@ -602,9 +581,7 @@ describe('Validate In Person', () => {
 
     // * check that mailing address work
     pageObjects
-      .checkBox().then(checkBox => {
-      cy.get(checkBox[1]).click({force: true})
-    })
+      .checkBoxMailAddress().click({force: true})
     pageObjects
       .mailStreet().type(data.addressStreet)
     pageObjects
@@ -621,15 +598,11 @@ describe('Validate In Person', () => {
 
     // * uncheck mailing address block
     pageObjects
-      .checkBox().then(checkBox => {
-      cy.get(checkBox[1]).click({force: true})
-    })
+      .checkBoxMailAddress().click({force: true})
 
     // * check does not have permanent option
     pageObjects
-      .checkBox().then(checkBox => {
-      cy.get(checkBox[0]).click({force: true})
-    })
+      .checkBoxNoAddress().click({force: true})
 
     pageObjects
       .mailStreet().type(data.addressStreet)
@@ -710,7 +683,7 @@ describe('Validate In Person', () => {
 
     // confirmation page
     pageObjects
-      .confirm().click({force: true})
+      .checkBoxConfirm().click({force: true})
     pageObjects
       .nextBtn().click()
 
