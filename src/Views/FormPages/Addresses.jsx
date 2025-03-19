@@ -113,11 +113,13 @@ function Addresses(props) {
                   <CurrentZipCode {...props} />
                 </Grid>
               </Grid>
-              <Checkbox data-test="checkBox" className="margin-top-3"
-                        id="alt-mail-addr" name="alt-mail-addr"
-                        checked={props.hasMailAddress}
-                        onChange={props.onChangeMailAddressCheckbox}
-                        label={differentMailAddressField.label}/>
+              <Fieldset>
+                <Checkbox data-test="checkBox" className="margin-top-3"
+                          id="alt-mail-addr" name="alt-mail-addr"
+                          checked={props.hasMailAddress}
+                          onChange={props.onChangeMailAddressCheckbox}
+                          label={differentMailAddressField.label}/>
+              </Fieldset>
             </>
           )}
           {/******* END BLOCK *********/}
