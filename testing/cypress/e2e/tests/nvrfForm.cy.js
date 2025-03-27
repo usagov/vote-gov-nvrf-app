@@ -73,7 +73,7 @@ describe('Validate In Person', () => {
 
     // * check previous name fields
     pageObjects
-      .checkBox().click({force: true})
+      .checkBox().click()
     pageObjects
       .prevFirstName().type(data.personalInformationName)
     pageObjects
@@ -255,7 +255,7 @@ describe('Validate In Person', () => {
 
     // confirmation page
     pageObjects
-      .confirm().click({force: true})
+      .confirm().click()
     pageObjects
       .nextBtn().click()
 
@@ -482,10 +482,9 @@ describe('Validate In Person', () => {
 
     // confirmation page
     pageObjects
-      .confirm().click({force: true})
+      .confirm().click()
     pageObjects
       .nextBtn().click()
-
 
     pageObjects
       .addressConfirm().should('contain.text', 'Your Alabama mail-in registration form is complete and ready to print.')
@@ -710,7 +709,7 @@ describe('Validate In Person', () => {
 
     // confirmation page
     pageObjects
-      .confirm().click({force: true})
+      .confirm().click()
     pageObjects
       .nextBtn().click()
 

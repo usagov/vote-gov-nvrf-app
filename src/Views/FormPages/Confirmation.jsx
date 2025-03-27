@@ -1,4 +1,4 @@
-import { Alert, Button, Checkbox, Grid, Icon } from '@trussworks/react-uswds';
+import { Alert, Button, Checkbox, Grid, Icon, Fieldset } from '@trussworks/react-uswds';
 import {sanitizeDOM} from 'Utils/JsonHelper';
 import {toggleError} from 'Utils/ValidateField';
 
@@ -233,20 +233,20 @@ function Confirmation(props) {
           </div>
         </div>)}
 
-      <div className="input-parent">
-        <Checkbox
-          data-test="confirm"
-          id="acknowledge-checkbox"
-          name="acknowledge-check"
-          aria-describedby="acknowledge-check-alert"
-          required
-          defaultChecked={props.hasAcknowledged}
-          label={getFieldLabel("73e74065-fd5a-43c0-907c-268120e34bc3")}
-          onChange={(e) => props.acknowledgeCheckbox(e.target.checked)}
-          onBlur={(e) => toggleError(e, !props.hasAcknowledged)}
-          onInvalid={(e) => e.target.setCustomValidity(' ')}
-          onInput={(e) => e.target.setCustomValidity('')}
-        />
+      <div className="input-parent" data-test="confirm">
+        <Fieldset className="fieldset"  onBlur={(e) => toggleError(e, !props.hasAcknowledged)}>
+          <Checkbox
+            id="acknowledge-checkbox"
+            name="acknowledge-check"
+            aria-describedby="acknowledge-check-alert"
+            required
+            defaultChecked={props.hasAcknowledged}
+            label={getFieldLabel("73e74065-fd5a-43c0-907c-268120e34bc3")}
+            onChange={(e) => props.acknowledgeCheckbox(e.target.checked)}
+            onInvalid={(e) => e.target.setCustomValidity(' ')}
+            onInput={(e) => e.target.setCustomValidity('')}
+          />
+        </Fieldset>
         <span id="first-name-error" role="alert" aria-live="assertive"
               className={'vote-error-text'} data-test="errorText">
           {getFieldError("73e74065-fd5a-43c0-907c-268120e34bc3")}
