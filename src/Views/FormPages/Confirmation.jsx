@@ -233,10 +233,9 @@ function Confirmation(props) {
           </div>
         </div>)}
 
-      <div className="input-parent">
-        <Fieldset>
+      <div className="input-parent" data-test="confirm">
+        <Fieldset className="fieldset"  onBlur={(e) => toggleError(e, !props.hasAcknowledged)}>
           <Checkbox
-            data-test="confirm"
             id="acknowledge-checkbox"
             name="acknowledge-check"
             aria-describedby="acknowledge-check-alert"
@@ -244,7 +243,6 @@ function Confirmation(props) {
             defaultChecked={props.hasAcknowledged}
             label={getFieldLabel("73e74065-fd5a-43c0-907c-268120e34bc3")}
             onChange={(e) => props.acknowledgeCheckbox(e.target.checked)}
-            onBlur={(e) => toggleError(e, !props.hasAcknowledged)}
             onInvalid={(e) => e.target.setCustomValidity(' ')}
             onInput={(e) => e.target.setCustomValidity('')}
           />

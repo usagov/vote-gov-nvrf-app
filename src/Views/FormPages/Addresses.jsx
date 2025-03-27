@@ -50,7 +50,8 @@ function Addresses(props) {
 
       {addressFieldsState && (
         <>
-          <Fieldset>
+          <div className="input-parent">
+            <Fieldset className="fieldset">
             {!changeRegistrationVisible && (
               <legend className='usa-hint'
                     id='addresses-checkbox-hint'>{noAddressCheckboxInstructions}</legend>
@@ -70,7 +71,8 @@ function Addresses(props) {
                       data-test="checkBox" checked={props.hasNoAddress}
                       onChange={props.hasNoAddressCheckbox}
                       label={noAddressField.label}/>
-          </Fieldset>
+            </Fieldset>
+          </div>
           {/******** Current Address Block *********/}
           {!props.hasNoAddress && (<>
               {homeAddressSectionField.section_alert && (
