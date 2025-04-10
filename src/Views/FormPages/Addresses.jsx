@@ -50,7 +50,8 @@ function Addresses(props) {
 
       {addressFieldsState && (
         <>
-          <Fieldset>
+          <div className="input-parent">
+            <Fieldset className="fieldset">
             {!changeRegistrationVisible && (
               <legend className='usa-hint'
                     id='addresses-checkbox-hint'>{noAddressCheckboxInstructions}</legend>
@@ -70,7 +71,8 @@ function Addresses(props) {
                       data-test="checkBox" checked={props.hasNoAddress}
                       onChange={props.hasNoAddressCheckbox}
                       label={noAddressField.label}/>
-          </Fieldset>
+            </Fieldset>
+          </div>
           {/******** Current Address Block *********/}
           {!props.hasNoAddress && (<>
               {homeAddressSectionField.section_alert && (
@@ -113,11 +115,13 @@ function Addresses(props) {
                   <CurrentZipCode {...props} />
                 </Grid>
               </Grid>
-              <Checkbox data-test="checkBox" className="margin-top-3"
-                        id="alt-mail-addr" name="alt-mail-addr"
-                        checked={props.hasMailAddress}
-                        onChange={props.onChangeMailAddressCheckbox}
-                        label={differentMailAddressField.label}/>
+              <Fieldset>
+                <Checkbox data-test="checkBox" className="margin-top-3"
+                          id="alt-mail-addr" name="alt-mail-addr"
+                          checked={props.hasMailAddress}
+                          onChange={props.onChangeMailAddressCheckbox}
+                          label={differentMailAddressField.label}/>
+              </Fieldset>
             </>
           )}
           {/******* END BLOCK *********/}
