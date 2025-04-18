@@ -1,5 +1,7 @@
 import {Form} from '@trussworks/react-uswds';
-import React, {useState, useEffect} from "react";
+import {useContext, useState, useEffect} from "react";
+import { DataContext } from 'Context/DataProvider';
+import {Helmet} from "react-helmet-async";
 import ProgressBar from 'Components/ProgressBar';
 import PersonalInfo from "Views/FormPages/PersonalInfo";
 import Addresses from "Views/FormPages/Addresses"
@@ -10,16 +12,11 @@ import PoliticalParty from 'Views/FormPages/PoliticalParty';
 import {phoneFormat, focusError} from 'Utils/ValidateField';
 import BackButton from 'Components/Buttons/BackButton'
 import NextButton from 'Components/Buttons/NextButton';
-import {Helmet} from "react-helmet-async";
 import {sanitizeDOM} from "Utils/JsonHelper";
 
 function MultiStepForm(props) {
-  const content = props.content;
-  const fieldContent = props.fieldContent;
-  const strings = props.strings;
-  const steps = props.steps;
-
-  const mainContent = content.find(item => item.uuid === "2c597df4-53b6-4ef5-8301-7817b04e1099");
+  const { pageContent, stateContent, statesContent, stringContent, fieldContent, stepContent } = useContext(DataContext);
+  const mainContent = pageContent.data.find(item => item.uuid === "2c597df4-53b6-4ef5-8301-7817b04e1099");
   const mainContentTitle = sanitizeDOM(mainContent.title);
   const mainContentBody = sanitizeDOM(mainContent.body);
 
@@ -264,31 +261,37 @@ function MultiStepForm(props) {
   const backButtonText = (step) => {
     switch (step) {
       case 1:
-        return steps.personal.back_button_label;
+        return stepContent.personal.back_button_label;
       case 2:
-        return steps.address.back_button_label;
+        return stepContent.address.back_button_label;
       case 3:
-        return steps.identification.back_button_label;
+        return stepContent.identification.back_button_label;
       case 4:
-        return steps.party.back_button_label;
+        return stepContent.party.back_button_label;
       case 5:
-        return steps.confirmation.back_button_label;
+        return stepContent.confirmation.back_button_label;
     }
   }
 
   const nextButtonText = (step) => {
     switch (step) {
       case 1:
-        return steps.personal.next_button_label;
+        return stepContent.personal.next_button_label;
       case 2:
-        return steps.address.next_button_label;
+        return stepContent.address.next_button_label;
       case 3:
-        return steps.identification.next_button_label;
+        return stepContent.identification.next_button_label;
       case 4:
-        return steps.party.next_button_label;
+        return stepContent.party.next_button_label;
       case 5:
-        return steps.confirmation.next_button_label;
+        return stepContent.confirmation.next_button_label;
     }
+  }
+
+  const statesList = []
+  for (let i = 0; i < statesContent.data.length; i++) {
+    let stateName = statesContent.data[i].name;
+    statesList.push(stateName);
   }
 
   return (
@@ -297,12 +300,12 @@ function MultiStepForm(props) {
                                 data-analytics="backBtn" onClick={handlePrev}
                                 text={backButtonText(step)}/>}
 
-      <ProgressBar step={step} steps={steps}
+      <ProgressBar step={step} steps={stepContent}
                    handleGoBack={handleGoBackSteps} setStep={setStep}/>
       <div className={'margin-top-8 maxw-tablet margin-x-auto'}>
         {step < 5 &&
           <>
-            <h1>{mainContentTitle.replace("@state_name", props.stateData.name)}</h1>
+            <h1>{mainContentTitle.replace("@state_name", stateContent.data.name)}</h1>
             <div dangerouslySetInnerHTML={{__html: mainContentBody}}/>
           </>
         }
@@ -316,8 +319,7 @@ function MultiStepForm(props) {
         >
           {step === 1 &&
             <PersonalInfo
-              state={props.state}
-              stateData={props.stateData}
+              stateData={stateContent.data}
               fieldData={fieldData}
               saveFieldData={saveFieldData}
               dateFormat={dateFormat}
@@ -325,16 +327,15 @@ function MultiStepForm(props) {
               previousName={hasPreviousName}
               onChangePreviousName={onChangePreviousName}
               handlePrev={props.handlePrev}
-              content={content}
-              fieldContent={fieldContent}
-              step={strings.step.find(item => item.step_id === 'personal')}
+              content={pageContent.data}
+              fieldContent={fieldContent.data}
+              step={stringContent.data.step.find(item => item.step_id === 'personal')}
             />
           }
           {step === 2 &&
             <Addresses
-              state={props.state}
-              statesList={props.statesList}
-              stateData={props.stateData}
+              statesList={statesList}
+              stateData={stateContent.data}
               fieldData={fieldData}
               saveFieldData={saveFieldData}
               registrationPath={props.registrationPath}
@@ -345,15 +346,14 @@ function MultiStepForm(props) {
               onChangePreviousAddressCheckbox={onChangePreviousAddressCheckbox}
               hasMailAddress={hasMailAddress}
               onChangeMailAddressCheckbox={onChangeMailAddressCheckbox}
-              content={content}
-              fieldContent={fieldContent}
-              step={strings.step.find(item => item.step_id === 'address')}
+              content={pageContent.data}
+              fieldContent={fieldContent.data}
+              step={stringContent.data.step.find(item => item.step_id === 'address')}
             />
           }
           {step === 3 &&
             <Identification
-              state={props.state}
-              stateData={props.stateData}
+              stateData={stateContent.data}
               fieldData={fieldData}
               saveFieldData={saveFieldData}
               dateFormat={dateFormat}
@@ -363,29 +363,27 @@ function MultiStepForm(props) {
               onChangeHasNoIdCheckbox={onChangeHasNoIdCheckbox}
               hasNoID={hasNoID}
               idType={idType}
-              content={content}
-              fieldContent={fieldContent}
-              step={strings.step.find(item => item.step_id === 'identification')}
+              content={pageContent.data}
+              fieldContent={fieldContent.data}
+              step={stringContent.data.step.find(item => item.step_id === 'identification')}
             />
           }
           {step === 4 &&
             <PoliticalParty
-              state={props.state}
-              stateData={props.stateData}
+              stateData={stateContent.data}
               fieldData={fieldData}
               saveFieldData={saveFieldData}
               registrationPath={props.registrationPath}
               handlePrev={handlePrev}
-              content={content}
-              fieldContent={fieldContent}
-              step={strings.step.find(item => item.step_id === 'party')}
+              content={pageContent.data}
+              fieldContent={fieldContent.data}
+              step={stringContent.data.step.find(item => item.step_id === 'party')}
             />
           }
           {step === 5 &&
             <Confirmation
-              state={props.state}
-              stateData={props.stateData}
-              content={props.content}
+              stateData={stateContent.data}
+              content={pageContent.data}
               fieldData={fieldData}
               saveFieldData={saveFieldData}
               registrationPath={props.registrationPath}
@@ -393,16 +391,15 @@ function MultiStepForm(props) {
               handleGoBackSteps={handleGoBackSteps}
               hasAcknowledged={hasAcknowledged}
               acknowledgeCheckbox={acknowledgeCheckbox}
-              fieldContent={fieldContent}
-              strings={strings}
-              steps={steps}
+              fieldContent={fieldContent.data}
+              strings={stringContent.data}
+              steps={stepContent}
             />
           }
           {step === 6 &&
             <Delivery
-              state={props.state}
-              stateData={props.stateData}
-              content={props.content}
+              stateData={stateContent.data}
+              content={pageContent.data}
               fieldData={fieldData}
               saveFieldData={saveFieldData}
               registrationPath={props.registrationPath}
@@ -411,7 +408,7 @@ function MultiStepForm(props) {
               handleClickDeliveryButton={handleClickDeliveryButton}
               pdfDoc={props.pdfDoc}
               form={props.form}
-              strings={strings}
+              strings={stringContent.data}
             />
           }
 
