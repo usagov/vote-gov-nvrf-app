@@ -1,11 +1,11 @@
-import { useContext} from 'react';
-import {Checkbox, Form, Fieldset} from '@trussworks/react-uswds';
-import NextButton from "Components/Buttons/NextButton";
-import { sanitizeDOM } from 'Utils/JsonHelper';
-import { DataContext } from 'Context/DataProvider';
+import { useContext, useState } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
+import {Checkbox, Form, Fieldset} from '@trussworks/react-uswds';
+import { DataContext } from 'Context/DataProvider';
+import { sanitizeDOM } from 'Utils/JsonHelper';
 import {getFieldLabel, getFieldError} from 'Utils/fieldParser';
 import {focusError, toggleError} from 'Utils/ValidateField';
+import NextButton from "Components/Buttons/NextButton";
 import BackButton from 'Components/Buttons/BackButton';
 
 function Eligibility(props) {
@@ -24,6 +24,12 @@ function Eligibility(props) {
   //Analytics values - do not change or translate
   const analyticsLabels = {
     eligibilityTitle: "Before you get started page",
+  }
+
+  //Confirm eligibility checkbox controls
+  const [hasConfirmed, setHasConfirmed] = useState(null);
+  const confirmCheckbox = (checkStatus) => {
+    setHasConfirmed(checkStatus);
   }
 
   const mailDeadline = () => (
@@ -55,7 +61,7 @@ function Eligibility(props) {
               }}>
           <div className="input-parent" data-test="checkBox">
             <Fieldset className="fieldset"
-                      onBlur={(e) => toggleError(e, !props.hasConfirmed)}>
+                      onBlur={(e) => toggleError(e, !hasConfirmed)}>
               <legend className={'margin-top-1'}>
                 <strong>{eligibility.name}</strong>
               </legend>
@@ -67,8 +73,8 @@ function Eligibility(props) {
                 aria-required="true"
                 aria-describedby="eligibility-checkbox_error"
                 required={true}
-                defaultChecked={props.hasConfirmed}
-                onChange={(e) => props.confirmCheckbox(e.target.checked)}
+                defaultChecked={hasConfirmed}
+                onChange={(e) => confirmCheckbox(e.target.checked)}
                 onInvalid={(e) => e.target.setCustomValidity(' ')}
                 onInput={(e) => e.target.setCustomValidity('')}
               />
