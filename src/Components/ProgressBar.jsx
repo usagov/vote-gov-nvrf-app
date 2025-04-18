@@ -1,5 +1,4 @@
 import {StepIndicator, StepIndicatorStep} from '@trussworks/react-uswds';
-import './ProgressBar.css';
 
 function ProgressBar(props) {
   const steps = props.steps;

@@ -6,8 +6,7 @@ import MultiStepForm from 'Views/MultiStepForm';
 import { DataProvider } from 'Context/DataProvider';
 import loadPdf from 'Utils/pdfLoader';
 import Footer from 'Components/Footer';
-import './VoteError.css';
-import './VoteTouchpoints.css';
+import './main.css';
 
 export default function App() {
   const [error, setError] = useState(false);
