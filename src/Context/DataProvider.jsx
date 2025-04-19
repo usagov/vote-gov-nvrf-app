@@ -34,7 +34,8 @@ const DataProvider = ({ children }) => {
     || stringContent.isLoading
     || statesContent.isLoading
     || cardContent.isLoading
-    || fieldContent.isLoading;
+    || fieldContent.isLoading
+    || !form || !pdfDoc;
   let isError = pageContent.isError
     || stateContent.isError
     || stringContent.isError
@@ -42,7 +43,7 @@ const DataProvider = ({ children }) => {
     || cardContent.isError
     || fieldContent.isError || error;
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return;
   if (isError) {
     return (
       <div>
@@ -59,7 +60,7 @@ const DataProvider = ({ children }) => {
           target="_blank">submit feedback</a>.</p>
       </div>
     );
-  }
+  };
 
   const stepContent = stringContent.data.step.reduce((acc, item) => {
     acc[item.step_id] = {
