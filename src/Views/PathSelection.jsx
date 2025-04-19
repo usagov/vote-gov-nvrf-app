@@ -7,17 +7,18 @@ import {
   CardFooter,
   Icon
 } from '@trussworks/react-uswds';
+import { useContext } from 'react';
+import { DataContext } from 'Context/DataProvider';
 import BackButton from "Components/Buttons/BackButton"
 import {sanitizeDOM} from "Utils/JsonHelper";
 
 function PathSelection(props) {
-  const content = props.content;
-  const cards = props.cards;
-  const step = props.step;
+  const { pageContent, stateContent, cardContent, stepContent } = useContext(DataContext);
+  const step = stepContent.reg_options;
 
-  const introContent = content.find(item => item.uuid === "b3299979-e26c-4885-a949-e1a2c27de91b");
-  const cardOne = cards.find(item => item.uuid === "0ac52b5d-4381-4b4e-830e-38319f3a3757");
-  const cardTwo = cards.find(item => item.uuid === "3abd804c-2787-44f9-a06b-ad6d63ca797f");
+  const introContent = pageContent.data.find(item => item.uuid === "b3299979-e26c-4885-a949-e1a2c27de91b");
+  const cardOne = cardContent.data.find(item => item.uuid === "0ac52b5d-4381-4b4e-830e-38319f3a3757");
+  const cardTwo = cardContent.data.find(item => item.uuid === "3abd804c-2787-44f9-a06b-ad6d63ca797f");
   const introContentBody = sanitizeDOM(introContent.body);
   const cardOneBody = sanitizeDOM(cardOne.body);
   const cardTwoBody = sanitizeDOM(cardTwo.body);
@@ -33,7 +34,7 @@ function PathSelection(props) {
                   onClick={props.handlePrev}
                   text={step.back_button_label}/>
       <div className={'margin-top-5 maxw-tablet margin-x-auto'}>
-        <h1>{introContent.title.replace("@state_name", props.stateData.name)}</h1>
+        <h1>{introContent.title.replace("@state_name", stateContent.data.name)}</h1>
 
         <div dangerouslySetInnerHTML={{__html: introContentBody}}/>
 
@@ -44,7 +45,7 @@ function PathSelection(props) {
           >
             <CardHeader className="container-test-3">
               <h3 className="usa-card__heading">
-                {cardOne.heading.replace("@state_name", props.stateData.name)}
+                {cardOne.heading.replace("@state_name", stateContent.data.name)}
               </h3>
             </CardHeader>
             <CardBody dangerouslySetInnerHTML={{__html: cardOneBody}}/>
@@ -72,7 +73,7 @@ function PathSelection(props) {
           >
             <CardHeader>
               <h3 className="usa-card__heading">
-                {cardTwo.heading.replace("@state_name", props.stateData.name)}
+                {cardTwo.heading.replace("@state_name", stateContent.data.name)}
               </h3>
             </CardHeader>
             <CardBody dangerouslySetInnerHTML={{__html: cardTwoBody}}/>

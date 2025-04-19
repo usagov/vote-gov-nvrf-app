@@ -4,15 +4,11 @@ function BackButton(props) {
 
   return (
     <>
-      {props.type === 'link' ?
+      {props.link ?
         <>
-          <a href="https://vote.gov">
-            <Button className={"maxw-mobile-lg width-full tablet:width-auto"}
-                    type="button" onClick={props.onClick} outline>
-              <Icon.ArrowBack role="none" aria-hidden="true" alt=""
-                              style={{margin: "-3px 4px -3px -3px"}}/>
-              <span>{props.text}</span>
-            </Button>
+          <a href={props.link}
+             className={'usa-button usa-button--outline maxw-mobile-lg width-full tablet:width-auto'}>
+            <span>{props.text}</span>
           </a>
         </>
         :
@@ -24,10 +20,10 @@ function BackButton(props) {
                             style={{margin: "-3px 4px -3px -3px"}}/>
             <span>{props.text}</span>
           </Button>
+
+          <hr aria-hidden="true" className="margin-top-4"/>
         </>
       }
-
-      <hr aria-hidden="true" className="margin-top-4"/>
     </>
   );
 }

@@ -1,9 +1,12 @@
 import {Button, Grid} from '@trussworks/react-uswds';
+import {renderToStaticMarkup} from "react-dom/server";
+import { DataContext } from 'Context/DataProvider';
 import GenerateFilledPDF from 'Utils/GenerateFilledPDF';
 import {sanitizeDOM} from 'Utils/JsonHelper';
-import {renderToStaticMarkup} from "react-dom/server";
+import { useContext } from 'react'
 
 function Delivery(props) {
+  const { pdfDoc, form } = useContext(DataContext);
   const content = props.content;
   const state = props.stateData;
   const strings = props.strings;
@@ -61,7 +64,7 @@ function Delivery(props) {
 
         <Button data-test="pdfBtnNewTab"
                 onClick={() => {
-                  GenerateFilledPDF('newTab', props.fieldData, props.stateData.nvrf_pages_list, props.pdfDoc, props.form);
+                  GenerateFilledPDF('newTab', props.fieldData, props.stateData.nvrf_pages_list, pdfDoc, form);
                   dataLayer.push({
                     'NVRF_button_click': analyticsLabels.pdfTabButton,
                     'event': "NVRF_PDF_BUTTON_CLICK"
@@ -76,7 +79,7 @@ function Delivery(props) {
 
         <Button data-test="pdfBtnDownload"
                 onClick={() => {
-                  GenerateFilledPDF('download', props.fieldData, props.stateData.nvrf_pages_list, props.pdfDoc, props.form);
+                  GenerateFilledPDF('download', props.fieldData, props.stateData.nvrf_pages_list, pdfDoc, form);
                   dataLayer.push({
                     'NVRF_button_click': analyticsLabels.pdfDownloadButton,
                     'event': "NVRF_PDF_BUTTON_CLICK"
