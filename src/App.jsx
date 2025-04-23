@@ -10,7 +10,6 @@ import './main.css';
 export default function App() {
   const [step, setStep] = useState(1);
   const [registrationPath, setRegistrationPath] = useState('');
-  const [formStep, setFormStep] = useState(1);
 
   const scrollToTop = document.getElementById('scroll-to-top');
 
@@ -28,10 +27,6 @@ export default function App() {
     step !== 1 && setStep(step - 1);
     setStepFocus();
   }
-
-  const getFormStep = (step) => {
-    formStep === 4 ? null : setFormStep(step + 1);
-  };
 
   return (
       <main>
@@ -56,19 +51,14 @@ export default function App() {
                 <PathSelection
                   handleNext={handleNext}
                   handlePrev={handlePrev}
-                  registrationPath={registrationPath}
                   getRegPath={setRegistrationPath}
-                  getFormStep={getFormStep}
                 />}
               {step === 3 &&
                 <MultiStepForm
                   handlePrev={handlePrev}
                   registrationPath={registrationPath}
-                  getFormStep={getFormStep}
                 />}
-              {step >= 1 &&
-                <Footer />
-              }
+              <Footer />
             </section>
           </DataProvider>
         </HelmetProvider>
