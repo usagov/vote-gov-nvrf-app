@@ -27,6 +27,7 @@ export default defineConfig(({mode}) => {
         Components: '/src/Components',
         Utils: '/src/Utils',
         Views: '/src/Views',
+        Context: '/src/Context',
       }
     },
     define: {
