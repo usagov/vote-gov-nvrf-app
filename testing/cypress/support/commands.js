@@ -31,7 +31,7 @@ Cypress.Commands.add('completeForm', () => {
 
 // verify user CAN move forward after checking box
   pageObjects
-    .checkBox().click()
+    .checkBoxEligibility().click({force: true})
 // todo: come back after fix
 // pageObjects
 // .errorText().should('not.exist')
@@ -73,7 +73,7 @@ Cypress.Commands.add('completeForm', () => {
     .dobYear().type(data.personalInformationYear)
 
   pageObjects
-    .checkBox().click({force: true})
+    .checkBoxPrevName().click({force: true})
 
   pageObjects
     .select().then(dropdown => {
@@ -116,9 +116,7 @@ Cypress.Commands.add('completeForm', () => {
 
 // * check that mailing address work
   pageObjects
-    .checkBox().then(checkBox => {
-    cy.get(checkBox[2]).click({force: true})
-  })
+    .checkBoxMailAddress().click({force: true})
 
   pageObjects
     .mailStreet().type(data.addressStreet)
@@ -129,15 +127,11 @@ Cypress.Commands.add('completeForm', () => {
 
 // * uncheck mailing address block
   pageObjects
-    .checkBox().then(checkBox => {
-    cy.get(checkBox[2]).click({force: true})
-  })
+    .checkBoxMailAddress().click({force: true})
 
 // * check recently moved option
   pageObjects
-    .checkBox().then(checkBox => {
-    cy.get(checkBox[0]).click({force: true})
-  })
+    .checkBoxPrevAddress().click({force: true})
 
   pageObjects
     .prevStreet().type(data.addressStreet)
@@ -149,15 +143,11 @@ Cypress.Commands.add('completeForm', () => {
     .prevZip().type(data.addressZip)
 // * uncheck recently moved block
   pageObjects
-    .checkBox().then(checkBox => {
-    cy.get(checkBox[0]).click({force: true})
-  })
+    .checkBoxPrevAddress().click({force: true})
 
 // * check does not have permanent option
   pageObjects
-    .checkBox().then(checkBox => {
-    cy.get(checkBox[1]).click({force: true})
-  })
+    .checkBoxNoAddress().click({force: true})
 
   pageObjects
     .mailStreet().type(data.addressStreet)

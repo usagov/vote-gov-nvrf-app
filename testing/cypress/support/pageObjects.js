@@ -8,8 +8,8 @@ class PageObjects {
     return cy.get('[data-test="errorText"]')
   }
 
-  checkBox() {
-    return cy.get('[data-test="checkBox"]')
+  checkBoxEligibility() {
+    return cy.get('[data-test="checkbox-eligibility"]')
   }
 
   pathBtn() {
@@ -36,8 +36,8 @@ class PageObjects {
     return cy.get('[data-test="phoneNumber"]')
   }
 
-  checkBox() {
-    return cy.get('[data-test="checkBox"]')
+  checkBoxPrevName() {
+    return cy.get('[data-test="checkbox-prev-name"]')
   }
 
   prevFirstName() {
@@ -128,10 +128,6 @@ class PageObjects {
     return cy.get('[data-test="politicalParty"]')
   }
 
-  confirm() {
-    return cy.get('[data-test="confirm"]')
-  }
-
   addressConfirm() {
     return cy.get('[data-test="addressConfirm"]')
   }
@@ -146,6 +142,26 @@ class PageObjects {
 
   editBtn() {
     return cy.get('[data-test="editBtn"]')
+  }
+
+  checkBoxPrevAddress() {
+    return cy.get('[data-test="checkbox-prev-address"]')
+  }
+
+  checkBoxNoAddress() {
+    return cy.get('[data-test="checkbox-no-address"]')
+  }
+
+  checkBoxMailAddress() {
+    return cy.get('[data-test="checkbox-mail-address"]')
+  }
+
+  checkBoxNoId() {
+    return cy.get('[data-test="checkbox-no-id"]')
+  }
+
+  checkBoxConfirm() {
+    return cy.get('[data-test="checkbox-confirm"]')
   }
 }
 
