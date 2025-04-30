@@ -59,13 +59,14 @@ function Eligibility(props) {
                     'event': 'NVRF_STEP_SUBMIT'
                   })
               }}>
-          <div className="input-parent" data-test="checkBox">
+          <div className="input-parent">
             <Fieldset className="fieldset"
                       onBlur={(e) => toggleError(e, !hasConfirmed)}>
               <legend className={'margin-top-1'}>
                 <strong>{eligibility.name}</strong>
               </legend>
               <Checkbox
+                data-test="checkbox-eligibility"
                 id="eligibility-checkbox"
                 name="eligibility-checkbox"
                 value="eligibility-checkbox"

@@ -1,4 +1,4 @@
-import {Checkbox, Grid} from '@trussworks/react-uswds';
+import {Checkbox, Grid, Fieldset} from '@trussworks/react-uswds';
 import React from "react";
 import {sanitizeDOM} from "Utils/JsonHelper";
 import CurrentFirstName from "Components/Fields/CurrentFirstName";
@@ -42,12 +42,17 @@ function PersonalInfo(props) {
       <h2>{step.step_label}</h2>
 
       {changeRegistrationVisible && (
-        <Checkbox id="prev-name-change"
-                  aria-describedby="prev-name-change_alert"
-                  name="prev-name-change" data-test="checkBox"
-                  checked={props.previousName}
-                  onChange={props.onChangePreviousName}
-                  label={nameChangeLabel}/>
+        <div className="input-parent">
+          <Fieldset className="fieldset">
+            <Checkbox id="prev-name-change"
+                      data-test="checkbox-prev-name"
+                      aria-describedby="prev-name-change_alert"
+                      name="prev-name-change"
+                      checked={props.previousName}
+                      onChange={props.onChangePreviousName}
+                      label={nameChangeLabel}/>
+          </Fieldset>
+        </div>
       )}
 
       <div id="prev-name-change_alert" className="usa-alert usa-alert--info"
