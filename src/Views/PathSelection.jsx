@@ -13,15 +13,12 @@ import BackButton from "Components/Buttons/BackButton"
 import {sanitizeDOM} from "Utils/JsonHelper";
 
 function PathSelection(props) {
-  const { pageContent, stateContent, cardContent, stepContent } = useContext(DataContext);
+  const { pageContent, stateContent, stringContent, stepContent } = useContext(DataContext);
   const step = stepContent.reg_options;
 
   const introContent = pageContent.data.find(item => item.uuid === "b3299979-e26c-4885-a949-e1a2c27de91b");
-  const cardOne = cardContent.data.find(item => item.uuid === "0ac52b5d-4381-4b4e-830e-38319f3a3757");
-  const cardTwo = cardContent.data.find(item => item.uuid === "3abd804c-2787-44f9-a06b-ad6d63ca797f");
-  const introContentBody = sanitizeDOM(introContent.body);
-  const cardOneBody = sanitizeDOM(cardOne.body);
-  const cardTwoBody = sanitizeDOM(cardTwo.body);
+  const cardOne = stringContent.data.nvrf_card.find(item => item.nvrf_card_id === 'change');
+  const cardTwo = stringContent.data.nvrf_card.find(item => item.nvrf_card_id === 'new');
 
   //Analytics values - do not change or translate
   const analyticsLabels = {
@@ -36,7 +33,7 @@ function PathSelection(props) {
       <div className={'margin-top-5 maxw-tablet margin-x-auto'}>
         <h1>{introContent.title.replace("@state_name", stateContent.data.name)}</h1>
 
-        <div dangerouslySetInnerHTML={{__html: introContentBody}}/>
+        <div dangerouslySetInnerHTML={{__html: sanitizeDOM(introContent.body)}}/>
 
         <CardGroup className="padding-top-4">
           <Card className="card-info"
@@ -45,10 +42,10 @@ function PathSelection(props) {
           >
             <CardHeader className="container-test-3">
               <h3 className="usa-card__heading">
-                {cardOne.heading.replace("@state_name", stateContent.data.name)}
+                {cardOne.nvrf_card_heading.replace("@state_name", stateContent.data.name)}
               </h3>
             </CardHeader>
-            <CardBody dangerouslySetInnerHTML={{__html: cardOneBody}}/>
+            <CardBody dangerouslySetInnerHTML={{__html: sanitizeDOM(cardOne.nvrf_card_text)}}/>
             <CardFooter className="margin-top-3">
               <Button data-test="pathBtn" type="submit"
                       onClick={() => {
@@ -60,7 +57,7 @@ function PathSelection(props) {
                             'event': 'NVRF_STEP_SUBMIT'
                           })
                       }}>
-                <span>{cardOne.button_label}</span>
+                <span>{cardOne.nvrf_card_button_label}</span>
                 <Icon.ArrowForward role="none" aria-hidden=""
                                    style={{margin: "-3px -3px -3px 4px"}}/>
               </Button>
@@ -73,10 +70,10 @@ function PathSelection(props) {
           >
             <CardHeader>
               <h3 className="usa-card__heading">
-                {cardTwo.heading.replace("@state_name", stateContent.data.name)}
+                {cardTwo.nvrf_card_heading.replace("@state_name", stateContent.data.name)}
               </h3>
             </CardHeader>
-            <CardBody dangerouslySetInnerHTML={{__html: cardTwoBody}}/>
+            <CardBody dangerouslySetInnerHTML={{__html: sanitizeDOM(cardTwo.nvrf_card_text)}}/>
             <CardFooter className="margin-top-3">
               <Button data-test="pathBtn" type="submit"
                       onClick={() => {
@@ -88,7 +85,7 @@ function PathSelection(props) {
                             'event': 'NVRF_STEP_SUBMIT'
                           })
                       }}>
-                <span>{cardTwo.button_label}</span>
+                <span>{cardTwo.nvrf_card_button_label}</span>
                 <Icon.ArrowForward role="none" aria-hidden=""
                                    style={{margin: "-3px -3px -3px 4px"}}/>
               </Button>
