@@ -19,7 +19,6 @@ const DataProvider = ({ children }) => {
   const stateContent = useFetchData(`${locale}/nvrf/assets/state/${currentStateId}/data.json`, '', true);
   const stringContent = useFetchData(`${locale}/nvrf/assets/strings.json`, '6f8bb721-f017-4fcc-a826-dfc93c6759b7');
   const statesContent = useFetchData(`${locale}/nvrf/assets/states.json`);
-  const cardContent = useFetchData(`${locale}/nvrf/assets/cards.json`);
   const fieldContent = useFetchData(`${locale}/nvrf/assets/fields.json`);
 
   useEffect(() => {
@@ -33,14 +32,12 @@ const DataProvider = ({ children }) => {
     || stateContent.isLoading
     || stringContent.isLoading
     || statesContent.isLoading
-    || cardContent.isLoading
     || fieldContent.isLoading
     || !form || !pdfDoc;
   let isError = pageContent.isError
     || stateContent.isError
     || stringContent.isError
     || statesContent.isError
-    || cardContent.isError
     || fieldContent.isError || error;
 
   if (isLoading) return;
@@ -75,7 +72,7 @@ const DataProvider = ({ children }) => {
 
   return (
     <DataContext.Provider
-      value={{ pageContent, stateContent, stringContent, statesContent, cardContent, fieldContent, stepContent, pdfDoc, form }}>
+      value={{ pageContent, stateContent, stringContent, statesContent, fieldContent, stepContent, pdfDoc, form }}>
       {children}
     </DataContext.Provider>
   );
