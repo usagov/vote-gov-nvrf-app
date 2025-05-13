@@ -122,7 +122,7 @@ const GenerateFilledPDF = async function (btnType, formData, pagesKept) {
   //(3) Identification
   //No id or ssn
   if ((formData.id_number === '') && (formData.ssn_number === '')) {
-    idNumber.setText("None");
+    idNumber.setText("none");
     //Both id and ssn
   } else if ((formData.id_number != '') && (formData.ssn_number != '')) {
     idNumber.setText(formData.id_number + ", " + formData.ssn_number);
