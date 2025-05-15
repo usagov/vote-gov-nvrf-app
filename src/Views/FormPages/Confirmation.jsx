@@ -29,7 +29,9 @@ function Confirmation(props) {
   fieldData.current_state = fieldDataOverride_state;
 
   //id override
-  const fieldDataOverride_id = ((fieldData.id_number === '') && (fieldData.ssn_number === '')) ? "none" : fieldData.id_number + " " + fieldData.ssn_number;
+  const fieldDataOverride_id = ((fieldData.id_number === '') && (fieldData.ssn_number === '')) ? "none"
+    : ((fieldData.id_number !== '') && (fieldData.ssn_number !== '')) ? fieldData.id_number + ", " + fieldData.ssn_number
+    : fieldData.id_number || fieldData.ssn_number;
 
   const confirm = content.find(item => item.uuid === "560cd01c-42d1-4f58-a702-372c2ff6bbd9");
   const confirmBody = sanitizeDOM(confirm.body);
