@@ -136,7 +136,7 @@ const GenerateFilledPDF = async function (btnType, formData, pagesKept) {
 
   //-------------End PDF Fill---------------
 
-// Remove unneccessary pages
+// Remove unnecessary pages
   let shift = 0;
   const totalPages = pdfDoc.getPageCount();
   let pageCount = totalPages;
