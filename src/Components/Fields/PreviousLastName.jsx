@@ -1,6 +1,6 @@
 import React from "react";
-import FieldContainer from 'Components/FieldContainer';
-import {getField} from "Utils/fieldParser";
+import FieldContainer from "Components/FieldContainer";
+import { getField } from "Utils/fieldParser";
 
 function PreviousLastName(props) {
   const uuid = "42de34cc-ebf3-4d8e-8873-2571063b62c0";
@@ -9,15 +9,19 @@ function PreviousLastName(props) {
 
   return (
     <FieldContainer
-      fieldType={'text'} inputData={{
-      id: field.nvrf_id,
-      dataTest: 'prevLastName',
-      required: stateField.required,
-      label: field.label,
-      error_msg: field.error_msg,
-      help_text: field.help_text,
-    }} saveFieldData={props.saveFieldData} fieldData={props.fieldData}/>
-  )
+      fieldType={"text"}
+      inputData={{
+        id: field.nvrf_id,
+        dataTest: "prevLastName",
+        required: stateField.required,
+        label: field.label,
+        error_msg: field.error_msg,
+        help_text: field.help_text,
+      }}
+      saveFieldData={props.saveFieldData}
+      fieldData={props.fieldData}
+    />
+  );
 }
 
 export default PreviousLastName;

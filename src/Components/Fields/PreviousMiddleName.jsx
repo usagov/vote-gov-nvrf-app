@@ -1,6 +1,6 @@
 import React from "react";
-import FieldContainer from 'Components/FieldContainer';
-import {getField} from "Utils/fieldParser";
+import FieldContainer from "Components/FieldContainer";
+import { getField } from "Utils/fieldParser";
 
 function PreviousMiddleName(props) {
   const uuid = "a4919026-91ac-4e05-a75f-e2df479abd76";
@@ -9,15 +9,19 @@ function PreviousMiddleName(props) {
 
   return (
     <FieldContainer
-      fieldType={'text'} inputData={{
-      id: field.nvrf_id,
-      dataTest: 'prevMiddleName',
-      required: stateField.required,
-      label: field.label,
-      error_msg: field.error_msg,
-      help_text: field.help_text,
-    }} saveFieldData={props.saveFieldData} fieldData={props.fieldData}/>
-  )
+      fieldType={"text"}
+      inputData={{
+        id: field.nvrf_id,
+        dataTest: "prevMiddleName",
+        required: stateField.required,
+        label: field.label,
+        error_msg: field.error_msg,
+        help_text: field.help_text,
+      }}
+      saveFieldData={props.saveFieldData}
+      fieldData={props.fieldData}
+    />
+  );
 }
 
 export default PreviousMiddleName;

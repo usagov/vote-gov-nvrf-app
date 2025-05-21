@@ -1,6 +1,6 @@
 import React from "react";
-import FieldContainer from 'Components/FieldContainer';
-import {getField} from "Utils/fieldParser";
+import FieldContainer from "Components/FieldContainer";
+import { getField } from "Utils/fieldParser";
 
 function CurrentStreetAddress(props) {
   const uuid = "6dcb9e8c-b40a-4cda-ba5c-06b98c3375f4";
@@ -9,15 +9,19 @@ function CurrentStreetAddress(props) {
 
   return (
     <FieldContainer
-      fieldType={'text'} inputData={{
-      id: field.nvrf_id,
-      dataTest: 'street',
-      required: stateField.required,
-      label: field.label,
-      error_msg: field.error_msg,
-      help_text: field.help_text,
-    }} saveFieldData={props.saveFieldData} fieldData={props.fieldData}/>
-  )
+      fieldType={"text"}
+      inputData={{
+        id: field.nvrf_id,
+        dataTest: "street",
+        required: stateField.required,
+        label: field.label,
+        error_msg: field.error_msg,
+        help_text: field.help_text,
+      }}
+      saveFieldData={props.saveFieldData}
+      fieldData={props.fieldData}
+    />
+  );
 }
 
 export default CurrentStreetAddress;
