@@ -8,7 +8,7 @@ We are also using CircleCi for continuous coverage of testing. There are several
 testing pipeline (see below for more information) that helps provide confidence
 and ensure we are catching any bugs are errors before we hit production.
 
-__Please note all scripts/commands must be run in the `testing` folder__
+**Please note all scripts/commands must be run in the `testing` folder**
 
 See [Installing Cypress Documentation](https://docs.cypress.io/guides/getting-started/installing-cypress#System-requirements)
 to get Cypress set up on local. If this is your first time using Cypress you
@@ -28,7 +28,7 @@ to get your local started and running.
 ### Cypress testing commands:
 
 | Command           | Description                                       |
-|-------------------|---------------------------------------------------|
+| ----------------- | ------------------------------------------------- |
 | `npm run cy:open` | Opens Cypress Runner                              |
 | `npm run cy:test` | Run tests headless                                |
 | `npm run cy:axe`  | Run accessibility testing with Cypress Axe Plugin |

@@ -1,6 +1,6 @@
 import React from "react";
-import FieldsetContainer from 'Components/FieldsetContainer';
-import {getField} from "Utils/fieldParser";
+import FieldsetContainer from "Components/FieldsetContainer";
+import { getField } from "Utils/fieldParser";
 
 function CurrentDateOfBirth(props) {
   const uuid = "d31b2a64-36a9-4bc6-a9d1-e68d2be8c211";
@@ -16,21 +16,27 @@ function CurrentDateOfBirth(props) {
   const field_year = getField(props.fieldContent, uuid4);
 
   return (
-    stateField && <FieldsetContainer
-      fieldType={'date'} inputData={{
-      id: field.nvrf_id,
-      dataTest: 'dob',
-      required: stateField.required,
-      label: field.label,
-      stringContent: props.stringContent,
-      error_msg: field.error_msg,
-      help_text: field.help_text,
-      field_month: field_month,
-      field_day: field_day,
-      field_year: field_year,
-    }} saveFieldData={props.saveFieldData} fieldData={props.fieldData}
-      dateFormat={props.dateFormat}/>
-  )
+    stateField && (
+      <FieldsetContainer
+        fieldType={"date"}
+        inputData={{
+          id: field.nvrf_id,
+          dataTest: "dob",
+          required: stateField.required,
+          label: field.label,
+          stringContent: props.stringContent,
+          error_msg: field.error_msg,
+          help_text: field.help_text,
+          field_month: field_month,
+          field_day: field_day,
+          field_year: field_year,
+        }}
+        saveFieldData={props.saveFieldData}
+        fieldData={props.fieldData}
+        dateFormat={props.dateFormat}
+      />
+    )
+  );
 }
 
 export default CurrentDateOfBirth;

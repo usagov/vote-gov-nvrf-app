@@ -1,6 +1,6 @@
 import DOMPurify from "dompurify";
 
-DOMPurify.setConfig({ADD_ATTR: ['target']});
+DOMPurify.setConfig({ ADD_ATTR: ["target"] });
 
 export async function fetchData(url, setContent, setError) {
   const cache = localStorage.getItem(url);
@@ -9,13 +9,16 @@ export async function fetchData(url, setContent, setError) {
   const cacheExpirationKey = `cache_expiration_${url}`;
   const cacheExpirationTime = 600000; // 1 hour in milliseconds
   const cacheExpiration = localStorage.getItem(cacheExpirationKey);
-  
+
   try {
     // Get last updated date of json endpoint.
     let response = await fetch(url);
-    let lastModified = response.headers.get('last-modified');
+    let lastModified = response.headers.get("last-modified");
     // Check if the cache date is the latest version and that it has not expired.
-    let validCache = (lastUpdatedDate === lastModified) && (cacheExpiration && cacheExpiration > Date.now());
+    let validCache =
+      lastUpdatedDate === lastModified &&
+      cacheExpiration &&
+      cacheExpiration > Date.now();
 
     // set content from cache
     if (cache && validCache) {
@@ -26,11 +29,13 @@ export async function fetchData(url, setContent, setError) {
       let json = await response.json();
       localStorage.setItem(url, JSON.stringify(json));
       localStorage.setItem(lastUpdatedKey, lastModified);
-      localStorage.setItem(cacheExpirationKey, Date.now() + cacheExpirationTime);
+      localStorage.setItem(
+        cacheExpirationKey,
+        Date.now() + cacheExpirationTime,
+      );
       setContent(json);
     }
-  }
-  catch(e){
+  } catch (e) {
     setError(true);
     console.error(e);
   }

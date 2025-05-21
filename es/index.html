@@ -1,42 +1,60 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es" dir="ltr">
-<head>
-  <!-- Data layer -->
-  <script id="taxonomy-data">
-    dataLayer = [{
-      "Page_Language" : "Spanish",
-      "State_or_Territory": "",
-    }];
-  </script>
-  <!-- Google Tag Manager -->
-   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
-    {'gtm.start': new Date().getTime(),event:'gtm.js'}
-  );var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-5BKF7S7X');</script>
-  <!-- End Google Tag Manager -->
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>National Voter Registration Form | Vote.gov</title>
-</head>
-<body>
-<!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5BKF7S7X"
-    sandbox height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+  <head>
+    <!-- Data layer -->
+    <script id="taxonomy-data">
+      dataLayer = [
+        {
+          Page_Language: "Spanish",
+          State_or_Territory: "",
+        },
+      ];
+    </script>
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-5BKF7S7X");
+    </script>
+    <!-- End Google Tag Manager -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>National Voter Registration Form | Vote.gov</title>
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-5BKF7S7X"
+        sandbox
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
-<div id="protoContainer">
-  <section class="usa-section grid-container">
-    <!-- Embedded REACT app -->
-    <div class="nvrf-app-container" data-returnPath='https://vote.gov/es/registrar/alabama' data-stateId="al" id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-
-  </section>
-</div>
-</body>
+    <div id="protoContainer">
+      <section class="usa-section grid-container">
+        <!-- Embedded REACT app -->
+        <div
+          class="nvrf-app-container"
+          data-returnPath="https://vote.gov/es/registrar/alabama"
+          data-stateId="al"
+          id="root"
+        ></div>
+        <script type="module" src="/src/main.jsx"></script>
+      </section>
+    </div>
+  </body>
 </html>
-
