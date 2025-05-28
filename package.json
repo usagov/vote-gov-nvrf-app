@@ -9,7 +9,7 @@
     "dev": "vite",
     "pages": "vite build --outDir _site",
     "build": "vite build",
-    "lint": "eslint src --report-unused-disable-directives --max-warnings 0",
+    "lint": "npx eslint src --report-unused-disable-directives --max-warnings 0 && npx prettier --check src",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -33,6 +33,7 @@
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.16",
-    "globals": "^15.14.0"
+    "globals": "^15.14.0",
+    "prettier": "^3.5.3"
   }
 }

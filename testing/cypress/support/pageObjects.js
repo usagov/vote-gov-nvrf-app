@@ -1,168 +1,167 @@
 class PageObjects {
-
   nextBtn() {
-    return cy.get('[data-test="nextBtn"]')
+    return cy.get('[data-test="nextBtn"]');
   }
 
   errorText() {
-    return cy.get('[data-test="errorText"]')
+    return cy.get('[data-test="errorText"]');
   }
 
   checkBoxEligibility() {
-    return cy.get('[data-test="checkbox-eligibility"]')
+    return cy.get('[data-test="checkbox-eligibility"]');
   }
 
   pathBtn() {
-    return cy.get('[data-test="pathBtn"]')
+    return cy.get('[data-test="pathBtn"]');
   }
 
   select() {
-    return cy.get('[data-test="select"]')
+    return cy.get('[data-test="select"]');
   }
 
   firstName() {
-    return cy.get('[data-test="firstName"]')
+    return cy.get('[data-test="firstName"]');
   }
 
   middleName() {
-    return cy.get('[data-test="middleName"]')
+    return cy.get('[data-test="middleName"]');
   }
 
   lastName() {
-    return cy.get('[data-test="lastName"]')
+    return cy.get('[data-test="lastName"]');
   }
 
   phoneNumber() {
-    return cy.get('[data-test="phoneNumber"]')
+    return cy.get('[data-test="phoneNumber"]');
   }
 
   checkBoxPrevName() {
-    return cy.get('[data-test="checkbox-prev-name"]')
+    return cy.get('[data-test="checkbox-prev-name"]');
   }
 
   prevFirstName() {
-    return cy.get('[data-test="prevFirstName"]')
+    return cy.get('[data-test="prevFirstName"]');
   }
 
   prevMiddleName() {
-    return cy.get('[data-test="prevMiddleName"]')
+    return cy.get('[data-test="prevMiddleName"]');
   }
 
   prevLastName() {
-    return cy.get('[data-test="prevLastName"]')
+    return cy.get('[data-test="prevLastName"]');
   }
 
   dobMonth() {
-    return cy.get('[data-test="dobMonth"]')
+    return cy.get('[data-test="dobMonth"]');
   }
 
   dobDay() {
-    return cy.get('[data-test="dobDay"]')
+    return cy.get('[data-test="dobDay"]');
   }
 
   dobYear() {
-    return cy.get('[data-test="dobYear"]')
+    return cy.get('[data-test="dobYear"]');
   }
 
   street() {
-    return cy.get('[data-test="street"]')
+    return cy.get('[data-test="street"]');
   }
 
   aptNumber() {
-    return cy.get('[data-test="aptNumber"]')
+    return cy.get('[data-test="aptNumber"]');
   }
 
   city() {
-    return cy.get('[data-test="city"]')
+    return cy.get('[data-test="city"]');
   }
 
   zip() {
-    return cy.get('[data-test="zip"]')
+    return cy.get('[data-test="zip"]');
   }
 
   mailStreet() {
-    return cy.get('[data-test="mailStreet"]')
+    return cy.get('[data-test="mailStreet"]');
   }
 
   mailCity() {
-    return cy.get('[data-test="mailCity"]')
+    return cy.get('[data-test="mailCity"]');
   }
 
   mailZip() {
-    return cy.get('[data-test="mailZip"]')
+    return cy.get('[data-test="mailZip"]');
   }
 
   prevStreet() {
-    return cy.get('[data-test="prevStreet"]')
+    return cy.get('[data-test="prevStreet"]');
   }
 
   prevCity() {
-    return cy.get('[data-test="prevCity"]')
+    return cy.get('[data-test="prevCity"]');
   }
 
   prevZip() {
-    return cy.get('[data-test="prevZip"]')
+    return cy.get('[data-test="prevZip"]');
   }
 
   prevAptNumber() {
-    return cy.get('[data-test="prevAptNumber"]')
+    return cy.get('[data-test="prevAptNumber"]');
   }
 
   dropDown() {
-    return cy.get('[data-test="dropDown"]')
+    return cy.get('[data-test="dropDown"]');
   }
 
   driverId() {
-    return cy.get('[data-test="driverId"]')
+    return cy.get('[data-test="driverId"]');
   }
 
   stateId() {
-    return cy.get(('[data-test="stateId"]'))
+    return cy.get('[data-test="stateId"]');
   }
 
   ssn() {
-    return cy.get('[data-test="ssn"]')
+    return cy.get('[data-test="ssn"]');
   }
 
   politicalParty() {
-    return cy.get('[data-test="politicalParty"]')
+    return cy.get('[data-test="politicalParty"]');
   }
 
   addressConfirm() {
-    return cy.get('[data-test="addressConfirm"]')
+    return cy.get('[data-test="addressConfirm"]');
   }
 
   pdfBtnNewTab() {
-    return cy.get('[data-test="pdfBtnNewTab"]')
+    return cy.get('[data-test="pdfBtnNewTab"]');
   }
 
   backBtn() {
-    return cy.get('[data-test="backBtn"]')
+    return cy.get('[data-test="backBtn"]');
   }
 
   editBtn() {
-    return cy.get('[data-test="editBtn"]')
+    return cy.get('[data-test="editBtn"]');
   }
 
   checkBoxPrevAddress() {
-    return cy.get('[data-test="checkbox-prev-address"]')
+    return cy.get('[data-test="checkbox-prev-address"]');
   }
 
   checkBoxNoAddress() {
-    return cy.get('[data-test="checkbox-no-address"]')
+    return cy.get('[data-test="checkbox-no-address"]');
   }
 
   checkBoxMailAddress() {
-    return cy.get('[data-test="checkbox-mail-address"]')
+    return cy.get('[data-test="checkbox-mail-address"]');
   }
 
   checkBoxNoId() {
-    return cy.get('[data-test="checkbox-no-id"]')
+    return cy.get('[data-test="checkbox-no-id"]');
   }
 
   checkBoxConfirm() {
-    return cy.get('[data-test="checkbox-confirm"]')
+    return cy.get('[data-test="checkbox-confirm"]');
   }
 }
 
-export const pageObjects = new PageObjects()
+export const pageObjects = new PageObjects();

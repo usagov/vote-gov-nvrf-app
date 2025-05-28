@@ -2,6 +2,17 @@ version: 2.1
 orbs:
   gh: circleci/github-cli@2.2.0
 jobs:
+  lint:
+    docker:
+      - image: node:22-slim
+    steps:
+      - checkout
+      - run:
+          name: install dependencies
+          command: npm ci
+      - run:
+          name: Run linting checks
+          command: npm run lint
   cypress-testing:
     docker:
       - image: cypress/included:cypress-13.16.0-node-22.12.0-chrome-131.0.6778.108-1-ff-133.0-edge-131.0.2903.70-1
@@ -29,3 +40,4 @@ workflows:
   main-workflow:
     jobs:
       - cypress-testing
+      - lint

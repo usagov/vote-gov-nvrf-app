@@ -1,37 +1,37 @@
-import {defineConfig, loadEnv} from 'vite'
-import react from '@vitejs/plugin-react'
-import {resolve} from 'path'
+import { defineConfig, loadEnv } from "vite";
+import react from "@vitejs/plugin-react";
+import { resolve } from "path";
 
 // https://vitejs.dev/config/
-export default defineConfig(({mode}) => {
-  const env = loadEnv(mode, process.cwd(), '');
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), "");
 
   return {
     plugins: [react()],
-    base: './',
+    base: "./",
     build: {
       rollupOptions: {
         input: {
-          index: resolve(__dirname, 'index.html'),
-          nested: resolve(__dirname, 'es/index.html'),
+          index: resolve(__dirname, "index.html"),
+          nested: resolve(__dirname, "es/index.html"),
         },
         output: {
           entryFileNames: `assets/[name].js`,
           chunkFileNames: `assets/[name].js`,
-          assetFileNames: `assets/[name].[ext]`
-        }
-      }
+          assetFileNames: `assets/[name].[ext]`,
+        },
+      },
     },
     resolve: {
       alias: {
-        Components: '/src/Components',
-        Utils: '/src/Utils',
-        Views: '/src/Views',
-        Context: '/src/Context',
-      }
+        Components: "/src/Components",
+        Utils: "/src/Utils",
+        Views: "/src/Views",
+        Context: "/src/Context",
+      },
     },
     define: {
       BASEURL: JSON.stringify(env.BASEURL) || [],
     },
-  }
-})
+  };
+});
