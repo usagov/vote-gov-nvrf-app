@@ -9,7 +9,7 @@
     "dev": "vite",
     "pages": "vite build --outDir _site",
     "build": "vite build",
-    "lint": "eslint src --report-unused-disable-directives --max-warnings 0",
+    "lint": "npx eslint src --report-unused-disable-directives --max-warnings 0 && npx prettier --check src",
     "preview": "vite preview"
   },
   "dependencies": {
