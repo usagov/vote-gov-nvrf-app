@@ -145,7 +145,6 @@ const GenerateFilledPDF = async function (btnType, formData, pagesKept) {
   // Remove unneccessary pages
   let shift = 0;
   const totalPages = pdfDoc.getPageCount();
-  let pageCount = totalPages;
   let pagesKeptArray = pagesKept.split(",");
 
   // Check if pagesKept is empty or undefined
@@ -158,7 +157,6 @@ const GenerateFilledPDF = async function (btnType, formData, pagesKept) {
     if (!pagesKeptArray.includes(i.toString())) {
       pdfDoc.removePage(i - shift);
       shift++;
-      pageCount--;
     }
   }
 

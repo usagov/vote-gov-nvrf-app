@@ -5,6 +5,8 @@ import App from "./App.jsx";
 import "@trussworks/react-uswds/lib/uswds.css";
 import "@trussworks/react-uswds/lib/index.css";
 
+window.dataLayer = window.dataLayer || [];
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {

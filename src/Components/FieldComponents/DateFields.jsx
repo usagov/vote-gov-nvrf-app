@@ -1,4 +1,3 @@
-import React from "react";
 import { toggleError, restrictType, jumpTo } from "Utils/ValidateField";
 
 function DateFields({
@@ -8,7 +7,7 @@ function DateFields({
   fieldData,
   setFieldError,
 }) {
-  const checkDateValues = (e) => {
+  const checkDateValues = () => {
     let month = fieldData.date_of_birth_month;
     let day = fieldData.date_of_birth_day;
     let year = fieldData.date_of_birth_year;
@@ -79,7 +78,6 @@ function DateFields({
           aria-describedby={inputData.field_month.nvrf_id + "_error"}
           name={inputData.field_month.nvrf_id}
           label={inputData.field_month.label}
-          unit="month"
           required={true}
           aria-invalid={false}
           type="text"
@@ -117,7 +115,6 @@ function DateFields({
           aria-describedby={inputData.field_day.nvrf_id + "_error"}
           name={inputData.field_day.nvrf_id}
           label={inputData.field_day.label}
-          unit="day"
           required={true}
           aria-invalid={false}
           type="text"
@@ -155,7 +152,6 @@ function DateFields({
           aria-describedby={inputData.field_year.nvrf_id + "_error"}
           name={inputData.field_year.nvrf_id}
           label={inputData.field_year.label}
-          unit="year"
           required={true}
           aria-invalid={false}
           type="text"

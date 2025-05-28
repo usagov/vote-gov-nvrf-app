@@ -1,4 +1,3 @@
-import React from "react";
 import FieldsetContainer from "Components/FieldsetContainer";
 import { getField } from "Utils/fieldParser";
 

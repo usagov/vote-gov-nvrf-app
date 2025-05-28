@@ -113,7 +113,7 @@ export const checkForErrors = (e, requirement) => {
         } else {
           return true;
         }
-      case "check value length":
+      case "check value length": {
         let minLength = e.target.minLength;
         let maxLength =
           e.target.maxLength > -1
@@ -130,6 +130,7 @@ export const checkForErrors = (e, requirement) => {
           e.target.setCustomValidity(" ");
           return true;
         }
+      }
 
       case "check state selection":
         if (value === "") {

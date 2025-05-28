@@ -142,7 +142,10 @@ function MultiStepForm(props) {
   };
 
   const pushPageTitleDataLayer = (title) => {
-    dataLayer.push({ NVRF_page_title: title, event: "NVRF_STEP_SUBMIT" });
+    window.dataLayer.push({
+      NVRF_page_title: title,
+      event: "NVRF_STEP_SUBMIT",
+    });
   };
 
   const handleSubmit = (e) => {
@@ -248,7 +251,10 @@ function MultiStepForm(props) {
           ssn_number: "",
         });
     document.getElementById("state-id").className = "";
-    dataLayer.push({ NVRF_id_type: e.target.value, event: "NVRF_SELECT_ID" });
+    window.dataLayer.push({
+      NVRF_id_type: e.target.value,
+      event: "NVRF_SELECT_ID",
+    });
   };
 
   const [hasNoID, setHasNoID] = useState(false);

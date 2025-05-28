@@ -76,7 +76,7 @@ function PathSelection(props) {
                 onClick={() => {
                   props.getRegPath("update"),
                     props.handleNext(),
-                    dataLayer.push({
+                    window.dataLayer.push({
                       NVRF_path: "update_registration_path",
                       NVRF_page_title: analyticsLabels.pathSelectionTitle,
                       event: "NVRF_STEP_SUBMIT",
@@ -120,7 +120,7 @@ function PathSelection(props) {
                 onClick={() => {
                   props.getRegPath("new"),
                     props.handleNext(),
-                    dataLayer.push({
+                    window.dataLayer.push({
                       NVRF_path: "new_registration_path",
                       NVRF_page_title: analyticsLabels.pathSelectionTitle,
                       event: "NVRF_STEP_SUBMIT",

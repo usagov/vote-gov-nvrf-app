@@ -1,4 +1,3 @@
-import React from "react";
 import { Label } from "@trussworks/react-uswds";
 import TextInputField from "Components/FieldComponents/TextInputField";
 import SelectField from "Components/FieldComponents/SelectField";

@@ -1,4 +1,3 @@
-import React from "react";
 import { Label } from "@trussworks/react-uswds";
 import { sanitizeDOM } from "Utils/JsonHelper";
 import PoliticalPartyInput from "Components/Fields/PoliticalPartyInput";

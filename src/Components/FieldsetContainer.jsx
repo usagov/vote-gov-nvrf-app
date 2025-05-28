@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Fieldset } from "@trussworks/react-uswds";
 import DateFields from "Components/FieldComponents/DateFields";
 

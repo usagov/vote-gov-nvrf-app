@@ -13,7 +13,6 @@ import PreviousApartmentNumber from "Components/Fields/PreviousApartmentNumber";
 import PreviousStreetAddress from "Components/Fields/PreviousStreetAddress";
 import MailingCity from "Components/Fields/MailingCity";
 import PreviousAddressState from "Components/Fields/PreviousAddressState";
-import React from "react";
 import { sanitizeDOM } from "Utils/JsonHelper";
 
 function Addresses(props) {

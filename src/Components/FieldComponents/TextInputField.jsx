@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { TextInput } from "@trussworks/react-uswds";
 import { restrictType, checkForErrors, toggleError } from "Utils/ValidateField";
 

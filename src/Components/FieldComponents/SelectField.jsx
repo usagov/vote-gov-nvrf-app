@@ -2,7 +2,7 @@ import React from "react";
 import { Select } from "@trussworks/react-uswds";
 import { toggleError, checkForErrors } from "Utils/ValidateField";
 
-function SelectField({ inputData, saveFieldData, fieldData, stringContent }) {
+function SelectField({ inputData, saveFieldData }) {
   return (
     <Select
       data-test={inputData.dataTest}

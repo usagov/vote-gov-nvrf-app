@@ -13,6 +13,7 @@ function Delivery(props) {
 
   // Add A/B Message randomization.
   // example: const reminderMessage = randomProperty(content.reminder_messages);
+  // eslint-disable-next-line no-unused-vars
   const randomProperty = function (obj) {
     const keys = Object.keys(obj);
     const key = keys[(keys.length * Math.random()) << 0];
@@ -101,7 +102,7 @@ function Delivery(props) {
               pdfDoc,
               form,
             );
-            dataLayer.push({
+            window.dataLayer.push({
               NVRF_button_click: analyticsLabels.pdfTabButton,
               event: "NVRF_PDF_BUTTON_CLICK",
             });
@@ -126,7 +127,7 @@ function Delivery(props) {
               pdfDoc,
               form,
             );
-            dataLayer.push({
+            window.dataLayer.push({
               NVRF_button_click: analyticsLabels.pdfDownloadButton,
               event: "NVRF_PDF_BUTTON_CLICK",
             });

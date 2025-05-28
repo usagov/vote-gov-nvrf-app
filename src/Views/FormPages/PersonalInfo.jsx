@@ -1,5 +1,4 @@
 import { Checkbox, Grid, Fieldset } from "@trussworks/react-uswds";
-import React from "react";
 import { sanitizeDOM } from "Utils/JsonHelper";
 import CurrentFirstName from "Components/Fields/CurrentFirstName";
 import CurrentSuffix from "Components/Fields/CurrentSuffix";

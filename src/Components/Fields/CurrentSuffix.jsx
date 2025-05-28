@@ -1,4 +1,3 @@
-import React from "react";
 import FieldContainer from "Components/FieldContainer";
 import { getField } from "Utils/fieldParser";
 

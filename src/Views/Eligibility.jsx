@@ -77,7 +77,7 @@ function Eligibility(props) {
           onSubmit={(e) => {
             e.preventDefault(),
               props.handleNext(),
-              dataLayer.push({
+              window.dataLayer.push({
                 NVRF_page_title: analyticsLabels.eligibilityTitle,
                 event: "NVRF_STEP_SUBMIT",
               });
@@ -140,7 +140,7 @@ function Eligibility(props) {
 
           <NextButton
             type={"submit"}
-            onClick={(e) => focusError("eligibility")}
+            onClick={() => focusError("eligibility")}
             text={step.next_button_label}
           />
         </Form>
