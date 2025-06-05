@@ -1,4 +1,5 @@
-# Vote.gov National Voter Registration Form app (NVRF app)
+# :warning: [DEPRECATED] Vote.gov National Voter Registration Form app (NVRF app)
+This repository is no longer maintained.
 
 This repository contains the files of the National Voter Registration Form (NVRF) filler app embedded on vote.gov website. This app is built using Vite and React integrating data from API endpoints found on vote.gov.
 
