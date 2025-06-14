@@ -21,7 +21,7 @@
     "dompurify": "^3.2.4",
     "downloadjs": "^1.4.7",
     "pdf-lib": "^1.17.1",
-    "react": "^18.2.0",
+    "react": "^18.3.1",
     "react-dom": "^18.2.0",
     "react-helmet-async": "^2.0.5",
     "vite": "^6.3.4"
